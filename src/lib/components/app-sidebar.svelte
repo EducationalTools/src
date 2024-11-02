@@ -13,8 +13,7 @@
 								class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
 							></div>
 							<div class="flex flex-col gap-0.5 leading-none">
-								<span class="font-semibold">Documentation</span>
-								<span class="">v1.0.0</span>
+								<span class="font-semibold">EduTools</span>
 							</div>
 						</a>
 					{/snippet}
