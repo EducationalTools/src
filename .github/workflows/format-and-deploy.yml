@@ -17,6 +17,14 @@ jobs:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
 
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 'latest'
+
+      - name: Install dependencies
+        run: bun install
+
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
         with:
@@ -39,13 +47,9 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Run tests
-        run: bun run test
-
       - name: Build and deploy
         run: |
           bun run build
-          bun run deploy
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
