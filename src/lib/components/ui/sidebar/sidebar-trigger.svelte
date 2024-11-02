@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { cn } from '$lib/utils.js';
-	import PanelLeft from 'lucide-svelte/icons/panel-left';
+	import DockLeft from 'svelte-material-icons/DockLeft.svelte';
 	import type { ComponentProps } from 'svelte';
 	import { useSidebar } from './context.svelte.js';
 
@@ -29,6 +29,6 @@
 	class={cn('h-7 w-7', className)}
 	{...restProps}
 >
-	<PanelLeft />
+	<DockLeft />
 	<span class="sr-only">Toggle Sidebar</span>
 </Button>
