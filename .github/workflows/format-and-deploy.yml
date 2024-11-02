@@ -54,7 +54,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GH_PAGES_SECRET }}
+          personal_token: ${{ secrets.GH_PAGES_SECRET }}
           external_repository: EducationalTools/EducationalTools.github.io
           publish_branch: main # default: gh-pages
           publish_dir: ./public
