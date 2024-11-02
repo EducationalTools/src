@@ -22,9 +22,11 @@
 						<a href="/" {...props}>
 							<div
 								class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
-							></div>
+							>
+								<School />
+							</div>
 							<div class="flex flex-col gap-0.5 leading-none">
-								<span class="font-semibold">EduTools</span>
+								<span class="text-xl font-semibold">EduTools</span>
 							</div>
 						</a>
 					{/snippet}
