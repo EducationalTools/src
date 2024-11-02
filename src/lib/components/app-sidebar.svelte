@@ -2,7 +2,7 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 </script>
 
-<Sidebar.Root>
+<Sidebar.Root variant="floating" collapsible="icon">
 	<Sidebar.Header />
 	<Sidebar.Content>
 		<Sidebar.Group />
