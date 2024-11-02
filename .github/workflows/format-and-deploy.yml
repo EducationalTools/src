@@ -57,4 +57,4 @@ jobs:
           personal_token: ${{ secrets.GH_PAGES_SECRET }}
           external_repository: EducationalTools/EducationalTools.github.io
           publish_branch: main # default: gh-pages
-          publish_dir: ./public
+          publish_dir: ./build
