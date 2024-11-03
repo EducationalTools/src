@@ -153,7 +153,6 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EDUTOOLS_D915E }}
           channelId: live
           projectId: edutools-d915e
-          entryPoint: build
 
   re-run:
     needs: deploy
