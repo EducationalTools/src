@@ -147,6 +147,14 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/
           server-dir: /edutools.is-great.org/htdocs/
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EDUTOOLS_D915E }}
+          channelId: live
+          projectId: edutools-d915e
+          entryPoint: build
+
   re-run:
     needs: deploy
     if: failure() && fromJSON(github.run_attempt) < 3
