@@ -152,6 +152,9 @@ jobs:
     needs: deploy
     if: failure()
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Rerun failed jobs in the current workflow
         env:
           GH_TOKEN: ${{ github.token }}
