@@ -59,6 +59,14 @@ jobs:
           publish_branch: main # default: gh-pages
           publish_dir: ./build
 
+      - name: Deploy to repo
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.VERCEL_REPO_SECRET }}
+          external_repository: ${{ secrets.VERCEL_REPO }}
+          publish_branch: main # default: gh-pages
+          publish_dir: ./build
+
       - name: Deploy to surge.sh
         if: always()
         uses: dswistowski/surge-sh-action@v1
