@@ -147,15 +147,13 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/
           server-dir: /edutools.is-great.org/htdocs/
-  rerun-failed-jobs:
-    runs-on: ubuntu-latest
+  re-run:
     needs: deploy
-    if: failure()
+    if: failure() && fromJSON(github.run_attempt) < 3
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Rerun failed jobs in the current workflow
-        env:
+      - env:
+          GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
-        run: gh run rerun ${{ github.run_id }} --failed
+          GH_DEBUG: api
+        run: gh workflow run rerun.yml -F run_id=${{ github.run_id }}
