@@ -51,10 +51,17 @@ jobs:
         run: |
           bun run build
 
-      - name: Deploy
+      - name: Deploy to repo
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.GH_PAGES_SECRET }}
           external_repository: EducationalTools/EducationalTools.github.io
           publish_branch: main # default: gh-pages
           publish_dir: ./build
+      - name: Deploy to surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'edutools.surge.sh'
+          project: './build'
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
