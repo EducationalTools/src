@@ -1,0 +1,171 @@
+name: Format and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.3
+        with:
+          # This part is also where you can pass other options, for example:
+          prettier_options: --write .
+  deploy:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    needs: format
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build and deploy
+        run: |
+          pnpm run build
+
+      - name: Deploy to repo
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.GH_PAGES_SECRET }}
+          external_repository: EducationalTools/EducationalTools.github.io
+          publish_branch: main # default: gh-pages
+          publish_dir: ./build
+
+      # - name: Deploy to vercel repo
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     personal_token: ${{ secrets.VERCEL_REPO_SECRET }}
+      #     external_repository: ${{ secrets.VERCEL_REPO }}
+      #     publish_branch: main # default: gh-pages
+      #     publish_dir: ./build
+
+      # - name: Deploy to surge.sh
+      #   if: always()
+      #   uses: dswistowski/surge-sh-action@v1
+      #   with:
+      #     domain: 'edutools.surge.sh'
+      #     project: './build'
+      #     login: ${{ secrets.SURGE_LOGIN }}
+      #     token: ${{ secrets.SURGE_TOKEN }}
+
+      # - name: Deploy to edutools.infinityfreeapp.com
+      #   if: always()
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ftpupload.net
+      #     username: if0_37642311
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: ./build/
+      #     server-dir: /htdocs/
+
+      # - name: Deploy to edutools.ct.ws
+      #   if: always()
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ftpupload.net
+      #     username: if0_37642311
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: ./build/
+      #     server-dir: /edutools.ct.ws/htdocs/
+
+      # - name: Deploy to edutools.rf.gd
+      #   if: always()
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ftpupload.net
+      #     username: if0_37642311
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: ./build/
+      #     server-dir: /edutools.rf.gd/htdocs/
+
+      # - name: Deploy to edutools.great-site.net
+      #   if: always()
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ftpupload.net
+      #     username: if0_37642311
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: ./build/
+      #     server-dir: /edutools.great-site.net/htdocs/
+
+      # - name: Deploy to edutools.000.pe
+      #   if: always()
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ftpupload.net
+      #     username: if0_37642311
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: ./build/
+      #     server-dir: /edutools.000.pe/htdocs/
+
+      # - name: Deploy to edutools.free.nf
+      #   if: always()
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ftpupload.net
+      #     username: if0_37642311
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: ./build/
+      #     server-dir: /edutools.free.nf/htdocs/
+
+      # - name: Deploy to edutools.is-great.net
+      #   if: always()
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ftpupload.net
+      #     username: if0_37642311
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: ./build/
+      #     server-dir: /edutools.is-great.net/htdocs/
+
+      # - name: Deploy to edutools.is-great.org
+      #   if: always()
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ftpupload.net
+      #     username: if0_37642311
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: ./build/
+      #     server-dir: /edutools.is-great.org/htdocs/
+      # - uses: FirebaseExtended/action-hosting-deploy@v0
+      #   with:
+      #     repoToken: ${{ secrets.GITHUB_TOKEN }}
+      #     firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      #     channelId: live
+      #     projectId:
+
+  re-run:
+    needs: deploy
+    if: failure() && fromJSON(github.run_attempt) < 3
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+          GH_DEBUG: api
+        run: gh workflow run rerun.yml -F run_id=${{ github.run_id }}
