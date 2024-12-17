@@ -186,8 +186,14 @@
 							>
 								<Search class="size-4" />
 							</div>
-							<div class="flex flex-col gap-0.5 leading-none">
+							<div class="flex w-full flex-row items-center gap-2 leading-none">
 								<span>Search</span>
+								<div class="flex-grow"></div>
+								<kbd
+									class="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100"
+								>
+									<span class="text-xs">⌘</span>K
+								</kbd>
 							</div>
 						</button>
 					{/snippet}
