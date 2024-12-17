@@ -135,9 +135,22 @@
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import GalleryVerticalEnd from 'lucide-svelte/icons/gallery-vertical-end';
+	import Search from 'lucide-svelte/icons/search';
 	import type { ComponentProps } from 'svelte';
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
+	import * as Command from '$lib/components/ui/command/index.js';
+
+	let open = $state(false);
+
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+			e.preventDefault();
+			open = !open;
+		}
+	}
 </script>
+
+<svelte:document onkeydown={handleKeydown} />
 
 <Sidebar.Root bind:ref {...restProps}>
 	<Sidebar.Header>
@@ -156,6 +169,27 @@
 								<span class="">v1.0.0</span>
 							</div>
 						</a>
+					{/snippet}
+				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+			<Sidebar.MenuItem>
+				<Sidebar.MenuButton size="lg">
+					{#snippet child({ props })}
+						<button
+							onclick={function () {
+								open = true;
+							}}
+							{...props}
+						>
+							<div
+								class="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground"
+							>
+								<Search class="size-4" />
+							</div>
+							<div class="flex flex-col gap-0.5 leading-none">
+								<span>Search</span>
+							</div>
+						</button>
 					{/snippet}
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
@@ -193,3 +227,36 @@
 	</Sidebar.Content>
 	<Sidebar.Rail />
 </Sidebar.Root>
+
+<Command.Dialog bind:open>
+	<Command.Input placeholder="Type a command or search..." />
+	<Command.List>
+		<Command.Empty>No results found.</Command.Empty>
+		<Command.Group heading="Suggestions">
+			<Command.Item>
+				<span>Calendar</span>
+			</Command.Item>
+			<Command.Item>
+				<span>Search Emoji</span>
+			</Command.Item>
+			<Command.Item>
+				<span>Calculator</span>
+			</Command.Item>
+		</Command.Group>
+		<Command.Separator />
+		<Command.Group heading="Settings">
+			<Command.Item>
+				<span>Profile</span>
+				<Command.Shortcut>⌘P</Command.Shortcut>
+			</Command.Item>
+			<Command.Item>
+				<span>Billing</span>
+				<Command.Shortcut>⌘B</Command.Shortcut>
+			</Command.Item>
+			<Command.Item>
+				<span>Settings</span>
+				<Command.Shortcut>⌘S</Command.Shortcut>
+			</Command.Item>
+		</Command.Group>
+	</Command.List>
+</Command.Dialog>
