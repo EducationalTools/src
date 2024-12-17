@@ -8,25 +8,30 @@
 <Sidebar.Provider>
 	<AppSidebar />
 	<Sidebar.Inset>
-		<header class="sticky top-0 flex h-16 shrink-0 items-center gap-2 border-b bg-background px-4">
-			<Sidebar.Trigger class="-ml-1" />
-			<Separator orientation="vertical" class="mr-2 h-4" />
-			<Breadcrumb.Root>
-				<Breadcrumb.List>
-					<Breadcrumb.Item class="hidden md:block">
-						<Breadcrumb.Link href="#">Building Your Application</Breadcrumb.Link>
-					</Breadcrumb.Item>
-					<Breadcrumb.Separator class="hidden md:block" />
-					<Breadcrumb.Item>
-						<Breadcrumb.Page>Data Fetching</Breadcrumb.Page>
-					</Breadcrumb.Item>
-				</Breadcrumb.List>
-			</Breadcrumb.Root>
+		<header class="flex h-16 shrink-0 items-center gap-2 border-b">
+			<div class="flex items-center gap-2 px-3">
+				<Sidebar.Trigger />
+				<Separator orientation="vertical" class="mr-2 h-4" />
+				<Breadcrumb.Root>
+					<Breadcrumb.List>
+						<Breadcrumb.Item class="hidden md:block">
+							<Breadcrumb.Link href="#">Building Your Application</Breadcrumb.Link>
+						</Breadcrumb.Item>
+						<Breadcrumb.Separator class="hidden md:block" />
+						<Breadcrumb.Item>
+							<Breadcrumb.Page>Data Fetching</Breadcrumb.Page>
+						</Breadcrumb.Item>
+					</Breadcrumb.List>
+				</Breadcrumb.Root>
+			</div>
 		</header>
 		<div class="flex flex-1 flex-col gap-4 p-4">
-			{#each Array.from({ length: 24 }) as _, index (index)}
-				<div class="aspect-video h-12 w-full rounded-lg bg-muted/50"></div>
-			{/each}
+			<div class="grid auto-rows-min gap-4 md:grid-cols-3">
+				<div class="aspect-video rounded-xl bg-muted/50"></div>
+				<div class="aspect-video rounded-xl bg-muted/50"></div>
+				<div class="aspect-video rounded-xl bg-muted/50"></div>
+			</div>
+			<div class="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min"></div>
 		</div>
 	</Sidebar.Inset>
 </Sidebar.Provider>
