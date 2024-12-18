@@ -268,12 +268,14 @@
 						</Command.LinkItem>
 					{/each}
 				</Command.Group>
+				<Command.Separator />
 			{:else}
 				<Command.Group>
 					<Command.LinkItem href={groupItem.url} onSelect={() => (open = false)}>
 						<span>{groupItem.title}</span>
 					</Command.LinkItem>
 				</Command.Group>
+				<Command.Separator />
 			{/if}
 		{/each}
 		<Command.Group>
