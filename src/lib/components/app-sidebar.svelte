@@ -8,15 +8,15 @@
 				url: '/'
 			},
 			{
-				title: 'Getting Started',
+				title: 'G​a​m​e​s',
 				items: [
 					{
-						title: 'Installation',
-						url: '#'
+						title: 'Test',
+						url: '/g/test'
 					},
 					{
-						title: 'Project Structure',
-						url: '#'
+						title: 'Test 2',
+						url: '/g/test-2'
 					}
 				]
 			},
@@ -135,6 +135,7 @@
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import GalleryVerticalEnd from 'lucide-svelte/icons/gallery-vertical-end';
+	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import Search from 'lucide-svelte/icons/search';
 	import type { ComponentProps } from 'svelte';
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
@@ -215,6 +216,9 @@
 											{#snippet child({ props })}
 												<a class=" font-medium" {...props}>
 													{groupItem.title}
+													<ChevronRight
+														class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
+													/>
 												</a>
 											{/snippet}
 										</Sidebar.MenuButton>
