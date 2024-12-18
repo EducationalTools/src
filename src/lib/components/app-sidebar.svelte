@@ -8,7 +8,7 @@
 				url: '/'
 			},
 			{
-				title: 'G​a​m​e​s',
+				title: 'Gmaes',
 				items: [
 					{
 						title: 'Test',
