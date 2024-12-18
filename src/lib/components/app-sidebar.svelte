@@ -9,7 +9,6 @@
 			},
 			{
 				title: 'Getting Started',
-				url: '#',
 				items: [
 					{
 						title: 'Installation',
@@ -23,7 +22,6 @@
 			},
 			{
 				title: 'Building Your Application',
-				url: '#',
 				items: [
 					{
 						title: 'Routing',
@@ -78,7 +76,6 @@
 			},
 			{
 				title: 'API Reference',
-				url: '#',
 				items: [
 					{
 						title: 'Components',
@@ -108,7 +105,6 @@
 			},
 			{
 				title: 'Architecture',
-				url: '#',
 				items: [
 					{
 						title: 'Accessibility',
@@ -143,6 +139,7 @@
 	import type { ComponentProps } from 'svelte';
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 	import * as Command from '$lib/components/ui/command/index.js';
+	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
 
 	let open = $state(false);
 
@@ -209,28 +206,46 @@
 		<Sidebar.Group>
 			<Sidebar.Menu>
 				{#each data.navMain as groupItem (groupItem.title)}
-					<Sidebar.MenuItem>
-						<Sidebar.MenuButton>
-							{#snippet child({ props })}
-								<a href={groupItem.url} class="font-medium" {...props}>
-									{groupItem.title}
-								</a>
-							{/snippet}
-						</Sidebar.MenuButton>
-						{#if groupItem.items?.length}
-							<Sidebar.MenuSub>
-								{#each groupItem.items as item (item.title)}
-									<Sidebar.MenuSubItem>
-										<Sidebar.MenuSubButton isActive={item.isActive}>
+					{#if groupItem.items?.length}
+						<Collapsible.Root>
+							<Sidebar.MenuItem>
+								<Collapsible.Trigger>
+									{#snippet child({ props })}
+										<Sidebar.MenuButton class="cursor-pointer" {...props}>
 											{#snippet child({ props })}
-												<a href={item.url} {...props}>{item.title}</a>
+												<a class=" font-medium" {...props}>
+													{groupItem.title}
+												</a>
 											{/snippet}
-										</Sidebar.MenuSubButton>
-									</Sidebar.MenuSubItem>
-								{/each}
-							</Sidebar.MenuSub>
-						{/if}
-					</Sidebar.MenuItem>
+										</Sidebar.MenuButton>
+									{/snippet}
+								</Collapsible.Trigger>
+								<Collapsible.Content>
+									<Sidebar.MenuSub>
+										{#each groupItem.items as item (item.title)}
+											<Sidebar.MenuSubItem>
+												<Sidebar.MenuSubButton isActive={item.isActive}>
+													{#snippet child({ props })}
+														<a href={item.url} {...props}>{item.title}</a>
+													{/snippet}
+												</Sidebar.MenuSubButton>
+											</Sidebar.MenuSubItem>
+										{/each}
+									</Sidebar.MenuSub></Collapsible.Content
+								>
+							</Sidebar.MenuItem></Collapsible.Root
+						>
+					{:else}
+						<Sidebar.MenuItem>
+							<Sidebar.MenuButton>
+								{#snippet child({ props })}
+									<a href={groupItem.url} class="font-medium" {...props}>
+										{groupItem.title}
+									</a>
+								{/snippet}
+							</Sidebar.MenuButton>
+						</Sidebar.MenuItem>
+					{/if}
 				{/each}
 			</Sidebar.Menu>
 		</Sidebar.Group>
