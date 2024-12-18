@@ -133,7 +133,7 @@
 
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import GalleryVerticalEnd from 'lucide-svelte/icons/gallery-vertical-end';
+	import Wrench from 'lucide-svelte/icons/wrench';
 	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down';
 	import Search from 'lucide-svelte/icons/search';
 	import type { ComponentProps } from 'svelte';
@@ -163,11 +163,10 @@
 							<div
 								class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
 							>
-								<GalleryVerticalEnd class="size-4" />
+								<Wrench class="size-4" />
 							</div>
 							<div class="flex flex-col gap-0.5 leading-none">
-								<span class="font-semibold">Documentation</span>
-								<span class="">v1.0.0</span>
+								<span class="font-semibold">EduTools</span>
 							</div>
 						</a>
 					{/snippet}
