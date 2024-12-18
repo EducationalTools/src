@@ -259,30 +259,26 @@
 	<Command.Input placeholder="Type a command or search..." />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
-		<Command.Group heading="Suggestions">
-			<Command.Item>
-				<span>Calendar</span>
-			</Command.Item>
-			<Command.Item>
-				<span>Search Emoji</span>
-			</Command.Item>
-			<Command.Item>
-				<span>Calculator</span>
-			</Command.Item>
-		</Command.Group>
-		<Command.Separator />
-		<Command.Group heading="Settings">
-			<Command.Item>
-				<span>Profile</span>
-				<Command.Shortcut>⌘P</Command.Shortcut>
-			</Command.Item>
-			<Command.Item>
-				<span>Billing</span>
-				<Command.Shortcut>⌘B</Command.Shortcut>
-			</Command.Item>
+		{#each data.navMain as groupItem (groupItem.title)}
+			{#if groupItem.items?.length}
+				<Command.Group heading={groupItem.title}>
+					{#each groupItem.items as item (item.title)}
+						<Command.LinkItem href={item.url} onSelect={() => (open = false)}>
+							<span>{item.title}</span>
+						</Command.LinkItem>
+					{/each}
+				</Command.Group>
+			{:else}
+				<Command.Group>
+					<Command.LinkItem href={groupItem.url} onSelect={() => (open = false)}>
+						<span>{groupItem.title}</span>
+					</Command.LinkItem>
+				</Command.Group>
+			{/if}
+		{/each}
+		<Command.Group>
 			<Command.Item>
 				<span>Settings</span>
-				<Command.Shortcut>⌘S</Command.Shortcut>
 			</Command.Item>
 		</Command.Group>
 	</Command.List>
