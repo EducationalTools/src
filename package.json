@@ -32,5 +32,8 @@
 		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.0.0",
 		"vite": "^6.0.0"
+	},
+	"dependencies": {
+		"svelte-persisted-store": "^0.12.0"
 	}
 }
