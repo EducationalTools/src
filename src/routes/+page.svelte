@@ -1,3 +1,3 @@
 <script lang="ts">
-   import { testStore } from "$lib/state";
+	import { testStore } from '$lib/state';
 </script>
