@@ -1,5 +1,3 @@
 import { persisted } from 'svelte-persisted-store';
 
-export const testStore = persisted('teststore', {
-	switch: false
-});
+export const testStore = persisted('teststore', true);
