@@ -3,7 +3,7 @@
 	import { Switch } from '$lib/components/ui/switch/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 
-	let test;
+	let test: boolean;
 
 	testStore.subscribe(($store) => {
 		test = $store;
