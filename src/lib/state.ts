@@ -1,3 +1,5 @@
 import { persisted } from 'svelte-persisted-store';
 
-export const testStore = persisted('teststore', true);
+export const preferencesStore = persisted('preferences', {
+	experimentalFeatures: false
+});
