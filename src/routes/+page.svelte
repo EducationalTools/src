@@ -2,12 +2,9 @@
 	import { testStore } from '$lib/state';
 	import { Switch } from '$lib/components/ui/switch/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
+	let test = $testStore;
 
-	let test: boolean;
-
-	testStore.subscribe(($store) => {
-		test = $store;
-	});
+	$: test = $testStore;
 </script>
 
 <Button
@@ -21,3 +18,5 @@
 	}}>false</Button
 >
 <span>{test}</span>
+
+<Switch />
