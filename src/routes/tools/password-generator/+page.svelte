@@ -28,7 +28,10 @@
 </script>
 
 <div class="flex h-full flex-row items-center justify-center gap-3 p-3">
-	<Input id="password" class="blur-lg duration-300 hover:blur-sm focus:blur-0" />
+	<Input
+		id="password"
+		class="bg-gray-600 blur-lg duration-300 hover:blur-sm focus:bg-transparent focus:blur-0"
+	/>
 	<Button onclick={generatePassword}>Generate</Button>
 	<Button onclick={copyPassword}>Copy</Button>
 </div>
