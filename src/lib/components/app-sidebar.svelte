@@ -37,14 +37,6 @@
 						url: '/tools/converter'
 					},
 					{
-						title: 'Timer',
-						url: '/tools/timer'
-					},
-					{
-						title: 'Stopwatch',
-						url: '/tools/stopwatch'
-					},
-					{
 						title: 'Simple Text Editor',
 						url: '/tools/simple-text-editor'
 					},
