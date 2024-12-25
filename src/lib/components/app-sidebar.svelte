@@ -21,7 +21,7 @@
 		}
 	}
 
-	const mainNavigation = [
+	const mainNavigation = $derived([
 		{
 			title: 'Home',
 			url: '/'
@@ -68,7 +68,7 @@
 				}
 			]
 		}
-	];
+	]);
 </script>
 
 <svelte:document onkeydown={handleKeydown} />
