@@ -57,58 +57,61 @@
 	}
 </script>
 
-<!-- ...existing code... -->
-<div class="flex flex-col gap-4">
-	<Select.Root
-		bind:value={category}
-		type="single"
-		on:valueChange={(e: CustomEvent<string>) => {
-			category = e.detail;
-			fromUnit = unitsMap[category][0];
-			toUnit = unitsMap[category][1];
-			inputValue = '';
-			outputValue = '';
-		}}
-	>
-		<Select.Trigger class="w-[180px]">
-			{category}
-		</Select.Trigger>
-		<Select.Content>
-			{#each categories as c}
-				<Select.Item value={c}>{c}</Select.Item>
-			{/each}
-		</Select.Content>
-	</Select.Root>
+<div class="flex min-h-screen items-center justify-center">
+	<div class="flex flex-col gap-4 rounded border p-6 shadow-md">
+		<div class="flex flex-col gap-4">
+			<Select.Root
+				bind:value={category}
+				type="single"
+				on:valueChange={(e: CustomEvent<string>) => {
+					category = e.detail;
+					fromUnit = unitsMap[category][0];
+					toUnit = unitsMap[category][1];
+					inputValue = '';
+					outputValue = '';
+				}}
+			>
+				<Select.Trigger class="w-[180px]">
+					{category}
+				</Select.Trigger>
+				<Select.Content>
+					{#each categories as c}
+						<Select.Item value={c}>{c}</Select.Item>
+					{/each}
+				</Select.Content>
+			</Select.Root>
 
-	<Select.Root
-		bind:value={fromUnit}
-		type="single"
-		on:valueChange={(e: CustomEvent<string>) => (fromUnit = e.detail)}
-	>
-		<Select.Trigger class="w-[100px]">{fromUnit}</Select.Trigger>
-		<Select.Content>
-			{#each unitsMap[category] as u}
-				<Select.Item value={u}>{u}</Select.Item>
-			{/each}
-		</Select.Content>
-	</Select.Root>
+			<Select.Root
+				bind:value={fromUnit}
+				type="single"
+				on:valueChange={(e: CustomEvent<string>) => (fromUnit = e.detail)}
+			>
+				<Select.Trigger class="w-[100px]">{fromUnit}</Select.Trigger>
+				<Select.Content>
+					{#each unitsMap[category] as u}
+						<Select.Item value={u}>{u}</Select.Item>
+					{/each}
+				</Select.Content>
+			</Select.Root>
 
-	<Select.Root
-		bind:value={toUnit}
-		type="single"
-		on:valueChange={(e: CustomEvent<string>) => (toUnit = e.detail)}
-	>
-		<Select.Trigger class="w-[100px]">{toUnit}</Select.Trigger>
-		<Select.Content>
-			{#each unitsMap[category] as u}
-				<Select.Item value={u}>{u}</Select.Item>
-			{/each}
-		</Select.Content>
-	</Select.Root>
+			<Select.Root
+				bind:value={toUnit}
+				type="single"
+				on:valueChange={(e: CustomEvent<string>) => (toUnit = e.detail)}
+			>
+				<Select.Trigger class="w-[100px]">{toUnit}</Select.Trigger>
+				<Select.Content>
+					{#each unitsMap[category] as u}
+						<Select.Item value={u}>{u}</Select.Item>
+					{/each}
+				</Select.Content>
+			</Select.Root>
 
-	<Input type="number" placeholder="Value" bind:value={inputValue} />
+			<Input type="number" placeholder="Value" bind:value={inputValue} />
 
-	<Button variant="outline" onclick={convert}>Convert</Button>
+			<Button variant="outline" onclick={convert}>Convert</Button>
 
-	<div>Result: {outputValue}</div>
+			<div>Result: {outputValue}</div>
+		</div>
+	</div>
 </div>
