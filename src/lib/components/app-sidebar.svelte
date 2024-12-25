@@ -7,6 +7,7 @@
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 	import * as Command from '$lib/components/ui/command/index.js';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
+	import { page } from '$app/stores';
 
 	let open = $state(false);
 
@@ -45,8 +46,7 @@
 					},
 					{
 						title: 'Data Fetching',
-						url: '#',
-						isActive: true
+						url: '#'
 					},
 					{
 						title: 'Rendering',
@@ -207,7 +207,12 @@
 							<Sidebar.MenuItem>
 								<Collapsible.Trigger>
 									{#snippet child({ props })}
-										<Sidebar.MenuButton class="cursor-pointer" {...props}>
+										<Sidebar.MenuButton
+											class="cursor-pointer"
+											isActive={groupItem.url === $page.url.pathname ||
+												(groupItem.url === '/' && $page.url.pathname === '')}
+											{...props}
+										>
 											{#snippet child({ props })}
 												<a class=" font-medium" {...props}>
 													{groupItem.title}
@@ -221,7 +226,10 @@
 									<Sidebar.MenuSub>
 										{#each groupItem.items as item (item.title)}
 											<Sidebar.MenuSubItem>
-												<Sidebar.MenuSubButton isActive={item.isActive}>
+												<Sidebar.MenuSubButton
+													isActive={item.url === $page.url.pathname ||
+														(item.url === '/' && $page.url.pathname === '')}
+												>
 													{#snippet child({ props })}
 														<a href={item.url} {...props}>{item.title}</a>
 													{/snippet}
@@ -234,7 +242,10 @@
 						>
 					{:else}
 						<Sidebar.MenuItem>
-							<Sidebar.MenuButton>
+							<Sidebar.MenuButton
+								isActive={groupItem.url === $page.url.pathname ||
+									(groupItem.url === '/' && $page.url.pathname === '')}
+							>
 								{#snippet child({ props })}
 									<a href={groupItem.url} class="font-medium" {...props}>
 										{groupItem.title}
