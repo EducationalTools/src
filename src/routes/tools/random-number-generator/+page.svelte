@@ -10,7 +10,7 @@
 	}
 </script>
 
-<div class="flex h-full flex-col items-center justify-center gap-3">
+<div class="flex h-full flex-col items-center justify-center gap-3 p-3">
 	<div class="flex flex-col gap-3">
 		<h1 class="rounded border p-10 text-center text-4xl font-bold">{random}</h1>
 
