@@ -1,5 +1,22 @@
-<script lang="ts" module>
-	// sample data
+<script lang="ts">
+	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import Wrench from 'lucide-svelte/icons/wrench';
+	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down';
+	import Search from 'lucide-svelte/icons/search';
+	import type { ComponentProps } from 'svelte';
+	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
+	import * as Command from '$lib/components/ui/command/index.js';
+	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
+
+	let open = $state(false);
+
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+			e.preventDefault();
+			open = !open;
+		}
+	}
+
 	const data = {
 		navMain: [
 			{
@@ -129,26 +146,6 @@
 			}
 		]
 	};
-</script>
-
-<script lang="ts">
-	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import Wrench from 'lucide-svelte/icons/wrench';
-	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down';
-	import Search from 'lucide-svelte/icons/search';
-	import type { ComponentProps } from 'svelte';
-	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
-	import * as Command from '$lib/components/ui/command/index.js';
-	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
-
-	let open = $state(false);
-
-	function handleKeydown(e: KeyboardEvent) {
-		if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-			e.preventDefault();
-			open = !open;
-		}
-	}
 </script>
 
 <svelte:document onkeydown={handleKeydown} />
