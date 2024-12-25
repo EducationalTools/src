@@ -21,163 +21,161 @@
 		}
 	}
 
-	const data = {
-		navMain: [
-			{
-				title: 'Home',
-				url: '/'
-			},
-			{
-				title: 'Tools',
-				items: [
-					{
-						title: 'Calculator',
-						url: '/tools/calculator'
-					},
-					{
-						title: 'Converter',
-						url: '/tools/converter'
-					},
-					{
-						title: 'Simple Text Editor',
-						url: '/tools/simple-text-editor'
-					},
-					{
-						title: 'Word Counter',
-						url: '/tools/word-counter'
-					},
-					{
-						title: 'Password Generator',
-						url: '/tools/password-generator'
-					},
-					{
-						title: 'Random Number Generator',
-						url: '/tools/random-number-generator'
-					}
-				]
-			},
-			{
-				title: 'Gmaes',
-				items: [
-					{
-						title: 'Test',
-						url: '/g/test'
-					},
-					{
-						title: 'Test 2',
-						url: '/g/test-2'
-					}
-				]
-			},
-			{
-				title: 'Building Your Application',
-				items: [
-					{
-						title: 'Routing',
-						url: '#'
-					},
-					{
-						title: 'Data Fetching',
-						url: '#'
-					},
-					{
-						title: 'Rendering',
-						url: '#'
-					},
-					{
-						title: 'Caching',
-						url: '#'
-					},
-					{
-						title: 'Styling',
-						url: '#'
-					},
-					{
-						title: 'Optimizing',
-						url: '#'
-					},
-					{
-						title: 'Configuring',
-						url: '#'
-					},
-					{
-						title: 'Testing',
-						url: '#'
-					},
-					{
-						title: 'Authentication',
-						url: '#'
-					},
-					{
-						title: 'Deploying',
-						url: '#'
-					},
-					{
-						title: 'Upgrading',
-						url: '#'
-					},
-					{
-						title: 'Examples',
-						url: '#'
-					}
-				]
-			},
-			{
-				title: 'API Reference',
-				items: [
-					{
-						title: 'Components',
-						url: '#'
-					},
-					{
-						title: 'File Conventions',
-						url: '#'
-					},
-					{
-						title: 'Functions',
-						url: '#'
-					},
-					{
-						title: 'next.config.js Options',
-						url: '#'
-					},
-					{
-						title: 'CLI',
-						url: '#'
-					},
-					{
-						title: 'Edge Runtime',
-						url: '#'
-					}
-				]
-			},
-			{
-				title: 'Architecture',
-				items: [
-					{
-						title: 'Accessibility',
-						url: '#'
-					},
-					{
-						title: 'Fast Refresh',
-						url: '#'
-					},
-					{
-						title: 'Svelte Compiler',
-						url: '#'
-					},
-					{
-						title: 'Supported Browsers',
-						url: '#'
-					},
-					{
-						title: 'Rollup',
-						url: '#'
-					}
-				]
-			}
-		]
-	};
+	const mainNavigation = [
+		{
+			title: 'Home',
+			url: '/'
+		},
+		{
+			title: 'Tools',
+			items: [
+				{
+					title: 'Calculator',
+					url: '/tools/calculator'
+				},
+				{
+					title: 'Converter',
+					url: '/tools/converter'
+				},
+				{
+					title: 'Simple Text Editor',
+					url: '/tools/simple-text-editor'
+				},
+				{
+					title: 'Word Counter',
+					url: '/tools/word-counter'
+				},
+				{
+					title: 'Password Generator',
+					url: '/tools/password-generator'
+				},
+				{
+					title: 'Random Number Generator',
+					url: '/tools/random-number-generator'
+				}
+			]
+		},
+		{
+			title: 'Gmaes',
+			items: [
+				{
+					title: 'Test',
+					url: '/g/test'
+				},
+				{
+					title: 'Test 2',
+					url: '/g/test-2'
+				}
+			]
+		},
+		{
+			title: 'Building Your Application',
+			items: [
+				{
+					title: 'Routing',
+					url: '#'
+				},
+				{
+					title: 'Data Fetching',
+					url: '#'
+				},
+				{
+					title: 'Rendering',
+					url: '#'
+				},
+				{
+					title: 'Caching',
+					url: '#'
+				},
+				{
+					title: 'Styling',
+					url: '#'
+				},
+				{
+					title: 'Optimizing',
+					url: '#'
+				},
+				{
+					title: 'Configuring',
+					url: '#'
+				},
+				{
+					title: 'Testing',
+					url: '#'
+				},
+				{
+					title: 'Authentication',
+					url: '#'
+				},
+				{
+					title: 'Deploying',
+					url: '#'
+				},
+				{
+					title: 'Upgrading',
+					url: '#'
+				},
+				{
+					title: 'Examples',
+					url: '#'
+				}
+			]
+		},
+		{
+			title: 'API Reference',
+			items: [
+				{
+					title: 'Components',
+					url: '#'
+				},
+				{
+					title: 'File Conventions',
+					url: '#'
+				},
+				{
+					title: 'Functions',
+					url: '#'
+				},
+				{
+					title: 'next.config.js Options',
+					url: '#'
+				},
+				{
+					title: 'CLI',
+					url: '#'
+				},
+				{
+					title: 'Edge Runtime',
+					url: '#'
+				}
+			]
+		},
+		{
+			title: 'Architecture',
+			items: [
+				{
+					title: 'Accessibility',
+					url: '#'
+				},
+				{
+					title: 'Fast Refresh',
+					url: '#'
+				},
+				{
+					title: 'Svelte Compiler',
+					url: '#'
+				},
+				{
+					title: 'Supported Browsers',
+					url: '#'
+				},
+				{
+					title: 'Rollup',
+					url: '#'
+				}
+			]
+		}
+	];
 </script>
 
 <svelte:document onkeydown={handleKeydown} />
@@ -233,7 +231,7 @@
 	<Sidebar.Content>
 		<Sidebar.Group>
 			<Sidebar.Menu>
-				{#each data.navMain as groupItem (groupItem.title)}
+				{#each mainNavigation as groupItem (groupItem.title)}
 					{#if groupItem.items?.length}
 						<Collapsible.Root>
 							<Sidebar.MenuItem>
@@ -297,7 +295,7 @@
 	<Command.Input placeholder="Type a command or search..." />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
-		{#each data.navMain as groupItem (groupItem.title)}
+		{#each mainNavigation as groupItem (groupItem.title)}
 			{#if groupItem.items?.length}
 				<Command.Group heading={groupItem.title}>
 					{#each groupItem.items as item (item.title)}
