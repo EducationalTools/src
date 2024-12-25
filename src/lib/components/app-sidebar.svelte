@@ -55,8 +55,8 @@
 				}
 			]
 		},
-		{
-			title: 'Gmaes',
+		$preferencesStore.experimentalFeatures && {
+			title: 'Games',
 			items: [
 				{
 					title: 'Test',
