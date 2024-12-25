@@ -71,7 +71,7 @@
 					outputValue = '';
 				}}
 			>
-				<Select.Trigger class="w-[180px]">
+				<Select.Trigger class="w-full">
 					{category}
 				</Select.Trigger>
 				<Select.Content>
@@ -80,32 +80,32 @@
 					{/each}
 				</Select.Content>
 			</Select.Root>
-
-			<Select.Root
-				bind:value={fromUnit}
-				type="single"
-				on:valueChange={(e: CustomEvent<string>) => (fromUnit = e.detail)}
-			>
-				<Select.Trigger class="w-[100px]">{fromUnit}</Select.Trigger>
-				<Select.Content>
-					{#each unitsMap[category] as u}
-						<Select.Item value={u}>{u}</Select.Item>
-					{/each}
-				</Select.Content>
-			</Select.Root>
-
-			<Select.Root
-				bind:value={toUnit}
-				type="single"
-				on:valueChange={(e: CustomEvent<string>) => (toUnit = e.detail)}
-			>
-				<Select.Trigger class="w-[100px]">{toUnit}</Select.Trigger>
-				<Select.Content>
-					{#each unitsMap[category] as u}
-						<Select.Item value={u}>{u}</Select.Item>
-					{/each}
-				</Select.Content>
-			</Select.Root>
+			<div class="flex flex-row gap-3">
+				<Select.Root
+					bind:value={fromUnit}
+					type="single"
+					on:valueChange={(e: CustomEvent<string>) => (fromUnit = e.detail)}
+				>
+					<Select.Trigger class="w-full">{fromUnit}</Select.Trigger>
+					<Select.Content>
+						{#each unitsMap[category] as u}
+							<Select.Item value={u}>{u}</Select.Item>
+						{/each}
+					</Select.Content>
+				</Select.Root>
+				<Select.Root
+					bind:value={toUnit}
+					type="single"
+					on:valueChange={(e: CustomEvent<string>) => (toUnit = e.detail)}
+				>
+					<Select.Trigger class="w-full">{toUnit}</Select.Trigger>
+					<Select.Content>
+						{#each unitsMap[category] as u}
+							<Select.Item value={u}>{u}</Select.Item>
+						{/each}
+					</Select.Content>
+				</Select.Root>
+			</div>
 
 			<Input type="number" placeholder="Value" bind:value={inputValue} />
 
