@@ -3,12 +3,14 @@
 	import Wrench from 'lucide-svelte/icons/wrench';
 	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down';
 	import Search from 'lucide-svelte/icons/search';
+	import Check from 'lucide-svelte/icons/check';
 	import type { ComponentProps } from 'svelte';
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 	import * as Command from '$lib/components/ui/command/index.js';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
 	import { page } from '$app/stores';
 	import { Title } from './ui/dialog';
+	import { preferencesStore } from '$lib/state.js';
 
 	let open = $state(false);
 
@@ -318,8 +320,15 @@
 			<Command.Item>
 				<span>Settings</span>
 			</Command.Item>
-			<Command.Item>
-				<span>Enable experimental features</span>
+			<Command.Item
+				onSelect={() =>
+					($preferencesStore.experimentalFeatures = !$preferencesStore.experimentalFeatures)}
+			>
+				{#if $preferencesStore.experimentalFeatures}
+					<Check />
+				{/if}
+
+				<span>Toggle experimental features</span>
 			</Command.Item>
 		</Command.Group>
 	</Command.List>
