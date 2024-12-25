@@ -58,7 +58,7 @@
 </script>
 
 <div class="flex min-h-screen items-center justify-center">
-	<div class="flex flex-col gap-4 rounded border p-6 shadow-md">
+	<div class="flex w-96 flex-col gap-4 rounded border p-6 shadow-md">
 		<div class="flex flex-col gap-4">
 			<Select.Root
 				bind:value={category}
