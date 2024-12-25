@@ -191,22 +191,24 @@
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
 		{#each mainNavigation as groupItem (groupItem.title)}
-			{#if groupItem.items?.length}
-				<Command.Group heading={groupItem.title}>
-					{#each groupItem.items as item (item.title)}
-						<Command.LinkItem href={item.url} onSelect={() => (open = false)}>
-							<span>{item.title}</span>
+			{#if groupItem.title}
+				{#if groupItem.items?.length}
+					<Command.Group heading={groupItem.title}>
+						{#each groupItem.items as item (item.title)}
+							<Command.LinkItem href={item.url} onSelect={() => (open = false)}>
+								<span>{item.title}</span>
+							</Command.LinkItem>
+						{/each}
+					</Command.Group>
+					<Command.Separator />
+				{:else}
+					<Command.Group>
+						<Command.LinkItem href={groupItem.url} onSelect={() => (open = false)}>
+							<span>{groupItem.title}</span>
 						</Command.LinkItem>
-					{/each}
-				</Command.Group>
-				<Command.Separator />
-			{:else}
-				<Command.Group>
-					<Command.LinkItem href={groupItem.url} onSelect={() => (open = false)}>
-						<span>{groupItem.title}</span>
-					</Command.LinkItem>
-				</Command.Group>
-				<Command.Separator />
+					</Command.Group>
+					<Command.Separator />
+				{/if}
 			{/if}
 		{/each}
 		<Command.Group heading="More">
