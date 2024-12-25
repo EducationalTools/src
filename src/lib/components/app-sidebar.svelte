@@ -21,54 +21,56 @@
 		}
 	}
 
-	const mainNavigation = $derived([
-		{
-			title: 'Home',
-			url: '/'
-		},
-		{
-			title: 'Tools',
-			items: [
-				{
-					title: 'Calculator',
-					url: '/tools/calculator'
-				},
-				{
-					title: 'Converter',
-					url: '/tools/converter'
-				},
-				{
-					title: 'Simple Text Editor',
-					url: '/tools/simple-text-editor'
-				},
-				{
-					title: 'Word Counter',
-					url: '/tools/word-counter'
-				},
-				{
-					title: 'Password Generator',
-					url: '/tools/password-generator'
-				},
-				{
-					title: 'Random Number Generator',
-					url: '/tools/random-number-generator'
-				}
-			]
-		},
-		$preferencesStore.experimentalFeatures && {
-			title: 'Games',
-			items: [
-				{
-					title: 'Test',
-					url: '/g/test'
-				},
-				{
-					title: 'Test 2',
-					url: '/g/test-2'
-				}
-			]
-		}
-	]);
+	const mainNavigation = $derived(
+		[
+			{
+				title: 'Home',
+				url: '/'
+			},
+			{
+				title: 'Tools',
+				items: [
+					{
+						title: 'Calculator',
+						url: '/tools/calculator'
+					},
+					{
+						title: 'Converter',
+						url: '/tools/converter'
+					},
+					{
+						title: 'Simple Text Editor',
+						url: '/tools/simple-text-editor'
+					},
+					{
+						title: 'Word Counter',
+						url: '/tools/word-counter'
+					},
+					{
+						title: 'Password Generator',
+						url: '/tools/password-generator'
+					},
+					{
+						title: 'Random Number Generator',
+						url: '/tools/random-number-generator'
+					}
+				]
+			},
+			$preferencesStore.experimentalFeatures && {
+				title: 'Games',
+				items: [
+					{
+						title: 'Test',
+						url: '/g/test'
+					},
+					{
+						title: 'Test 2',
+						url: '/g/test-2'
+					}
+				]
+			}
+		].filter(Boolean)
+	);
 </script>
 
 <svelte:document onkeydown={handleKeydown} />
@@ -125,59 +127,57 @@
 		<Sidebar.Group>
 			<Sidebar.Menu>
 				{#each mainNavigation as groupItem (groupItem.title)}
-					{#if groupItem.title}
-						{#if groupItem.items?.length}
-							<Collapsible.Root>
-								<Sidebar.MenuItem>
-									<Collapsible.Trigger>
-										{#snippet child({ props })}
-											<Sidebar.MenuButton
-												class="cursor-pointer"
-												isActive={groupItem.url === $page.url.pathname ||
-													(groupItem.url === '/' && $page.url.pathname === '')}
-												{...props}
-											>
-												{#snippet child({ props })}
-													<a class=" font-medium" {...props}>
-														{groupItem.title}
-														<ChevronsUpDown class="ml-auto" />
-													</a>
-												{/snippet}
-											</Sidebar.MenuButton>
-										{/snippet}
-									</Collapsible.Trigger>
-									<Collapsible.Content>
-										<Sidebar.MenuSub>
-											{#each groupItem.items as item (item.title)}
-												<Sidebar.MenuSubItem>
-													<Sidebar.MenuSubButton
-														isActive={item.url === $page.url.pathname ||
-															(item.url === '/' && $page.url.pathname === '')}
-													>
-														{#snippet child({ props })}
-															<a href={item.url} {...props}>{item.title}</a>
-														{/snippet}
-													</Sidebar.MenuSubButton>
-												</Sidebar.MenuSubItem>
-											{/each}
-										</Sidebar.MenuSub></Collapsible.Content
-									>
-								</Sidebar.MenuItem></Collapsible.Root
-							>
-						{:else}
+					{#if groupItem.items?.length}
+						<Collapsible.Root>
 							<Sidebar.MenuItem>
-								<Sidebar.MenuButton
-									isActive={groupItem.url === $page.url.pathname ||
-										(groupItem.url === '/' && $page.url.pathname === '')}
-								>
+								<Collapsible.Trigger>
 									{#snippet child({ props })}
-										<a href={groupItem.url} class="font-medium" {...props}>
-											{groupItem.title}
-										</a>
+										<Sidebar.MenuButton
+											class="cursor-pointer"
+											isActive={groupItem.url === $page.url.pathname ||
+												(groupItem.url === '/' && $page.url.pathname === '')}
+											{...props}
+										>
+											{#snippet child({ props })}
+												<a class=" font-medium" {...props}>
+													{groupItem.title}
+													<ChevronsUpDown class="ml-auto" />
+												</a>
+											{/snippet}
+										</Sidebar.MenuButton>
 									{/snippet}
-								</Sidebar.MenuButton>
-							</Sidebar.MenuItem>
-						{/if}
+								</Collapsible.Trigger>
+								<Collapsible.Content>
+									<Sidebar.MenuSub>
+										{#each groupItem.items as item (item.title)}
+											<Sidebar.MenuSubItem>
+												<Sidebar.MenuSubButton
+													isActive={item.url === $page.url.pathname ||
+														(item.url === '/' && $page.url.pathname === '')}
+												>
+													{#snippet child({ props })}
+														<a href={item.url} {...props}>{item.title}</a>
+													{/snippet}
+												</Sidebar.MenuSubButton>
+											</Sidebar.MenuSubItem>
+										{/each}
+									</Sidebar.MenuSub></Collapsible.Content
+								>
+							</Sidebar.MenuItem></Collapsible.Root
+						>
+					{:else}
+						<Sidebar.MenuItem>
+							<Sidebar.MenuButton
+								isActive={groupItem.url === $page.url.pathname ||
+									(groupItem.url === '/' && $page.url.pathname === '')}
+							>
+								{#snippet child({ props })}
+									<a href={groupItem.url} class="font-medium" {...props}>
+										{groupItem.title}
+									</a>
+								{/snippet}
+							</Sidebar.MenuButton>
+						</Sidebar.MenuItem>
 					{/if}
 				{/each}
 			</Sidebar.Menu>
@@ -191,24 +191,22 @@
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
 		{#each mainNavigation as groupItem (groupItem.title)}
-			{#if groupItem.title}
-				{#if groupItem.items?.length}
-					<Command.Group heading={groupItem.title}>
-						{#each groupItem.items as item (item.title)}
-							<Command.LinkItem href={item.url} onSelect={() => (open = false)}>
-								<span>{item.title}</span>
-							</Command.LinkItem>
-						{/each}
-					</Command.Group>
-					<Command.Separator />
-				{:else}
-					<Command.Group>
-						<Command.LinkItem href={groupItem.url} onSelect={() => (open = false)}>
-							<span>{groupItem.title}</span>
+			{#if groupItem.items?.length}
+				<Command.Group heading={groupItem.title}>
+					{#each groupItem.items as item (item.title)}
+						<Command.LinkItem href={item.url} onSelect={() => (open = false)}>
+							<span>{item.title}</span>
 						</Command.LinkItem>
-					</Command.Group>
-					<Command.Separator />
-				{/if}
+					{/each}
+				</Command.Group>
+				<Command.Separator />
+			{:else}
+				<Command.Group>
+					<Command.LinkItem href={groupItem.url} onSelect={() => (open = false)}>
+						<span>{groupItem.title}</span>
+					</Command.LinkItem>
+				</Command.Group>
+				<Command.Separator />
 			{/if}
 		{/each}
 		<Command.Group heading="More">
