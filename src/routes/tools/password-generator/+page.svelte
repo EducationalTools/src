@@ -31,12 +31,14 @@
 </script>
 
 <div class="flex h-full items-center justify-center p-3">
-	<div class="flex flex-row gap-3">
+	<div class="flex flex-col gap-3">
 		<Input
 			id="password"
 			class="bg-white text-black blur-lg duration-300 hover:blur-sm focus:bg-transparent focus:text-white focus:blur-0"
 		/>
-		<Button onclick={generatePassword}>Generate</Button>
-		<Button onclick={copyPassword}>Copy</Button>
+		<div class="flex w-full flex-row gap-3">
+			<Button onclick={generatePassword} class="flex-1">Generate</Button>
+			<Button onclick={copyPassword} class="flex-1">Copy</Button>
+		</div>
 	</div>
 </div>
