@@ -314,9 +314,12 @@
 				<Command.Separator />
 			{/if}
 		{/each}
-		<Command.Group>
+		<Command.Group heading="More">
 			<Command.Item>
 				<span>Settings</span>
+			</Command.Item>
+			<Command.Item>
+				<span>Enable experimental features</span>
 			</Command.Item>
 		</Command.Group>
 	</Command.List>
