@@ -6,7 +6,15 @@
 	let random: number = 0;
 
 	function generate() {
-		random = Math.floor(Math.random() * (max - min + 1)) + min;
+		let counter = 0;
+		const interval = setInterval(() => {
+			random = Math.floor(Math.random() * (max - min + 1)) + min;
+			counter++;
+			if (counter > 10) {
+				clearInterval(interval);
+				counter = 0;
+			}
+		}, 10);
 	}
 </script>
 
