@@ -2,11 +2,13 @@
 	import '../app.css';
 	let { children } = $props();
 
+	import { Toaster } from '$lib/components/ui/sonner/index.js';
 	import AppSidebar from '$lib/components/app-sidebar.svelte';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import { ModeWatcher } from 'mode-watcher';
 </script>
 
+<Toaster />
 <ModeWatcher defaultMode={'dark'} />
 <Sidebar.Provider>
 	<AppSidebar />
