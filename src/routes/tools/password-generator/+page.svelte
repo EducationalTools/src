@@ -2,6 +2,8 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { onMount } from 'svelte';
+	import { toast } from 'svelte-sonner';
+
 	onMount(() => {
 		generatePassword();
 	});
@@ -24,6 +26,7 @@
 		if (!input) return;
 		const password = input.value;
 		navigator.clipboard.writeText(password);
+		toast.success('Password copied to clipboard');
 	}
 </script>
 
