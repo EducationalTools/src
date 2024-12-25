@@ -8,6 +8,7 @@
 	import * as Command from '$lib/components/ui/command/index.js';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
 	import { page } from '$app/stores';
+	import { Title } from './ui/dialog';
 
 	let open = $state(false);
 
@@ -23,6 +24,43 @@
 			{
 				title: 'Home',
 				url: '/'
+			},
+			{
+				title: 'Tools',
+				items: [
+					{
+						title: 'Calculator',
+						url: '/tools/calculator'
+					},
+					{
+						title: 'Converter',
+						url: '/tools/converter'
+					},
+					{
+						title: 'Timer',
+						url: '/tools/timer'
+					},
+					{
+						title: 'Stopwatch',
+						url: '/tools/stopwatch'
+					},
+					{
+						title: 'Simple Text Editor',
+						url: '/tools/simple-text-editor'
+					},
+					{
+						title: 'Word Counter',
+						url: '/tools/word-counter'
+					},
+					{
+						title: 'Password Generator',
+						url: '/tools/password-generator'
+					},
+					{
+						title: 'Random Number Generator',
+						url: '/tools/random-number-generator'
+					}
+				]
 			},
 			{
 				title: 'Gmaes',
