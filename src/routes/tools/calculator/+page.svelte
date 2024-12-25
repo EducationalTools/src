@@ -54,9 +54,9 @@
 </script>
 
 <div class="flex h-full flex-col items-center justify-center gap-4 p-4">
-	<div class="mb-2 w-64 rounded bg-gray-100 p-4 text-right text-2xl">{display}</div>
+	<div class="mb-2 w-64 rounded p-4 text-right text-2xl">{display}</div>
 
-	<div class="flex w-96 flex-col gap-2">
+	<div class="flex flex-col gap-2">
 		<div class="flex gap-2">
 			<Button variant="outline" onclick={() => handleNumber('7')}>7</Button>
 			<Button variant="outline" onclick={() => handleNumber('8')}>8</Button>
