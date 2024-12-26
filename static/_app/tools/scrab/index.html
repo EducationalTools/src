@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bag.json"></script>
+    <script src="js/words.json"></script>
+    <script src="js/scripts.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+    <link rel="icon" href="img/scrabbleLogo.png" type="image">
+    <title>Scrabble</title>
+  </head>
+  <body>
+    <div class="jumbotron-fluid">
+      <span class="header-logo"><img src="img/scrabbleLogo.png" alt="" /></span>
+    </div>
+    <div class="container">
+      <ul class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a data-toggle="tab" href="#about">About the Game</a></li>
+        <li><a data-toggle="tab" href="#play">Play</a></li>
+        <li><a data-toggle="tab" href="#credits">Credits</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="about" class="tab-pane fade in active">
+          <div class="rules">
+            <h3>How to Play</h3>
+            <h5>RULES</h5>
+            <ol>
+              <li>Each player will draw one tile from the bag. The tile closest to the letter "A" (or blank) will allow the player to go first. Replace tiles after this inital drawing.</li>
+              <li>Each player starts their turn by drawing seven tiles from the bag. There are three options in every turn. Players must choose ONE of the following:
+                <ul>
+                  <li>Place a word.</li>
+                  <li>Exchange tiles. Can exchange one or all of the tiles on the rack.</li>
+                  <li>Pass to the next player. If any player passes two times in a row the game ends.</li>
+                </ul>
+              </li>
+              <li>When the game begins, the first player will place their word on the star spin in the center of the board. The star is a double square and will offer a double word score. Play continues in a clockwise manner.</li>
+              <li>Once tiles are placed on the board the player will receive new tiles.</li>
+              <li>If the player uses 7 tiles to create a word on the board they will receive a 50 point bonus.</li>
+              <li>Once the bag is emptied and a single player has placed all of their tiles, the game will end and the player with the highest score wins.</li>
+              <li>Scores are counted at the end of the game. The player who ended the game with no tiles will receive the tile values of the other players leftovers as a bonus.</li>
+            </ol>
+          </div>
+        </div>
+        <div id="play" class="tab-pane fade">
+          <div class="row">
+            <div class="col-xs-9">
+              <div class="scrabbleBG">
+                <div class="game-board">
+                  <div class="row" id="00">
+                    <!-- 1st row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-00-3W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-03-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-07-3W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-11-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="00-14-3W"></div>
+                  </div>
+                  <div class="row" id="01">
+                    <!-- 2nd row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-01-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-05-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-09-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-13-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="01-14"></div>
+                  </div>
+                  <div class="row" id="02">
+                    <!-- 3rd row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-02-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-06-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-08-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-12-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="02-14"></div>
+                  </div>
+                  <div class="row" id="03">
+                    <!-- 4th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-00-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-03-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-07-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-11-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="03-14-2L"></div>
+                  </div>
+                  <div class="row" id="04">
+                    <!-- 5th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-04-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-10-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="04-14"></div>
+                  </div>
+                  <div class="row" id="05">
+                    <!-- 6th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-01-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-05-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-09-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-13-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="05-14"></div>
+                  </div>
+                  <div class="row" id="06">
+                    <!-- 7th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-02-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-06-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-08-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-12-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="06-14"></div>
+                  </div>
+                  <div class="row" id="07">
+                    <!-- 8th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-00-3W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-03-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-07-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-11-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="07-14-3W"></div>
+                  </div>
+                  <div class="row" id="08">
+                    <!-- 9th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-02-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-06-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-08-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-12-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="08-14"></div>
+                  </div>
+                  <div class="row" id="09">
+                    <!-- 10th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-01-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-05-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-09-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-13-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="09-14"></div>
+                  </div>
+                  <div class="row" id="10">
+                    <!-- 11th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-04-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-10-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="10-14"></div>
+                  </div>
+                  <div class="row" id="11">
+                    <!-- 12th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-00-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-03-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-07-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-11-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="11-14-2L"></div>
+                  </div>
+                  <div class="row" id="12">
+                    <!-- 13th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-02-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-06-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-08-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-12-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="12-14"></div>
+                  </div>
+                  <div class="row" id="13">
+                    <!-- 14th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-00"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-01-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-03"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-05-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-07"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-09-3L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-11"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-13-2W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="13-14"></div>
+                  </div>
+                  <div class="row" id="14">
+                    <!-- 15th row */ -->
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-00-3W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-01"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-02"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-03-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-04"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-05"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-06"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-07-3W"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-08"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-09"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-10"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-11-2L"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-12"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-13"></div>
+                    <div class="col-xs-1 cell makeMeDroppable" id="14-14-3W"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- PLAYER RACKS -->
+              <div class="row" id="15">
+                <div id="player1Rack">
+                  <div class="col-xs-1 cell makeMeDroppable" id="15-00"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="15-01"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="15-02"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="15-03"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="15-04"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="15-05"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="15-06"></div>
+                </div>
+              </div>
+              <div class="row" id="16">
+                <div id="player2Rack">
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-00"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-01"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-02"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-03"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-04"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-05"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-06"></div>
+                </div>
+              </div>
+              <div class="row" id="17">
+                <div id="player3Rack">
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-00"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-01"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-02"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-03"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-04"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-05"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-06"></div>
+                </div>
+              </div>
+              <div class="row" id="18">
+                <div id="player4Rack">
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-00"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-01"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-02"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-03"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-04"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-05"></div>
+                  <div class="col-xs-1 cell makeMeDroppable" id="16-06"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="startOptions">
+                <div id="playerHeight">
+                  <div id="playerNumbers">
+                    <p>Number of players</p>
+                    <button id="1player" type="button" val="1">1</button>
+                    <button id="2player" type="button" val="2">2</button>
+                    <button id="3player" type="button" val="3">3</button>
+                    <button id="4player" type="button" val="4">4</button>
+                  </div>
+                  <div id="containsStart">
+                    <span class="clickable" id="start"><audio id="audio" src="audio/bag.mp3" autostart="false"></audio><a onclick="PlaySound()"><img src="img/startGraphic.png" width="250px" alt=""></a></span>
+                    <span class="showDuringGamePlay"><img src="img/goodluck.png" alt="Good Luck!"></span>
+                  </div>
+                </div>
+              </div>
+              <div id="playerScore">
+
+              </div>
+              <div id="tileBag">
+                <span class="clickable" id="refill"><audio id="audio" src="audio/bag.mp3" autostart="false"></audio><a onclick="PlaySound()"><img src="img/scrabbleBag.png" alt="Tile Bag"></a></span>
+              </div>
+              <div id="playerButtons">
+                <button id="score" type="button" name="score">Score</button>
+                <button id="reset" type="button" name="reset">Reset</button>
+                <button id="pass" type="button" name="pass">Pass</button>
+              </div>
+            </div>
+<!-- END PLAYER RACKS -->
+          </div>
+        </div>
+        <div id="credits" class="tab-pane fade">
+          <h3>About us</h3>
+          <p>We are a group of students at <a href="https://www.epicodus.com/home/" target="_blank">Epicodus</a> who love scrabble and decided to share that love with the internet.</p>
+          <h5>Credits:</h5>
+          <ul id="credits">
+            <li><a href="https://github.com/aglines-epicodus" target="_blank">  Andrew Glines</a></li>
+            <li><a href="https://github.com/LenaKuchko" target="_blank">Lena Kuchko</a></li>
+            <li><a href="https://github.com/AnabelGR" target="_blank">Anabel Ramirez</a></li>
+            <li><a href="https://github.com/GrapeSalad" target="_blank">David Wilson</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

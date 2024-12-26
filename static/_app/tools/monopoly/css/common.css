@@ -1,0 +1,78 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.clickable{
+	cursor:pointer;
+}
+
+.shadowed{
+ -webkit-box-shadow: 3px 3px 23px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    3px 3px 23px 0px rgba(50, 50, 50, 0.75);
+		 box-shadow:         3px 3px 23px 0px rgba(50, 50, 50, 0.75);	
+}
+
+.middle-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+
+.popup-lightbox{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color:rgba(0,0,0,0.5);
+    z-index:1111;
+    font-size: 25px;
+    font-family: Arial;
+    
+}
+
+.popup{
+    background-color:white;
+    width:50%;
+    height:auto;
+}
+
+.popup .popup-title{
+    background-color: blueviolet;
+    padding: 10px;
+}
+
+.popup .popup-content{
+    padding: 10px;
+    font-size: 20px;
+}
+
+.popup button{
+    background-color: dodgerblue;
+    border: none;
+    padding: 5px 30px;
+    border-radius: 4px;
+    margin: 5px;
+    color: white;
+}
+
+.popup input{
+    padding: 5px;
+    border: 1px solid #CCC;
+    outline: none;
+}    
+
+.invalid-error{
+    color:red;
+    opacity:0;
+}
+
+.loading-state{
+    background-image:url(../images/hourglass.gif);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: 40px;
+}

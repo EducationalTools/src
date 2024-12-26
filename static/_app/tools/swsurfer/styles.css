@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#game{
+    width: 300px;
+    height: 500px;
+    border: 1px solid black;
+    margin:auto;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+#character{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    margin-top: 300px;
+    left: 100px;
+}
+#block{
+
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    position: relative;
+    top: 500px;
+    animation: slide 1.5s infinite;
+}
+
+@keyframes slide{
+
+    0%{top:-100px};
+    100%{top:-500px};
+    
+ }
+ #left , #right{
+
+    width: 50%;
+    position: absolute;
+    height: 500px;
+
+ }
+ #right{
+     left: 50%;
+ }

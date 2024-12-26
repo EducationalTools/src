@@ -1,0 +1,250 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFF3B6 url("../img/tile-bckgrnd.jpg") no-repeat top left fixed;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.jumbotron-fluid {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  height: 200px;
+}
+
+.header-logo img {
+  margin-top: -50px;
+}
+
+.nav li a {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+ul.nav {
+  margin-left: 50px;
+  border: none;
+}
+
+.nav li a {
+  color: #000;
+  animation-name: colorFlash;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+/*MAKE INACTIVE TABS FLASH*/
+@keyframes colorFlash {
+  0% {color: #000;}
+  50% {color: #FFF;}
+  100% {color: #000;}
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: #E8DDBB;
+}
+
+.rules {
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 200px;
+}
+
+
+h3 {
+  font-size: 24px;
+  padding: 0 0 0 10px;
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+h5 {
+  font-size: 18px;
+  margin-left: 10px;
+  padding-top: 10px;
+}
+
+p, ol li{
+  font-size: 16px;
+}
+
+.draggable a {
+  text-decoration: none;
+  color: #000;
+}
+
+#credits p {
+  margin-left: 10px;
+}
+
+#credits li {
+  position: relative;
+  list-style-type: none;
+  font-size: 16px;
+  line-height:200%;
+  padding-left: 35px;
+  background-image:url("../img/githubIcon.png");
+  background-repeat:no-repeat;
+  background-position:left center;
+}
+
+#about, #play, #credits {
+  background-color: rgba(232, 221, 187, .9);
+  border: 3px solid #E8DDBB;
+  height: 960px;
+  width: 1080px;
+  margin: 0 auto;
+}
+
+/*GAME BOARD TAB*/
+
+.game-board {
+  margin: -3px 0 0 16px;
+  padding: 0;
+  float: left;
+  background-size: fill;
+}
+
+.scrabbleBG {
+  margin: 0 0 15px;
+  padding: 0;
+  background: url("../img/board-bckgrnd.png");
+  width: 750px;
+  height: 750px;
+  /*float: left;*/
+}
+
+.row {
+  padding: 0;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+}
+
+/*RIGHT COLUMN*/
+#playerHeight {
+  height: 300px;
+}
+
+#playerNumbers {
+  margin-top: 20px;
+  margin-right: 20px;
+  line-height: 20px;
+  height: 25px;
+  text-align: right;
+  display: visible;
+}
+
+#playerNumbers button {
+  border-radius: 10px;
+  width: 40px;
+  color: #000;
+  background: url("../img/traditional-tile.png");
+}
+
+#containsStart {
+  /*height: 250px;*/
+}
+
+#start {
+  display: none;
+}
+
+#start img{
+  margin: 20px 0 20px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.showDuringGamePlay {
+  display: none;
+}
+
+#playerScore {
+  margin: 10px 20px 50px;
+  height: 50px;
+}
+
+#playerScore p {
+  font-size: 24px;
+}
+
+#refill {
+  cursor: pointer;
+  display: none;
+}
+
+#tileBag {
+  height: 300px;
+}
+
+.subscript {
+  font-size: 20px;
+}
+
+#playerButtons button {
+  border-radius: 10px;
+  width: 60px;
+  color: #000;
+  background: url("../img/traditional-tile.png");
+  margin: 0px;
+}
+
+/*PLAYER RACKS*/
+#player1Rack, #player2Rack, #player3Rack, #player4Rack {
+  /*clear: left;*/
+  display: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 50px;
+  text-align: center;
+  padding: 3px;
+  width: 460px;
+  height: 61px;
+  background: url("../img/rack.png") no-repeat;
+}
+
+#player1Rack div, #player2Rack div, #player3Rack div, #player4Rack div {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  text-align: center;
+}
+
+#player1Rack:first-child, #player2Rack:first-child, #player3Rack:first-child, #player4Rack:first-child {
+  padding-left: 50px;
+}
+
+#player1Rack .cell, #player2Rack .cell, #player3Rack .cell, #player4Rack .cell {
+  border: 1px solid #000;
+}
+
+#player1Rack {
+  border: 1px solid red;
+}
+#player2Rack {
+  border: 1px solid green;
+}
+#player3Rack {
+  border: 1px solid black;
+}
+#player4Rack {
+  border: 1px solid yellow;
+}
+
+.tile {
+  width: 48px;
+  height: 48px;
+  cursor: move;
+  font-size: 36px;
+  text-align: center;
+  font-weight: 900;
+  background-image: url(../img/traditional-tile.png);
+}
+
+.tile.ui-draggable-dragging {
+  box-shadow: 10px 10px 5px #888;
+}

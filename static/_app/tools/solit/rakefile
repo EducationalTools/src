@@ -1,0 +1,79 @@
+PREFIX = "js"
+JS = %w[yui-breakout save-manager analytics ads solitaire analytics util win-display iphone auto-stack-clear auto-turnover autoplay ie-opera-background-fix statistics display-seed-value solver-freecell agnes golf klondike klondike1t flowergarden fortythieves freecell grandclock montecarlo pyramid russian-solitaire scorpion spider spider1s spider2s spiderette tritowers will-o-the-wisp yukon simplesimon bakersdozen eightoff acesup alternations bakersgame baroness canfield doubleklondike thefan labellelucie calculation seventoes bisley kingalbert application]
+YUI = "#{PREFIX}/yui-all-min.js"
+ALL = "#{PREFIX}/all.js"
+MINIFIED = "#{PREFIX}/all-min.js"
+COMBINED = "#{PREFIX}/combined-min.js"
+COMPRESSOR = "ext/yuicompressor-2.4.8/build/yuicompressor-2.4.8.jar"
+TEMPLATE = "index.erb"
+OFFLINE_FILES = %w[air ancient_egyptians backgrounds dondorf font jolly-royal js/combined-min.js js/solver-freecell-worker.js layouts/mini paris apple-touch-icon-precomposed.png cards.css DownArrowSmall.png green.jpg icon16.png icon48.png index.html liji.html iphone.css loading.gif manifest.json trans.gif yui-tabview.css]
+ZIP_FILE = "chrome_store.zip"
+
+def create_index(index, development = false, offline = false)
+  require "erb"
+
+  File.open(index, "w") do |f|
+    f.write(ERB.new(File.read(TEMPLATE)).result(binding))
+  end
+end
+
+def create_zip zip_name
+  require "zip/zipfilesystem"
+
+  create_index "index-offline.html", false, true
+
+  Zip::ZipFile.open(zip_name, Zip::ZipFile::CREATE) do |zip|
+    write_directory zip, "index-offline.html", "index.html"
+    OFFLINE_FILES.each { |fn| write_directory zip, fn }
+  end
+end
+
+def write_directory zip, name, dest_name = name
+  if File.file? name
+    zip.file.open(dest_name, "w") { |f| f.print File.read(name, File.size(name)) }
+  elsif File.directory? name
+    zip.dir.mkdir name
+    Dir["#{name}/*"].each { |fn| write_directory zip, fn }
+  end
+end
+
+desc "concatenated solitaire sources"
+file ALL do
+  File.open(ALL, "w") do |f|
+    JS.each do |fn|
+      f.write(File.read("#{PREFIX}/#{fn}.js"))
+    end
+  end
+end
+
+desc "minified solitaire sources"
+file MINIFIED => ALL do
+  sh "java -jar #{COMPRESSOR} -o #{MINIFIED} #{ALL}"
+end
+
+desc "concatenated minified solitaire and YUI sources"
+file COMBINED => [YUI, MINIFIED] do
+  sh "cat #{YUI} #{MINIFIED} > #{COMBINED}"
+end
+
+desc "development file with seperated, unminified source files"
+file "index-dev.html" => TEMPLATE do
+  create_index "index-dev.html", true
+end
+
+desc "production file with seperated, unminified source files"
+file "index.html" => [TEMPLATE, COMBINED] do
+  create_index "index.html"
+end
+
+desc "create a zip file of the production build suitable for offline use"
+file ZIP_FILE => [TEMPLATE, COMBINED] do
+  File.delete ZIP_FILE if File.exists? ZIP_FILE
+  create_zip ZIP_FILE
+end
+
+task :clean do
+  sh "rm -f #{[ALL, MINIFIED, COMBINED, "index.html", "index-dev.html", "index-offline.html"].join(" ")}"
+end
+
+task :default => [:clean, "index-dev.html", "index.html"]

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title>Monopoly</title>
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./css/monopoly.css">
+        <link rel="stylesheet" href="./css/common.css">
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+		<script src="./js/monopoly.js" type="text/javascript"></script>
+		
+	</head>
+	<body>
+        <div class="board">
+                <div id="cell21" class="top left corner game cell free-parking"><div class="content"></div></div>
+                <div id="cell22" class="top game cell available property" data-group="group5"><div class="content"></div><div class="title"></div></div>
+                <div id="cell23" class="top game cell community"><div class="content"></div><div class="title"></div></div>
+                <div id="cell24" class="top game cell available property" data-group="group5"><div class="content"></div><div class="title"></div></div>
+                <div id="cell25" class="top game cell available property" data-group="group5"><div class="content"></div><div class="title"></div></div>
+                <div id="cell26" class="top game cell available property" data-group="rail"><div class="content"></div><div class="title"></div></div>
+                <div id="cell27" class="top game cell available property" data-group="group6"><div class="content"></div><div class="title"></div></div>
+                <div id="cell28" class="top game cell available property" data-group="group6"><div class="content"></div><div class="title"></div></div>
+                <div id="cell29" class="top game cell chance"><div class="content"></div><div class="title"></div></div>
+                <div id="cell30" class="top game cell available property" data-group="group6"><div class="content"></div><div class="title"></div></div>
+                <div id="cell31" class="top right corner game cell go-to-jail"><div class="content"></div></div>
+                
+                <div id="cell20" class="game cell left available property" data-group="group4"><div class="content"></div><div class="title"></div></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="cell32" class="game cell right available property" data-group="group7"><div class="title"></div><div class="content"></div></div>
+                <div id="cell19" class="game cell left available property" data-group="group4"><div class="content"></div><div class="title"></div></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="cell33" class="game cell right available property" data-group="group7"><div class="title"></div><div class="content"></div></div>
+                <div id="cell18" class="game cell left chance"><div class="content"></div><div class="title"></div></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="cell34" class="game cell right chance"><div class="title"></div><div class="content"></div></div>
+                <div id="cell17" class="game cell left available property" data-group="group4"><div class="content"></div><div class="title"></div></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="cell35" class="game cell right available property" data-group="group7"><div class="title"></div><div class="content"></div></div>
+                <div id="cell16" class="game cell left available property" data-group="rail"><div class="content"></div><div class="title"></div></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="dice1" class="cell dice clickable shadowed">
+                        <div class="dice-dot num2 num3 num4 num5 num6"></div>
+                        <div class="dice-dot right num5 num6"></div><br />
+                        <div class="dice-dot num4 num6"></div>
+                        <div class="dice-dot num1 num5 num3"></div>
+                        <div class="dice-dot num6"></div><br />
+                        <div class="dice-dot num4 num5 num6"></div>
+                        <div class="dice-dot num2 num3 num4 num5 num6 right"></div>
+                </div>
+                <div class="cell"></div>
+                <div id="dice2" class="cell dice clickable shadowed">
+                        <div class="dice-dot num2 num3 num5 num6"></div>
+                        <div class="dice-dot right num4 num5 num6"></div><br />
+                        <div class="dice-dot num4 num6"></div>
+                        <div class="dice-dot num1 num5 num3"></div>
+                        <div class="dice-dot num6"></div><br />
+                        <div class="dice-dot num4 num5 num6"></div>
+                        <div class="dice-dot num2 num3 num4 num5 num6 right"></div>
+                </div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="cell36" class="game cell right available property" data-group="rail"><div class="title"></div><div class="content"></div></div>
+                <div id="cell15" class="game cell left available property"  data-group="group3"><div class="content"></div><div class="title"></div></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="cell37" class="game cell right"><div class="title"></div><div class="content"></div></div>
+                <div id="cell14" class="game cell left available property"  data-group="group3"><div class="content"></div><div class="title"></div></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="cell38" class="game cell right available property" data-group="group8"><div class="title"></div><div class="content"></div></div>
+                <div id="cell13" class="game cell left community"><div class="content"></div><div class="title"></div></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="cell39" class="game cell right community"><div class="title"></div><div class="content"></div></div>
+                <div id="cell12" class="game cell left available property" data-group="group3"><div class="content"></div><div class="title"></div></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div id="cell40" class="game cell right available property" data-group="group8"><div class="title"></div><div class="content"></div></div>
+
+                <div id="cell11" class="bottom left corner game cell in-jail"><div class="content"></div></div>
+                <div id="cell10" class="bottom game cell available property" data-group="group2"><div class="title"></div><div class="content"></div></div>
+                <div id="cell9" class="bottom game cell available property" data-group="group2"><div class="title"></div><div class="content"></div></div>
+                <div id="cell8" class="bottom game cell community"><div class="title"></div><div class="content"></div></div>
+                <div id="cell7" class="bottom game cell available property" data-group="group2"><div class="title"></div><div class="content"></div></div>
+                <div id="cell6" class="bottom game cell available property" data-group="rail"><div class="title"></div><div class="content"></div></div>
+                <div id="cell5" class="bottom game cell chance"><div class="title"></div><div class="content"></div></div>
+                <div id="cell4" class="bottom game cell "><div class="title"></div><div class="content"></div></div>
+                <div id="cell3" class="bottom game cell available property" data-group="group1"><div class="title"></div><div class="content"></div></div>
+                <div id="cell2" class="bottom game cell available property" data-group="group1"><div class="title"></div><div class="content"></div></div>
+                <div id="cell1" class="bottom right corner game cell go"><div class="content"></div></div>
+
+
+        </section>
+        <section class="hidden templates" style="display:none;" >
+
+                
+        </section>
+        <div class="popup-lightbox" style="display:none;">
+                <div class="middle-center shadowed popup">
+                        <div id="intro" class="popup-page" style="display:none;">
+                                <div class="popup-title">Welcome to Monopoly</div>
+                                <div class="popup-content">Please choose how many players?<br /><input id="num-of-players" type="text"><button class="clickable">START</button><br>
+                                <div class="invalid-error" >Number of players must be between 1 and 4</div></div>
+                        </div>
+                        <div id="buy" class="popup-page" style="display:none;">
+                                <div class="popup-title">This cell is available for sale!</div>
+                                <div class="popup-content">Do you want to buy it for <span class="cell-price"> </span>?<br />
+                                <button id="yes" class="clickable" >YES</button>
+                                <button id="no" class="clickable" >NO</button><br>
+                                <div class="invalid-error" >You don't have enough money...</div></div>
+                                </div>
+                       
+                        <div id="jail" class="popup-page" style="display:none;">
+                                <div class="popup-title">Go to Jail!</div>
+                                <div class="popup-content">You miss 3 turns<br />
+                                         <button id="ok" class="clickable">Bummer</button>
+                                </div>
+                        </div>
+                        <div id="pay" class="popup-page" style="display:none;">
+                                <div class="popup-title">Pay up</div>
+                                <div class="popup-content">This property belongs to <span id="player-placeholder"></span><br>
+                                        You should pay him <span id="amount-placeholder"></span><br />
+                                        <button id="ok" class="clickable">:-(</button>
+                                </div>
+                        </div>
+                        <div id="chance" class="popup-page" style="display:none;">
+                                <div class="popup-title"></div>
+                                <div class="popup-content">
+                                        <div id="text-placeholder"></div>
+                                        <button id="ok" class="clickable">OK</button>
+                                </div>
+                        </div>
+                        <div id="community" class="popup-page" style="display:none;">
+                                <div class="popup-title"></div>
+                                <div class="popup-content">
+                                        <div id="text-placeholder"></div>
+                                        <button id="ok" class="clickable">OK</button>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        </div>
+</html>

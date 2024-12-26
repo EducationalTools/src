@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game</title>
+</head>
+<script src="script.js"></script>
+<body>
+    <marquee><h1>Subway Surfers Lite</h1><i>By Bilal</i></marquee>
+    <br>
+        <div id="game">
+            <div id="left"></div>
+            <div id="right"></div>
+            <div id="block"></div>
+            <div id="character"></div>
+        </div>
+
+        <script>
+            function moveLeft(){
+    
+                let left =parseInt(window.getComputedStyle(character)
+                .getPropertyValue("left"));
+                left-=100;
+                if(left>=0)
+                {
+                    character.style.left=left+'px';
+            
+                }
+            }
+            function moveRight(){
+                
+                let left =parseInt(window.getComputedStyle(character)
+                .getPropertyValue("left"));
+                left+=100;
+            
+                if(left<300)
+                {
+                    character.style.left=left+'px';
+            
+                }
+            }
+            
+            document.addEventListener("keydown",event=>{
+            
+                if(event.key=="ArrowLeft"){moveLeft();}
+                if(event.key=="ArrowRight"){moveRight();}
+                
+            });
+            
+            var block = document.getElementById("block");
+            var counter=0;
+            block.addEventListener('animationiteration',function()
+            {
+            
+                var random=Math.floor(Math.random() * 3);//returns num from 0-2
+                left = random*100;
+                block.style.left=left+'px';
+                counter+=1;
+
+            });
+
+            setInterval(function(){
+
+                var characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+                var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+
+                var blockTop = parseInt(window.getComputedStyle(block).getPropertyValue("top"));
+                
+                if(characterLeft==blockLeft && blockTop<500 && blockTop>300)
+                    {
+                        alert("GAME OVER!  Score: "+counter+"\n Developed By: Bilal");
+                        block.style.animation="none";
+                        location.reload();
+                    }
+
+            },1)
+
+            document.getElementById("left").addEventListener("touchstart",moveLeft);
+            document.getElementById("right").addEventListener("touchstart",moveRight);
+            
+        </script>
+</body>
+</html>

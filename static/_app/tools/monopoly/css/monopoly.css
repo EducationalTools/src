@@ -1,0 +1,224 @@
+body{
+    background-image:url(../images/bg.jpg);
+    background-size: 200px;
+}
+
+.board{
+    height:500px;
+    width:500px;
+    font-size:0px;
+    margin:auto;
+    margin-top:10px;
+    margin-bottom:10px;
+    
+}
+
+.board .cell{
+    display:inline-block;
+    box-sizing: border-box;
+    height: 7.7%;
+    width: 7.7%;
+    vertical-align: top;
+    background-color: rgb(199,252,227);
+}
+
+.board .cell.selected {
+    background-color:blue;
+}
+
+.board .game.cell{
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.board .bottom.game.cell, .board .top.game.cell{
+    border-bottom: 1px solid black;
+}
+
+.board .left.game.cell, .board .right.game.cell {
+    border-right: 1px solid black;
+}
+
+
+.board .corner.game.cell{
+    height: 15.3%;
+    width: 15.3%;
+    background-size: contain;
+    background-repeat: no-repeat;  
+}
+
+.board .game.cell.go{
+    background-image: url(../images/go.png);
+}
+
+.board .game.cell.go-to-jail{
+    background-image: url(../images/gotojail.png);
+}
+
+.board .game.cell.in-jail{
+    background-image: url(../images/jail.jpg);
+}
+
+
+.board .game.cell.free-parking{
+    background-image: url(../images/parking.png);
+}
+
+
+.board .bottom.game.cell{
+    vertical-align: bottom;
+}
+
+.board .bottom.game.cell, .board .top.game.cell{
+    height:15.3%;
+}
+
+.board .game.cell:not(.top):not(.bottom){
+    width:15.3%;
+}
+
+.board .cell:not(.top):not(.bottom) .title{
+    display: inline-block;
+}
+
+.board  .cell:not(.top):not(.bottom) .content{
+    display: inline-block;
+}
+
+.board .game.cell[data-group='group1'] .title{
+    background-color:#955436;
+}
+
+.board .game.cell[data-group='group2'] .title{
+    background-color:#aae0fa;
+}
+
+.board .game.cell[data-group='group3'] .title{
+    background-color:#d93a96;
+}
+
+.board .game.cell[data-group='group4'] .title{
+    background-color:#f7941d;
+}
+
+.board .game.cell[data-group='group5'] .title{
+    background-color:#ed1b24;
+}
+
+.board .game.cell[data-group='group6'] .title{
+    background-color:#fef200;
+}
+
+.board .game.cell[data-group='group7'] .title{
+    background-color:#1fb25a;
+}
+
+.board .game.cell[data-group='group8'] .title{
+    background-color:#0072bb;
+}
+
+.board .game.cell[data-group='rail'] .content{
+    background-image:url(../images/rail.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+.board .game.cell.chance .content{
+    background-image:url(../images/chance.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.board .game.cell.community .content{
+    background-image:url(../images/community.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.board .game.cell .title{
+    height:20%;
+    width:100%;
+    background-color: transparent;
+}
+
+.board .game.cell .content{
+    height:80%;
+    width:100%;
+    
+}
+
+.board .cell:not(.top):not(.bottom) .title{
+    height:100%;
+    width:20%;
+}
+
+.board .cell:not(.top):not(.bottom) .content{
+    height:100%;
+    width:80%;
+    vertical-align: top;
+}
+
+.players-placeholer{
+    width: 100%;
+    height: 100%;
+}
+
+.player{
+    width: 20%;
+    height: 25%;
+    border-radius:20px;
+    display:inline-block;
+}
+
+.bottom.game.cell:not(.corner) .player , .top.game.cell:not(.corner) .player{
+        width: 40%;
+}
+
+
+.left.game.cell:not(.corner) .player , .right.game.cell:not(.corner) .player{
+    height: 40%;
+    width: 25%;
+}
+
+.player#player1 , .player1.cell .content {
+    background-color: #389c36;
+}
+
+.player#player2 , .player2.cell .content{
+    background-color: #364c9c;
+}
+
+.player#player3 , .player3.cell .content{
+    background-color: #d09461;
+}
+
+.player#player4 , .player4.cell .content{
+    background-color: #d061cd;
+}
+
+.player.current-turn{
+    background-image:url(../images/crown.png);
+    background-size:contain;
+    background-position:center;
+}
+
+.board .dice.cell{
+    background-color:white;
+}
+
+.dice-dot{
+    display: inline-block;
+    width: 25%;
+    height: 25%;
+    margin: 4%;
+    background-color: black;
+    border-radius: 100px;
+    opacity:0;
+}
+
+.dice-dot.right{
+    margin-left:36%;
+}
