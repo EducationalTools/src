@@ -11,7 +11,7 @@
 <Toaster />
 <ModeWatcher defaultMode={'dark'} />
 <Sidebar.Provider>
-test
+	test
 	<AppSidebar />
 	<Sidebar.Inset>
 		{@render children()}
