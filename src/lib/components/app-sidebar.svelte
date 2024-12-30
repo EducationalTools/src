@@ -25,10 +25,12 @@
 		[
 			{
 				title: 'Home',
-				url: '/'
+				url: '/',
+				items: []
 			},
 			{
 				title: 'Tools',
+				url: '',
 				items: [
 					{
 						title: 'Calculator',
@@ -58,6 +60,7 @@
 			},
 			$preferencesStore.experimentalFeatures && {
 				title: 'Games',
+				url: '',
 				items: [
 					{
 						title: 'Test',
