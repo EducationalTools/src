@@ -7,6 +7,30 @@
 	import OpenInNewTab from 'lucide-svelte/icons/external-link';
 	import Share from 'lucide-svelte/icons/share';
 
+	import { preferencesStore } from '$lib/state.js';
+
+	function openNewTab(url: string) {
+		var openedTab;
+		if ($preferencesStore.open === 'tab') {
+			openedTab = window.open('', '_blank');
+		} else if ($preferencesStore.open === 'window') {
+			openedTab = window.open('', '_blank');
+		} else {
+			$preferencesStore.open = 'tab';
+			openNewTab(url);
+			return;
+		}
+		if (!openedTab) return;
+		const newDocument = openedTab.document;
+		const style = newDocument.createElement('style');
+		style.textContent = 'body, html { margin: 0; padding: 0; height: 100%; }';
+		newDocument.head.appendChild(style);
+		const iframe = newDocument.createElement('iframe');
+		iframe.src = url;
+		iframe.style.cssText = 'width: 100%; height: 100%; border: none;';
+		newDocument.body.appendChild(iframe);
+	}
+
 	const gmaedata = $derived(getGameById(page.params.id));
 </script>
 
@@ -29,7 +53,13 @@
 				><span class="sr-only">Fullscreen</span>
 				<Fullscreen class="h-6 w-6" />
 			</Button>
-			<Button variant="outline" size="icon" class="flex-1"
+			<Button
+				variant="outline"
+				size="icon"
+				class="flex-1"
+				onclick={() => {
+					openNewTab(gmaedata?.url);
+				}}
 				><span class="sr-only">Open in new tab</span>
 				<OpenInNewTab class="h-6 w-6" />
 			</Button>
