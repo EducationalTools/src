@@ -8,6 +8,10 @@
 	import { ModeWatcher } from 'mode-watcher';
 </script>
 
+<svelte:head>
+	<title>EduTools</title>
+</svelte:head>
+
 <Toaster />
 <ModeWatcher defaultMode={'dark'} />
 <Sidebar.Provider>
