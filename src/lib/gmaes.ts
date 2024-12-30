@@ -1,15 +1,16 @@
 export const gmaes = [
 	{
-		id: 'test',
-		name: 'Test Game',
-		description: 'This is a test game',
-		url: '/_app/tools/test/index.html'
+		id: '2048',
+		name: '2048',
+		description:
+			'Press arrow keys randomly until you get the 2048 tile. Then continue pressing arrow keys randomly.',
+		url: '/_app/tools/2048/index.html'
 	},
 	{
-		id: 'test2',
-		name: 'Test Game 2',
-		description: 'This is a test game 2',
-		url: '/_app/tools/test2/index.html'
+		id: 'bitlife',
+		name: 'Bitlife',
+		description: 'Do stupid stuff with a virtual character or something.',
+		url: '/_app/tools/bitlife/index.html'
 	}
 ];
 
