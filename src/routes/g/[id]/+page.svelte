@@ -19,7 +19,13 @@
 		<p class="text-xl">{gmaedata?.description}</p>
 		<div class="flex-grow"></div>
 		<div class="flex flex-row gap-3">
-			<Button variant="outline" size="icon" class="flex-1"
+			<Button
+				variant="outline"
+				size="icon"
+				class="flex-1"
+				onclick={() => {
+					document.querySelector('iframe')?.requestFullscreen();
+				}}
 				><span class="sr-only">Fullscreen</span>
 				<Fullscreen class="h-6 w-6" />
 			</Button>
