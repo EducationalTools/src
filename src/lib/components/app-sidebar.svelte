@@ -21,7 +21,14 @@
 		}
 	}
 
-	const mainNavigation = $derived(
+	const mainNavigation: {
+		title: string;
+		url: string;
+		items: {
+			title: string;
+			url: string;
+		}[];
+	}[] = $derived(
 		[
 			{
 				title: 'Home',
@@ -58,7 +65,7 @@
 					}
 				]
 			},
-			$preferencesStore.experimentalFeatures && {
+			{
 				title: 'Games',
 				url: '',
 				items: [
@@ -72,7 +79,9 @@
 					}
 				]
 			}
-		].filter(Boolean)
+		]
+			.filter((item) => item.title !== 'Games' || $preferencesStore.experimentalFeatures)
+			.filter(Boolean)
 	);
 </script>
 
