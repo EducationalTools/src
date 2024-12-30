@@ -60,7 +60,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.VERCEL_REPO_SECRET }}
-          external_repository: ${{ secrets.VERCEL_REPO }}
+          external_repository: 'https://github.com/Inglan/EduTools-Vercel.git'
           publish_branch: main # default: gh-pages
           publish_dir: ./build
 
