@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { getGameById } from '$lib/gmaes';
 	import { Button } from '$lib/components/ui/button/index.js';
+	import { toast } from 'svelte-sonner';
 
 	import Fullscreen from 'lucide-svelte/icons/maximize';
 	import OpenInNewTab from 'lucide-svelte/icons/external-link';
@@ -75,9 +76,11 @@
 							})
 							.catch(() => {
 								navigator.clipboard.writeText(window.location.href);
+								toast.error('Failed to share link, copied to clipboard instead.');
 							});
 					} else {
 						navigator.clipboard.writeText(window.location.href);
+						toast.error('Failed to share link, copied to clipboard instead.');
 					}
 				}}
 				><span class="sr-only">Share</span>
