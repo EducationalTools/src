@@ -64,14 +64,14 @@ jobs:
           publish_branch: main # default: gh-pages
           publish_dir: ./build
 
-      # - name: Deploy to surge.sh
-      #   if: always()
-      #   uses: dswistowski/surge-sh-action@v1
-      #   with:
-      #     domain: 'edutools.surge.sh'
-      #     project: './build'
-      #     login: ${{ secrets.SURGE_LOGIN }}
-      #     token: ${{ secrets.SURGE_TOKEN }}
+      - name: Deploy to surge.sh
+        if: always()
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'edutools.surge.sh'
+          project: './build'
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
 
       # - name: Deploy to edutools.infinityfreeapp.com
       #   if: always()
