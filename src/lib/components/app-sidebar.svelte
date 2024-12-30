@@ -11,6 +11,7 @@
 	import { page } from '$app/state';
 	import { Title } from './ui/dialog';
 	import { preferencesStore } from '$lib/state.js';
+	import { gmaes } from '$lib/gmaes.js';
 
 	let open = $state(false);
 
@@ -68,16 +69,10 @@
 			{
 				title: 'Games',
 				url: '',
-				items: [
-					{
-						title: 'Test',
-						url: '/g/test'
-					},
-					{
-						title: 'Test 2',
-						url: '/g/test-2'
-					}
-				]
+				items: gmaes.map((game) => ({
+					title: game.name,
+					url: `/g/${game.id}`
+				}))
 			}
 		].filter((item) => item.title !== 'Games' || $preferencesStore.experimentalFeatures)
 	);
