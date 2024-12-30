@@ -63,7 +63,19 @@
 				><span class="sr-only">Open in new tab</span>
 				<OpenInNewTab class="h-6 w-6" />
 			</Button>
-			<Button variant="outline" size="icon" class="flex-1"
+			<Button variant="outline" size="icon" class="flex-1" onclick={() => {
+				if (navigator.share) {
+					navigator.share({
+						title: gmaedata?.name,
+						text: gmaedata?.description,
+						url: window.location.href
+					}).catch(() => {
+						navigator.clipboard.writeText(window.location.href);
+					});
+				} else {
+					navigator.clipboard.writeText(window.location.href);
+				}
+			}}
 				><span class="sr-only">Share</span>
 				<Share class="h-6 w-6" />
 			</Button>
