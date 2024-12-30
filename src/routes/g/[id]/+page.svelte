@@ -58,7 +58,7 @@
 				size="icon"
 				class="flex-1"
 				onclick={() => {
-					openNewTab(gmaedata?.url);
+					if (gmaedata?.url) openNewTab(gmaedata.url);
 				}}
 				><span class="sr-only">Open in new tab</span>
 				<OpenInNewTab class="h-6 w-6" />
