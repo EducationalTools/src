@@ -1,4 +1,4 @@
-export const games = [
+export const gmaes = [
 	{
 		id: 'test',
 		name: 'Test Game',
