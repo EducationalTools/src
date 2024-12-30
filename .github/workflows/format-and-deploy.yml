@@ -73,85 +73,16 @@ jobs:
           login: ${{ secrets.SURGE_LOGIN }}
           token: ${{ secrets.SURGE_TOKEN }}
 
-      # - name: Deploy to edutools.infinityfreeapp.com
-      #   if: always()
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     server: ftpupload.net
-      #     username: if0_37642311
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./build/
-      #     server-dir: /htdocs/
+      - name: Deploy to edutools.infinityfreeapp.com
+        if: always()
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftpupload.net
+          username: if0_37642311
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./build/
+          server-dir: /htdocs/
 
-      # - name: Deploy to edutools.ct.ws
-      #   if: always()
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     server: ftpupload.net
-      #     username: if0_37642311
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./build/
-      #     server-dir: /edutools.ct.ws/htdocs/
-
-      # - name: Deploy to edutools.rf.gd
-      #   if: always()
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     server: ftpupload.net
-      #     username: if0_37642311
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./build/
-      #     server-dir: /edutools.rf.gd/htdocs/
-
-      # - name: Deploy to edutools.great-site.net
-      #   if: always()
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     server: ftpupload.net
-      #     username: if0_37642311
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./build/
-      #     server-dir: /edutools.great-site.net/htdocs/
-
-      # - name: Deploy to edutools.000.pe
-      #   if: always()
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     server: ftpupload.net
-      #     username: if0_37642311
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./build/
-      #     server-dir: /edutools.000.pe/htdocs/
-
-      # - name: Deploy to edutools.free.nf
-      #   if: always()
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     server: ftpupload.net
-      #     username: if0_37642311
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./build/
-      #     server-dir: /edutools.free.nf/htdocs/
-
-      # - name: Deploy to edutools.is-great.net
-      #   if: always()
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     server: ftpupload.net
-      #     username: if0_37642311
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./build/
-      #     server-dir: /edutools.is-great.net/htdocs/
-
-      # - name: Deploy to edutools.is-great.org
-      #   if: always()
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     server: ftpupload.net
-      #     username: if0_37642311
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./build/
-      #     server-dir: /edutools.is-great.org/htdocs/
       # - uses: FirebaseExtended/action-hosting-deploy@v0
       #   with:
       #     repoToken: ${{ secrets.GITHUB_TOKEN }}
