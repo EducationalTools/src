@@ -79,9 +79,7 @@
 					}
 				]
 			}
-		]
-			.filter((item) => item.title !== 'Games' || $preferencesStore.experimentalFeatures)
-			.filter(Boolean)
+		].filter((item) => item.title !== 'Games' || $preferencesStore.experimentalFeatures)
 	);
 </script>
 
