@@ -14,5 +14,5 @@ export const gmaes = [
 ];
 
 export function getGameById(id: string) {
-	return games.find((game) => game.id === id);
+	return gmaes.find((gmae) => gmae.id === id);
 }
