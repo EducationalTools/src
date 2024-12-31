@@ -66,14 +66,3 @@ jobs:
       #     firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
       #     channelId: live
       #     projectId:
-
-  re-run:
-    needs: deploy
-    if: failure() && fromJSON(github.run_attempt) < 3
-    runs-on: ubuntu-latest
-    steps:
-      - env:
-          GH_REPO: ${{ github.repository }}
-          GH_TOKEN: ${{ github.token }}
-          GH_DEBUG: api
-        run: gh workflow run rerun.yml -F run_id=${{ github.run_id }}
