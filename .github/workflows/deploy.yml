@@ -1,37 +1,14 @@
-name: Format and Deploy
+name: Deploy
 
 on:
   push:
     branches:
-      - main
+      - prod
 
 jobs:
-  format:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.head_ref }}
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Prettify code
-        uses: creyD/prettier_action@v4.3
-        with:
-          # This part is also where you can pass other options, for example:
-          prettier_options: --write .
   deploy:
     runs-on: ubuntu-latest
     permissions: write-all
-    needs: format
 
     steps:
       - name: Checkout code
@@ -89,14 +66,3 @@ jobs:
       #     firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
       #     channelId: live
       #     projectId:
-
-  re-run:
-    needs: deploy
-    if: failure() && fromJSON(github.run_attempt) < 3
-    runs-on: ubuntu-latest
-    steps:
-      - env:
-          GH_REPO: ${{ github.repository }}
-          GH_TOKEN: ${{ github.token }}
-          GH_DEBUG: api
-        run: gh workflow run rerun.yml -F run_id=${{ github.run_id }}
