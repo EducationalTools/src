@@ -13,6 +13,11 @@ body:
     id: how-could-you-reproduce-this-issue
     attributes:
       label: How could you reproduce this issue?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
     validations:
       required: true
   - type: textarea
