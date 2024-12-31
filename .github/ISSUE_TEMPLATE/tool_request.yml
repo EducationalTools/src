@@ -3,13 +3,6 @@ description: Request a tool to be added
 title: '[Tool Request] '
 labels: ['tool', 'enhancement']
 body:
-  - type: input
-    id: tool-name
-    attributes:
-      label: Tool Name
-      description: The name of the tool you want to request.
-    validations:
-      required: true
   - type: textarea
     id: description
     attributes:

@@ -4,13 +4,6 @@ title: '[Gmae Request] '
 labels: ['gmae', 'enhancement']
 body:
   - type: input
-    id: gmae-name
-    attributes:
-      label: Gmae Name
-      description: The name of the gmae you want to request.
-    validations:
-      required: true
-  - type: input
     id: gmae-link
     attributes:
       label: Gmae Link
