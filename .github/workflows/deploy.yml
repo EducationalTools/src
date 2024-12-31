@@ -19,7 +19,7 @@ jobs:
           version: 9
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install && pnpm install -g firebase-tools
 
       - name: Build and deploy
         run: |
@@ -57,7 +57,7 @@ jobs:
           channelId: live
           projectId: edutools-d915e
 
-      - name: Deploy to edutools.infinityfreeapp.com
+      - name: Deploy to Infinityfree
         if: always()
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -65,4 +65,4 @@ jobs:
           username: if0_37642311
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/
-          server-dir: /website/
+          server-dir: /htdocs/
