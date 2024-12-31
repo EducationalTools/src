@@ -1,0 +1,33 @@
+name: Tool request
+description: Request a tool to be added
+title: '[Tool Request] '
+labels: ['tool', 'enhancement']
+body:
+  - type: input
+    id: tool-name
+    attributes:
+      label: Tool Name
+      description: The name of the tool you want to request.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the tool does.
+    validations:
+      required: true
+  - type: input
+    id: tool-link
+    attributes:
+      label: Tool Link
+      description: A link to an implementation of the tool.
+    validations:
+      required: true
+  - type: input
+    id: tool-git-link
+    attributes:
+      label: Git Link
+      description: If the tool is open source, provide a link to a repository.
+    validations:
+      required: false
