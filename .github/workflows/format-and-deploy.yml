@@ -81,7 +81,7 @@ jobs:
           username: if0_37642311
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/
-          server-dir: /htdocs/
+          server-dir: /website/
 
       # - uses: FirebaseExtended/action-hosting-deploy@v0
       #   with:
