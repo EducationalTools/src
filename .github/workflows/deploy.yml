@@ -19,7 +19,7 @@ jobs:
           version: 9
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install && pnpm install -g firebase-tools
 
       - name: Build and deploy
         run: |
