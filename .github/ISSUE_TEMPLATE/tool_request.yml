@@ -17,10 +17,3 @@ body:
       description: A link to an implementation of the tool.
     validations:
       required: true
-  - type: input
-    id: tool-git-link
-    attributes:
-      label: Git Link
-      description: If the tool is open source, provide a link to a repository.
-    validations:
-      required: false
