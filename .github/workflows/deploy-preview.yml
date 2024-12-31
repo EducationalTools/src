@@ -16,7 +16,7 @@ jobs:
           version: 9
       - name: Install dependencies
         run: pnpm install && pnpm install -g firebase-tools
-      - name: Build and deploy
+      - name: Build
         run: |
           pnpm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
