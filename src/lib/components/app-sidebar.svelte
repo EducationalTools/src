@@ -69,10 +69,16 @@
 			{
 				title: 'Games',
 				url: '',
-				items: gmaes.map((game) => ({
-					title: game.name,
-					url: `/g/${game.id}`
-				}))
+				items: [
+					{
+						title: 'Request a Game',
+						url: 'https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+'
+					},
+					...gmaes.map((game) => ({
+						title: game.name,
+						url: `/g/${game.id}`
+					}))
+				]
 			}
 		].filter((item) => item.title !== 'Games' || $preferencesStore.experimentalFeatures)
 	);
