@@ -14,6 +14,7 @@
 	import { gmaes } from '$lib/gmaes.js';
 
 	import { slide } from 'svelte/transition';
+	import { Icon } from 'svelte-sonner';
 
 	let open = $state(false);
 
@@ -35,11 +36,13 @@
 		[
 			{
 				title: 'Home',
+				icon: Wrench,
 				url: '/',
 				items: []
 			},
 			{
 				title: 'Tools',
+				icon: Wrench,
 				url: '',
 				items: [
 					{
@@ -70,6 +73,7 @@
 			},
 			{
 				title: 'Gmaes',
+				icon: Wrench,
 				url: '',
 				items: [
 					{
