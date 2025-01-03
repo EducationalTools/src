@@ -3,6 +3,8 @@
 	import Wrench from 'lucide-svelte/icons/wrench';
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import Search from 'lucide-svelte/icons/search';
+	import Home from 'lucide-svelte/icons/home';
+	import Game from 'lucide-svelte/icons/gamepad-2';
 	import Check from 'lucide-svelte/icons/check';
 	import type { ComponentProps } from 'svelte';
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
@@ -37,7 +39,7 @@
 		[
 			{
 				title: 'Home',
-				icon: Wrench,
+				icon: Home,
 				url: '/',
 				items: []
 			},
@@ -74,7 +76,7 @@
 			},
 			{
 				title: 'Gmaes',
-				icon: Wrench,
+				icon: Game,
 				url: '',
 				items: [
 					{
