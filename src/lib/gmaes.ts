@@ -14,11 +14,17 @@ const gmaes = [
 	}
 ];
 
-export function getGameById(id: string) {
-	return gmaes.find((gmae) => gmae.id === id);
+interface Gmae {
+	name: string;
+	description: string;
+	url: string;
 }
 
-let parsedGmaes = [];
+interface ParsedGmae extends Gmae {
+	id: string;
+}
+
+let parsedGmaes: ParsedGmae[] = [];
 
 gmaes.forEach((gmae) => {
 	parsedGmaes.push({
@@ -28,5 +34,9 @@ gmaes.forEach((gmae) => {
 		url: gmae.url
 	});
 });
+
+export function getGameById(id: string) {
+	return parsedGmaes.find((gmae) => gmae.id === id);
+}
 
 export { parsedGmaes as gmaes };
