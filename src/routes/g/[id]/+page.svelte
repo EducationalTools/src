@@ -10,10 +10,11 @@
 	import Fullscreen from 'lucide-svelte/icons/maximize';
 	import OpenInNewTab from 'lucide-svelte/icons/external-link';
 	import Share from 'lucide-svelte/icons/share';
+	import Star from 'lucide-svelte/icons/star';
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';
-	import { preferencesStore } from '$lib/state.js';
+	import { preferencesStore, favoritesStore } from '$lib/state.js';
 
 	function openNewTab(url: string) {
 		var openedTab;
@@ -90,6 +91,26 @@
 				}}
 				><span class="sr-only">Share</span>
 				<Share class="h-6 w-6" />
+			</Button>
+			<Button
+				variant="outline"
+				size="icon"
+				class="flex-1"
+				onclick={() => {
+					if (gmaedata?.id) {
+						if ($favoritesStore.includes(gmaedata.id)) {
+							$favoritesStore = $favoritesStore.filter((id) => id !== gmaedata.id);
+						} else {
+							$favoritesStore = [...$favoritesStore, gmaedata.id];
+						}
+					}
+				}}
+				><span class="sr-only">Open in new tab</span>
+				{#if gmaedata?.id && $favoritesStore.includes(gmaedata.id)}
+					<Star class="h-6 w-6 text-red-400" />
+				{:else}
+					<Star class="h-6 w-6" />
+				{/if}
 			</Button>
 		</div>
 	</div>
