@@ -13,6 +13,8 @@
 	import { preferencesStore } from '$lib/state.js';
 	import { gmaes } from '$lib/gmaes.js';
 
+	import { slide } from 'svelte/transition';
+
 	let open = $state(false);
 
 	function handleKeydown(e: KeyboardEvent) {
@@ -158,22 +160,28 @@
 										</Sidebar.MenuButton>
 									{/snippet}
 								</Collapsible.Trigger>
-								<Collapsible.Content>
-									<Sidebar.MenuSub>
-										{#each groupItem.items as item (item.title)}
-											<Sidebar.MenuSubItem>
-												<Sidebar.MenuSubButton
-													isActive={item.url === page.url.pathname ||
-														(item.url === '/' && page.url.pathname === '')}
-												>
-													{#snippet child({ props })}
-														<a href={item.url} {...props}>{item.title}</a>
-													{/snippet}
-												</Sidebar.MenuSubButton>
-											</Sidebar.MenuSubItem>
-										{/each}
-									</Sidebar.MenuSub></Collapsible.Content
-								>
+								<Collapsible.Content forceMount>
+									{#snippet child({ props, open })}
+										{#if open}
+											<div {...props} transition:slide>
+												<Sidebar.MenuSub>
+													{#each groupItem.items as item (item.title)}
+														<Sidebar.MenuSubItem>
+															<Sidebar.MenuSubButton
+																isActive={item.url === page.url.pathname ||
+																	(item.url === '/' && page.url.pathname === '')}
+															>
+																{#snippet child({ props })}
+																	<a href={item.url} {...props}>{item.title}</a>
+																{/snippet}
+															</Sidebar.MenuSubButton>
+														</Sidebar.MenuSubItem>
+													{/each}
+												</Sidebar.MenuSub>
+											</div>
+										{/if}
+									{/snippet}
+								</Collapsible.Content>
 							</Sidebar.MenuItem></Collapsible.Root
 						>
 					{:else}
