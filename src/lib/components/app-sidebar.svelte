@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import Wrench from 'lucide-svelte/icons/wrench';
-	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down';
+	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import Search from 'lucide-svelte/icons/search';
 	import Check from 'lucide-svelte/icons/check';
 	import type { ComponentProps } from 'svelte';
@@ -154,8 +154,8 @@
 											{#snippet child({ props })}
 												<a class=" font-medium" {...props}>
 													{groupItem.title}
-													<ChevronsUpDown
-														class="ml-auto group-data-[state=open]/collapsible:rotate-90"
+													<ChevronRight
+														class="ml-auto duration-300 group-data-[state=open]/collapsible:rotate-90"
 													/>
 												</a>
 											{/snippet}
