@@ -1,22 +1,28 @@
 <script lang="ts">
+	// Svelte and framework imports
+	import type { ComponentProps } from 'svelte';
+	import { slide } from 'svelte/transition';
+	import { page } from '$app/state';
+
+	// UI Components
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import * as Command from '$lib/components/ui/command/index.js';
+	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
+
+	// Lucide icons
 	import Wrench from 'lucide-svelte/icons/wrench';
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import Search from 'lucide-svelte/icons/search';
 	import Home from 'lucide-svelte/icons/home';
 	import Game from 'lucide-svelte/icons/gamepad-2';
 	import Check from 'lucide-svelte/icons/check';
-	import type { ComponentProps } from 'svelte';
-	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
-	import * as Command from '$lib/components/ui/command/index.js';
-	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
-	import { page } from '$app/state';
-	import { Title } from './ui/dialog';
+
+	// App state and data
 	import { preferencesStore } from '$lib/state.js';
 	import { gmaes } from '$lib/gmaes.js';
 
-	import { slide } from 'svelte/transition';
-	import { Icon } from 'svelte-sonner';
+	// Props
+	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
 	let commandOpen = $state(false);
 
