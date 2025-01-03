@@ -59,8 +59,8 @@
 {:else}
 	<button
 		bind:this={ref}
-		class={cn(buttonVariants({ variant, size }), className) + ' hover:scale-110 active:scale-90'}
-		style="transition: all 100ms;"
+		class={cn(buttonVariants({ variant, size }), className) +
+			' !transition-all hover:scale-105 active:scale-95'}
 		{type}
 		{...restProps}
 	>
