@@ -18,12 +18,12 @@
 	import { slide } from 'svelte/transition';
 	import { Icon } from 'svelte-sonner';
 
-	let open = $state(false);
+	let commandOpen = $state(false);
 
 	function handleKeydown(e: KeyboardEvent) {
 		if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
 			e.preventDefault();
-			open = !open;
+			commandOpen = !commandOpen;
 		}
 	}
 
@@ -119,7 +119,7 @@
 					{#snippet child({ props })}
 						<button
 							onclick={function () {
-								open = true;
+								commandOpen = true;
 							}}
 							{...props}
 						>
@@ -237,7 +237,7 @@
 	<Sidebar.Rail />
 </Sidebar.Root>
 
-<Command.Dialog bind:open>
+<Command.Dialog bind:open={commandOpen}>
 	<Command.Input placeholder="Type a command or search..." />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
@@ -247,7 +247,7 @@
 					{#each groupItem.items as item (item.title)}
 						<Command.LinkItem
 							href={item.url}
-							onSelect={() => (open = false)}
+							onSelect={() => (commandOpen = false)}
 							target={item.url.startsWith('http') ? '_blank' : undefined}
 							rel={item.url.startsWith('http') ? 'noopener noreferrer' : undefined}
 						>
@@ -260,7 +260,7 @@
 				<Command.Group>
 					<Command.LinkItem
 						href={groupItem.url}
-						onSelect={() => (open = false)}
+						onSelect={() => (commandOpen = false)}
 						target={groupItem.url.startsWith('http') ? '_blank' : undefined}
 						rel={groupItem.url.startsWith('http') ? 'noopener noreferrer' : undefined}
 					>
