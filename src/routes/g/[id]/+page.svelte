@@ -1,13 +1,18 @@
 <script lang="ts">
+	// Framework imports
 	import { page } from '$app/state';
-	import { getGameById } from '$lib/gmaes';
+
+	// Components
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { toast } from 'svelte-sonner';
 
+	// Icons
 	import Fullscreen from 'lucide-svelte/icons/maximize';
 	import OpenInNewTab from 'lucide-svelte/icons/external-link';
 	import Share from 'lucide-svelte/icons/share';
 
+	// App imports
+	import { getGameById } from '$lib/gmaes';
 	import { preferencesStore } from '$lib/state.js';
 
 	function openNewTab(url: string) {
