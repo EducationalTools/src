@@ -186,7 +186,16 @@
 																	(item.url === '/' && page.url.pathname === '')}
 															>
 																{#snippet child({ props })}
-																	<a href={item.url} {...props}>{item.title}</a>
+																	<a
+																		href={item.url}
+																		{...props}
+																		target={item.url.startsWith('http') ? '_blank' : undefined}
+																		rel={item.url.startsWith('http')
+																			? 'noopener noreferrer'
+																			: undefined}
+																	>
+																		{item.title}
+																	</a>
 																{/snippet}
 															</Sidebar.MenuSubButton>
 														</Sidebar.MenuSubItem>
@@ -205,7 +214,13 @@
 									(groupItem.url === '/' && page.url.pathname === '')}
 							>
 								{#snippet child({ props })}
-									<a href={groupItem.url} class="font-medium" {...props}>
+									<a
+										href={groupItem.url}
+										class="font-medium"
+										{...props}
+										target={groupItem.url.startsWith('http') ? '_blank' : undefined}
+										rel={groupItem.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+									>
 										{#if Icon}
 											<Icon />
 										{/if}
@@ -230,7 +245,12 @@
 			{#if groupItem.items?.length}
 				<Command.Group heading={groupItem.title}>
 					{#each groupItem.items as item (item.title)}
-						<Command.LinkItem href={item.url} onSelect={() => (open = false)}>
+						<Command.LinkItem
+							href={item.url}
+							onSelect={() => (open = false)}
+							target={item.url.startsWith('http') ? '_blank' : undefined}
+							rel={item.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+						>
 							<span>{item.title}</span>
 						</Command.LinkItem>
 					{/each}
@@ -238,7 +258,12 @@
 				<Command.Separator />
 			{:else}
 				<Command.Group>
-					<Command.LinkItem href={groupItem.url} onSelect={() => (open = false)}>
+					<Command.LinkItem
+						href={groupItem.url}
+						onSelect={() => (open = false)}
+						target={groupItem.url.startsWith('http') ? '_blank' : undefined}
+						rel={groupItem.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+					>
 						<span>{groupItem.title}</span>
 					</Command.LinkItem>
 				</Command.Group>
