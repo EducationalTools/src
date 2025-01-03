@@ -144,6 +144,8 @@
 		<Sidebar.Group>
 			<Sidebar.Menu>
 				{#each mainNavigation as groupItem (groupItem.title)}
+					{@const Icon = groupItem.icon}
+
 					{#if groupItem.items?.length}
 						<Collapsible.Root class="group/collapsible">
 							<Sidebar.MenuItem>
@@ -157,6 +159,9 @@
 										>
 											{#snippet child({ props })}
 												<a class=" font-medium" {...props}>
+													{#if Icon}
+														<Icon />
+													{/if}
 													{groupItem.title}
 													<ChevronRight
 														class="ml-auto duration-300 group-data-[state=open]/collapsible:rotate-90"
@@ -198,6 +203,9 @@
 							>
 								{#snippet child({ props })}
 									<a href={groupItem.url} class="font-medium" {...props}>
+										{#if Icon}
+											<Icon />
+										{/if}
 										{groupItem.title}
 									</a>
 								{/snippet}
