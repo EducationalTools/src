@@ -67,20 +67,20 @@
 				]
 			},
 			{
-				title: 'Games',
+				title: 'Gmaes',
 				url: '',
 				items: [
 					{
-						title: 'Request a Game',
+						title: 'Request a Gmae',
 						url: 'https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+'
 					},
-					...gmaes.map((game) => ({
-						title: game.name,
-						url: `/g/${game.id}`
+					...gmaes.map((gmae) => ({
+						title: gmae.name,
+						url: `/g/${gmae.id}`
 					}))
 				]
 			}
-		].filter((item) => item.title !== 'Games' || $preferencesStore.experimentalFeatures)
+		].filter((item) => item.title !== 'Gmaes' || $preferencesStore.experimentalFeatures)
 	);
 </script>
 
