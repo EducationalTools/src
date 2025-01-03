@@ -29,4 +29,4 @@ gmaes.forEach((gmae) => {
 	});
 });
 
-export { parsedGmaes as games };
+export { parsedGmaes as gmaes };
