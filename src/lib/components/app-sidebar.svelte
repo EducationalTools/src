@@ -141,7 +141,7 @@
 			<Sidebar.Menu>
 				{#each mainNavigation as groupItem (groupItem.title)}
 					{#if groupItem.items?.length}
-						<Collapsible.Root>
+						<Collapsible.Root class="group/collapsible">
 							<Sidebar.MenuItem>
 								<Collapsible.Trigger>
 									{#snippet child({ props })}
@@ -154,7 +154,9 @@
 											{#snippet child({ props })}
 												<a class=" font-medium" {...props}>
 													{groupItem.title}
-													<ChevronsUpDown class="ml-auto" />
+													<ChevronsUpDown
+														class="ml-auto group-data-[state=open]/collapsible:rotate-90"
+													/>
 												</a>
 											{/snippet}
 										</Sidebar.MenuButton>
