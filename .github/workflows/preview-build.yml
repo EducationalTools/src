@@ -34,7 +34,7 @@ jobs:
           sh -c "pnpm preview & sleep 5 && chromium --headless --disable-gpu --screenshot --window-size=1920,1080 http://localhost:4173/ --no-sandbox && pkill node"
 
       - name: Upload screenshot
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact
         with:
           name: screenshot
           path: screenshot.png
