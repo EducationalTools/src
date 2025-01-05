@@ -16,6 +16,11 @@ const gmaes = [
 		name: 'Cookie Clicker',
 		description: 'Waste your life clicking a cookie.',
 		url: '/_app/tools/cookieclicker/index.html'
+	},
+	{
+		name: 'Crappy Bird',
+		description: 'A crappy version of Flappy Bird.',
+		url: '/_app/tools/crappybird/index.html'
 	}
 ];
 
