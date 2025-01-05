@@ -11,6 +11,11 @@ const gmaes = [
 		name: 'Bitlife',
 		description: 'Do stupid stuff with a virtual character or something.',
 		url: '/_app/tools/bitlife/index.html'
+	},
+	{
+		name: 'Cookie Clicker',
+		description: 'Waste your life clicking a cookie.',
+		url: '/_app/tools/cookieclicker/index.html'
 	}
 ];
 
