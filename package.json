@@ -16,7 +16,7 @@
 		"@sveltejs/adapter-auto": "^4.0.0",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.16.1",
-		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@tailwindcss/postcss": "^4.0.0",
 		"@types/md5": "^2.3.5",
 		"bits-ui": "1.0.0-next.78",
@@ -34,9 +34,10 @@
 		"tailwindcss": "^4.0.0",
 		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.7.3",
-		"vite": "^6.0.11"
+		"vite": "^5.4.12"
 	},
 	"dependencies": {
+		"@sveltejs/vite-plugin-svelte-inspector": "3.0.0",
 		"md5": "^2.3.0",
 		"svelte-persisted-store": "^0.12.0"
 	}
