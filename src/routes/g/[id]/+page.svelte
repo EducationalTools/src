@@ -42,13 +42,12 @@
 </script>
 
 <div class="flex h-full w-full flex-row gap-3 p-3">
-	<iframe src={gmaedata?.url} frameborder="0" class="flex-grow rounded" title={gmaedata?.name}
-	></iframe>
+	<iframe src={gmaedata?.url} frameborder="0" class="grow rounded" title={gmaedata?.name}></iframe>
 
 	<div class="flex h-full w-72 flex-col">
 		<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
 		<p class="text-xl">{gmaedata?.description}</p>
-		<div class="flex-grow"></div>
+		<div class="grow"></div>
 		<div class="flex flex-row gap-3">
 			<Button
 				variant="outline"

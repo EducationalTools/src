@@ -105,11 +105,11 @@
 	<Sidebar.Header>
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg" class="!transition-all hover:scale-105 active:scale-95">
+				<Sidebar.MenuButton size="lg" class="transition-all! hover:scale-105 active:scale-95">
 					{#snippet child({ props })}
 						<a href="/" {...props}>
 							<div
-								class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary p-1 text-sidebar-primary-foreground"
+								class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg p-1"
 							>
 								<img src="/edutools-white.svg" alt="" />
 							</div>
@@ -121,7 +121,7 @@
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg" class="!transition-all hover:scale-105 active:scale-95">
+				<Sidebar.MenuButton size="lg" class="transition-all! hover:scale-105 active:scale-95">
 					{#snippet child({ props })}
 						<button
 							onclick={function () {
@@ -130,15 +130,15 @@
 							{...props}
 						>
 							<div
-								class="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground"
+								class="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
 							>
 								<Search class="size-4" />
 							</div>
 							<div class="flex w-full flex-row items-center gap-2 leading-none">
 								<span>Search</span>
-								<div class="flex-grow"></div>
+								<div class="grow"></div>
 								<kbd
-									class="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100"
+									class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
 								>
 									<span class="text-xs">⌘</span>K
 								</kbd>

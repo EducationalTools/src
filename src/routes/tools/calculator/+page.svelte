@@ -58,31 +58,31 @@
 		<div class="mb-2 w-fit rounded p-4 text-right text-2xl">{display}</div>
 
 		<div class="flex gap-2">
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('7')}>7</Button>
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('8')}>8</Button>
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('9')}>9</Button>
-			<Button variant="secondary" class="flex-grow" onclick={() => handleOperator('/')}>/</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('7')}>7</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('8')}>8</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('9')}>9</Button>
+			<Button variant="secondary" class="grow" onclick={() => handleOperator('/')}>/</Button>
 		</div>
 
 		<div class="flex gap-2">
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('4')}>4</Button>
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('5')}>5</Button>
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('6')}>6</Button>
-			<Button variant="secondary" class="flex-grow" onclick={() => handleOperator('*')}>*</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('4')}>4</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('5')}>5</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('6')}>6</Button>
+			<Button variant="secondary" class="grow" onclick={() => handleOperator('*')}>*</Button>
 		</div>
 
 		<div class="flex gap-2">
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('1')}>1</Button>
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('2')}>2</Button>
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('3')}>3</Button>
-			<Button variant="secondary" class="flex-grow" onclick={() => handleOperator('-')}>-</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('1')}>1</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('2')}>2</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('3')}>3</Button>
+			<Button variant="secondary" class="grow" onclick={() => handleOperator('-')}>-</Button>
 		</div>
 
 		<div class="flex gap-2">
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('0')}>0</Button>
-			<Button variant="outline" class="flex-grow" onclick={() => handleNumber('.')}>.</Button>
-			<Button variant="secondary" class="flex-grow" onclick={calculate}>=</Button>
-			<Button variant="secondary" class="flex-grow" onclick={() => handleOperator('+')}>+</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('0')}>0</Button>
+			<Button variant="outline" class="grow" onclick={() => handleNumber('.')}>.</Button>
+			<Button variant="secondary" class="grow" onclick={calculate}>=</Button>
+			<Button variant="secondary" class="grow" onclick={() => handleOperator('+')}>+</Button>
 		</div>
 
 		<Button variant="destructive" onclick={clear}>Clear</Button>

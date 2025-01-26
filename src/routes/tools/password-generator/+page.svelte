@@ -34,7 +34,7 @@
 	<div class="flex flex-col gap-3">
 		<Input
 			id="password"
-			class="bg-white text-black opacity-50 blur-sm duration-300 hover:opacity-100 focus:bg-transparent focus:text-white focus:opacity-100 focus:blur-0"
+			class="focus:blur-0 bg-white text-black opacity-50 blur-xs duration-300 hover:opacity-100 focus:bg-transparent focus:text-white focus:opacity-100"
 		/>
 		<div class="flex w-full flex-row gap-3">
 			<Button onclick={generatePassword} class="flex-1">Generate</Button>

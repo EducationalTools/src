@@ -10,5 +10,5 @@
 		>
 		<Alert.Description>If you know what you are doing open a pr :)</Alert.Description>
 	</Alert.Root>
-	<Textarea class="flex-grow resize-none"></Textarea>
+	<Textarea class="grow resize-none"></Textarea>
 </div>
