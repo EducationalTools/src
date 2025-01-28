@@ -9,5 +9,5 @@
 
 <div class="flex h-full flex-col gap-3 p-3">
 	{words} words, {nonSpaceCharacters} characters ({characters} including spaces)
-	<Textarea bind:value={text} class="grow resize-none"></Textarea>
+	<Textarea bind:value={text} class="flex-grow resize-none"></Textarea>
 </div>
