@@ -7,11 +7,16 @@
 	function execCommand(command: string) {
 		document.execCommand(command, false, null);
 	}
+
+	// Sync user input to `content`
+	function updateContent(event: Event) {
+		content = (event.target as HTMLElement).innerHTML;
+	}
 </script>
 
 <div class="flex h-full flex-col gap-3 p-3">
 	<Alert.Root>
-		<Alert.Title>This is a text editor which includes rich text options</Alert.Title>
+		<Alert.Title>This is a text editor with rich text options</Alert.Title>
 		<Alert.Description>If you know what you are doing and want to improve it, open a PR :)</Alert.Description>
 	</Alert.Root>
 
@@ -22,8 +27,10 @@
 		<button on:click={() => execCommand('underline')}><u>U</u></button>
 	</div>
 
-	<!-- Rich Text Editor -->
-	<div class="editor" contenteditable="true">{@html content}</div>
+	<!-- Rich Text Editor (With Reactive Binding) -->
+	<div class="editor" contenteditable="true" on:input={updateContent} bind:this={content}>
+		{@html content}
+	</div>
 </div>
 
 <style>
@@ -52,5 +59,6 @@
 		border-radius: 5px;
 		background: #fff;
 		outline: none;
+		padding: 10px;
 	}
 </style>
