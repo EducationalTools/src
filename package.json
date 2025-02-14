@@ -38,6 +38,7 @@
 	},
 	"dependencies": {
 		"md5": "^2.3.0",
+		"quill": "2.0.3",
 		"svelte-persisted-store": "^0.12.0"
 	}
 }
