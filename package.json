@@ -37,8 +37,8 @@
 		"vite": "^6.1.0"
 	},
 	"dependencies": {
+		"@friendofsvelte/tipex": "0.0.7-fix-0",
 		"md5": "^2.3.0",
-		"svelte-persisted-store": "^0.12.0",
-		"svelte-quill": "^1.2.0"
+		"svelte-persisted-store": "^0.12.0"
 	}
 }
