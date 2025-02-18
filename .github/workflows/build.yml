@@ -1,4 +1,4 @@
-name: Build and Screenshot
+name: Build
 
 on:
   pull_request:
@@ -24,12 +24,3 @@ jobs:
         run: |
           pnpm run build
 
-      - name: Take screenshot
-        run: |
-          sh -c "pnpm preview & sleep 10 && chromium --headless --disable-gpu --screenshot --window-size=1920,1080 http://localhost:4173/ --no-sandbox && pkill node"
-
-      - name: Upload screenshot
-        uses: actions/upload-artifact@v4
-        with:
-          name: screenshot
-          path: screenshot.png
