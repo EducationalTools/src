@@ -63,8 +63,8 @@
 						url: '/tools/converter'
 					},
 					{
-						title: 'Simple Text Editor',
-						url: '/tools/simple-text-editor'
+						title: 'Rich Text Editor',
+						url: '/tools/rich-text-editor'
 					},
 					{
 						title: 'Word Counter',
