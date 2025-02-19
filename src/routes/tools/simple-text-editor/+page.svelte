@@ -12,6 +12,10 @@
 	let body = ``;
 </script>
 
-<div class="h-full w-full p-3">
-	<Tipex {body} controls class="prose prose-invert h-full w-full max-w-full" />
+<div class="z-0 h-full w-full">
+	<Tipex
+		{body}
+		controls
+		class="prose prose-invert h-full w-full max-w-full [&_.tipex-controller]:p-1 [&_.tipex-controller]:pl-11"
+	/>
 </div>
