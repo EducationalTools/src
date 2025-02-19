@@ -2,8 +2,14 @@
 	import { Textarea } from '$lib/components/ui/textarea/index.js';
 	import * as Alert from '$lib/components/ui/alert/index.js';
 
+	import '@friendofsvelte/tipex/styles/Tipex.css';
+	import '@friendofsvelte/tipex/styles/ProseMirror.css';
+	import '@friendofsvelte/tipex/styles/Controls.css';
+	import '@friendofsvelte/tipex/styles/EditLink.css';
+	import '@friendofsvelte/tipex/styles/CodeBlock.css';
+
 	import { Tipex } from '@friendofsvelte/tipex';
-	let body = `<p>The initial html content.</p>`;
+	let body = ``;
 </script>
 
 <div class="flex h-full flex-col gap-3 p-3">
@@ -20,6 +26,6 @@
 		floating
 		focal
 		style="margin-top: 1rem; margin-bottom: 0;"
-		class="h-[70vh] border border-neutral-200"
+		class="prose prose-invert h-full w-full border border-neutral-200"
 	/>
 </div>
