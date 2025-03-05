@@ -24,7 +24,7 @@
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.476.0",
 		"mode-watcher": "^0.5.1",
-		"prettier": "^3.5.2",
+		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"svelte": "^5.22.0",
