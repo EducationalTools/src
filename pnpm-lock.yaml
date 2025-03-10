@@ -40,8 +40,8 @@ importers:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.5.1)
       bits-ui:
-        specifier: 1.3.6
-        version: 1.3.6(svelte@5.22.6)
+        specifier: 1.3.8
+        version: 1.3.8(svelte@5.22.6)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -680,8 +680,8 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
-  bits-ui@1.3.6:
-    resolution: {integrity: sha512-0Ee7Ox5KqIBdio/+TG387Xlj6QJ0S7tHVS2K4DYiBHxBRbm6ni13i/pOoNDjeME6NOGUZxbSe4dNZIW3pGlxZA==}
+  bits-ui@1.3.8:
+    resolution: {integrity: sha512-vmj0uQQqh7sEw5La4CXKjMszcDHeEwjUX5Q4/cX3UZ2aTY/HTEaMK5cJyCfA+2yMO7YNCx5mIM/THgFvphHt2w==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
       svelte: ^5.11.0
@@ -2006,7 +2006,7 @@ snapshots:
 
   binary-extensions@2.3.0: {}
 
-  bits-ui@1.3.6(svelte@5.22.6):
+  bits-ui@1.3.8(svelte@5.22.6):
     dependencies:
       '@floating-ui/core': 1.6.9
       '@floating-ui/dom': 1.6.13
