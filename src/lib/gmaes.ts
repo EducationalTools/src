@@ -24,7 +24,8 @@ const gmaes = [
 	},
 	{
 		name: 'Slope',
-		description: 'A game where you roll a ball down a slope until you either fall off or touch red (skill issue',
+		description:
+			'A game where you roll a ball down a slope until you either fall off or touch red (skill issue',
 		url: '/_app/tools/slope/index.html'
 	}
 ];
