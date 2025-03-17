@@ -17,6 +17,7 @@
 	import { preferencesStore, favoritesStore } from '$lib/state.js';
 
 	function openNewTab(url: string) {
+		url = location.origin + url;
 		var openedTab;
 		if ($preferencesStore.open === 'tab') {
 			openedTab = window.open('', '_blank');
