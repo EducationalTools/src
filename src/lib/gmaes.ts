@@ -21,6 +21,11 @@ const gmaes = [
 		name: 'Crappy Bird',
 		description: 'A crappy version of Flappy Bird.',
 		url: '/_app/tools/crappybird/index.html'
+	},
+	{
+		name: 'Slope',
+		description: 'A game where you roll a ball down a slope until you either fall off or touch red (skill issue',
+		url: '/_app/tools/slope/index.html'
 	}
 ];
 
