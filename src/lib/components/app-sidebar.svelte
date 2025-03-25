@@ -37,6 +37,7 @@
 		title: string;
 		url: string;
 		icon?: any;
+		experimental: boolean;
 		items: {
 			title: string;
 			url: string;
@@ -47,11 +48,13 @@
 				title: 'Home',
 				icon: Home,
 				url: '/',
+				experimental: false,
 				items: []
 			},
 			{
 				title: 'Tools',
 				icon: Wrench,
+				experimental: false,
 				url: '',
 				items: [
 					{
@@ -83,6 +86,7 @@
 			{
 				title: 'Gmaes',
 				icon: Game,
+				experimental: true,
 				url: '',
 				items: [
 					{
@@ -95,7 +99,7 @@
 					}))
 				]
 			}
-		].filter((item) => item.title !== 'Gmaes' || $preferencesStore.experimentalFeatures)
+		].filter((item) => !item.experimental || $preferencesStore.experimentalFeatures)
 	);
 </script>
 
