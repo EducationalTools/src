@@ -246,18 +246,20 @@
 			</Sidebar.Menu>
 		</Sidebar.Group>
 	</Sidebar.Content>
-	<Sidebar.Footer>
-		<Sidebar.MenuItem>
-			<Sidebar.MenuButton>
-				{#snippet child({ props })}
-					<a target="_blank" href="https://github.com/EducationalTools/src" {...props}>
-						<Code />
-						EducationalTools/src
-					</a>
-				{/snippet}
-			</Sidebar.MenuButton>
-		</Sidebar.MenuItem>
-	</Sidebar.Footer>
+	{#if $preferencesStore.experimentalFeatures === true}
+		<Sidebar.Footer>
+			<Sidebar.MenuItem>
+				<Sidebar.MenuButton>
+					{#snippet child({ props })}
+						<a target="_blank" href="https://github.com/EducationalTools/src" {...props}>
+							<Code />
+							EducationalTools/src
+						</a>
+					{/snippet}
+				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+		</Sidebar.Footer>
+	{/if}
 	<Sidebar.Rail />
 </Sidebar.Root>
 
