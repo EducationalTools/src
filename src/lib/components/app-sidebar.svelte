@@ -297,9 +297,11 @@
 			{/if}
 		{/each}
 		<Command.Group heading="More">
-			<Command.Item>
-				<span>Settings</span>
-			</Command.Item>
+			{#if $preferencesStore.experimentalFeatures}
+				<Command.Item>
+					<span>Settings</span>
+				</Command.Item>
+			{/if}
 			<Command.Item
 				onSelect={() =>
 					($preferencesStore.experimentalFeatures = !$preferencesStore.experimentalFeatures)}
