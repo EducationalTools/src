@@ -17,6 +17,7 @@
 	import Game from 'lucide-svelte/icons/gamepad-2';
 	import Check from 'lucide-svelte/icons/check';
 	import Code from 'lucide-svelte/icons/code';
+	import Settings from 'lucide-svelte/icons/settings';
 
 	// App state and data
 	import { preferencesStore } from '$lib/state.js';
@@ -256,6 +257,12 @@
 							EducationalTools/src
 						</a>
 					{/snippet}
+				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+			<Sidebar.MenuItem>
+				<Sidebar.MenuButton>
+					<Settings />
+					Settings
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 		</Sidebar.Footer>
