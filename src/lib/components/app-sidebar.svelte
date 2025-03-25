@@ -115,6 +115,7 @@
 							</div>
 							<div class="flex flex-col gap-0.5 leading-none">
 								<span class="font-semibold">EduTools</span>
+								{#if $preferencesStore.experimentalFeatures}<span>Experimental</span>{/if}
 							</div>
 						</a>
 					{/snippet}
