@@ -16,6 +16,8 @@
 	import Home from 'lucide-svelte/icons/home';
 	import Game from 'lucide-svelte/icons/gamepad-2';
 	import Check from 'lucide-svelte/icons/check';
+	import Code from 'lucide-svelte/icons/code';
+	import Settings from 'lucide-svelte/icons/settings';
 
 	// App state and data
 	import { preferencesStore } from '$lib/state.js';
@@ -37,6 +39,7 @@
 		title: string;
 		url: string;
 		icon?: any;
+		experimental: boolean;
 		items: {
 			title: string;
 			url: string;
@@ -47,11 +50,13 @@
 				title: 'Home',
 				icon: Home,
 				url: '/',
+				experimental: false,
 				items: []
 			},
 			{
 				title: 'Tools',
 				icon: Wrench,
+				experimental: false,
 				url: '',
 				items: [
 					{
@@ -83,6 +88,7 @@
 			{
 				title: 'Gmaes',
 				icon: Game,
+				experimental: true,
 				url: '',
 				items: [
 					{
@@ -95,7 +101,7 @@
 					}))
 				]
 			}
-		].filter((item) => item.title !== 'Gmaes' || $preferencesStore.experimentalFeatures)
+		].filter((item) => !item.experimental || $preferencesStore.experimentalFeatures)
 	);
 </script>
 
@@ -115,6 +121,7 @@
 							</div>
 							<div class="flex flex-col gap-0.5 leading-none">
 								<span class="font-semibold">EduTools</span>
+								{#if $preferencesStore.experimentalFeatures}<span>Experimental</span>{/if}
 							</div>
 						</a>
 					{/snippet}
@@ -240,6 +247,26 @@
 			</Sidebar.Menu>
 		</Sidebar.Group>
 	</Sidebar.Content>
+	{#if $preferencesStore.experimentalFeatures === true}
+		<Sidebar.Footer>
+			<Sidebar.MenuItem>
+				<Sidebar.MenuButton>
+					{#snippet child({ props })}
+						<a target="_blank" href="https://github.com/EducationalTools/src" {...props}>
+							<Code />
+							EducationalTools/src
+						</a>
+					{/snippet}
+				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+			<Sidebar.MenuItem>
+				<Sidebar.MenuButton>
+					<Settings />
+					Settings
+				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+		</Sidebar.Footer>
+	{/if}
 	<Sidebar.Rail />
 </Sidebar.Root>
 
@@ -277,9 +304,11 @@
 			{/if}
 		{/each}
 		<Command.Group heading="More">
-			<Command.Item>
-				<span>Settings</span>
-			</Command.Item>
+			{#if $preferencesStore.experimentalFeatures}
+				<Command.Item>
+					<span>Settings</span>
+				</Command.Item>
+			{/if}
 			<Command.Item
 				onSelect={() =>
 					($preferencesStore.experimentalFeatures = !$preferencesStore.experimentalFeatures)}
