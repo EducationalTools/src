@@ -26,7 +26,7 @@
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
 	import { gmaes } from '$lib/gmaes.js';
-	import { settingsOpen } from '$lib/state';
+	import { settingsOpen } from '$lib/state.svelte';
 
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
