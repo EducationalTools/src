@@ -15,7 +15,7 @@
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';
-	import { preferencesStore, favoritesStore } from '$lib/state.js';
+	import { preferencesStore, favoritesStore } from '$lib/stores';
 
 	function openNewTab(url: string) {
 		url = location.origin + url;

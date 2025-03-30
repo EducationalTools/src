@@ -24,7 +24,7 @@
 	import PanelLeft from 'lucide-svelte/icons/panel-left';
 
 	// App state and data
-	import { preferencesStore } from '$lib/state.js';
+	import { preferencesStore } from '$lib/stores';
 	import { gmaes } from '$lib/gmaes.js';
 
 	// Props
