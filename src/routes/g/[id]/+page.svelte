@@ -7,6 +7,7 @@
 	import { toast } from 'svelte-sonner';
 
 	// Icons
+	import Refresh from 'lucide-svelte/icons/refresh-cw';
 	import Fullscreen from 'lucide-svelte/icons/maximize';
 	import OpenInNewTab from 'lucide-svelte/icons/external-link';
 	import Share from 'lucide-svelte/icons/share';
@@ -51,7 +52,10 @@
 		<p class="text-xl">{gmaedata?.description}</p>
 		<div class="flex-grow"></div>
 		<div class="flex flex-col gap-3">
-			<Button variant="outline">Reload</Button>
+			<Button variant="outline">
+				<Refresh class="h-6 w-6" />
+				Reload
+			</Button>
 			<Button
 				variant="outline"
 				onclick={() => {
