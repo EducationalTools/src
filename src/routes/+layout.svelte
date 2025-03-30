@@ -22,6 +22,7 @@
 	<title>EduTools</title>
 </svelte:head>
 
+<!-- https://github.com/sveltejs/svelte/issues/3105#issuecomment-1868393333 -->
 <div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
 
 <Toaster />
