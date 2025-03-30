@@ -329,7 +329,12 @@
 		{/each}
 		<Command.Group heading="More">
 			{#if $preferencesStore.experimentalFeatures}
-				<Command.Item>
+				<Command.Item
+					onSelect={() => {
+						settingsOpen.current = true;
+						commandOpen = false;
+					}}
+				>
 					<span>Settings</span>
 				</Command.Item>
 			{/if}
