@@ -250,8 +250,8 @@
 			</Sidebar.Menu>
 		</Sidebar.Group>
 	</Sidebar.Content>
-	{#if $preferencesStore.experimentalFeatures === true}
-		<Sidebar.Footer>
+	<Sidebar.Footer>
+		{#if $preferencesStore.experimentalFeatures === true}
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton>
 					{#snippet child({ props })}
@@ -268,18 +268,18 @@
 					Settings
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
-			<Sidebar.MenuItem>
-				<Sidebar.MenuButton
-					onclick={() => {
-						sidebar.toggle();
-					}}
-				>
-					<PanelLeft />
-					Sidebar
-				</Sidebar.MenuButton>
-			</Sidebar.MenuItem>
-		</Sidebar.Footer>
-	{/if}
+		{/if}
+		<Sidebar.MenuItem>
+			<Sidebar.MenuButton
+				onclick={() => {
+					sidebar.toggle();
+				}}
+			>
+				<PanelLeft />
+				Sidebar
+			</Sidebar.MenuButton>
+		</Sidebar.MenuItem>
+	</Sidebar.Footer>
 	<Sidebar.Rail />
 </Sidebar.Root>
 
