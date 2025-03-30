@@ -13,11 +13,16 @@
 
 	// Third-party utilities
 	import { ModeWatcher } from 'mode-watcher';
+	import clsx from 'clsx';
+
+	import { preferencesStore } from '$lib/stores';
 </script>
 
 <svelte:head>
 	<title>EduTools</title>
 </svelte:head>
+
+<div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
 
 <Toaster />
 <ModeWatcher defaultMode={'dark'} />
