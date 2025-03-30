@@ -17,6 +17,7 @@
 			<Dialog.Title>Settings</Dialog.Title>
 		</Dialog.Header>
 		Appearence
+		<Dialog.Description>Most of these themes haven't been implemented yet.</Dialog.Description>
 		<Select.Root type="single" bind:value={$preferencesStore.theme}>
 			<Select.Trigger>
 				{triggerContent}
