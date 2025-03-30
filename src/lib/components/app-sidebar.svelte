@@ -3,6 +3,7 @@
 	import type { ComponentProps } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { page } from '$app/state';
+	import clsx from 'clsx';
 
 	// UI Components
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
@@ -118,7 +119,12 @@
 					{#snippet child({ props })}
 						<a href="/" {...props}>
 							<div
-								class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary p-1 text-sidebar-primary-foreground"
+								class={clsx(
+									'flex aspect-square size-8 items-center justify-center rounded-lg p-1 text-sidebar-primary-foreground',
+									$preferencesStore.experimentalFeatures
+										? 'bg-sidebar-accent'
+										: 'bg-sidebar-primary'
+								)}
 							>
 								<img src="/edutools-white.svg" alt="" />
 							</div>
