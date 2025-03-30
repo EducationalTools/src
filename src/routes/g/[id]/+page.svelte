@@ -10,7 +10,7 @@
 	import Fullscreen from 'lucide-svelte/icons/maximize';
 	import OpenInNewTab from 'lucide-svelte/icons/external-link';
 	import Share from 'lucide-svelte/icons/share';
-	import Star from 'lucide-svelte/icons/star';
+	import Bookmark from 'lucide-svelte/icons/bookmark';
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';
@@ -50,31 +50,28 @@
 		<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
 		<p class="text-xl">{gmaedata?.description}</p>
 		<div class="flex-grow"></div>
-		<div class="flex flex-row gap-3">
+		<div class="flex flex-col gap-3">
+			<Button variant="outline">Reload</Button>
 			<Button
 				variant="outline"
-				size="icon"
-				class="flex-1"
 				onclick={() => {
 					document.querySelector('iframe')?.requestFullscreen();
 				}}
-				><span class="sr-only">Fullscreen</span>
+			>
 				<Fullscreen class="h-6 w-6" />
+				Fullscreen
 			</Button>
 			<Button
 				variant="outline"
-				size="icon"
-				class="flex-1"
 				onclick={() => {
 					if (gmaedata?.url) openNewTab(gmaedata.url);
 				}}
-				><span class="sr-only">Open in new tab</span>
+			>
 				<OpenInNewTab class="h-6 w-6" />
+				New tab
 			</Button>
 			<Button
 				variant="outline"
-				size="icon"
-				class="flex-1"
 				onclick={() => {
 					if (navigator.share) {
 						navigator
@@ -90,13 +87,12 @@
 						toast.error('Failed to share link, copied to clipboard instead.');
 					}
 				}}
-				><span class="sr-only">Share</span>
+			>
 				<Share class="h-6 w-6" />
+				Share
 			</Button>
 			<Button
 				variant="outline"
-				size="icon"
-				class="flex-1"
 				onclick={() => {
 					if (gmaedata?.id) {
 						if ($favoritesStore.includes(gmaedata.id)) {
@@ -106,11 +102,13 @@
 						}
 					}
 				}}
-				><span class="sr-only">Open in new tab</span>
+			>
 				{#if gmaedata?.id && $favoritesStore.includes(gmaedata.id)}
-					<Star class="h-6 w-6 text-red-400" />
+					<Bookmark class="h-6 w-6 text-red-400" />
+					Saved
 				{:else}
-					<Star class="h-6 w-6" />
+					<Bookmark class="h-6 w-6" />
+					Save
 				{/if}
 			</Button>
 		</div>
