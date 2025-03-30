@@ -121,7 +121,7 @@
 						<a href="/" {...props}>
 							<div
 								class={clsx(
-									'flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-accent p-1 text-sidebar-primary-foreground'
+									'flex aspect-square size-8 items-center justify-center rounded-lg bg-gray-700 p-1 text-sidebar-primary-foreground'
 								)}
 							>
 								<img src="/edutools-white.svg" alt="" />
