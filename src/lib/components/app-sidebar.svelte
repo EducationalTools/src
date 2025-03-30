@@ -26,6 +26,7 @@
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
 	import { gmaes } from '$lib/gmaes.js';
+	import { settingsOpen } from '$lib/state';
 
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
@@ -269,7 +270,11 @@
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton>
+				<Sidebar.MenuButton
+					onclick={() => {
+						settingsOpen.current = true;
+					}}
+				>
 					<Settings />
 					Settings
 				</Sidebar.MenuButton>
