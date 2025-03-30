@@ -52,7 +52,15 @@
 		<p class="text-xl">{gmaedata?.description}</p>
 		<div class="flex-grow"></div>
 		<div class="flex flex-col gap-3">
-			<Button variant="outline">
+			<Button
+				variant="outline"
+				onclick={() => {
+					const iframe = document.querySelector('iframe');
+					if (iframe && gmaedata?.url) {
+						iframe.src = gmaedata.url;
+					}
+				}}
+			>
 				<Refresh class="h-6 w-6" />
 				Reload
 			</Button>
