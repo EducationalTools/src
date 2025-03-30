@@ -8,6 +8,8 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import * as Command from '$lib/components/ui/command/index.js';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
+	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
+	const sidebar = useSidebar();
 
 	// Lucide icons
 	import Wrench from 'lucide-svelte/icons/wrench';
@@ -18,6 +20,7 @@
 	import Check from 'lucide-svelte/icons/check';
 	import Code from 'lucide-svelte/icons/code';
 	import Settings from 'lucide-svelte/icons/settings';
+	import PanelLeft from 'lucide-svelte/icons/panel-left';
 
 	// App state and data
 	import { preferencesStore } from '$lib/state.js';
@@ -263,6 +266,16 @@
 				<Sidebar.MenuButton>
 					<Settings />
 					Settings
+				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+			<Sidebar.MenuItem>
+				<Sidebar.MenuButton
+					onclick={() => {
+						sidebar.toggle();
+					}}
+				>
+					<PanelLeft />
+					Sidebar
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 		</Sidebar.Footer>
