@@ -121,10 +121,7 @@
 						<a href="/" {...props}>
 							<div
 								class={clsx(
-									'flex aspect-square size-8 items-center justify-center rounded-lg p-1 text-sidebar-primary-foreground',
-									$preferencesStore.experimentalFeatures
-										? 'bg-sidebar-accent'
-										: 'bg-sidebar-primary'
+									'flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-accent p-1 text-sidebar-primary-foreground'
 								)}
 							>
 								<img src="/edutools-white.svg" alt="" />
@@ -147,7 +144,7 @@
 							{...props}
 						>
 							<div
-								class="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground"
+								class="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary"
 							>
 								<Search class="size-4" />
 							</div>
