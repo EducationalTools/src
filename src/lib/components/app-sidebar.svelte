@@ -84,7 +84,7 @@
 						url: '/tools/password-generator'
 					},
 					{
-						title: 'Random Number Generator',
+						title: 'Random Number Gen',
 						url: '/tools/random-number-generator'
 					}
 				]
