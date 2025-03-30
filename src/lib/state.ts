@@ -1,1 +1,1 @@
-export let settingsOpen = $state(false);
+export let settingsOpen = $state({ current: false });
