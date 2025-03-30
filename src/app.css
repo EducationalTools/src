@@ -127,6 +127,36 @@
 		--sidebar-border: var(--border);
 		--sidebar-ring: var(--ring);
 	}
+
+	body:has(#theme.black) {
+		--background: 0 0% 0%;
+		--foreground: 0 0% 100%;
+		--card: 0 0% 0%;
+		--card-foreground: 0 0% 100%;
+		--popover: 0 0% 0%;
+		--popover-foreground: 0 0% 100%;
+		--primary: 0 0% 100%;
+		--primary-foreground: 0 0% 0%;
+		--secondary: 0 0% 0%;
+		--secondary-foreground: 0 0% 100%;
+		--muted: 0 0% 0%;
+		--muted-foreground: 0 0% 100%;
+		--accent: 0 0% 100%;
+		--accent-foreground: 0 0% 0%;
+		--destructive: 0 0% 100%;
+		--destructive-foreground: 0 0% 0%;
+		--border: 0 0% 100%;
+		--input: 0 0% 100%;
+		--ring: 0 0% 100%;
+		--sidebar-background: var(--primary-foreground);
+		--sidebar-foreground: var(--primary);
+		--sidebar-primary: var(--primary);
+		--sidebar-primary-foreground: var(--primary-foreground);
+		--sidebar-accent: var(--accent);
+		--sidebar-accent-foreground: var(--accent-foreground);
+		--sidebar-border: var(--border);
+		--sidebar-ring: var(--ring);
+	}
 }
 
 @layer base {
