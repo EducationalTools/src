@@ -3,11 +3,14 @@
 	import type { ComponentProps } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { page } from '$app/state';
+	import clsx from 'clsx';
 
 	// UI Components
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import * as Command from '$lib/components/ui/command/index.js';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
+	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
+	const sidebar = useSidebar();
 
 	// Lucide icons
 	import Wrench from 'lucide-svelte/icons/wrench';
@@ -18,10 +21,12 @@
 	import Check from 'lucide-svelte/icons/check';
 	import Code from 'lucide-svelte/icons/code';
 	import Settings from 'lucide-svelte/icons/settings';
+	import PanelLeft from 'lucide-svelte/icons/panel-left';
 
 	// App state and data
-	import { preferencesStore } from '$lib/state.js';
+	import { preferencesStore } from '$lib/stores';
 	import { gmaes } from '$lib/gmaes.js';
+	import { settingsOpen } from '$lib/state.svelte';
 
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
@@ -80,7 +85,7 @@
 						url: '/tools/password-generator'
 					},
 					{
-						title: 'Random Number Generator',
+						title: 'Random Number Gen',
 						url: '/tools/random-number-generator'
 					}
 				]
@@ -115,7 +120,9 @@
 					{#snippet child({ props })}
 						<a href="/" {...props}>
 							<div
-								class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary p-1 text-sidebar-primary-foreground"
+								class={clsx(
+									'flex aspect-square size-8 items-center justify-center rounded-lg bg-gray-700 p-1 text-sidebar-primary-foreground'
+								)}
 							>
 								<img src="/edutools-white.svg" alt="" />
 							</div>
@@ -137,7 +144,7 @@
 							{...props}
 						>
 							<div
-								class="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground"
+								class="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary"
 							>
 								<Search class="size-4" />
 							</div>
@@ -247,8 +254,8 @@
 			</Sidebar.Menu>
 		</Sidebar.Group>
 	</Sidebar.Content>
-	{#if $preferencesStore.experimentalFeatures === true}
-		<Sidebar.Footer>
+	<Sidebar.Footer>
+		{#if $preferencesStore.experimentalFeatures === true}
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton>
 					{#snippet child({ props })}
@@ -260,13 +267,27 @@
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton>
+				<Sidebar.MenuButton
+					onclick={() => {
+						settingsOpen.current = true;
+					}}
+				>
 					<Settings />
 					Settings
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
-		</Sidebar.Footer>
-	{/if}
+		{/if}
+		<Sidebar.MenuItem>
+			<Sidebar.MenuButton
+				onclick={() => {
+					sidebar.toggle();
+				}}
+			>
+				<PanelLeft />
+				Sidebar
+			</Sidebar.MenuButton>
+		</Sidebar.MenuItem>
+	</Sidebar.Footer>
 	<Sidebar.Rail />
 </Sidebar.Root>
 
@@ -305,7 +326,12 @@
 		{/each}
 		<Command.Group heading="More">
 			{#if $preferencesStore.experimentalFeatures}
-				<Command.Item>
+				<Command.Item
+					onSelect={() => {
+						settingsOpen.current = true;
+						commandOpen = false;
+					}}
+				>
 					<span>Settings</span>
 				</Command.Item>
 			{/if}

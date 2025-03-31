@@ -13,11 +13,17 @@
 
 	// Third-party utilities
 	import { ModeWatcher } from 'mode-watcher';
+	import clsx from 'clsx';
+
+	import { preferencesStore } from '$lib/stores';
 </script>
 
 <svelte:head>
 	<title>EduTools</title>
 </svelte:head>
+
+<!-- https://github.com/sveltejs/svelte/issues/3105#issuecomment-1868393333 -->
+<div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
 
 <Toaster />
 <ModeWatcher defaultMode={'dark'} />
@@ -26,6 +32,5 @@
 	<AppSidebar />
 	<Sidebar.Inset>
 		{@render children()}
-		<Sidebar.Trigger class="fixed bottom-2 translate-x-2" />
 	</Sidebar.Inset>
 </Sidebar.Provider>
