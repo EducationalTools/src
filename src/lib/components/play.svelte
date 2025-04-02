@@ -1,9 +1,6 @@
 <script lang="ts">
 	let { id } = $props();
 
-	// Framework imports
-	import { page } from '$app/state';
-
 	// Components
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { toast } from 'svelte-sonner';
