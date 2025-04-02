@@ -15,7 +15,8 @@
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';
-	import { preferencesStore, favoritesStore } from '$lib/stores';
+	import { preferencesStore, favoritesStore, historyStore } from '$lib/stores';
+	import { onMount } from 'svelte';
 
 	function openNewTab(url: string) {
 		url = location.origin + url;
@@ -41,6 +42,17 @@
 	}
 
 	const gmaedata = $derived(getGameById(page.params.id));
+
+	onMount(() => {
+		let history = $historyStore;
+		if (history.includes(page.params.id)) {
+			history = history.filter((id) => id !== page.params.id);
+		}
+
+		history.push(page.params.id);
+
+		historyStore.set(history);
+	});
 </script>
 
 <div class="flex h-full w-full flex-row gap-3 p-3">
