@@ -23,6 +23,11 @@ const gmaes = [
 		url: '/_app/tools/crappybird/index.html'
 	},
 	{
+		name: 'Monkey Mart',
+		description: 'Monkeys have feelings to you know',
+		url: '/_app/tools/monkeymart/index.html'
+	},
+	{
 		name: 'Slope',
 		description:
 			'A game where you roll a ball down a slope until you either fall off or touch red (skill issue',
