@@ -9,7 +9,7 @@ body:
       label: Gmae Link
       description: A link to where you can play the gmae.
     validations:
-      required: true
+      required: false
   - type: input
     id: gmae-git-link
     attributes:
