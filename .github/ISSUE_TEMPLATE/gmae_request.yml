@@ -2,7 +2,7 @@ name: Gmae request
 description: Request a gmae to be added
 title: '[Gmae Request] '
 labels: ['gmae', 'enhancement']
-type: "Gmae"
+type: 'Gmae'
 body:
   - type: input
     id: gmae-link
