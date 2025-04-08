@@ -20,7 +20,7 @@
 		"@tailwindcss/typography": "^0.5.16",
 		"@types/md5": "^2.3.5",
 		"autoprefixer": "^10.4.21",
-		"bits-ui": "1.3.16",
+		"bits-ui": "1.3.18",
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.487.0",
 		"mode-watcher": "^0.5.1",
