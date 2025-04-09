@@ -1,7 +1,8 @@
 name: Tool request
 description: Request a tool to be added
 title: '[Tool Request] '
-labels: ['tool', 'enhancement']
+labels: ['tool']
+type: 'Feature'
 body:
   - type: textarea
     id: description

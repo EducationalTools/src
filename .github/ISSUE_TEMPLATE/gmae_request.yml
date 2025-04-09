@@ -1,7 +1,8 @@
 name: Gmae request
 description: Request a gmae to be added
 title: '[Gmae Request] '
-labels: ['gmae', 'enhancement']
+labels: ['gmae']
+type: 'Feature'
 body:
   - type: input
     id: gmae-link
@@ -9,7 +10,7 @@ body:
       label: Gmae Link
       description: A link to where you can play the gmae.
     validations:
-      required: true
+      required: false
   - type: input
     id: gmae-git-link
     attributes:
