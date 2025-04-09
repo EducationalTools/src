@@ -28,8 +28,9 @@
 <Toaster />
 <ModeWatcher defaultMode={'dark'} />
 <Settings />
-<Sidebar.Provider>
+<Sidebar.Provider class="flex flex-col md:flex-row">
 	<AppSidebar />
+	<Sidebar.Trigger class="m-1 p-1 md:hidden" />
 	<Sidebar.Inset>
 		{@render children()}
 	</Sidebar.Inset>
