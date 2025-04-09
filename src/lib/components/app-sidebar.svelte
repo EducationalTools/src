@@ -254,7 +254,7 @@
 			</Sidebar.Menu>
 		</Sidebar.Group>
 	</Sidebar.Content>
-	<Sidebar.Footer>
+	<Sidebar.Footer class="[&>li]:list-none">
 		{#if $preferencesStore.experimentalFeatures === true}
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton>
