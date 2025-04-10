@@ -28,11 +28,6 @@ const gmaes = [
 		url: '/_app/tools/floppybird/index.html'
 	},
 	{
-		name: 'Grindcraft Remastered',
-		description: 'Mine resources and craft items in this idle game.',
-		url: '/_app/tools/grindcraftremastered/index.html'
-	},
-	{
 		name: 'Hole.io',
 		description: 'Consume objects with your black hole to grow bigger.',
 		url: '/_app/tools/holeio/index.html'
