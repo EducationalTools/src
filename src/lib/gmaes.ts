@@ -83,11 +83,6 @@ const gmaes = [
 		url: '/_app/tools/scrab/index.html'
 	},
 	{
-		name: 'Slenderman',
-		description: 'Collect pages while avoiding the Slenderman in this horror game.',
-		url: '/_app/tools/slenderman/index.html'
-	},
-	{
 		name: 'Slope',
 		description:
 			'A game where you roll a ball down a slope until you either fall off or touch red (skill issue',
