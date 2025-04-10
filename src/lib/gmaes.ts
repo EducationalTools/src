@@ -68,11 +68,6 @@ const gmaes = [
 		url: '/_app/tools/monopoly/index.html'
 	},
 	{
-		name: 'Paper.io 2',
-		description: 'Capture territory in this IO game by drawing boundaries.',
-		url: '/_app/tools/paperio2/index.html'
-	},
-	{
 		name: 'Pokemon Red',
 		description: 'Play the classic Pokemon Red game on your browser.',
 		url: '/_app/tools/pokemonred/index.html'
