@@ -58,11 +58,6 @@ const gmaes = [
 		url: '/_app/tools/minecraft/index.html'
 	},
 	{
-		name: 'Minecraft Trial',
-		description: 'Try out the Minecraft experience.',
-		url: '/_app/tools/minecrafttrial/index.html'
-	},
-	{
 		name: 'Monkey Mart',
 		description: 'Monkeys have feelings to you know',
 		url: '/_app/tools/monkeymart/index.html'
