@@ -89,7 +89,7 @@ const gmaes = [
 		url: '/_app/tools/slope/index.html'
 	},
 	{
-		name: 'Snow Rider',
+		name: 'Snow Rider (3d)',
 		description: 'Ride down snowy slopes, performing tricks and avoiding obstacles.',
 		url: '/_app/tools/snowrider/index.html'
 	},
