@@ -28,11 +28,6 @@ const gmaes = [
 		url: '/_app/tools/floppybird/index.html'
 	},
 	{
-		name: 'Fruit Ninja',
-		description: 'Slice fruit with your finger while avoiding bombs.',
-		url: '/_app/tools/fruitninja/index.html'
-	},
-	{
 		name: 'Grindcraft Remastered',
 		description: 'Mine resources and craft items in this idle game.',
 		url: '/_app/tools/grindcraftremastered/index.html'
