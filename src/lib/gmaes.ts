@@ -24,98 +24,98 @@ const gmaes = [
 	},
 	{
 		name: 'Floppy Bird',
-		description: 'Guide a bird through pipes by tapping to flap its wings.',
+		description: 'Some other derivative of Flappy Bird...',
 		url: '/_app/tools/floppybird/index.html'
 	},
 	{
 		name: 'Hole.io',
-		description: 'Consume objects with your black hole to grow bigger.',
+		description: 'another io game...',
 		url: '/_app/tools/holeio/index.html'
 	},
 	{
 		name: 'House of Hazards',
-		description: 'Navigate through hazardous house environments.',
+		description: 'this is surely not compliant with ohs regulations',
 		url: '/_app/tools/houseofhazards/index.html'
 	},
 	{
 		name: 'Idle Breakout',
-		description: 'Break bricks automatically in this idle game version of Breakout.',
+		description: 'break bricks, get money, buy upgrades, realise you wasted your life',
 		url: '/_app/tools/idlebreakout/index.html'
 	},
 	{
 		name: 'Mario Kart',
-		description: 'Race as Mario characters on various tracks.',
+		description: 'dont sue me :)',
 		url: '/_app/tools/mariokart/index.html'
 	},
 	{
 		name: 'Minecraft',
-		description: 'Build and explore in this blocky world.',
+		description: 'I, am steve',
 		url: '/_app/tools/minecraft/index.html'
 	},
 	{
 		name: 'Monkey Mart',
-		description: 'Monkeys have feelings to you know',
+		description: 'Monkeys have feelings too you know',
 		url: '/_app/tools/monkeymart/index.html'
 	},
 	{
 		name: 'Monopoly',
-		description: 'Buy properties and bankrupt your opponents in this classic board game.',
+		description: 'see, google, apple, microsoft',
 		url: '/_app/tools/monopoly/index.html'
 	},
 	{
 		name: 'Pokemon Red',
-		description: 'Play the classic Pokemon Red game on your browser.',
+		description: 'some emulator gmae',
 		url: '/_app/tools/pokemonred/index.html'
 	},
 	{
-		name: 'PTTM',
-		description: 'Play this mysterious game (PTTM).',
+		name: 'Pedal to the Metal',
+		description: 'trust me, you have to listen to all the music in this game',
 		url: '/_app/tools/pttm/index.html'
 	},
 	{
 		name: 'Scrabble',
-		description: 'Form words from letter tiles in this word game.',
+		description: 'something with words',
 		url: '/_app/tools/scrab/index.html'
 	},
 	{
 		name: 'Slope',
 		description:
-			'A game where you roll a ball down a slope until you either fall off or touch red (skill issue',
+			'A game where you roll a ball down a slope until you either fall off or touch red (skill issue)',
 		url: '/_app/tools/slope/index.html'
 	},
 	{
 		name: 'Snow Rider (3d)',
-		description: 'Ride down snowy slopes, performing tricks and avoiding obstacles.',
+		description: 'avoid litteraly everything appart from presents or something',
 		url: '/_app/tools/snowrider/index.html'
 	},
 	{
 		name: 'Solitaire',
-		description: 'Play the classic card game of patience.',
+		description: 'something with cards idk',
 		url: '/_app/tools/solit/index.html'
 	},
 	{
 		name: 'SUPERHOT',
-		description: 'Time moves only when you move in this FPS game.',
+		description: 'fps but time only moves when you move',
 		url: '/_app/tools/superhot/index.html'
 	},
 	{
 		name: 'We have subway surfers at home',
-		description: 'Surf through this Star Wars themed endless runner.',
+		description: 'highly advanced subway surfers clone',
 		url: '/_app/tools/swsurfer/index.html'
 	},
 	{
 		name: 'Tetris',
-		description: 'Arrange falling blocks to create complete lines.',
+		description: 'you know tetris',
 		url: '/_app/tools/tetris/index.html'
 	},
 	{
 		name: 'Tic Tac Toe',
-		description: 'Play the classic game of X and O.',
+		description: 'very nice tic tac toe game',
 		url: '/_app/tools/tictactoe/index.html'
 	},
 	{
-		name: 'XT Pamplona',
-		description: 'Run with the bulls in this game based on the famous Spanish festival.',
+		name: 'Extreme Pamplona',
+		description: 'something maybe to do will bulls (thanks to github copilot lol)',
 		url: '/_app/tools/xtpamplona/index.html'
 	}
 ];
