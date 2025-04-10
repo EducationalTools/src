@@ -104,7 +104,7 @@ const gmaes = [
 		url: '/_app/tools/superhot/index.html'
 	},
 	{
-		name: 'SW Surfer',
+		name: 'We have subway surfers at home',
 		description: 'Surf through this Star Wars themed endless runner.',
 		url: '/_app/tools/swsurfer/index.html'
 	},
