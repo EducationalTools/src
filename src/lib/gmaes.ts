@@ -78,7 +78,7 @@ const gmaes = [
 		url: '/_app/tools/pttm/index.html'
 	},
 	{
-		name: 'Scrab',
+		name: 'Scrabble',
 		description: 'Form words from letter tiles in this word game.',
 		url: '/_app/tools/scrab/index.html'
 	},
