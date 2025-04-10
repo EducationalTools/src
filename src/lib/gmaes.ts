@@ -23,11 +23,6 @@ const gmaes = [
 		url: '/_app/tools/crappybird/index.html'
 	},
 	{
-		name: 'Fake Paper.io 2',
-		description: 'Capture territory in this multiplayer IO game.',
-		url: '/_app/tools/fakepaperio2/index.html'
-	},
-	{
 		name: 'Floppy Bird',
 		description: 'Guide a bird through pipes by tapping to flap its wings.',
 		url: '/_app/tools/floppybird/index.html'
