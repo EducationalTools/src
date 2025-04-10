@@ -99,11 +99,6 @@ const gmaes = [
 		url: '/_app/tools/solit/index.html'
 	},
 	{
-		name: 'SPR',
-		description: 'Play this SPR game.',
-		url: '/_app/tools/spr/index.html'
-	},
-	{
 		name: 'SUPERHOT',
 		description: 'Time moves only when you move in this FPS game.',
 		url: '/_app/tools/superhot/index.html'
