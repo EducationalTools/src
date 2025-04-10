@@ -78,11 +78,6 @@ const gmaes = [
 		url: '/_app/tools/pttm/index.html'
 	},
 	{
-		name: 'Rocket League',
-		description: 'Play soccer with rocket-powered cars.',
-		url: '/_app/tools/rocketleague/index.html'
-	},
-	{
 		name: 'Scrab',
 		description: 'Form words from letter tiles in this word game.',
 		url: '/_app/tools/scrab/index.html'
