@@ -117,6 +117,11 @@ const gmaes = [
 		name: 'Extreme Pamplona',
 		description: 'something maybe to do will bulls (thanks to github copilot lol)',
 		url: '/_app/tools/xtpamplona/index.html'
+	},
+	{
+		name: 'Star Battles',
+		description: 'defeat the destruction star (made by @Bombrrr and @Inglan)',
+		url: '/_app/tools/starbattles/index.html'
 	}
 ];
 
