@@ -127,7 +127,7 @@ const gmaes = [
 	{
 		name: 'The Jarsio',
 		description: 'some sort of horror gmae but only works on some mirrors (edutools.ingo.au)',
-		url: '/_app/tools/jarred/index.html'
+		url: '/_app/tools/jarred/jarred.html'
 	}
 ];
 
