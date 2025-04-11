@@ -123,6 +123,11 @@ const gmaes = [
 		name: 'Star Battles',
 		description: 'defeat the destruction star (made by @Bombrrr and @Inglan)',
 		url: '/_app/tools/starbattles/index.html'
+	},
+	{
+		name: 'The Jarsio',
+		description: 'some sort of horror gmae but only works on some mirrors (edutools.ingo.au)',
+		url: '/_app/tools/jarred/index.html'
 	}
 ];
 
