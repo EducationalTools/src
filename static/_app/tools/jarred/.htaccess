@@ -1,0 +1,8 @@
+# Enable Cross-Origin Isolation for SharedArrayBuffer
+Header set Cross-Origin-Opener-Policy "same-origin"
+Header set Cross-Origin-Embedder-Policy "require-corp"
+
+# Allow content to be served with correct CORS headers
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type"
