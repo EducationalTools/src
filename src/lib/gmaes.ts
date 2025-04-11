@@ -120,8 +120,7 @@ const gmaes = [
 	},
 	{
 		name: 'Star Battles',
-		description:
-			'defeat the destruction star (made by @Bombrrr and @Inglan)',
+		description: 'defeat the destruction star (made by @Bombrrr and @Inglan)',
 		url: '/_app/tools/starbattles/index.html'
 	}
 ];
