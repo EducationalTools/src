@@ -100,7 +100,8 @@ const gmaes = [
 	},
 	{
 		name: 'We have subway surfers at home',
-		description: 'highly advanced subway surfers clone',
+		description:
+			'highly advanced subway surfers clone that doesnt seem to work on firefox because its so advanced',
 		url: '/_app/tools/swsurfer/index.html'
 	},
 	{
