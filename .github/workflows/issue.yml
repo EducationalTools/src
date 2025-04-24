@@ -18,6 +18,6 @@ jobs:
         with:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_PRIVATE_KEY }}
-      #      - run: |
-      #          pip install
+      - run: |
+          pip install requests
       - run: python ci/scripts/issue.py -n ${{ github.event.issue.number }} -t ${{ steps.app-token.outputs.token }}

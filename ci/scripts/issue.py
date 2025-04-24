@@ -1,5 +1,4 @@
 import argparse, requests
-from requests.models import Request
 
 parser = argparse.ArgumentParser(description='Process issue')
 parser.add_argument('-n', '--number', type=int, help='Issue number')
