@@ -19,5 +19,6 @@ jobs:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_PRIVATE_KEY }}
       - run: |
-          pip install requests
-      - run: python ci/scripts/issue.py -n ${{ github.event.issue.number }} -t ${{ steps.app-token.outputs.token }}
+          python -m venv venv
+          venv/bin/pip install requests
+      - run: venv/bin/python ci/scripts/issue.py -n ${{ github.event.issue.number }} -t ${{ steps.app-token.outputs.token }}
