@@ -3,6 +3,7 @@
 
 	// Components
 	import { Button } from '$lib/components/ui/button/index.js';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
 	import { toast } from 'svelte-sonner';
 
 	// Icons
@@ -63,24 +64,32 @@
 		<p class="text-xl">{gmaedata?.description}</p>
 		<div class="flex-grow"></div>
 		<div class="flex flex-col gap-3">
-			<script
-				src="https://giscus.app/client.js"
-				data-repo="EducationalTools/src"
-				data-repo-id="R_kgDONeKybw"
-				data-category="Comments"
-				data-category-id="DIC_kwDONeKyb84CpZld"
-				data-mapping="specific"
-				data-term={'gmae/' + gmaedata?.name}
-				data-strict="1"
-				data-reactions-enabled="1"
-				data-emit-metadata="0"
-				data-input-position="bottom"
-				data-theme="preferred_color_scheme"
-				data-lang="en"
-				crossorigin="anonymous"
-				async
-			>
-			</script>
+			<Accordion.Root type="single">
+				<Accordion.Item value="item-1">
+					<Accordion.Trigger>Comments</Accordion.Trigger>
+					<Accordion.Content>
+						<script
+							src="https://giscus.app/client.js"
+							data-repo="EducationalTools/src"
+							data-repo-id="R_kgDONeKybw"
+							data-category="Comments"
+							data-category-id="DIC_kwDONeKyb84CpZld"
+							data-mapping="specific"
+							data-term="asdf"
+							data-strict="1"
+							data-reactions-enabled="1"
+							data-emit-metadata="0"
+							data-input-position="top"
+							data-theme="transparent_dark"
+							data-lang="en"
+							data-loading="lazy"
+							crossorigin="anonymous"
+							async
+						>
+						</script>
+					</Accordion.Content>
+				</Accordion.Item>
+			</Accordion.Root>
 			<Button
 				variant="outline"
 				onclick={() => {
