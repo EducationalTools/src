@@ -1,0 +1,17 @@
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  issue_response:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # Needed to comment on issues
+    steps:
+      - name: Issue Comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            test
