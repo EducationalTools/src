@@ -2,7 +2,7 @@
 	let { id } = $props();
 
 	// Components
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
 	import { Drawer } from 'vaul-svelte';
 	import { toast } from 'svelte-sonner';
 
@@ -65,7 +65,7 @@
 		<div class="flex-grow"></div>
 		<div class="flex flex-col gap-3">
 			<Drawer.Root direction="right">
-				<Drawer.Trigger>Comments</Drawer.Trigger>
+				<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>Comments</Drawer.Trigger>
 				<Drawer.Content
 					class="fixed bottom-0 right-0 top-0 z-20 flex w-6/12 flex-col rounded-l-xl bg-background p-3 outline-none"
 					style="--initial-transform: calc(100% + 8px)"
