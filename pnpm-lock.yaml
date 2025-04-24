@@ -87,6 +87,9 @@ importers:
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
+      vaul-svelte:
+        specifier: 1.0.0-next.7
+        version: 1.0.0-next.7(svelte@5.27.1)
       vite:
         specifier: ^6.2.6
         version: 6.2.6(jiti@1.21.7)(yaml@2.7.0)
@@ -1445,6 +1448,12 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  vaul-svelte@1.0.0-next.7:
+    resolution: {integrity: sha512-7zN7Bi3dFQixvvbUJY9uGDe7Ws/dGZeBQR2pXdXmzQiakjrxBvWo0QrmsX3HK+VH+SZOltz378cmgmCS9f9rSg==}
+    engines: {node: '>=18', pnpm: '>=8.7.0'}
+    peerDependencies:
+      svelte: ^5.0.0
+
   vite@6.2.6:
     resolution: {integrity: sha512-9xpjNl3kR4rVDZgPNdTL0/c6ao4km69a/2ihNQbcANz8RuCOK3hQBmLSJf3bRKVQjVMda+YvizNE8AwvogcPbw==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
@@ -2781,6 +2790,12 @@ snapshots:
       picocolors: 1.1.1
 
   util-deprecate@1.0.2: {}
+
+  vaul-svelte@1.0.0-next.7(svelte@5.27.1):
+    dependencies:
+      runed: 0.23.4(svelte@5.27.1)
+      svelte: 5.27.1
+      svelte-toolbelt: 0.7.1(svelte@5.27.1)
 
   vite@6.2.6(jiti@1.21.7)(yaml@2.7.0):
     dependencies:
