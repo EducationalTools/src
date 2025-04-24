@@ -3,7 +3,7 @@
 
 	// Components
 	import { Button } from '$lib/components/ui/button/index.js';
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
+	import { Drawer } from 'vaul-svelte';
 	import { toast } from 'svelte-sonner';
 
 	// Icons
@@ -64,31 +64,34 @@
 		<p class="text-xl">{gmaedata?.description}</p>
 		<div class="flex-grow"></div>
 		<div class="flex flex-col gap-3">
-			<Accordion.Root type="single">
-				<Accordion.Item value="item-1">
-					<Accordion.Trigger>Comments</Accordion.Trigger>
-					<Accordion.Content>
-						<script
-							src="https://giscus.app/client.js"
-							data-repo="EducationalTools/src"
-							data-repo-id="R_kgDONeKybw"
-							data-category="Comments"
-							data-category-id="DIC_kwDONeKyb84CpZld"
-							data-mapping="specific"
-							data-term={'Gmae - ' + gmaedata?.name}
-							data-strict="1"
-							data-reactions-enabled="1"
-							data-emit-metadata="0"
-							data-input-position="top"
-							data-theme="transparent_dark"
-							data-lang="en"
-							data-loading="lazy"
-							crossorigin="anonymous"
-							async
-						></script>
-					</Accordion.Content>
-				</Accordion.Item>
-			</Accordion.Root>
+			<Drawer.Root direction="right">
+				<Drawer.Trigger>Comments</Drawer.Trigger>
+				<Drawer.Content
+					class="fixed bottom-0 right-0 top-0 z-20 flex w-6/12 flex-col rounded-l-xl bg-background p-3 outline-none"
+					style="--initial-transform: calc(100% + 8px)"
+				>
+					<h2 class="text-3xl">Comments</h2>
+					<div class="giscus" style="flex-grow: 1; overflow: auto;"></div>
+					<script
+						src="https://giscus.app/client.js"
+						data-repo="EducationalTools/src"
+						data-repo-id="R_kgDONeKybw"
+						data-category="Comments"
+						data-category-id="DIC_kwDONeKyb84CpZld"
+						data-mapping="specific"
+						data-term={'Gmae - ' + gmaedata?.name}
+						data-strict="1"
+						data-reactions-enabled="1"
+						data-emit-metadata="0"
+						data-input-position="top"
+						data-theme="preferred_color_scheme"
+						data-lang="en"
+						crossorigin="anonymous"
+						async
+					></script>
+				</Drawer.Content>
+				<Drawer.Overlay class="fixed inset-0 left-0 top-0 z-10 bg-black/50" />
+			</Drawer.Root>
 			<Button
 				variant="outline"
 				onclick={() => {
