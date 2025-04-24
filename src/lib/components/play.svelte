@@ -75,7 +75,7 @@
 							data-category="Comments"
 							data-category-id="DIC_kwDONeKyb84CpZld"
 							data-mapping="specific"
-							data-term="asdf"
+							data-term={'gmae/' + gmaedata?.name}
 							data-strict="1"
 							data-reactions-enabled="1"
 							data-emit-metadata="0"
