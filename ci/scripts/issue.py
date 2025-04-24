@@ -7,7 +7,7 @@ args = parser.parse_args()
 
 if args.number:
     issue_request = requests.get(
-        f"https://api.github.com/repos/EducationalTools/repo/issues/{args.number}",
+        f"https://api.github.com/repos/EducationalTools/src/issues/{args.number}",
         headers={
             "Accept": "application/vnd.github+json",
             "Authorization": f"Bearer {args.token}",
