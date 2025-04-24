@@ -9,9 +9,10 @@ jobs:
     permissions:
       issues: write # Needed to comment on issues
     steps:
-      - name: Issue Comment
-        uses: peter-evans/create-or-update-comment@v4
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v5
         with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            test
+          python-version: '3.13'
+      - run: |
+          pip install PyJWT cryptography
+      - run: python /ci/scripts/issue.py -n ${{ github.event.issue.number }}
