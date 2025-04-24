@@ -12,6 +12,7 @@
 	import OpenInNewTab from 'lucide-svelte/icons/external-link';
 	import Share from 'lucide-svelte/icons/share';
 	import Bookmark from 'lucide-svelte/icons/bookmark';
+	import Comment from 'lucide-svelte/icons/message-square';
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';
@@ -65,7 +66,10 @@
 		<div class="flex-grow"></div>
 		<div class="flex flex-col gap-3">
 			<Drawer.Root direction="right">
-				<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>Comments</Drawer.Trigger>
+				<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>
+					<Comment class="h-6 w-6" />
+					Comments
+				</Drawer.Trigger>
 				<Drawer.Content
 					class="fixed bottom-0 right-0 top-0 z-20 flex w-6/12 flex-col rounded-l-xl bg-background p-3 outline-none"
 					style="--initial-transform: calc(100% + 8px)"
