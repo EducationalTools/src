@@ -15,4 +15,4 @@ jobs:
           python-version: '3.13'
       - run: |
           pip install PyJWT cryptography
-      - run: python /ci/scripts/issue.py -n ${{ github.event.issue.number }}
+      - run: python ci/scripts/issue.py -n ${{ github.event.issue.number }}
