@@ -2,7 +2,8 @@
 	let { id } = $props();
 
 	// Components
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
+	import { Drawer } from 'vaul-svelte';
 	import { toast } from 'svelte-sonner';
 
 	// Icons
@@ -11,6 +12,7 @@
 	import OpenInNewTab from 'lucide-svelte/icons/external-link';
 	import Share from 'lucide-svelte/icons/share';
 	import Bookmark from 'lucide-svelte/icons/bookmark';
+	import Comment from 'lucide-svelte/icons/message-square';
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';
@@ -63,6 +65,37 @@
 		<p class="text-xl">{gmaedata?.description}</p>
 		<div class="flex-grow"></div>
 		<div class="flex flex-col gap-3">
+			<Drawer.Root direction="right">
+				<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>
+					<Comment class="h-6 w-6" />
+					Comments
+				</Drawer.Trigger>
+				<Drawer.Content
+					class="fixed bottom-0 right-0 top-0 z-20 flex w-[500px] max-w-full flex-col rounded-l-xl bg-background p-3 outline-none"
+					style="--initial-transform: calc(100% + 8px)"
+				>
+					<h2 class="text-3xl">Comments</h2>
+					<div class="giscus" style="flex-grow: 1; overflow: auto;"></div>
+					<script
+						src="https://giscus.app/client.js"
+						data-repo="EducationalTools/src"
+						data-repo-id="R_kgDONeKybw"
+						data-category="Comments"
+						data-category-id="DIC_kwDONeKyb84CpZld"
+						data-mapping="specific"
+						data-term={'Gmae - ' + gmaedata?.name}
+						data-strict="1"
+						data-reactions-enabled="1"
+						data-emit-metadata="0"
+						data-input-position="top"
+						data-theme="preferred_color_scheme"
+						data-lang="en"
+						crossorigin="anonymous"
+						async
+					></script>
+				</Drawer.Content>
+				<Drawer.Overlay class="fixed inset-0 left-0 top-0 z-10 bg-black/50" />
+			</Drawer.Root>
 			<Button
 				variant="outline"
 				onclick={() => {
