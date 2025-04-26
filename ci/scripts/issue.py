@@ -23,7 +23,7 @@ if args.number:
                 "Authorization": f"Bearer {args.token}",
                 "X-GitHub-Api-Version": "2022-11-28"
             },
-            json={"body": "title: " + issue_request.json()["title"]}
+            json={"body": "body: " + issue_request.json()["body"]}
         )
         if comment_request.status_code == 201:
             print("Comment added successfully")
