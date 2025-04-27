@@ -38,4 +38,4 @@ if issue_request.json()["title"].startswith("[Gmae Request] "):
         response = "Please check the following links (you may have to use a personal computer as they are probably blocked) to check if they are the right gmae:\n"
         results = search(issue_request.json()["title"].replace("[Gmae Request] ", "") + "site:github.io")
         for result in results:
-            response += f"- {result.url}\n"
+            response += f"- {result}\n"
