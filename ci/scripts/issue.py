@@ -1,4 +1,5 @@
 import argparse, requests
+from googlesearch import search
 
 parser = argparse.ArgumentParser(description='Process issue')
 parser.add_argument('-n', '--number', type=int, help='Issue number')
@@ -31,4 +32,10 @@ if not issue_request.status_code == 200:
     exit(1)
 
 if issue_request.json()["title"].startswith("[Gmae Request] "):
-    issue_comment("this is a gmae request")
+    if issue_request.json()["title"] == "[Gmae Request] <name here>":
+        issue_comment("Please rename this issue with the name of the game")
+    else:
+        response = "Please check the following links (you may have to use a personal computer as they are probably blocked) to check if they are the right gmae:\n"
+        results = search(issue_request.json()["title"].replace("[Gmae Request] ", "") + "site:github.io")
+        for result in results:
+            response += f"- {result.url}\n"

@@ -22,5 +22,5 @@ jobs:
           private-key: ${{ secrets.GH_PRIVATE_KEY }}
       - run: |
           python -m venv venv
-          venv/bin/pip install requests
+          venv/bin/pip install requests googlesearch-python
       - run: venv/bin/python ci/scripts/issue.py -n ${{ github.event.issue.number }} -t ${{ steps.app-token.outputs.token }}
