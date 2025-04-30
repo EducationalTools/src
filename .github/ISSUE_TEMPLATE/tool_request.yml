@@ -1,6 +1,6 @@
 name: Tool request
 description: Request a tool to be added
-title: '[Tool Request] '
+title: '[Tool Request] <name here>'
 labels: ['tool']
 type: 'Feature'
 body:
