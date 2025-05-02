@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"testbuild": "rm -rf ./static/_app && vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -21,7 +22,7 @@
 		"@tailwindcss/typography": "^0.5.16",
 		"@types/md5": "^2.3.5",
 		"autoprefixer": "^10.4.21",
-		"bits-ui": "1.3.19",
+		"bits-ui": "1.4.1",
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.503.0",
 		"mode-watcher": "^1.0.2",
