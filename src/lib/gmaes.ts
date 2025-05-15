@@ -132,7 +132,7 @@ const gmaes = [
 	{
 		name: 'Amazing Strange Rope Police',
 		description: 'we have gta at home (before gta 6)',
-		url: '/_app/tools/amazing-rope-police'
+		url: '/_app/tools/amazing-rope-police/index.html'
 	}
 ];
 
