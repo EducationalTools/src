@@ -128,6 +128,11 @@ const gmaes = [
 		name: 'The Jarsio',
 		description: 'some sort of horror gmae but only works on some mirrors (edutools.ingo.au)',
 		url: '/_app/tools/jarred/jarred.html'
+	},
+	{
+		name: 'Amazing Strange Rope Police',
+		description: 'we have gta at home (before gta 6)',
+		url: '/_app/tools/amazing-rope-police/index.html'
 	}
 ];
 
