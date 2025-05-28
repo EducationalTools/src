@@ -135,9 +135,10 @@ const gmaes = [
 		url: '/_app/tools/amazing-rope-police/index.html'
 	},
 	{
-	name: "Escape Road",
-	description: "Are you ready for a thrilling online police escape in Escape Road? You are a robber who has just committed a bank robbery and must escape from the police chase. To escape this chase, sharp driving skills, drifting, and quick reflexes to avoid obstacles are essential. The chaotic streets with loud police sirens can easily make you make mistakes. Can you overcome and outrun successfully? or something like that",
-	url: "/_app/tools/escaperoad/index.html"
+		name: 'Escape Road',
+		description:
+			'Are you ready for a thrilling online police escape in Escape Road? You are a robber who has just committed a bank robbery and must escape from the police chase. To escape this chase, sharp driving skills, drifting, and quick reflexes to avoid obstacles are essential. The chaotic streets with loud police sirens can easily make you make mistakes. Can you overcome and outrun successfully? or something like that',
+		url: '/_app/tools/escaperoad/index.html'
 	}
 ];
 
