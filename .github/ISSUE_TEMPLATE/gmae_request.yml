@@ -10,7 +10,7 @@ body:
       label: Gmae Link
       description: A link to where you can play the gmae.
     validations:
-      required: false
+      required: true
   - type: input
     id: gmae-git-link
     attributes:
@@ -18,3 +18,8 @@ body:
       description: If the gmae is open source, provide a link to a repository.
     validations:
       required: false
+  - type: checkboxes
+    attributes:
+      options:
+        - label: "I have edited the title to add the name of the gmae, and I haven't deleted [Gmae Request] from the title."
+          required: true
