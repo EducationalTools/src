@@ -20,6 +20,7 @@ body:
       required: false
   - type: checkboxes
     attributes:
+      label: "Important"
       options:
         - label: "I have edited the title to add the name of the gmae, and I haven't deleted [Gmae Request] from the title."
           required: true
