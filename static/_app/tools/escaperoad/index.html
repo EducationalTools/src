@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="25011401/theme/game.css">
+	<meta name="robots" content="noindex, nofollow">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500&display=swap" rel="stylesheet">
+	<title>Escape Road</title>
+	<meta name="description" content=""/>
+	<style type="text/css">
+		.jss1:before {
+			top: 0;
+			width: 100%;
+			filter: blur(16px);
+			height: 100%;
+			content: "";
+			display: block;
+			opacity: .5;
+			z-index: 0;
+			position: absolute;
+			background-size: cover;
+			background-image: url("25011401/loading.png")
+		}
+	</style>
+
+	<script>
+		var buildUrl = "Build";
+		var versionFolder = "25011401/";
+		buildUrl = versionFolder + buildUrl;
+		var loaderUrl = buildUrl + "/escape-road-v25011401.loader.js";
+		var config = {
+			dataUrl: buildUrl + "/escape-road-v25011401.data.unityweb",
+			frameworkUrl: buildUrl + "/escape-road-v25011401.framework.js.unityweb",
+			codeUrl: buildUrl + "/escape-road-v25011401.wasm.unityweb",
+			streamingAssetsUrl: versionFolder+"StreamingAssets",
+			companyName: "null",
+			productName: "Escape Road",
+			productVersion: "25011401",
+			pubId: ""
+		};
+		config.gameId = "escape-road";
+		config.eventLog=true;
+		config.buildAPI = "null";
+		let currentDate = new Date();
+		let endLogDate = new Date("2025-03-08T07:31:48.701Z");
+		if(currentDate>endLogDate){
+			config.eventLog=false;
+		}
+		config.enableMoreGame="yes";
+		config.enablePromotion = true;
+		config.gdHost=isHostOnGD();
+		if(config.gdHost){
+			config.enableMoreGame="no";
+			config.enablePromotion = false;
+			config.eventLog = false;
+			let pathSegments = window.location.pathname.split('/');
+			config.gdGameId = pathSegments[1];
+		}
+		function isHostOnGD() {
+			let domainParts = window.location.hostname.split('.');
+			let mainDomain = domainParts.slice(-2).join('.');
+			return (mainDomain=="gamedistribution.com");
+		}
+	</script>
+	<script id="gmsoft-jssdk" src="gmsoftsdk_v5.js"></script>
+</head>
+
+<body>
+<div id="unity-container" style="display: none;">
+	<canvas id="unity-canvas"></canvas>
+</div>
+<div id="loadingBlock" style="">
+	<div class="jss31 jss34 jss1">
+	<div style="position: absolute; font-family: Arial, Helvetica, sans-serif;	bottom: 10px; right: 10px; font-size: 18px; color: #ffffff; opacity: 0.5;">25011401</div>
+		<div class="spinner"></div>
+		<div class="jss31 jss34 jss48" style="flex: 1 1 0%;">
+			<div class="jss32">
+				<div class="jss7 jss9 jss20 jss3">
+					<div class="jss125">
+						<div class="jss123">
+						 <img src="25011401/logo.png">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--PRODUCT_VERSION:25011401END-->
+		<div class="jss31 jss34" style="flex: 3 1 0%;">
+			<div class="jss32">
+				<div class="jss31 jss34 jss39 jss50 gameloader">
+					<div class="jss32">
+						<div class="gameloader-game-name">Escape Road</div>
+					</div>
+					<div class="jss32">
+						<div class="jss32 gameloader-logo">
+							<img id="game-logo" src="25011401/loading.png">
+						</div>
+					</div>
+					<div class="jss32">
+						<div>
+							<div class="gameloader-progressbar">
+								<div class="gameloader-progressbar-progress" id="progress_fill"
+										 style="width: 0%;"></div>
+							</div>
+							<div class="gameloader-progress-info">Game Loading...</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<script>
+		var progressElement = document.getElementById('progress_fill');
+		var container =	document.getElementById("unity-container");
+		var canvas =	document.getElementById("unity-canvas");
+		var loadingBar = document.querySelector("#loadingBlock");
+		var progressBarFull = document.querySelector("#progress_fill");
+		var progress_text = document.querySelector(".gameloader-progress-info");
+		let text_percent = "";
+		var script = document.createElement("script");
+		script.src = loaderUrl;
+		script.onload = () => {
+		createUnityInstance(canvas, config, (progress) => {
+			progressElement.style.width = 100 * progress + "%";
+			text_percent = "Downloading file: " + Math.round(progress*100) + "%";
+			progress_text.innerText = text_percent;
+			if (progress >= 99) {
+				progress_text.innerText = "Game Loading ...";
+			}
+		}).then((unityInstance) => {
+			window.unityInstance = unityInstance;
+			setTimeout(function() {
+				loadingBar.style.display = "none";
+				window.focus();
+			}, 2000);
+			container.style.display = "block";
+		}).catch((message) => {
+			alert(message);
+		});
+		};
+		document.body.appendChild(script);
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics-compat.js"></script>
+	<script type="module">
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+ apiKey: "AIzaSyAwZ4bK-7JjO1sTWJQct_n0j2prA-w14jM",
+ authDomain: "escape-road.firebaseapp.com",
+ projectId: "escape-road",
+ storageBucket: "escape-road.firebasestorage.app",
+ messagingSenderId: "828919022324",
+ appId: "1:828919022324:web:acc6136ddbd55d303254a1",
+ measurementId: "G-1KL9BG7P9V"
+};
+		if(firebaseConfig ){
+			window.dataLayer = window.dataLayer || [];
+			window.gtag = function () { window.dataLayer.push(arguments); }
+
+			window.gtag("config", firebaseConfig.measurementId, {
+			  cookie_domain: window.location.hostname,
+			  cookie_flags: "SameSite=None;Secure",
+			});
+			// Initialize Firebase
+			const app = firebase.initializeApp(firebaseConfig);
+			//const auth = getAuth(app);
+		}
+	</script>
+	<script>
+		function firebaseSetUserProperties(props) {
+			firebase.analytics().setUserProperties(props);
+		}
+		function firebaseLogEvent(event_name) {
+			firebase.analytics().logEvent(event_name);
+		}
+		function firebaseLogEventParameter(event_name, event_param) {
+			firebase.analytics().logEvent(event_name, event_param);
+		}
+	</script>
+
+</body>
+</html>

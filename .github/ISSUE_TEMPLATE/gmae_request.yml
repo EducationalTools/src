@@ -10,7 +10,7 @@ body:
       label: Gmae Link
       description: A link to where you can play the gmae.
     validations:
-      required: false
+      required: true
   - type: input
     id: gmae-git-link
     attributes:
@@ -18,3 +18,15 @@ body:
       description: If the gmae is open source, provide a link to a repository.
     validations:
       required: false
+  - type: checkboxes
+    attributes:
+      label: 'Important'
+      options:
+        - label: 'I have edited the title to add the name of the gmae'
+          required: true
+        - label: "I haven't deleted [Gmae Request] from the title"
+          required: true
+        - label: 'I have checked [other issues](https://github.com/EducationalTools/src/issues?q=is%3Aissue%20label%3Agmae%20type%3AFeature) before sending this one.'
+          required: true
+        - label: 'I have actually checked if the gmae already exists on the site'
+          required: true
