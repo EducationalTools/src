@@ -16,6 +16,17 @@
 	import clsx from 'clsx';
 
 	import { preferencesStore } from '$lib/stores';
+
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		const urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.get('experimental') === 'true') {
+			$preferencesStore.experimentalFeatures = true;
+			goto('/');
+		}
+	});
 </script>
 
 <svelte:head>
