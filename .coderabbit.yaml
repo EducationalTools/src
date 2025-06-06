@@ -13,3 +13,6 @@ reviews:
     base_branches:
       - main
       - prod
+  tools:
+    languagetool:
+      enabled: false
