@@ -144,6 +144,10 @@ const gmaes = [
 		name: 'Scratch Nextbots',
 		description: 'very legit gmae totally not made in scratch',
 		url: '/_app/tools/scratch-nextbots/index.html'
+	},
+	{
+		name: 'Mine sweeper (scratch edition)',
+		description: 'minesweeper made in scratch very nice animation'
 	}
 ];
 
