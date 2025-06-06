@@ -147,7 +147,8 @@ const gmaes = [
 	},
 	{
 		name: 'Mine sweeper (scratch edition)',
-		description: 'minesweeper made in scratch very nice animation'
+		description: 'minesweeper (with a space) made in scratch very nice animation. press space',
+		url: '/_app/tools/mine-sweeper/index.html'
 	}
 ];
 
