@@ -52,8 +52,8 @@ importers:
         specifier: ^0.512.0
         version: 0.512.0(svelte@5.28.2)
       mode-watcher:
-        specifier: ^1.0.6
-        version: 1.0.6(svelte@5.28.2)
+        specifier: ^1.0.7
+        version: 1.0.7(svelte@5.28.2)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -1005,8 +1005,8 @@ packages:
     resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  mode-watcher@1.0.6:
-    resolution: {integrity: sha512-6bG6KfPPaZoaw523rLR3z8dlCK/dskIBv7z7qdRPizD5b5BDYyCCLQ33FSCRTd7Ai3i7FWIBuXCZaF5IVVC3GQ==}
+  mode-watcher@1.0.7:
+    resolution: {integrity: sha512-ZGA7ZGdOvBJeTQkzdBOnXSgTkO6U6iIFWJoyGCTt6oHNg9XP9NBvS26De+V4W2aqI+B0yYXUskFG2VnEo3zyMQ==}
     peerDependencies:
       svelte: ^5.27.0
 
@@ -1353,8 +1353,8 @@ packages:
     resolution: {integrity: sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==}
     engines: {node: '>=12'}
 
-  style-to-object@1.0.8:
-    resolution: {integrity: sha512-xT47I/Eo0rwJmaXC4oilDGDWLohVhR6o/xAQcPQN8q6QBuZVL8qMYL85kLmST5cPjAorwvqIA4qXTRQoYHaL6g==}
+  style-to-object@1.0.9:
+    resolution: {integrity: sha512-G4qppLgKu/k6FwRpHiGiKPaPTFcG3g4wNVX/Qsfu+RqQM30E7Tyu/TEgxcL9PNLF5pdRLwQdE3YKKf+KF2Dzlw==}
 
   sucrase@3.35.0:
     resolution: {integrity: sha512-8EbVDiu9iN/nESwxeSxDKe0dunta1GOlHufmSSXxMD2z2/tMZpDMpvXQGsc+ajGo8y2uYUmixaSRUc/QPoQ0GA==}
@@ -2360,7 +2360,7 @@ snapshots:
 
   minipass@7.1.2: {}
 
-  mode-watcher@1.0.6(svelte@5.28.2):
+  mode-watcher@1.0.7(svelte@5.28.2):
     dependencies:
       runed: 0.25.0(svelte@5.28.2)
       svelte: 5.28.2
@@ -2685,7 +2685,7 @@ snapshots:
     dependencies:
       ansi-regex: 6.1.0
 
-  style-to-object@1.0.8:
+  style-to-object@1.0.9:
     dependencies:
       inline-style-parser: 0.2.4
 
@@ -2725,7 +2725,7 @@ snapshots:
     dependencies:
       clsx: 2.1.1
       runed: 0.23.4(svelte@5.28.2)
-      style-to-object: 1.0.8
+      style-to-object: 1.0.9
       svelte: 5.28.2
 
   svelte@5.28.2:
