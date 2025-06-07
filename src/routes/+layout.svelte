@@ -23,6 +23,7 @@
 
 	import posthog from 'posthog-js';
 	import { browser } from '$app/environment';
+	import Button from '$lib/components/ui/button/button.svelte';
 
 	let trackerBlocker = $state(false);
 
@@ -57,6 +58,11 @@
 			>We use Posthog to track errors and usage to improve EduTools. Please disable your tracker/ad
 			blocker to allow this. Don't worry, we won't add any ads.</Dialog.Description
 		>
+		<Dialog.Footer>
+			<Dialog.Close>
+				<Button>Ok</Button>
+			</Dialog.Close>
+		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>
 
