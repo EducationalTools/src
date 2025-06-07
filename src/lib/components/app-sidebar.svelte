@@ -163,7 +163,7 @@
 			</Sidebar.MenuItem>
 		</Sidebar.Menu>
 	</Sidebar.Header>
-	<Sidebar.Content>
+	<Sidebar.Content class="overflow-visible">
 		<Sidebar.Group>
 			<Sidebar.Menu>
 				{#each mainNavigation as groupItem (groupItem.title)}
