@@ -23,6 +23,8 @@
 	import posthog from 'posthog-js';
 	import { browser } from '$app/environment';
 
+	let trackerBlocker = $state(false);
+
 	onMount(() => {
 		const urlParams = new URLSearchParams(window.location.search);
 		if (urlParams.get('experimental') === 'true') {
@@ -34,6 +36,10 @@
 				api_host: 'https://us.i.posthog.com',
 				person_profiles: 'always',
 				capture_exceptions: true
+			});
+
+			fetch('https://us-assets.i.posthog.com/static/exception-autocapture.js').catch(() => {
+				trackerBlocker = true;
 			});
 		}
 	});
