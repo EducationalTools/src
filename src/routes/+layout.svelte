@@ -16,6 +16,8 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import clsx from 'clsx';
 
+	import { persisted } from 'svelte-persisted-store';
+
 	import { preferencesStore } from '$lib/stores';
 
 	import { goto } from '$app/navigation';
@@ -25,7 +27,9 @@
 	import { browser } from '$app/environment';
 	import Button from '$lib/components/ui/button/button.svelte';
 
-	let trackerBlocker = $state(false);
+	let trackerBlockerDialog = $state(false);
+
+	const trackerDialogClosed = persisted('trackerDialogClosed', false);
 
 	onMount(() => {
 		const urlParams = new URLSearchParams(window.location.search);
@@ -41,7 +45,10 @@
 			});
 
 			fetch('https://us-assets.i.posthog.com/static/exception-autocapture.js').catch(() => {
-				trackerBlocker = true;
+				console.log(navigator.onLine);
+				console.log($trackerDialogClosed);
+
+				if (navigator.onLine && !$trackerDialogClosed) trackerBlockerDialog = true;
 			});
 		}
 	});
@@ -51,7 +58,7 @@
 	<title>EduTools</title>
 </svelte:head>
 
-<Dialog.Root open={trackerBlocker}>
+<Dialog.Root open={trackerBlockerDialog}>
 	<Dialog.Content>
 		<Dialog.Title>Notice</Dialog.Title>
 		<Dialog.Description
@@ -59,6 +66,9 @@
 			blocker to allow this. Don't worry, we won't add any ads.</Dialog.Description
 		>
 		<Dialog.Footer>
+			<Dialog.Close onclick={() => ($trackerDialogClosed = true)}>
+				<Button variant="ghost">Don't show again</Button>
+			</Dialog.Close>
 			<Dialog.Close>
 				<Button>Close</Button>
 			</Dialog.Close>
