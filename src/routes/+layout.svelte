@@ -60,7 +60,7 @@
 		>
 		<Dialog.Footer>
 			<Dialog.Close>
-				<Button>Ok</Button>
+				<Button>Close</Button>
 			</Dialog.Close>
 		</Dialog.Footer>
 	</Dialog.Content>
