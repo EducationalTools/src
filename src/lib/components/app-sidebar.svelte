@@ -209,12 +209,19 @@
 																	<a
 																		href={item.url}
 																		{...props}
+																		class={clsx(
+																			'group/link z-50 text-nowrap hover:overflow-visible',
+																			props.class || ''
+																		)}
 																		target={item.url.startsWith('http') ? '_blank' : undefined}
 																		rel={item.url.startsWith('http')
 																			? 'noopener noreferrer'
 																			: undefined}
 																	>
 																		{item.title}
+																		<div
+																			class="absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent to-sidebar group-hover/link:opacity-0"
+																		></div>
 																	</a>
 																{/snippet}
 															</Sidebar.MenuSubButton>
