@@ -154,6 +154,16 @@ const gmaes = [
 		name: 'Run 3',
 		description: 'probably a gmae where you run',
 		url: '/_app/tools/run3/index.html'
+	},
+	{
+		name: 'Dadish',
+		description: 'some sort of gmae with a talking radish or smth',
+		url: '/_app/tools/dadish/index.html'
+	},
+	{
+		name: 'Dadish 2',
+		description: 'theres another one???',
+		url: '/_app/tools/dadish-2/index.html'
 	}
 ];
 
