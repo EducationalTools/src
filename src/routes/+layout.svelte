@@ -10,10 +10,13 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import AppSidebar from '$lib/components/app-sidebar.svelte';
 	import Settings from '$lib/components/settings.svelte';
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
 	// Third-party utilities
 	import { ModeWatcher } from 'mode-watcher';
 	import clsx from 'clsx';
+
+	import { persisted } from 'svelte-persisted-store';
 
 	import { preferencesStore } from '$lib/stores';
 
@@ -22,6 +25,11 @@
 
 	import posthog from 'posthog-js';
 	import { browser } from '$app/environment';
+	import Button from '$lib/components/ui/button/button.svelte';
+
+	let trackerBlockerDialog = $state(false);
+
+	const trackerDialogClosed = persisted('trackerDialogClosed', false);
 
 	onMount(() => {
 		const urlParams = new URLSearchParams(window.location.search);
@@ -35,6 +43,13 @@
 				person_profiles: 'always',
 				capture_exceptions: true
 			});
+
+			fetch('https://us-assets.i.posthog.com/static/exception-autocapture.js').catch(() => {
+				console.log(navigator.onLine);
+				console.log($trackerDialogClosed);
+
+				if (navigator.onLine && !$trackerDialogClosed) trackerBlockerDialog = true;
+			});
 		}
 	});
 </script>
@@ -42,6 +57,24 @@
 <svelte:head>
 	<title>EduTools</title>
 </svelte:head>
+
+<Dialog.Root open={trackerBlockerDialog}>
+	<Dialog.Content>
+		<Dialog.Title>Notice</Dialog.Title>
+		<Dialog.Description
+			>We use Posthog to track errors and usage to improve EduTools. Please disable your tracker/ad
+			blocker to allow this. Don't worry, we won't add any ads.</Dialog.Description
+		>
+		<Dialog.Footer>
+			<Dialog.Close onclick={() => ($trackerDialogClosed = true)}>
+				<Button variant="ghost">Don't show again</Button>
+			</Dialog.Close>
+			<Dialog.Close>
+				<Button>Close</Button>
+			</Dialog.Close>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
 
 <!-- https://github.com/sveltejs/svelte/issues/3105#issuecomment-1868393333 -->
 <div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
