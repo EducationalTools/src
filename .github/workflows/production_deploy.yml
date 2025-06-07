@@ -1,0 +1,32 @@
+name: 'Move Project Items to Production'
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  move_to_production:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_PRIVATE_KEY }}
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          venv/bin/pip install requests
+      - name: Move items from Done to In Production
+        run: |
+          venv/bin/python ci/scripts/move_to_production.py \
+            -t ${{ steps.app-token.outputs.token }} \
+            -o EducationalTools \
+            -p 4
