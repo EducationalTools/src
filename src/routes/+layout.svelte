@@ -10,6 +10,7 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import AppSidebar from '$lib/components/app-sidebar.svelte';
 	import Settings from '$lib/components/settings.svelte';
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
 	// Third-party utilities
 	import { ModeWatcher } from 'mode-watcher';
@@ -48,6 +49,16 @@
 <svelte:head>
 	<title>EduTools</title>
 </svelte:head>
+
+<Dialog.Root open={trackerBlocker}>
+	<Dialog.Content>
+		<Dialog.Title>Notice</Dialog.Title>
+		<Dialog.Description
+			>We use Posthog to track errors and usage to improve EduTools. Please disable your tracker/ad
+			blocker to allow this. Don't worry, we won't add any ads.</Dialog.Description
+		>
+	</Dialog.Content>
+</Dialog.Root>
 
 <!-- https://github.com/sveltejs/svelte/issues/3105#issuecomment-1868393333 -->
 <div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
