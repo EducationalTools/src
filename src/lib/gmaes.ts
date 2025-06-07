@@ -164,6 +164,12 @@ const gmaes = [
 		name: 'Dadish 2',
 		description: 'theres another one???',
 		url: '/_app/tools/dadish-2/index.html'
+	},
+	{
+		name: 'Subway surfers',
+		description:
+			'a game where you surf on a subway thanks zed auto complete no its a gmae where you commit crimes such as grafiti and evading police',
+		url: '/_app/tools/subway-surfers/index.html'
 	}
 ];
 
