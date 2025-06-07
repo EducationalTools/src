@@ -149,6 +149,16 @@ const gmaes = [
 		name: 'Mine sweeper (scratch edition)',
 		description: 'minesweeper (with a space) made in scratch very nice animation. press space',
 		url: '/_app/tools/mine-sweeper/index.html'
+	},
+	{
+		name: 'Dadish',
+		description: 'some sort of gmae with a talking radish or smth',
+		url: '/_app/tools/dadish/index.html'
+	},
+	{
+		name: 'Dadish 2',
+		description: 'theres another one???',
+		url: '/_app/tools/dadish-2/index.html'
 	}
 ];
 
