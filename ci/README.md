@@ -5,20 +5,26 @@ This directory contains automation scripts for managing GitHub issues and projec
 ## Scripts Overview
 
 ### 1. `issue.py` - Issue Management
+
 Automatically processes GitHub issues, particularly game requests:
+
 - Detects issues with `[Gmae Request]` prefix
 - Searches for relevant links on GitHub Pages
 - Posts automated comments with search results
 
 ### 2. `move_to_production.py` - Project Board Automation
+
 Moves project items from "Done" status to "In Production" status:
+
 - Queries GitHub Projects v2 API using GraphQL
 - Finds all items with status "Done"
 - Updates them to "In Production" status
 - Used for production deployment automation
 
 ### 3. `test_production_move.py` - Testing Script
+
 Manual testing script for the production move operation:
+
 - Allows testing the move operation without triggering workflows
 - Supports dry-run mode (future enhancement)
 - Useful for debugging and validation
@@ -26,28 +32,36 @@ Manual testing script for the production move operation:
 ## GitHub Workflows
 
 ### Issue Management (`.github/workflows/issue.yml`)
+
 Triggers on:
+
 - Issue opened
 - Issue edited
 
 Actions:
+
 - Runs `issue.py` script
 - Posts automated comments for game requests
 
 ### Production Deployment (`.github/workflows/production_deploy.yml`)
+
 Triggers on:
+
 - Push to `prod` branch
 
 Actions:
+
 - Runs `move_to_production.py` script
 - Moves all "Done" items to "In Production" in project #4
 
 ## Setup Requirements
 
 ### GitHub App Configuration
+
 Both workflows use a GitHub App for authentication:
 
 1. **Secrets Required:**
+
    - `GH_APP_ID` - Your GitHub App ID
    - `GH_PRIVATE_KEY` - Your GitHub App private key
 
@@ -57,7 +71,9 @@ Both workflows use a GitHub App for authentication:
    - Repository: Read (for workflow access)
 
 ### Project Configuration
+
 The production deployment script assumes:
+
 - Organization: `EducationalTools`
 - Project number: `4`
 - Status field with options: "Done" and "In Production"
@@ -67,11 +83,14 @@ These can be customized by modifying the workflow or script parameters.
 ## Usage
 
 ### Automatic Usage
+
 The workflows run automatically based on their triggers:
+
 - Issue workflow: When issues are opened/edited
 - Production workflow: When code is pushed to `prod` branch
 
 ### Manual Testing
+
 To test the production move operation manually:
 
 ```bash
@@ -89,6 +108,7 @@ python ci/scripts/test_production_move.py \
 ```
 
 ### Direct Script Usage
+
 You can also run the scripts directly:
 
 ```bash
@@ -107,6 +127,7 @@ python ci/scripts/move_to_production.py -t YOUR_TOKEN -o EducationalTools -p 4
 ## Error Handling
 
 The scripts include error handling for common scenarios:
+
 - Invalid tokens or permissions
 - Missing projects or fields
 - Network issues
@@ -123,6 +144,7 @@ The project automation uses GitHub's GraphQL API v4 for efficient data retrieval
 ## Future Enhancements
 
 Potential improvements:
+
 - Dry-run mode for testing changes
 - Support for custom field names
 - Better error reporting and logging
