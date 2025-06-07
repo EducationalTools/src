@@ -22,7 +22,7 @@
 		"@tailwindcss/typography": "^0.5.16",
 		"@types/md5": "^2.3.5",
 		"autoprefixer": "^10.4.21",
-		"bits-ui": "1.4.6",
+		"bits-ui": "1.8.0",
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.512.0",
 		"mode-watcher": "^1.0.6",
