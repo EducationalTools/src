@@ -20,11 +20,21 @@
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
+	import posthog from 'posthog-js';
+	import { browser } from '$app/environment';
+
 	onMount(() => {
 		const urlParams = new URLSearchParams(window.location.search);
 		if (urlParams.get('experimental') === 'true') {
 			$preferencesStore.experimentalFeatures = true;
 			goto('/');
+		}
+		if (browser) {
+			posthog.init('phc_jg4gOdigfHQD4MSgrSaO883dp2LjNJbJO7azv61UtI0', {
+				api_host: 'https://us.i.posthog.com',
+				person_profiles: 'always',
+				capture_exceptions: true
+			});
 		}
 	});
 </script>
