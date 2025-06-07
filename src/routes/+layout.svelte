@@ -32,7 +32,8 @@
 		if (browser) {
 			posthog.init('phc_jg4gOdigfHQD4MSgrSaO883dp2LjNJbJO7azv61UtI0', {
 				api_host: 'https://us.i.posthog.com',
-				person_profiles: 'always'
+				person_profiles: 'always',
+				capture_exceptions: true
 			});
 		}
 	});
