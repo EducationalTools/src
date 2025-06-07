@@ -150,6 +150,11 @@ const gmaes = [
 		description: 'minesweeper (with a space) made in scratch very nice animation. press space',
 		url: '/_app/tools/mine-sweeper/index.html'
 	},
+  {
+    name: 'Run 3',
+		description: 'probably a gmae where you run',
+		url: '/_app/tools/run3/index.html'
+  },
 	{
 		name: 'Dadish',
 		description: 'some sort of gmae with a talking radish or smth',
