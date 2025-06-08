@@ -169,7 +169,7 @@ const gmaes = [
 		name: 'Subway surfers',
 		description:
 			'a game where you surf on a subway thanks zed auto complete no its a gmae where you commit crimes such as grafiti and evading police',
-		url: '/_app/tools/subway-surfers/index.html'
+		url: '/_app/tools/subwaysurfers/index.html'
 	}
 ];
 
