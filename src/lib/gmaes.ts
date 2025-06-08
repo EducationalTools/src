@@ -139,6 +139,37 @@ const gmaes = [
 		description:
 			'Are you ready for a thrilling online police escape in Escape Road? You are a robber who has just committed a bank robbery and must escape from the police chase. To escape this chase, sharp driving skills, drifting, and quick reflexes to avoid obstacles are essential. The chaotic streets with loud police sirens can easily make you make mistakes. Can you overcome and outrun successfully? or something like that',
 		url: '/_app/tools/escaperoad/index.html'
+	},
+	{
+		name: 'Scratch Nextbots',
+		description: 'very legit gmae totally not made in scratch',
+		url: '/_app/tools/scratch-nextbots/index.html'
+	},
+	{
+		name: 'Mine sweeper (scratch edition)',
+		description: 'minesweeper (with a space) made in scratch very nice animation. press space',
+		url: '/_app/tools/mine-sweeper/index.html'
+	},
+	{
+		name: 'Run 3',
+		description: 'probably a gmae where you run',
+		url: '/_app/tools/run3/index.html'
+	},
+	{
+		name: 'Dadish',
+		description: 'some sort of gmae with a talking radish or smth',
+		url: '/_app/tools/dadish/index.html'
+	},
+	{
+		name: 'Dadish 2',
+		description: 'theres another one???',
+		url: '/_app/tools/dadish-2/index.html'
+	},
+	{
+		name: 'Subway surfers',
+		description:
+			'a game where you surf on a subway thanks zed auto complete no its a gmae where you commit crimes such as grafiti and evading police',
+		url: '/_app/tools/subwaysurfers/index.html'
 	}
 ];
 

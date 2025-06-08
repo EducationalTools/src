@@ -352,6 +352,7 @@
 @layer base {
 	* {
 		@apply border-border;
+		--sidebar-width: 288px;
 	}
 	body {
 		@apply bg-background text-foreground;

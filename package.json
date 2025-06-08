@@ -14,7 +14,7 @@
 		"lint": "prettier --check ."
 	},
 	"devDependencies": {
-		"@lucide/svelte": "^0.508.0",
+		"@lucide/svelte": "^0.482.0",
 		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.20.8",
@@ -22,15 +22,15 @@
 		"@tailwindcss/typography": "^0.5.16",
 		"@types/md5": "^2.3.5",
 		"autoprefixer": "^10.4.21",
-		"bits-ui": "1.4.6",
+		"bits-ui": "1.8.0",
 		"clsx": "^2.1.1",
-		"lucide-svelte": "^0.503.0",
-		"mode-watcher": "^1.0.6",
+		"lucide-svelte": "^0.512.0",
+		"mode-watcher": "^1.0.7",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"svelte": "^5.28.2",
-		"svelte-check": "^4.1.6",
+		"svelte-check": "^4.2.1",
 		"svelte-sonner": "^0.3.28",
 		"tailwind-merge": "^3.2.0",
 		"tailwind-variants": "^1.0.0",
@@ -43,6 +43,7 @@
 	"dependencies": {
 		"@friendofsvelte/tipex": "0.0.7",
 		"md5": "^2.3.0",
+		"posthog-js": "^1.249.4",
 		"svelte-persisted-store": "^0.12.0"
 	}
 }
