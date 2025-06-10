@@ -1,6 +1,19 @@
 import { generate, generate as generateId } from './idgen';
 
-const gmaes = [
+interface Gmae {
+	name: string;
+	description: string;
+	category: string;
+	tags: string[];
+	links: { name: string; url: string }[];
+	url: string;
+}
+
+interface ParsedGmae extends Gmae {
+	id: string;
+}
+
+const gmaes: Gmae[] = [
 	{
 		name: '2048',
 		description:
@@ -172,16 +185,6 @@ const gmaes = [
 		url: '/_app/tools/subwaysurfers/index.html'
 	}
 ];
-
-interface Gmae {
-	name: string;
-	description: string;
-	url: string;
-}
-
-interface ParsedGmae extends Gmae {
-	id: string;
-}
 
 let parsedGmaes: ParsedGmae[] = [];
 
