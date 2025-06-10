@@ -15,11 +15,13 @@
 	import Share from 'lucide-svelte/icons/share';
 	import Bookmark from 'lucide-svelte/icons/bookmark';
 	import Comment from 'lucide-svelte/icons/message-square';
+	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';
 	import { preferencesStore, favoritesStore, historyStore } from '$lib/stores';
 	import { onMount } from 'svelte';
+	import clsx from 'clsx';
 
 	function openNewTab(url: string) {
 		url = location.origin + url;
@@ -63,6 +65,9 @@
 	></iframe>
 
 	<div class="flex h-full w-72 flex-col gap-2">
+		<a href="/" class={clsx(badgeVariants({ variant: 'secondary' }), 'w-fit')}
+			>{gmaedata?.category}<ArrowRight class="ml-1 size-3" /></a
+		>
 		<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
 		<div class="flex w-full flex-row flex-wrap gap-2">
 			{#each gmaedata?.tags || [] as tag}
