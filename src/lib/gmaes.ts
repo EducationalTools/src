@@ -295,18 +295,15 @@ const gmaes: Gmae[] = [
 let parsedGmaes: ParsedGmae[] = [];
 
 gmaes.forEach((gmae) => {
-	parsedGmaes.push(
-			{
-				id: generateId(gmae.name),
-				category: gmae.category,
-				description: gmae.description,
-				url: gmae.url,
-				links: gmae.links,
-				name: gmae.name,
-				tags: gmae.tags
-			},
-		)
-	);
+	parsedGmaes.push({
+		id: generateId(gmae.name),
+		category: gmae.category,
+		description: gmae.description,
+		url: gmae.url,
+		links: gmae.links,
+		name: gmae.name,
+		tags: gmae.tags
+	});
 });
 
 export function getGameById(id: string) {
