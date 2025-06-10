@@ -5,6 +5,7 @@
 	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
 	import { Drawer } from 'vaul-svelte';
 	import { toast } from 'svelte-sonner';
+	import { Badge } from '$lib/components/ui/badge/index.js';
 
 	// Icons
 	import Refresh from 'lucide-svelte/icons/refresh-cw';
@@ -60,8 +61,13 @@
 	<iframe src={gmaedata?.url} frameborder="0" class="flex-grow rounded" title={gmaedata?.name}
 	></iframe>
 
-	<div class="flex h-full w-72 flex-col">
+	<div class="flex h-full w-72 flex-col gap-2">
 		<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
+		<div class="flex w-full flex-row flex-wrap gap-1">
+			{#each gmaedata?.tags || [] as tag}
+				<Badge variant="outline">#{tag}</Badge>
+			{/each}
+		</div>
 		<p class="text-xl">{gmaedata?.description}</p>
 		<div class="flex-grow"></div>
 		<div class="flex flex-col gap-3">
