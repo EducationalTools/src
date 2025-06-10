@@ -160,32 +160,50 @@ const gmaes: Gmae[] = [
 	{
 		name: 'Solitaire',
 		description: 'something with cards idk',
+		category: 'Strategy',
+		tags: ['cards'],
+		links: [],
 		url: '/_app/tools/solit/index.html'
 	},
 	{
 		name: 'SUPERHOT',
 		description: 'fps but time only moves when you move',
+		category: 'Action',
+		tags: ['fps'],
+		links: [],
 		url: '/_app/tools/superhot/index.html'
 	},
 	{
 		name: 'We have subway surfers at home',
 		description:
 			'highly advanced subway surfers clone that doesnt seem to work on firefox because its so advanced',
+		category: 'Action',
+		tags: [],
+		links: [],
 		url: '/_app/tools/swsurfer/index.html'
 	},
 	{
 		name: 'Tetris',
 		description: 'you know tetris',
+		category: 'Strategy',
+		tags: ['arcade', 'block'],
+		links: [],
 		url: '/_app/tools/tetris/index.html'
 	},
 	{
 		name: 'Tic Tac Toe',
-		description: 'very nice tic tac toe game',
+		description: "also called noughts and crosses if you are a bri'ish lad",
+		category: 'Strategy',
+		tags: [],
+		links: [],
 		url: '/_app/tools/tictactoe/index.html'
 	},
 	{
 		name: 'Extreme Pamplona',
 		description: 'something maybe to do will bulls (thanks to github copilot lol)',
+		category: 'Action',
+		tags: [],
+		links: [{ name: 'Official site', url: 'https://www.crazygames.com/game/extreme-pamplona' }],
 		url: '/_app/tools/xtpamplona/index.html'
 	},
 	{
