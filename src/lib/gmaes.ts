@@ -18,87 +18,143 @@ const gmaes: Gmae[] = [
 		name: '2048',
 		description:
 			'Press arrow keys randomly until you get the 2048 tile. Then continue pressing arrow keys randomly.',
+		category: 'Puzzle',
+		tags: ['kinda-maths', 'casual'],
+		links: [{ name: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/2048_(video_game)' }],
 		url: '/_app/tools/2048/index.html'
 	},
 	{
 		name: 'Bitlife',
 		description: 'Do stupid stuff with a virtual character or something.',
+		category: 'Simulation',
+		tags: [],
+		links: [{ name: 'Official site', url: 'https://lifesimulator.online/' }],
 		url: '/_app/tools/bitlife/index.html'
 	},
 	{
 		name: 'Cookie Clicker',
 		description: 'Waste your life clicking a cookie.',
+		category: 'Idle',
+		tags: ['waste-your-life', 'casual'],
+		links: [{ name: 'Official site', url: 'https://orteil.dashnet.org/cookieclicker/' }],
 		url: '/_app/tools/cookieclicker/index.html'
 	},
 	{
 		name: 'Crappy Bird',
 		description: 'A crappy version of Flappy Bird.',
+		category: 'Action',
+		tags: ['flappy'],
+		links: [],
 		url: '/_app/tools/crappybird/index.html'
 	},
 	{
 		name: 'Floppy Bird',
 		description: 'Some other derivative of Flappy Bird...',
+		category: 'Action',
+		tags: ['flappy'],
+		links: [],
 		url: '/_app/tools/floppybird/index.html'
 	},
 	{
 		name: 'Hole.io',
 		description: 'another io game...',
+		category: 'Action',
+		tags: [],
+		links: [{ name: 'Official site', url: 'https://holeio.com/' }],
 		url: '/_app/tools/holeio/index.html'
 	},
 	{
 		name: 'House of Hazards',
 		description: 'this is surely not compliant with ohs regulations',
+		category: 'Action',
+		tags: [],
+		links: [{ name: 'Official site', url: 'https://houseofhazards.com/' }],
 		url: '/_app/tools/houseofhazards/index.html'
 	},
 	{
 		name: 'Idle Breakout',
 		description: 'break bricks, get money, buy upgrades, realise you wasted your life',
+		category: 'Action',
+		tags: [],
+		links: [{ name: 'Official site', url: 'https://www.coolmathgames.com/0-idle-breakout' }],
 		url: '/_app/tools/idlebreakout/index.html'
 	},
 	{
 		name: 'Mario Kart',
 		description: 'dont sue me :)',
+		category: 'Action',
+		tags: [],
+		links: [
+			{
+				name: 'If you are nintendo and want this taken down email me here',
+				url: 'mailto:me@ingo.au'
+			}
+		],
 		url: '/_app/tools/mariokart/index.html'
 	},
 	{
 		name: 'Minecraft',
 		description: 'I, am steve',
+		category: 'Sandbox',
+		tags: [],
+		links: [],
 		url: '/_app/tools/minecraft/index.html'
 	},
 	{
 		name: 'Monkey Mart',
 		description: 'Monkeys have feelings too you know',
+		category: 'Simulation',
+		tags: [],
+		links: [{ name: 'Official site', url: 'https://monkeymartgame.org/' }],
 		url: '/_app/tools/monkeymart/index.html'
 	},
 	{
 		name: 'Monopoly',
 		description: 'see, google, apple, microsoft',
+		category: 'Strategy',
+		tags: [],
+		links: [],
 		url: '/_app/tools/monopoly/index.html'
 	},
 	{
 		name: 'Pokemon Red',
 		description: 'some emulator gmae',
+		category: 'Adventure',
+		tags: [],
+		links: [],
 		url: '/_app/tools/pokemonred/index.html'
 	},
 	{
 		name: 'Pedal to the Metal',
 		description: 'trust me, you have to listen to all the music in this game',
+		category: 'Action',
+		tags: ['driving', 'scratch', 'made-by-friends'],
+		links: [{ name: 'Scratch', url: 'https://scratch.mit.edu/projects/856661828/' }],
 		url: '/_app/tools/pttm/index.html'
 	},
 	{
 		name: 'Scrabble',
 		description: 'something with words',
+		category: 'Puzzle',
+		tags: [],
+		links: [],
 		url: '/_app/tools/scrab/index.html'
 	},
 	{
 		name: 'Slope',
 		description:
 			'A game where you roll a ball down a slope until you either fall off or touch red (skill issue)',
+		category: 'Action',
+		tags: ['balls'],
+		links: [{ name: 'Official site', url: 'https://slopeonline.online/' }],
 		url: '/_app/tools/slope/index.html'
 	},
 	{
 		name: 'Snow Rider (3d)',
 		description: 'avoid litteraly everything appart from presents or something',
+		category: 'Action',
+		tags: [],
+		links: [],
 		url: '/_app/tools/snowrider/index.html'
 	},
 	{
