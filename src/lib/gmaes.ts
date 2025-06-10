@@ -209,53 +209,85 @@ const gmaes: Gmae[] = [
 	{
 		name: 'Star Battles',
 		description: 'defeat the destruction star (made by @Bombrrr and @Inglan)',
+		category: 'Action',
+		tags: ['star', 'made-by-friends'],
+		links: [
+			{ name: 'Official site', url: 'https://smastudiosau.github.io/projects/starbattle/' },
+			{ name: 'Github', url: 'https://github.com/smastudiosau/star-battles' }
+		],
 		url: '/_app/tools/starbattles/index.html'
 	},
 	{
 		name: 'The Jarsio',
 		description: 'some sort of horror gmae but only works on some mirrors (edutools.ingo.au)',
+		category: 'Horror',
+		tags: ['made-by-friends'],
+		links: [{ name: 'Github', url: 'https://github.com/Bombrrr/The-Jarsio' }],
 		url: '/_app/tools/jarred/jarred.html'
 	},
 	{
 		name: 'Amazing Strange Rope Police',
 		description: 'we have gta at home (before gta 6)',
+		category: 'Action',
+		tags: ['crime'],
+		links: [],
 		url: '/_app/tools/amazing-rope-police/index.html'
 	},
 	{
 		name: 'Escape Road',
-		description:
-			'Are you ready for a thrilling online police escape in Escape Road? You are a robber who has just committed a bank robbery and must escape from the police chase. To escape this chase, sharp driving skills, drifting, and quick reflexes to avoid obstacles are essential. The chaotic streets with loud police sirens can easily make you make mistakes. Can you overcome and outrun successfully? or something like that',
+		description: 'escape the police yay more crime',
+		category: 'Action',
+		tags: ['crime'],
+		links: [],
 		url: '/_app/tools/escaperoad/index.html'
 	},
 	{
 		name: 'Scratch Nextbots',
 		description: 'very legit gmae totally not made in scratch',
+		category: 'Action',
+		tags: ['made-by-friends', 'scratch'],
+		links: [{ name: 'Scratch', url: 'https://scratch.mit.edu/projects/927726453/' }],
 		url: '/_app/tools/scratch-nextbots/index.html'
 	},
 	{
 		name: 'Mine sweeper (scratch edition)',
 		description: 'minesweeper (with a space) made in scratch very nice animation. press space',
+		category: 'Puzzle',
+		tags: ['made-by-friends', 'scratch'],
+		links: [{ name: 'Scratch', url: 'https://scratch.mit.edu/projects/903234567/' }],
 		url: '/_app/tools/mine-sweeper/index.html'
 	},
 	{
 		name: 'Run 3',
 		description: 'probably a gmae where you run',
+		category: 'Action',
+		tags: [],
+		links: [],
 		url: '/_app/tools/run3/index.html'
 	},
 	{
 		name: 'Dadish',
 		description: 'some sort of gmae with a talking radish or smth',
+		category: 'Platformer',
+		tags: [],
+		links: [],
 		url: '/_app/tools/dadish/index.html'
 	},
 	{
 		name: 'Dadish 2',
-		description: 'theres another one???',
+		description: 'Radish works with a computer with a lot of children coming in for some reason',
+		category: 'Platformer',
+		tags: [],
+		links: [],
 		url: '/_app/tools/dadish-2/index.html'
 	},
 	{
 		name: 'Subway surfers',
 		description:
 			'a game where you surf on a subway thanks zed auto complete no its a gmae where you commit crimes such as grafiti and evading police',
+		category: 'Action',
+		tags: ['crime'],
+		links: [],
 		url: '/_app/tools/subwaysurfers/index.html'
 	}
 ];
@@ -263,12 +295,18 @@ const gmaes: Gmae[] = [
 let parsedGmaes: ParsedGmae[] = [];
 
 gmaes.forEach((gmae) => {
-	parsedGmaes.push({
-		id: generateId(gmae.name),
-		name: gmae.name,
-		description: gmae.description,
-		url: gmae.url
-	});
+	parsedGmaes.push(
+			{
+				id: generateId(gmae.name),
+				category: gmae.category,
+				description: gmae.description,
+				url: gmae.url,
+				links: gmae.links,
+				name: gmae.name,
+				tags: gmae.tags
+			},
+		)
+	);
 });
 
 export function getGameById(id: string) {
