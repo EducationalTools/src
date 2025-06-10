@@ -6,6 +6,7 @@
 	import { Drawer } from 'vaul-svelte';
 	import { toast } from 'svelte-sonner';
 	import { Badge } from '$lib/components/ui/badge/index.js';
+	import { badgeVariants } from '$lib/components/ui/badge/index.js';
 
 	// Icons
 	import Refresh from 'lucide-svelte/icons/refresh-cw';
@@ -63,9 +64,14 @@
 
 	<div class="flex h-full w-72 flex-col gap-2">
 		<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
-		<div class="flex w-full flex-row flex-wrap gap-1">
+		<div class="flex w-full flex-row flex-wrap gap-2">
 			{#each gmaedata?.tags || [] as tag}
-				<Badge variant="outline">#{tag}</Badge>
+				<Badge variant="default">#{tag}</Badge>
+			{/each}
+			{#each gmaedata?.links || [] as link}
+				<a href={link.url} target="_blank" class={badgeVariants({ variant: 'outline' })}>
+					<OpenInNewTab class="mr-1 size-3" />{link.name}
+				</a>
 			{/each}
 		</div>
 		<p class="text-xl">{gmaedata?.description}</p>
