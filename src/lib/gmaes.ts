@@ -292,10 +292,10 @@ const gmaes: Gmae[] = [
 	},
 	{
 		name: 'Grindcraft',
-		description: '',
-		category: '',
+		description: 'minecraft but not minecraft',
+		category: 'Clicker',
 		tags: [],
-		links: [],
+		links: [{ name: 'Official Website', url: 'https://grindcraft.com' }],
 		url: '/_app/tools/grindcraft/index.html'
 	}
 ];
