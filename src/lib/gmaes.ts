@@ -289,6 +289,14 @@ const gmaes: Gmae[] = [
 		tags: ['crime'],
 		links: [],
 		url: '/_app/tools/subwaysurfers/index.html'
+	},
+	{
+		name: 'Grindcraft',
+		description: '',
+		category: '',
+		tags: [],
+		links: [],
+		url: '/_app/tools/grindcraft/index.html'
 	}
 ];
 
