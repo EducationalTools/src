@@ -2,6 +2,7 @@ import type { ColumnDef } from '@tanstack/table-core';
 import type { ParsedGmae } from '$lib/gmaes';
 import { renderComponent } from '$lib/components/ui/data-table/index.js';
 import TableActions from './table-actions.svelte';
+import TableNameButton from './table-name-button.svelte';
 
 export const columns: ColumnDef<ParsedGmae>[] = [
 	{
@@ -10,7 +11,10 @@ export const columns: ColumnDef<ParsedGmae>[] = [
 	},
 	{
 		accessorKey: 'name',
-		header: 'Name'
+		header: ({ column }) =>
+			renderComponent(TableNameButton, {
+				onclick: column.getToggleSortingHandler()
+			})
 	},
 	{
 		accessorKey: 'category',
