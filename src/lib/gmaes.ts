@@ -9,7 +9,7 @@ export interface Gmae {
 	url: string;
 }
 
-interface ParsedGmae extends Gmae {
+export interface ParsedGmae extends Gmae {
 	id: string;
 }
 
