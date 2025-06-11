@@ -1,7 +1,13 @@
 import type { ColumnDef } from '@tanstack/table-core';
-import type { Gmae } from '$lib/gmaes';
+import type { ParsedGmae } from '$lib/gmaes';
+import { renderComponent } from '$lib/components/ui/data-table/index.js';
+import TableActions from './table-actions.svelte';
 
-export const columns: ColumnDef<Gmae>[] = [
+export const columns: ColumnDef<ParsedGmae>[] = [
+	{
+		accessorKey: 'id',
+		header: 'ID'
+	},
 	{
 		accessorKey: 'name',
 		header: 'Name'
@@ -17,5 +23,11 @@ export const columns: ColumnDef<Gmae>[] = [
 	{
 		accessorKey: 'tags',
 		header: 'Tags'
+	},
+	{
+		id: 'actions',
+		cell: ({ row }) => {
+			return renderComponent(TableActions, { id: row.original.id });
+		}
 	}
 ];
