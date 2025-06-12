@@ -1,14 +1,11 @@
 <script lang="ts" generics="TData, TValue">
 	import {
 		type ColumnDef,
-		type PaginationState,
 		type SortingState,
 		type ColumnFiltersState,
 		type FilterFn,
-		type SortingFn,
 		getCoreRowModel,
 		getFilteredRowModel,
-		getPaginationRowModel,
 		getSortedRowModel
 	} from '@tanstack/table-core';
 	import { rankItem, compareItems } from '@tanstack/match-sorter-utils';
@@ -32,20 +29,6 @@
 		// Return if the item should be filtered in/out
 		return itemRank.passed;
 	};
-	const fuzzySort: SortingFn<any> = (rowA, rowB, columnId) => {
-		let dir = 0;
-
-		// Only sort by rank if the column has ranking information
-		if (rowA.columnFiltersMeta[columnId]) {
-			dir = compareItems(
-				(rowA.columnFiltersMeta[columnId] as any)?.itemRank!,
-				(rowB.columnFiltersMeta[columnId] as any)?.itemRank!
-			);
-		}
-
-		// Provide an alphanumeric fallback for when the item ranks are equal
-		return dir === 0 ? 0 : dir;
-	};
 
 	let sorting = $state<SortingState>([]);
 	let columnFilters = $state<ColumnFiltersState>([]);
@@ -58,9 +41,7 @@
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
-		filterFns: {
-			fuzzy: fuzzyFilter //define as a filter function that can be used in column definitions
-		},
+		globalFilterFn: fuzzyFilter,
 		onSortingChange: (updater) => {
 			if (typeof updater === 'function') {
 				sorting = updater(sorting);
