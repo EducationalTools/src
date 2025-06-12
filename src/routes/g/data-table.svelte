@@ -3,13 +3,15 @@
 		type ColumnDef,
 		type PaginationState,
 		type SortingState,
+		type ColumnFiltersState,
 		getCoreRowModel,
+		getFilteredRowModel,
 		getPaginationRowModel,
 		getSortedRowModel
 	} from '@tanstack/table-core';
 	import { createSvelteTable, FlexRender } from '$lib/components/ui/data-table/index.js';
 	import * as Table from '$lib/components/ui/table/index.js';
-
+	import { Input } from '$lib/components/ui/input/index.js';
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
 		data: TData[];
@@ -18,6 +20,7 @@
 	let { data, columns }: DataTableProps<TData, TValue> = $props();
 
 	let sorting = $state<SortingState>([]);
+	let columnFilters = $state<ColumnFiltersState>([]);
 
 	const table = createSvelteTable({
 		get data() {
@@ -26,6 +29,7 @@
 		columns,
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
+		getFilteredRowModel: getFilteredRowModel(),
 		onSortingChange: (updater) => {
 			if (typeof updater === 'function') {
 				sorting = updater(sorting);
@@ -33,15 +37,36 @@
 				sorting = updater;
 			}
 		},
+		onColumnFiltersChange: (updater) => {
+			if (typeof updater === 'function') {
+				columnFilters = updater(columnFilters);
+			} else {
+				columnFilters = updater;
+			}
+		},
 		state: {
 			get sorting() {
 				return sorting;
+			},
+			get columnFilters() {
+				return columnFilters;
 			}
 		}
 	});
 </script>
 
-<div class="rounded-md border">
+<div class="flex flex-col gap-3 rounded-md border p-3">
+	<Input
+		placeholder="Search"
+		value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
+		onchange={(e) => {
+			table.getColumn('name')?.setFilterValue(e.currentTarget.value);
+		}}
+		oninput={(e) => {
+			table.getColumn('name')?.setFilterValue(e.currentTarget.value);
+		}}
+		class="max-w-sm"
+	/>
 	<Table.Root>
 		<Table.Header>
 			{#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
