@@ -20,6 +20,7 @@
 		"@sveltejs/kit": "^2.20.8",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@tailwindcss/typography": "^0.5.16",
+		"@tanstack/table-core": "^8.21.3",
 		"@types/md5": "^2.3.5",
 		"autoprefixer": "^10.4.21",
 		"bits-ui": "1.8.0",
@@ -42,6 +43,7 @@
 	},
 	"dependencies": {
 		"@friendofsvelte/tipex": "0.0.7",
+		"@tanstack/match-sorter-utils": "^8.19.4",
 		"md5": "^2.3.0",
 		"posthog-js": "^1.249.4",
 		"svelte-persisted-store": "^0.12.0"

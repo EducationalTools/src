@@ -97,6 +97,10 @@
 				url: '',
 				items: [
 					{
+						title: 'All Gmaes',
+						url: '/g'
+					},
+					{
 						title: 'Request a Gmae',
 						url: 'https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+'
 					},

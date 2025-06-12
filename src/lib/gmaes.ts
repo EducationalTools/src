@@ -1,6 +1,6 @@
 import { generate, generate as generateId } from './idgen';
 
-interface Gmae {
+export interface Gmae {
 	name: string;
 	description: string;
 	category: string;
@@ -9,7 +9,7 @@ interface Gmae {
 	url: string;
 }
 
-interface ParsedGmae extends Gmae {
+export interface ParsedGmae extends Gmae {
 	id: string;
 }
 
