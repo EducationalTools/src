@@ -43,6 +43,7 @@
 	},
 	"dependencies": {
 		"@friendofsvelte/tipex": "0.0.7",
+		"@tanstack/match-sorter-utils": "^8.19.4",
 		"md5": "^2.3.0",
 		"posthog-js": "^1.249.4",
 		"svelte-persisted-store": "^0.12.0"
