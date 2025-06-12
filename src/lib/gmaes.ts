@@ -297,6 +297,14 @@ const gmaes: Gmae[] = [
 		tags: [],
 		links: [{ name: 'Official Website', url: 'https://grindcraft.com' }],
 		url: '/_app/tools/grindcraft/index.html'
+	},
+	{
+		name: 'Trade Craft',
+		description: 'a game where you trade items',
+		category: 'Clicker',
+		tags: ['trade'],
+		links: [],
+		url: '/_app/tools/tradecraft/index.html'
 	}
 ];
 
