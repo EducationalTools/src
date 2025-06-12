@@ -4,6 +4,8 @@
 		type SortingState,
 		type ColumnFiltersState,
 		type FilterFn,
+		type SortingFn,
+		sortingFns,
 		getCoreRowModel,
 		getFilteredRowModel,
 		getSortedRowModel
@@ -41,7 +43,9 @@
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
-		globalFilterFn: fuzzyFilter,
+		filterFns: {
+			fuzzy: fuzzyFilter
+		},
 		onSortingChange: (updater) => {
 			if (typeof updater === 'function') {
 				sorting = updater(sorting);

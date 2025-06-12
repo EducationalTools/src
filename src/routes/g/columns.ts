@@ -4,7 +4,6 @@ import { renderComponent } from '$lib/components/ui/data-table/index.js';
 import TableActions from './table-actions.svelte';
 import TableNameButton from './table-name-button.svelte';
 import Tags from './tags.svelte';
-import fuzzySort from './data-table.svelte';
 
 export const columns: ColumnDef<ParsedGmae>[] = [
 	{
@@ -16,7 +15,9 @@ export const columns: ColumnDef<ParsedGmae>[] = [
 		header: ({ column }) =>
 			renderComponent(TableNameButton, {
 				onclick: column.getToggleSortingHandler()
-			})
+			}),
+		// @ts-ignore
+		filterFn: 'fuzzy'
 	},
 	{
 		accessorKey: 'category',
