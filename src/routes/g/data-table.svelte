@@ -4,11 +4,13 @@
 		type PaginationState,
 		type SortingState,
 		type ColumnFiltersState,
+		type FilterFn,
 		getCoreRowModel,
 		getFilteredRowModel,
 		getPaginationRowModel,
 		getSortedRowModel
 	} from '@tanstack/table-core';
+	import { rankItem } from '@tanstack/match-sorter-utils';
 	import { createSvelteTable, FlexRender } from '$lib/components/ui/data-table/index.js';
 	import * as Table from '$lib/components/ui/table/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
@@ -18,6 +20,17 @@
 	};
 
 	let { data, columns }: DataTableProps<TData, TValue> = $props();
+
+	const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
+		// Rank the item
+		const itemRank = rankItem(row.getValue(columnId), value);
+
+		// Store the itemRank info
+		addMeta({ itemRank });
+
+		// Return if the item should be filtered in/out
+		return itemRank.passed;
+	};
 
 	let sorting = $state<SortingState>([]);
 	let columnFilters = $state<ColumnFiltersState>([]);
@@ -30,6 +43,9 @@
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
+		filterFns: {
+			fuzzy: fuzzyFilter //define as a filter function that can be used in column definitions
+		},
 		onSortingChange: (updater) => {
 			if (typeof updater === 'function') {
 				sorting = updater(sorting);

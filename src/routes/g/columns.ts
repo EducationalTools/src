@@ -12,6 +12,7 @@ export const columns: ColumnDef<ParsedGmae>[] = [
 	},
 	{
 		accessorKey: 'name',
+		filterFn: 'fuzzy',
 		header: ({ column }) =>
 			renderComponent(TableNameButton, {
 				onclick: column.getToggleSortingHandler()
