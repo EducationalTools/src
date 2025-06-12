@@ -5,12 +5,15 @@
 
 	interface Props extends ComponentProps<typeof Button> {
 		content?: string;
+		sort?: boolean;
 	}
 
-	let { content = '', variant = 'ghost', ...restProps }: Props = $props();
+	let { content = '', variant = 'ghost', sort = false, ...restProps }: Props = $props();
 </script>
 
 <Button {variant} class="w-full" {...restProps}>
 	{content}
-	<ArrowUpDownIcon class="ml-2" />
+	{#if sort}
+		<ArrowUpDownIcon class="ml-2" />
+	{/if}
 </Button>

@@ -8,28 +8,44 @@ import HeaderButtonSort from './header-button-sort.svelte';
 export const columns: ColumnDef<ParsedGmae>[] = [
 	{
 		accessorKey: 'id',
-		header: 'ID'
+		header: ({ column }) =>
+			renderComponent(HeaderButtonSort, {
+				content: 'ID'
+			})
 	},
 	{
 		accessorKey: 'name',
 		header: ({ column }) =>
 			renderComponent(HeaderButtonSort, {
-				onclick: column.getToggleSortingHandler()
+				onclick: column.getToggleSortingHandler(),
+				content: 'Name',
+				sort: true
 			}),
 		// @ts-ignore
 		filterFn: 'fuzzy'
 	},
 	{
 		accessorKey: 'category',
-		header: 'Category'
+		header: ({ column }) =>
+			renderComponent(HeaderButtonSort, {
+				onclick: column.getToggleSortingHandler(),
+				content: 'Category',
+				sort: true
+			})
 	},
 	{
 		accessorKey: 'description',
-		header: 'Description'
+		header: ({ column }) =>
+			renderComponent(HeaderButtonSort, {
+				content: 'Description'
+			})
 	},
 	{
 		accessorKey: 'tags',
-		header: 'Tags',
+		header: ({ column }) =>
+			renderComponent(HeaderButtonSort, {
+				content: 'Tags'
+			}),
 		cell: ({ row }) => {
 			return renderComponent(Tags, { tags: row.original.tags });
 		}
