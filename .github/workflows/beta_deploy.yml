@@ -35,6 +35,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ steps.app-token.outputs.token }}
-          external_repository: EducationalTools/EducationalTools.github.io
+          external_repository: EducationalTools-Beta/EducationalTools-Beta.github.io
           publish_branch: main
           publish_dir: ./build
