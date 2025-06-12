@@ -38,13 +38,13 @@
 		// Only sort by rank if the column has ranking information
 		if (rowA.columnFiltersMeta[columnId]) {
 			dir = compareItems(
-				rowA.columnFiltersMeta[columnId]?.itemRank!,
-				rowB.columnFiltersMeta[columnId]?.itemRank!
+				(rowA.columnFiltersMeta[columnId] as any)?.itemRank!,
+				(rowB.columnFiltersMeta[columnId] as any)?.itemRank!
 			);
 		}
 
 		// Provide an alphanumeric fallback for when the item ranks are equal
-		return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
+		return dir === 0 ? 0 : dir;
 	};
 
 	let sorting = $state<SortingState>([]);
