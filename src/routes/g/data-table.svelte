@@ -4,13 +4,11 @@
 		type SortingState,
 		type ColumnFiltersState,
 		type FilterFn,
-		type SortingFn,
-		sortingFns,
 		getCoreRowModel,
 		getFilteredRowModel,
 		getSortedRowModel
 	} from '@tanstack/table-core';
-	import { rankItem, compareItems } from '@tanstack/match-sorter-utils';
+	import { rankItem } from '@tanstack/match-sorter-utils';
 	import { createSvelteTable, FlexRender } from '$lib/components/ui/data-table/index.js';
 	import * as Table from '$lib/components/ui/table/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
