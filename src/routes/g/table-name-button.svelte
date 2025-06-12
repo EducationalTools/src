@@ -6,7 +6,7 @@
 	let { variant = 'ghost', ...restProps }: ComponentProps<typeof Button> = $props();
 </script>
 
-<Button {variant} {...restProps}>
+<Button {variant} class="w-full" {...restProps}>
 	Name
 	<ArrowUpDownIcon class="ml-2" />
 </Button>
