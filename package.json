@@ -17,7 +17,7 @@
 		"@lucide/svelte": "^0.482.0",
 		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/adapter-static": "^3.0.8",
-		"@sveltejs/kit": "^2.20.8",
+		"@sveltejs/kit": "^2.21.4",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@tailwindcss/typography": "^0.5.16",
 		"@tanstack/table-core": "^8.21.3",
