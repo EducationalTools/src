@@ -38,3 +38,5 @@ jobs:
           external_repository: EducationalTools-Beta/EducationalTools-Beta.github.io
           publish_branch: main
           publish_dir: ./build
+          user_name: 'edutools-bot[bot]'
+          user_email: '1183662+edutools-bot[bot]@users.noreply.github.com'
