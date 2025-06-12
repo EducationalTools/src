@@ -12,7 +12,8 @@ export const columns: ColumnDef<ParsedGmae>[] = [
 	},
 	{
 		accessorKey: 'name',
-		filterFn: 'fuzzy',
+		filterFn: 'fuzzy', //using our custom fuzzy filter function
+		sortFn: 'fuzzySort', //using our custom fuzzy sort function
 		header: ({ column }) =>
 			renderComponent(TableNameButton, {
 				onclick: column.getToggleSortingHandler()

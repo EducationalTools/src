@@ -5,12 +5,13 @@
 		type SortingState,
 		type ColumnFiltersState,
 		type FilterFn,
+		type SortingFn,
 		getCoreRowModel,
 		getFilteredRowModel,
 		getPaginationRowModel,
 		getSortedRowModel
 	} from '@tanstack/table-core';
-	import { rankItem } from '@tanstack/match-sorter-utils';
+	import { rankItem, compareItems } from '@tanstack/match-sorter-utils';
 	import { createSvelteTable, FlexRender } from '$lib/components/ui/data-table/index.js';
 	import * as Table from '$lib/components/ui/table/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
@@ -30,6 +31,20 @@
 
 		// Return if the item should be filtered in/out
 		return itemRank.passed;
+	};
+	const fuzzySort: SortingFn<any> = (rowA, rowB, columnId) => {
+		let dir = 0;
+
+		// Only sort by rank if the column has ranking information
+		if (rowA.columnFiltersMeta[columnId]) {
+			dir = compareItems(
+				rowA.columnFiltersMeta[columnId]?.itemRank!,
+				rowB.columnFiltersMeta[columnId]?.itemRank!
+			);
+		}
+
+		// Provide an alphanumeric fallback for when the item ranks are equal
+		return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
 	};
 
 	let sorting = $state<SortingState>([]);
