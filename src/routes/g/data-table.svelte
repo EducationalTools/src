@@ -13,6 +13,9 @@
 	import { createSvelteTable, FlexRender } from '$lib/components/ui/data-table/index.js';
 	import * as Table from '$lib/components/ui/table/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
+	import Checkbox from '$lib/components/ui/checkbox/checkbox.svelte';
+	import Label from '$lib/components/ui/label/label.svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
 		data: TData[];
@@ -84,17 +87,33 @@
 </script>
 
 <div class="flex flex-col gap-3 rounded-md border p-3">
-	<Input
-		placeholder="Search"
-		value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-		onchange={(e) => {
-			table.getColumn('name')?.setFilterValue(e.currentTarget.value);
-		}}
-		oninput={(e) => {
-			table.getColumn('name')?.setFilterValue(e.currentTarget.value);
-		}}
-		class="max-w-sm"
-	/>
+	<div class="flex w-full flex-row items-center gap-5">
+		<Input
+			placeholder="Search"
+			value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
+			onchange={(e) => {
+				table.getColumn('name')?.setFilterValue(e.currentTarget.value);
+			}}
+			oninput={(e) => {
+				table.getColumn('name')?.setFilterValue(e.currentTarget.value);
+			}}
+			class="grow"
+		/>
+		<div class="flex flex-row gap-2">
+			<Checkbox
+				bind:checked={
+					() => table.getColumn('id')?.getIsVisible(),
+					(v) => table.getColumn('id')?.toggleVisibility(!!v)
+				}
+				id="showid"
+			/>
+			<Label for="showid" class="text-nowrap">Show ID</Label>
+		</div>
+		<Button
+			href="https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+"
+			target="_blank">Request Gmae</Button
+		>
+	</div>
 	<Table.Root>
 		<Table.Header>
 			{#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
