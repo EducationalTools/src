@@ -1,0 +1,237 @@
+body {
+	font-family: sans-serif;
+	background-color: white;
+	margin: 0;
+}
+
+body:hover {
+	cursor: Default;
+}
+
+::-moz-selection {
+    color: none;
+    background: none;
+}
+
+::selection {
+    color: none;
+    background: none;
+}
+
+#game {
+	width: 800;
+	height: 600;
+	display: flex;
+}
+
+#dealTable {
+	table-layout: fixed;
+	opacity: 0;
+	transition: opacity 4s;
+	/*width: 500;
+	height: 500;
+	float: left;*/
+	border-collapse: collapse;
+	margin: 10;
+	font-weight: bold;
+}
+
+#dealTable td {
+	height: 86px;
+	width: 25%;
+	padding: 10px;
+}
+
+
+.bgRed {
+	background-color: #ff8888;
+}
+
+.bgRed:hover {
+	background-color: #ee7777;
+}
+
+.bgGreen {
+	background-color: #88ff88;
+}
+
+.bgGreen:hover {
+	background-color: #77ee77;
+}
+
+.sell, .buy {
+	background-size: 50% 100%;
+	
+	background-repeat: no-repeat;
+}
+
+.sell {
+	background-image: url(graphics/arrowred.png);
+	background-position: right top;
+}
+
+.buy {
+	background-image: url(graphics/arrowgreen.png);
+	background-position: left top;
+	text-align: right;
+}
+
+.progress {
+	height: 3;
+	width: 0;
+	background-color: black;
+	transition: width 2s;
+	margin: 10 0 0 0;
+}
+
+.sellAmt, .buyAmt {
+	font-size: 14;
+}
+
+#resDisplay {
+	/*float: left;*/
+	text-align: center;
+	border-collapse: collapse;
+	margin: 10;
+	font-weight: bold;
+}
+
+#resDisplay, #dealTable {
+	width: 90%;
+}
+
+#resourceWrap {
+	width: 450;
+}
+
+#stats {
+	font-size: 9;
+	font-weight: normal
+}
+
+#resDisplay td {
+	width: 60;
+	text-align: center;
+}
+
+.resName, .resAmt {
+	padding: 3;
+	height: 30;
+	text-align: center;
+}
+
+.resText {
+	font-size: 12;
+	margin-top: -13;
+}
+
+.helpValue {
+	font-size: 10;
+}
+
+#mute, #new-game {
+	position: absolute;
+	top: 550px;
+	height: 24;
+	font-size: 12;
+	padding: 5 5 10 5;
+	background-color: #dddddd;
+}
+
+#mute {
+	left: 740px;
+}
+
+#new-game {
+	left: 640px;
+}
+
+#mute.muted {
+	background-color: #aaaaaa;
+}
+
+#mute:hover, #new-game:hover {
+	background-color: #cccccc;
+}
+
+/*I am sorry, I know it is ugly, but in my defense, I don't really feel like algorithmically finding dominant color of those png pictures. */
+.manual:nth-child(1) {background-color: #ffff88;}
+.manual:nth-child(1):hover {background-color: #eeee77;}
+.manual:nth-child(2) {background-color: #bb6800;}
+.manual:nth-child(2):hover {background-color: #aa5800;}
+.manual:nth-child(3) {background-color: #ff9900;}
+.manual:nth-child(3):hover {background-color: #ee8800;}
+.manual:nth-child(4) {background-color: #dd3333;}
+.manual:nth-child(4):hover {background-color: #cc2222;}
+.manual:nth-child(5) {background-color: #cccccc;}
+.manual:nth-child(5):hover {background-color: #bbbbbb;}
+.manual:nth-child(6) {background-color: #dfdfdf;}
+.manual:nth-child(6):hover {background-color: #dddddd;}
+.manual:nth-child(8) {background-color: #ffff66;}
+.manual:nth-child(8):hover {background-color: #eeee55;}
+.manual:nth-child(9) {background-color: #99ffff;}
+.manual:nth-child(9):hover {background-color: #88eeee;}
+.manual:nth-child(10) {background-color: #99ff99;}
+.manual:nth-child(10):hover {background-color: #88ee88;}
+.manual:nth-child(11) {background-color: #ff6666;}
+.manual:nth-child(11):hover {background-color: #ee5555;}
+.manual:nth-child(12) {background-color: #77dddd;}
+.manual:nth-child(12):hover {background-color: #66cccc;}
+.manual:nth-child(13) {background-color: #bb55dd;}
+.manual:nth-child(13):hover {background-color: #aa44cc;}
+
+img {
+	vertical-align: middle;
+}
+
+.resVal {
+	font-size: 10px;
+}
+
+.dealdiv {
+	padding-bottom: 10px;
+}
+
+.floatText {
+	transition: top 2s, opacity 2s;
+	position: absolute;
+	font-size: 40;
+}
+
+/*upgrades*/
+
+#upgradeWrap {
+	opacity: 0;
+	transition: opacity 4s;
+}
+#splash {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+.upgrade {
+	flex: 1;
+	height: 120;
+	margin: 20;
+	padding: 20;
+	
+}
+
+.upName {
+	font-weight: bold;
+	font-size: 24;
+}
+
+.upCostRes img {
+	width: 30;
+}
+
+.upTooltip {
+	width: 280;
+}
+
+.upCost {
+	float: left;
+	margin: 0 20 0 0;
+}
