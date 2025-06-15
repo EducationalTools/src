@@ -305,6 +305,46 @@ const gmaes: Gmae[] = [
 		tags: ['trade'],
 		links: [],
 		url: '/_app/tools/tradecraft/index.html'
+	},
+	{
+		name: '1',
+		description: 'backwards 2048',
+		category: 'Puzzle',
+		tags: ['kinda-maths', 'casual'],
+		links: [],
+		url: '/_app/tools/1/index.html'
+	},
+	{
+		name: 'Cut the rope',
+		description: 'a gmae where you cut the rope',
+		category: 'Uncategorized',
+		tags: [],
+		links: [],
+		url: '/_app/tools/cuttherope/index.html'
+	},
+	{
+		name: 'Cut the rope holiday',
+		description: 'a game where you cut the rope but maybe on a holiday or something',
+		category: 'Uncategorized',
+		tags: [],
+		links: [],
+		url: '/_app/tools/ctr-holiday/index.html'
+	},
+	{
+		name: '9007199254740992',
+		description: '2048 but you have to get 9007199254740992',
+		category: 'Puzzle',
+		tags: ['kinda-maths', 'casual'],
+		links: [],
+		url: '/_app/tools/9007199254740992/index.html'
+	},
+	{
+		name: 'Achievement Unlocked',
+		description: '',
+		category: 'Uncategorized',
+		tags: [],
+		links: [],
+		url: '/_app/tools/achievementunlocked/index.html'
 	}
 ];
 
