@@ -28,15 +28,17 @@
 				{themeTriggerContent}
 				<ChevronDownIcon />
 			</Dialog.Trigger>
-			<Dialog.Content>
-				<RadioGroup.Root bind:value={$preferencesStore.theme}>
-					{#each themes as theme}
-						<div class="flex items-center space-x-2">
-							<RadioGroup.Item value={theme.value} id={theme.value} />
-							<Label for={theme.value}>{theme.label}</Label>
-						</div>
-					{/each}
-				</RadioGroup.Root>
+			<Dialog.Content class="p-0">
+				<div class="max-h-[80vh] overflow-auto p-6">
+					<RadioGroup.Root bind:value={$preferencesStore.theme}>
+						{#each themes as theme}
+							<div class="flex items-center space-x-2">
+								<RadioGroup.Item value={theme.value} id={theme.value} />
+								<Label for={theme.value}>{theme.label}</Label>
+							</div>
+						{/each}
+					</RadioGroup.Root>
+				</div>
 			</Dialog.Content>
 		</Dialog.Root>
 		Privacy
