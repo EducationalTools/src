@@ -29,7 +29,7 @@
 		if ($preferencesStore.open === 'tab') {
 			openedTab = window.open('', '_blank');
 		} else if ($preferencesStore.open === 'window') {
-			openedTab = window.open('', '_blank');
+			openedTab = window.open('', '_blank', 'width=800,height=600');
 		} else {
 			$preferencesStore.open = 'tab';
 			openNewTab(url);
@@ -147,7 +147,7 @@
 				}}
 			>
 				<OpenInNewTab class="h-6 w-6" />
-				New tab
+				New {$preferencesStore.open}
 			</Button>
 			<Button
 				variant="outline"
