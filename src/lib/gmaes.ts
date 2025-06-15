@@ -305,6 +305,14 @@ const gmaes: Gmae[] = [
 		tags: ['trade'],
 		links: [],
 		url: '/_app/tools/tradecraft/index.html'
+	},
+	{
+		name: '1',
+		description: 'backwards 2048',
+		category: 'Puzzle',
+		tags: ['kinda-maths', 'casual'],
+		links: [],
+		url: '/_app/tools/1/index.html'
 	}
 ];
 
