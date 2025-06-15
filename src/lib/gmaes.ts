@@ -337,6 +337,14 @@ const gmaes: Gmae[] = [
 		tags: ['kinda-maths', 'casual'],
 		links: [],
 		url: '/_app/tools/9007199254740992/index.html'
+	},
+	{
+		name: 'Achievement Unlocked',
+		description: '',
+		category: 'Uncategorized',
+		tags: [],
+		links: [],
+		url: '/_app/tools/achievementunlocked/index.html'
 	}
 ];
 
