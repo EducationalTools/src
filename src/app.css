@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @source not "../static/_app";
+@import 'tw-animate-css';
 @custom-variant dark (&:is(.dark *));
 
 :root {
