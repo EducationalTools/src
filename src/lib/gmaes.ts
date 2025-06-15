@@ -317,10 +317,18 @@ const gmaes: Gmae[] = [
 	{
 		name: 'Cut the rope',
 		description: 'a gmae where you cut the rope',
-		category: 'Puzzle',
+		category: 'Uncategorized',
 		tags: [],
 		links: [],
 		url: '/_app/tools/cuttherope/index.html'
+	},
+	{
+		name: 'Cut the rope holiday',
+		description: 'a game where you cut the rope but maybe on a holiday or something',
+		category: 'Uncategorized',
+		tags: [],
+		links: [],
+		url: '/_app/tools/ctr-holiday/index.html'
 	}
 ];
 
