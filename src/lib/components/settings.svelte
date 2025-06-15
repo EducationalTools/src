@@ -1,6 +1,8 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import * as Select from '$lib/components/ui/select/index.js';
+	import { Checkbox } from '$lib/components/ui/checkbox/index.js';
+	import { Label } from '$lib/components/ui/label/index.js';
 
 	import { settingsOpen } from '$lib/state.svelte';
 	import { preferencesStore } from '$lib/stores';
@@ -16,17 +18,14 @@
 		<Dialog.Header>
 			<Dialog.Title>Settings</Dialog.Title>
 		</Dialog.Header>
-		Appearence
-		<Dialog.Description>Most of these themes haven't been implemented yet.</Dialog.Description>
-		<Select.Root type="single" bind:value={$preferencesStore.theme}>
-			<Select.Trigger>
-				{triggerContent}
-			</Select.Trigger>
-			<Select.Content>
-				{#each themes as theme}
-					<Select.Item value={theme.value}>{theme.label}</Select.Item>
-				{/each}
-			</Select.Content>
-		</Select.Root>
+		Privacy
+		<div class="flex items-center gap-3">
+			<Checkbox id="analytics" bind:checked={$preferencesStore.analytics} />
+			<Label for="analytics">Enable Analytics</Label>
+		</div>
+		<div class="flex items-center gap-3">
+			<Checkbox id="history" bind:checked={$preferencesStore.history} />
+			<Label for="history">Enable History</Label>
+		</div>
 	</Dialog.Content>
 </Dialog.Root>
