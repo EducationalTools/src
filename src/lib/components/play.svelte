@@ -74,7 +74,12 @@
 					<Badge variant="default">#{tag}</Badge>
 				{/each}
 				{#each gmaedata?.links || [] as link}
-					<a href={link.url} target="_blank" rel="noopener noreferrer" class={badgeVariants({ variant: 'outline' })}>
+					<a
+						href={link.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						class={badgeVariants({ variant: 'outline' })}
+					>
 						<OpenInNewTab class="mr-1 size-3" />{link.name}
 					</a>
 				{/each}
