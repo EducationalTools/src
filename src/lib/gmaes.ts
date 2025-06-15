@@ -313,6 +313,14 @@ const gmaes: Gmae[] = [
 		tags: ['kinda-maths', 'casual'],
 		links: [],
 		url: '/_app/tools/1/index.html'
+	},
+	{
+		name: 'Cut the rope',
+		description: 'a gmae where you cut the rope',
+		category: 'Puzzle',
+		tags: [],
+		links: [],
+		url: '/_app/tools/cuttherope/index.html'
 	}
 ];
 
