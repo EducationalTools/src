@@ -1,0 +1,4 @@
+name = "edutools-testing"
+pages_build_output_dir = "build"
+[vars]
+NODE_VERSION = "22"
