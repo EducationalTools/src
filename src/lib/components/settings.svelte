@@ -26,7 +26,7 @@
 		<Dialog.Root>
 			<Dialog.Trigger class={clsx(buttonVariants({ variant: 'outline' }), 'w-fit justify-start')}>
 				{themeTriggerContent}
-				<ChevronDownIcon />
+				<ChevronDownIcon class="opacity-50" />
 			</Dialog.Trigger>
 			<Dialog.Content class="p-0">
 				<div class="max-h-[80vh] overflow-auto p-6">
