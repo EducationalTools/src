@@ -88,7 +88,7 @@
 					Comments
 				</Drawer.Trigger>
 				<Drawer.Content
-					class="fixed bottom-0 right-0 top-0 z-20 flex w-[500px] max-w-full flex-col rounded-l-xl bg-background p-3 outline-none"
+					class="bg-background fixed top-0 right-0 bottom-0 z-20 flex w-[500px] max-w-full flex-col rounded-l-xl p-3 outline-none"
 					style="--initial-transform: calc(100% + 8px)"
 				>
 					<h2 class="text-3xl">Comments</h2>
@@ -111,7 +111,7 @@
 						async
 					></script>
 				</Drawer.Content>
-				<Drawer.Overlay class="fixed inset-0 left-0 top-0 z-10 bg-black/50" />
+				<Drawer.Overlay class="fixed inset-0 top-0 left-0 z-10 bg-black/50" />
 			</Drawer.Root>
 			<Button
 				variant="outline"

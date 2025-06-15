@@ -121,7 +121,7 @@
 						<a href="/" {...props}>
 							<div
 								class={clsx(
-									'flex aspect-square size-8 items-center justify-center rounded-lg bg-gray-700 p-1 text-sidebar-primary-foreground'
+									'text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg bg-gray-700 p-1'
 								)}
 							>
 								<img src="/edutools-white.svg" alt="" />
@@ -144,7 +144,7 @@
 							{...props}
 						>
 							<div
-								class="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary"
+								class="text-sidebar-primary flex aspect-square size-8 items-center justify-center rounded-lg"
 							>
 								<Search class="size-4" />
 							</div>
@@ -152,7 +152,7 @@
 								<span>Search</span>
 								<div class="flex-grow"></div>
 								<kbd
-									class="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100"
+									class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
 								>
 									<span class="text-xs">⌘</span>K
 								</kbd>
@@ -220,7 +220,7 @@
 																	>
 																		{item.title}
 																		<div
-																			class="absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent to-sidebar group-hover/link:opacity-0"
+																			class="to-sidebar absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent group-hover/link:opacity-0"
 																		></div>
 																	</a>
 																{/snippet}
