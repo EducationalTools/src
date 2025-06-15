@@ -329,6 +329,14 @@ const gmaes: Gmae[] = [
 		tags: [],
 		links: [],
 		url: '/_app/tools/ctr-holiday/index.html'
+	},
+	{
+		name: '9007199254740992',
+		description: '2048 but you have to get 9007199254740992',
+		category: 'Puzzle',
+		tags: ['kinda-maths', 'casual'],
+		links: [],
+		url: '/_app/tools/9007199254740992/index.html'
 	}
 ];
 
