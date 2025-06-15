@@ -22,6 +22,17 @@
 		<Dialog.Header>
 			<Dialog.Title>Settings</Dialog.Title>
 		</Dialog.Header>
+		Open in
+		<RadioGroup.Root bind:value={$preferencesStore.open}>
+			<div class="flex items-center space-x-2">
+				<RadioGroup.Item value="tab" id="tab" />
+				<Label for="tab">Tab</Label>
+			</div>
+			<div class="flex items-center space-x-2">
+				<RadioGroup.Item value="window" id="window" />
+				<Label for="window">Window</Label>
+			</div>
+		</RadioGroup.Root>
 		Themes
 		<Dialog.Root>
 			<Dialog.Trigger class={clsx(buttonVariants({ variant: 'outline' }), 'w-fit justify-start')}>
