@@ -148,7 +148,7 @@
 							{...props}
 						>
 							<div
-								class="text-sidebar-primary flex aspect-square size-8 items-center justify-center rounded-lg"
+								class="text-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
 							>
 								<Search class="size-4" />
 							</div>
