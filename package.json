@@ -15,10 +15,10 @@
 	},
 	"devDependencies": {
 		"@lucide/svelte": "^0.482.0",
-		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/adapter-auto": "^6.0.1",
 		"@sveltejs/adapter-static": "^3.0.8",
-		"@sveltejs/kit": "^2.20.8",
-		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@sveltejs/kit": "^2.21.5",
+		"@sveltejs/vite-plugin-svelte": "^5.1.0",
 		"@tailwindcss/typography": "^0.5.16",
 		"@tailwindcss/vite": "^4.1.10",
 		"@types/md5": "^2.3.5",
@@ -26,17 +26,17 @@
 		"bits-ui": "1.8.0",
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.512.0",
-		"mode-watcher": "^1.0.7",
+		"mode-watcher": "^1.0.8",
 		"prettier": "^3.5.3",
-		"prettier-plugin-svelte": "^3.3.3",
+		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.6.12",
-		"svelte": "^5.28.2",
+		"svelte": "^5.34.1",
 		"svelte-check": "^4.2.1",
 		"svelte-sonner": "^0.3.28",
-		"tailwind-merge": "^3.2.0",
+		"tailwind-merge": "^3.3.1",
 		"tailwind-variants": "^0.2.1",
 		"tailwindcss": "^4.1.10",
-		"tailwindcss-animate": "^1.0.7",
+		"tw-animate-css": "^1.3.4",
 		"typescript": "^5.8.3",
 		"vaul-svelte": "1.0.0-next.7",
 		"vite": "^6.3.5"
@@ -44,7 +44,7 @@
 	"dependencies": {
 		"@friendofsvelte/tipex": "0.0.7",
 		"md5": "^2.3.0",
-		"posthog-js": "^1.249.4",
+		"posthog-js": "^1.252.0",
 		"svelte-persisted-store": "^0.12.0"
 	}
 }
