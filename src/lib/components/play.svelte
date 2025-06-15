@@ -60,28 +60,29 @@
 	});
 </script>
 
-<div class="flex h-full w-full flex-row gap-3 p-3">
-	<iframe src={gmaedata?.url} frameborder="0" class="flex-grow rounded" title={gmaedata?.name}
-	></iframe>
+<div class="flex h-full w-full flex-col gap-3 p-3">
+	<iframe src={gmaedata?.url} frameborder="0" class="grow rounded" title={gmaedata?.name}></iframe>
 
-	<div class="flex h-full w-72 flex-col gap-2">
-		<a href="/" class={clsx(badgeVariants({ variant: 'secondary' }), 'w-fit')}
-			>{gmaedata?.category}<ArrowRight class="ml-1 size-3" /></a
-		>
-		<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
-		<div class="flex w-full flex-row flex-wrap gap-2">
-			{#each gmaedata?.tags || [] as tag}
-				<Badge variant="default">#{tag}</Badge>
-			{/each}
-			{#each gmaedata?.links || [] as link}
-				<a href={link.url} target="_blank" class={badgeVariants({ variant: 'outline' })}>
-					<OpenInNewTab class="mr-1 size-3" />{link.name}
-				</a>
-			{/each}
+	<div class="flex w-full flex-col gap-2 md:flex-row">
+		<div class="flex flex-col gap-2">
+			<a href="/" class={clsx(badgeVariants({ variant: 'secondary' }), 'w-fit')}
+				>{gmaedata?.category}<ArrowRight class="ml-1 size-3" /></a
+			>
+			<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
+			<div class="flex w-full flex-row flex-wrap gap-2">
+				{#each gmaedata?.tags || [] as tag}
+					<Badge variant="default">#{tag}</Badge>
+				{/each}
+				{#each gmaedata?.links || [] as link}
+					<a href={link.url} target="_blank" class={badgeVariants({ variant: 'outline' })}>
+						<OpenInNewTab class="mr-1 size-3" />{link.name}
+					</a>
+				{/each}
+			</div>
+			<p class="text-xl">{gmaedata?.description}</p>
 		</div>
-		<p class="text-xl">{gmaedata?.description}</p>
-		<div class="flex-grow"></div>
-		<div class="flex flex-col gap-3">
+		<div class="grow"></div>
+		<div class="flex min-w-72 flex-col gap-3">
 			<Drawer.Root direction="right">
 				<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>
 					<Comment class="h-6 w-6" />
