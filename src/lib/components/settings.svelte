@@ -5,6 +5,7 @@
 	import { Label } from '$lib/components/ui/label/index.js';
 	import * as RadioGroup from '$lib/components/ui/radio-group/index.js';
 	import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
+	import Input from './ui/input/input.svelte';
 	import { buttonVariants } from './ui/button';
 
 	import { settingsOpen } from '$lib/state.svelte';
@@ -52,6 +53,19 @@
 				</div>
 			</Dialog.Content>
 		</Dialog.Root>
+		Panic key
+		<div class="flex items-center gap-3">
+			<Checkbox id="panic" bind:checked={$preferencesStore.panic.enabled} />
+			<Label for="panic">Enable Panic Key</Label>
+		</div>
+		<div class="flex items-center gap-3">
+			<Checkbox id="panic" bind:checked={$preferencesStore.panic.enabled} />
+			<Label for="panic">Disable Experimental Mode when triggered</Label>
+		</div>
+		<div class="flex flex-row gap-3">
+			<Input bind:value={$preferencesStore.panic.key} placeholder="Key" maxlength={1} />
+			<Input bind:value={$preferencesStore.panic.url} placeholder="URL" type="url" />
+		</div>
 		Privacy
 		<div class="flex items-center gap-3">
 			<Checkbox id="analytics" bind:checked={$preferencesStore.analytics} />
