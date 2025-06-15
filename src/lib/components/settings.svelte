@@ -7,6 +7,7 @@
 	import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
 	import Input from './ui/input/input.svelte';
 	import { buttonVariants } from './ui/button';
+	import * as Tabs from '$lib/components/ui/tabs/index.js';
 
 	import { settingsOpen } from '$lib/state.svelte';
 	import { preferencesStore } from '$lib/stores';
@@ -65,6 +66,18 @@
 		<div class="flex flex-row gap-3">
 			<Input bind:value={$preferencesStore.panic.key} placeholder="Key" maxlength={1} />
 			<Input bind:value={$preferencesStore.panic.url} placeholder="URL" type="url" />
+		</div>
+		Cloak
+		<Tabs.Root bind:value={$preferencesStore.cloak.mode}>
+			<Tabs.List class="w-full">
+				<Tabs.Trigger value="off">Off</Tabs.Trigger>
+				<Tabs.Trigger value="blur">When not focused</Tabs.Trigger>
+				<Tabs.Trigger value="on">On</Tabs.Trigger>
+			</Tabs.List>
+		</Tabs.Root>
+		<div class="flex flex-row gap-3">
+			<Input bind:value={$preferencesStore.cloak.name} placeholder="Page Name" />
+			<Input bind:value={$preferencesStore.cloak.icon} placeholder="Icon URL" />
 		</div>
 		Privacy
 		<div class="flex items-center gap-3">
