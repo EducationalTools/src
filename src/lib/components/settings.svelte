@@ -92,10 +92,6 @@
 			</div>
 			Privacy
 			<div class="flex items-center gap-3">
-				<Checkbox id="analytics" bind:checked={$preferencesStore.analytics} />
-				<Label for="analytics">Enable Analytics</Label>
-			</div>
-			<div class="flex items-center gap-3">
 				<Checkbox id="history" bind:checked={$preferencesStore.history} />
 				<Label for="history">Enable History</Label>
 			</div>
