@@ -48,7 +48,7 @@
 
 	const gmaedata = $derived(getGameById(id));
 
-	onMount(() => {
+	if ($preferencesStore.history) {
 		let history = $historyStore;
 		if (history.includes(id)) {
 			history = history.filter((historyId) => historyId !== id);
@@ -57,7 +57,7 @@
 		history.push(id);
 
 		historyStore.set(history);
-	});
+	}
 </script>
 
 <div class="flex h-full w-full flex-col gap-3 p-3">
