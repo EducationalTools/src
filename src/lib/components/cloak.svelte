@@ -5,10 +5,16 @@
 	let focused = $state(false);
 
 	let title = $derived(
-		$preferencesStore.cloak.mode == 'on' ? $preferencesStore.cloak.name : 'EduTools'
+		$preferencesStore.experimentalFeatures &&
+			($preferencesStore.cloak.mode == 'on' || ($preferencesStore.cloak.mode == 'blur' && !focused))
+			? $preferencesStore.cloak.name
+			: 'EduTools'
 	);
 	let icon = $derived(
-		$preferencesStore.cloak.mode == 'on' ? $preferencesStore.cloak.icon : '/favicon.ico'
+		$preferencesStore.experimentalFeatures &&
+			($preferencesStore.cloak.mode == 'on' || ($preferencesStore.cloak.mode == 'blur' && !focused))
+			? $preferencesStore.cloak.icon
+			: '/favicon.ico'
 	);
 
 	onMount(() => {
