@@ -12,6 +12,7 @@
 	import Settings from '$lib/components/settings.svelte';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import PanicMode from '$lib/components/panic-mode.svelte';
+	import Cloak from '$lib/components/cloak.svelte';
 
 	// Third-party utilities
 	import { ModeWatcher } from 'mode-watcher';
@@ -81,6 +82,7 @@
 <div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
 
 <PanicMode />
+<Cloak />
 <Toaster />
 <ModeWatcher defaultMode={'dark'} />
 <Settings />
