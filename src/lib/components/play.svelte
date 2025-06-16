@@ -20,7 +20,6 @@
 	// App imports
 	import { getGameById } from '$lib/gmaes';
 	import { preferencesStore, favoritesStore, historyStore } from '$lib/stores';
-	import { onMount } from 'svelte';
 	import clsx from 'clsx';
 
 	function openNewTab(url: string) {
@@ -29,7 +28,7 @@
 		if ($preferencesStore.open === 'tab') {
 			openedTab = window.open('', '_blank');
 		} else if ($preferencesStore.open === 'window') {
-			openedTab = window.open('', '_blank');
+			openedTab = window.open('', '_blank', 'width=800,height=600');
 		} else {
 			$preferencesStore.open = 'tab';
 			openNewTab(url);
@@ -48,7 +47,7 @@
 
 	const gmaedata = $derived(getGameById(id));
 
-	onMount(() => {
+	if ($preferencesStore.history) {
 		let history = $historyStore;
 		if (history.includes(id)) {
 			history = history.filter((historyId) => historyId !== id);
@@ -57,7 +56,7 @@
 		history.push(id);
 
 		historyStore.set(history);
-	});
+	}
 </script>
 
 <div class="flex h-full w-full flex-col gap-3 p-3">
@@ -147,7 +146,7 @@
 				}}
 			>
 				<OpenInNewTab class="h-6 w-6" />
-				New tab
+				New {$preferencesStore.open}
 			</Button>
 			<Button
 				variant="outline"

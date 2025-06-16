@@ -12,9 +12,11 @@
 	import CircleAlertIcon from '@lucide/svelte/icons/circle-alert';
 
 	import { settingsOpen } from '$lib/state.svelte';
-	import { preferencesStore } from '$lib/stores';
+	import { preferencesStore, historyStore } from '$lib/stores';
 	import { themes } from '$lib/theme';
 	import clsx from 'clsx';
+	import Button from './ui/button/button.svelte';
+	import { toast } from 'svelte-sonner';
 
 	const themeTriggerContent = $derived(
 		themes.find((theme) => theme.value === $preferencesStore.theme)?.label ?? 'No theme :D'
@@ -62,13 +64,16 @@
 					</div>
 				</Dialog.Content>
 			</Dialog.Root>
-			Panic key
+			Panic key (requires refresh to apply)
 			<div class="flex items-center gap-3">
 				<Checkbox id="panic" bind:checked={$preferencesStore.panic.enabled} />
 				<Label for="panic">Enable Panic Key</Label>
 			</div>
 			<div class="flex items-center gap-3">
-				<Checkbox id="panic-disable-experimental" bind:checked={$preferencesStore.panic.enabled} />
+				<Checkbox
+					id="panic-disable-experimental"
+					bind:checked={$preferencesStore.panic.disableExperimentalMode}
+				/>
 				<Label for="panic-disable-experimental">Disable Experimental Mode when triggered</Label>
 			</div>
 			<div class="flex flex-row gap-3">
@@ -89,12 +94,43 @@
 			</div>
 			Privacy
 			<div class="flex items-center gap-3">
-				<Checkbox id="analytics" bind:checked={$preferencesStore.analytics} />
-				<Label for="analytics">Enable Analytics</Label>
-			</div>
-			<div class="flex items-center gap-3">
 				<Checkbox id="history" bind:checked={$preferencesStore.history} />
 				<Label for="history">Enable History</Label>
+			</div>
+			<div class="flex flex-row gap-3">
+				<Button
+					variant="outline"
+					onclick={() => {
+						$historyStore = [];
+						toast.success('Cleared');
+					}}
+				>
+					Clear history
+				</Button>
+				<Button
+					variant="outline"
+					onclick={() => {
+						preferencesStore.reset();
+						toast.success('Reset');
+					}}
+				>
+					Reset settings
+				</Button>
+				<Button
+					variant="destructive"
+					onclick={() => {
+						localStorage.clear();
+						sessionStorage.clear();
+						document.cookie.split(';').forEach((cookie) => {
+							const eqPos = cookie.indexOf('=');
+							const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+							document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+						});
+						window.location.reload();
+					}}
+				>
+					Clear everything
+				</Button>
 			</div>
 		</div>
 	</Dialog.Content>
