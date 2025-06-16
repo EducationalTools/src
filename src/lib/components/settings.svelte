@@ -62,7 +62,7 @@
 					</div>
 				</Dialog.Content>
 			</Dialog.Root>
-			Panic key
+			Panic key (requires refresh to apply)
 			<div class="flex items-center gap-3">
 				<Checkbox id="panic" bind:checked={$preferencesStore.panic.enabled} />
 				<Label for="panic">Enable Panic Key</Label>
