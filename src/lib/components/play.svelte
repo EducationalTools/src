@@ -87,7 +87,7 @@
 			<p class="text-xl">{gmaedata?.description}</p>
 		</div>
 		<div class="grow"></div>
-		<div class="flex min-w-72 flex-col gap-3">
+		<div class="grid min-w-72 grid-cols-2 gap-3">
 			<Drawer.Root direction="right">
 				<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>
 					<Comment class="h-6 w-6" />
