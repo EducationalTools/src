@@ -29,11 +29,6 @@
 			<Dialog.Header>
 				<Dialog.Title>Settings</Dialog.Title>
 			</Dialog.Header>
-			<Alert.Root variant="destructive">
-				<CircleAlertIcon class="size-4" />
-				<Alert.Title>Notice</Alert.Title>
-				<Alert.Description>These settings basically do nothing</Alert.Description>
-			</Alert.Root>
 			Open in
 			<RadioGroup.Root bind:value={$preferencesStore.open}>
 				<div class="flex items-center space-x-2">
