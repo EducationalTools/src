@@ -345,6 +345,14 @@ const gmaes: Gmae[] = [
 		tags: [],
 		links: [],
 		url: '/_app/tools/achievementunlocked/index.html'
+	},
+	{
+		name: 'The Final Earth',
+		description: '',
+		category: 'Sandbox',
+		tags: [],
+		links: [],
+		url: '/_app/tools/the-final-earth/index.html'
 	}
 ];
 
