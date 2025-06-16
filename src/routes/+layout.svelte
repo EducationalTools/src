@@ -11,6 +11,7 @@
 	import AppSidebar from '$lib/components/app-sidebar.svelte';
 	import Settings from '$lib/components/settings.svelte';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import PanicMode from '$lib/components/panic-mode.svelte';
 
 	// Third-party utilities
 	import { ModeWatcher } from 'mode-watcher';
@@ -79,6 +80,7 @@
 <!-- https://github.com/sveltejs/svelte/issues/3105#issuecomment-1868393333 -->
 <div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
 
+<PanicMode />
 <Toaster />
 <ModeWatcher defaultMode={'dark'} />
 <Settings />
