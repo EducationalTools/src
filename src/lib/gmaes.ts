@@ -348,7 +348,7 @@ const gmaes: Gmae[] = [
 	},
 	{
 		name: 'The Final Earth',
-		description: '',
+		description: 'rebuild earth on an intersting looking planet',
 		category: 'Sandbox',
 		tags: [],
 		links: [],
