@@ -20,7 +20,6 @@
 	// App imports
 	import { getGameById } from '$lib/gmaes';
 	import { preferencesStore, favoritesStore, historyStore } from '$lib/stores';
-	import { onMount } from 'svelte';
 	import clsx from 'clsx';
 
 	function openNewTab(url: string) {
