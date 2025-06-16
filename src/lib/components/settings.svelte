@@ -68,7 +68,10 @@
 				<Label for="panic">Enable Panic Key</Label>
 			</div>
 			<div class="flex items-center gap-3">
-				<Checkbox id="panic-disable-experimental" bind:checked={$preferencesStore.panic.enabled} />
+				<Checkbox
+					id="panic-disable-experimental"
+					bind:checked={$preferencesStore.panic.disableExperimentalMode}
+				/>
 				<Label for="panic-disable-experimental">Disable Experimental Mode when triggered</Label>
 			</div>
 			<div class="flex flex-row gap-3">
