@@ -70,8 +70,8 @@ importers:
         specifier: ^8.6.0
         version: 8.6.0(svelte@5.34.3)
       layerchart:
-        specifier: 2.0.0-next.21
-        version: 2.0.0-next.21(svelte@5.34.3)
+        specifier: 2.0.0-next.22
+        version: 2.0.0-next.22(svelte@5.34.3)
       lucide-svelte:
         specifier: ^0.512.0
         version: 0.512.0(svelte@5.34.3)
@@ -1199,8 +1199,8 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
-  layerchart@2.0.0-next.21:
-    resolution: {integrity: sha512-74K3iAkw8ZCCfeIOhJetA50OKEskEB0WkFEMBhrqLFhx7f8VzdSz30T0o5S6HyP8cTTINnErZ6bo/DaDmhZc1w==}
+  layerchart@2.0.0-next.22:
+    resolution: {integrity: sha512-MlHY9R8eBvr6GCFy2z8x65hFtnHcqSHlKAHwdxsa1Ke7abAFe7sWDLNoUS2WO/oIzQhxBgAGwYa1nSlgG3grsA==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -2836,7 +2836,7 @@ snapshots:
 
   kleur@4.1.5: {}
 
-  layerchart@2.0.0-next.21(svelte@5.34.3):
+  layerchart@2.0.0-next.22(svelte@5.34.3):
     dependencies:
       '@dagrejs/dagre': 1.1.4
       '@layerstack/svelte-actions': 1.0.1-next.12
