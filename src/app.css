@@ -301,6 +301,53 @@ html:has(#theme.catppuccin-darker) {
 	--shadow-2xl: 0px 4px 6px 0px hsl(0 0% 0% / 0.3);
 }
 
+html:has(#theme.terminal) {
+	--background: #000000;
+	--foreground: #00ff00;
+	--card: #111111;
+	--card-foreground: #00ff00;
+	--popover: #222222;
+	--popover-foreground: #00ff00;
+	--primary: #008000;
+	--primary-foreground: #ffffff;
+	--secondary: #004000;
+	--secondary-foreground: #ffffff;
+	--muted: #333333;
+	--muted-foreground: #00ff00;
+	--accent: #00ff00;
+	--accent-foreground: #000000;
+	--destructive: #ff0000;
+	--destructive-foreground: #ffffff;
+	--border: #444444;
+	--input: #333333;
+	--ring: #00ff00;
+	--chart-1: #008000;
+	--chart-2: #004000;
+	--chart-3: #002000;
+	--chart-4: #000080;
+	--chart-5: #000040;
+	--sidebar: #111111;
+	--sidebar-foreground: #00ff00;
+	--sidebar-primary: #008000;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #00ff00;
+	--sidebar-accent-foreground: #000000;
+	--sidebar-border: #444444;
+	--sidebar-ring: #00ff00;
+	--font-sans: Inter;
+	--font-serif: Merriweather;
+	--font-mono: JetBrains Mono;
+	--radius: 8px;
+	--shadow-2xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.1);
+	--shadow-xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.1);
+	--shadow-sm: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 1px 2px -1px hsl(0 0% 0% / 0.2);
+	--shadow: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 1px 2px -1px hsl(0 0% 0% / 0.2);
+	--shadow-md: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 2px 4px -1px hsl(0 0% 0% / 0.2);
+	--shadow-lg: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 4px 6px -1px hsl(0 0% 0% / 0.2);
+	--shadow-xl: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 8px 10px -1px hsl(0 0% 0% / 0.2);
+	--shadow-2xl: 0px 2px 4px 0px hsl(0 0% 0% / 0.5);
+}
+
 html:has(#theme.vercel) {
 	--background: #fcfcfc;
 	--foreground: #000000;
