@@ -22,6 +22,9 @@
 	import Code from 'lucide-svelte/icons/code';
 	import Settings from 'lucide-svelte/icons/settings';
 	import PanelLeft from 'lucide-svelte/icons/panel-left';
+	import Copy from 'lucide-svelte/icons/copy';
+	import Server from 'lucide-svelte/icons/server';
+	import Info from 'lucide-svelte/icons/info';
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
@@ -38,6 +41,10 @@
 			e.preventDefault();
 			commandOpen = !commandOpen;
 		}
+		if (e.key === ',' && (e.metaKey || e.ctrlKey)) {
+			e.preventDefault();
+			settingsOpen.current = !settingsOpen.current;
+		}
 	}
 
 	const mainNavigation: {
@@ -45,7 +52,7 @@
 		url: string;
 		icon?: any;
 		experimental: boolean;
-		items: {
+		items?: {
 			title: string;
 			url: string;
 		}[];
@@ -55,8 +62,7 @@
 				title: 'Home',
 				icon: Home,
 				url: '/',
-				experimental: false,
-				items: []
+				experimental: false
 			},
 			{
 				title: 'Tools',
@@ -97,6 +103,10 @@
 				url: '',
 				items: [
 					{
+						title: 'All Gmaes',
+						url: '/g'
+					},
+					{
 						title: 'Request a Gmae',
 						url: 'https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+'
 					},
@@ -105,6 +115,24 @@
 						url: `/g/${gmae.id}`
 					}))
 				]
+			},
+			{
+				title: 'Mirrors',
+				experimental: true,
+				url: '/mirrors',
+				icon: Copy
+			},
+			{
+				title: 'Host a mirror',
+				experimental: true,
+				icon: Server,
+				url: '/mirrors/host'
+			},
+			{
+				title: 'About',
+				experimental: true,
+				icon: Info,
+				url: '/about'
 			}
 		].filter((item) => !item.experimental || $preferencesStore.experimentalFeatures)
 	);
@@ -116,12 +144,18 @@
 	<Sidebar.Header>
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg" class="!transition-all hover:scale-105 active:scale-95">
+				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
-						<a href="/" {...props}>
+						<a
+							href="/"
+							onclick={() => {
+								sidebar.setOpenMobile(false);
+							}}
+							{...props}
+						>
 							<div
 								class={clsx(
-									'flex aspect-square size-8 items-center justify-center rounded-lg bg-gray-700 p-1 text-sidebar-primary-foreground'
+									'text-sidebar-primary-foreground foreground flex aspect-square size-8 items-center justify-center rounded-lg bg-black p-1'
 								)}
 							>
 								<img src="/edutools-white.svg" alt="" />
@@ -135,24 +169,23 @@
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg" class="!transition-all hover:scale-105 active:scale-95">
+				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<button
 							onclick={function () {
 								commandOpen = true;
+								sidebar.setOpenMobile(false);
 							}}
 							{...props}
 						>
-							<div
-								class="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary"
-							>
+							<div class="flex aspect-square size-8 items-center justify-center rounded-lg">
 								<Search class="size-4" />
 							</div>
 							<div class="flex w-full flex-row items-center gap-2 leading-none">
 								<span>Search</span>
 								<div class="flex-grow"></div>
 								<kbd
-									class="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100"
+									class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
 								>
 									<span class="text-xs">⌘</span>K
 								</kbd>
@@ -181,7 +214,13 @@
 											{...props}
 										>
 											{#snippet child({ props })}
-												<a class=" font-medium" {...props}>
+												<a
+													class="font-medium"
+													onclick={() => {
+														sidebar.setOpenMobile(false);
+													}}
+													{...props}
+												>
 													{#if Icon}
 														<Icon />
 													{/if}
@@ -199,34 +238,39 @@
 										{#if open}
 											<div {...props} transition:slide>
 												<Sidebar.MenuSub>
-													{#each groupItem.items as item (item.title)}
-														<Sidebar.MenuSubItem>
-															<Sidebar.MenuSubButton
-																isActive={item.url === page.url.pathname ||
-																	(item.url === '/' && page.url.pathname === '')}
-															>
-																{#snippet child({ props })}
-																	<a
-																		href={item.url}
-																		{...props}
-																		class={clsx(
-																			'group/link z-50 text-nowrap hover:overflow-visible',
-																			props.class || ''
-																		)}
-																		target={item.url.startsWith('http') ? '_blank' : undefined}
-																		rel={item.url.startsWith('http')
-																			? 'noopener noreferrer'
-																			: undefined}
-																	>
-																		{item.title}
-																		<div
-																			class="absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent to-sidebar group-hover/link:opacity-0"
-																		></div>
-																	</a>
-																{/snippet}
-															</Sidebar.MenuSubButton>
-														</Sidebar.MenuSubItem>
-													{/each}
+													{#if groupItem.items}
+														{#each groupItem.items as item (item.title)}
+															<Sidebar.MenuSubItem>
+																<Sidebar.MenuSubButton
+																	isActive={item.url === page.url.pathname ||
+																		(item.url === '/' && page.url.pathname === '')}
+																>
+																	{#snippet child({ props })}
+																		<a
+																			href={item.url}
+																			onclick={() => {
+																				sidebar.setOpenMobile(false);
+																			}}
+																			{...props}
+																			class={clsx(
+																				'group/link z-50 text-nowrap hover:overflow-visible',
+																				props.class || ''
+																			)}
+																			target={item.url.startsWith('http') ? '_blank' : undefined}
+																			rel={item.url.startsWith('http')
+																				? 'noopener noreferrer'
+																				: undefined}
+																		>
+																			{item.title}
+																			<div
+																				class="to-sidebar absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent group-hover/link:opacity-0"
+																			></div>
+																		</a>
+																	{/snippet}
+																</Sidebar.MenuSubButton>
+															</Sidebar.MenuSubItem>
+														{/each}
+													{/if}
 												</Sidebar.MenuSub>
 											</div>
 										{/if}
@@ -247,6 +291,9 @@
 										{...props}
 										target={groupItem.url.startsWith('http') ? '_blank' : undefined}
 										rel={groupItem.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+										onclick={() => {
+											sidebar.setOpenMobile(false);
+										}}
 									>
 										{#if Icon}
 											<Icon />
@@ -266,7 +313,14 @@
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton>
 					{#snippet child({ props })}
-						<a target="_blank" href="https://github.com/EducationalTools/src" {...props}>
+						<a
+							onclick={() => {
+								sidebar.setOpenMobile(false);
+							}}
+							target="_blank"
+							href="https://github.com/EducationalTools/src"
+							{...props}
+						>
 							<Code />
 							EducationalTools/src
 						</a>
@@ -277,10 +331,18 @@
 				<Sidebar.MenuButton
 					onclick={() => {
 						settingsOpen.current = true;
+						sidebar.setOpenMobile(false);
 					}}
 				>
 					<Settings />
 					Settings
+
+					<div class="grow"></div>
+					<kbd
+						class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
+					>
+						<span class="text-xs">⌘</span>,
+					</kbd>
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 		{/if}
@@ -292,6 +354,12 @@
 			>
 				<PanelLeft />
 				Sidebar
+				<div class="grow"></div>
+				<kbd
+					class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
+				>
+					<span class="text-xs">⌘</span>B
+				</kbd>
 			</Sidebar.MenuButton>
 		</Sidebar.MenuItem>
 	</Sidebar.Footer>

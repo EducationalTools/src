@@ -5,6 +5,8 @@
 	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
 	import { Drawer } from 'vaul-svelte';
 	import { toast } from 'svelte-sonner';
+	import { Badge } from '$lib/components/ui/badge/index.js';
+	import { badgeVariants } from '$lib/components/ui/badge/index.js';
 
 	// Icons
 	import Refresh from 'lucide-svelte/icons/refresh-cw';
@@ -13,11 +15,12 @@
 	import Share from 'lucide-svelte/icons/share';
 	import Bookmark from 'lucide-svelte/icons/bookmark';
 	import Comment from 'lucide-svelte/icons/message-square';
+	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';
 	import { preferencesStore, favoritesStore, historyStore } from '$lib/stores';
-	import { onMount } from 'svelte';
+	import clsx from 'clsx';
 
 	function openNewTab(url: string) {
 		url = location.origin + url;
@@ -25,7 +28,7 @@
 		if ($preferencesStore.open === 'tab') {
 			openedTab = window.open('', '_blank');
 		} else if ($preferencesStore.open === 'window') {
-			openedTab = window.open('', '_blank');
+			openedTab = window.open('', '_blank', 'width=800,height=600');
 		} else {
 			$preferencesStore.open = 'tab';
 			openNewTab(url);
@@ -44,7 +47,7 @@
 
 	const gmaedata = $derived(getGameById(id));
 
-	onMount(() => {
+	if ($preferencesStore.history) {
 		let history = $historyStore;
 		if (history.includes(id)) {
 			history = history.filter((historyId) => historyId !== id);
@@ -53,25 +56,44 @@
 		history.push(id);
 
 		historyStore.set(history);
-	});
+	}
 </script>
 
-<div class="flex h-full w-full flex-row gap-3 p-3">
-	<iframe src={gmaedata?.url} frameborder="0" class="flex-grow rounded" title={gmaedata?.name}
-	></iframe>
+<div class="flex h-full w-full flex-col gap-3 p-3">
+	<iframe src={gmaedata?.url} frameborder="0" class="grow rounded" title={gmaedata?.name}></iframe>
 
-	<div class="flex h-full w-72 flex-col">
-		<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
-		<p class="text-xl">{gmaedata?.description}</p>
-		<div class="flex-grow"></div>
-		<div class="flex flex-col gap-3">
+	<div class="flex w-full flex-col gap-2 md:flex-row">
+		<div class="flex flex-col gap-2">
+			<a href="/" class={clsx(badgeVariants({ variant: 'secondary' }), 'w-fit')}
+				>{gmaedata?.category}<ArrowRight class="ml-1 size-3" /></a
+			>
+			<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
+			<div class="flex w-full flex-row flex-wrap gap-2">
+				{#each gmaedata?.tags || [] as tag}
+					<Badge variant="default">#{tag}</Badge>
+				{/each}
+				{#each gmaedata?.links || [] as link}
+					<a
+						href={link.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						class={badgeVariants({ variant: 'outline' })}
+					>
+						<OpenInNewTab class="mr-1 size-3" />{link.name}
+					</a>
+				{/each}
+			</div>
+			<p class="text-xl">{gmaedata?.description}</p>
+		</div>
+		<div class="grow"></div>
+		<div class="grid min-w-72 grid-cols-2 gap-3">
 			<Drawer.Root direction="right">
 				<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>
 					<Comment class="h-6 w-6" />
 					Comments
 				</Drawer.Trigger>
 				<Drawer.Content
-					class="fixed bottom-0 right-0 top-0 z-20 flex w-[500px] max-w-full flex-col rounded-l-xl bg-background p-3 outline-none"
+					class="bg-background fixed top-0 right-0 bottom-0 z-20 flex w-[500px] max-w-full flex-col rounded-l-xl p-3 outline-none"
 					style="--initial-transform: calc(100% + 8px)"
 				>
 					<h2 class="text-3xl">Comments</h2>
@@ -94,7 +116,7 @@
 						async
 					></script>
 				</Drawer.Content>
-				<Drawer.Overlay class="fixed inset-0 left-0 top-0 z-10 bg-black/50" />
+				<Drawer.Overlay class="fixed inset-0 top-0 left-0 z-10 bg-black/50" />
 			</Drawer.Root>
 			<Button
 				variant="outline"
@@ -124,7 +146,7 @@
 				}}
 			>
 				<OpenInNewTab class="h-6 w-6" />
-				New tab
+				New {$preferencesStore.open}
 			</Button>
 			<Button
 				variant="outline"

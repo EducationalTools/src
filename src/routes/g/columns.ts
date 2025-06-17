@@ -1,0 +1,59 @@
+import type { ColumnDef } from '@tanstack/table-core';
+import type { ParsedGmae } from '$lib/gmaes';
+import { renderComponent } from '$lib/components/ui/data-table/index.js';
+import TableActions from './table-actions.svelte';
+import Tags from './tags.svelte';
+import HeaderButtonSort from './header-button-sort.svelte';
+
+export const columns: ColumnDef<ParsedGmae>[] = [
+	{
+		accessorKey: 'id',
+		header: ({ column }) =>
+			renderComponent(HeaderButtonSort, {
+				content: 'ID'
+			})
+	},
+	{
+		accessorKey: 'name',
+		header: ({ column }) =>
+			renderComponent(HeaderButtonSort, {
+				onclick: column.getToggleSortingHandler(),
+				content: 'Name',
+				sort: true
+			}),
+		// @ts-ignore
+		filterFn: 'fuzzy'
+	},
+	{
+		accessorKey: 'category',
+		header: ({ column }) =>
+			renderComponent(HeaderButtonSort, {
+				onclick: column.getToggleSortingHandler(),
+				content: 'Category',
+				sort: true
+			})
+	},
+	{
+		accessorKey: 'description',
+		header: ({ column }) =>
+			renderComponent(HeaderButtonSort, {
+				content: 'Description'
+			})
+	},
+	{
+		accessorKey: 'tags',
+		header: ({ column }) =>
+			renderComponent(HeaderButtonSort, {
+				content: 'Tags'
+			}),
+		cell: ({ row }) => {
+			return renderComponent(Tags, { tags: row.original.tags });
+		}
+	},
+	{
+		id: 'actions',
+		cell: ({ row }) => {
+			return renderComponent(TableActions, { id: row.original.id });
+		}
+	}
+];
