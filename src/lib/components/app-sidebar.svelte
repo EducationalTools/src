@@ -126,7 +126,13 @@
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton size="lg" class="!transition-all hover:scale-105 active:scale-95">
 					{#snippet child({ props })}
-						<a href="/" {...props}>
+						<a
+							href="/"
+							onclick={() => {
+								sidebar.setOpenMobile(false);
+							}}
+							{...props}
+						>
 							<div
 								class={clsx(
 									'text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg bg-gray-700 p-1'
@@ -148,6 +154,7 @@
 						<button
 							onclick={function () {
 								commandOpen = true;
+								sidebar.setOpenMobile(false);
 							}}
 							{...props}
 						>
@@ -189,7 +196,13 @@
 											{...props}
 										>
 											{#snippet child({ props })}
-												<a class=" font-medium" {...props}>
+												<a
+													class="font-medium"
+													onclick={() => {
+														sidebar.setOpenMobile(false);
+													}}
+													{...props}
+												>
 													{#if Icon}
 														<Icon />
 													{/if}
@@ -216,6 +229,9 @@
 																{#snippet child({ props })}
 																	<a
 																		href={item.url}
+																		onclick={() => {
+																			sidebar.setOpenMobile(false);
+																		}}
 																		{...props}
 																		class={clsx(
 																			'group/link z-50 text-nowrap hover:overflow-visible',
@@ -255,6 +271,9 @@
 										{...props}
 										target={groupItem.url.startsWith('http') ? '_blank' : undefined}
 										rel={groupItem.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+										onclick={() => {
+											sidebar.setOpenMobile(false);
+										}}
 									>
 										{#if Icon}
 											<Icon />
@@ -274,7 +293,14 @@
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton>
 					{#snippet child({ props })}
-						<a target="_blank" href="https://github.com/EducationalTools/src" {...props}>
+						<a
+							onclick={() => {
+								sidebar.setOpenMobile(false);
+							}}
+							target="_blank"
+							href="https://github.com/EducationalTools/src"
+							{...props}
+						>
 							<Code />
 							EducationalTools/src
 						</a>
@@ -285,6 +311,7 @@
 				<Sidebar.MenuButton
 					onclick={() => {
 						settingsOpen.current = true;
+						sidebar.setOpenMobile(false);
 					}}
 				>
 					<Settings />
