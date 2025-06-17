@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @source not "../static/_app";
 @import 'tw-animate-css';
+@custom-variant dark (&:is(.dark *));
 
 html:has(#theme.shadcn-zinc) {
 	--radius: 0.625rem;

@@ -10,6 +10,10 @@
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
 	import * as Alert from '$lib/components/ui/alert/index.js';
 	import CircleAlertIcon from '@lucide/svelte/icons/circle-alert';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import SunIcon from '@lucide/svelte/icons/sun';
+	import MoonIcon from '@lucide/svelte/icons/moon';
+	import { resetMode, mode, setMode, toggleMode } from 'mode-watcher';
 
 	import { settingsOpen } from '$lib/state.svelte';
 	import { preferencesStore, historyStore } from '$lib/stores';
@@ -41,24 +45,38 @@
 				</div>
 			</RadioGroup.Root>
 			Themes
-			<Dialog.Root>
-				<Dialog.Trigger class={clsx(buttonVariants({ variant: 'outline' }), 'w-fit justify-start')}>
-					{themeTriggerContent}
-					<ChevronDownIcon class="opacity-50" />
-				</Dialog.Trigger>
-				<Dialog.Content class="p-0">
-					<div class="max-h-[80vh] overflow-auto p-6">
-						<RadioGroup.Root bind:value={$preferencesStore.theme}>
-							{#each themes as theme}
-								<div class="flex items-center space-x-2">
-									<RadioGroup.Item value={theme.value} id={theme.value} />
-									<Label for={theme.value}>{theme.label}</Label>
-								</div>
-							{/each}
-						</RadioGroup.Root>
-					</div>
-				</Dialog.Content>
-			</Dialog.Root>
+			<div class="flex flex-row gap-2">
+				<Dialog.Root>
+					<Dialog.Trigger
+						class={clsx(buttonVariants({ variant: 'outline' }), 'w-fit justify-start')}
+					>
+						{themeTriggerContent}
+						<ChevronDownIcon class="opacity-50" />
+					</Dialog.Trigger>
+
+					<Dialog.Content class="p-0">
+						<div class="max-h-[80vh] overflow-auto p-6">
+							<RadioGroup.Root bind:value={$preferencesStore.theme}>
+								{#each themes as theme}
+									<div class="flex items-center space-x-2">
+										<RadioGroup.Item value={theme.value} id={theme.value} />
+										<Label for={theme.value}>{theme.label}</Label>
+									</div>
+								{/each}
+							</RadioGroup.Root>
+						</div>
+					</Dialog.Content>
+				</Dialog.Root>
+				<Button onclick={toggleMode} variant="outline" size="icon">
+					<SunIcon
+						class="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"
+					/>
+					<MoonIcon
+						class="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"
+					/>
+					<span class="sr-only">Toggle theme</span>
+				</Button>
+			</div>
 			Panic key (requires refresh to apply)
 			<div class="flex items-center gap-3">
 				<Checkbox id="panic" bind:checked={$preferencesStore.panic.enabled} />
