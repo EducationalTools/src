@@ -29,7 +29,7 @@
 		"clsx": "^2.1.1",
 		"embla-carousel-svelte": "^8.6.0",
 		"layerchart": "2.0.0-next.22",
-		"lucide-svelte": "^0.512.0",
+		"lucide-svelte": "^0.516.0",
 		"mode-watcher": "^1.0.8",
 		"paneforge": "1.0.0-next.5",
 		"prettier": "^3.5.3",
