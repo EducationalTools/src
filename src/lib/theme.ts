@@ -1,7 +1,7 @@
 export const themes = [
 	{ value: 'shadcn-zinc', label: 'Shadcn Zinc' },
 	{ value: 'black-white', label: 'Black & White' },
-	{ value: 'catppuccin-mocha', label: 'Catppuccin' },
+	{ value: 'catppuccin', label: 'Catppuccin' },
 	{ value: 'gruvbox', label: 'Gruvbox' },
 	{ value: 'solarised', label: 'Solarised' },
 	{ value: 'github', label: 'GitHub' },
