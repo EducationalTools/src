@@ -530,6 +530,54 @@ html.dark:has(#theme.vercel) {
 	--shadow-2xl: 0px 1px 2px 0px hsl(0 0% 0% / 0.45);
 }
 
+html:has(#theme.google-classroom) {
+	--background: #ffffff;
+	--foreground: #000000;
+	--card: #f8fafd;
+	--card-foreground: #333333;
+	--popover: #f8fafd;
+	--popover-foreground: #333333;
+	--primary: #c2e7ff;
+	--primary-foreground: #333333;
+	--secondary: #dbe5f5;
+	--secondary-foreground: #333333;
+	--muted: #e5e5e5;
+	--muted-foreground: #666666;
+	--accent: #87ceeb;
+	--accent-foreground: #ffffff;
+	--destructive: #ff6666;
+	--destructive-foreground: #ffffff;
+	--border: #dddddd;
+	--input: #f8fafd;
+	--ring: #c2e7ff;
+	--chart-1: #c2e7ff;
+	--chart-2: #87ceeb;
+	--chart-3: #66cccc;
+	--chart-4: #44aaaa;
+	--chart-5: #22aaaa;
+	--sidebar: #f8fafd;
+	--sidebar-foreground: #333333;
+	--sidebar-primary: #c2e7ff;
+	--sidebar-primary-foreground: #333333;
+	--sidebar-accent: #87ceeb;
+	--sidebar-accent-foreground: #ffffff;
+	--sidebar-border: #dddddd;
+	--sidebar-ring: #c2e7ff;
+	--font-sans: Inter;
+	--font-serif: Merriweather;
+	--font-mono: Monaco;
+	--radius: 8px;
+	--shadow-2xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.1);
+	--shadow-xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.1);
+	--shadow-sm: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 1px 2px -1px hsl(0 0% 0% / 0.2);
+	--shadow: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 1px 2px -1px hsl(0 0% 0% / 0.2);
+	--shadow-md: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 2px 4px -1px hsl(0 0% 0% / 0.2);
+	--shadow-lg: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 4px 6px -1px hsl(0 0% 0% / 0.2);
+	--shadow-xl: 0px 2px 4px 0px hsl(0 0% 0% / 0.2), 0px 8px 10px -1px hsl(0 0% 0% / 0.2);
+	--shadow-2xl: 0px 2px 4px 0px hsl(0 0% 0% / 0.5);
+	--tracking-normal: 0px;
+}
+
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
