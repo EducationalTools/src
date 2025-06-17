@@ -5,6 +5,7 @@ export const themes = [
 	{ value: 'gruvbox', label: 'Gruvbox' },
 	{ value: 'solarised', label: 'Solarised' },
 	{ value: 'github', label: 'GitHub' },
+	{ value: 'vercel', label: 'Vercel' },
 	{ value: 'terminal', label: 'Terminal' },
 	{ value: 'material-red', label: 'Material Red' },
 	{ value: 'material-green', label: 'Material Green' },
