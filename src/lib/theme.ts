@@ -3,7 +3,6 @@ export const themes = [
 	{ value: 'black-white', label: 'Black & White' },
 	{ value: 'catppuccin', label: 'Catppuccin' },
 	{ value: 'catppuccin-darker', label: 'Catppuccin Darker' },
-	{ value: 'github', label: 'GitHub' },
 	{ value: 'vercel', label: 'Vercel' },
 	{ value: 'terminal', label: 'Terminal' },
 	{ value: 'cyberpunk', label: 'Cyberpunk' },
