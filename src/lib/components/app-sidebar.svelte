@@ -144,7 +144,7 @@
 	<Sidebar.Header>
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg" class="!transition-all hover:scale-105 active:scale-95">
+				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<a
 							href="/"
@@ -169,7 +169,7 @@
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg" class="!transition-all hover:scale-105 active:scale-95">
+				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<button
 							onclick={function () {
