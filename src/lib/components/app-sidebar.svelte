@@ -52,7 +52,7 @@
 		url: string;
 		icon?: any;
 		experimental: boolean;
-		items: {
+		items?: {
 			title: string;
 			url: string;
 		}[];
@@ -241,37 +241,39 @@
 										{#if open}
 											<div {...props} transition:slide>
 												<Sidebar.MenuSub>
-													{#each groupItem.items as item (item.title)}
-														<Sidebar.MenuSubItem>
-															<Sidebar.MenuSubButton
-																isActive={item.url === page.url.pathname ||
-																	(item.url === '/' && page.url.pathname === '')}
-															>
-																{#snippet child({ props })}
-																	<a
-																		href={item.url}
-																		onclick={() => {
-																			sidebar.setOpenMobile(false);
-																		}}
-																		{...props}
-																		class={clsx(
-																			'group/link z-50 text-nowrap hover:overflow-visible',
-																			props.class || ''
-																		)}
-																		target={item.url.startsWith('http') ? '_blank' : undefined}
-																		rel={item.url.startsWith('http')
-																			? 'noopener noreferrer'
-																			: undefined}
-																	>
-																		{item.title}
-																		<div
-																			class="to-sidebar absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent group-hover/link:opacity-0"
-																		></div>
-																	</a>
-																{/snippet}
-															</Sidebar.MenuSubButton>
-														</Sidebar.MenuSubItem>
-													{/each}
+													{#if groupItem.items}
+														{#each groupItem.items as item (item.title)}
+															<Sidebar.MenuSubItem>
+																<Sidebar.MenuSubButton
+																	isActive={item.url === page.url.pathname ||
+																		(item.url === '/' && page.url.pathname === '')}
+																>
+																	{#snippet child({ props })}
+																		<a
+																			href={item.url}
+																			onclick={() => {
+																				sidebar.setOpenMobile(false);
+																			}}
+																			{...props}
+																			class={clsx(
+																				'group/link z-50 text-nowrap hover:overflow-visible',
+																				props.class || ''
+																			)}
+																			target={item.url.startsWith('http') ? '_blank' : undefined}
+																			rel={item.url.startsWith('http')
+																				? 'noopener noreferrer'
+																				: undefined}
+																		>
+																			{item.title}
+																			<div
+																				class="to-sidebar absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent group-hover/link:opacity-0"
+																			></div>
+																		</a>
+																	{/snippet}
+																</Sidebar.MenuSubButton>
+															</Sidebar.MenuSubItem>
+														{/each}
+													{/if}
 												</Sidebar.MenuSub>
 											</div>
 										{/if}
