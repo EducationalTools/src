@@ -22,6 +22,9 @@
 	import Code from 'lucide-svelte/icons/code';
 	import Settings from 'lucide-svelte/icons/settings';
 	import PanelLeft from 'lucide-svelte/icons/panel-left';
+	import Copy from 'lucide-svelte/icons/copy';
+	import Server from 'lucide-svelte/icons/server';
+	import Info from 'lucide-svelte/icons/info';
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
@@ -49,7 +52,7 @@
 		url: string;
 		icon?: any;
 		experimental: boolean;
-		items: {
+		items?: {
 			title: string;
 			url: string;
 		}[];
@@ -59,8 +62,7 @@
 				title: 'Home',
 				icon: Home,
 				url: '/',
-				experimental: false,
-				items: []
+				experimental: false
 			},
 			{
 				title: 'Tools',
@@ -113,6 +115,24 @@
 						url: `/g/${gmae.id}`
 					}))
 				]
+			},
+			{
+				title: 'Mirrors',
+				experimental: true,
+				url: '/mirrors',
+				icon: Copy
+			},
+			{
+				title: 'Host a mirror',
+				experimental: true,
+				icon: Server,
+				url: '/mirrors/host'
+			},
+			{
+				title: 'About',
+				experimental: true,
+				icon: Info,
+				url: '/about'
 			}
 		].filter((item) => !item.experimental || $preferencesStore.experimentalFeatures)
 	);
@@ -220,37 +240,39 @@
 										{#if open}
 											<div {...props} transition:slide>
 												<Sidebar.MenuSub>
-													{#each groupItem.items as item (item.title)}
-														<Sidebar.MenuSubItem>
-															<Sidebar.MenuSubButton
-																isActive={item.url === page.url.pathname ||
-																	(item.url === '/' && page.url.pathname === '')}
-															>
-																{#snippet child({ props })}
-																	<a
-																		href={item.url}
-																		onclick={() => {
-																			sidebar.setOpenMobile(false);
-																		}}
-																		{...props}
-																		class={clsx(
-																			'group/link z-50 text-nowrap hover:overflow-visible',
-																			props.class || ''
-																		)}
-																		target={item.url.startsWith('http') ? '_blank' : undefined}
-																		rel={item.url.startsWith('http')
-																			? 'noopener noreferrer'
-																			: undefined}
-																	>
-																		{item.title}
-																		<div
-																			class="to-sidebar absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent group-hover/link:opacity-0"
-																		></div>
-																	</a>
-																{/snippet}
-															</Sidebar.MenuSubButton>
-														</Sidebar.MenuSubItem>
-													{/each}
+													{#if groupItem.items}
+														{#each groupItem.items as item (item.title)}
+															<Sidebar.MenuSubItem>
+																<Sidebar.MenuSubButton
+																	isActive={item.url === page.url.pathname ||
+																		(item.url === '/' && page.url.pathname === '')}
+																>
+																	{#snippet child({ props })}
+																		<a
+																			href={item.url}
+																			onclick={() => {
+																				sidebar.setOpenMobile(false);
+																			}}
+																			{...props}
+																			class={clsx(
+																				'group/link z-50 text-nowrap hover:overflow-visible',
+																				props.class || ''
+																			)}
+																			target={item.url.startsWith('http') ? '_blank' : undefined}
+																			rel={item.url.startsWith('http')
+																				? 'noopener noreferrer'
+																				: undefined}
+																		>
+																			{item.title}
+																			<div
+																				class="to-sidebar absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent group-hover/link:opacity-0"
+																			></div>
+																		</a>
+																	{/snippet}
+																</Sidebar.MenuSubButton>
+															</Sidebar.MenuSubItem>
+														{/each}
+													{/if}
 												</Sidebar.MenuSub>
 											</div>
 										{/if}
