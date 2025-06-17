@@ -7,6 +7,7 @@ export const themes = [
 	{ value: 'github', label: 'GitHub' },
 	{ value: 'vercel', label: 'Vercel' },
 	{ value: 'terminal', label: 'Terminal' },
+	{ value: 'cyberpunk', label: 'Cyberpunk' },
 	{ value: 'material-red', label: 'Material Red' },
 	{ value: 'material-green', label: 'Material Green' },
 	{ value: 'material-blue', label: 'Material Blue' },
