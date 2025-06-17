@@ -155,7 +155,7 @@
 						>
 							<div
 								class={clsx(
-									'text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg bg-gray-700 p-1'
+									'text-sidebar-primary-foreground foreground flex aspect-square size-8 items-center justify-center rounded-lg bg-black p-1'
 								)}
 							>
 								<img src="/edutools-white.svg" alt="" />
