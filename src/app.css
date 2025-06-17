@@ -193,9 +193,6 @@ html:has(#theme.catppuccin) {
 	--sidebar-accent-foreground: #ffffff;
 	--sidebar-border: #bcc0cc;
 	--sidebar-ring: #8839ef;
-	--font-sans: Montserrat, sans-serif;
-	--font-serif: Georgia, serif;
-	--font-mono: Fira Code, monospace;
 	--radius: 0.35rem;
 	--shadow-2xs: 0px 4px 6px 0px hsl(240 30% 25% / 0.06);
 	--shadow-xs: 0px 4px 6px 0px hsl(240 30% 25% / 0.06);
@@ -240,9 +237,6 @@ html.dark:has(#theme.catppuccin) {
 	--sidebar-accent-foreground: #1e1e2e;
 	--sidebar-border: #45475a;
 	--sidebar-ring: #cba6f7;
-	--font-sans: Montserrat, sans-serif;
-	--font-serif: Georgia, serif;
-	--font-mono: Fira Code, monospace;
 	--radius: 0.35rem;
 	--shadow-2xs: 0px 4px 6px 0px hsl(240 30% 25% / 0.06);
 	--shadow-xs: 0px 4px 6px 0px hsl(240 30% 25% / 0.06);
@@ -287,9 +281,6 @@ html:has(#theme.catppuccin-darker) {
 	--sidebar-accent-foreground: #cdd6f4;
 	--sidebar-border: #45475a;
 	--sidebar-ring: #cba6f7;
-	--font-sans: Geist Mono, monospace;
-	--font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-	--font-mono: Geist Mono, monospace;
 	--radius: 0.9rem;
 	--shadow-2xs: 0px 4px 6px 0px hsl(0 0% 0% / 0.06);
 	--shadow-xs: 0px 4px 6px 0px hsl(0 0% 0% / 0.06);
@@ -315,11 +306,11 @@ html:has(#theme.terminal) {
 	--muted: #333333;
 	--muted-foreground: #00ff00;
 	--accent: #00ff00;
-	--accent-foreground: #000000;
+	--accent-foreground: #00ff00;
 	--destructive: #ff0000;
 	--destructive-foreground: #ffffff;
 	--border: #444444;
-	--input: #333333;
+	--input: #00ff00;
 	--ring: #00ff00;
 	--chart-1: #008000;
 	--chart-2: #004000;
@@ -334,9 +325,6 @@ html:has(#theme.terminal) {
 	--sidebar-accent-foreground: #000000;
 	--sidebar-border: #444444;
 	--sidebar-ring: #00ff00;
-	--font-sans: Inter;
-	--font-serif: Merriweather;
-	--font-mono: JetBrains Mono;
 	--radius: 8px;
 	--shadow-2xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.1);
 	--shadow-xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.1);
@@ -381,9 +369,6 @@ html:has(#theme.cyberpunk) {
 	--sidebar-accent-foreground: #0c0c1d;
 	--sidebar-border: #dfe6e9;
 	--sidebar-ring: #ff00c8;
-	--font-sans: Outfit, sans-serif;
-	--font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-	--font-mono: Fira Code, monospace;
 	--radius: 0.5rem;
 	--shadow-2xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
 	--shadow-xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
@@ -428,9 +413,6 @@ html.dark:has(#theme.cyberpunk) {
 	--sidebar-accent-foreground: #0c0c1d;
 	--sidebar-border: #2e2e5e;
 	--sidebar-ring: #ff00c8;
-	--font-sans: Outfit, sans-serif;
-	--font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-	--font-mono: Fira Code, monospace;
 	--radius: 0.5rem;
 	--shadow-2xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
 	--shadow-xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
@@ -563,9 +545,6 @@ html:has(#theme.google-classroom) {
 	--sidebar-accent-foreground: #ffffff;
 	--sidebar-border: #dddddd;
 	--sidebar-ring: #c2e7ff;
-	--font-sans: Inter;
-	--font-serif: Merriweather;
-	--font-mono: Monaco;
 	--radius: 8px;
 	--shadow-2xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.1);
 	--shadow-xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.1);
