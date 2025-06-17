@@ -62,8 +62,7 @@
 				title: 'Home',
 				icon: Home,
 				url: '/',
-				experimental: false,
-				items: []
+				experimental: false
 			},
 			{
 				title: 'Tools',
