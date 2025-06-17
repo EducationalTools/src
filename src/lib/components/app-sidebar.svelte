@@ -22,6 +22,9 @@
 	import Code from 'lucide-svelte/icons/code';
 	import Settings from 'lucide-svelte/icons/settings';
 	import PanelLeft from 'lucide-svelte/icons/panel-left';
+	import Copy from 'lucide-svelte/icons/copy';
+	import Server from 'lucide-svelte/icons/server';
+	import Info from 'lucide-svelte/icons/info';
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
@@ -113,6 +116,24 @@
 						url: `/g/${gmae.id}`
 					}))
 				]
+			},
+			{
+				title: 'Mirrors',
+				experimental: true,
+				url: '/mirrors',
+				icon: Copy
+			},
+			{
+				title: 'Host a mirror',
+				experimental: true,
+				icon: Server,
+				url: '/mirrors/host'
+			},
+			{
+				title: 'About',
+				experimental: true,
+				icon: Info,
+				url: '/about'
 			}
 		].filter((item) => !item.experimental || $preferencesStore.experimentalFeatures)
 	);
