@@ -6,5 +6,5 @@ export const themes = [
 	{ value: 'vercel', label: 'Vercel' },
 	{ value: 'terminal', label: 'Terminal' },
 	{ value: 'cyberpunk', label: 'Cyberpunk' },
-	{ value: 'google-classroom', label: 'Google Classroom :)' }
+	{ value: 'google-classroom', label: 'Kinda Google Classroom :)' }
 ];
