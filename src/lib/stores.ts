@@ -3,7 +3,7 @@ import { persisted } from 'svelte-persisted-store';
 export const preferencesStore = persisted('preferences', {
 	experimentalFeatures: false,
 	open: 'tab',
-	theme: 'shadcn-zinc-dark',
+	theme: 'shadcn-zinc',
 	panic: {
 		enabled: false,
 		key: '`',
