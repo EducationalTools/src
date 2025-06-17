@@ -9,11 +9,10 @@
 	import { buttonVariants } from './ui/button';
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
 	import * as Alert from '$lib/components/ui/alert/index.js';
-	import CircleAlertIcon from '@lucide/svelte/icons/circle-alert';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import SunIcon from '@lucide/svelte/icons/sun';
 	import MoonIcon from '@lucide/svelte/icons/moon';
-	import { resetMode, mode, setMode, toggleMode } from 'mode-watcher';
+	import { toggleMode } from 'mode-watcher';
 
 	import { settingsOpen } from '$lib/state.svelte';
 	import { preferencesStore, historyStore } from '$lib/stores';
