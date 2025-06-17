@@ -84,7 +84,7 @@
 <PanicMode />
 <Cloak />
 <Toaster />
-<ModeWatcher defaultMode={'dark'} />
+<ModeWatcher disableTransitions={false} defaultMode={'dark'} />
 <Settings />
 <Sidebar.Provider class="flex flex-col md:flex-row">
 	<AppSidebar />

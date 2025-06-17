@@ -144,7 +144,7 @@
 	<Sidebar.Header>
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg" class="!transition-all hover:scale-105 active:scale-95">
+				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<a
 							href="/"
@@ -155,7 +155,7 @@
 						>
 							<div
 								class={clsx(
-									'text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg bg-gray-700 p-1'
+									'text-sidebar-primary-foreground foreground flex aspect-square size-8 items-center justify-center rounded-lg bg-black p-1'
 								)}
 							>
 								<img src="/edutools-white.svg" alt="" />
@@ -169,7 +169,7 @@
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg" class="!transition-all hover:scale-105 active:scale-95">
+				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<button
 							onclick={function () {
@@ -178,9 +178,7 @@
 							}}
 							{...props}
 						>
-							<div
-								class="text-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
-							>
+							<div class="flex aspect-square size-8 items-center justify-center rounded-lg">
 								<Search class="size-4" />
 							</div>
 							<div class="flex w-full flex-row items-center gap-2 leading-none">
