@@ -178,7 +178,7 @@
 							}}
 							{...props}
 						>
-							<div class=" flex aspect-square size-8 items-center justify-center rounded-lg">
+							<div class="flex aspect-square size-8 items-center justify-center rounded-lg">
 								<Search class="size-4" />
 							</div>
 							<div class="flex w-full flex-row items-center gap-2 leading-none">
