@@ -295,7 +295,7 @@ html:has(#theme.catppuccin-darker) {
 html:has(#theme.terminal) {
 	--background: #000000;
 	--foreground: #00ff00;
-	--card: #111111;
+	--card: #000000;
 	--card-foreground: #00ff00;
 	--popover: #222222;
 	--popover-foreground: #00ff00;
@@ -317,7 +317,7 @@ html:has(#theme.terminal) {
 	--chart-3: #002000;
 	--chart-4: #000080;
 	--chart-5: #000040;
-	--sidebar: #111111;
+	--sidebar: #000000;
 	--sidebar-foreground: #00ff00;
 	--sidebar-primary: #008000;
 	--sidebar-primary-foreground: #ffffff;
