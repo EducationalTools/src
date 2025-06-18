@@ -30,6 +30,7 @@
 	import Info from 'lucide-svelte/icons/info';
 	import Login from 'lucide-svelte/icons/log-in';
 	import Plus from 'lucide-svelte/icons/plus';
+	import Logout from 'lucide-svelte/icons/log-out';
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
@@ -45,7 +46,8 @@
 		UserButton,
 		useClerkContext,
 		SignIn,
-		SignUp
+		SignUp,
+		UserProfile
 	} from 'svelte-clerk/client';
 	import { dark } from '@clerk/themes';
 	const ctx = useClerkContext();
@@ -378,15 +380,33 @@
 			</Sidebar.MenuItem>
 			<SignedIn>
 				<Sidebar.MenuItem>
-					<Sidebar.MenuButton>
-						<Avatar.Root class="size-4">
-							<Avatar.Image src={ctx.user?.imageUrl} alt={ctx.user?.username} />
-							<Avatar.Fallback>
-								{ctx.user?.username?.charAt(0).toUpperCase()}
-							</Avatar.Fallback>
-						</Avatar.Root>
+					<Dialog.Root>
+						<Dialog.Trigger class="w-full">
+							<Sidebar.MenuButton>
+								<Avatar.Root class="size-4">
+									<Avatar.Image src={ctx.user?.imageUrl} alt={ctx.user?.username} />
+									<Avatar.Fallback>
+										{ctx.user?.username?.charAt(0).toUpperCase()}
+									</Avatar.Fallback>
+								</Avatar.Root>
 
-						{ctx.user?.username}
+								{ctx.user?.username}
+							</Sidebar.MenuButton>
+						</Dialog.Trigger>
+						<Dialog.Content class="w-fit !max-w-none p-0">
+							<UserProfile appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
+						</Dialog.Content>
+					</Dialog.Root>
+				</Sidebar.MenuItem>
+				<Sidebar.MenuItem
+					onclick={() => {
+						ctx.session?.end();
+						sidebar.setOpenMobile(false);
+					}}
+				>
+					<Sidebar.MenuButton>
+						<Logout />
+						Logout
 					</Sidebar.MenuButton>
 				</Sidebar.MenuItem>
 			</SignedIn>
