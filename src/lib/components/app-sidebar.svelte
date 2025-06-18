@@ -11,6 +11,7 @@
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
 	import { buttonVariants } from './ui/button';
 	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
+	import * as Avatar from '$lib/components/ui/avatar/index.js';
 	const sidebar = useSidebar();
 
 	// Lucide icons
@@ -373,7 +374,12 @@
 			<SignedIn>
 				<Sidebar.MenuItem>
 					<Sidebar.MenuButton>
-						<img src={ctx.user?.imageUrl} alt="" />
+						<Avatar.Root class="size-4">
+							<Avatar.Image src={ctx.user?.imageUrl} alt={ctx.user?.username} />
+							<Avatar.Fallback>
+								{ctx.user?.username?.charAt(0).toUpperCase()}
+							</Avatar.Fallback>
+						</Avatar.Root>
 
 						{ctx.user?.username}
 					</Sidebar.MenuButton>
