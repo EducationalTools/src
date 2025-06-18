@@ -7,7 +7,7 @@
 	$effect(() => {
 		if (userCtx.user) {
 			posthog.identify(userCtx.user.id, {
-				email: userCtx.user.primaryEmailAddress,
+				email: userCtx.user.emailAddresses[0].emailAddress,
 				name: userCtx.user.fullName
 			});
 		}
