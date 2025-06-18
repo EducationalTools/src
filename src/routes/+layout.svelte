@@ -29,6 +29,7 @@
 	import posthog from 'posthog-js';
 	import { browser } from '$app/environment';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import Identify from './identify.svelte';
 
 	let trackerBlockerDialog = $state(false);
 
@@ -88,6 +89,7 @@
 	<Toaster />
 	<ModeWatcher disableTransitions={false} defaultMode={'dark'} />
 	<Settings />
+	<Identify />
 	<Sidebar.Provider class="flex flex-col md:flex-row">
 		<AppSidebar />
 		<Sidebar.Trigger class="m-1 p-1 md:hidden" />

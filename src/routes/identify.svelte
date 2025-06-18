@@ -1,0 +1,15 @@
+<script lang="ts">
+	import posthog from 'posthog-js';
+	import { useClerkContext } from 'svelte-clerk/client';
+
+	const userCtx = useClerkContext();
+
+	$effect(() => {
+		if (userCtx.user) {
+			posthog.identify(userCtx.user.id, {
+				email: userCtx.user.primaryEmailAddress,
+				name: userCtx.user.fullName
+			});
+		}
+	});
+</script>
