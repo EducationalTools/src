@@ -31,6 +31,8 @@
 	import { gmaes } from '$lib/gmaes.js';
 	import { settingsOpen } from '$lib/state.svelte';
 
+	import { SignedIn, SignedOut, SignInButton, UserButton } from 'svelte-clerk/client';
+
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
@@ -193,6 +195,14 @@
 						</button>
 					{/snippet}
 				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+			<Sidebar.MenuItem>
+				<SignedOut>
+					<SignInButton />
+				</SignedOut>
+				<SignedIn>
+					<UserButton />
+				</SignedIn>
 			</Sidebar.MenuItem>
 		</Sidebar.Menu>
 	</Sidebar.Header>
