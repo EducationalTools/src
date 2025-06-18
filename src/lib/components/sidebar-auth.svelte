@@ -30,7 +30,7 @@
 	const ctx = useClerkContext();
 </script>
 
-{#if location.hostname == 'edutools.ingo.au'}
+{#if location.hostname == 'edutools.ingo.au' || location.hostname == 'localhost'}
 	<ClerkLoading>
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton class="flex items-center justify-center">
