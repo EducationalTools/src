@@ -14,6 +14,7 @@
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
 	const sidebar = useSidebar();
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import SidebarAuth from './sidebar-auth.svelte';
 
 	// Lucide icons
 	import Wrench from 'lucide-svelte/icons/wrench';
@@ -215,18 +216,6 @@
 					{/snippet}
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
-			<SignedOut>
-				<SignInButton class={buttonVariants({ variant: 'ghost' })} />
-			</SignedOut>
-			<SignedIn>
-				<UserButton
-					showName={true}
-					appearance={mode.current == 'dark' ? { baseTheme: dark } : {}}
-					userProfileProps={{
-						appearance: mode.current == 'dark' ? { baseTheme: dark } : {}
-					}}
-				/>
-			</SignedIn>
 		</Sidebar.Menu>
 	</Sidebar.Header>
 	<Sidebar.Content>
@@ -378,66 +367,7 @@
 					</kbd>
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
-			<SignedIn>
-				<Sidebar.MenuItem>
-					<Dialog.Root>
-						<Dialog.Trigger class="w-full">
-							<Sidebar.MenuButton>
-								<Avatar.Root class="size-4">
-									<Avatar.Image src={ctx.user?.imageUrl} alt={ctx.user?.username} />
-									<Avatar.Fallback>
-										{ctx.user?.username?.charAt(0).toUpperCase()}
-									</Avatar.Fallback>
-								</Avatar.Root>
-
-								{ctx.user?.username}
-							</Sidebar.MenuButton>
-						</Dialog.Trigger>
-						<Dialog.Content class="w-fit !max-w-none p-0">
-							<UserProfile appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-						</Dialog.Content>
-					</Dialog.Root>
-				</Sidebar.MenuItem>
-				<Sidebar.MenuItem
-					onclick={() => {
-						ctx.session?.end();
-						sidebar.setOpenMobile(false);
-					}}
-				>
-					<Sidebar.MenuButton>
-						<Logout />
-						Logout
-					</Sidebar.MenuButton>
-				</Sidebar.MenuItem>
-			</SignedIn>
-			<SignedOut>
-				<Sidebar.MenuItem>
-					<Dialog.Root>
-						<Dialog.Trigger class="w-full">
-							<Sidebar.MenuButton>
-								<Login />
-								Sign In
-							</Sidebar.MenuButton>
-						</Dialog.Trigger>
-						<Dialog.Content class="w-fit p-0">
-							<SignIn appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-						</Dialog.Content>
-					</Dialog.Root>
-				</Sidebar.MenuItem>
-				<Sidebar.MenuItem>
-					<Dialog.Root>
-						<Dialog.Trigger class="w-full">
-							<Sidebar.MenuButton>
-								<Plus />
-								Create Account
-							</Sidebar.MenuButton>
-						</Dialog.Trigger>
-						<Dialog.Content class="w-fit p-0">
-							<SignUp appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-						</Dialog.Content>
-					</Dialog.Root>
-				</Sidebar.MenuItem>
-			</SignedOut>
+			<SidebarAuth />
 		{/if}
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton
