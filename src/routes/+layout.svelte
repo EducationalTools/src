@@ -18,7 +18,6 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import clsx from 'clsx';
 	import { ClerkProvider } from 'svelte-clerk/client';
-	import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/private';
 
 	import { persisted } from 'svelte-persisted-store';
 
@@ -62,7 +61,7 @@
 	<title>EduTools</title>
 </svelte:head>
 
-<ClerkProvider publishableKey={PUBLIC_CLERK_PUBLISHABLE_KEY}>
+<ClerkProvider publishableKey={import.meta.env.PUBLIC_CLERK_PUBLISHABLE_KEY}>
 	<Dialog.Root open={trackerBlockerDialog}>
 		<Dialog.Content>
 			<Dialog.Title>Notice</Dialog.Title>
