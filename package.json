@@ -48,6 +48,7 @@
 		"vite": "^6.3.5"
 	},
 	"dependencies": {
+		"@clerk/themes": "^2.2.50",
 		"@friendofsvelte/tipex": "0.0.7",
 		"@tanstack/match-sorter-utils": "^8.19.4",
 		"formsnap": "^2.0.1",
