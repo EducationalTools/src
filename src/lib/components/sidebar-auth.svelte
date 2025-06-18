@@ -28,6 +28,8 @@
 	import { dark } from '@clerk/themes';
 	import Button from './ui/button/button.svelte';
 	const ctx = useClerkContext();
+
+	import posthog from 'posthog-js';
 </script>
 
 {#if location.hostname == 'edutools.ingo.au' || location.hostname == 'localhost'}
@@ -61,6 +63,7 @@
 		<Sidebar.MenuItem
 			onclick={() => {
 				ctx.session?.end();
+				posthog.reset();
 				sidebar.setOpenMobile(false);
 			}}
 		>
