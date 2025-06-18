@@ -10,6 +10,7 @@
 	import Login from 'lucide-svelte/icons/log-in';
 	import Plus from 'lucide-svelte/icons/plus';
 	import Logout from 'lucide-svelte/icons/log-out';
+	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 
 	// App state and data
 	import { mode } from 'mode-watcher';
@@ -21,12 +22,20 @@
 		useClerkContext,
 		SignIn,
 		SignUp,
-		UserProfile
+		UserProfile,
+		ClerkLoading
 	} from 'svelte-clerk/client';
 	import { dark } from '@clerk/themes';
 	const ctx = useClerkContext();
 </script>
 
+<ClerkLoading>
+	<Sidebar.MenuItem>
+		<Sidebar.MenuButton class="flex items-center justify-center">
+			<LoaderCircle class="h-6 w-6 animate-spin" />
+		</Sidebar.MenuButton>
+	</Sidebar.MenuItem>
+</ClerkLoading>
 <SignedIn>
 	<Sidebar.MenuItem>
 		<Dialog.Root>
