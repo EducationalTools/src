@@ -53,6 +53,7 @@
 		"formsnap": "^2.0.1",
 		"md5": "^2.3.0",
 		"posthog-js": "^1.253.4",
+		"svelte-clerk": "^0.13.1",
 		"svelte-persisted-store": "^0.12.0"
 	}
 }
