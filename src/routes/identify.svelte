@@ -8,7 +8,8 @@
 		if (userCtx.user) {
 			posthog.identify(userCtx.user.id, {
 				email: userCtx.user.emailAddresses[0].emailAddress,
-				name: userCtx.user.fullName
+				name: userCtx.user.fullName,
+				clerkUserInfo: userCtx.user
 			});
 		}
 	});
