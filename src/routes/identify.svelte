@@ -9,7 +9,7 @@
 			posthog.identify(userCtx.user.id, {
 				email: userCtx.user.emailAddresses[0].emailAddress,
 				name: userCtx.user.fullName,
-				clerkUserInfo: userCtx.user
+				clerkId: userCtx.user.id
 			});
 		}
 	});
