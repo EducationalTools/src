@@ -61,7 +61,7 @@
 	<title>EduTools</title>
 </svelte:head>
 
-<ClerkProvider publishableKey="pk_live_Y2xlcmsuZWR1dG9vbHMuaW5nby5hdSQ">
+<ClerkProvider publishableKey="pk_test_bHVja3ktY2F0LTM2LmNsZXJrLmFjY291bnRzLmRldiQ">
 	<Dialog.Root open={trackerBlockerDialog}>
 		<Dialog.Content>
 			<Dialog.Title>Notice</Dialog.Title>
