@@ -13,6 +13,7 @@
 	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
 	const sidebar = useSidebar();
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
 	// Lucide icons
 	import Wrench from 'lucide-svelte/icons/wrench';
@@ -27,6 +28,8 @@
 	import Copy from 'lucide-svelte/icons/copy';
 	import Server from 'lucide-svelte/icons/server';
 	import Info from 'lucide-svelte/icons/info';
+	import Login from 'lucide-svelte/icons/log-in';
+	import Plus from 'lucide-svelte/icons/plus';
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
@@ -40,7 +43,9 @@
 		SignedOut,
 		SignInButton,
 		UserButton,
-		useClerkContext
+		useClerkContext,
+		SignIn,
+		SignUp
 	} from 'svelte-clerk/client';
 	import { dark } from '@clerk/themes';
 	const ctx = useClerkContext();
@@ -385,6 +390,34 @@
 					</Sidebar.MenuButton>
 				</Sidebar.MenuItem>
 			</SignedIn>
+			<SignedOut>
+				<Sidebar.MenuItem>
+					<Dialog.Root>
+						<Dialog.Trigger class="w-full">
+							<Sidebar.MenuButton>
+								<Login />
+								Sign In
+							</Sidebar.MenuButton>
+						</Dialog.Trigger>
+						<Dialog.Content class="w-fit p-0">
+							<SignIn appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
+						</Dialog.Content>
+					</Dialog.Root>
+				</Sidebar.MenuItem>
+				<Sidebar.MenuItem>
+					<Dialog.Root>
+						<Dialog.Trigger class="w-full">
+							<Sidebar.MenuButton>
+								<Plus />
+								Create Account
+							</Sidebar.MenuButton>
+						</Dialog.Trigger>
+						<Dialog.Content class="w-fit p-0">
+							<SignUp appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
+						</Dialog.Content>
+					</Dialog.Root>
+				</Sidebar.MenuItem>
+			</SignedOut>
 		{/if}
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton
