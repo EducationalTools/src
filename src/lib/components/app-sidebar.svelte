@@ -34,8 +34,15 @@
 	import { mode } from 'mode-watcher';
 
 	// Auth
-	import { SignedIn, SignedOut, SignInButton, UserButton } from 'svelte-clerk/client';
+	import {
+		SignedIn,
+		SignedOut,
+		SignInButton,
+		UserButton,
+		useClerkContext
+	} from 'svelte-clerk/client';
 	import { dark } from '@clerk/themes';
+	const ctx = useClerkContext();
 
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
@@ -363,6 +370,15 @@
 					</kbd>
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
+			<SignedIn>
+				<Sidebar.MenuItem>
+					<Sidebar.MenuButton>
+						<img src={ctx.user?.imageUrl} alt="" />
+
+						{ctx.user?.username}
+					</Sidebar.MenuButton>
+				</Sidebar.MenuItem>
+			</SignedIn>
 		{/if}
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton
