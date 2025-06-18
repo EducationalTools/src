@@ -26,73 +26,102 @@
 		ClerkLoading
 	} from 'svelte-clerk/client';
 	import { dark } from '@clerk/themes';
+	import Button from './ui/button/button.svelte';
 	const ctx = useClerkContext();
 </script>
 
-<ClerkLoading>
-	<Sidebar.MenuItem>
-		<Sidebar.MenuButton class="flex items-center justify-center">
-			<LoaderCircle class="h-6 w-6 animate-spin" />
-		</Sidebar.MenuButton>
-	</Sidebar.MenuItem>
-</ClerkLoading>
-<SignedIn>
-	<Sidebar.MenuItem>
-		<Dialog.Root>
-			<Dialog.Trigger class="w-full">
-				<Sidebar.MenuButton>
-					<Avatar.Root class="size-4">
-						<Avatar.Image src={ctx.user?.imageUrl} alt={ctx.user?.username} />
-						<Avatar.Fallback>
-							{ctx.user?.username?.charAt(0).toUpperCase()}
-						</Avatar.Fallback>
-					</Avatar.Root>
+{#if location.hostname == 'edutools.ingo.au'}
+	<ClerkLoading>
+		<Sidebar.MenuItem>
+			<Sidebar.MenuButton class="flex items-center justify-center">
+				<LoaderCircle class="h-6 w-6 animate-spin" />
+			</Sidebar.MenuButton>
+		</Sidebar.MenuItem>
+	</ClerkLoading>
+	<SignedIn>
+		<Sidebar.MenuItem>
+			<Dialog.Root>
+				<Dialog.Trigger class="w-full">
+					<Sidebar.MenuButton>
+						<Avatar.Root class="size-4">
+							<Avatar.Image src={ctx.user?.imageUrl} alt={ctx.user?.username} />
+							<Avatar.Fallback>
+								{ctx.user?.username?.charAt(0).toUpperCase()}
+							</Avatar.Fallback>
+						</Avatar.Root>
 
-					{ctx.user?.username}
-				</Sidebar.MenuButton>
-			</Dialog.Trigger>
-			<Dialog.Content class="w-fit !max-w-none p-0">
-				<UserProfile appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-			</Dialog.Content>
-		</Dialog.Root>
-	</Sidebar.MenuItem>
-	<Sidebar.MenuItem
-		onclick={() => {
-			ctx.session?.end();
-			sidebar.setOpenMobile(false);
-		}}
-	>
-		<Sidebar.MenuButton>
-			<Logout />
-			Logout
-		</Sidebar.MenuButton>
-	</Sidebar.MenuItem>
-</SignedIn>
-<SignedOut>
-	<Sidebar.MenuItem>
-		<Dialog.Root>
-			<Dialog.Trigger class="w-full">
+						{ctx.user?.username}
+					</Sidebar.MenuButton>
+				</Dialog.Trigger>
+				<Dialog.Content class="w-fit !max-w-none p-0">
+					<UserProfile appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
+				</Dialog.Content>
+			</Dialog.Root>
+		</Sidebar.MenuItem>
+		<Sidebar.MenuItem
+			onclick={() => {
+				ctx.session?.end();
+				sidebar.setOpenMobile(false);
+			}}
+		>
+			<Sidebar.MenuButton>
+				<Logout />
+				Logout
+			</Sidebar.MenuButton>
+		</Sidebar.MenuItem>
+	</SignedIn>
+	<SignedOut>
+		<Sidebar.MenuItem>
+			<Dialog.Root>
+				<Dialog.Trigger class="w-full">
+					<Sidebar.MenuButton>
+						<Login />
+						Sign In
+					</Sidebar.MenuButton>
+				</Dialog.Trigger>
+				<Dialog.Content class="w-fit p-0">
+					<SignIn appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
+				</Dialog.Content>
+			</Dialog.Root>
+		</Sidebar.MenuItem>
+		<Sidebar.MenuItem>
+			<Dialog.Root>
+				<Dialog.Trigger class="w-full">
+					<Sidebar.MenuButton>
+						<Plus />
+						Create Account
+					</Sidebar.MenuButton>
+				</Dialog.Trigger>
+				<Dialog.Content class="w-fit p-0">
+					<SignUp appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
+				</Dialog.Content>
+			</Dialog.Root>
+		</Sidebar.MenuItem>
+	</SignedOut>
+{:else}
+	<Dialog.Root>
+		<Dialog.Trigger class="flex flex-col gap-2">
+			<Sidebar.MenuItem>
 				<Sidebar.MenuButton>
 					<Login />
 					Sign In
 				</Sidebar.MenuButton>
-			</Dialog.Trigger>
-			<Dialog.Content class="w-fit p-0">
-				<SignIn appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-			</Dialog.Content>
-		</Dialog.Root>
-	</Sidebar.MenuItem>
-	<Sidebar.MenuItem>
-		<Dialog.Root>
-			<Dialog.Trigger class="w-full">
+			</Sidebar.MenuItem>
+			<Sidebar.MenuItem>
 				<Sidebar.MenuButton>
 					<Plus />
 					Create Account
 				</Sidebar.MenuButton>
-			</Dialog.Trigger>
-			<Dialog.Content class="w-fit p-0">
-				<SignUp appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-			</Dialog.Content>
-		</Dialog.Root>
-	</Sidebar.MenuItem>
-</SignedOut>
+			</Sidebar.MenuItem>
+		</Dialog.Trigger>
+		<Dialog.Content>
+			<Dialog.Title>Notice</Dialog.Title>
+			<Dialog.Description>
+				Due to technical limitations, to use accounts you must be using edutools.ingo.au
+			</Dialog.Description>
+			<Dialog.Footer>
+				<Button href="https://edutools.ingo.au">Continue</Button>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
+{/if}
