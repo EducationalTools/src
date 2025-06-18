@@ -9,6 +9,7 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import * as Command from '$lib/components/ui/command/index.js';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
+	import { buttonVariants } from './ui/button';
 	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
 	const sidebar = useSidebar();
 
@@ -30,8 +31,11 @@
 	import { preferencesStore } from '$lib/stores';
 	import { gmaes } from '$lib/gmaes.js';
 	import { settingsOpen } from '$lib/state.svelte';
+	import { mode } from 'mode-watcher';
 
+	// Auth
 	import { SignedIn, SignedOut, SignInButton, UserButton } from 'svelte-clerk/client';
+	import { dark } from '@clerk/themes';
 
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
@@ -196,14 +200,18 @@
 					{/snippet}
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
-			<Sidebar.MenuItem>
-				<SignedOut>
-					<SignInButton />
-				</SignedOut>
-				<SignedIn>
-					<UserButton />
-				</SignedIn>
-			</Sidebar.MenuItem>
+			<SignedOut>
+				<SignInButton class={buttonVariants({ variant: 'ghost' })} />
+			</SignedOut>
+			<SignedIn>
+				<UserButton
+					showName={true}
+					appearance={mode.current == 'dark' ? { baseTheme: dark } : {}}
+					userProfileProps={{
+						appearance: mode.current == 'dark' ? { baseTheme: dark } : {}
+					}}
+				/>
+			</SignedIn>
 		</Sidebar.Menu>
 	</Sidebar.Header>
 	<Sidebar.Content>
