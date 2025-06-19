@@ -353,6 +353,14 @@ const gmaes: Gmae[] = [
 		tags: [],
 		links: [],
 		url: '/_app/tools/the-final-earth/index.html'
+	},
+	{
+		name: 'This is the only level',
+		description: 'do the same thing over and over again (but not)',
+		category: 'Uncategorized',
+		tags: [],
+		links: [],
+		url: '/_app/tools/thisistheonlylevel/index.html'
 	}
 ];
 
