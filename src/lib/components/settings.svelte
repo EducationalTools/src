@@ -5,6 +5,7 @@
 	import { Label } from '$lib/components/ui/label/index.js';
 	import * as RadioGroup from '$lib/components/ui/radio-group/index.js';
 	import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
+	import ClipboardIcon from '@lucide/svelte/icons/clipboard';
 	import Input from './ui/input/input.svelte';
 	import { buttonVariants } from './ui/button';
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
@@ -13,13 +14,23 @@
 	import SunIcon from '@lucide/svelte/icons/sun';
 	import MoonIcon from '@lucide/svelte/icons/moon';
 	import { toggleMode } from 'mode-watcher';
+	import posthog from 'posthog-js';
 
 	import { settingsOpen } from '$lib/state.svelte';
 	import { preferencesStore, historyStore } from '$lib/stores';
 	import { themes } from '$lib/theme';
 	import clsx from 'clsx';
 	import Button from './ui/button/button.svelte';
-	import { toast } from 'svelte-sonner';
+	import { toast, Toaster } from 'svelte-sonner';
+	import { onMount } from 'svelte';
+
+	let distict_id = $state('Not available') as string;
+
+	onMount(() => {
+		setTimeout(() => {
+			distict_id = posthog.get_distinct_id();
+		}, 1000);
+	});
 
 	const themeTriggerContent = $derived(
 		themes.find((theme) => theme.value === $preferencesStore.theme)?.label ?? 'No theme :D'
@@ -142,6 +153,20 @@
 					}}
 				>
 					Clear everything
+				</Button>
+			</div>
+			Unique ID (for troubleshooting)
+			<div class="flex flex-row gap-3">
+				<Input bind:value={distict_id} disabled />
+				<Button
+					size="icon"
+					onclick={() => {
+						navigator.clipboard.writeText(distict_id).then(() => {
+							toast.success('Copied');
+						});
+					}}
+				>
+					<ClipboardIcon />
 				</Button>
 			</div>
 		</div>
