@@ -21,7 +21,7 @@
 	import { themes } from '$lib/theme';
 	import clsx from 'clsx';
 	import Button from './ui/button/button.svelte';
-	import { toast, Toaster } from 'svelte-sonner';
+	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
 
 	let distict_id = $state('Not available') as string;
