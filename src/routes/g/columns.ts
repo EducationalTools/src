@@ -2,6 +2,7 @@ import type { ColumnDef } from '@tanstack/table-core';
 import type { ParsedGmae } from '$lib/gmaes';
 import { renderComponent } from '$lib/components/ui/data-table/index.js';
 import TableActions from './table-actions.svelte';
+import Link from './link.svelte';
 import Tags from './tags.svelte';
 import HeaderButtonSort from './header-button-sort.svelte';
 
@@ -21,6 +22,12 @@ export const columns: ColumnDef<ParsedGmae>[] = [
 				content: 'Name',
 				sort: true
 			}),
+		cell: ({ row }) => {
+			return renderComponent(Link, {
+				children: row.original.name,
+				href: `/games/${row.original.id}`
+			});
+		},
 		// @ts-ignore
 		filterFn: 'fuzzy'
 	},
