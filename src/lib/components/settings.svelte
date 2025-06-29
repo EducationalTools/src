@@ -24,11 +24,11 @@
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
 
-	let distict_id = $state('Not available') as string;
+	let distinct_id = $state('Not available') as string;
 
 	onMount(() => {
 		setTimeout(() => {
-			distict_id = posthog.get_distinct_id();
+			distinct_id = posthog.get_distinct_id();
 		}, 1000);
 	});
 
