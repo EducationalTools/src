@@ -54,6 +54,14 @@
 				>
 					No history saved
 				</div>
+			{:else}
+				<Button
+					variant="ghost"
+					class="text-xl"
+					onclick={() => {
+						$historyStore = [];
+					}}>Clear</Button
+				>
 			{/if}
 		</div>
 		<div class="grid h-fit w-full grid-cols-1 gap-3">
