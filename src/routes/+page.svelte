@@ -57,7 +57,6 @@
 			{:else}
 				<Button
 					variant="ghost"
-					class="text-xl"
 					onclick={() => {
 						$historyStore = [];
 					}}>Clear</Button
