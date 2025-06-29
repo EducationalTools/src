@@ -157,11 +157,11 @@
 			</div>
 			Unique ID (for troubleshooting)
 			<div class="flex flex-row gap-3">
-				<Input bind:value={distict_id} disabled />
+				<Input bind:value={distinct_id} disabled />
 				<Button
 					size="icon"
 					onclick={() => {
-						navigator.clipboard.writeText(distict_id).then(() => {
+						navigator.clipboard.writeText(distinct_id).then(() => {
 							toast.success('Copied');
 						});
 					}}
