@@ -16,8 +16,10 @@ test('check experimental mode', async ({ page }) => {
 	await page.getByPlaceholder('Type a command or search...').press('Enter');
 	await page.getByPlaceholder('Type a command or search...').press('Escape');
 	await expect(page.locator('h1')).toContainText('EduTools Experimental');
-	await expect(page.getByText('Tools', { exact: true })).toBeVisible();
-	await expect(page.getByText('Games', { exact: true })).toBeVisible();
+	await expect(page.getByRole('link', { name: 'Tools' })).toBeVisible();
+	await expect(
+		page.locator('.peer/menu-button').getByRole('link', { name: 'Games' })
+	).toBeVisible();
 	await expect(page.getByRole('button', { name: 'Search ⌘ K' })).toBeVisible();
 	await expect(page.getByRole('button', { name: 'Sidebar ⌘ B' })).toBeVisible();
 });
