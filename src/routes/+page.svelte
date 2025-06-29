@@ -16,10 +16,11 @@
 	];
 </script>
 
-<div
-	class="from-primary/20 flex w-full items-center justify-center bg-gradient-to-b to-transparent py-52"
->
-	<h1 class="text-4xl">
+<div class="bg-background relative flex w-full items-center justify-center py-52">
+	<div
+		class="absolute top-0 left-0 h-full w-full bg-[linear-gradient(to_right,var(--muted)_1px,transparent_1px),linear-gradient(to_bottom,var(--muted)_1px,transparent_1px)] [mask-image:linear-gradient(0deg,_transparent,_var(--background))] bg-[size:24px_24px]"
+	></div>
+	<h1 class="z-10 text-4xl">
 		EduTools {#if $preferencesStore.experimentalFeatures}Experimental{/if}
 	</h1>
 </div>
