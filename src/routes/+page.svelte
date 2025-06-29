@@ -5,6 +5,7 @@
 	import { getGameById } from '$lib/gmaes';
 	import History from '@lucide/svelte/icons/history';
 	import Bookmark from 'lucide-svelte/icons/bookmark';
+	import X from 'lucide-svelte/icons/x';
 
 	const tools = [
 		{ name: 'Calculator', url: '/tools/calculator' },
@@ -47,6 +48,13 @@
 					>{getGameById(item)?.name}</Button
 				>
 			{/each}
+			{#if $historyStore.length === 0}
+				<div
+					class="flex flex-row items-center justify-center gap-1 rounded-md border border-dashed p-16"
+				>
+					No history saved
+				</div>
+			{/if}
 		</div>
 		<div class="grid h-fit w-full grid-cols-1 gap-3">
 			<div class="flex flex-row items-center gap-1">
@@ -54,10 +62,28 @@
 				Saved
 			</div>
 			{#each $favoritesStore as item}
-				<Button variant="outline" class="py-10 text-xl" href={'/g/' + item}
-					>{getGameById(item)?.name}</Button
-				>
+				<div class="flex w-full flex-row gap-3">
+					<Button variant="outline" class="grow py-10 text-xl" href={'/g/' + item}
+						>{getGameById(item)?.name}</Button
+					>
+					<Button
+						variant="ghost"
+						class="aspect-square py-10 text-xl"
+						onclick={() => {
+							$favoritesStore = $favoritesStore.filter((id) => id !== item);
+						}}
+					>
+						<X />
+					</Button>
+				</div>
 			{/each}
+			{#if $favoritesStore.length === 0}
+				<div
+					class="flex flex-row items-center justify-center gap-1 rounded-md border border-dashed p-16"
+				>
+					Nothing saved
+				</div>
+			{/if}
 		</div>
 	{/if}
 </div>
