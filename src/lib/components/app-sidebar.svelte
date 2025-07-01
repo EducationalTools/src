@@ -41,7 +41,7 @@
 			e.preventDefault();
 			commandOpen = !commandOpen;
 		}
-		if (e.key === ',' && (e.metaKey || e.ctrlKey)) {
+		if (e.key === ',' && (e.metaKey || e.ctrlKey) && $preferencesStore.experimentalFeatures) {
 			e.preventDefault();
 			settingsOpen.current = !settingsOpen.current;
 		}
