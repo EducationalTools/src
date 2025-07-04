@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@clerk/backend':
+        specifier: ^2.4.0
+        version: 2.4.0(react@19.1.0)
       '@clerk/themes':
         specifier: ^2.2.50
         version: 2.2.54
