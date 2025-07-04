@@ -61,7 +61,6 @@ Actions:
 Both workflows use a GitHub App for authentication:
 
 1. **Secrets Required:**
-
    - `GH_APP_ID` - Your GitHub App ID
    - `GH_PRIVATE_KEY` - Your GitHub App private key
 

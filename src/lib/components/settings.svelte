@@ -24,11 +24,11 @@
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
 
-	let distict_id = $state('Not available') as string;
+	let distinct_id = $state('Not available') as string;
 
 	onMount(() => {
 		setTimeout(() => {
-			distict_id = posthog.get_distinct_id();
+			distinct_id = posthog.get_distinct_id();
 		}, 1000);
 	});
 
@@ -157,11 +157,11 @@
 			</div>
 			Unique ID (for troubleshooting)
 			<div class="flex flex-row gap-3">
-				<Input bind:value={distict_id} disabled />
+				<Input bind:value={distinct_id} disabled />
 				<Button
 					size="icon"
 					onclick={() => {
-						navigator.clipboard.writeText(distict_id).then(() => {
+						navigator.clipboard.writeText(distinct_id).then(() => {
 							toast.success('Copied');
 						});
 					}}
