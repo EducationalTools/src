@@ -9,6 +9,7 @@ export default defineSchema({
 	}),
 	backup: defineTable({
 		name: v.string(),
-		data: v.string()
+		data: v.string(),
+		user: v.string()
 	})
 });
