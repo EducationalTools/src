@@ -23,6 +23,7 @@
 		"@tailwindcss/typography": "^0.5.16",
 		"@tailwindcss/vite": "^4.1.10",
 		"@tanstack/table-core": "^8.21.3",
+		"@types/jsonwebtoken": "^9.0.10",
 		"@types/md5": "^2.3.5",
 		"autoprefixer": "^10.4.21",
 		"bits-ui": "2.8.0",
