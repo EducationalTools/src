@@ -7,6 +7,11 @@ export default function restoreBackup(backupData: string) {
 		document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
 	});
 
+	localStorage.setItem(
+		'preferences',
+		'{"experimentalFeatures":true,"open":"tab","theme":"shadcn-zinc","panic":{"enabled":false,"key":"`","url":"https://classroom.google.com","disableExperimentalMode":true},"cloak":{"mode":"off","name":"Home","icon":"https://ssl.gstatic.com/classroom/favicon.png"},"analytics":true,"history":true}'
+	);
+
 	const data = JSON.parse(atob(backupData));
 
 	if (data.cookies) {
@@ -30,9 +35,5 @@ export default function restoreBackup(backupData: string) {
 			sessionStorage.setItem(key, value as string);
 		});
 	}
-	localStorage.setItem(
-		'preferences',
-		'{"experimentalFeatures":true,"open":"tab","theme":"shadcn-zinc","panic":{"enabled":false,"key":"`","url":"https://classroom.google.com","disableExperimentalMode":true},"cloak":{"mode":"off","name":"Home","icon":"https://ssl.gstatic.com/classroom/favicon.png"},"analytics":true,"history":true}'
-	);
 	location.reload();
 }
