@@ -11,6 +11,7 @@
 	import Trash from '@lucide/svelte/icons/Trash';
 	import Clipboard from '@lucide/svelte/icons/clipboard';
 	import History from '@lucide/svelte/icons/History';
+	import restoreBackup from '$lib/restoreBackup';
 
 	let {
 		backup,
@@ -68,7 +69,13 @@
 				</AlertDialog.Header>
 				<AlertDialog.Footer>
 					<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-					<AlertDialog.Action>Continue</AlertDialog.Action>
+					<AlertDialog.Action
+						onclick={() => {
+							restoreDialogOpen = false;
+							setLoading(true);
+							restoreBackup(backup.data);
+						}}>Continue</AlertDialog.Action
+					>
 				</AlertDialog.Footer>
 			</AlertDialog.Content>
 		</AlertDialog.Root>
