@@ -56,11 +56,9 @@
 			<Card.Root>
 				<Card.Header>
 					<Card.Title>{backup.name}</Card.Title>
-					<Card.Description
-						>Creation Time: {dayjs(backup.creationTime).format(
-							'HH:MM a  DD/MM/YY'
-						)}</Card.Description
-					>
+					<Card.Description>
+						{dayjs(backup.creationTime).format('HH:MM a  DD/MM/YY')}
+					</Card.Description>
 				</Card.Header>
 				<Card.Footer class="flex flex-row gap-3">
 					<Button>Restore</Button>
