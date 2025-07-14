@@ -17,11 +17,7 @@
 	import dayjs from 'dayjs';
 
 	$effect(() => {
-		ctx.session?.getToken().then((token) => {
-			if (token) {
-				sessionToken = token;
-			}
-		});
+		refreshToken();
 	});
 
 	import { useConvexClient, useQuery } from 'convex-svelte';
