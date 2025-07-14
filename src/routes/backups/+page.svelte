@@ -42,6 +42,14 @@
 	$effect(() => {
 		query = useQuery(api.backups.get, { jwt: sessionToken });
 	});
+
+	async function refreshToken() {
+		const token = await ctx.session?.getToken();
+		if (token) {
+			sessionToken = token;
+		}
+		return;
+	}
 </script>
 
 <SignedIn>
