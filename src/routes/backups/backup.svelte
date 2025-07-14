@@ -8,6 +8,9 @@
 	import { toast } from 'svelte-sonner';
 	import type { ConvexClient } from 'convex/browser';
 	import type { Id } from '../../convex/_generated/dataModel';
+	import Trash from '@lucide/svelte/icons/Trash';
+	import Clipboard from '@lucide/svelte/icons/clipboard';
+	import History from '@lucide/svelte/icons/History';
 
 	let {
 		backup,
@@ -38,9 +41,25 @@
 		</Card.Description>
 	</Card.Header>
 	<Card.Footer class="flex flex-row gap-3">
+		<Button
+			variant="outline"
+			size="icon"
+			onclick={() => {
+				navigator.clipboard
+					.writeText(backup.data)
+					.then(() => {
+						toast.success('Backup copied to clipboard');
+					})
+					.catch((error) => {
+						toast.error('Failed to copy backup to clipboard');
+					});
+			}}
+		>
+			<Clipboard />
+		</Button>
 		<AlertDialog.Root bind:open={restoreDialogOpen}>
-			<AlertDialog.Trigger class={buttonVariants({ variant: 'default' })}>
-				Restore
+			<AlertDialog.Trigger class={buttonVariants({ variant: 'default', size: 'icon' })}>
+				<History />
 			</AlertDialog.Trigger>
 			<AlertDialog.Content
 				><AlertDialog.Header>
@@ -54,8 +73,8 @@
 			</AlertDialog.Content>
 		</AlertDialog.Root>
 		<AlertDialog.Root bind:open={deleteDialogOpen}>
-			<AlertDialog.Trigger class={buttonVariants({ variant: 'destructive' })}>
-				Delete
+			<AlertDialog.Trigger class={buttonVariants({ variant: 'destructive', size: 'icon' })}>
+				<Trash />
 			</AlertDialog.Trigger>
 			<AlertDialog.Content
 				><AlertDialog.Header>
