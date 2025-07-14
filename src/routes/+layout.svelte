@@ -18,7 +18,7 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import clsx from 'clsx';
 	import { ClerkProvider, GoogleOneTap } from 'svelte-clerk/client';
-	import { PUBLIC_CONVEX_URL } from '$env/static/public';
+	import { PUBLIC_CLERK_PUBLISHABLE_KEY, PUBLIC_CONVEX_URL } from '$env/static/public';
 	import { setupConvex } from 'convex-svelte';
 
 	setupConvex(PUBLIC_CONVEX_URL);
@@ -66,7 +66,7 @@
 	<title>EduTools</title>
 </svelte:head>
 
-<ClerkProvider publishableKey="pk_test_bHVja3ktY2F0LTM2LmNsZXJrLmFjY291bnRzLmRldiQ">
+<ClerkProvider publishableKey={PUBLIC_CLERK_PUBLISHABLE_KEY}>
 	<Dialog.Root open={trackerBlockerDialog}>
 		<Dialog.Content>
 			<Dialog.Title>Notice</Dialog.Title>
