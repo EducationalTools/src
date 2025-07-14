@@ -36,6 +36,7 @@
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 	const client = useConvexClient();
 	let enteredBackupName = $state('');
+	let loading = $state(false);
 
 	$effect(() => {
 		query = useQuery(api.backups.get, { jwt: sessionToken });
@@ -53,6 +54,12 @@
 	}
 </script>
 
+<AlertDialog.Root open={loading}
+	><AlertDialog.Content class="flex flex-row gap-3">
+		<LoaderCircle class="animate-spin" />
+		Loading
+	</AlertDialog.Content>
+</AlertDialog.Root>
 <SignedIn>
 	<div class="mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 p-3 md:grid-cols-2">
 		<Card.Root>
@@ -62,6 +69,7 @@
 				<Button
 					disabled={!sessionToken}
 					onclick={() => {
+						loading = true;
 						getToken().then((token) => {
 							if (enteredBackupName.length > 0) {
 								client
@@ -73,6 +81,7 @@
 									.then(() => {
 										enteredBackupName = '';
 										toast.success('Backup created successfully');
+										loading = false;
 									});
 							}
 						});
@@ -86,7 +95,7 @@
 			</div>
 		{/if}
 		{#each query.data || [] as backup}
-			<Backup {backup} {client} {getToken} />
+			<Backup {backup} {client} {getToken} {loading} />
 		{/each}
 	</div>
 </SignedIn>
