@@ -15,6 +15,9 @@
 	// App state and data
 	import { mode } from 'mode-watcher';
 
+	// SvelteKit page store for hostname
+	import { page } from '$app/state';
+
 	// Auth
 	import {
 		SignedIn,
@@ -34,7 +37,7 @@
 	import posthog from 'posthog-js';
 </script>
 
-{#if location.hostname == 'edutools.ingo.au' || location.hostname == 'localhost'}
+{#if $page.url.hostname == 'edutools.ingo.au' || $page.url.hostname == 'localhost'}
 	<ClerkLoading>
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton class="flex items-center justify-center">
