@@ -23,23 +23,15 @@
 		SignIn,
 		SignUp,
 		UserProfile,
-		ClerkLoading
+		ClerkLoading,
+		SignInButton,
+		SignUpButton
 	} from 'svelte-clerk/client';
 	import { dark } from '@clerk/themes';
 	import Button from './ui/button/button.svelte';
 	const ctx = useClerkContext();
-	import { page } from '$app/state';
-	let signInDialog = $state(false);
-	let signUpDialog = $state(false);
 
 	import posthog from 'posthog-js';
-	import { onMount } from 'svelte';
-
-	onMount(() => {
-		if (page.url.hash.includes('sso-callback')) {
-			signUpDialog = true;
-		}
-	});
 </script>
 
 {#if location.hostname == 'edutools.ingo.au' || location.hostname == 'localhost'}
@@ -85,30 +77,20 @@
 	</SignedIn>
 	<SignedOut>
 		<Sidebar.MenuItem>
-			<Dialog.Root open={signInDialog}>
-				<Dialog.Trigger class="w-full">
-					<Sidebar.MenuButton>
-						<Login />
-						Sign In
-					</Sidebar.MenuButton>
-				</Dialog.Trigger>
-				<Dialog.Content class="w-fit p-0">
-					<SignIn appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-				</Dialog.Content>
-			</Dialog.Root>
+			<SignInButton class="w-full">
+				<Sidebar.MenuButton>
+					<Login />
+					Sign In
+				</Sidebar.MenuButton>
+			</SignInButton>
 		</Sidebar.MenuItem>
 		<Sidebar.MenuItem>
-			<Dialog.Root open={signUpDialog}>
-				<Dialog.Trigger class="w-full">
-					<Sidebar.MenuButton>
-						<Plus />
-						Create Account
-					</Sidebar.MenuButton>
-				</Dialog.Trigger>
-				<Dialog.Content class="w-fit p-0">
-					<SignUp appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-				</Dialog.Content>
-			</Dialog.Root>
+			<SignUpButton class="w-full">
+				<Sidebar.MenuButton>
+					<Plus />
+					Create Account
+				</Sidebar.MenuButton>
+			</SignUpButton>
 		</Sidebar.MenuItem>
 	</SignedOut>
 {:else}
