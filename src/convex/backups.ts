@@ -2,22 +2,31 @@ import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
 import * as jose from 'jose';
 
+// Shared helper function to verify JWT and return payload
+async function verifyJwtAndGetPayload(jwt: string) {
+	if (!process.env.CLERK_JWT_KEY) {
+		throw new Error('Missing CLERK_JWT_KEY environment variable');
+	}
+	const publicKey = await jose.importSPKI(process.env.CLERK_JWT_KEY, 'RS256');
+	if (!publicKey) {
+		throw new Error('Missing CLERK_JWT_KEY environment variable');
+	}
+	if (jwt.length === 0) {
+		throw new Error('Missing JWT');
+	}
+	const { payload } = await jose.jwtVerify(jwt, publicKey, {});
+	if (!payload.sub) {
+		throw new Error('Invalid JWT');
+	}
+	return payload;
+}
+
 export const get = query({
 	args: {
 		jwt: v.string()
 	},
 	handler: async (ctx, args) => {
-		if (!process.env.CLERK_JWT_KEY) {
-			throw new Error('Missing CLERK_JWT_KEY environment variable');
-		}
-		const publicKey = await jose.importSPKI(process.env.CLERK_JWT_KEY, 'RS256');
-		if (!publicKey) {
-			throw new Error('Missing CLERK_JWT_KEY environment variable');
-		}
-		if (args.jwt.length === 0) {
-			return [];
-		}
-		const { payload, protectedHeader } = await jose.jwtVerify(args.jwt, publicKey, {});
+		const payload = await verifyJwtAndGetPayload(args.jwt);
 		const backups = await ctx.db
 			.query('backup')
 			.order('desc')
@@ -39,21 +48,11 @@ export const create = mutation({
 		data: v.string()
 	},
 	handler: async (ctx, args) => {
-		if (!process.env.CLERK_JWT_KEY) {
-			throw new Error('Missing CLERK_JWT_KEY environment variable');
-		}
-		const publicKey = await jose.importSPKI(process.env.CLERK_JWT_KEY, 'RS256');
-		if (!publicKey) {
-			throw new Error('Missing CLERK_JWT_KEY environment variable');
-		}
-		if (args.jwt.length === 0) {
-			throw new Error('Missing JWT');
-		}
-		const { payload, protectedHeader } = await jose.jwtVerify(args.jwt, publicKey, {});
+		const payload = await verifyJwtAndGetPayload(args.jwt);
 		if (!payload.sub) {
-			throw new Error('Invalid JWT');
+			throw new Error('Invalid JWT: missing subject');
 		}
-		const backup = await ctx.db.insert('backup', {
+		await ctx.db.insert('backup', {
 			user: payload.sub,
 			name: args.name,
 			data: args.data
@@ -67,20 +66,7 @@ export const remove = mutation({
 		id: v.id('backup')
 	},
 	handler: async (ctx, args) => {
-		if (!process.env.CLERK_JWT_KEY) {
-			throw new Error('Missing CLERK_JWT_KEY environment variable');
-		}
-		const publicKey = await jose.importSPKI(process.env.CLERK_JWT_KEY, 'RS256');
-		if (!publicKey) {
-			throw new Error('Missing CLERK_JWT_KEY environment variable');
-		}
-		if (args.jwt.length === 0) {
-			throw new Error('Missing JWT');
-		}
-		const { payload, protectedHeader } = await jose.jwtVerify(args.jwt, publicKey, {});
-		if (!payload.sub) {
-			throw new Error('Invalid JWT');
-		}
+		const payload = await verifyJwtAndGetPayload(args.jwt);
 		const backup = await ctx.db.get(args.id);
 		if (backup?.user !== payload.sub) {
 			throw new Error('Unauthorized');
