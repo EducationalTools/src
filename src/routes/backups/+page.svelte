@@ -28,6 +28,7 @@
 	import { api } from '$lib/../convex/_generated/api.js';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
+	import Input from '$lib/components/ui/input/input.svelte';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 
@@ -38,6 +39,13 @@
 
 <SignedIn>
 	<div class="mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 p-3 md:grid-cols-2">
+		<Card.Root>
+			<Card.Header><Card.Title>Create a Backup</Card.Title></Card.Header>
+			<Card.Footer class="flex flex-row gap-3">
+				<Input placeholder="Backup Name" />
+				<Button>Create</Button>
+			</Card.Footer>
+		</Card.Root>
 		{#each query.data || [] as backup}
 			<Card.Root>
 				<Card.Header>
