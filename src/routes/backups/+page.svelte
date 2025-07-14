@@ -33,7 +33,7 @@
 </script>
 
 <SignedIn>
-	<div class="container mx-auto grid grid-cols-1 gap-4 p-3 md:grid-cols-3">
+	<div class="mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 p-3 md:grid-cols-3">
 		{#each query.data || [] as backup}
 			<div>
 				<h2>{backup.name}</h2>
