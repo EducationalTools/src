@@ -4,14 +4,17 @@
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
 	import dayjs from 'dayjs';
 	import { api } from '$lib/../convex/_generated/api.js';
+	import clsx from 'clsx';
+	import { toast } from 'svelte-sonner';
 
 	let { backup, client, sessionToken } = $props();
 
 	let restoreDialogOpen = $state(false);
 	let deleteDialogOpen = $state(false);
+	let deleting = $state(false);
 </script>
 
-<Card.Root>
+<Card.Root class={clsx(deleting && 'opacity-50')}>
 	<Card.Header>
 		<Card.Title>{backup.name}</Card.Title>
 		<Card.Description>
@@ -48,8 +51,10 @@
 					<AlertDialog.Action
 						class={buttonVariants({ variant: 'destructive' })}
 						onclick={() => {
+							deleteDialogOpen = false;
+							deleting = true;
 							client.mutation(api.backups.remove, { id: backup.id, jwt: sessionToken }).then(() => {
-								deleteDialogOpen = false;
+								toast.success('Backup deleted successfully');
 							});
 						}}>Continue</AlertDialog.Action
 					>
