@@ -32,6 +32,7 @@
 	import { toast } from 'svelte-sonner';
 	import Backup from './backup.svelte';
 	import createBackup from '$lib/createBackup';
+	import restoreBackup from '$lib/restoreBackup';
 	import Clipboard from '@lucide/svelte/icons/clipboard';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
@@ -40,6 +41,7 @@
 	let loading = $state(false);
 
 	let backupData = $state('');
+	let inputtedBackupData = $state('');
 
 	onMount(() => {
 		backupData = createBackup();
@@ -95,8 +97,13 @@
 			</div>
 			Import
 			<div class="flex flex-row gap-3">
-				<Input />
-				<Button>Import</Button>
+				<Input bind:value={inputtedBackupData} />
+				<Button
+					onclick={() => {
+						loading = true;
+						restoreBackup(inputtedBackupData);
+					}}>Import</Button
+				>
 			</div>
 		</Card.Content>
 	</Card.Root>
