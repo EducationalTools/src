@@ -15,7 +15,7 @@ export const get = query({
 			throw new Error('Missing CLERK_JWT_KEY environment variable');
 		}
 		if (args.jwt.length === 0) {
-			throw new Error('Invalid JWT');
+			return [];
 		}
 		const { payload, protectedHeader } = await jose.jwtVerify(args.jwt, publicKey, {});
 		const backups = await ctx.db
