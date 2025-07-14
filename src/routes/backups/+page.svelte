@@ -58,49 +58,52 @@
 	}
 </script>
 
-<AlertDialog.Root open={loading}
-	><AlertDialog.Content class="flex flex-row gap-3">
-		<LoaderCircle class="animate-spin" />
-		Loading
-	</AlertDialog.Content>
-</AlertDialog.Root>
-<SignedIn>
-	<div class="mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 p-3 md:grid-cols-2">
-		<Card.Root>
-			<Card.Header><Card.Title>Create a Backup</Card.Title></Card.Header>
-			<Card.Footer class="flex flex-row gap-3">
-				<Input placeholder="Backup Name" bind:value={enteredBackupName} />
-				<Button
-					disabled={!sessionToken}
-					onclick={() => {
-						loading = true;
-						getToken().then((token) => {
-							if (enteredBackupName.length > 0) {
-								client
-									.mutation(api.backups.create, {
-										name: enteredBackupName,
-										jwt: token,
-										data: createBackup()
-									})
-									.then(() => {
-										enteredBackupName = '';
-										toast.success('Backup created successfully');
-										loading = false;
-									});
-							}
-						});
-					}}>Create</Button
-				>
-			</Card.Footer>
-		</Card.Root>
-		{#if !query.data}
-			<div class="flex items-center justify-center">
-				<LoaderCircle class="animate-spin" />
-			</div>
-		{/if}
-		{#each query.data || [] as backup}
-			<Backup {backup} {client} {getToken} {setLoading} />
-		{/each}
-	</div>
-</SignedIn>
-<SignedOut>You need account</SignedOut>
+<div class="mx-auto w-full max-w-3xl p-3">
+	<AlertDialog.Root open={loading}
+		><AlertDialog.Content class="flex flex-row gap-3">
+			<LoaderCircle class="animate-spin" />
+			Loading
+		</AlertDialog.Content>
+	</AlertDialog.Root>
+
+	<SignedIn>
+		<div class="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
+			<Card.Root>
+				<Card.Header><Card.Title>Create a Backup</Card.Title></Card.Header>
+				<Card.Footer class="flex flex-row gap-3">
+					<Input placeholder="Backup Name" bind:value={enteredBackupName} />
+					<Button
+						disabled={!sessionToken}
+						onclick={() => {
+							loading = true;
+							getToken().then((token) => {
+								if (enteredBackupName.length > 0) {
+									client
+										.mutation(api.backups.create, {
+											name: enteredBackupName,
+											jwt: token,
+											data: createBackup()
+										})
+										.then(() => {
+											enteredBackupName = '';
+											toast.success('Backup created successfully');
+											loading = false;
+										});
+								}
+							});
+						}}>Create</Button
+					>
+				</Card.Footer>
+			</Card.Root>
+			{#if !query.data}
+				<div class="flex items-center justify-center">
+					<LoaderCircle class="animate-spin" />
+				</div>
+			{/if}
+			{#each query.data || [] as backup}
+				<Backup {backup} {client} {getToken} {setLoading} />
+			{/each}
+		</div>
+	</SignedIn>
+	<SignedOut>You need account</SignedOut>
+</div>
