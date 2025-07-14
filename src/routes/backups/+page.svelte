@@ -101,6 +101,7 @@
 			<div class="flex flex-row gap-3">
 				<Input bind:value={inputtedBackupData} />
 				<Button
+					disabled={inputtedBackupData.length === 0}
 					onclick={() => {
 						loading = true;
 						restoreBackup(inputtedBackupData);
