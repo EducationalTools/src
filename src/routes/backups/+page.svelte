@@ -32,11 +32,18 @@
 	import { toast } from 'svelte-sonner';
 	import Backup from './backup.svelte';
 	import createBackup from '$lib/createBackup';
+	import Clipboard from '@lucide/svelte/icons/clipboard';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 	const client = useConvexClient();
 	let enteredBackupName = $state('');
 	let loading = $state(false);
+
+	let backupData = $state('');
+
+	onMount(() => {
+		backupData = createBackup();
+	});
 
 	$effect(() => {
 		query = useQuery(api.backups.get, { jwt: sessionToken });
@@ -58,13 +65,41 @@
 	}
 </script>
 
-<div class="mx-auto w-full max-w-3xl p-3">
+<div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
 	<AlertDialog.Root open={loading}
 		><AlertDialog.Content class="flex flex-row gap-3">
 			<LoaderCircle class="animate-spin" />
 			Loading
 		</AlertDialog.Content>
 	</AlertDialog.Root>
+
+	<Card.Root>
+		<Card.Header><Card.Title>Local backup</Card.Title></Card.Header>
+		<Card.Content class="flex flex-col gap-3">
+			Export
+			<div class="flex flex-row gap-3">
+				<Input disabled={true} value={backupData} />
+				<Button
+					size="icon"
+					onclick={() => {
+						navigator.clipboard
+							.writeText(backupData)
+							.then(() => {
+								toast.success('Backup copied to clipboard');
+							})
+							.catch((error) => {
+								toast.error('Failed to copy backup to clipboard');
+							});
+					}}><Clipboard /></Button
+				>
+			</div>
+			Import
+			<div class="flex flex-row gap-3">
+				<Input />
+				<Button>Import</Button>
+			</div>
+		</Card.Content>
+	</Card.Root>
 
 	<SignedIn>
 		<div class="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
