@@ -36,7 +36,7 @@
 	import { onMount } from 'svelte';
 
 	onMount(() => {
-		if (page.url.hash == '/sso-callback') {
+		if (page.url.hash.includes('sso-callback')) {
 			signUpDialog = true;
 		}
 	});
