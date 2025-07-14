@@ -8,7 +8,7 @@
 	import { toast } from 'svelte-sonner';
 	import type { ConvexClient } from 'convex/browser';
 	import type { Id } from '../../convex/_generated/dataModel';
-	import Trash from '@lucide/svelte/icons/Trash';
+	import Trash from '@lucide/svelte/icons/trash';
 	import Clipboard from '@lucide/svelte/icons/clipboard';
 	import History from '@lucide/svelte/icons/history';
 	import restoreBackup from '$lib/restoreBackup';
