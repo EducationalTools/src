@@ -10,7 +10,7 @@
 	import type { Id } from '../../convex/_generated/dataModel';
 	import Trash from '@lucide/svelte/icons/Trash';
 	import Clipboard from '@lucide/svelte/icons/clipboard';
-	import History from '@lucide/svelte/icons/History';
+	import History from '@lucide/svelte/icons/history';
 	import restoreBackup from '$lib/restoreBackup';
 
 	let {

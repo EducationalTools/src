@@ -17,6 +17,9 @@ importers:
       '@friendofsvelte/tipex':
         specifier: 0.0.7
         version: 0.0.7(highlight.js@11.8.0)(svelte@5.35.6)
+      '@lucide/svelte':
+        specifier: ^0.525.0
+        version: 0.525.0(svelte@5.35.6)
       '@tanstack/match-sorter-utils':
         specifier: ^8.19.4
         version: 8.19.4
@@ -54,9 +57,6 @@ importers:
       '@internationalized/date':
         specifier: ^3.8.2
         version: 3.8.2
-      '@lucide/svelte':
-        specifier: ^0.516.0
-        version: 0.516.0(svelte@5.35.6)
       '@sveltejs/adapter-auto':
         specifier: ^6.0.1
         version: 6.0.1(@sveltejs/kit@2.22.5(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.35.6)(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)))(svelte@5.35.6)(vite@6.3.5(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)))
@@ -563,8 +563,8 @@ packages:
   '@layerstack/utils@2.0.0-next.12':
     resolution: {integrity: sha512-fhGZUlSr3N+D44BYm37WKMGSEFyZBW+dwIqtGU8Cl54mR4TLQ/UwyGhdpgIHyH/x/8q1abE0fP0Dn6ZsrDE3BA==}
 
-  '@lucide/svelte@0.516.0':
-    resolution: {integrity: sha512-Ovkg2IgUeF85guSbnG9iPwUMMRuz+rdh8HsnKbD1uEY2Wv3d9qf0ERKFrz0ePZqmPXOedCPcf2a/rvRsqkaZcw==}
+  '@lucide/svelte@0.525.0':
+    resolution: {integrity: sha512-dyUxkXzepagLUzL8jHQNdeH286nC66ClLACsg+Neu/bjkRJWPWMzkT+H0DKlE70QdkicGCfs1ZGmXCc351hmZA==}
     peerDependencies:
       svelte: ^5
 
@@ -2512,7 +2512,7 @@ snapshots:
       d3-time-format: 4.1.0
       lodash-es: 4.17.21
 
-  '@lucide/svelte@0.516.0(svelte@5.35.6)':
+  '@lucide/svelte@0.525.0(svelte@5.35.6)':
     dependencies:
       svelte: 5.35.6
 
