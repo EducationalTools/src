@@ -51,6 +51,7 @@
 		UserProfile
 	} from 'svelte-clerk/client';
 	import { dark } from '@clerk/themes';
+	import History from '@lucide/svelte/icons/history';
 	const ctx = useClerkContext();
 
 	// Props
@@ -149,6 +150,12 @@
 				experimental: true,
 				icon: Server,
 				url: '/mirrors/host'
+			},
+			{
+				title: 'Backups',
+				experimental: true,
+				icon: History,
+				url: '/backups'
 			},
 			{
 				title: 'About',
