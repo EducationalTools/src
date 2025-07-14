@@ -30,6 +30,7 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
+	import { toast } from 'svelte-sonner';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 	const client = useConvexClient();
@@ -54,6 +55,7 @@
 								.mutation(api.backups.create, { name: enteredBackupName, jwt: sessionToken })
 								.then(() => {
 									enteredBackupName = '';
+									toast.success('Backup created successfully');
 								});
 						}
 					}}>Create</Button
