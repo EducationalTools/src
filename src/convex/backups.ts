@@ -59,3 +59,31 @@ export const create = mutation({
 		});
 	}
 });
+
+export const remove = mutation({
+	args: {
+		jwt: v.string(),
+		id: v.id('backup')
+	},
+	handler: async (ctx, args) => {
+		if (!process.env.CLERK_JWT_KEY) {
+			throw new Error('Missing CLERK_JWT_KEY environment variable');
+		}
+		const publicKey = await jose.importSPKI(process.env.CLERK_JWT_KEY, 'RS256');
+		if (!publicKey) {
+			throw new Error('Missing CLERK_JWT_KEY environment variable');
+		}
+		if (args.jwt.length === 0) {
+			throw new Error('Missing JWT');
+		}
+		const { payload, protectedHeader } = await jose.jwtVerify(args.jwt, publicKey, {});
+		if (!payload.sub) {
+			throw new Error('Invalid JWT');
+		}
+		const backup = await ctx.db.get(args.id);
+		if (backup?.user !== payload.sub) {
+			throw new Error('Unauthorized');
+		}
+		await ctx.db.delete(args.id);
+	}
+});
