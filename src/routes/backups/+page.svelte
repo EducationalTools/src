@@ -17,7 +17,9 @@
 	import dayjs from 'dayjs';
 
 	$effect(() => {
-		refreshToken();
+		getToken().then((token) => {
+			sessionToken = token;
+		});
 	});
 
 	import { useConvexClient, useQuery } from 'convex-svelte';
@@ -39,12 +41,13 @@
 		query = useQuery(api.backups.get, { jwt: sessionToken });
 	});
 
-	async function refreshToken() {
+	async function getToken() {
 		const token = await ctx.session?.getToken();
-		if (token) {
-			sessionToken = token;
+		if (!token) {
+			toast.error('Something went wrong');
+			return '';
 		}
-		return;
+		return token;
 	}
 </script>
 
@@ -57,12 +60,12 @@
 				<Button
 					disabled={!sessionToken}
 					onclick={() => {
-						refreshToken().then(() => {
+						getToken().then((token) => {
 							if (enteredBackupName.length > 0) {
 								client
 									.mutation(api.backups.create, {
 										name: enteredBackupName,
-										jwt: sessionToken,
+										jwt: token,
 										data: createBackup()
 									})
 									.then(() => {
@@ -81,7 +84,7 @@
 			</div>
 		{/if}
 		{#each query.data || [] as backup}
-			<Backup {backup} {client} {sessionToken} {refreshToken} />
+			<Backup {backup} {client} {getToken} />
 		{/each}
 	</div>
 </SignedIn>

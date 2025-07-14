@@ -6,8 +6,23 @@
 	import { api } from '$lib/../convex/_generated/api.js';
 	import clsx from 'clsx';
 	import { toast } from 'svelte-sonner';
+	import type { ConvexClient } from 'convex/browser';
+	import type { Id } from '../../convex/_generated/dataModel';
 
-	let { backup, client, sessionToken, refreshToken } = $props();
+	let {
+		backup,
+		client,
+		getToken
+	}: {
+		backup: {
+			name: string;
+			data: string;
+			creationTime: number;
+			id: Id<'backup'>;
+		};
+		client: ConvexClient;
+		getToken: () => Promise<string>;
+	} = $props();
 
 	let restoreDialogOpen = $state(false);
 	let deleteDialogOpen = $state(false);
@@ -50,13 +65,11 @@
 					<AlertDialog.Action
 						class={buttonVariants({ variant: 'destructive' })}
 						onclick={() => {
-							refreshToken().then(() => {
+							getToken().then((token) => {
 								deleteDialogOpen = false;
-								client
-									.mutation(api.backups.remove, { id: backup.id, jwt: sessionToken })
-									.then(() => {
-										toast.success('Backup deleted successfully');
-									});
+								client.mutation(api.backups.remove, { id: backup.id, jwt: token }).then(() => {
+									toast.success('Backup deleted successfully');
+								});
 							});
 						}}>Continue</AlertDialog.Action
 					>
