@@ -38,7 +38,7 @@
 	<Card.Header>
 		<Card.Title>{backup.name}</Card.Title>
 		<Card.Description>
-			{dayjs(backup.creationTime).format('HH:MMa  DD/MM/YY')}
+			{dayjs(backup.creationTime).format('hh:mm a - DD/MM/YY')}
 		</Card.Description>
 	</Card.Header>
 	<Card.Footer class="flex flex-row gap-3">
