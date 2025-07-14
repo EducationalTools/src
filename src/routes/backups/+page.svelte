@@ -33,6 +33,7 @@
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
 	import { toast } from 'svelte-sonner';
 	import Backup from './backup.svelte';
+	import createBackup from '$lib/createBackup';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 	const client = useConvexClient();
@@ -54,7 +55,11 @@
 					onclick={() => {
 						if (enteredBackupName.length > 0) {
 							client
-								.mutation(api.backups.create, { name: enteredBackupName, jwt: sessionToken })
+								.mutation(api.backups.create, {
+									name: enteredBackupName,
+									jwt: sessionToken,
+									data: createBackup()
+								})
 								.then(() => {
 									enteredBackupName = '';
 									toast.success('Backup created successfully');

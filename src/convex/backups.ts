@@ -35,7 +35,8 @@ export const get = query({
 export const create = mutation({
 	args: {
 		jwt: v.string(),
-		name: v.string()
+		name: v.string(),
+		data: v.string()
 	},
 	handler: async (ctx, args) => {
 		if (!process.env.CLERK_JWT_KEY) {
@@ -55,7 +56,7 @@ export const create = mutation({
 		const backup = await ctx.db.insert('backup', {
 			user: payload.sub,
 			name: args.name,
-			data: ''
+			data: args.data
 		});
 	}
 });
