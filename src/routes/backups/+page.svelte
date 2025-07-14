@@ -27,13 +27,15 @@
 	import Button, { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Input from '$lib/components/ui/input/input.svelte';
-	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
+	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
 	import { toast } from 'svelte-sonner';
 	import Backup from './backup.svelte';
 	import createBackup from '$lib/createBackup';
 	import restoreBackup from '$lib/restoreBackup';
 	import Clipboard from '@lucide/svelte/icons/clipboard';
+	import Info from '@lucide/svelte/icons/info';
+	import * as Alert from '$lib/components/ui/alert/index.js';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 	const client = useConvexClient();
@@ -76,7 +78,7 @@
 	</AlertDialog.Root>
 
 	<Card.Root>
-		<Card.Header><Card.Title>Local backup</Card.Title></Card.Header>
+		<Card.Header><Card.Title>Local Backup</Card.Title></Card.Header>
 		<Card.Content class="flex flex-col gap-3">
 			Export
 			<div class="flex flex-row gap-3">
@@ -147,5 +149,13 @@
 			{/each}
 		</div>
 	</SignedIn>
-	<SignedOut>You need account</SignedOut>
+	<SignedOut>
+		<div></div>
+	</SignedOut>
+	<Alert.Root>
+		<Info />
+		<Alert.Title>Tip</Alert.Title><Alert.Description
+			>Backup to the cloud with an EduTools account.</Alert.Description
+		></Alert.Root
+	>
 </div>
