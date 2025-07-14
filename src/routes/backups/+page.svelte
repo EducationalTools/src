@@ -32,13 +32,14 @@
 	});
 </script>
 
-<!-- <SignedIn>{sessionToken}</SignedIn>
-<SignedOut>You need account</SignedOut> -->
-<div class="container mx-auto grid grid-cols-1 gap-4 p-3 md:grid-cols-3">
-	{#each query.data || [] as backup}
-		<div>
-			<h2>{backup.name}</h2>
-			<p>Creation Time: {backup.creationTime}</p>
-		</div>
-	{/each}
-</div>
+<SignedIn>
+	<div class="container mx-auto grid grid-cols-1 gap-4 p-3 md:grid-cols-3">
+		{#each query.data || [] as backup}
+			<div>
+				<h2>{backup.name}</h2>
+				<p>Creation Time: {backup.creationTime}</p>
+			</div>
+		{/each}
+	</div>
+</SignedIn>
+<SignedOut>You need account</SignedOut>
