@@ -50,7 +50,7 @@
 				</Card.Header>
 				<Card.Footer class="flex flex-row gap-3">
 					<Button>Restore</Button>
-					<Button>Delete</Button>
+					<Button variant="destructive">Delete</Button>
 				</Card.Footer>
 			</Card.Root>
 		{/each}
