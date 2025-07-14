@@ -26,15 +26,13 @@ export default function restoreBackup(backupData: string) {
 	});
 
 	document.cookie.split(';').forEach((cookie) => {
-		if (
-			!(
-				cookie.trim().startsWith('ph') ||
-				cookie.trim().startsWith('__') ||
-				cookie.trim().startsWith('clerk')
-			)
-		) {
-			const eqPos = cookie.indexOf('=');
-			const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+		const trimmed = cookie.trim();
+		if (!(trimmed.startsWith('ph') || trimmed.startsWith('__') || trimmed.startsWith('clerk'))) {
+			const eqPos = trimmed.indexOf('=');
+			// Skip malformed cookies that do not contain '='
+			if (eqPos === -1) return;
+			const name = trimmed.substring(0, eqPos);
+			// Value is trimmed.substring(eqPos + 1), but not needed here
 			document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
 		}
 	});
