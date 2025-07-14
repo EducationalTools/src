@@ -25,7 +25,8 @@ export const get = query({
 		return backups.map((backup) => ({
 			name: backup.name,
 			data: backup.data,
-			creationTime: backup._creationTime
+			creationTime: backup._creationTime,
+			id: backup._id
 		}));
 	}
 });
