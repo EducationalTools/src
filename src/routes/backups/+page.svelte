@@ -24,7 +24,7 @@
 		});
 	});
 
-	import { useQuery } from 'convex-svelte';
+	import { useConvexClient, useQuery } from 'convex-svelte';
 	import { api } from '$lib/../convex/_generated/api.js';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
@@ -32,6 +32,8 @@
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
+	const client = useConvexClient();
+	let enteredBackupName = $state('');
 
 	$effect(() => {
 		query = useQuery(api.backups.get, { jwt: sessionToken });
@@ -43,8 +45,19 @@
 		<Card.Root>
 			<Card.Header><Card.Title>Create a Backup</Card.Title></Card.Header>
 			<Card.Footer class="flex flex-row gap-3">
-				<Input placeholder="Backup Name" />
-				<Button disabled={!query.data}>Create</Button>
+				<Input placeholder="Backup Name" bind:value={enteredBackupName} />
+				<Button
+					disabled={!sessionToken}
+					onclick={() => {
+						if (enteredBackupName.length > 0) {
+							client
+								.mutation(api.backups.create, { name: enteredBackupName, jwt: sessionToken })
+								.then(() => {
+									enteredBackupName = '';
+								});
+						}
+					}}>Create</Button
+				>
 			</Card.Footer>
 		</Card.Root>
 		{#if !query.data}
