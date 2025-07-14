@@ -22,6 +22,10 @@ export const get = query({
 			.query('backup')
 			.filter((q) => q.eq(q.field('user'), payload.sub))
 			.take(100);
-		return backups.map((backup) => backup.name);
+		return backups.map((backup) => ({
+			name: backup.name,
+			data: backup.data,
+			creationTime: backup._creationTime
+		}));
 	}
 });
