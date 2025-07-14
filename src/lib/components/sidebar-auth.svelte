@@ -28,8 +28,18 @@
 	import { dark } from '@clerk/themes';
 	import Button from './ui/button/button.svelte';
 	const ctx = useClerkContext();
+	import { page } from '$app/state';
+	let signInDialog = $state(false);
+	let signUpDialog = $state(false);
 
 	import posthog from 'posthog-js';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		if (page.url.hash == '/sso-callback') {
+			signUpDialog = true;
+		}
+	});
 </script>
 
 {#if location.hostname == 'edutools.ingo.au' || location.hostname == 'localhost'}
@@ -75,7 +85,7 @@
 	</SignedIn>
 	<SignedOut>
 		<Sidebar.MenuItem>
-			<Dialog.Root>
+			<Dialog.Root open={signInDialog}>
 				<Dialog.Trigger class="w-full">
 					<Sidebar.MenuButton>
 						<Login />
@@ -88,7 +98,7 @@
 			</Dialog.Root>
 		</Sidebar.MenuItem>
 		<Sidebar.MenuItem>
-			<Dialog.Root>
+			<Dialog.Root open={signUpDialog}>
 				<Dialog.Trigger class="w-full">
 					<Sidebar.MenuButton>
 						<Plus />
