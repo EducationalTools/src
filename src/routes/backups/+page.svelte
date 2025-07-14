@@ -26,10 +26,11 @@
 
 	import { useConvexClient, useQuery } from 'convex-svelte';
 	import { api } from '$lib/../convex/_generated/api.js';
-	import Button from '$lib/components/ui/button/button.svelte';
+	import Button, { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
+	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
 	import { toast } from 'svelte-sonner';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
@@ -76,8 +77,42 @@
 					</Card.Description>
 				</Card.Header>
 				<Card.Footer class="flex flex-row gap-3">
-					<Button>Restore</Button>
-					<Button variant="destructive">Delete</Button>
+					<AlertDialog.Root>
+						<AlertDialog.Trigger class={buttonVariants({ variant: 'default' })}>
+							Restore
+						</AlertDialog.Trigger>
+						<AlertDialog.Content
+							><AlertDialog.Header>
+								<AlertDialog.Title>Restore Backup?</AlertDialog.Title>
+								<AlertDialog.Description>
+									This will replace all your current data
+								</AlertDialog.Description>
+							</AlertDialog.Header>
+							<AlertDialog.Footer>
+								<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+								<AlertDialog.Action>Continue</AlertDialog.Action>
+							</AlertDialog.Footer>
+						</AlertDialog.Content>
+					</AlertDialog.Root>
+					<AlertDialog.Root>
+						<AlertDialog.Trigger class={buttonVariants({ variant: 'destructive' })}>
+							Delete
+						</AlertDialog.Trigger>
+						<AlertDialog.Content
+							><AlertDialog.Header>
+								<AlertDialog.Title>Delete Backup?</AlertDialog.Title>
+								<AlertDialog.Description>
+									This will delete the backup permanently
+								</AlertDialog.Description>
+							</AlertDialog.Header>
+							<AlertDialog.Footer>
+								<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+								<AlertDialog.Action class={buttonVariants({ variant: 'destructive' })}
+									>Continue</AlertDialog.Action
+								>
+							</AlertDialog.Footer>
+						</AlertDialog.Content>
+					</AlertDialog.Root>
 				</Card.Footer>
 			</Card.Root>
 		{/each}
