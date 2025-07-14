@@ -92,15 +92,19 @@
 					<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
 					<AlertDialog.Action
 						class={buttonVariants({ variant: 'destructive' })}
-						onclick={() => {
+						onclick={async () => {
 							setLoading(true);
-							getToken().then((token) => {
+							try {
+								const token = await getToken();
+								await client.mutation(api.backups.remove, { id: backup.id, jwt: token });
+								toast.success('Backup deleted successfully');
 								deleteDialogOpen = false;
-								client.mutation(api.backups.remove, { id: backup.id, jwt: token }).then(() => {
-									toast.success('Backup deleted successfully');
-									setLoading(false);
-								});
-							});
+							} catch (error) {
+								console.error('Failed to delete backup:', error);
+								toast.error('Failed to delete backup');
+							} finally {
+								setLoading(false);
+							}
 						}}>Continue</AlertDialog.Action
 					>
 				</AlertDialog.Footer>
