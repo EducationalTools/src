@@ -42,7 +42,13 @@ export default function restoreBackup(backupData: string) {
 		'{"experimentalFeatures":true,"open":"tab","theme":"shadcn-zinc","panic":{"enabled":false,"key":"`","url":"https://classroom.google.com","disableExperimentalMode":true},"cloak":{"mode":"off","name":"Home","icon":"https://ssl.gstatic.com/classroom/favicon.png"},"analytics":true,"history":true}'
 	);
 
-	const data = JSON.parse(atob(backupData));
+	let data;
+	try {
+		data = JSON.parse(atob(backupData));
+	} catch (error) {
+		console.error('Failed to decode or parse backup data:', error);
+		return;
+	}
 
 	if (data.cookies) {
 		data.cookies.split(';').forEach((cookie: string) => {
