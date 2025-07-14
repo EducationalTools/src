@@ -20,6 +20,7 @@ export const get = query({
 		const { payload, protectedHeader } = await jose.jwtVerify(args.jwt, publicKey, {});
 		const backups = await ctx.db
 			.query('backup')
+			.order('desc')
 			.filter((q) => q.eq(q.field('user'), payload.sub))
 			.take(100);
 		return backups.map((backup) => ({
