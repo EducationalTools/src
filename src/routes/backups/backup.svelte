@@ -51,9 +51,14 @@
 						class={buttonVariants({ variant: 'destructive' })}
 						onclick={() => {
 							deleteDialogOpen = false;
-							client.mutation(api.backups.remove, { id: backup.id, jwt: sessionToken }).then(() => {
-								toast.success('Backup deleted successfully');
-							});
+							client
+								.mutation(api.backups.remove, { id: backup.id, jwt: sessionToken })
+								.then(() => {
+									toast.success('Backup deleted successfully');
+								})
+								.catch((error) => {
+									toast.error(error);
+								});
 						}}>Continue</AlertDialog.Action
 					>
 				</AlertDialog.Footer>
