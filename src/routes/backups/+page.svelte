@@ -119,7 +119,7 @@
 				<Card.Footer class="flex flex-row gap-3">
 					<Input placeholder="Backup Name" bind:value={enteredBackupName} />
 					<Button
-						disabled={!sessionToken}
+						disabled={!sessionToken && enteredBackupName.length === 0}
 						onclick={() => {
 							loading = true;
 							getToken().then((token) => {
