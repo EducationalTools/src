@@ -57,18 +57,20 @@
 				<Button
 					disabled={!sessionToken}
 					onclick={() => {
-						if (enteredBackupName.length > 0) {
-							client
-								.mutation(api.backups.create, {
-									name: enteredBackupName,
-									jwt: sessionToken,
-									data: createBackup()
-								})
-								.then(() => {
-									enteredBackupName = '';
-									toast.success('Backup created successfully');
-								});
-						}
+						refreshToken().then(() => {
+							if (enteredBackupName.length > 0) {
+								client
+									.mutation(api.backups.create, {
+										name: enteredBackupName,
+										jwt: sessionToken,
+										data: createBackup()
+									})
+									.then(() => {
+										enteredBackupName = '';
+										toast.success('Backup created successfully');
+									});
+							}
+						});
 					}}>Create</Button
 				>
 			</Card.Footer>
