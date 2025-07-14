@@ -55,6 +55,5 @@ export const create = mutation({
 			name: args.name,
 			data: ''
 		});
-		return backup.id;
 	}
 });
