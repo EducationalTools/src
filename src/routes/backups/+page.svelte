@@ -81,7 +81,7 @@
 			</div>
 		{/if}
 		{#each query.data || [] as backup}
-			<Backup {backup} {client} {sessionToken} />
+			<Backup {backup} {client} {sessionToken} {refreshToken} />
 		{/each}
 	</div>
 </SignedIn>

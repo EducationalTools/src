@@ -7,7 +7,7 @@
 	import clsx from 'clsx';
 	import { toast } from 'svelte-sonner';
 
-	let { backup, client, sessionToken } = $props();
+	let { backup, client, sessionToken, refreshToken } = $props();
 
 	let restoreDialogOpen = $state(false);
 	let deleteDialogOpen = $state(false);
@@ -50,9 +50,13 @@
 					<AlertDialog.Action
 						class={buttonVariants({ variant: 'destructive' })}
 						onclick={() => {
-							deleteDialogOpen = false;
-							client.mutation(api.backups.remove, { id: backup.id, jwt: sessionToken }).then(() => {
-								toast.success('Backup deleted successfully');
+							refreshToken().then(() => {
+								deleteDialogOpen = false;
+								client
+									.mutation(api.backups.remove, { id: backup.id, jwt: sessionToken })
+									.then(() => {
+										toast.success('Backup deleted successfully');
+									});
 							});
 						}}>Continue</AlertDialog.Action
 					>
