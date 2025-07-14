@@ -6,6 +6,9 @@
 	import { api } from '$lib/../convex/_generated/api.js';
 
 	let { backup, client, sessionToken } = $props();
+
+	let restoreDialogOpen = $state(false);
+	let deleteDialogOpen = $state(false);
 </script>
 
 <Card.Root>
@@ -16,7 +19,7 @@
 		</Card.Description>
 	</Card.Header>
 	<Card.Footer class="flex flex-row gap-3">
-		<AlertDialog.Root>
+		<AlertDialog.Root bind:open={restoreDialogOpen}>
 			<AlertDialog.Trigger class={buttonVariants({ variant: 'default' })}>
 				Restore
 			</AlertDialog.Trigger>
@@ -31,7 +34,7 @@
 				</AlertDialog.Footer>
 			</AlertDialog.Content>
 		</AlertDialog.Root>
-		<AlertDialog.Root>
+		<AlertDialog.Root bind:open={deleteDialogOpen}>
 			<AlertDialog.Trigger class={buttonVariants({ variant: 'destructive' })}>
 				Delete
 			</AlertDialog.Trigger>
@@ -45,7 +48,9 @@
 					<AlertDialog.Action
 						class={buttonVariants({ variant: 'destructive' })}
 						onclick={() => {
-							client.mutation(api.backups.remove, { id: backup.id, jwt: sessionToken });
+							client.mutation(api.backups.remove, { id: backup.id, jwt: sessionToken }).then(() => {
+								deleteDialogOpen = false;
+							});
 						}}>Continue</AlertDialog.Action
 					>
 				</AlertDialog.Footer>
