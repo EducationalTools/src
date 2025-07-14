@@ -70,6 +70,7 @@
 </script>
 
 <div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
+	<h1 class="text-3xl">Backups</h1>
 	<AlertDialog.Root open={loading}
 		><AlertDialog.Content class="flex flex-row gap-3">
 			<LoaderCircle class="animate-spin" />
