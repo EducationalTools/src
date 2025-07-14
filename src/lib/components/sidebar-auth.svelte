@@ -7,10 +7,10 @@
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
 	// Lucide icons
-	import Login from 'lucide-svelte/icons/log-in';
-	import Plus from 'lucide-svelte/icons/plus';
-	import Logout from 'lucide-svelte/icons/log-out';
-	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
+	import Login from '@lucide/svelte/icons/log-in';
+	import Plus from '@lucide/svelte/icons/plus';
+	import Logout from '@lucide/svelte/icons/log-out';
+	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
 
 	// App state and data
 	import { mode } from 'mode-watcher';

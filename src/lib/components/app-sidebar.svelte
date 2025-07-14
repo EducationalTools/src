@@ -17,21 +17,21 @@
 	import SidebarAuth from './sidebar-auth.svelte';
 
 	// Lucide icons
-	import Wrench from 'lucide-svelte/icons/wrench';
-	import ChevronRight from 'lucide-svelte/icons/chevron-right';
-	import Search from 'lucide-svelte/icons/search';
-	import Home from 'lucide-svelte/icons/home';
-	import Game from 'lucide-svelte/icons/gamepad-2';
-	import Check from 'lucide-svelte/icons/check';
-	import Code from 'lucide-svelte/icons/code';
-	import Settings from 'lucide-svelte/icons/settings';
-	import PanelLeft from 'lucide-svelte/icons/panel-left';
-	import Copy from 'lucide-svelte/icons/copy';
-	import Server from 'lucide-svelte/icons/server';
-	import Info from 'lucide-svelte/icons/info';
-	import Login from 'lucide-svelte/icons/log-in';
-	import Plus from 'lucide-svelte/icons/plus';
-	import Logout from 'lucide-svelte/icons/log-out';
+	import Wrench from '@lucide/svelte/icons/wrench';
+	import ChevronRight from '@lucide/svelte/icons/chevron-right';
+	import Search from '@lucide/svelte/icons/search';
+	import Home from '@lucide/svelte/icons/home';
+	import Game from '@lucide/svelte/icons/gamepad-2';
+	import Check from '@lucide/svelte/icons/check';
+	import Code from '@lucide/svelte/icons/code';
+	import Settings from '@lucide/svelte/icons/settings';
+	import PanelLeft from '@lucide/svelte/icons/panel-left';
+	import Copy from '@lucide/svelte/icons/copy';
+	import Server from '@lucide/svelte/icons/server';
+	import Info from '@lucide/svelte/icons/info';
+	import Login from '@lucide/svelte/icons/log-in';
+	import Plus from '@lucide/svelte/icons/plus';
+	import Logout from '@lucide/svelte/icons/log-out';
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';

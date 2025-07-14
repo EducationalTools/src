@@ -99,7 +99,7 @@ importers:
       layerchart:
         specifier: 2.0.0-next.24
         version: 2.0.0-next.24(svelte@5.34.3)
-      lucide-svelte:
+      @lucide/svelte:
         specifier: ^0.516.0
         version: 0.516.0(svelte@5.34.3)
       mode-watcher:
@@ -1603,7 +1603,7 @@ packages:
   lowlight@2.9.0:
     resolution: {integrity: sha512-OpcaUTCLmHuVuBcyNckKfH5B0oA4JUavb/M/8n9iAvanJYNQkrVm4pvyX0SUaqkBG4dnWHKt7p50B3ngAG2Rfw==}
 
-  lucide-svelte@0.516.0:
+  @lucide/svelte@0.516.0:
     resolution: {integrity: sha512-8YmF3pke1owMbtdYWscJFN47dEqJ41oXz3hVRKnYjQbDXE9uYqkE9KnAME1268mBhsC97xTqMYh07/RYrojLKA==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
@@ -3540,7 +3540,7 @@ snapshots:
       fault: 2.0.1
       highlight.js: 11.8.0
 
-  lucide-svelte@0.516.0(svelte@5.34.3):
+  @lucide/svelte@0.516.0(svelte@5.34.3):
     dependencies:
       svelte: 5.34.3
 
