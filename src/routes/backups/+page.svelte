@@ -44,7 +44,9 @@
 	async function getToken() {
 		const token = await ctx.session?.getToken();
 		if (!token) {
-			toast.error('Something went wrong');
+			if (ctx.session) {
+				toast.error('Something went wrong');
+			}
 			return '';
 		}
 		return token;
