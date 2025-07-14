@@ -36,5 +36,10 @@ export default function createBackup() {
 
 	console.log(data);
 
-	return btoa(JSON.stringify(data));
+	try {
+		return btoa(JSON.stringify(data));
+	} catch (error) {
+		console.error('Failed to create backup:', error);
+		throw new Error('Backup creation failed');
+	}
 }
