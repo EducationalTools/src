@@ -52,6 +52,10 @@
 		}
 		return token;
 	}
+
+	function setLoading(value: boolean) {
+		loading = value;
+	}
 </script>
 
 <AlertDialog.Root open={loading}
@@ -95,7 +99,7 @@
 			</div>
 		{/if}
 		{#each query.data || [] as backup}
-			<Backup {backup} {client} {getToken} {loading} />
+			<Backup {backup} {client} {getToken} {setLoading} />
 		{/each}
 	</div>
 </SignedIn>

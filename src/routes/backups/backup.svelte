@@ -13,7 +13,7 @@
 		backup,
 		client,
 		getToken,
-		loading
+		setLoading
 	}: {
 		backup: {
 			name: string;
@@ -23,7 +23,7 @@
 		};
 		client: ConvexClient;
 		getToken: () => Promise<string>;
-		loading: boolean;
+		setLoading: (value: boolean) => void;
 	} = $props();
 
 	let restoreDialogOpen = $state(false);
@@ -67,12 +67,12 @@
 					<AlertDialog.Action
 						class={buttonVariants({ variant: 'destructive' })}
 						onclick={() => {
-							loading = true;
+							setLoading(true);
 							getToken().then((token) => {
 								deleteDialogOpen = false;
 								client.mutation(api.backups.remove, { id: backup.id, jwt: token }).then(() => {
 									toast.success('Backup deleted successfully');
-									loading = false;
+									setLoading(false);
 								});
 							});
 						}}>Continue</AlertDialog.Action
