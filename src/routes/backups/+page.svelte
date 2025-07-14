@@ -150,12 +150,11 @@
 		</div>
 	</SignedIn>
 	<SignedOut>
-		<div></div>
+		<Alert.Root>
+			<Info />
+			<Alert.Title>Tip</Alert.Title><Alert.Description
+				>Backup to the cloud with an EduTools account.</Alert.Description
+			></Alert.Root
+		>
 	</SignedOut>
-	<Alert.Root>
-		<Info />
-		<Alert.Title>Tip</Alert.Title><Alert.Description
-			>Backup to the cloud with an EduTools account.</Alert.Description
-		></Alert.Root
-	>
 </div>
