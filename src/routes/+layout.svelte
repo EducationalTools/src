@@ -17,7 +17,7 @@
 	// Third-party utilities
 	import { ModeWatcher } from 'mode-watcher';
 	import clsx from 'clsx';
-	import { ClerkProvider } from 'svelte-clerk/client';
+	import { ClerkProvider, GoogleOneTap } from 'svelte-clerk/client';
 	import { PUBLIC_CONVEX_URL } from '$env/static/public';
 	import { setupConvex } from 'convex-svelte';
 
@@ -84,6 +84,8 @@
 			</Dialog.Footer>
 		</Dialog.Content>
 	</Dialog.Root>
+
+	<GoogleOneTap />
 
 	<!-- https://github.com/sveltejs/svelte/issues/3105#issuecomment-1868393333 -->
 	<div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
