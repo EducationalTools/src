@@ -26,6 +26,8 @@
 
 	import { useQuery } from 'convex-svelte';
 	import { api } from '$lib/../convex/_generated/api.js';
+	import Button from '$lib/components/ui/button/button.svelte';
+	import * as Card from '$lib/components/ui/card/index.js';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 
@@ -37,11 +39,20 @@
 <SignedIn>
 	<div class="mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 p-3 md:grid-cols-2">
 		{#each query.data || [] as backup}
-			<div>
-				<h2>{backup.name}</h2>
-				<p>Creation Time: {dayjs(backup.creationTime).format('HH:MM a  DD/MM/YY')}</p>
-				<p></p>
-			</div>
+			<Card.Root>
+				<Card.Header>
+					<Card.Title>{backup.name}</Card.Title>
+					<Card.Description
+						>Creation Time: {dayjs(backup.creationTime).format(
+							'HH:MM a  DD/MM/YY'
+						)}</Card.Description
+					>
+				</Card.Header>
+				<Card.Footer class="flex flex-row gap-3">
+					<Button>Restore</Button>
+					<Button>Delete</Button>
+				</Card.Footer>
+			</Card.Root>
 		{/each}
 	</div>
 </SignedIn>
