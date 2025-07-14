@@ -29,6 +29,7 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Input from '$lib/components/ui/input/input.svelte';
+	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 
@@ -43,9 +44,14 @@
 			<Card.Header><Card.Title>Create a Backup</Card.Title></Card.Header>
 			<Card.Footer class="flex flex-row gap-3">
 				<Input placeholder="Backup Name" />
-				<Button>Create</Button>
+				<Button disabled={!query.data}>Create</Button>
 			</Card.Footer>
 		</Card.Root>
+		{#if !query.data}
+			<div class="flex items-center justify-center">
+				<LoaderCircle class="animate-spin" />
+			</div>
+		{/if}
 		{#each query.data || [] as backup}
 			<Card.Root>
 				<Card.Header>
