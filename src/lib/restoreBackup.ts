@@ -52,7 +52,6 @@ export default function restoreBackup(backupData: string) {
 
 	if (data.cookies) {
 		data.cookies.split(';').forEach((cookie: string) => {
-			console.log('Cookie:', cookie);
 			const [name, value] = cookie.split('=');
 			document.cookie = `${name}=${value}`;
 		});
@@ -60,14 +59,12 @@ export default function restoreBackup(backupData: string) {
 
 	if (data.localstorage) {
 		Object.entries(data.localstorage).forEach(([key, value]) => {
-			console.log('LocalStorage:', key, value);
 			localStorage.setItem(key, value as string);
 		});
 	}
 
 	if (data.sessionstorage) {
 		Object.entries(data.sessionstorage).forEach(([key, value]) => {
-			console.log('SessionStorage:', key, value);
 			sessionStorage.setItem(key, value as string);
 		});
 	}
