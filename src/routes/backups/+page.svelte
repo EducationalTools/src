@@ -107,8 +107,11 @@
 							</AlertDialog.Header>
 							<AlertDialog.Footer>
 								<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-								<AlertDialog.Action class={buttonVariants({ variant: 'destructive' })}
-									>Continue</AlertDialog.Action
+								<AlertDialog.Action
+									class={buttonVariants({ variant: 'destructive' })}
+									onclick={() => {
+										client.mutation(api.backups.remove, { id: backup.id, jwt: sessionToken });
+									}}>Continue</AlertDialog.Action
 								>
 							</AlertDialog.Footer>
 						</AlertDialog.Content>
