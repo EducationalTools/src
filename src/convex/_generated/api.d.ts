@@ -8,12 +8,8 @@
  * @module
  */
 
-import type {
-  ApiFromModules,
-  FilterApi,
-  FunctionReference,
-} from "convex/server";
-import type * as backups from "../backups.js";
+import type { ApiFromModules, FilterApi, FunctionReference } from 'convex/server';
+import type * as backups from '../backups.js';
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -24,13 +20,7 @@ import type * as backups from "../backups.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  backups: typeof backups;
+	backups: typeof backups;
 }>;
-export declare const api: FilterApi<
-  typeof fullApi,
-  FunctionReference<any, "public">
->;
-export declare const internal: FilterApi<
-  typeof fullApi,
-  FunctionReference<any, "internal">
->;
+export declare const api: FilterApi<typeof fullApi, FunctionReference<any, 'public'>>;
+export declare const internal: FilterApi<typeof fullApi, FunctionReference<any, 'internal'>>;
