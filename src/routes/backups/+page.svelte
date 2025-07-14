@@ -25,10 +25,10 @@
 	import { useQuery } from 'convex-svelte';
 	import { api } from '$lib/../convex/_generated/api.js';
 
-	let query = $state(useQuery(api.backups.get, { id: '' }));
+	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 
 	$effect(() => {
-		query = useQuery(api.backups.get, { id: sessionToken });
+		query = useQuery(api.backups.get, { jwt: sessionToken });
 	});
 </script>
 
