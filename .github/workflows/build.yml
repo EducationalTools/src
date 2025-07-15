@@ -22,5 +22,8 @@ jobs:
           pnpm install
 
       - name: Build
+        env:
+          PUBLIC_CLERK_PUBLISHABLE_KEY: pk_live_Y2xlcmsuZWR1dG9vbHMuaW5nby5hdSQ
+          PUBLIC_CONVEX_URL: https://elated-toad-832.convex.cloud
         run: |
           pnpm run build
