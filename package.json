@@ -15,6 +15,7 @@
 	},
 	"devDependencies": {
 		"@internationalized/date": "^3.8.2",
+		"@lucide/svelte": "^0.515.0",
 		"@sveltejs/adapter-auto": "^6.0.1",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.22.0",
@@ -22,13 +23,13 @@
 		"@tailwindcss/typography": "^0.5.16",
 		"@tailwindcss/vite": "^4.1.10",
 		"@tanstack/table-core": "^8.21.3",
-		"@types/jsonwebtoken": "^9.0.10",
 		"@types/md5": "^2.3.5",
 		"autoprefixer": "^10.4.21",
 		"bits-ui": "2.8.0",
 		"clsx": "^2.1.1",
 		"embla-carousel-svelte": "^8.6.0",
 		"layerchart": "2.0.0-next.24",
+		"lucide-svelte": "^0.516.0",
 		"mode-watcher": "^1.0.8",
 		"paneforge": "1.0.0-next.5",
 		"prettier": "^3.6.0",
@@ -47,20 +48,11 @@
 		"vite": "^6.3.5"
 	},
 	"dependencies": {
-		"@clerk/backend": "^2.4.0",
-		"@clerk/themes": "^2.2.50",
 		"@friendofsvelte/tipex": "0.0.7",
-		"@lucide/svelte": "^0.525.0",
 		"@tanstack/match-sorter-utils": "^8.19.4",
-		"convex": "^1.25.2",
-		"convex-svelte": "^0.0.11",
-		"dayjs": "^1.11.13",
 		"formsnap": "^2.0.1",
-		"jose": "^6.0.11",
-		"jsonwebtoken": "^9.0.2",
 		"md5": "^2.3.0",
 		"posthog-js": "^1.255.1",
-		"svelte-clerk": "^0.13.1",
 		"svelte-persisted-store": "^0.12.0"
 	}
 }

@@ -9,13 +9,13 @@
 	import { badgeVariants } from '$lib/components/ui/badge/index.js';
 
 	// Icons
-	import Refresh from '@lucide/svelte/icons/refresh-cw';
-	import Fullscreen from '@lucide/svelte/icons/maximize';
-	import OpenInNewTab from '@lucide/svelte/icons/external-link';
-	import Share from '@lucide/svelte/icons/share';
-	import Bookmark from '@lucide/svelte/icons/bookmark';
-	import Comment from '@lucide/svelte/icons/message-square';
-	import ArrowRight from '@lucide/svelte/icons/arrow-right';
+	import Refresh from 'lucide-svelte/icons/refresh-cw';
+	import Fullscreen from 'lucide-svelte/icons/maximize';
+	import OpenInNewTab from 'lucide-svelte/icons/external-link';
+	import Share from 'lucide-svelte/icons/share';
+	import Bookmark from 'lucide-svelte/icons/bookmark';
+	import Comment from 'lucide-svelte/icons/message-square';
+	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';

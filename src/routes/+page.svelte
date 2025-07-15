@@ -4,8 +4,8 @@
 	import clsx from 'clsx';
 	import { getGameById } from '$lib/gmaes';
 	import History from '@lucide/svelte/icons/history';
-	import Bookmark from '@lucide/svelte/icons/bookmark';
-	import X from '@lucide/svelte/icons/x';
+	import Bookmark from 'lucide-svelte/icons/bookmark';
+	import X from 'lucide-svelte/icons/x';
 
 	const tools = [
 		{ name: 'Calculator', url: '/tools/calculator' },
