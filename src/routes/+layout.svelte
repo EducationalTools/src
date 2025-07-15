@@ -17,6 +17,11 @@
 	// Third-party utilities
 	import { ModeWatcher } from 'mode-watcher';
 	import clsx from 'clsx';
+	import { ClerkProvider, GoogleOneTap } from 'svelte-clerk/client';
+	import { PUBLIC_CLERK_PUBLISHABLE_KEY, PUBLIC_CONVEX_URL } from '$env/static/public';
+	import { setupConvex } from 'convex-svelte';
+
+	setupConvex(PUBLIC_CONVEX_URL);
 
 	import { persisted } from 'svelte-persisted-store';
 
@@ -28,6 +33,7 @@
 	import posthog from 'posthog-js';
 	import { browser } from '$app/environment';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import Identify from './identify.svelte';
 
 	let trackerBlockerDialog = $state(false);
 
@@ -60,36 +66,41 @@
 	<title>EduTools</title>
 </svelte:head>
 
-<Dialog.Root open={trackerBlockerDialog}>
-	<Dialog.Content>
-		<Dialog.Title>Notice</Dialog.Title>
-		<Dialog.Description
-			>We use Posthog to track errors and usage to improve EduTools. Please disable your tracker/ad
-			blocker to allow this. Don't worry, we won't add any ads.</Dialog.Description
-		>
-		<Dialog.Footer>
-			<Dialog.Close onclick={() => ($trackerDialogClosed = true)}>
-				<Button variant="ghost">Don't show again</Button>
-			</Dialog.Close>
-			<Dialog.Close>
-				<Button>Close</Button>
-			</Dialog.Close>
-		</Dialog.Footer>
-	</Dialog.Content>
-</Dialog.Root>
+<ClerkProvider publishableKey={PUBLIC_CLERK_PUBLISHABLE_KEY}>
+	<Dialog.Root open={trackerBlockerDialog}>
+		<Dialog.Content>
+			<Dialog.Title>Notice</Dialog.Title>
+			<Dialog.Description
+				>We use Posthog to track errors and usage to improve EduTools. Please disable your
+				tracker/ad blocker to allow this. Don't worry, we won't add any ads.</Dialog.Description
+			>
+			<Dialog.Footer>
+				<Dialog.Close onclick={() => ($trackerDialogClosed = true)}>
+					<Button variant="ghost">Don't show again</Button>
+				</Dialog.Close>
+				<Dialog.Close>
+					<Button>Close</Button>
+				</Dialog.Close>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
 
-<!-- https://github.com/sveltejs/svelte/issues/3105#issuecomment-1868393333 -->
-<div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
+	<GoogleOneTap />
 
-<PanicMode />
-<Cloak />
-<Toaster />
-<ModeWatcher disableTransitions={false} defaultMode={'dark'} />
-<Settings />
-<Sidebar.Provider class="flex flex-col md:flex-row">
-	<AppSidebar />
-	<Sidebar.Trigger class="m-1 p-1 md:hidden" />
-	<Sidebar.Inset>
-		{@render children()}
-	</Sidebar.Inset>
-</Sidebar.Provider>
+	<!-- https://github.com/sveltejs/svelte/issues/3105#issuecomment-1868393333 -->
+	<div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
+
+	<PanicMode />
+	<Cloak />
+	<Toaster />
+	<ModeWatcher disableTransitions={false} defaultMode={'dark'} />
+	<Settings />
+	<Identify />
+	<Sidebar.Provider class="flex flex-col md:flex-row">
+		<AppSidebar />
+		<Sidebar.Trigger class="m-1 p-1 md:hidden" />
+		<Sidebar.Inset>
+			{@render children()}
+		</Sidebar.Inset>
+	</Sidebar.Provider>
+</ClerkProvider>
