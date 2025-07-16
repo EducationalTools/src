@@ -52,6 +52,7 @@
 	} from 'svelte-clerk/client';
 	import { dark } from '@clerk/themes';
 	import History from '@lucide/svelte/icons/history';
+	import posthog from 'posthog-js';
 	const ctx = useClerkContext();
 
 	// Props
@@ -202,6 +203,7 @@
 					{#snippet child({ props })}
 						<button
 							onclick={function () {
+								posthog.capture('search');
 								commandOpen = true;
 								sidebar.setOpenMobile(false);
 							}}
@@ -379,6 +381,7 @@
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton
 				onclick={() => {
+					posthog.capture('sidebar_toggle', { state: sidebar.open });
 					sidebar.toggle();
 				}}
 			>
