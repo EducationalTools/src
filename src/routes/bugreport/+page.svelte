@@ -3,8 +3,21 @@
 	import { Label } from '$lib/components/ui/label/index.js';
 	import Textarea from '$lib/components/ui/textarea/textarea.svelte';
 	import * as Accordion from '$lib/components/ui/accordion/index.js';
+	import * as Table from '$lib/components/ui/table/index.js';
+	import { onMount } from 'svelte';
+	import posthog from 'posthog-js';
 
 	const id = $props.id();
+
+	let distinct_id = $state('Not available');
+	let userAgent = $state('');
+
+	onMount(() => {
+		userAgent = navigator.userAgent;
+		setTimeout(() => {
+			distinct_id = posthog.get_distinct_id();
+		}, 1000);
+	});
 </script>
 
 <div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
@@ -47,7 +60,20 @@
 	<Accordion.Root type="single">
 		<Accordion.Item value="other-data">
 			<Accordion.Trigger>Other Data</Accordion.Trigger>
-			<Accordion.Content></Accordion.Content>
+			<Accordion.Content>
+				<Table.Root>
+					<Table.Body>
+						<Table.Row>
+							<Table.Cell>Distinct ID</Table.Cell>
+							<Table.Cell>{distinct_id}</Table.Cell>
+						</Table.Row>
+						<Table.Row>
+							<Table.Cell>User agent</Table.Cell>
+							<Table.Cell>{userAgent}</Table.Cell>
+						</Table.Row>
+					</Table.Body>
+				</Table.Root>
+			</Accordion.Content>
 		</Accordion.Item>
 	</Accordion.Root>
 </div>
