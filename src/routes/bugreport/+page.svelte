@@ -2,6 +2,7 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import Textarea from '$lib/components/ui/textarea/textarea.svelte';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
 
 	const id = $props.id();
 </script>
@@ -43,4 +44,10 @@
 		<Label for="additional-{id}">Additional information</Label>
 		<Textarea id="additional-{id}"></Textarea>
 	</div>
+	<Accordion.Root type="single">
+		<Accordion.Item value="other-data">
+			<Accordion.Trigger>Other Data</Accordion.Trigger>
+			<Accordion.Content></Accordion.Content>
+		</Accordion.Item>
+	</Accordion.Root>
 </div>
