@@ -203,6 +203,7 @@
 					{#snippet child({ props })}
 						<button
 							onclick={function () {
+								posthog.capture('search');
 								commandOpen = true;
 								sidebar.setOpenMobile(false);
 							}}
