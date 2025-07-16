@@ -37,7 +37,7 @@
 	import posthog from 'posthog-js';
 </script>
 
-{#if $page.url.hostname == 'edutools.ingo.au' || $page.url.hostname == 'localhost'}
+{#if page.url.hostname == 'edutools.ingo.au' || page.url.hostname == 'localhost'}
 	<ClerkLoading>
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton class="flex items-center justify-center">
