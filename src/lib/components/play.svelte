@@ -22,6 +22,7 @@
 	import { preferencesStore, favoritesStore, historyStore } from '$lib/stores';
 	import clsx from 'clsx';
 	import posthog from 'posthog-js';
+	import { onMount } from 'svelte';
 
 	function openNewTab(url: string) {
 		url = location.origin + url;
@@ -58,6 +59,10 @@
 
 		historyStore.set(history);
 	}
+
+	onMount(() => {
+		posthog.capture('gmae_open', { gmae_id: gmaedata?.id });
+	});
 </script>
 
 <div class="flex h-full w-full flex-col gap-3 p-3">
