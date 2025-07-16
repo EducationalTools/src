@@ -140,6 +140,10 @@
 											enteredBackupName = '';
 											toast.success('Backup created successfully');
 											loading = false;
+										})
+										.catch((error) => {
+											loading = false;
+											toast.error('Failed to create backup');
 										});
 								}
 							});
