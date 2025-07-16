@@ -8,9 +8,6 @@ async function verifyJwtAndGetPayload(jwt: string) {
 		throw new Error('Missing CLERK_JWT_KEY environment variable');
 	}
 	const publicKey = await jose.importSPKI(process.env.CLERK_JWT_KEY, 'RS256');
-	if (!publicKey) {
-		throw new Error('Missing CLERK_JWT_KEY environment variable');
-	}
 	if (jwt.length === 0) {
 		throw new Error('Missing JWT');
 	}
