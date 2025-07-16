@@ -6,6 +6,7 @@
 	import * as Table from '$lib/components/ui/table/index.js';
 	import { onMount } from 'svelte';
 	import posthog from 'posthog-js';
+	import Button from '$lib/components/ui/button/button.svelte';
 
 	const id = $props.id();
 
@@ -76,4 +77,5 @@
 			</Accordion.Content>
 		</Accordion.Item>
 	</Accordion.Root>
+	<Button variant="outline">Submit</Button>
 </div>
