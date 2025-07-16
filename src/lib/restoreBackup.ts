@@ -21,7 +21,7 @@ export default function restoreBackup(backupData: string) {
 				key == 'lastSeenSurveyDate'
 			)
 		) {
-			localStorage.removeItem(key);
+			sessionStorage.removeItem(key);
 		}
 	});
 
