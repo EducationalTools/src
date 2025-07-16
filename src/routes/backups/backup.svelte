@@ -12,6 +12,7 @@
 	import Clipboard from '@lucide/svelte/icons/clipboard';
 	import History from '@lucide/svelte/icons/history';
 	import restoreBackup from '$lib/restoreBackup';
+	import posthog from 'posthog-js';
 
 	let {
 		backup,
@@ -46,6 +47,7 @@
 			variant="outline"
 			size="icon"
 			onclick={() => {
+				posthog.capture('backup', { type: 'copy', location: 'cloud' });
 				navigator.clipboard
 					.writeText(backup.data)
 					.then(() => {
@@ -71,6 +73,7 @@
 					<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
 					<AlertDialog.Action
 						onclick={() => {
+							posthog.capture('backup', { type: 'restore', location: 'cloud' });
 							restoreDialogOpen = false;
 							setLoading(true);
 							restoreBackup(backup.data);

@@ -36,6 +36,7 @@
 	import Clipboard from '@lucide/svelte/icons/clipboard';
 	import Info from '@lucide/svelte/icons/info';
 	import * as Alert from '$lib/components/ui/alert/index.js';
+	import posthog from 'posthog-js';
 
 	let query = $state(useQuery(api.backups.get, { jwt: '' }));
 	const client = useConvexClient();
@@ -87,6 +88,7 @@
 				<Button
 					size="icon"
 					onclick={() => {
+						posthog.capture('backup', { type: 'copy', location: 'local' });
 						navigator.clipboard
 							.writeText(backupData)
 							.then(() => {
@@ -104,6 +106,7 @@
 				<Button
 					disabled={inputtedBackupData.length === 0}
 					onclick={() => {
+						posthog.capture('backup', { type: 'import', location: 'local' });
 						loading = true;
 						restoreBackup(inputtedBackupData);
 					}}>Import</Button
@@ -121,6 +124,7 @@
 					<Button
 						disabled={!sessionToken || enteredBackupName.length === 0}
 						onclick={() => {
+							posthog.capture('backup', { type: 'create', location: 'cloud' });
 							loading = true;
 							getToken().then((token) => {
 								if (enteredBackupName.length > 0) {
