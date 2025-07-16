@@ -21,6 +21,7 @@
 	import { getGameById } from '$lib/gmaes';
 	import { preferencesStore, favoritesStore, historyStore } from '$lib/stores';
 	import clsx from 'clsx';
+	import posthog from 'posthog-js';
 
 	function openNewTab(url: string) {
 		url = location.origin + url;
@@ -121,6 +122,7 @@
 			<Button
 				variant="outline"
 				onclick={() => {
+					posthog.capture('gmae_reload', { gmae_id: gmaedata?.id });
 					const iframe = document.querySelector('iframe');
 					if (iframe && gmaedata?.url) {
 						iframe.src = gmaedata.url;
@@ -133,6 +135,7 @@
 			<Button
 				variant="outline"
 				onclick={() => {
+					posthog.capture('gmae_fullscreen', { gmae_id: gmaedata?.id });
 					document.querySelector('iframe')?.requestFullscreen();
 				}}
 			>
@@ -142,6 +145,7 @@
 			<Button
 				variant="outline"
 				onclick={() => {
+					posthog.capture('gmae_new_tab', { gmae_id: gmaedata?.id });
 					if (gmaedata?.url) openNewTab(gmaedata.url);
 				}}
 			>
@@ -151,6 +155,7 @@
 			<Button
 				variant="outline"
 				onclick={() => {
+					posthog.capture('gmae_share', { gmae_id: gmaedata?.id });
 					if (navigator.share) {
 						navigator
 							.share({
@@ -172,6 +177,7 @@
 			<Button
 				variant="outline"
 				onclick={() => {
+					posthog.capture('gmae_favorite', { gmae_id: gmaedata?.id });
 					if (gmaedata?.id) {
 						if ($favoritesStore.includes(gmaedata.id)) {
 							$favoritesStore = $favoritesStore.filter((id) => id !== gmaedata.id);
