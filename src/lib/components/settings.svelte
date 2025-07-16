@@ -32,6 +32,10 @@
 		}, 1000);
 	});
 
+	$effect(() => {
+		posthog.capture('settingschange', $preferencesStore);
+	});
+
 	const themeTriggerContent = $derived(
 		themes.find((theme) => theme.value === $preferencesStore.theme)?.label ?? 'No theme :D'
 	);
