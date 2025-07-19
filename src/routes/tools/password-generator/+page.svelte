@@ -30,7 +30,7 @@
 	}
 </script>
 
-<div class="flex h-full items-center justify-center p-3">
+<div class="flex h-screen items-center justify-center p-3">
 	<div class="flex flex-col gap-3">
 		<Input
 			id="password"
