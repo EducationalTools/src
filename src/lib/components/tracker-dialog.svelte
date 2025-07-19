@@ -11,8 +11,8 @@
 	<Dialog.Content>
 		<Dialog.Title>Notice</Dialog.Title>
 		<Dialog.Description>
-			We use Posthog to track errors and usage to improve EduTools. Please disable your
-			tracker/ad blocker to allow this. Don't worry, we won't add any ads.
+			We use Posthog to track errors and usage to improve EduTools. Please disable your tracker/ad
+			blocker to allow this. Don't worry, we won't add any ads.
 		</Dialog.Description>
 		<Dialog.Footer>
 			<Dialog.Close onclick={() => ($trackerDialogClosed = true)}>

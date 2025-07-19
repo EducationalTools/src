@@ -20,7 +20,7 @@
 	import clsx from 'clsx';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
-	
+
 	// Analytics and stores
 	import { initializeAnalytics, checkTrackerBlocked, trackerDialogClosed } from '$lib/analytics';
 	import { preferencesStore } from '$lib/stores';
@@ -53,7 +53,7 @@
 
 <Providers>
 	<TrackerDialog bind:open={trackerBlockerDialog} />
-	
+
 	<!-- Theme class helper for CSS -->
 	<div class={clsx('hidden', $preferencesStore.theme)} id="theme"></div>
 
@@ -63,7 +63,7 @@
 	<Toaster />
 	<Settings />
 	<Identify />
-	
+
 	<!-- Main layout -->
 	<Sidebar.Provider class="flex flex-col md:flex-row">
 		<AppSidebar />
