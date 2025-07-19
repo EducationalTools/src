@@ -65,11 +65,15 @@
 	let commandOpen = $state(false);
 
 	function handleKeydown(e: KeyboardEvent) {
-		const shortcuts = createSidebarShortcuts({ set: (value: boolean) => { commandOpen = value; } });
+		const shortcuts = createSidebarShortcuts({
+			set: (value: boolean) => {
+				commandOpen = value;
+			}
+		});
 		if (handleGlobalKeydown(e, shortcuts)) {
 			return;
 		}
-		
+
 		if (e.key === ',' && (e.metaKey || e.ctrlKey) && $preferencesStore.experimentalFeatures) {
 			e.preventDefault();
 			settingsOpen.current = !settingsOpen.current;
@@ -78,7 +82,9 @@
 
 	// Filter navigation based on experimental features
 	const filteredMainNavigation = $derived(
-		createMainNavigation(gmaes).filter((item) => !item.experimental || $preferencesStore.experimentalFeatures)
+		createMainNavigation(gmaes).filter(
+			(item) => !item.experimental || $preferencesStore.experimentalFeatures
+		)
 	);
 	const filteredExperimentalNavigation = $derived(
 		experimentalNavigation.filter((item) => $preferencesStore.experimentalFeatures)

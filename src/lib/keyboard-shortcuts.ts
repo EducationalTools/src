@@ -7,8 +7,10 @@ export interface KeyboardShortcut {
 
 export function handleGlobalKeydown(event: KeyboardEvent, shortcuts: KeyboardShortcut[]): boolean {
 	for (const shortcut of shortcuts) {
-		const metaKeyMatch = shortcut.metaKey ? event.metaKey || event.ctrlKey : !event.metaKey && !event.ctrlKey;
-		
+		const metaKeyMatch = shortcut.metaKey
+			? event.metaKey || event.ctrlKey
+			: !event.metaKey && !event.ctrlKey;
+
 		if (event.key === shortcut.key && metaKeyMatch) {
 			event.preventDefault();
 			shortcut.handler();

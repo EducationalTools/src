@@ -18,7 +18,9 @@ export interface NavigationItem {
 	}[];
 }
 
-export function createMainNavigation(gmaes: Array<{ id: string; name: string }> = []): NavigationItem[] {
+export function createMainNavigation(
+	gmaes: Array<{ id: string; name: string }> = []
+): NavigationItem[] {
 	return [
 		{
 			title: 'Home',
