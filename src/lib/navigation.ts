@@ -106,12 +106,3 @@ export function createMainNavigation(
 		}
 	];
 }
-
-export const experimentalNavigation: NavigationItem[] = [
-	{
-		title: 'Simple Text Editor',
-		icon: Code,
-		url: '/tools/simple-text-editor',
-		experimental: true
-	}
-];

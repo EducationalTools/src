@@ -35,7 +35,7 @@
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
-	import { createMainNavigation, experimentalNavigation } from '$lib/navigation';
+	import { createMainNavigation } from '$lib/navigation';
 	import { handleGlobalKeydown, createSidebarShortcuts } from '$lib/keyboard-shortcuts';
 
 	// Games data
@@ -85,9 +85,6 @@
 		createMainNavigation(gmaes).filter(
 			(item) => !item.experimental || $preferencesStore.experimentalFeatures
 		)
-	);
-	const filteredExperimentalNavigation = $derived(
-		experimentalNavigation.filter((item) => $preferencesStore.experimentalFeatures)
 	);
 </script>
 
