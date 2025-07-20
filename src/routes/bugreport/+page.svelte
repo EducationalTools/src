@@ -165,6 +165,12 @@
 						.then((response) => {
 							loading = false;
 							if (response.success) {
+								additional = '';
+								briefDescription = '';
+								description = '';
+								expected = '';
+								log = '';
+								reproduction = '';
 								resolve({ message: response.message });
 							} else {
 								reject({ message: response.message });
