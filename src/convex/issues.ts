@@ -1,6 +1,7 @@
 import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
 import * as jose from 'jose';
+import { createAppAuth } from '@octokit/auth-app';
 
 async function verifyJwtAndGetPayload(jwt: string) {
 	if (!process.env.CLERK_JWT_KEY) {
@@ -37,6 +38,25 @@ export const bugReport = mutation({
 		if (!args.briefDescription || !args.description || !args.reproduction || !args.expected) {
 			return { success: false, message: 'Missing required fields' };
 		}
+
+		if (
+			!process.env.GITHUB_APP_ID ||
+			!process.env.GITHUB_APP_PRIVATE_KEY ||
+			!process.env.GITHUB_APP_CLIENT_ID ||
+			!process.env.GITHUB_APP_CLIENT_SECRET
+		) {
+			return { success: false, message: 'Missing required environment variables' };
+		}
+
+		const auth = createAppAuth({
+			appId: process.env.GITHUB_APP_ID,
+			privateKey: process.env.GITHUB_APP_PRIVATE_KEY,
+			clientId: process.env.GITHUB_APP_CLIENT_ID,
+			clientSecret: process.env.GITHUB_APP_CLIENT_SECRET
+		});
+
+		const appAuthentication = await auth({ type: 'app' });
+
 		return { success: true, message: 'Bug report submitted successfully' };
 	}
 });

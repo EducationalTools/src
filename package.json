@@ -51,6 +51,7 @@
 		"@clerk/themes": "^2.3.0",
 		"@friendofsvelte/tipex": "0.0.7",
 		"@lucide/svelte": "^0.525.0",
+		"@octokit/auth-app": "^8.0.2",
 		"@tanstack/match-sorter-utils": "^8.19.4",
 		"convex": "^1.25.4",
 		"convex-svelte": "^0.0.11",
@@ -59,6 +60,7 @@
 		"jose": "^6.0.12",
 		"jsonwebtoken": "^9.0.2",
 		"md5": "^2.3.0",
+		"octokit": "^5.0.3",
 		"posthog-js": "^1.257.0",
 		"svelte-clerk": "^0.13.4",
 		"svelte-persisted-store": "^0.12.0"
