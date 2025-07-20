@@ -175,7 +175,12 @@
 						loading = false;
 						toast.error('Failed to submit bug report');
 					});
-			}}>Submit</Button
+			}}
+		>
+			{#if loading}
+				<LoaderCircle class="animate-spin" />
+			{/if}
+			Submit</Button
 		>
 	</SignedIn>
 </div>
