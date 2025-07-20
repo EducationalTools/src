@@ -48,10 +48,7 @@
 	</div>
 	<div class="flex w-full flex-col gap-1.5">
 		<Label for="log-{id}">Relevant log output</Label>
-		<p class="text-muted-foreground text-sm">
-			Please copy and paste any relevant log output. This will be automatically formatted into code,
-			so no need for backticks.
-		</p>
+		<p class="text-muted-foreground text-sm">Please copy and paste any relevant log output.</p>
 		<Textarea id="log-{id}"></Textarea>
 	</div>
 	<div class="flex w-full flex-col gap-1.5">
