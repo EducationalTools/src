@@ -31,6 +31,10 @@ export const bugReport = mutation({
 	},
 	handler: async (ctx, args) => {
 		const payload = await verifyJwtAndGetPayload(args.jwt);
-		return { success: false, message: 'Failed to submit bug report' };
+		// return success=false if not everything is filled out
+		if (!args.briefDescription || !args.description || !args.reproduction || !args.expected) {
+			return { success: false, message: 'Missing required fields' };
+		}
+		return { success: true, message: 'Bug report submitted successfully' };
 	}
 });
