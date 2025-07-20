@@ -7,10 +7,24 @@
 	import { onMount } from 'svelte';
 	import posthog from 'posthog-js';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { useConvexClient } from 'convex-svelte';
+	import { api } from '../../convex/_generated/api';
+	import { useClerkContext } from 'svelte-clerk';
+	import { toast } from 'svelte-sonner';
 
 	const id = $props.id();
+	const ctx = useClerkContext();
+	$effect(() => {
+		if (ctx.session) {
+			getToken().then((token) => {
+				sessionToken = token;
+			});
+		}
+	});
 
-	let distinct_id = $state('Not available');
+	let sessionToken = $state('');
+
+	let distinctId = $state('Not available');
 	let userAgent = $state('');
 
 	let briefDescription = $state('');
@@ -20,10 +34,23 @@
 	let log = $state('');
 	let additional = $state('');
 
+	const client = useConvexClient();
+
+	async function getToken() {
+		const token = await ctx.session?.getToken();
+		if (!token) {
+			if (ctx.session) {
+				toast.error('Something went wrong');
+			}
+			return '';
+		}
+		return token;
+	}
+
 	onMount(() => {
 		userAgent = navigator.userAgent;
 		setTimeout(() => {
-			distinct_id = posthog.get_distinct_id();
+			distinctId = posthog.get_distinct_id();
 		}, 1000);
 	});
 </script>
@@ -70,7 +97,7 @@
 					<Table.Body>
 						<Table.Row>
 							<Table.Cell>Distinct ID</Table.Cell>
-							<Table.Cell>{distinct_id}</Table.Cell>
+							<Table.Cell>{distinctId}</Table.Cell>
 						</Table.Row>
 						<Table.Row>
 							<Table.Cell>User agent</Table.Cell>
@@ -81,5 +108,20 @@
 			</Accordion.Content>
 		</Accordion.Item>
 	</Accordion.Root>
-	<Button variant="outline">Submit</Button>
+	<Button
+		variant="outline"
+		onclick={() => {
+			client.mutation(api.issues.bugReport, {
+				additional,
+				briefDescription,
+				description,
+				distinctId,
+				expected,
+				log,
+				reproduction,
+				userAgent,
+				jwt: sessionToken
+			});
+		}}>Submit</Button
+	>
 </div>
