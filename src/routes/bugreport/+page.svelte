@@ -162,8 +162,8 @@
 						jwt: sessionToken
 					})
 					.then((result) => {
+						loading = false;
 						if (result.success) {
-							loading = false;
 							additional = '';
 							briefDescription = '';
 							description = '';
