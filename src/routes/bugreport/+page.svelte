@@ -9,8 +9,16 @@
 	import Button, { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import { useConvexClient } from 'convex-svelte';
 	import { api } from '../../convex/_generated/api';
-	import { SignedIn, SignedOut, SignInButton, SignUpButton, useClerkContext } from 'svelte-clerk';
+	import {
+		SignedIn,
+		SignedOut,
+		SignInButton,
+		SignUpButton,
+		ClerkLoading,
+		useClerkContext
+	} from 'svelte-clerk';
 	import { toast } from 'svelte-sonner';
+	import { LoaderCircle } from '@lucide/svelte';
 
 	const id = $props.id();
 	const ctx = useClerkContext();
@@ -57,6 +65,9 @@
 
 <div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
 	<h1 class="text-3xl">Bug Report</h1>
+	<ClerkLoading>
+		<LoaderCircle class="mx-auto animate-spin" />
+	</ClerkLoading>
 	<SignedOut>
 		<div class="flex flex-row items-center justify-center gap-3">
 			<SignUpButton class={buttonVariants({ variant: 'default' })} />
