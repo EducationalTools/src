@@ -60,7 +60,7 @@
 	<!-- Global components -->
 	<PanicMode />
 	<Cloak />
-	<Toaster />
+	<Toaster position="top-right" richColors />
 	<Settings />
 	<Identify />
 
