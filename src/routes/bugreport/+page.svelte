@@ -148,9 +148,9 @@
 		<Button
 			disabled={loading}
 			onclick={() => {
-				getToken().then((token) => {
-					loading = true;
-					const mutationPromise = new Promise<{ message: string }>((resolve, reject) => {
+				loading = true;
+				const mutationPromise = new Promise<{ message: string }>((resolve, reject) => {
+					getToken().then((token) => {
 						client
 							.mutation(api.issues.bugReport, {
 								additional,
@@ -182,19 +182,19 @@
 								reject({ message: 'Failed to submit bug report' });
 							});
 					});
-					toast.promise(mutationPromise, {
-						loading: 'Submitting',
-						success: (data) => {
-							return data.message;
-						},
-						error: (data) => {
-							if (data && (data as { message: string }).message) {
-								return (data as { message: string }).message;
-							} else {
-								return 'Failed to submit bug report';
-							}
+				});
+				toast.promise(mutationPromise, {
+					loading: 'Submitting',
+					success: (data) => {
+						return data.message;
+					},
+					error: (data) => {
+						if (data && (data as { message: string }).message) {
+							return (data as { message: string }).message;
+						} else {
+							return 'Failed to submit bug report';
 						}
-					});
+					}
 				});
 			}}
 		>
