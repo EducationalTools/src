@@ -13,6 +13,13 @@
 	let distinct_id = $state('Not available');
 	let userAgent = $state('');
 
+	let briefDescription = $state('');
+	let description = $state('');
+	let reproduction = $state('');
+	let expected = $state('');
+	let log = $state('');
+	let additional = $state('');
+
 	onMount(() => {
 		userAgent = navigator.userAgent;
 		setTimeout(() => {
@@ -25,35 +32,35 @@
 	<h1 class="text-3xl">Bug Report</h1>
 	<div class="flex w-full flex-col gap-1.5">
 		<Label for="brief-description-{id}">Brief Description</Label>
-		<Input type="text" id="brief-description-{id}" />
+		<Input type="text" id="brief-description-{id}" bind:value={briefDescription} />
 	</div>
 	<div class="flex w-full flex-col gap-1.5">
 		<Label for="description-{id}">Describe the bug</Label>
 		<p class="text-muted-foreground text-sm">A clear and concise description of what the bug is.</p>
-		<Textarea id="description-{id}"></Textarea>
+		<Textarea id="description-{id}" bind:value={description}></Textarea>
 	</div>
 	<div class="flex w-full flex-col gap-1.5">
 		<Label for="reproduction-{id}">How could you reproduce this issue?</Label>
 		<p class="text-muted-foreground text-sm">
 			Please provide a step-by-step guide on how to reproduce this issue.
 		</p>
-		<Textarea id="reproduction-{id}"></Textarea>
+		<Textarea id="reproduction-{id}" bind:value={reproduction}></Textarea>
 	</div>
 	<div class="flex w-full flex-col gap-1.5">
 		<Label for="expected-{id}">What did you expect to happen?</Label>
 		<p class="text-muted-foreground text-sm">
 			A clear and concise description of what you expected to happen.
 		</p>
-		<Textarea id="expected-{id}"></Textarea>
+		<Textarea id="expected-{id}" bind:value={expected}></Textarea>
 	</div>
 	<div class="flex w-full flex-col gap-1.5">
 		<Label for="log-{id}">Relevant log output</Label>
 		<p class="text-muted-foreground text-sm">Please copy and paste any relevant log output.</p>
-		<Textarea id="log-{id}"></Textarea>
+		<Textarea id="log-{id}" bind:value={log}></Textarea>
 	</div>
 	<div class="flex w-full flex-col gap-1.5">
 		<Label for="additional-{id}">Additional information</Label>
-		<Textarea id="additional-{id}"></Textarea>
+		<Textarea id="additional-{id}" bind:value={additional}></Textarea>
 	</div>
 	<Accordion.Root type="single">
 		<Accordion.Item value="other-data">
