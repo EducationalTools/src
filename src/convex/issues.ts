@@ -31,5 +31,7 @@ export const bugReport = mutation({
 	},
 	handler: async (ctx, args) => {
 		const payload = await verifyJwtAndGetPayload(args.jwt);
+		throw new Error('Not implemented');
+		return { success: false, message: 'Failed to submit bug report' };
 	}
 });

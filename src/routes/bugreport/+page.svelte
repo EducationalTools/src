@@ -161,15 +161,19 @@
 						userAgent,
 						jwt: sessionToken
 					})
-					.then(() => {
-						loading = false;
-						additional = '';
-						briefDescription = '';
-						description = '';
-						expected = '';
-						log = '';
-						reproduction = '';
-						toast.success('Bug report submitted successfully!');
+					.then((result) => {
+						if (result.success) {
+							loading = false;
+							additional = '';
+							briefDescription = '';
+							description = '';
+							expected = '';
+							log = '';
+							reproduction = '';
+							toast.success(result.message);
+						} else {
+							toast.error(result.message);
+						}
 					})
 					.catch((error) => {
 						loading = false;
