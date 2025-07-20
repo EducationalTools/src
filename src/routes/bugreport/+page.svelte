@@ -169,6 +169,11 @@
 						expected = '';
 						log = '';
 						reproduction = '';
+						toast.success('Bug report submitted successfully!');
+					})
+					.catch((error) => {
+						loading = false;
+						toast.error('Failed to submit bug report');
 					});
 			}}>Submit</Button
 		>
