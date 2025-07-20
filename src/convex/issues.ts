@@ -54,8 +54,10 @@ export const bugReport = mutation({
 			clientId: process.env.GITHUB_APP_CLIENT_ID,
 			clientSecret: process.env.GITHUB_APP_CLIENT_SECRET
 		});
-
-		const appAuthentication = await auth({ type: 'app' });
+		const installationAuthentication = await auth({
+			type: 'installation',
+			installationId: 62893567
+		});
 
 		return { success: true, message: 'Bug report submitted successfully' };
 	}
