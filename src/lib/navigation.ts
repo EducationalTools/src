@@ -6,6 +6,7 @@ import Server from '@lucide/svelte/icons/server';
 import Copy from '@lucide/svelte/icons/copy';
 import History from '@lucide/svelte/icons/history';
 import Info from '@lucide/svelte/icons/info';
+import Bug from '@lucide/svelte/icons/bug';
 
 export interface NavigationItem {
 	title: string;
@@ -91,6 +92,12 @@ export function createMainNavigation(
 			experimental: true,
 			icon: Server,
 			url: '/mirrors/host'
+		},
+		{
+			title: 'Bug Report',
+			experimental: true,
+			icon: Bug,
+			url: '/bugreport'
 		},
 		{
 			title: 'Backups',
