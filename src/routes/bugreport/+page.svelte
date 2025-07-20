@@ -175,7 +175,7 @@
 							toast.error(result.message);
 						}
 					})
-					.catch((error) => {
+					.catch(() => {
 						loading = false;
 						toast.error('Failed to submit bug report');
 					});
