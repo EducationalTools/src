@@ -149,36 +149,45 @@
 			disabled={loading}
 			onclick={() => {
 				loading = true;
-				client
-					.mutation(api.issues.bugReport, {
-						additional,
-						briefDescription,
-						description,
-						distinctId,
-						expected,
-						log,
-						reproduction,
-						userAgent,
-						jwt: sessionToken
-					})
-					.then((result) => {
-						loading = false;
-						if (result.success) {
-							additional = '';
-							briefDescription = '';
-							description = '';
-							expected = '';
-							log = '';
-							reproduction = '';
-							toast.success(result.message);
+				const mutationPromise = new Promise<{ message: string }>((resolve, reject) => {
+					client
+						.mutation(api.issues.bugReport, {
+							additional,
+							briefDescription,
+							description,
+							distinctId,
+							expected,
+							log,
+							reproduction,
+							userAgent,
+							jwt: sessionToken
+						})
+						.then((response) => {
+							loading = false;
+							if (response.success) {
+								resolve({ message: response.message });
+							} else {
+								reject({ message: response.message });
+							}
+						})
+						.catch(() => {
+							loading = false;
+							reject({ message: 'Failed to submit bug report' });
+						});
+				});
+				toast.promise(mutationPromise, {
+					loading: 'Submitting',
+					success: (data) => {
+						return data.message;
+					},
+					error: (data) => {
+						if (data && (data as { message: string }).message) {
+							return (data as { message: string }).message;
 						} else {
-							toast.error(result.message);
+							return 'Failed to submit bug report';
 						}
-					})
-					.catch(() => {
-						loading = false;
-						toast.error('Failed to submit bug report');
-					});
+					}
+				});
 			}}
 		>
 			{#if loading}
