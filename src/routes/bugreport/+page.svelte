@@ -148,51 +148,53 @@
 		<Button
 			disabled={loading}
 			onclick={() => {
-				loading = true;
-				const mutationPromise = new Promise<{ message: string }>((resolve, reject) => {
-					client
-						.mutation(api.issues.bugReport, {
-							additional,
-							briefDescription,
-							description,
-							distinctId,
-							expected,
-							log,
-							reproduction,
-							userAgent,
-							jwt: sessionToken
-						})
-						.then((response) => {
-							loading = false;
-							if (response.success) {
-								additional = '';
-								briefDescription = '';
-								description = '';
-								expected = '';
-								log = '';
-								reproduction = '';
-								resolve({ message: response.message });
+				getToken().then((token) => {
+					loading = true;
+					const mutationPromise = new Promise<{ message: string }>((resolve, reject) => {
+						client
+							.mutation(api.issues.bugReport, {
+								additional,
+								briefDescription,
+								description,
+								distinctId,
+								expected,
+								log,
+								reproduction,
+								userAgent,
+								jwt: token
+							})
+							.then((response) => {
+								loading = false;
+								if (response.success) {
+									additional = '';
+									briefDescription = '';
+									description = '';
+									expected = '';
+									log = '';
+									reproduction = '';
+									resolve({ message: response.message });
+								} else {
+									reject({ message: response.message });
+								}
+							})
+							.catch(() => {
+								loading = false;
+								reject({ message: 'Failed to submit bug report' });
+							});
+					});
+					toast.promise(mutationPromise, {
+						loading: 'Submitting',
+						success: (data) => {
+							return data.message;
+						},
+						error: (data) => {
+							if (data && (data as { message: string }).message) {
+								return (data as { message: string }).message;
 							} else {
-								reject({ message: response.message });
+								return 'Failed to submit bug report';
 							}
-						})
-						.catch(() => {
-							loading = false;
-							reject({ message: 'Failed to submit bug report' });
-						});
-				});
-				toast.promise(mutationPromise, {
-					loading: 'Submitting',
-					success: (data) => {
-						return data.message;
-					},
-					error: (data) => {
-						if (data && (data as { message: string }).message) {
-							return (data as { message: string }).message;
-						} else {
-							return 'Failed to submit bug report';
 						}
-					}
+					});
 				});
 			}}
 		>
