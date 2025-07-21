@@ -103,7 +103,7 @@
 				/>
 				<Label for="panic-disable-experimental">Disable Experimental Mode when triggered</Label>
 			</div>
-			<div class="flex flex-row gap-3">
+			<div class="flex flex-row gap-3 overflow-x-auto">
 				<Input bind:value={$preferencesStore.panic.key} placeholder="Key" maxlength={1} />
 				<Input bind:value={$preferencesStore.panic.url} placeholder="URL" type="url" />
 			</div>
@@ -115,7 +115,7 @@
 					<Tabs.Trigger value="on">On</Tabs.Trigger>
 				</Tabs.List>
 			</Tabs.Root>
-			<div class="flex flex-row gap-3">
+			<div class="flex flex-row gap-3 overflow-x-auto">
 				<Input bind:value={$preferencesStore.cloak.name} placeholder="Page Name" />
 				<Input bind:value={$preferencesStore.cloak.icon} placeholder="Icon URL" />
 			</div>
@@ -124,7 +124,7 @@
 				<Checkbox id="history" bind:checked={$preferencesStore.history} />
 				<Label for="history">Enable History</Label>
 			</div>
-			<div class="flex flex-row gap-3">
+			<div class="flex flex-row gap-3 overflow-x-auto">
 				<Button
 					variant="outline"
 					onclick={() => {
@@ -132,6 +132,7 @@
 						toast.success('Cleared');
 					}}
 				>
+					class="whitespace-nowrap"
 					Clear history
 				</Button>
 				<Button
@@ -141,6 +142,7 @@
 						toast.success('Reset');
 					}}
 				>
+					class="whitespace-nowrap"
 					Reset settings
 				</Button>
 				<Button
@@ -156,11 +158,12 @@
 						window.location.reload();
 					}}
 				>
+					class="whitespace-nowrap"
 					Clear everything
 				</Button>
 			</div>
 			Unique ID (for troubleshooting)
-			<div class="flex flex-row gap-3">
+			<div class="flex flex-row gap-3 overflow-x-auto">
 				<Input bind:value={distinct_id} disabled />
 				<Button
 					size="icon"
