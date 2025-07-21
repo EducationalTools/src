@@ -28,7 +28,7 @@
 		"bits-ui": "2.8.11",
 		"clsx": "^2.1.1",
 		"embla-carousel-svelte": "^8.6.0",
-		"layerchart": "2.0.0-next.24",
+		"layerchart": "2.0.0-next.31",
 		"mode-watcher": "^1.1.0",
 		"paneforge": "1.0.0-next.5",
 		"prettier": "^3.6.2",
