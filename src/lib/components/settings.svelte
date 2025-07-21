@@ -132,8 +132,7 @@
 						toast.success('Cleared');
 					}}
 				>
-					class="whitespace-nowrap"
-					Clear history
+					class="whitespace-nowrap" Clear history
 				</Button>
 				<Button
 					variant="outline"
@@ -142,8 +141,7 @@
 						toast.success('Reset');
 					}}
 				>
-					class="whitespace-nowrap"
-					Reset settings
+					class="whitespace-nowrap" Reset settings
 				</Button>
 				<Button
 					variant="destructive"
@@ -158,8 +156,7 @@
 						window.location.reload();
 					}}
 				>
-					class="whitespace-nowrap"
-					Clear everything
+					class="whitespace-nowrap" Clear everything
 				</Button>
 			</div>
 			Unique ID (for troubleshooting)
