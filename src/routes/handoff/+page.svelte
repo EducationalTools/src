@@ -39,7 +39,12 @@
 					loading = true;
 					let data = page.url.searchParams.get('data');
 					if (data) {
-						restoreBackup(data);
+						try {
+							restoreBackup(data);
+						} catch {
+							loading = false;
+							toast.error('Failed to import data');
+						}
 					} else {
 						loading = false;
 						toast.error('No data provided');
