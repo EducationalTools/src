@@ -2,9 +2,19 @@
 	import { page } from '$app/state';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
+	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
 	import restoreBackup from '$lib/restoreBackup';
+	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
+
+	let loading = $state(false);
 </script>
 
+<AlertDialog.Root open={loading}
+	><AlertDialog.Content class="flex flex-row gap-3">
+		<LoaderCircle class="animate-spin" />
+		Loading
+	</AlertDialog.Content>
+</AlertDialog.Root>
 <div class="flex h-full w-full items-center justify-center p-3">
 	<Card.Root class="max-w-full min-w-96">
 		<Card.Header>
@@ -25,6 +35,7 @@
 			<Button
 				variant="destructive"
 				onclick={() => {
+					loading = true;
 					let data = page.url.searchParams.get('data');
 					if (data) {
 						restoreBackup(data);
