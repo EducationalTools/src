@@ -124,7 +124,7 @@
 				<Checkbox id="history" bind:checked={$preferencesStore.history} />
 				<Label for="history">Enable History</Label>
 			</div>
-			<div class="flex flex-row gap-3">
+			<div class="flex min-h-12 flex-row gap-3 overflow-x-auto">
 				<Button
 					variant="outline"
 					onclick={() => {
