@@ -81,7 +81,7 @@
 						</div>
 					</Dialog.Content>
 				</Dialog.Root>
-				<Button onclick={toggleMode} variant="outline" size="icon">
+				<Button onclick={toggleMode} variant="outline" size="icon" class="relative">
 					<SunIcon
 						class="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"
 					/>
@@ -124,7 +124,7 @@
 				<Checkbox id="history" bind:checked={$preferencesStore.history} />
 				<Label for="history">Enable History</Label>
 			</div>
-			<div class="flex flex-row gap-3">
+			<div class="flex min-h-12 flex-row gap-3 overflow-x-auto">
 				<Button
 					variant="outline"
 					onclick={() => {
