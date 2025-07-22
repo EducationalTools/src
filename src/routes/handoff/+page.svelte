@@ -5,6 +5,7 @@
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
 	import restoreBackup from '$lib/restoreBackup';
 	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
+	import { toast } from 'svelte-sonner';
 
 	let loading = $state(false);
 </script>
@@ -39,6 +40,8 @@
 					let data = page.url.searchParams.get('data');
 					if (data) {
 						restoreBackup(data);
+					} else {
+						toast.error('No data provided');
 					}
 				}}>Continue</Button
 			>
