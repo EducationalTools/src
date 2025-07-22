@@ -6,15 +6,15 @@
 </script>
 
 <div class="flex h-full w-full items-center justify-center p-3">
-	<Card.Root>
-		<Card.Content>
+	<Card.Root class="max-w-full min-w-96">
+		<Card.Header>
 			<Card.Title>Importing data</Card.Title>
 			<Card.Description>
 				This will clear all of your existing data on <span class="font-mono"
 					>{page.url.hostname}</span
 				>
 			</Card.Description>
-		</Card.Content>
+		</Card.Header>
 		<Card.Footer class="flex flex-row justify-end gap-3">
 			<Button
 				variant="outline"
