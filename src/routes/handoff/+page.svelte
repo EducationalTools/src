@@ -41,6 +41,7 @@
 					if (data) {
 						restoreBackup(data);
 					} else {
+						loading = false;
 						toast.error('No data provided');
 					}
 				}}>Continue</Button
