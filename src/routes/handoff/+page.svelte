@@ -10,7 +10,9 @@
 		<Card.Content>
 			<Card.Title>Importing data</Card.Title>
 			<Card.Description>
-				This will clear all of your existing data on <pre>{page.url.hostname}</pre>
+				This will clear all of your existing data on <span class="font-mono"
+					>{page.url.hostname}</span
+				>
 			</Card.Description>
 		</Card.Content>
 		<Card.Footer class="flex flex-row justify-end gap-3">
