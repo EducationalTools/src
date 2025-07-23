@@ -14,6 +14,9 @@ jobs:
       - name: Install dependencies
         run: npm install -g pnpm && pnpm install
       - name: Build
+        env:
+          PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.PUBLIC_CLERK_PUBLISHABLE_KEY }}
+          PUBLIC_CONVEX_URL: ${{ secrets.PUBLIC_CONVEX_URL }}
         run: pnpm build
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
