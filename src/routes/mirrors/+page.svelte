@@ -18,10 +18,24 @@
 	<h1 class="text-3xl">Mirrors</h1>
 	<div class="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
 		{#each mirrors as mirror}
-			{@const selected = page.url.hostname == new URL(mirror.url).hostname}
+			{@const selected = (() => {
+				try {
+					return page.url.hostname == new URL(mirror.url).hostname;
+				} catch (e) {
+					return false;
+				}
+			})()}
 			<Card.Root class={clsx(selected && 'bg-neutral-200 dark:bg-neutral-700')}>
 				<Card.Header>
-					<Card.Title>{new URL(mirror.url).hostname}</Card.Title>
+					<Card.Title>
+						{(() => {
+							try {
+								return new URL(mirror.url).hostname;
+							} catch (e) {
+								return 'Invalid URL';
+							}
+						})()}
+					</Card.Title>
 
 					{#if selected}
 						<Badge variant="outline">Current</Badge>
