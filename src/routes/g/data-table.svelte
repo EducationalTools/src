@@ -87,7 +87,7 @@
 </script>
 
 <div class="grid h-screen w-full grid-cols-1 flex-col gap-3 rounded-md border p-3">
-	<div class="flex w-full flex-row items-center gap-5">
+	<div class="flex w-full flex-row items-center gap-3">
 		<Input
 			placeholder="Search"
 			value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
