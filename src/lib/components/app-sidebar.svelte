@@ -9,29 +9,16 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import * as Command from '$lib/components/ui/command/index.js';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
-	import { buttonVariants } from './ui/button';
 	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
-	import * as Avatar from '$lib/components/ui/avatar/index.js';
-	const sidebar = useSidebar();
-	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import SidebarAuth from './sidebar-auth.svelte';
 
 	// Lucide icons
-	import Wrench from '@lucide/svelte/icons/wrench';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import Search from '@lucide/svelte/icons/search';
-	import Home from '@lucide/svelte/icons/home';
-	import Game from '@lucide/svelte/icons/gamepad-2';
 	import Check from '@lucide/svelte/icons/check';
 	import Code from '@lucide/svelte/icons/code';
 	import Settings from '@lucide/svelte/icons/settings';
 	import PanelLeft from '@lucide/svelte/icons/panel-left';
-	import Copy from '@lucide/svelte/icons/copy';
-	import Server from '@lucide/svelte/icons/server';
-	import Info from '@lucide/svelte/icons/info';
-	import Login from '@lucide/svelte/icons/log-in';
-	import Plus from '@lucide/svelte/icons/plus';
-	import Logout from '@lucide/svelte/icons/log-out';
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
@@ -41,21 +28,9 @@
 	// Games data
 	import { gmaes } from '$lib/gmaes';
 	import { settingsOpen } from '$lib/state.svelte';
-	import { mode } from 'mode-watcher';
 
 	// Auth
-	import {
-		SignedIn,
-		SignedOut,
-		SignInButton,
-		UserButton,
-		useClerkContext,
-		SignIn,
-		SignUp,
-		UserProfile
-	} from 'svelte-clerk/client';
-	import { dark } from '@clerk/themes';
-	import History from '@lucide/svelte/icons/history';
+	import { useClerkContext } from 'svelte-clerk/client';
 	import posthog from 'posthog-js';
 	const ctx = useClerkContext();
 
