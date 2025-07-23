@@ -28,4 +28,15 @@ test('menu after experimental features', async ({ page }) => {
 	await expect(page.locator('a').getByText('Tools', { exact: true })).toBeVisible();
 	await expect(page.locator('a').getByText('Gmaes', { exact: true })).toBeVisible();
 	await expect(page).toHaveTitle(/EduTools/);
+
+	// Testing all gmaes
+	await page.getByText('Gmaes').click();
+	await page.getByRole('link', { name: 'All Gmaes' }).click();
+	await expect(page.getByRole('main')).toMatchAriaSnapshot(`
+    - textbox "Search"
+    - checkbox "Show ID"
+    - text: Show ID
+    - link "Request Gmae":
+      - /url: https://github.com/EducationalTools/src/issues/new?template=gmae_request.yml
+    `);
 });
