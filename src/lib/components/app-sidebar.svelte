@@ -37,6 +37,8 @@
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
+	const sidebar = useSidebar();
+
 	let commandOpen = $state(false);
 
 	function handleKeydown(e: KeyboardEvent) {
@@ -94,30 +96,26 @@
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg">
-					{#snippet child({ props })}
-						<button
-							onclick={function () {
-								posthog.capture('search');
-								commandOpen = true;
-								sidebar.setOpenMobile(false);
-							}}
-							{...props}
+				<Sidebar.MenuButton
+					size="lg"
+					onclick={function () {
+						posthog.capture('search');
+						commandOpen = true;
+						sidebar.setOpenMobile(false);
+					}}
+				>
+					<div class="flex aspect-square size-8 items-center justify-center rounded-lg">
+						<Search class="size-4" />
+					</div>
+					<div class="flex w-full flex-row items-center gap-2 leading-none">
+						<span>Search</span>
+						<div class="flex-grow"></div>
+						<kbd
+							class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
 						>
-							<div class="flex aspect-square size-8 items-center justify-center rounded-lg">
-								<Search class="size-4" />
-							</div>
-							<div class="flex w-full flex-row items-center gap-2 leading-none">
-								<span>Search</span>
-								<div class="flex-grow"></div>
-								<kbd
-									class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
-								>
-									<span class="text-xs">⌘</span>K
-								</kbd>
-							</div>
-						</button>
-					{/snippet}
+							<span class="text-xs">⌘</span>K
+						</kbd>
+					</div>
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 		</Sidebar.Menu>
