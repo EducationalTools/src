@@ -12,6 +12,7 @@
 
 	import type { Mirror } from './mirrors.config';
 	import { mirrors } from './mirrors.config';
+	import { toast } from 'svelte-sonner';
 </script>
 
 <div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
@@ -59,7 +60,15 @@
 						<Button variant="outline" href={mirror.url}>Go</Button>
 						<Button
 							onclick={() => {
-								location.href = mirror.url + '/handoff?data=' + createBackup();
+								try {
+									const backup = createBackup();
+									const url = new URL('/handoff', mirror.url);
+									url.searchParams.set('data', backup);
+									location.href = url.toString();
+								} catch (error) {
+									console.error('Migration failed:', error);
+									toast.error('Migration failed');
+								}
 							}}
 						>
 							Migrate
