@@ -43,7 +43,7 @@
 				<History />
 				History
 			</div>
-			{#each $historyStore as item}
+			{#each $historyStore.slice(0, 5) as item}
 				<Button variant="outline" class="py-10 text-xl" href={'/g/' + item}
 					>{getGameById(item)?.name}</Button
 				>
@@ -55,12 +55,16 @@
 					No history saved
 				</div>
 			{:else}
-				<Button
-					variant="ghost"
-					onclick={() => {
-						$historyStore = [];
-					}}>Clear</Button
-				>
+				<div class="flex flex-row gap-3">
+					<Button variant="default" class="grow" href="/history">All</Button>
+					<Button
+						class="grow"
+						variant="ghost"
+						onclick={() => {
+							$historyStore = [];
+						}}>Clear</Button
+					>
+				</div>
 			{/if}
 		</div>
 		<div class="grid h-fit w-full grid-cols-1 gap-3">
