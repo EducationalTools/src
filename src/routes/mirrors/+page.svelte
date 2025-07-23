@@ -7,6 +7,9 @@
 	import Star from '@lucide/svelte/icons/star';
 	import TriangleAlert from '@lucide/svelte/icons/triangle-alert';
 
+	import { page } from '$app/state';
+	import clsx from 'clsx';
+
 	interface Mirror {
 		url: string;
 		notes?: string;
@@ -20,7 +23,8 @@
 		{ url: 'https://educationaltools.vercel.app', notes: '' },
 		{ url: 'https://edutools-d915e.web.app', notes: '' },
 		{ url: 'https://edutools-d915e.firebaseapp.com', notes: '' },
-		{ url: 'https://edutools.infinityfreeapp.com', quality: 'notrecommended' }
+		{ url: 'https://edutools.infinityfreeapp.com', quality: 'notrecommended' },
+		{ url: 'https://localhost', quality: 'notrecommended' }
 	];
 </script>
 
@@ -28,10 +32,14 @@
 	<h1 class="text-3xl">Mirrors</h1>
 	<div class="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
 		{#each mirrors as mirror}
-			<Card.Root>
+			{@const selected = page.url.hostname == new URL(mirror.url).hostname}
+			<Card.Root class={clsx(selected && 'bg-neutral-200 dark:bg-neutral-700')}>
 				<Card.Header>
 					<Card.Title>{new URL(mirror.url).hostname}</Card.Title>
 
+					{#if selected}
+						<Badge variant="outline">Current</Badge>
+					{/if}
 					{#if mirror.quality == 'highlyrecommended'}
 						<Badge class="bg-gradient-to-r from-yellow-300 to-yellow-500"
 							><Trophy />Highly Recommended</Badge
@@ -46,16 +54,18 @@
 						<Card.Description>{mirror.notes}</Card.Description>
 					{/if}
 				</Card.Header>
-				<Card.Footer class="flex flex-row gap-3">
-					<Button variant="outline" href={mirror.url}>Go</Button>
-					<Button
-						onclick={() => {
-							location.href = mirror.url + '/handoff?data=' + createBackup();
-						}}
-					>
-						Migrate
-					</Button>
-				</Card.Footer>
+				{#if !selected}
+					<Card.Footer class="flex flex-row gap-3">
+						<Button variant="outline" href={mirror.url}>Go</Button>
+						<Button
+							onclick={() => {
+								location.href = mirror.url + '/handoff?data=' + createBackup();
+							}}
+						>
+							Migrate
+						</Button>
+					</Card.Footer>
+				{/if}
 			</Card.Root>
 		{/each}
 	</div>
