@@ -5,9 +5,11 @@
 	import type { ParsedGmae } from '$lib/gmaes';
 	import { historyStore } from '$lib/stores';
 
-	let history = $historyStore
-		.map((gmae) => getGameById(gmae))
-		.filter((gmaeObject): gmaeObject is ParsedGmae => gmaeObject !== undefined);
+	let history = $derived(
+		$historyStore
+			.map((gmae) => getGameById(gmae))
+			.filter((gmaeObject): gmaeObject is ParsedGmae => gmaeObject !== undefined)
+	);
 </script>
 
 <DataTable data={history} {columns} />
