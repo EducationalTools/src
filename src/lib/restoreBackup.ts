@@ -68,5 +68,10 @@ export default function restoreBackup(backupData: string) {
 			sessionStorage.setItem(key, value as string);
 		});
 	}
-	location.reload();
+
+	if (location.pathname == '/handoff') {
+		window.open('/', '_self');
+	} else {
+		location.reload();
+	}
 }
