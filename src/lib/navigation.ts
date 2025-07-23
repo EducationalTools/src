@@ -82,7 +82,7 @@ export function createMainNavigation(
 				},
 				{
 					title: 'Request a Gmae',
-					url: 'https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+',
+					url: 'https://github.com/EducationalTools/src/issues/new?template=gmae_request.yml',
 					icon: Plus
 				},
 				...gmaes.map((gmae) => ({

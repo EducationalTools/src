@@ -110,7 +110,7 @@
 			<Label for="showid" class="text-nowrap">Show ID</Label>
 		</div>
 		<Button
-			href="https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+"
+			href="https://github.com/EducationalTools/src/issues/new?template=gmae_request.yml"
 			target="_blank">Request Gmae</Button
 		>
 	</div>
