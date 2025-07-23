@@ -25,7 +25,7 @@ export const columns: ColumnDef<ParsedGmae>[] = [
 		cell: ({ row }) => {
 			return renderComponent(Link, {
 				children: row.original.name,
-				href: `/games/${row.original.id}`
+				href: `/g/${row.original.id}`
 			});
 		},
 		// @ts-ignore
