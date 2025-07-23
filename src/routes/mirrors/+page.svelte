@@ -6,8 +6,8 @@
 	import Trophy from '@lucide/svelte/icons/trophy';
 
 	let mirrors = [
-		{ url: 'https://edutools.ingo.au', notes: '', recommended: true },
-		{ url: 'https://edutools.ingowolf.au', notes: '', recommended: true }
+		{ url: 'https://edutools.ingo.au', notes: '', quality: 'highlyrecommended' },
+		{ url: 'https://edutools.ingowolf.au', notes: '', quality: 'recommended' }
 	];
 </script>
 
@@ -17,7 +17,11 @@
 			<Card.Root>
 				<Card.Header>
 					<Card.Title>{new URL(mirror.url).hostname}</Card.Title>
-					{#if mirror.recommended}
+					{#if mirror.quality == 'highlyrecommended'}
+						<Badge class="bg-gradient-to-r from-yellow-300 to-yellow-500"
+							><Trophy />Highly Recommended</Badge
+						>
+					{:else if mirror.quality == 'recommended'}
 						<Badge><Trophy />Recommended</Badge>
 					{/if}
 				</Card.Header>
