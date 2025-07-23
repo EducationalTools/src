@@ -22,7 +22,7 @@
 							><Trophy />Highly Recommended</Badge
 						>
 					{:else if mirror.quality == 'recommended'}
-						<Badge><Trophy />Recommended</Badge>
+						<Badge class="bg-yellow-500 dark:bg-yellow-300"><Trophy />Recommended</Badge>
 					{/if}
 				</Card.Header>
 				<Card.Footer class="flex flex-row gap-3">
