@@ -23,8 +23,7 @@
 		{ url: 'https://educationaltools.vercel.app', notes: '' },
 		{ url: 'https://edutools-d915e.web.app', notes: '' },
 		{ url: 'https://edutools-d915e.firebaseapp.com', notes: '' },
-		{ url: 'https://edutools.infinityfreeapp.com', quality: 'notrecommended' },
-		{ url: 'https://localhost', quality: 'notrecommended' }
+		{ url: 'https://edutools.infinityfreeapp.com', quality: 'notrecommended' }
 	];
 </script>
 
