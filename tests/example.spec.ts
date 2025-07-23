@@ -49,3 +49,26 @@ test('test all gmaes page', async ({ page }) => {
       - /url: https://github.com/EducationalTools/src/issues/new?template=gmae_request.yml
     `);
 });
+
+test('test history', async ({ page }) => {
+	await page.goto('http://localhost:4173/');
+
+	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.getByPlaceholder('Type a command or search...').fill('experimental');
+	await page.getByRole('option', { name: 'Toggle experimental features' }).click();
+	await page.locator('#bits-c7').press('Escape');
+	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.getByPlaceholder('Type a command or search...').fill('2048');
+	await page.getByRole('option', { name: '2048' }).click();
+
+	await page.locator('a').getByText('Home', { exact: true }).click();
+	await expect(page.getByRole('main')).toMatchAriaSnapshot(`
+    - img
+    - text: History
+    - link /\\d+/:
+      - /url: /g/05192834106701030041049047
+    - link "All":
+      - /url: /history
+    - button "Clear"
+    `);
+});
