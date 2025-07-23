@@ -28,9 +28,18 @@ test('menu after experimental features', async ({ page }) => {
 	await expect(page.locator('a').getByText('Tools', { exact: true })).toBeVisible();
 	await expect(page.locator('a').getByText('Gmaes', { exact: true })).toBeVisible();
 	await expect(page).toHaveTitle(/EduTools/);
+});
+
+test('test all gmaes page', async ({ page }) => {
+	await page.goto('http://localhost:4173/');
+
+	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.getByPlaceholder('Type a command or search...').fill('experimental');
+	await page.getByRole('option', { name: 'Toggle experimental features' }).click();
+	await page.locator('#bits-c7').press('Escape');
 
 	// Testing all gmaes
-	await page.getByText('Gmaes').click();
+	await page.locator('a').getByText('Gmaes', { exact: true }).click();
 	await page.getByRole('link', { name: 'All Gmaes' }).click();
 	await expect(page.getByRole('main')).toMatchAriaSnapshot(`
     - textbox "Search"
