@@ -5,6 +5,9 @@ import Code from '@lucide/svelte/icons/code';
 import Server from '@lucide/svelte/icons/server';
 import Copy from '@lucide/svelte/icons/copy';
 import History from '@lucide/svelte/icons/history';
+import ArchiveRestore from '@lucide/svelte/icons/archive-restore';
+import List from '@lucide/svelte/icons/list';
+import Plus from '@lucide/svelte/icons/plus';
 import Info from '@lucide/svelte/icons/info';
 
 export interface NavigationItem {
@@ -69,11 +72,18 @@ export function createMainNavigation(
 			items: [
 				{
 					title: 'All Gmaes',
-					url: '/g'
+					url: '/g',
+					icon: List
+				},
+				{
+					title: 'History',
+					url: '/history',
+					icon: History
 				},
 				{
 					title: 'Request a Gmae',
-					url: 'https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+'
+					url: 'https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+',
+					icon: Plus
 				},
 				...gmaes.map((gmae) => ({
 					title: gmae.name,
@@ -96,7 +106,7 @@ export function createMainNavigation(
 		{
 			title: 'Backups',
 			experimental: true,
-			icon: History,
+			icon: ArchiveRestore,
 			url: '/backups'
 		},
 		{
