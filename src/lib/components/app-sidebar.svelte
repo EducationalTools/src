@@ -164,6 +164,7 @@
 												<Sidebar.MenuSub>
 													{#if groupItem.items}
 														{#each groupItem.items as item (item.title)}
+															{@const SubIcon = item.icon}
 															<Sidebar.MenuSubItem>
 																<Sidebar.MenuSubButton
 																	isActive={item.url === page.url.pathname ||
@@ -185,6 +186,9 @@
 																				? 'noopener noreferrer'
 																				: undefined}
 																		>
+																			{#if SubIcon}
+																				<SubIcon />
+																			{/if}
 																			{item.title}
 																			<div
 																				class="to-sidebar absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent group-hover/link:opacity-0"

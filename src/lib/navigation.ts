@@ -15,6 +15,7 @@ export interface NavigationItem {
 	items?: {
 		title: string;
 		url: string;
+		icon?: any;
 	}[];
 }
 
