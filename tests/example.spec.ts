@@ -12,5 +12,6 @@ test('menu before experimental features', async ({ page }) => {
 
 	await expect(page.getByText('Tools', { exact: true })).toBeVisible();
 	await expect(page.getByText('Home', { exact: true })).toBeVisible();
+	await expect(page.getByText('Gmaes', { exact: true })).not.toBeVisible();
 	await expect(page).toHaveTitle(/EduTools/);
 });
