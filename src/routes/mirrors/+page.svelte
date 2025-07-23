@@ -10,21 +10,8 @@
 	import { page } from '$app/state';
 	import clsx from 'clsx';
 
-	interface Mirror {
-		url: string;
-		notes?: string;
-		quality?: string;
-	}
-
-	let mirrors: Mirror[] = [
-		{ url: 'https://edutools.ingo.au', quality: 'highlyrecommended' },
-		{ url: 'https://edutools.ingowolf.au', quality: 'recommended' },
-		{ url: 'https://educationaltools.github.io', quality: 'recommended' },
-		{ url: 'https://educationaltools.vercel.app', notes: '' },
-		{ url: 'https://edutools-d915e.web.app', notes: '' },
-		{ url: 'https://edutools-d915e.firebaseapp.com', notes: '' },
-		{ url: 'https://edutools.infinityfreeapp.com', quality: 'notrecommended' }
-	];
+	import type { Mirror } from './mirrors.config';
+	import { mirrors } from './mirrors.config';
 </script>
 
 <div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
