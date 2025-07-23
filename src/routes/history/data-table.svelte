@@ -87,7 +87,7 @@
 	});
 </script>
 
-<div class="grid max-h-screen w-full grid-cols-1 flex-col gap-3 rounded-md border p-3">
+<div class="grid max-h-screen w-full grid-cols-1 flex-col gap-3 rounded-md p-3">
 	<div class="flex w-full flex-row items-center gap-3">
 		<div
 			class="flex h-full items-center justify-center rounded-md border border-dashed px-3 text-lg"
