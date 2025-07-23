@@ -25,6 +25,7 @@
 </script>
 
 <div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
+	<h1 class="text-3xl">Mirrors</h1>
 	<div class="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
 		{#each mirrors as mirror}
 			<Card.Root>
