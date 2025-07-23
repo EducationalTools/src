@@ -86,7 +86,7 @@
 	});
 </script>
 
-<div class="flex flex-col gap-3 rounded-md border p-3">
+<div class="grid h-screen w-full grid-cols-1 flex-col gap-3 rounded-md border p-3">
 	<div class="flex w-full flex-row items-center gap-5">
 		<Input
 			placeholder="Search"
@@ -115,7 +115,7 @@
 		>
 	</div>
 	<Table.Root>
-		<Table.Header>
+		<Table.Header class="bg-background sticky top-0">
 			{#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
 				<Table.Row>
 					{#each headerGroup.headers as header (header.id)}
