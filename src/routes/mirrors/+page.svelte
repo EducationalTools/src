@@ -3,7 +3,10 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import createBackup from '$lib/createBackup';
 
-	let mirrors = [{ url: 'https://example.com', notes: '' }];
+	let mirrors = [
+		{ url: 'https://edutools.ingo.au', notes: '', recommended: true },
+		{ url: 'https://edutools.ingowolf.au', notes: '', recommended: true }
+	];
 </script>
 
 <div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
