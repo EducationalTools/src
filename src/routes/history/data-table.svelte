@@ -16,6 +16,7 @@
 	import Checkbox from '$lib/components/ui/checkbox/checkbox.svelte';
 	import Label from '$lib/components/ui/label/label.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { historyStore } from '$lib/stores';
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
 		data: TData[];
@@ -88,6 +89,11 @@
 
 <div class="grid max-h-screen w-full grid-cols-1 flex-col gap-3 rounded-md p-3">
 	<div class="flex w-full flex-row items-center gap-3">
+		<div
+			class="flex h-full items-center justify-center rounded-md border border-dashed px-3 text-lg"
+		>
+			History
+		</div>
 		<Input
 			placeholder="Search"
 			value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
@@ -109,10 +115,7 @@
 			/>
 			<Label for="showid" class="text-nowrap">Show ID</Label>
 		</div>
-		<Button
-			href="https://github.com/EducationalTools/src/issues/new?template=gmae_request.yml"
-			target="_blank">Request Gmae</Button
-		>
+		<Button variant="destructive" onclick={() => ($historyStore = [])}>Clear</Button>
 	</div>
 	<Table.Root>
 		<Table.Header class="bg-background sticky top-0">

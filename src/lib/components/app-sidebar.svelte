@@ -9,162 +9,59 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import * as Command from '$lib/components/ui/command/index.js';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
-	import { buttonVariants } from './ui/button';
 	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
-	import * as Avatar from '$lib/components/ui/avatar/index.js';
-	const sidebar = useSidebar();
-	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import SidebarAuth from './sidebar-auth.svelte';
 
 	// Lucide icons
-	import Wrench from '@lucide/svelte/icons/wrench';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import Search from '@lucide/svelte/icons/search';
-	import Home from '@lucide/svelte/icons/home';
-	import Game from '@lucide/svelte/icons/gamepad-2';
 	import Check from '@lucide/svelte/icons/check';
 	import Code from '@lucide/svelte/icons/code';
 	import Settings from '@lucide/svelte/icons/settings';
 	import PanelLeft from '@lucide/svelte/icons/panel-left';
-	import Copy from '@lucide/svelte/icons/copy';
-	import Server from '@lucide/svelte/icons/server';
-	import Info from '@lucide/svelte/icons/info';
-	import Login from '@lucide/svelte/icons/log-in';
-	import Plus from '@lucide/svelte/icons/plus';
-	import Logout from '@lucide/svelte/icons/log-out';
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
-	import { gmaes } from '$lib/gmaes.js';
+	import { createMainNavigation } from '$lib/navigation';
+	import { handleGlobalKeydown, createSidebarShortcuts } from '$lib/keyboard-shortcuts';
+
+	// Games data
+	import { gmaes } from '$lib/gmaes';
 	import { settingsOpen } from '$lib/state.svelte';
-	import { mode } from 'mode-watcher';
 
 	// Auth
-	import {
-		SignedIn,
-		SignedOut,
-		SignInButton,
-		UserButton,
-		useClerkContext,
-		SignIn,
-		SignUp,
-		UserProfile
-	} from 'svelte-clerk/client';
-	import { dark } from '@clerk/themes';
-	import History from '@lucide/svelte/icons/history';
+	import { useClerkContext } from 'svelte-clerk/client';
 	import posthog from 'posthog-js';
 	const ctx = useClerkContext();
 
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
+	const sidebar = useSidebar();
+
 	let commandOpen = $state(false);
 
 	function handleKeydown(e: KeyboardEvent) {
-		if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-			e.preventDefault();
-			commandOpen = !commandOpen;
+		const shortcuts = createSidebarShortcuts({
+			set: (value: boolean) => {
+				commandOpen = value;
+			}
+		});
+		if (handleGlobalKeydown(e, shortcuts)) {
+			return;
 		}
+
 		if (e.key === ',' && (e.metaKey || e.ctrlKey) && $preferencesStore.experimentalFeatures) {
 			e.preventDefault();
 			settingsOpen.current = !settingsOpen.current;
 		}
 	}
 
-	const mainNavigation: {
-		title: string;
-		url: string;
-		icon?: any;
-		experimental: boolean;
-		items?: {
-			title: string;
-			url: string;
-		}[];
-	}[] = $derived(
-		[
-			{
-				title: 'Home',
-				icon: Home,
-				url: '/',
-				experimental: false
-			},
-			{
-				title: 'Tools',
-				icon: Wrench,
-				experimental: false,
-				url: '',
-				items: [
-					{
-						title: 'Calculator',
-						url: '/tools/calculator'
-					},
-					{
-						title: 'Converter',
-						url: '/tools/converter'
-					},
-					{
-						title: 'Rich Text Editor',
-						url: '/tools/rich-text-editor'
-					},
-					{
-						title: 'Word Counter',
-						url: '/tools/word-counter'
-					},
-					{
-						title: 'Password Generator',
-						url: '/tools/password-generator'
-					},
-					{
-						title: 'Random Number Gen',
-						url: '/tools/random-number-generator'
-					}
-				]
-			},
-			{
-				title: 'Gmaes',
-				icon: Game,
-				experimental: true,
-				url: '',
-				items: [
-					{
-						title: 'All Gmaes',
-						url: '/g'
-					},
-					{
-						title: 'Request a Gmae',
-						url: 'https://github.com/EducationalTools/src/issues/new?assignees=&labels=gmae%2Cenhancement&projects=&template=gmae_request.yml&title=%5BGmae+Request%5D+'
-					},
-					...gmaes.map((gmae) => ({
-						title: gmae.name,
-						url: `/g/${gmae.id}`
-					}))
-				]
-			},
-			{
-				title: 'Mirrors',
-				experimental: true,
-				url: '/mirrors',
-				icon: Copy
-			},
-			{
-				title: 'Host a mirror',
-				experimental: true,
-				icon: Server,
-				url: '/mirrors/host'
-			},
-			{
-				title: 'Backups',
-				experimental: true,
-				icon: History,
-				url: '/backups'
-			},
-			{
-				title: 'About',
-				experimental: true,
-				icon: Info,
-				url: '/about'
-			}
-		].filter((item) => !item.experimental || $preferencesStore.experimentalFeatures)
+	// Filter navigation based on experimental features
+	const filteredMainNavigation = $derived(
+		createMainNavigation(gmaes).filter(
+			(item) => !item.experimental || $preferencesStore.experimentalFeatures
+		)
 	);
 </script>
 
@@ -199,30 +96,26 @@
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg">
-					{#snippet child({ props })}
-						<button
-							onclick={function () {
-								posthog.capture('search');
-								commandOpen = true;
-								sidebar.setOpenMobile(false);
-							}}
-							{...props}
+				<Sidebar.MenuButton
+					size="lg"
+					onclick={function () {
+						posthog.capture('search');
+						commandOpen = true;
+						sidebar.setOpenMobile(false);
+					}}
+				>
+					<div class="flex aspect-square size-8 items-center justify-center rounded-lg">
+						<Search class="size-4" />
+					</div>
+					<div class="flex w-full flex-row items-center gap-2 leading-none">
+						<span>Search</span>
+						<div class="flex-grow"></div>
+						<kbd
+							class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
 						>
-							<div class="flex aspect-square size-8 items-center justify-center rounded-lg">
-								<Search class="size-4" />
-							</div>
-							<div class="flex w-full flex-row items-center gap-2 leading-none">
-								<span>Search</span>
-								<div class="flex-grow"></div>
-								<kbd
-									class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
-								>
-									<span class="text-xs">⌘</span>K
-								</kbd>
-							</div>
-						</button>
-					{/snippet}
+							<span class="text-xs">⌘</span>K
+						</kbd>
+					</div>
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
 		</Sidebar.Menu>
@@ -230,7 +123,7 @@
 	<Sidebar.Content>
 		<Sidebar.Group>
 			<Sidebar.Menu>
-				{#each mainNavigation as groupItem (groupItem.title)}
+				{#each filteredMainNavigation as groupItem (groupItem.title)}
 					{@const Icon = groupItem.icon}
 
 					{#if groupItem.items?.length}
@@ -271,6 +164,7 @@
 												<Sidebar.MenuSub>
 													{#if groupItem.items}
 														{#each groupItem.items as item (item.title)}
+															{@const SubIcon = item.icon}
 															<Sidebar.MenuSubItem>
 																<Sidebar.MenuSubButton
 																	isActive={item.url === page.url.pathname ||
@@ -292,6 +186,9 @@
 																				? 'noopener noreferrer'
 																				: undefined}
 																		>
+																			{#if SubIcon}
+																				<SubIcon />
+																			{/if}
 																			{item.title}
 																			<div
 																				class="to-sidebar absolute right-0 h-full w-[25%] bg-gradient-to-r from-transparent group-hover/link:opacity-0"
@@ -403,7 +300,7 @@
 	<Command.Input placeholder="Type a command or search..." />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
-		{#each mainNavigation as groupItem (groupItem.title)}
+		{#each filteredMainNavigation as groupItem (groupItem.title)}
 			{#if groupItem.items?.length}
 				<Command.Group heading={groupItem.title}>
 					{#each groupItem.items as item (item.title)}
