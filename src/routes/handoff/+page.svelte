@@ -81,11 +81,7 @@
 			<Button
 				variant="outline"
 				onclick={() => {
-					if (document.referrer && new URL(document.referrer).origin === window.location.origin) {
-						history.back();
-					} else {
-						location.href = '/';
-					}
+					history.back();
 				}}>Cancel</Button
 			>
 			<Button
