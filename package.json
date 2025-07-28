@@ -30,7 +30,7 @@
 		"embla-carousel-svelte": "^8.6.0",
 		"layerchart": "2.0.0-next.31",
 		"mode-watcher": "^1.1.0",
-		"paneforge": "1.0.0-next.5",
+		"paneforge": "1.0.0",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.6.14",
