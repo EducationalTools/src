@@ -8,7 +8,9 @@
 	let { children } = $props();
 
 	// Setup Convex
-	setupConvex(PUBLIC_CONVEX_URL);
+	if (PUBLIC_CONVEX_URL) {
+		setupConvex(PUBLIC_CONVEX_URL);
+	}
 </script>
 
 <ClerkProvider publishableKey={PUBLIC_CLERK_PUBLISHABLE_KEY}>
