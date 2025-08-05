@@ -9,9 +9,8 @@
 	// Setup Convex
 	try {
 		setupConvex(process.env.PUBLIC_CONVEX_URL || '');
-	}
-	catch {
-		console.log("failed to setup convex, most likely a devbuild");
+	} catch {
+		console.log('failed to setup convex, most likely a devbuild');
 	}
 </script>
 
