@@ -7,7 +7,12 @@
 	let { children } = $props();
 
 	// Setup Convex
-	setupConvex(process.env.PUBLIC_CONVEX_URL || '');
+	try {
+		setupConvex(process.env.PUBLIC_CONVEX_URL || '');
+	}
+	catch {
+		console.log("failed to setup convex, most likely a devbuild");
+	}
 </script>
 
 <ClerkProvider publishableKey={process.env.PUBLIC_CLERK_PUBLISHABLE_KEY || ''}>
