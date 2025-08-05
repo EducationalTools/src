@@ -7,10 +7,15 @@
 	let { children } = $props();
 
 	// Setup Convex
-	try {
-		setupConvex(process.env.PUBLIC_CONVEX_URL || '');
-	} catch {
-		console.log('failed to setup convex, most likely a devbuild');
+	// Only setup Convex if the URL is provided
+	if (process.env.PUBLIC_CONVEX_URL) {
+		try {
+			setupConvex(process.env.PUBLIC_CONVEX_URL);
+		} catch (error) {
+			console.warn('Failed to setup Convex:', error);
+		}
+	} else {
+		console.log('Convex setup skipped: PUBLIC_CONVEX_URL not configured (likely dev build)');
 	}
 </script>
 
