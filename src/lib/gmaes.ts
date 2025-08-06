@@ -364,7 +364,7 @@ const gmaes: Gmae[] = [
 	},
 	{
 		name: 'GBA Emulator',
-		description: 'Nintendo please don\'t sue us',
+		description: "Nintendo please don't sue us",
 		category: 'Uncategorized',
 		tags: [],
 		links: [],
