@@ -361,6 +361,14 @@ const gmaes: Gmae[] = [
 		tags: [],
 		links: [],
 		url: '/_app/tools/thisistheonlylevel/index.html'
+	},
+	{
+		name: 'GBA Emulator',
+		description: 'Nintendo please don\'t sue us',
+		category: 'Uncategorized',
+		tags: [],
+		links: [],
+		url: '/_app/tools/gba-emu/index.html'
 	}
 ];
 
