@@ -103,8 +103,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(svelte@5.38.0)
       paneforge:
-        specifier: 1.0.0-next.5
-        version: 1.0.0-next.5(svelte@5.38.0)
+        specifier: 1.0.2
+        version: 1.0.2(svelte@5.38.0)
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -1660,10 +1660,10 @@ packages:
   orderedmap@2.1.1:
     resolution: {integrity: sha512-TvAWxi0nDe1j/rtMcWcIj94+Ffe6n7zhow33h40SKxmsmozs6dz/e+EajymfoFcHd7sxNn8yHM8839uixMOV6g==}
 
-  paneforge@1.0.0-next.5:
-    resolution: {integrity: sha512-1ArDM+GMEO+o6pixEAFobhTkWkyxUDdHyw2bKruvQIXBStJmdRP7HoV4jNBZ/2i9UHDzmczxJzA3D2tKa91phw==}
+  paneforge@1.0.2:
+    resolution: {integrity: sha512-KzmIXQH1wCfwZ4RsMohD/IUtEjVhteR+c+ulb/CHYJHX8SuDXoJmChtsc/Xs5Wl8NHS4L5Q7cxL8MG40gSU1bA==}
     peerDependencies:
-      svelte: ^5.20.0
+      svelte: ^5.29.0
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -3545,11 +3545,11 @@ snapshots:
 
   orderedmap@2.1.1: {}
 
-  paneforge@1.0.0-next.5(svelte@5.38.0):
+  paneforge@1.0.2(svelte@5.38.0):
     dependencies:
       runed: 0.23.4(svelte@5.38.0)
       svelte: 5.38.0
-      svelte-toolbelt: 0.7.1(svelte@5.38.0)
+      svelte-toolbelt: 0.9.3(svelte@5.38.0)
 
   picocolors@1.1.1: {}
 
