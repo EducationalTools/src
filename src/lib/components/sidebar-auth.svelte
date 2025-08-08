@@ -98,7 +98,7 @@
 	</SignedOut>
 {:else}
 	<Dialog.Root>
-		<Dialog.Trigger class="flex flex-col gap-2">
+		<Dialog.Trigger class="flex list-none flex-col gap-2">
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton>
 					<Login />

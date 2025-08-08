@@ -128,13 +128,16 @@
 
 					{#if groupItem.items?.length}
 						<Collapsible.Root class="group/collapsible">
-							<Sidebar.MenuItem>
+							<Sidebar.MenuItem
+								onclick={() => {
+									sidebar.setOpen(true);
+								}}
+							>
 								<Collapsible.Trigger>
 									{#snippet child({ props })}
 										<Sidebar.MenuButton
 											class="cursor-pointer"
-											isActive={groupItem.url === page.url.pathname ||
-												(groupItem.url === '/' && page.url.pathname === '')}
+											isActive={groupItem.url === page.url.pathname}
 											{...props}
 										>
 											{#snippet child({ props })}
@@ -167,8 +170,7 @@
 															{@const SubIcon = item.icon}
 															<Sidebar.MenuSubItem>
 																<Sidebar.MenuSubButton
-																	isActive={item.url === page.url.pathname ||
-																		(item.url === '/' && page.url.pathname === '')}
+																	isActive={groupItem.url === page.url.pathname}
 																>
 																	{#snippet child({ props })}
 																		<a
@@ -208,10 +210,7 @@
 						>
 					{:else}
 						<Sidebar.MenuItem>
-							<Sidebar.MenuButton
-								isActive={groupItem.url === page.url.pathname ||
-									(groupItem.url === '/' && page.url.pathname === '')}
-							>
+							<Sidebar.MenuButton isActive={groupItem.url === page.url.pathname}>
 								{#snippet child({ props })}
 									<a
 										href={groupItem.url}
