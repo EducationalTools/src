@@ -128,7 +128,11 @@
 
 					{#if groupItem.items?.length}
 						<Collapsible.Root class="group/collapsible">
-							<Sidebar.MenuItem>
+							<Sidebar.MenuItem
+								onclick={() => {
+									sidebar.setOpen(true);
+								}}
+							>
 								<Collapsible.Trigger>
 									{#snippet child({ props })}
 										<Sidebar.MenuButton
