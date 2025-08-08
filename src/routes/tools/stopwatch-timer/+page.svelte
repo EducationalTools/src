@@ -153,29 +153,6 @@
 		if (stopwatchInterval) clearInterval(stopwatchInterval);
 		if (timerInterval) clearInterval(timerInterval);
 	});
-
-	// Keyboard shortcuts
-	onMount(() => {
-		function handleKeydown(event: KeyboardEvent) {
-			if (event.target instanceof HTMLInputElement) return;
-
-			switch (event.code) {
-				case 'Space':
-					event.preventDefault();
-					// Toggle based on active tab - you'd need to track active tab
-					break;
-				case 'KeyR':
-					if (event.ctrlKey || event.metaKey) {
-						event.preventDefault();
-						// Reset current timer/stopwatch
-					}
-					break;
-			}
-		}
-
-		document.addEventListener('keydown', handleKeydown);
-		return () => document.removeEventListener('keydown', handleKeydown);
-	});
 </script>
 
 <div class="container mx-auto flex h-screen max-w-4xl items-center justify-center p-4">
