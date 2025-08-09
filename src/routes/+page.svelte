@@ -13,7 +13,8 @@
 		{ name: 'Rich Text Editor', url: '/tools/rich-text-editor' },
 		{ name: 'Word Counter', url: '/tools/word-counter' },
 		{ name: 'Password Generator', url: '/tools/password-generator' },
-		{ name: 'Random Number Generator', url: '/tools/random-number-generator' }
+		{ name: 'Random Number Generator', url: '/tools/random-number-generator' },
+		{ name: 'Stopwatch & Timer', url: '/tools/stopwatch-timer' }
 	];
 </script>
 
@@ -30,7 +31,7 @@
 	<div
 		class={clsx(
 			'grid h-fit w-full gap-3',
-			$preferencesStore.experimentalFeatures ? 'grid-cols-1' : 'grid-cols-3'
+			$preferencesStore.experimentalFeatures ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-3'
 		)}
 	>
 		{#each tools as tool}

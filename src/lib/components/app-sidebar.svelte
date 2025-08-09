@@ -67,7 +67,7 @@
 
 <svelte:document onkeydown={handleKeydown} />
 
-<Sidebar.Root collapsible="icon" bind:ref {...restProps}>
+<Sidebar.Root collapsible="icon" variant="floating" bind:ref {...restProps}>
 	<Sidebar.Header>
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
@@ -128,13 +128,16 @@
 
 					{#if groupItem.items?.length}
 						<Collapsible.Root class="group/collapsible">
-							<Sidebar.MenuItem>
+							<Sidebar.MenuItem
+								onclick={() => {
+									sidebar.setOpen(true);
+								}}
+							>
 								<Collapsible.Trigger>
 									{#snippet child({ props })}
 										<Sidebar.MenuButton
 											class="cursor-pointer"
-											isActive={groupItem.url === page.url.pathname ||
-												(groupItem.url === '/' && page.url.pathname === '')}
+											isActive={groupItem.url === page.url.pathname}
 											{...props}
 										>
 											{#snippet child({ props })}
@@ -166,10 +169,7 @@
 														{#each groupItem.items as item (item.title)}
 															{@const SubIcon = item.icon}
 															<Sidebar.MenuSubItem>
-																<Sidebar.MenuSubButton
-																	isActive={item.url === page.url.pathname ||
-																		(item.url === '/' && page.url.pathname === '')}
-																>
+																<Sidebar.MenuSubButton isActive={item.url === page.url.pathname}>
 																	{#snippet child({ props })}
 																		<a
 																			href={item.url}
@@ -208,10 +208,7 @@
 						>
 					{:else}
 						<Sidebar.MenuItem>
-							<Sidebar.MenuButton
-								isActive={groupItem.url === page.url.pathname ||
-									(groupItem.url === '/' && page.url.pathname === '')}
-							>
+							<Sidebar.MenuButton isActive={groupItem.url === page.url.pathname}>
 								{#snippet child({ props })}
 									<a
 										href={groupItem.url}
@@ -277,6 +274,7 @@
 		{/if}
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton
+				class="hidden md:flex"
 				onclick={() => {
 					posthog.capture('sidebar_toggle', { state: sidebar.open });
 					sidebar.toggle();
