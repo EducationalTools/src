@@ -67,7 +67,7 @@
 
 <svelte:document onkeydown={handleKeydown} />
 
-<Sidebar.Root collapsible="icon" bind:ref {...restProps}>
+<Sidebar.Root collapsible="icon" variant="floating" bind:ref {...restProps}>
 	<Sidebar.Header>
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
