@@ -169,9 +169,7 @@
 														{#each groupItem.items as item (item.title)}
 															{@const SubIcon = item.icon}
 															<Sidebar.MenuSubItem>
-																<Sidebar.MenuSubButton
-																	isActive={groupItem.url === page.url.pathname}
-																>
+																<Sidebar.MenuSubButton isActive={item.url === page.url.pathname}>
 																	{#snippet child({ props })}
 																		<a
 																			href={item.url}
