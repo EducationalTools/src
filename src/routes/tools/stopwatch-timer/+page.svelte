@@ -5,15 +5,15 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Separator } from '$lib/components/ui/separator';
+
 	import { AlertCircle, Play, Pause, Square, RotateCcw, Timer, Clock } from '@lucide/svelte';
-	import { onMount, onDestroy } from 'svelte';
+	import { onDestroy } from 'svelte';
 
 	// Stopwatch state
 	let stopwatchTime = $state(0); // in milliseconds
 	let stopwatchRunning = $state(false);
 	let stopwatchLaps = $state<number[]>([]);
-	let stopwatchInterval: NodeJS.Timeout | null = null;
+	let stopwatchInterval: typeof setInterval | null = null;
 
 	// Timer state
 	let timerMinutes = $state(5);
@@ -21,7 +21,7 @@
 	let timerTotalTime = $state(0); // in milliseconds
 	let timerCurrentTime = $state(0); // in milliseconds
 	let timerRunning = $state(false);
-	let timerInterval: NodeJS.Timeout | null = null;
+	let timerInterval: typeof setInterval | null = null;
 	let timerFinished = $state(false);
 
 	// Format time from milliseconds to MM:SS.mmm
