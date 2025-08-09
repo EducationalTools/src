@@ -31,7 +31,7 @@
 	<div
 		class={clsx(
 			'grid h-fit w-full gap-3',
-			$preferencesStore.experimentalFeatures ? 'grid-cols-1' : 'grid-cols-3'
+			$preferencesStore.experimentalFeatures ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-3'
 		)}
 	>
 		{#each tools as tool}
