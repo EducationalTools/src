@@ -36,8 +36,7 @@
 {:else if sidebar.isMobile}
 	<Drawer.Root
 		bind:open={() => sidebar.openMobile, (v) => sidebar.setOpenMobile(v)}
-		direction="left"
-		{...restProps}
+		direction={side}
 	>
 		<Drawer.Content
 			data-sidebar="sidebar"
