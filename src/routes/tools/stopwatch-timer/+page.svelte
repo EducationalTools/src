@@ -13,7 +13,7 @@
 	let stopwatchTime = $state(0); // in milliseconds
 	let stopwatchRunning = $state(false);
 	let stopwatchLaps = $state<number[]>([]);
-	let stopwatchInterval: typeof setInterval | null = null;
+	let stopwatchInterval: ReturnType<typeof setInterval> | null = null;
 
 	// Timer state
 	let timerMinutes = $state(5);
@@ -21,7 +21,7 @@
 	let timerTotalTime = $state(0); // in milliseconds
 	let timerCurrentTime = $state(0); // in milliseconds
 	let timerRunning = $state(false);
-	let timerInterval: typeof setInterval | null = null;
+	let timerInterval: ReturnType<typeof setInterval> | null = null;
 	let timerFinished = $state(false);
 
 	// Format time from milliseconds to MM:SS.mmm
