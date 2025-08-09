@@ -274,7 +274,7 @@
 		{/if}
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton
-				class="hidden md:block"
+				class="hidden md:flex"
 				onclick={() => {
 					posthog.capture('sidebar_toggle', { state: sidebar.open });
 					sidebar.toggle();
