@@ -19,7 +19,7 @@
 	];
 </script>
 
-<div class="p-2 pl-0">
+<div class="p-2 md:pl-0">
 	<div
 		class="from-card relative flex w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-b to-transparent py-52"
 	>
