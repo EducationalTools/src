@@ -32,6 +32,8 @@
 	// Auth
 	import { useClerkContext } from 'svelte-clerk/client';
 	import posthog from 'posthog-js';
+	import { GitBranch } from '@lucide/svelte';
+	import Badge from './ui/badge/badge.svelte';
 	const ctx = useClerkContext();
 
 	// Props
@@ -248,10 +250,16 @@
 						>
 							<Code />
 							EducationalTools/src
+							<div class="grow"></div>
+							<Badge>
+								<GitBranch />
+								{process.env.BRANCH_NAME}</Badge
+							>
 						</a>
 					{/snippet}
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
+			<Sidebar.MenuItem></Sidebar.MenuItem>
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton
 					onclick={() => {
