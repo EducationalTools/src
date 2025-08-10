@@ -42,7 +42,7 @@
 			data-sidebar="sidebar"
 			data-slot="sidebar"
 			data-mobile="true"
-			class="bg-sidebar text-sidebar-foreground !top-2 !bottom-2 !left-2 rounded-xl !border-r-0 p-0 after:hidden"
+			class="bg-sidebar text-sidebar-foreground !top-2 !bottom-2 !left-2 rounded-xl border p-0 after:hidden"
 			style="--sidebar-width: {SIDEBAR_WIDTH_MOBILE}; --initial-transform: calc(100% + 8px)"
 		>
 			<Drawer.Header class="sr-only">
