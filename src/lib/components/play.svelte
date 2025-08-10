@@ -65,8 +65,9 @@
 	});
 </script>
 
-<div class="flex h-full w-full flex-col gap-3 p-3">
-	<iframe src={gmaedata?.url} frameborder="0" class="grow rounded" title={gmaedata?.name}></iframe>
+<div class="flex h-full w-full flex-col gap-3 p-2 md:pl-0">
+	<iframe src={gmaedata?.url} frameborder="0" class="grow rounded-lg" title={gmaedata?.name}
+	></iframe>
 
 	<div class="flex w-full flex-col gap-2 md:flex-row">
 		<div class="flex flex-col gap-2">
