@@ -19,97 +19,95 @@
 	];
 </script>
 
-<div class="-mb-20 p-2 md:pl-0">
-	<div class="bg-border relative overflow-hidden rounded-lg">
-		<div
-			class="bg-card relative flex w-full items-center justify-center overflow-hidden rounded-lg border py-52"
-		>
-			<Particles
-				id="hero-background"
-				class="absolute top-0 right-0 bottom-0 left-0"
-				options={{
-					clear: true,
-					fullScreen: false,
-					interactivity: {
-						detectsOn: 'window',
-						events: {
-							onHover: {
+<div class="relative -mb-20 p-2 md:pl-0">
+	<div
+		class="bg-card relative flex w-full items-center justify-center overflow-hidden rounded-lg border py-52"
+	>
+		<Particles
+			id="hero-background"
+			class="absolute top-0 right-0 bottom-0 left-0"
+			options={{
+				clear: true,
+				fullScreen: false,
+				interactivity: {
+					detectsOn: 'window',
+					events: {
+						onHover: {
+							enable: true,
+							parallax: {
 								enable: true,
-								parallax: {
-									enable: true,
-									force: 100,
-									smooth: 30
-								}
+								force: 100,
+								smooth: 30
 							}
 						}
+					}
+				},
+				particles: {
+					color: {
+						value: '#aaaaaa'
 					},
-					particles: {
+					move: {
+						enable: true,
+						outModes: {
+							default: 'out',
+							bottom: 'out',
+							left: 'out',
+							right: 'out',
+							top: 'out'
+						},
+						speed: 2
+					},
+					number: {
+						density: {
+							enable: true,
+							width: 1920,
+							height: 1080
+						},
+						limit: {
+							mode: 'delete',
+							value: 0
+						},
+						value: 100
+					},
+					opacity: {
+						value: {
+							min: 0.5,
+							max: 1
+						}
+					},
+					shape: {
+						close: true,
+						fill: true,
+						options: {},
+						type: 'circle'
+					},
+					size: {
+						value: {
+							min: 1,
+							max: 5
+						}
+					},
+					links: {
 						color: {
 							value: '#aaaaaa'
 						},
-						move: {
-							enable: true,
-							outModes: {
-								default: 'out',
-								bottom: 'out',
-								left: 'out',
-								right: 'out',
-								top: 'out'
-							},
-							speed: 2
-						},
-						number: {
-							density: {
-								enable: true,
-								width: 1920,
-								height: 1080
-							},
-							limit: {
-								mode: 'delete',
-								value: 0
-							},
-							value: 100
-						},
-						opacity: {
-							value: {
-								min: 0.5,
-								max: 1
-							}
-						},
-						shape: {
-							close: true,
-							fill: true,
-							options: {},
-							type: 'circle'
-						},
-						size: {
-							value: {
-								min: 1,
-								max: 5
-							}
-						},
-						links: {
-							color: {
-								value: '#aaaaaa'
-							},
-							distance: 150,
-							enable: true,
-							frequency: 1,
-							opacity: 0.4,
-							width: 1,
-							warp: false
-						}
+						distance: 150,
+						enable: true,
+						frequency: 1,
+						opacity: 0.4,
+						width: 1,
+						warp: false
 					}
-				}}
-			/>
-			<h1 class="text-foreground z-10 text-4xl">
-				EduTools {#if $preferencesStore.experimentalFeatures}Experimental{/if}
-			</h1>
-		</div>
-		<div
-			class="to-background absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent"
-		></div>
+				}
+			}}
+		/>
+		<h1 class="text-foreground z-10 -translate-y-10 text-4xl">
+			EduTools {#if $preferencesStore.experimentalFeatures}Experimental{/if}
+		</h1>
 	</div>
+	<div
+		class="to-background absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent"
+	></div>
 </div>
 
 <div class="z-30 flex w-full flex-col gap-3 p-2 md:flex-row md:pl-0">
