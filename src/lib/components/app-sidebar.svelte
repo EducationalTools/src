@@ -67,7 +67,7 @@
 
 <svelte:document onkeydown={handleKeydown} />
 
-<Sidebar.Root collapsible="icon" bind:ref {...restProps}>
+<Sidebar.Root collapsible="icon" variant="floating" bind:ref {...restProps}>
 	<Sidebar.Header>
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
@@ -128,13 +128,16 @@
 
 					{#if groupItem.items?.length}
 						<Collapsible.Root class="group/collapsible">
-							<Sidebar.MenuItem>
+							<Sidebar.MenuItem
+								onclick={() => {
+									sidebar.setOpen(true);
+								}}
+							>
 								<Collapsible.Trigger>
 									{#snippet child({ props })}
 										<Sidebar.MenuButton
 											class="cursor-pointer"
-											isActive={groupItem.url === page.url.pathname ||
-												(groupItem.url === '/' && page.url.pathname === '')}
+											isActive={groupItem.url === page.url.pathname}
 											{...props}
 										>
 											{#snippet child({ props })}
@@ -166,10 +169,7 @@
 														{#each groupItem.items as item (item.title)}
 															{@const SubIcon = item.icon}
 															<Sidebar.MenuSubItem>
-																<Sidebar.MenuSubButton
-																	isActive={item.url === page.url.pathname ||
-																		(item.url === '/' && page.url.pathname === '')}
-																>
+																<Sidebar.MenuSubButton isActive={item.url === page.url.pathname}>
 																	{#snippet child({ props })}
 																		<a
 																			href={item.url}
@@ -208,10 +208,7 @@
 						>
 					{:else}
 						<Sidebar.MenuItem>
-							<Sidebar.MenuButton
-								isActive={groupItem.url === page.url.pathname ||
-									(groupItem.url === '/' && page.url.pathname === '')}
-							>
+							<Sidebar.MenuButton isActive={groupItem.url === page.url.pathname}>
 								{#snippet child({ props })}
 									<a
 										href={groupItem.url}
@@ -275,23 +272,25 @@
 			</Sidebar.MenuItem>
 			<SidebarAuth />
 		{/if}
-		<Sidebar.MenuItem>
-			<Sidebar.MenuButton
-				onclick={() => {
-					posthog.capture('sidebar_toggle', { state: sidebar.open });
-					sidebar.toggle();
-				}}
-			>
-				<PanelLeft />
-				Sidebar
-				<div class="grow"></div>
-				<kbd
-					class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
+		{#if !sidebar.isMobile}
+			<Sidebar.MenuItem>
+				<Sidebar.MenuButton
+					onclick={() => {
+						posthog.capture('sidebar_toggle', { state: sidebar.open });
+						sidebar.toggle();
+					}}
 				>
-					<span class="text-xs">⌘</span>B
-				</kbd>
-			</Sidebar.MenuButton>
-		</Sidebar.MenuItem>
+					<PanelLeft />
+					Sidebar
+					<div class="grow"></div>
+					<kbd
+						class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
+					>
+						<span class="text-xs">⌘</span>B
+					</kbd>
+				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+		{/if}
 	</Sidebar.Footer>
 	<Sidebar.Rail />
 </Sidebar.Root>

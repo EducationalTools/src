@@ -43,6 +43,8 @@ jobs:
           external_repository: 'Inglan/EduTools-Vercel'
           publish_branch: main # default: gh-pages
           publish_dir: ./build
+          user_name: 'Ingo Wolf'
+          user_email: 'me@ingowolf.au'
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:

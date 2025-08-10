@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as Sheet from '$lib/components/ui/sheet/index.js';
+	import * as Drawer from '$lib/components/ui/drawer/index.js';
 	import { cn, type WithElementRef } from '$lib/utils.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { SIDEBAR_WIDTH_MOBILE } from './constants.js';
@@ -34,24 +34,26 @@
 		{@render children?.()}
 	</div>
 {:else if sidebar.isMobile}
-	<Sheet.Root bind:open={() => sidebar.openMobile, (v) => sidebar.setOpenMobile(v)} {...restProps}>
-		<Sheet.Content
+	<Drawer.Root
+		bind:open={() => sidebar.openMobile, (v) => sidebar.setOpenMobile(v)}
+		direction={side}
+	>
+		<Drawer.Content
 			data-sidebar="sidebar"
 			data-slot="sidebar"
 			data-mobile="true"
-			class="bg-sidebar text-sidebar-foreground w-(--sidebar-width) p-0 [&>button]:hidden"
-			style="--sidebar-width: {SIDEBAR_WIDTH_MOBILE};"
-			{side}
+			class="bg-sidebar text-sidebar-foreground !top-2 !bottom-2 !left-2 rounded-xl border p-0 after:hidden"
+			style="--sidebar-width: {SIDEBAR_WIDTH_MOBILE}; --initial-transform: calc(100% + 8px)"
 		>
-			<Sheet.Header class="sr-only">
-				<Sheet.Title>Sidebar</Sheet.Title>
-				<Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
-			</Sheet.Header>
+			<Drawer.Header class="sr-only">
+				<Drawer.Title>Sidebar</Drawer.Title>
+				<Drawer.Description>Displays the mobile sidebar.</Drawer.Description>
+			</Drawer.Header>
 			<div class="flex h-full w-full flex-col">
 				{@render children?.()}
 			</div>
-		</Sheet.Content>
-	</Sheet.Root>
+		</Drawer.Content>
+	</Drawer.Root>
 {:else}
 	<div
 		bind:this={ref}
@@ -70,7 +72,7 @@
 				'group-data-[collapsible=offcanvas]:w-0',
 				'group-data-[side=right]:rotate-180',
 				variant === 'floating' || variant === 'inset'
-					? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]'
+					? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]'
 					: 'group-data-[collapsible=icon]:w-(--sidebar-width-icon)'
 			)}
 		></div>
