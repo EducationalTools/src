@@ -293,7 +293,7 @@
 	</div>
 </div>
 
-<div class="flex w-full flex-col gap-2 p-2 md:flex-row md:pl-0">
+<div class="flex w-full flex-col gap-3 p-2 md:flex-row md:pl-0">
 	<div
 		class={clsx(
 			'grid h-fit w-full gap-3',
