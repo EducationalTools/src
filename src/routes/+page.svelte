@@ -19,7 +19,7 @@
 	];
 </script>
 
-<div class="relative -mb-20 p-2 md:pl-0">
+<div class="relative p-2 md:pl-0">
 	<div
 		class="bg-card relative flex w-full items-center justify-center overflow-hidden rounded-lg border py-52"
 	>
@@ -101,7 +101,7 @@
 				}
 			}}
 		/>
-		<h1 class="text-foreground z-10 -translate-y-10 text-4xl">
+		<h1 class="text-foreground z-10 text-4xl">
 			EduTools {#if $preferencesStore.experimentalFeatures}Experimental{/if}
 		</h1>
 	</div>
