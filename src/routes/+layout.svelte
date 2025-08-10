@@ -24,6 +24,8 @@
 	// Analytics and stores
 	import { initializeAnalytics, checkTrackerBlocked, trackerDialogClosed } from '$lib/analytics';
 	import { preferencesStore } from '$lib/stores';
+	import { loadFull } from 'tsparticles';
+	import { particlesInit } from '@tsparticles/svelte';
 
 	// State
 	let trackerBlockerDialog = $state(false);
@@ -44,6 +46,10 @@
 		if (isBlocked && !$trackerDialogClosed) {
 			trackerBlockerDialog = true;
 		}
+	});
+
+	void particlesInit(async (engine) => {
+		await loadFull(engine);
 	});
 </script>
 

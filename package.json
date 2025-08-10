@@ -52,6 +52,7 @@
 		"@clerk/themes": "^2.4.6",
 		"@friendofsvelte/tipex": "0.0.7",
 		"@tanstack/match-sorter-utils": "^8.19.4",
+		"@tsparticles/svelte": "^3.1.1",
 		"convex": "^1.25.4",
 		"convex-svelte": "^0.0.11",
 		"dayjs": "^1.11.13",
@@ -61,6 +62,7 @@
 		"md5": "^2.3.0",
 		"posthog-js": "^1.259.0",
 		"svelte-clerk": "^0.16.5",
-		"svelte-persisted-store": "^0.12.0"
+		"svelte-persisted-store": "^0.12.0",
+		"tsparticles": "^3.9.1"
 	}
 }
