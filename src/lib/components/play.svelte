@@ -23,6 +23,7 @@
 	import clsx from 'clsx';
 	import posthog from 'posthog-js';
 	import { onMount } from 'svelte';
+	import { Bug } from '@lucide/svelte';
 
 	function openNewTab(url: string) {
 		url = location.origin + url;
@@ -94,37 +95,6 @@
 		</div>
 		<div class="grow"></div>
 		<div class="grid h-fit min-w-72 grid-cols-2 gap-3">
-			<Drawer.Root direction="right">
-				<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>
-					<Comment class="h-6 w-6" />
-					Comments
-				</Drawer.Trigger>
-				<Drawer.Content
-					class="bg-background fixed top-0 right-0 bottom-0 z-20 flex w-[500px] max-w-full flex-col rounded-l-xl p-3 outline-none"
-					style="--initial-transform: calc(100% + 8px)"
-				>
-					<h2 class="text-3xl">Comments</h2>
-					<div class="giscus" style="flex-grow: 1; overflow: auto;"></div>
-					<script
-						src="https://giscus.app/client.js"
-						data-repo="EducationalTools/src"
-						data-repo-id="R_kgDONeKybw"
-						data-category="Comments"
-						data-category-id="DIC_kwDONeKyb84CpZld"
-						data-mapping="specific"
-						data-term={'Gmae - ' + gmaedata?.name}
-						data-strict="1"
-						data-reactions-enabled="1"
-						data-emit-metadata="0"
-						data-input-position="top"
-						data-theme="preferred_color_scheme"
-						data-lang="en"
-						crossorigin="anonymous"
-						async
-					></script>
-				</Drawer.Content>
-				<Drawer.Overlay class="fixed inset-0 top-0 left-0 z-10 bg-black/50" />
-			</Drawer.Root>
 			<Button
 				variant="outline"
 				onclick={() => {
@@ -200,6 +170,14 @@
 					<Bookmark class="h-6 w-6" />
 					Save
 				{/if}
+			</Button>
+			<Button
+				variant="outline"
+				href="https://github.com/EducationalTools/src/issues/new?template=bug_report.yml"
+				target="_blank"
+			>
+				<Bug />
+				Report Bug
 			</Button>
 		</div>
 	</div>
