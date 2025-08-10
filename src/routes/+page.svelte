@@ -47,7 +47,7 @@
 				},
 				particles: {
 					color: {
-						value: '#ffffff'
+						value: '#aaaaaa'
 					},
 					move: {
 						enable: true,
@@ -74,8 +74,8 @@
 					},
 					opacity: {
 						value: {
-							min: 0.1,
-							max: 0.5
+							min: 0.5,
+							max: 1
 						}
 					},
 					shape: {
@@ -92,7 +92,7 @@
 					},
 					links: {
 						color: {
-							value: '#ffffff'
+							value: '#aaaaaa'
 						},
 						distance: 150,
 						enable: true,
@@ -104,7 +104,7 @@
 				}
 			}}
 		/>
-		<h1 class="z-10 text-4xl">
+		<h1 class="text-foreground z-10 text-4xl">
 			EduTools {#if $preferencesStore.experimentalFeatures}Experimental{/if}
 		</h1>
 	</div>
