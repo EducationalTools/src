@@ -1,5 +1,4 @@
 import { error } from '@sveltejs/kit';
-import { page } from '$app/state';
 import { getGameById } from '$lib/gmaes';
 
 export function load({ url }) {
