@@ -26,6 +26,7 @@
 	import { preferencesStore } from '$lib/stores';
 	import { loadFull } from 'tsparticles';
 	import { particlesInit } from '@tsparticles/svelte';
+	import { buttonVariants } from '$lib/components/ui/button';
 
 	// State
 	let trackerBlockerDialog = $state(false);
@@ -73,7 +74,12 @@
 	<!-- Main layout -->
 	<Sidebar.Provider class="flex flex-col md:flex-row">
 		<AppSidebar />
-		<Sidebar.Trigger class="m-1 p-1 md:hidden" />
+		<Sidebar.Trigger
+			class={clsx(
+				'fixed bottom-3 left-3 z-50 !rounded-lg md:hidden',
+				buttonVariants({ variant: 'default', size: 'icon' })
+			)}
+		/>
 		<Sidebar.Inset>
 			{@render children()}
 		</Sidebar.Inset>
