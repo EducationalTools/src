@@ -20,8 +20,11 @@ test('menu after experimental features', async ({ page }) => {
 	await page.goto('http://localhost:4173/');
 
 	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.waitForTimeout(300);
 	await page.getByPlaceholder('Type a command or search...').fill('experimental');
+	await page.waitForTimeout(300);
 	await page.getByRole('option', { name: 'Toggle experimental features' }).click();
+	await page.waitForTimeout(300);
 	await page.locator('#bits-c7').press('Escape');
 
 	await expect(page.locator('a').getByText('Home', { exact: true })).toBeVisible();
@@ -34,8 +37,11 @@ test('test all gmaes page', async ({ page }) => {
 	await page.goto('http://localhost:4173/');
 
 	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.waitForTimeout(300);
 	await page.getByPlaceholder('Type a command or search...').fill('experimental');
+	await page.waitForTimeout(300);
 	await page.getByRole('option', { name: 'Toggle experimental features' }).click();
+	await page.waitForTimeout(300);
 	await page.locator('#bits-c7').press('Escape');
 
 	// Testing all gmaes
@@ -54,11 +60,17 @@ test('test history', async ({ page }) => {
 	await page.goto('http://localhost:4173/');
 
 	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.waitForTimeout(300);
 	await page.getByPlaceholder('Type a command or search...').fill('experimental');
+	await page.waitForTimeout(300);
 	await page.getByRole('option', { name: 'Toggle experimental features' }).click();
+	await page.waitForTimeout(300);
 	await page.locator('#bits-c7').press('Escape');
+	await page.waitForTimeout(300);
 	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.waitForTimeout(300);
 	await page.getByPlaceholder('Type a command or search...').fill('2048');
+	await page.waitForTimeout(300);
 	await page.getByRole('option', { name: '2048' }).click();
 
 	await page.locator('a').getByText('Home', { exact: true }).click();
@@ -77,13 +89,20 @@ test('test saving', async ({ page }) => {
 	await page.goto('http://localhost:4173/');
 
 	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.waitForTimeout(300);
 	await page.getByPlaceholder('Type a command or search...').fill('experimental');
+	await page.waitForTimeout(300);
 	await page.getByRole('option', { name: 'Toggle experimental features' }).click();
+	await page.waitForTimeout(300);
 	await page.locator('#bits-c7').press('Escape');
+	await page.waitForTimeout(300);
 	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.waitForTimeout(300);
 	await page.getByPlaceholder('Type a command or search...').fill('2048');
+	await page.waitForTimeout(300);
 	await page.getByRole('option', { name: '2048' }).click();
 
+	await page.waitForTimeout(300);
 	await page.getByRole('button', { name: 'Save' }).click();
 
 	await page.locator('a').getByText('Home', { exact: true }).click();
@@ -101,11 +120,17 @@ test('test clear history', async ({ page }) => {
 	await page.goto('http://localhost:4173/');
 
 	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.waitForTimeout(300);
 	await page.getByPlaceholder('Type a command or search...').fill('experimental');
+	await page.waitForTimeout(300);
 	await page.getByRole('option', { name: 'Toggle experimental features' }).click();
+	await page.waitForTimeout(300);
 	await page.locator('#bits-c7').press('Escape');
+	await page.waitForTimeout(300);
 	await page.getByRole('button', { name: 'Search ⌘ K' }).click();
+	await page.waitForTimeout(300);
 	await page.getByPlaceholder('Type a command or search...').fill('2048');
+	await page.waitForTimeout(300);
 	await page.getByRole('option', { name: '2048' }).click();
 
 	await page.locator('a').getByText('Home', { exact: true }).click();
