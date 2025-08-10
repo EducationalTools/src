@@ -272,24 +272,25 @@
 			</Sidebar.MenuItem>
 			<SidebarAuth />
 		{/if}
-		<Sidebar.MenuItem>
-			<Sidebar.MenuButton
-				class="hidden md:flex"
-				onclick={() => {
-					posthog.capture('sidebar_toggle', { state: sidebar.open });
-					sidebar.toggle();
-				}}
-			>
-				<PanelLeft />
-				Sidebar
-				<div class="grow"></div>
-				<kbd
-					class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
+		{#if !sidebar.isMobile}
+			<Sidebar.MenuItem>
+				<Sidebar.MenuButton
+					onclick={() => {
+						posthog.capture('sidebar_toggle', { state: sidebar.open });
+						sidebar.toggle();
+					}}
 				>
-					<span class="text-xs">⌘</span>B
-				</kbd>
-			</Sidebar.MenuButton>
-		</Sidebar.MenuItem>
+					<PanelLeft />
+					Sidebar
+					<div class="grow"></div>
+					<kbd
+						class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
+					>
+						<span class="text-xs">⌘</span>B
+					</kbd>
+				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+		{/if}
 	</Sidebar.Footer>
 	<Sidebar.Rail />
 </Sidebar.Root>
