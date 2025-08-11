@@ -16,6 +16,7 @@
 	import Bookmark from '@lucide/svelte/icons/bookmark';
 	import Comment from '@lucide/svelte/icons/message-square';
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
+	import Bug from '@lucide/svelte/icons/bug';
 
 	// App imports
 	import { getGameById } from '$lib/gmaes';
@@ -23,7 +24,6 @@
 	import clsx from 'clsx';
 	import posthog from 'posthog-js';
 	import { onMount } from 'svelte';
-	import { Bug } from '@lucide/svelte';
 
 	function openNewTab(url: string) {
 		url = location.origin + url;
