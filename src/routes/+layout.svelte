@@ -24,6 +24,9 @@
 	// Analytics and stores
 	import { initializeAnalytics, checkTrackerBlocked, trackerDialogClosed } from '$lib/analytics';
 	import { preferencesStore } from '$lib/stores';
+	import { loadSlim } from '@tsparticles/slim'; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
+	import { particlesInit } from '@tsparticles/svelte';
+	import { buttonVariants } from '$lib/components/ui/button';
 
 	// State
 	let trackerBlockerDialog = $state(false);
@@ -44,6 +47,10 @@
 		if (isBlocked && !$trackerDialogClosed) {
 			trackerBlockerDialog = true;
 		}
+	});
+
+	void particlesInit(async (engine) => {
+		await loadSlim(engine);
 	});
 </script>
 
@@ -67,7 +74,12 @@
 	<!-- Main layout -->
 	<Sidebar.Provider class="flex flex-col md:flex-row">
 		<AppSidebar />
-		<Sidebar.Trigger class="m-1 p-1 md:hidden" />
+		<Sidebar.Trigger
+			class={clsx(
+				'fixed bottom-3 left-3 z-50 !rounded-lg md:hidden',
+				buttonVariants({ variant: 'default', size: 'icon' })
+			)}
+		/>
 		<Sidebar.Inset>
 			{@render children()}
 		</Sidebar.Inset>

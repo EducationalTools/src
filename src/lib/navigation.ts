@@ -61,6 +61,10 @@ export function createMainNavigation(
 				{
 					title: 'Random Number Gen',
 					url: '/tools/random-number-generator'
+				},
+				{
+					title: 'Stopwatch & Timer',
+					url: '/tools/stopwatch-timer'
 				}
 			]
 		},
