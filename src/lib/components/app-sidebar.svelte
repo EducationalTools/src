@@ -72,7 +72,7 @@
 <svelte:document onkeydown={handleKeydown} />
 
 <Sidebar.Root collapsible="icon" variant="floating" bind:ref {...restProps}>
-	<Sidebar.Header>
+	<Sidebar.Header class="rounded-lg bg-gradient-to-b from-white/10 to-transparent">
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton size="lg">
