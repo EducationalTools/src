@@ -100,8 +100,8 @@ importers:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.6)
       bits-ui:
-        specifier: 2.8.11
-        version: 2.8.11(@internationalized/date@3.8.2)(svelte@5.38.0)
+        specifier: 2.9.2
+        version: 2.9.2(@internationalized/date@3.8.2)(svelte@5.38.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1240,8 +1240,8 @@ packages:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
     engines: {node: '>= 0.4'}
 
-  bits-ui@2.8.11:
-    resolution: {integrity: sha512-lKN9rAk69my6j7H1D4B87r8LrHuEtfEsf1xCixBj9yViql2BdI3f04HyyyT7T1GOCpgb9+8b0B+nm3LN81Konw==}
+  bits-ui@2.9.2:
+    resolution: {integrity: sha512-GGbyr4oVKtHin//Q0AhlygkasmfWt328VjsnmB3sP+h8Sh+Eyghm+1AQ8o+xQMDCYbdL35JZ9UZGTZYTMar4Uw==}
     engines: {node: '>=20'}
     peerDependencies:
       '@internationalized/date': ^3.8.1
@@ -3456,7 +3456,7 @@ snapshots:
 
   axobject-query@4.1.0: {}
 
-  bits-ui@2.8.11(@internationalized/date@3.8.2)(svelte@5.38.0):
+  bits-ui@2.9.2(@internationalized/date@3.8.2)(svelte@5.38.0):
     dependencies:
       '@floating-ui/core': 1.7.3
       '@floating-ui/dom': 1.7.3
