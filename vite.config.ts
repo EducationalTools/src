@@ -11,7 +11,8 @@ export default defineConfig(({ mode }) => {
 		define: {
 			'process.env.PUBLIC_CONVEX_URL': JSON.stringify(env.PUBLIC_CONVEX_URL),
 			'process.env.PUBLIC_CLERK_PUBLISHABLE_KEY': JSON.stringify(env.PUBLIC_CLERK_PUBLISHABLE_KEY),
-			'process.env.BRANCH_NAME': JSON.stringify(branchName())
+			'process.env.BRANCH_NAME': JSON.stringify(branchName()),
+			'process.env.BUILD_TIME': JSON.stringify(Date.now())
 		}
 	};
 });

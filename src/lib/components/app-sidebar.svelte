@@ -36,6 +36,8 @@
 	import Badge from './ui/badge/badge.svelte';
 	const ctx = useClerkContext();
 
+	import dayjs from 'dayjs';
+
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
@@ -91,7 +93,10 @@
 							</div>
 							<div class="flex flex-col gap-0.5 leading-none">
 								<span class="font-semibold">EduTools</span>
-								{#if $preferencesStore.experimentalFeatures}<span>Experimental</span>{/if}
+								<span>
+									{#if $preferencesStore.experimentalFeatures}Experimental{/if}
+									{dayjs(process.env.BUILD_TIME).format(' - Built HH:MM DD/MM/YY')}
+								</span>
 							</div>
 						</a>
 					{/snippet}
