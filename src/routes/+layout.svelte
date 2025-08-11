@@ -15,6 +15,7 @@
 	import Providers from '$lib/components/providers.svelte';
 	import TrackerDialog from '$lib/components/tracker-dialog.svelte';
 	import Identify from './identify.svelte';
+	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
 
 	// Utilities
 	import clsx from 'clsx';
@@ -27,6 +28,8 @@
 	import { loadSlim } from '@tsparticles/slim'; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 	import { particlesInit } from '@tsparticles/svelte';
 	import { buttonVariants } from '$lib/components/ui/button';
+	import Button from '$lib/components/ui/button/button.svelte';
+	import PanelLeftIcon from '@lucide/svelte/icons/panel-left';
 
 	// State
 	let trackerBlockerDialog = $state(false);
@@ -52,6 +55,8 @@
 	void particlesInit(async (engine) => {
 		await loadSlim(engine);
 	});
+
+	const sidebar = useSidebar();
 </script>
 
 <svelte:head>
@@ -74,13 +79,11 @@
 	<!-- Main layout -->
 	<Sidebar.Provider class="flex flex-col md:flex-row">
 		<AppSidebar />
-		<Sidebar.Trigger
-			class={clsx(
-				'fixed bottom-3 left-3 z-50 !rounded-lg md:hidden',
-				buttonVariants({ variant: 'default', size: 'icon' })
-			)}
-		/>
+		<Sidebar.Trigger />
 		<Sidebar.Inset>
+			<div
+				class="fixed -top-32 -left-32 hidden size-96 rounded-full bg-white/25 blur-3xl md:block"
+			></div>
 			{@render children()}
 		</Sidebar.Inset>
 	</Sidebar.Provider>

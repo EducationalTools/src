@@ -36,6 +36,8 @@
 	import Badge from './ui/badge/badge.svelte';
 	const ctx = useClerkContext();
 
+	import dayjs from 'dayjs';
+
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
@@ -70,7 +72,7 @@
 <svelte:document onkeydown={handleKeydown} />
 
 <Sidebar.Root collapsible="icon" variant="floating" bind:ref {...restProps}>
-	<Sidebar.Header>
+	<Sidebar.Header class="rounded-lg bg-gradient-to-b from-white/10 to-transparent">
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton size="lg">
@@ -90,8 +92,10 @@
 								<img src="/edutools-white.svg" alt="" />
 							</div>
 							<div class="flex flex-col gap-0.5 leading-none">
-								<span class="font-semibold">EduTools</span>
-								{#if $preferencesStore.experimentalFeatures}<span>Experimental</span>{/if}
+								<span class="font-semibold"
+									>EduTools {#if $preferencesStore.experimentalFeatures}
+										Experimental{/if}</span
+								>
 							</div>
 						</a>
 					{/snippet}
@@ -259,7 +263,6 @@
 					{/snippet}
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
-			<Sidebar.MenuItem></Sidebar.MenuItem>
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton
 					onclick={() => {
