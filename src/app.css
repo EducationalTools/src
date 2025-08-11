@@ -277,8 +277,8 @@ html:has(#theme.catppuccin-darker) {
 	--sidebar-foreground: #cdd6f4;
 	--sidebar-primary: #cba6f7;
 	--sidebar-primary-foreground: #1e1e2e;
-	--sidebar-accent: #1e1e2e;
-	--sidebar-accent-foreground: #cdd6f4;
+	--sidebar-accent: #cba6f7;
+	--sidebar-accent-foreground: #1e1e2e;
 	--sidebar-border: #45475a;
 	--sidebar-ring: #cba6f7;
 	--radius: 0.9rem;
