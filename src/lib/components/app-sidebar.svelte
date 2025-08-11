@@ -98,7 +98,7 @@
 								>
 								{#if $preferencesStore.experimentalFeatures}
 									<span>
-										{dayjs(process.env.BUILD_TIME).format('Built HH:MM DD/MM/YY')}
+										{dayjs(process.env.BUILD_TIMESTAMP).format('Built HH:MM DD/MM/YY')}
 									</span>
 								{/if}
 							</div>
