@@ -24,7 +24,7 @@
 	// Analytics and stores
 	import { initializeAnalytics, checkTrackerBlocked, trackerDialogClosed } from '$lib/analytics';
 	import { preferencesStore } from '$lib/stores';
-	import { loadFull } from 'tsparticles';
+	import { loadSlim } from '@tsparticles/slim'; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 	import { particlesInit } from '@tsparticles/svelte';
 	import { buttonVariants } from '$lib/components/ui/button';
 
@@ -50,7 +50,7 @@
 	});
 
 	void particlesInit(async (engine) => {
-		await loadFull(engine);
+		await loadSlim(engine);
 	});
 </script>
 
