@@ -259,7 +259,6 @@
 					{/snippet}
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
-			<Sidebar.MenuItem></Sidebar.MenuItem>
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton
 					onclick={() => {
