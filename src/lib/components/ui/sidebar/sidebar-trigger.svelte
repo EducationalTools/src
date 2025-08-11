@@ -20,9 +20,9 @@
 <Button
 	data-sidebar="trigger"
 	data-slot="sidebar-trigger"
-	variant="ghost"
+	variant="default"
 	size="icon"
-	class={cn('size-7', className)}
+	class={cn('fixed bottom-3 left-3 z-50 md:hidden', className)}
 	type="button"
 	onclick={(e) => {
 		onclick?.(e);
