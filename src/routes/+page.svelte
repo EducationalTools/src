@@ -182,20 +182,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	.hero-background {
-		animation-name: background;
-		animation-duration: 0.5s;
-		animation-timing-function: linear;
-		animation-iteration-count: infinite;
-	}
-	@keyframes background {
-		0% {
-			background-position: 0 0;
-		}
-		100% {
-			background-position: 24px 24px;
-		}
-	}
-</style>
