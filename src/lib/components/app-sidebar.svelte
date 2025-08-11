@@ -92,10 +92,13 @@
 								<img src="/edutools-white.svg" alt="" />
 							</div>
 							<div class="flex flex-col gap-0.5 leading-none">
-								<span class="font-semibold">EduTools</span>
+								<span class="font-semibold"
+									>EduTools {#if $preferencesStore.experimentalFeatures}
+										Experimental{/if}</span
+								>
 								{#if $preferencesStore.experimentalFeatures}
 									<span>
-										Experimental {dayjs(process.env.BUILD_TIME).format(' - Built HH:MM DD/MM/YY')}
+										{dayjs(process.env.BUILD_TIME).format('Built HH:MM DD/MM/YY')}
 									</span>
 								{/if}
 							</div>
