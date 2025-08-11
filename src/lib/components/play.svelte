@@ -175,6 +175,7 @@
 				variant="outline"
 				href="https://github.com/EducationalTools/src/issues/new?template=bug_report.yml"
 				target="_blank"
+				rel="noopener noreferrer"
 			>
 				<Bug />
 				Report Bug
