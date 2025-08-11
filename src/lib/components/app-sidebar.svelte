@@ -93,10 +93,11 @@
 							</div>
 							<div class="flex flex-col gap-0.5 leading-none">
 								<span class="font-semibold">EduTools</span>
-								<span>
-									{#if $preferencesStore.experimentalFeatures}Experimental{/if}
-									{dayjs(process.env.BUILD_TIME).format(' - Built HH:MM DD/MM/YY')}
-								</span>
+								{#if $preferencesStore.experimentalFeatures}
+									<span>
+										Experimental {dayjs(process.env.BUILD_TIME).format(' - Built HH:MM DD/MM/YY')}
+									</span>
+								{/if}
 							</div>
 						</a>
 					{/snippet}
