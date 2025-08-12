@@ -3,6 +3,75 @@
 @import 'tw-animate-css';
 @custom-variant dark (&:is(.dark *));
 
+/* Custom animations and enhancements */
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes glow {
+	0%,
+	100% {
+		box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+	}
+	50% {
+		box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+	}
+}
+
+.animate-float {
+	animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+	animation: glow 2s ease-in-out infinite;
+}
+
+/* Smooth gradient text animation */
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.animate-gradient {
+	background-size: 200% 200%;
+	animation: gradient 4s ease infinite;
+}
+
+/* Enhanced focus states */
+.focus-enhanced:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5);
+}
+
+/* Card hover enhancements */
+.card-hover-glow:hover {
+	box-shadow:
+		0 10px 25px -5px rgba(0, 0, 0, 0.1),
+		0 8px 10px -6px rgba(0, 0, 0, 0.1),
+		0 0 0 1px rgba(99, 102, 241, 0.3);
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
 html:has(#theme.shadcn-zinc) {
 	--radius: 0.625rem;
 	--background: oklch(1 0 0);
