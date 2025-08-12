@@ -395,6 +395,19 @@ const gmaes: Gmae[] = [
 			}
 		],
 		url: '/_app/tools/idle-chopper/index.html'
+	},
+	{
+		name: 'Idle Idle Game Dev',
+		description: '"Develop" idle games while idle',
+		category: 'Uncategorized',
+		tags: [],
+		links: [
+			{
+				name: 'Developer website',
+				url: 'https://lutsgames.com/'
+			}
+		],
+		url: '/_app/tools/idle-idle-gamedev/index.html'
 	}
 ];
 
