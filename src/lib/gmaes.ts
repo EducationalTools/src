@@ -369,6 +369,14 @@ const gmaes: Gmae[] = [
 		tags: [],
 		links: [],
 		url: '/_app/tools/gba-emu/index.html'
+	},
+	{
+		name: 'Idle Dice',
+		description: 'Something to do with dice probably',
+		category: 'Uncategorized',
+		tags: [],
+		links: [],
+		url: '/_app/tools/idle-dices/index.html'
 	}
 ];
 
