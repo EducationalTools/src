@@ -375,7 +375,12 @@ const gmaes: Gmae[] = [
 		description: 'Something to do with dice probably',
 		category: 'Uncategorized',
 		tags: [],
-		links: [],
+		links: [
+			{
+				name: 'Developer website',
+				url: 'https://lutsgames.com/'
+			}
+		],
 		url: '/_app/tools/idle-dices/index.html'
 	}
 ];
