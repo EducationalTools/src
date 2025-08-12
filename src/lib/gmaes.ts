@@ -382,6 +382,19 @@ const gmaes: Gmae[] = [
 			}
 		],
 		url: '/_app/tools/idle-dices/index.html'
+	},
+	{
+		name: 'Idle Chopper',
+		description: 'Chop wood',
+		category: 'Uncategorized',
+		tags: [],
+		links: [
+			{
+				name: 'Developer website',
+				url: 'https://lutsgames.com/'
+			}
+		],
+		url: '/_app/tools/idle-chopper/index.html'
 	}
 ];
 
