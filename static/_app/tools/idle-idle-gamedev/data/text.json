@@ -1,0 +1,1038 @@
+{
+  "en": {
+    "ideaExplain": "Ideas are needed to create game features",
+    "gideaExplain": "Great Ideas are needed to create great game features. A great feature gives 10 quality",
+    "uideaExplain": "Unique Ideas are needed to create unique game features. A unique feature gives 100 quality",
+    "programExplain": "Programming turns ideas into features that improve the playtime and quality of your game",
+    "gprogramExplain": "A great feature gives 10 quality",
+    "uprogramExplain": "A unique feature gives 100 quality",
+    "bugsExplain": "Bugs decrease the quality of your games, so get rid of them!",
+    "marketExplain": "Market your game to give it more publicity and reach more players",
+    "researchExplain": "Research new technologies to make your games better",
+    "structureExplain": "Unstructured code slows feature programming down, structure your code to make it easier to program new features!",
+    "fansExplain": "Your fans will play all of your new games when they release",
+    "fanExpExplain": "The quality needed to get maximum retention",
+    "donationsExplain": "The money your fans give you every hour",
+    "playtimeExplain": "How long your game can be played without running out of content",
+    "baseRetentionExplain": "The percentage of players that can keep playing every hour based on playtime",
+    "qualityExplain": "How good your game is",
+    "totalRetentionExplain": "The percentage of players that will keep playing every hour based on playtime and quality/expecations",
+    "initPlayersExplain": "The amount of players that will play your game on release",
+    "cpmExplain": "Money you will get for 1000 plays",
+    "pausedWarning": "Game is paused",
+    "contractExplain": "Contracts will give you special rewards if you fulfill them. You need to accept a contract to work on it. The game created will not belong to you, so won't bring you revenue or fans. You will only get the reward.",
+    "recursionExplain": "You created Idle Idle GameDev%! You can tweak some parameters and play your just developed game. This works like a reset, you will lose all your money, researches, items, fans and skills. But you are able to buy powerful upgrades with recursion points that depend on your number of fans.",
+    "planetSearchExplain": "Search the universe for all kinds of planets",
+    "planetAnalyzeExplain": "Analyze planets for intelligent species",
+    "planetContactExplain": "Contact inhabited planets, establish a connection and let them play your games! Increases maximum players",
+    "populationExplain": "Maximum number of people who can play your games and be your fan",
+    "butcherExplain": "Destroys all of these employees but doubles power of all remaining employees",
+    "ffExplain": "Time will move 5x as fast (F)",
+    "sfExplain": "Run time for just one tick (S)",
+    "nExplain": "Normal Speed",
+    "pExplain": "Pause (Space)",
+    "getMoreExplain": "Get daily rewards and unlock achievements to get more bonus points",
+    "challengeExplain": "You may select a challenge to modify the game and get special rewards by finishing them.",
+    "starterExplain": "Get 500 BP, 1.5x Power and 1.5x EXP Multi forever",
+    "epicExplain": "Be a real developer and get 2000 BP, 2x Power, 2x EXP Multi and 2x Tick Speed forever!",
+    "iniigd":  " in Idle Idle GameDev",
+    "idledice": "Play my other game Idle Dice!",
+    "web": "Web",
+    "butcher": "Butcher",
+    "power": "Power",
+    "unassignAll": "Unassign All",
+    "dailyReward": "Daily Reward",
+    "getMore": "Get More",
+    "auto": "Auto",
+    "autoRelease": "Auto Release",
+    "autoDelete": "Auto Delete",
+    "freeStuff": "Free Stuff",
+    "playNow": "Play now",
+    "games": "Games",
+    "years": "Years",
+    "days": "Days",
+    "day": "Day",
+    "hours": "Hours",
+    "seconds": "Seconds",
+    "nextReward": "Next Reward",
+    "rewardAvailable": "Reward Available",
+    "buy": "Buy",
+    "buyAll": "Buy all",
+    "butcherAll": "Butcher all",
+    "settingsTitle": "Settings",
+    "creativity": "Creativity",
+    "logic": "Logic",
+    "charisma": "Charisma",
+    "intelligence": "Intelligence",
+    "statistics": "Statistics",
+    "achievementsHeader": "Achievements",
+    "skillsHeader": "Skills",
+    "bonusHeader": "Bonus Shop",
+    "achievementUnlocked": "Achievement Unlocked",
+    "level": "Level",
+    "upgrade": "Upgrade",
+    "value": "Value",
+    "reward": "Reward",
+    "cost": "Cost",
+    "done": "Done",
+    "max": "Max",
+    "copy": "Copy",
+    "export": "Export",
+    "import": "Import",
+    "hardReset": "Hard Reset",
+    "credits": "Credits",
+    "changelog": "Changelog",
+    "disclaimer": "Disclaimer",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "Ok",
+    "amount": "Unemployed",
+    "ideaGuys": "Idea Guys",
+    "fProgrammers": "Feature Programmers",
+    "bugFixers": "Bug Fixers",
+    "marketers": "Marketers",
+    "researchers": "Scientists",
+    "structurers": "Structurers",
+    "astronomers": "Astronomers",
+    "planetAnalyzers": "Planet Analyzers",
+    "astronaut": "Astronauts",
+    "exportExplain": "Copy this and save it somewhere.",
+    "importExplain": "Paste the savedata here and click load.",
+    "save": "Save",
+    "load": "Load",
+    "think": "Think",
+    "program": "Program",
+    "fix": "Fix",
+    "market": "Market",
+    "research": "Research",
+    "planetSearch": "Search",
+    "planetAnalyze": "Analyze",
+    "planetContact": "Contact",
+    "dev": "Dev",
+    "shop": "Shop",
+    "bpshop": "BP Shop",
+    "employees": "Employees",
+    "contracts": "Contracts",
+    "contract": "Contract",
+    "repeatable": "Repeatable",
+    "special": "Special",
+    "company": "Company",
+    "timeLeft": "Time to accept",
+    "fansNeeded": "Fans needed",
+    "recursion": "Recursion",
+    "facebook": "Facebook",
+    "followOnFacebook": "Like me on Facebook for % Bonus Points!",
+    "discord": "Discord",
+    "followOnDiscord": "Join the Discord for % Bonus Points!",
+    "reddit": "Reddit",
+    "followOnReddit": "Join the Subreddit for % Bonus Points!",
+    "kong": "Kongregate",
+    "followOnKong": "Follow me on Kongregate for % Bonus Points!",
+    "challenges": "Challenges",
+    "select": "Select",
+    "unselect": "Unselect",
+    "cancelChallenge": "Cancel Challenge",
+
+    "currency": {
+      "money": "Money",
+      "creativitySP": "Creativity Points",
+      "programmingSP": "Logic Points",
+      "marketingSP": "Charisma Points",
+      "intelligenceSP": "Intelligence Points",
+      "researchPoints": "Research Points",
+      "recursionPoints": "Recursion Points",
+      "bonusPoints": "Bonus Points"
+    },
+
+    "values": {
+      "structure": "Code Structure",
+      "research": "Research",
+      "ideas": "Ideas",
+      "features": "Features",
+      "bugs": "Bugs",
+      "publicity": "Publicity",
+      "power": "Power",
+      "featuresMulti": "Programming Power",
+      "ideasMulti": "Thinking Power",
+      "bugsMulti": "Bug Fixing Power",
+      "publicityMulti": "Marketing Power",
+      "researchMulti": "Researching Power",
+      "expMulti": "Exp Multi",
+      "cExpMulti": "Creativity Exp Multi",
+      "pExpMulti": "Logic Exp Multi",
+      "mExpMulti": "Charisma Exp Multi",
+      "iExpMulti": "Intelligence Exp Multi",
+      "fans": "Fans",
+      "fanMulti": "Fan gain per player",
+      "shopCostMulti": "Shop Cost Multi",
+      "planetSearch": "Found Planets",
+      "planetAnalyze": "Inhabited Planets",
+      "planetContact": "Contacted Planets",
+      "fanGain": "Fan gain per hour"
+    },
+
+    "popups": {
+      "thankYou": "Thank you!",
+      "noAd": "No Ad available, try again later",
+      "goneFor": "You were gone for %1. You gained %2 bonus seconds",
+      "updateAvailable": "New Update available, refresh now?",
+      "hardReset": "Are you sure? All of your progress will be lost forever.",
+      "copied": "Copied!",
+      "error": "Something went wrong.",
+      "kongError": "Saves that started outside of Kongregate cannot be imported into the Kongregate Version",
+      "uploadSuccess": "Uploading to the cloud was successful!",
+      "waitForData": "Waiting for data...",
+      "startContract": "You have to release your game before starting the contract. Release now?",
+      "startContractFail": "You have to release your game before starting the contract. But your server is full. Do you want to abandon your game? YOUR CURRENT GAME WILL BE ABANDONED AND NOT RELEASED IF YOU CLICK YES",
+      "cancelContract": "Are you sure to cancel the contract? You will be able to keep developing the game and release it yourself",
+      "recursion": "You will lose all your money, fans, games, and skills. You will keep your achievements. Are you sure?",
+      "butcher": "You will lose of this kind of employee. All remaining employees will have their power multiplied by %1. Are you sure?",
+      "dailyRewardText": "You got %1 Bonus Points! Come back tomorrow for more!",
+      "cancelChallenge": "Your challemge will be cancelled and you will reset without getting anything. Are you sure to cancel the challenge?"
+    },
+
+    "achieveCategories": {
+      "basic": "Basic",
+      "recursive": "Recursive",
+      "intergalactic": "Intergalactic",
+      "universal": "Universal"
+    },
+
+    "settings": {
+      "quality": {"name": "Quality"},
+      "canvas": {"name": "Use WebGL (Requires Restart)"},
+      "numberformat": {
+        "name": "Number Format",
+        "selections": {
+            "suffix": "Suffix (12.34k)",
+            "scientific": "Scientific (1.23e4)",
+            "engineering": "Engineering  (12.34e3)",
+            "logarithmic": "Logarithmic (e4.09)"
+        }
+      },
+      "soundVolume": {"name": "Volume"},
+      "soundEnabled": {"name": "Enable Sound"},
+      "musicEnabled": {"name": "Enable Music"},
+      "plotEnabled": {"name": "Enable Game Plot"},
+      "pauseOnLoad": {"name": "Pause on Load"},
+      "pauseOnRecursion": {"name": "Pause on Recursion"},
+      "contactOnMaxFans": {"name": "Only contact planets when having max fans"},
+      "autoReleaseThreshold": {
+        "name": "Auto Release Threshold",
+        "desc": "At which quality/expectation ratio a game should be automatically released if Auto Release is unlocked and enabled. (in percent)"
+      },
+      "autoDeleteSelect": {
+        "name": "Auto Delete Preference",
+        "selections": {
+          "oldest": "Oldest",
+          "lowestRetention": "Lowest Retention",
+          "lowestRevenue": "Lowest Revenue",
+          "lowestPlayers": "Lowest Current Players"
+        }
+      }
+    },
+
+    "stats": {
+      "version": "Version",
+      "fps": "FPS",
+      "activePlaytime": "Active Playtime",
+      "passivePlaytime": "Passive Playtime"
+    },
+
+    "upgrades": {
+      "e_flea": {
+        "name": "Flea",
+        "desc": "They are not really good in what they are doing but at least you can idle a bit. Power: %"
+      },
+      "e_cockroach": {
+        "name": "Cockroach",
+        "desc": "Not very pleasant to have around in the office. Power: %"
+      },
+      "e_hamster": {
+        "name": "Hamster",
+        "desc": "At least they are cute. Power: %"
+      },
+      "e_monkey": {
+        "name": "Monkey",
+        "desc": "Having actual fingers helps a lot while working with computers. Power: %"
+      },
+      "e_robot": {
+        "name": "Robot",
+        "desc": "Programmed to optimize everything to create the best games. Just be careful that they do not take over the world. Power: %"
+      },
+      "e_human": {
+        "name": "Human",
+        "desc": "An actual human being, willing to sell their soul and work for you forever. Power: %"
+      },
+      "e_ai": {
+        "name": "A.I.",
+        "desc": "A learning Artificial Intelligence, always becoming smarter. At one point it may realized humans a disturbing factor in creating better Idle Games. Power: %"
+      },
+      "e_alien": {
+        "name": "Alien",
+        "desc": "Much smarter than any human or AI. For a bit money you can convince them to work for you, even though they will be extremely bored by your tasks. Power: %"
+      },
+      "e_hivemind": {
+        "name": "Hivemind",
+        "desc": "These beings have the brainpower of multiple beings at once. They all work together even though they aren't at the same place. Power: %"
+      },
+      "e_cyborgalien": {
+        "name": "Cyborg Alien",
+        "desc": "Why not combine the powers of AI with an alien? They are exponentially smarter than either of its halfs.  Power: %"
+      },
+      "e_transcendent": {
+        "name": "Transcendent being",
+        "desc": "An overworldy being. Nobody knows what it is, only that the fact that they are working for you is really disregarding their powers. But they have to pay bills, too.  Power: %"
+      },
+      "r_forcedAds": {
+        "name": "Forced Ads",
+        "desc": "Increases CPM by %3"
+      },
+      "r_procGen": {
+        "name": "Procedural Generation",
+        "desc": "Multiplies playtime by %3"
+      },
+      "r_structureCode": {
+        "name": "Coding Structure",
+        "desc": "Unlocks code structuring"
+      },
+      "r_mtx": {
+        "name": "Micro Transactions",
+        "desc": "Increases CPM by %3"
+      },
+      "r_feedback": {
+        "name": "Feedback Channel",
+        "desc": "Multiplies Fan Gain by %3"
+      },
+      "r_forum": {
+        "name": "Community Forum",
+        "desc": "Multiplies Fan Gain by %3"
+      },
+      "r_neuralNet": {
+        "name": "Neural Network",
+        "desc": "Multiplies playtime by %3"
+      },
+      "r_telescope": {
+        "name": "Telescope",
+        "desc": "Unlocks planet searching"
+      },
+      "r_planetAnalyzer": {
+        "name": "Planet Analyzing",
+        "desc": "Unlocks planet analyzing"
+      },
+      "r_blog": {
+        "name": "Blog",
+        "desc": "Get %3 additional fans every hour"
+      },
+      "r_vlog": {
+        "name": "Vlog",
+        "desc": "Multiplies fans gained by blog by %3"
+      },
+      "r_marketingOptimize": {
+        "name": "Marketing Optimizing",
+        "desc": "Increases CPM by %3 x publicity"
+      },
+      "r_betterTelescope": {
+        "name": "Better Telescope",
+        "desc": "Search Planets %3 times faster"
+      },
+      "r_betterAnalyzing": {
+        "name": "Better Analyzing",
+        "desc": "Analyze Planets %3 times faster"
+      },
+      "r_betterSpaceship": {
+        "name": "Better Spaceship",
+        "desc": "Contact Planets %3 times faster"
+      },
+      "i_cent": {
+        "name": "Cent decoration",
+        "desc": "Hang the first cent you ever earned on the wall to get more Motivation and work %2 faster"
+      },
+      "i_spaceShip": {
+        "name": "Space Ship",
+        "desc": "Unlocks planet contacting"
+      },
+      "i_bubbleGum": {
+        "name": "Bubble Gum",
+        "desc": "Work 2 times faster for 2 minutes (affected by tickspeed)"
+      },
+      "i_coffee": {
+        "name": "Coffee",
+        "desc": "Learn 2 times faster for 4 minutes (affected by tickspeed)"
+      },
+      "i_energyDrink": {
+        "name": "Energy Drink",
+        "desc": "Work 2 times faster for 8 minutes (affected by tickspeed)"
+      },
+      "i_cocaine": {
+        "name": "Cocaine",
+        "desc": "Learn 2 times faster for 20 minutes (affected by tickspeed)"
+      },
+      "i_meth": {
+        "name": "Meth",
+        "desc": "Work 2 times faster for 40 minutes (affected by tickspeed)"
+      },
+      "i_motivationalCourse": {
+        "name": "Motivational Course",
+        "desc": "Learn 2 times faster for 1 hour (affected by tickspeed)"
+      },
+      "i_experimentalLiquid": {
+        "name": "Experimental Liquid",
+        "desc": "Work 2 times faster for 1 hour (affected by tickspeed)"
+      },
+      "i_spaceCrack": {
+        "name": "Space Crack",
+        "desc": "Learn 2 times faster for 1 hour (affected by tickspeed)"
+      },
+      "i_bodyEnhancement": {
+        "name": "Body Enhancement",
+        "desc": "Work 2 times faster for 1 hour (affected by tickspeed)"
+      },
+      "i_brainEnhancement": {
+        "name": "Brain Enhancement",
+        "desc": "Learn 2 times faster for 1 hour (affected by tickspeed)"
+      },
+      "i_absorbGalaxy": {
+        "name": "Absorb Galaxy",
+        "desc": "Work 2 times faster for 1 hour (affected by tickspeed)"
+      },
+      "i_absorbUniverse": {
+        "name": "Absorb Universe",
+        "desc": "Learn 2 times faster for 1 hour (affected by tickspeed)"
+      },
+      "i_calculator": {
+        "name": "Calculator",
+        "desc": "Learn Logic %2 times faster"
+      },
+      "i_book": {
+        "name": "Book",
+        "desc": "Learn everything %2 times faster"
+      },
+      "i_cactus": {
+        "name": "Cactus",
+        "desc": "Learn Creativity %2 times faster"
+      },
+      "i_megaphone": {
+        "name": "Megaphone",
+        "desc": "Learn Charisma %2 times faster"
+      },
+      "i_typewriter": {
+        "name": "Typewriter",
+        "desc": "Get new ideas %2 times faster"
+      },
+      "i_antFarm": {
+        "name": "Ant Farm",
+        "desc": "Fix Bugs %2 times faster"
+      },
+      "i_shittyphone": {
+        "name": "Shitty Phone",
+        "desc": "Program new features %2 times faster"
+      },
+      "i_haircut": {
+        "name": "Haircut",
+        "desc": "Market %2 times faster"
+      },
+      "i_researchBench": {
+        "name": "Research Bench",
+        "desc": "Unlocks research"
+      },
+      "i_tinyPC": {
+        "name": "Extremely Tiny Computer",
+        "desc": "Unlocks employees"
+      },
+      "i_betterPC": {
+        "name": "Better PC",
+        "desc": "Program new features %3 times faster"
+      },
+      "i_betterCalc": {
+        "name": "Better Calculator",
+        "desc": "Learn logic %3 times faster"
+      },
+      "i_betterBook": {
+        "name": "Better Book",
+        "desc": "Learn everything %3 times faster"
+      },
+      "i_betterDecoration": {
+        "name": "Better Decoration",
+        "desc": "Learn creativity %3 times faster"
+      },
+      "i_betterStyle": {
+        "name": "Better Style",
+        "desc": "Learn charisma %3 times faster"
+      },
+      "i_betterTypewriter": {
+        "name": "Better Typewriter",
+        "desc": "Think of new ideas %3 times faster"
+      },
+      "i_betterBugs": {
+        "name": "Better Bug Pets",
+        "desc": "Fix bugs %3 times faster"
+      },
+      "i_betterHaircut": {
+        "name": "Better Haircut",
+        "desc": "Market %3 times faster"
+      },
+      "i_betterOffice": {
+        "name": "Better Office",
+        "desc": "Structure Code %3 times faster"
+      },
+      "i_betterResearch": {
+        "name": "Better Research Bench",
+        "desc": "Research %3 times faster"
+      },
+      "serverSize": {
+        "name": "Server Size",
+        "desc": "How many games you can have published at the same time"
+      },
+      "bandWidth": {
+        "name": "Band Width",
+        "desc": "How many players can play a game simultaneously"
+      },
+      "ideaProgressMulti": {
+        "name": "Thinking Speed",
+        "desc": "Think %3 times faster per level"
+      },
+      "programmingXPMulti": {
+        "name": "Learn to Code",
+        "desc": "Increases logic skill learning speed by %3 per level (compounding)"
+      },
+      "marketingXPMulti": {
+        "name": "Learn to Count",
+        "desc": "Increases charisma skill learning speed by %3 per level (compounding)"
+      },
+      "ideaMulti": {
+        "name": "Bulk Thinking",
+        "desc": "Multiplies ideas by %3 per level"
+      },
+      "greatIdeaChance": {
+        "name": "Great Ideas",
+        "desc": "Increases the chance for great ideas by %3 per level (diminishing). Great Ideas turn into great features which give 10 quality"
+      },
+      "ideaResetReal": {
+        "name": "Holiday",
+        "desc": "Refresh your thoughts. Will reset the cost of new ideas. (Use when getting ideas is slowing down)"
+      },
+      "ideaReset": {
+        "name": "Holiday Discount",
+        "desc": "Multiplies the cost of Holiday by %3 per level (diminishing)"
+      },
+      "uniqueIdeaChance": {
+        "name": "Unique Ideas",
+        "desc": "Increases chance for unique ideas by %3 per level (diminishing). Unique Ideas turn into unique features which give 100 quality"
+      },
+      "featuresProgressMulti": {
+        "name": "Programming Speed",
+        "desc": "Program %3 times faster per level"
+      },
+      "contentStretching": {
+        "name": "Content Streching",
+        "desc": "Increases playtime of games by %3 per feature per level"
+      },
+      "bugsQualityDecrease": {
+        "name": "Coding Patterns",
+        "desc": "Multiplies the influence a feature has on the programming power by %3 per level (diminishing)"
+      },
+      "maxBugs": {
+        "name": "Careful Programming",
+        "desc": "Produce fewer bugs per feature."
+      },
+      "qualityMulti": {
+        "name": "Programming Quality",
+        "desc": "Multiplies the quality of a game by %3 per level"
+      },
+      "bugsProgressMulti": {
+        "name": "Bug Fixing",
+        "desc": "Multiplies bug fixing speed by %3 per level"
+      },
+      "publicityProgressMulti": {
+        "name": "Marketing Speed",
+        "desc": "Multiplies marketing speed by %3 per level"
+      },
+      "publicityMulti": {
+        "name": "Marketing Effectiveness",
+        "desc": "Multiplies initial Players by %3 per level"
+      },
+      "cpmMulti": {
+        "name": "Money Grabbing",
+        "desc": "Increases cpm by %3 per level (compounding)"
+      },
+      "creativityReset": {
+        "name": "Reset",
+        "desc": "Reset your Creativity Skills"
+      },
+      "logicReset": {
+        "name": "Reset",
+        "desc": "Reset your Logic Skills"
+      },
+      "charismaReset": {
+        "name": "Reset",
+        "desc": "Reset your Charisma Skills"
+      },
+      "intelligenceReset": {
+        "name": "Reset",
+        "desc": "Reset your Intelligence Skills"
+      },
+      "recursionReset": {
+        "name": "Reset",
+        "desc": "Reset your Recursion Skills"
+      },
+      "marketingEffDecrease": {
+        "name": "Memorability",
+        "desc": "Multiplies marketing efficiency decay by %3 per level (diminishing)"
+      },
+      "donations": {
+        "name": "Donations",
+        "desc": "1000 fans will donate %3 per level every hour"
+      },
+      "shopDiscount": {
+        "name": "Shop Discount",
+        "desc": "Multiplies shop prices by %3 per level (diminishing)"
+      },
+      "creativityXPMulti": {
+        "name": "Learn to think",
+        "desc": "Increases creativity learning speed by %3 per level (compounding)"
+      },
+      "researchDiscount": {
+        "name": "Research Discount",
+        "desc": "Multiplies the price of researches by %3 per level (diminishing)"
+      },
+      "researchMulti": {
+        "name": "Research Multi",
+        "desc": "Multiplies research speed by %3 per level"
+      },
+      "XPMulti": {
+        "name": "Learn to learn",
+        "desc": "Increases learning speed by %3 per level (compounding)"
+      },
+      "intXPMulti": {
+        "name": "How to be smart",
+        "desc": "Increases intelligence learning speed by %3 per level (compounding)"
+      },
+      "researchPointMulti": {
+        "name": "Bulk Researching",
+        "desc": "Multiplies research points gained by %3 per level"
+      },
+      "lowExpectation": {
+        "name": "Disappointment",
+        "desc": "Multiplies fan expectations by %3 per level (diminishing)"
+      },
+      "inspiration": {
+        "name": "Inspiration",
+        "desc": "Employees working on the same task as you get a %3 boost to their power (additive)"
+      },
+      "bandWidthDiscount": {
+        "name": "Server Architecture",
+        "desc": "Multiplies Bandwidth cost by %3 per level (diminishing)"
+      },
+      "structureMulti": {
+        "name": "Software Architecture",
+        "desc": "Multiplies structuring speed by %3 per level (unlock through research)"
+      },
+      "teamWork": {
+        "name": "Team Work",
+        "desc": "Employees get their power multiplied by %3 per level for each employee working on the same task"
+      },
+      "brand": {
+        "name": "Brand Building",
+        "desc": "%3 of the players of each game per level also play every other game"
+      },
+      "employeeDiscount": {
+        "name": "Employee Discount",
+        "desc": "Multiplies the price of employees by %3 per level (diminishing)"
+      },
+      "fanMulti": {
+        "name": "Community Building",
+        "desc": "Increases fan gain by %3 per level (compounding)"
+      },
+      "buffMulti": {
+        "name": "Chemistry",
+        "desc": "Increases buff duration by %3 per level"
+      },
+      "researchResetReal": {
+        "name": "Party",
+        "desc": "Reset research cost (Use when research point gain is slowing down)"
+      },
+      "researchReset": {
+        "name": "Party Discount",
+        "desc": "Multiplies the cost of Party by %3 per level (diminishing)"
+      },
+      "multiTasking": {
+        "name": "Multitasking",
+        "desc": "Passively learn each skill without working on them with %3 efficiency per level"
+      },
+      "maxSkillLevel": {
+        "name": "Brain Capacity",
+        "desc": "Increase max levels of skills by %3 per level"
+      },
+      "bandWidthMulti": {
+        "name": "Download RAM",
+        "desc": "Increases Bandwidth by %3 per level"
+      },
+      "tickSpeedMulti": {
+        "name": "Overclocking",
+        "desc": "Increases tickspeed by %3 per level"
+      },
+      "startingMoney": {
+        "name": "Rich Parents",
+        "desc": "Multiplies starting money by %3 per level"
+      },
+      "recurseExpMulti": {
+        "name": "Lower Difficulty",
+        "desc": "Increases Exp Multi by %3 per level"
+      },
+      "butcherMulti": {
+        "name": "Discipline",
+        "desc": "Increases Butcher Multi by %3 per level"
+      },
+      "lowerExpectations": {
+        "name": "Lower Expectations",
+        "desc": "Multiplies fan expectations by %3 per level (diminishing)"
+      },
+      "recurseCpmMulti": {
+        "name": "CPM Multi",
+        "desc": "Increases CPM by %3 per level"
+      },
+      "reproduction": {
+        "name": "Reproduction",
+        "desc": "Maximum Population is increasing by %3 per hour per level"
+      },
+      "maxPlanetPop": {
+        "name": "Planet Population",
+        "desc": "Multiplies Max Planet Population by %3 per level"
+      },
+      "planetExpectMulti": {
+        "name": "Planet Expectations",
+        "desc": "Multiplies Expecations per Planet by %3 per level (diminishing)"
+      },
+      "contactCurve": {
+        "name": "Contact Curve",
+        "desc": "Higher possibility that a planet has more population (pow(rnd,%1) * maxpop). Multiplies by %3 per level (diminishing)"
+      },
+      "clones": {
+        "name": "Clones",
+        "desc": "Increases population multi by %3 per level"
+      },
+      "1hBonusSeconds": {
+        "name": "1h Bonus Seconds",
+        "desc": "Get 1 hour of Bonus seconds (5x speed for 1h)"
+      },
+      "5hBonusSeconds": {
+        "name": "5h Bonus Seconds",
+        "desc": "Get 5 hours of Bonus seconds (5x speed for 5h hours)"
+      },
+      "10hBonusSeconds": {
+        "name": "10h Bonus Seconds",
+        "desc": "Get 10 hours of Bonus seconds (5x speed for 10h hours)"
+      },
+      "bonusXPMulti": {
+        "name": "EXP Multi",
+        "desc": "Increase your learning speed by +%3 per level"
+      },
+      "autoBuff": {
+        "name": "Auto Buff",
+        "desc": "Adds an option to buy buffs automatically"
+      },
+      "autoRelease": {
+        "name": "Auto Release",
+        "desc": "Adds an option to release games automatically"
+      },
+      "autoDelete": {
+        "name": "Auto Delete",
+        "desc": "Adds an option to delete games automatically when the server is full"
+      },
+      "autoReleaseContract": {
+        "name": "Auto Contract",
+        "desc": "Adds an option to release a contract automatically"
+      },
+      "buyAllShop": {
+        "name": "Buy all",
+        "desc": "Adds an option to buy all items in the shop with one click"
+      },
+      "buyAllResearch": {
+        "name": "Research all",
+        "desc": "Adds an option to buy all researches with one click"
+      },
+      "butcherAll": {
+        "name": "Butcher all",
+        "desc": "Adds an option to buy 100 of each employee and butcher them, if affordable"
+      },
+      "autoBandWidth": {
+        "name": "Auto Bandwidth",
+        "desc": "Adds an option to upgrade bandwidth automatically"
+      }
+    },
+
+    "achievements": {
+      "totalMoney": {
+        "name": "Bank Account",
+        "desc": "Have % money",
+        "reward": "Charisma Exp Multi x%"
+      },
+      "totalIdeas": {
+        "name": "Total Ideas",
+        "desc": "Think of % ideas in total",
+        "reward": "Creativity Exp Multi x%"
+      },
+      "totalQualityGame": {
+        "name": "Quality Game",
+        "desc": "Release a game with a quality of at least %",
+        "reward": "Logic Exp Multi x%"
+      },
+      "totalPlayers": {
+        "name": "Total Players",
+        "desc": "Get your games played % times in total",
+        "reward": "Marketing Speed x%"
+      },
+      "playtime": {
+        "name": "Replayability",
+        "desc": "Release a game with a playtime of % hours",
+        "reward": "Feature Programming x%"
+      },
+      "cent1": {
+        "name": "Finally it pays out!",
+        "desc": "Earn your first cent",
+        "reward": "Unlocks Shop"
+      },
+      "fans1": {
+        "name": "Hi Mom!",
+        "desc": "Get your first fan",
+        "reward": "Unlocks Marketing"
+      },
+      "fans100": {
+        "name": "Making a name",
+        "desc": "Get 100 fans",
+        "reward": "Unlocks contracts"
+      },
+      "fans7500m": {
+        "name": "World Domination",
+        "desc": "Get 7.5B fans",
+        "reward": "Unlocks telescope research"
+      },
+      "ideas3": {
+        "name": "I have an idea for a game",
+        "desc": "Have 3 ideas",
+        "reward": "Unlocks Features"
+      },
+      "features2": {
+        "name": "What's that?",
+        "desc": "Program 2 features",
+        "reward": "Unlocks Bug fixing"
+      },
+      "games1": {
+        "name": "My first game!",
+        "desc": "Release your first game",
+        "reward": "Unlocks Game tab"
+      },
+      "retention0,9999999": {
+        "name": "Good Game",
+        "desc": "Release a game with a retention of %",
+        "reward": "Logic Exp Multi x1.01"
+      },
+      "fleas100": {
+        "name": "Wash your hair",
+        "desc": "Have % fleas",
+        "reward": "Unlocks butchering"
+      },
+      "recursed": {
+        "name": "Recurse",
+        "desc": "Recurse % times",
+        "reward": "Fan Gain x%"
+      },
+      "timeRecursed": {
+        "name": "Speedrun",
+        "desc": "Recurse in less than % (ingame time)",
+        "reward": "Tick Speed x%"
+      },
+      "totalFans": {
+        "name": "Total Fans",
+        "desc": "Get % fans in total",
+        "reward": "Thinking Speed x%"
+      },
+      "totalResearch": {
+        "name": "Research",
+        "desc": "Have % research points",
+        "reward": "Intelligence Exp Multi x%"
+      },
+      "totalContracts": {
+        "name": "Contractor",
+        "desc": "Release % contracts in total",
+        "reward": "Bug Fixing Speed x%"
+      },
+      "totalBugs": {
+        "name": "Insect Killer",
+        "desc": "Fix % bugs total",
+        "reward": "Bug Fixing Speed x%"
+      },
+      "creativityLevel": {
+        "name": "Creative",
+        "desc": "Reach Creativity Level %",
+        "reward": "Logic Exp Multi x%"
+      },
+      "logicLevel": {
+        "name": "Logician",
+        "desc": "Reach Logic Level %",
+        "reward": "Charisma Exp Multi x%"
+      },
+      "charismaLevel": {
+        "name": "Charismatic",
+        "desc": "Reach Charisma Level %",
+        "reward": "Intelligence Exp Multi x%"
+      },
+      "intelligenceLevel": {
+        "name": "Intelligent",
+        "desc": "Reach Intelligence Level %",
+        "reward": "Creativity Exp Multi x%"
+      },
+      "timeContact": {
+        "name": "Spacerun",
+        "desc": "Contact a planet in less than % (ingame time)",
+        "reward": "Contacting Speed x%"
+      },
+      "totalChallenges": {
+        "name": "Challenge Accepted",
+        "desc": "Beat % challenges in total",
+        "reward": "Recursion Point Multi x%"
+      },
+      "habitedPlanet1": {
+        "name": "New potential players",
+        "desc": "Find an inhabited Planet",
+        "reward": "Unlocks buyable Spaceship"
+      },
+      "universeDomination": {
+        "name": "Universe Domination",
+        "desc": "Have everybody in the universe as your fan",
+        "reward": "The End. (?)"
+      },
+      "totalFoundPlanets": {
+        "name": "Astronomer",
+        "desc": "Find % planets in total",
+        "reward": "Planet Searching x%"
+      },
+      "totalAnalyzedPlanets": {
+        "name": "Analyzer",
+        "desc": "Analyze % planets in total",
+        "reward": "Planet Analyzing x%"
+      },
+      "totalContactedPlanets": {
+        "name": "Astronaut",
+        "desc": "Contact % planets in total",
+        "reward": "Planet Contacting x%"
+      },
+      "contacted1": {
+        "name": "Oh.. hi.. you're alone?",
+        "desc": "Contact a planet with a population of %",
+        "reward": "Planet Contacting x1.1"
+      },
+      "timeUniversal": {
+        "name": "Universe Run",
+        "desc": "Dominate the universe in less than % (ingame time)",
+        "reward": "Recursion Point Multi x%"
+      }
+    },
+
+    "contractData":{
+      "fans":{
+        "name": "Fan Service",
+        "desc": "Create a game with a playtime of %1 and a quality of %2.",
+        "reward": "% Fans"
+      },
+      "quality":{
+        "name": "Quality Game",
+        "desc": "Create a game with a quality of %1",
+        "reward": "% Money"
+      },
+      "cpm":{
+        "name": "Data Mining",
+        "desc": "Create a game with %1 initial players",
+        "reward": "Cpm +%"
+      },
+      "researchPoints":{
+        "name": "Even more... friends",
+        "desc": "We want %1 bugss... in exchange for resssearch",
+        "reward": "% Research Points"
+      },
+      "recursionPoints":{
+        "name": "Update",
+        "desc": "Create a game with a quality of %1 and %2 initial Players.",
+        "reward": "% Recursion Points next recursion"
+      },
+      "first":{
+        "name": "Hello World!",
+        "desc": "Create a game with a quality of %1",
+        "reward": "% Money"
+      },
+      "second":{
+        "name": "To the dark side",
+        "desc": "Create a game with a playtime of %1 and market it to %2 players. We don't care about the quality, only want to make a lot of money",
+        "reward": "Publicity x%"
+      },
+      "third":{
+        "name": "More.. friendsss..",
+        "desc": "Give us... %1 bugssss",
+        "reward": "Feature Programming x%"
+      },
+      "fourth":{
+        "name": "Not Rich enough",
+        "desc": "Create a game with a playtime of %1 and market it to %2 players. We don't care about the quality, only want to make a lot of money",
+        "reward": "Publicity x%"
+      },
+      "fifth":{
+        "name": "Recursion",
+        "desc": "Create a game with a quality of %1 and %2 initial Players.",
+        "reward": "?"
+      }
+    },
+    "challengeData":{
+      "thieves":{
+        "name": "Thieves",
+        "desc": "Your employees are tired of not getting any salary. Every employee will steal money as high as their base cost every hour. Develop Idle Idle Gamedev to end the challenge.",
+        "reward": "Unlocks Discipline Skill"
+      },
+      "fanDecay":{
+        "name": "Bored Fans",
+        "desc": "Your fans are getting bored. You will lose 0.1% of your fans every hour. Develop Idle Idle Gamedev to end the challenge.",
+        "reward": "Fan Gain +25%"
+      },
+      "highExpectations":{
+        "name": "High Expectations",
+        "desc": "Fan Expectations are multiplied by 100. Develop Idle Idle Gamedev to end the challenge.",
+        "reward": "Unlocks Lower Expecations Skill"
+      },
+      "bugsReproduce":{
+        "name": "Kill them before they lay eggs!",
+        "desc": "Bugs are real and reproducing. They will increase by 1% every hour. Contact a planet to end the challenge.",
+        "reward": "Unlocks Reproduction Skill"
+      },
+      "blackout":{
+        "name": "Blackout",
+        "desc": "Electricity on earth is unstable. Games will randomly get deleted. Contact a planet to end the challenge.",
+        "reward": "Unlocks Planet Population Skill"
+      },
+      "competition":{
+        "name": "Competition",
+        "desc": "You are not the only one to make games. Fan Expectation will increase by 0.1% every hour. Contact a planet to end the challenge.",
+        "reward": "Unlocks Planet Expectation Skill"
+      },
+      "adBlocker":{
+        "name": "Ad Blocker",
+        "desc": "Everybody is using ad blockers. Your CPM will always be 0. Contact a planet to end the challenge.",
+        "reward": "Unlocks CPM Multi Skill"
+      },
+      "higherBadCode":{
+        "name": "Realistic Code",
+        "desc": "Unstructured code per feature is 100 times higher. Contact a planet to end the challenge.",
+        "reward": "Unlocks Contact Curve Skill"
+      },
+      "alzheimers":{
+        "name": "Alzheimers",
+        "desc": "10% Chance to lose all your Ideas every hour. Contact a planet to end the challenge.",
+        "reward": "Unlocks Clones Skill"
+      }
+    }
+  },
+
+
+
+  "de": {
+  }
+}

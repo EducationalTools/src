@@ -1,0 +1,134 @@
+{
+  "logs":[
+    {
+      "version": "1.0.46",
+      "log": [
+          "added: made it more obvious where BPs can be spent",
+          "renamed: shop -> bp shop",
+          "fixed: import not working",
+          "fixed: typos"
+        ]
+    },
+    {
+      "version": "1.0.23",
+      "log": [
+          "fixed: wrong buy amount displayed"
+        ]
+    },
+    {
+      "version": "1.0.22",
+      "log": [
+          "improved performance"
+        ]
+    },
+    {
+      "version": "1.0.21",
+      "log": [
+          "added: new researches and shop items"
+        ]
+    },
+    {
+      "version": "1.0.20",
+      "log": [
+          "fixed: unlocked achievements not showing after 10"
+        ]
+    },
+    {
+      "version": "1.0.19",
+      "log": [
+          "added: step-forward button",
+          "added: more number formats",
+          "added: auto release threshold setting in bonus shop",
+          "added: auto delete preference",
+          "added: hotkeys for pause, step and fast forward",
+          "added: unassign all-button for employees",
+          "added: max visible achieved labels = 10",
+          "added: red pulsing to time container when game is paused",
+          "added: power display on job and employees",
+          "added: save buttons for employees",
+          "added: setting to only contact planets if max fans are reached",
+          "added: base quality to features job",
+          "changed: fans gain from blog 100 -> 20",
+          "changed: fans gain based on current players instead of new players",
+          "changed: planet contact cost increase 1000000000 -> 100000000",
+          "fixed: recursion locking again (reload if you already did the recursion contract but recursion is locked)",
+          "fixed: tab text of universal achievements",
+          "fixed: buy max sometimes not working",
+          "fixed: -Infinity Ideas bug",
+          "fixed: slightly better performance",
+          "fixed: last achievment not achieveable",
+          "fixed: typo"
+        ]
+    },
+    {
+      "version": "1.0.17",
+      "log": [
+          "added: more researches",
+          "added: retriggering achievements on start",
+          "changed: cpm reward from datamining 20% -> 5% of current cpm"
+        ]
+    },
+    {
+      "version": "1.0.16",
+      "log": [
+          "added: pause on load and pause on recursion setting",
+          "added: auto release threshold setting",
+          "added: total players information in gametab",
+          "changed: balanced contracts",
+          "changed: increases cost of planet searching, analyizing and contacting"
+        ]
+    },
+    {
+      "version": "1.0.14",
+      "log": [
+          "fixed: players of a game directly becoming 0"
+        ]
+    },
+    {
+      "version": "1.0.11",
+      "log": [
+          "added: new achievement",
+          "changed: base contact curve 10 -> 5",
+          "changed: rich parent cost increase 2 -> 4",
+          "changed: learn to learn increase 1.1 -> 1.2",
+          "changed: Money Grabbing to multiplicative",
+          "changed: scaling of contracts",
+          "changed: time for next contract 20m -> 60m",
+          "changed: total fans achievements base goal 10b -> 10m",
+          "changed: capped new players a game can gain by population",
+          "fixed: great feature enabling not saving",
+          "fixed: holiday and party affected by buyamount",
+          "fixed: modifiers of challenges not reseting after they are done"
+        ]
+    },
+    {
+      "version": "1.0.10",
+      "log": [
+          "added: checkbox to enable programming for great and unique features",
+          "added: holiday and party for money",
+          "added: reset buttons for skills",
+          "changed: scaling of contracts",
+          "changed: change maxlevel and base goal of contract achievement",
+          "changed: recursion points 1/1m -> 1/100k",
+          "changed: decreased cost increase of shop items",
+          "changed: increases bp gain from achievements",
+          "changed: skillpoint cost increase 1.10 -> 1.08",
+          "changed: save interval 2s -> 60s",
+          "changed: bandwidth cost increase 4 -> 3.5",
+          "changed: replaced old holiday and party by discounts",
+          "changed: disabled sorting of shop and research for now",
+          "fixed: canceling a challenge triggers speedrun achievement",
+          "fixed: power multi of employees not displayed",
+          "fixed: description of careful programming",
+          "fixed: /s value on progresses not reseting",
+          "fixed: fan tooltip typo"
+        ]
+    },
+    {
+      "version": "1.0.0",
+      "log": [
+          "release"
+        ]
+    }
+  ]
+}
