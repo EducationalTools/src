@@ -59,7 +59,7 @@
 		"current-git-branch": "^2.0.1",
 		"dayjs": "^1.11.13",
 		"formsnap": "^2.0.1",
-		"jose": "^6.0.12",
+		"jose": "^6.0.13",
 		"jsonwebtoken": "^9.0.2",
 		"md5": "^2.3.0",
 		"posthog-js": "^1.260.1",
