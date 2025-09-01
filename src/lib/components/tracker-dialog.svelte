@@ -11,8 +11,11 @@
 	<Dialog.Content>
 		<Dialog.Title>Notice</Dialog.Title>
 		<Dialog.Description>
-			We use Posthog to detect/fix errors, track usage and roll out features. Please disable your
+			We use PostHog to detect/fix errors, track usage and roll out features. Please disable your
 			tracker/ad blocker to allow this. Don't worry, we won't show you any ads.
+			<br /><br />
+			For more details about our data collection practices, see our
+			<a href="/privacy" class="text-blue-600 hover:underline" target="_blank">Privacy Policy</a>.
 		</Dialog.Description>
 		<Dialog.Footer>
 			<Dialog.Close onclick={() => ($trackerDialogClosed = true)}>
