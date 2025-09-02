@@ -122,7 +122,7 @@ export function createMainNavigation(
 		},
 		{
 			title: 'Privacy Policy',
-			experimental: false,
+			experimental: true,
 			icon: Shield,
 			url: '/privacy'
 		}

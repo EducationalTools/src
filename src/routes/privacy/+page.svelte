@@ -1,13 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let lastUpdated = '2024-12-28';
+	let lastUpdated = '02-09-2025';
 </script>
-
-<svelte:head>
-	<title>Privacy Policy - EduTools</title>
-	<meta name="description" content="Privacy policy for EduTools educational platform" />
-</svelte:head>
 
 <div class="container mx-auto flex max-w-4xl flex-col gap-6 p-6">
 	<h1 class="text-4xl font-bold">Privacy Policy</h1>
@@ -118,7 +113,7 @@
 				<p class="text-muted-foreground text-sm">
 					Database hosting for user backups and content.
 					<a
-						href="https://convex.dev/privacy"
+						href="https://www.convex.dev/legal/privacy/"
 						class="text-blue-600 hover:underline"
 						target="_blank"
 						rel="noopener">Convex Privacy Policy</a
@@ -158,7 +153,6 @@
 			<li>HTTPS encryption for all data transmission</li>
 			<li>JWT-based authentication with industry-standard encryption</li>
 			<li>Regular security updates and monitoring</li>
-			<li>Limited access to user data on a need-to-know basis</li>
 		</ul>
 	</section>
 
@@ -193,7 +187,7 @@
 					class="text-blue-600 hover:underline"
 					target="_blank"
 					rel="noopener">Security Advisory</a
-				> (for privacy concerns)
+				> (for reporting vulnerabilities)
 			</li>
 		</ul>
 	</section>
