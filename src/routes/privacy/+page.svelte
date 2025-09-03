@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 
 	let lastUpdated = '02-09-2025';
 </script>
