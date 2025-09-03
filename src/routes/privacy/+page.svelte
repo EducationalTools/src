@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	let lastUpdated = '02-09-2025';
 </script>
 
