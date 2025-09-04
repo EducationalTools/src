@@ -62,7 +62,7 @@
 	}
 
 	onMount(() => {
-		posthog.capture('gmae_open', { gmae_id: gmaedata?.id });
+		posthog.capture('gmae_open', { gmae_id: gmaedata?.id, gmae_name: gmaedata?.name });
 	});
 </script>
 
