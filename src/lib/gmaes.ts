@@ -408,6 +408,19 @@ const gmaes: Gmae[] = [
 			}
 		],
 		url: '/_app/tools/idle-idle-gamedev/index.html'
+	},
+	{
+		name: 'Toy Defence',
+		description: 'another tower defence variant ig',
+		category: 'Strategy',
+		tags: ['tower-defence'],
+		links: [
+			{
+				name: 'Coolmath Games',
+				url: 'https://www.coolmathgames.com/0-toy-defense'
+			}
+		],
+		url: '/_app/tools/toy-defence/index.html'
 	}
 ];
 
