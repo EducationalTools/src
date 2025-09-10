@@ -86,10 +86,10 @@
 						>
 							<div
 								class={clsx(
-									'text-sidebar-primary-foreground foreground flex aspect-square size-8 items-center justify-center rounded-lg bg-black p-1'
+									'text-sidebar-primary-foreground foreground bg-sidebar flex aspect-square size-8 items-center justify-center rounded-md p-1'
 								)}
 							>
-								<img src="/edutools-white.svg" alt="" />
+								<img src="/edutools-black.svg" alt="" class="dark:invert" />
 							</div>
 							<div class="flex flex-col gap-0.5 leading-none">
 								<span class="font-semibold"
