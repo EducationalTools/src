@@ -1,0 +1,741 @@
+{
+  "@attributes": {
+    "floating_tower_delta_ipad": "0 -90",
+    "floating_tower_delta_iphone": "0 -90",
+    "tower_max_test_radius": "35"
+  },
+  "burn": {
+    "threshold": {
+      "@attributes": {
+        "effect": "tower_in_fire_1",
+        "threshold": "0.2"
+      }
+    }
+  },
+  "floating": {"@attributes": {"copy": "game/game.xml|hit_floating"}},
+  "repair": {
+    "@attributes": {
+      "auto_repair_time": "2",
+      "offset": "0 -40"
+    },
+    "animation": {
+      "@attributes": {
+        "fps": "16",
+        "frames": "1",
+        "hotspot": "40 40",
+        "position": "0 0",
+        "rect": "0 0 80 80",
+        "texture": "game/infobar/infobar_23.png"
+      }
+    }
+  },
+  "dead_tower": {
+    "@attributes": {
+      "hotspot": "20 20",
+      "rect": "0 0 40 40",
+      "texture": "game/towers/dead_tower_small2.png",
+      "use_filter": "1"
+    }
+  },
+  "towers": {
+    "tower_a": {
+      "level_0": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_a_0",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "28 2",
+              "rect": "0 0 60 60",
+              "rotation_speed": "40",
+              "texture": "game/towers/towers_10.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_1": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_a_1",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 2",
+              "rect": "0 0 60 60",
+              "rotation_speed": "45",
+              "texture": "game/towers/towers_11.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_2": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_a_2",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 2",
+              "rect": "0 0 60 60",
+              "rotation_speed": "45",
+              "texture": "game/towers/towers_12.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_3": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_a_3",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 2",
+              "rect": "0 0 60 60",
+              "rotation_speed": "50",
+              "texture": "game/towers/towers_13.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_4": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_a_4",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 2",
+              "rect": "0 0 60 60",
+              "rotation_speed": "50",
+              "texture": "game/towers/towers_14.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_5": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_a_5",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 2",
+              "rect": "0 0 60 60",
+              "rotation_speed": "55",
+              "texture": "game/towers/towers_15.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_6": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_a_6",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 2",
+              "rect": "0 0 60 60",
+              "rotation_speed": "60",
+              "texture": "game/towers/towers_16.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      }
+    },
+    "tower_b": {
+      "level_0": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_b_0",
+              "fire_name": "tower_2_shot",
+              "fire_name2": "tower_2_fire",
+              "flamethrower": "1",
+              "forestalling": "20",
+              "hotspot": "30 30",
+              "position": "20 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "20",
+              "texture": "game/towers/towers_17.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_1": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_b_1",
+              "fire_name": "tower_2_shot",
+              "fire_name2": "tower_2_fire",
+              "flamethrower": "1",
+              "forestalling": "20",
+              "hotspot": "30 30",
+              "position": "20 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "20",
+              "texture": "game/towers/towers_18.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_2": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_b_2",
+              "fire_name": "tower_2_shot",
+              "fire_name2": "tower_2_fire",
+              "flamethrower": "1",
+              "forestalling": "20",
+              "hotspot": "30 30",
+              "position": "20 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "25",
+              "texture": "game/towers/towers_19.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_3": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "head": {
+          "@attributes": {
+            "hotspot": "30 30",
+            "rect": "0 0 60 60",
+            "texture": "game/towers/towers_20.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": [
+            {
+              "@attributes": {
+                "bullet_name": "tower_b_4",
+                "fire_name": "tower_2_shot",
+                "fire_name2": "tower_2_fire",
+                "flamethrower": "1",
+                "forestalling": "20",
+                "hotspot": "30 30",
+                "position": "20 0",
+                "rect": "0 0 60 60",
+                "rotation_speed": "20",
+                "texture": "game/towers/towers_21.png",
+                "use_filter": "1"
+              }
+            },
+            {
+              "@attributes": {
+                "bullet_name": "tower_b_4",
+                "fire_name": "tower_2_shot",
+                "fire_name2": "tower_2_fire",
+                "flamethrower": "1",
+                "forestalling": "20",
+                "hotspot": "30 30",
+                "position": "20 0",
+                "rect": "0 0 60 60",
+                "rotation_speed": "20",
+                "texture": "game/towers/towers_21.png",
+                "use_filter": "1"
+              }
+            }
+          ]
+        }
+      },
+      "level_4": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "head": {
+          "@attributes": {
+            "hotspot": "30 30",
+            "rect": "0 0 60 60",
+            "texture": "game/towers/towers_22.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_b_3",
+              "fire_name": "tower_2_shot",
+              "fire_name2": "tower_2_fire",
+              "flamethrower": "1",
+              "forestalling": "20",
+              "hotspot": "30 30",
+              "position": "20 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "30",
+              "texture": "game/towers/towers_21.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_5": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "head": {
+          "@attributes": {
+            "hotspot": "30 30",
+            "rect": "0 0 60 60",
+            "texture": "game/towers/towers_23.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": [
+            {
+              "@attributes": {
+                "bullet_name": "tower_b_5",
+                "fire_name": "tower_2_shot",
+                "fire_name2": "tower_2_fire",
+                "flamethrower": "1",
+                "forestalling": "20",
+                "hotspot": "30 30",
+                "position": "20 0",
+                "rect": "0 0 60 60",
+                "rotation_speed": "20",
+                "texture": "game/towers/towers_21.png",
+                "use_filter": "1"
+              }
+            },
+            {
+              "@attributes": {
+                "bullet_name": "tower_b_5",
+                "fire_name": "tower_2_shot",
+                "fire_name2": "tower_2_fire",
+                "flamethrower": "1",
+                "forestalling": "20",
+                "hotspot": "30 30",
+                "position": "20 0",
+                "rect": "0 0 60 60",
+                "rotation_speed": "20",
+                "texture": "game/towers/towers_21.png",
+                "use_filter": "1"
+              }
+            },
+            {
+              "@attributes": {
+                "bullet_name": "tower_b_5",
+                "fire_name": "tower_2_shot",
+                "fire_name2": "tower_2_fire",
+                "flamethrower": "1",
+                "forestalling": "20",
+                "hotspot": "30 30",
+                "position": "20 0",
+                "rect": "0 0 60 60",
+                "rotation_speed": "20",
+                "texture": "game/towers/towers_21.png",
+                "use_filter": "1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "tower_c": {
+      "level_0": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_c_0",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "30 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "14",
+              "texture": "game/towers/towers_24.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_1": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_c_1",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "30 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "18",
+              "texture": "game/towers/towers_25.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_2": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_c_2",
+              "fire_name": "tower_1_shot",
+              "hotspot": "26 30",
+              "position": "30 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "22",
+              "texture": "game/towers/towers_26.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_3": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_c_3",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "30 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "22",
+              "texture": "game/towers/towers_27.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_4": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_c_4",
+              "fire_name": "tower_1_shot",
+              "hotspot": "22 30",
+              "position": "30 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "26",
+              "texture": "game/towers/towers_28.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_5": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_c_5",
+              "fire_name": "tower_1_shot",
+              "hotspot": "24 30",
+              "position": "30 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "26",
+              "texture": "game/towers/towers_29.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      }
+    },
+    "tower_d": {
+      "level_0": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_d_0",
+              "fire_name": "tower_1_shot",
+              "hotspot": "25 30",
+              "position": "20 0",
+              "rect": "0 0 50 60",
+              "rotation_speed": "15",
+              "texture": "game/towers/towers_30.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_1": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_d_1",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "30",
+              "texture": "game/towers/towers_31.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_2": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_d_2",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "45",
+              "texture": "game/towers/towers_32.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_3": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_d_3",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "60",
+              "texture": "game/towers/towers_33.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "level_4": {
+        "@attributes": {"self_radius": "20"},
+        "platform": {
+          "@attributes": {
+            "hotspot": "20 20",
+            "rect": "0 0 40 40",
+            "texture": "game/towers/towers_9.png",
+            "use_filter": "1"
+          }
+        },
+        "guns": {
+          "gun": {
+            "@attributes": {
+              "bullet_name": "tower_d_4",
+              "fire_name": "tower_1_shot",
+              "hotspot": "30 30",
+              "position": "20 0",
+              "rect": "0 0 60 60",
+              "rotation_speed": "75",
+              "texture": "game/towers/towers_34.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      }
+    }
+  }
+}

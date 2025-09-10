@@ -1,0 +1,401 @@
+{
+  "@attributes": {
+    "game_over_color": "ffff9090",
+    "our_cell_color": "ff33cc33",
+    "their_cell_color": "ffff0000",
+    "cooperation_bonus": ".2"
+  },
+  "cell": {
+    "@attributes": {
+      "cell_size": "40",
+      "frames": "3",
+      "rect": "0 0 40 40",
+      "texture": "game/worlds/cell_0.png",
+      "use_filter": "1"
+    }
+  },
+  "worlds": {
+    "world": [
+      {
+        "@attributes": {
+          "path": "game/worlds/world_01.xml",
+          "purchase": "World1",
+          "units_path": "game/worlds/units_world_01.xml",
+          "weather_name": "weather_world_0",
+          "world_number": "0"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "128 128",
+            "rect": "0 0 256 256",
+            "texture": "missionselector/worlds_icons_0.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": "ПЕРВАЯ КРОВЬ",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "path": "game/worlds/world_02.xml",
+          "purchase": "World2",
+          "units_path": "game/worlds/units_world_01.xml",
+          "weather_name": "weather_world_1",
+          "world_number": "1"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "128 128",
+            "rect": "0 0 256 256",
+            "texture": "missionselector/worlds_icons_1.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": "МОРОЗНАЯ СВЕЖЕСТЬ",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "path": "game/worlds/world_03.xml",
+          "purchase": "World3",
+          "units_path": "game/worlds/units_world_01.xml",
+          "weather_name": "weather_world_2",
+          "world_number": "2"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "128 128",
+            "rect": "0 0 256 256",
+            "texture": "missionselector/worlds_icons_2.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": "ОСТАТЬСЯ В ЖИВЫХ",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "path": "game/worlds/world_04.xml",
+          "purchase": "World4",
+          "units_path": "game/worlds/units_world_04.xml",
+          "weather_name": "weather_world_0",
+          "holiday_world": "1",
+          "world_number": "100",
+          "tip_of_feast": "Бонусный уровень рекомендуется проходить после освоения 12 уровней мира «ПЕРВАЯ КРОВЬ»"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "128 128",
+            "rect": "0 0 256 256",
+            "texture": "missionselector/worlds/halloween/worlds_icons_halloween.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": "НОЧНОЙ КОШМАР",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "path": "game/worlds/world_05.xml",
+          "purchase": "World5",
+          "units_path": "game/worlds/units_world_05.xml",
+          "weather_name": "weather_world_5",
+          "holiday_world": "2",
+          "world_number": "200"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "128 128",
+            "rect": "0 0 256 256",
+            "texture": "missionselector/worlds/christmas/worlds_icons_christmas.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": "СПАСЕНИЕ НОВОГО ГОДА",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "path": "game/worlds/world_06.xml",
+          "purchase": "World6",
+          "units_path": "game/worlds/units_world_01.xml",
+          "weather_name": "weather_world_0",
+          "world_number": "300",
+          "survival_world": "1"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "128 128",
+            "rect": "0 0 256 256",
+            "texture": "missionselector/worlds_icons_6.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": "ТУРНИР",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "path": "game/worlds/world_07.xml",
+          "purchase": "World7",
+          "units_path": "game/worlds/units_world_01.xml",
+          "weather_name": "weather_world_0",
+          "world_number": "400",
+          "comics_world": "1"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "160 160",
+            "rect": "0 0 320 320",
+            "texture": "missionselector/worlds_icons_7.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": " ",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "path": "game/worlds/world_08.xml",
+          "purchase": "World8",
+          "units_path": "game/worlds/units_world_01.xml",
+          "weather_name": "weather_world_0",
+          "world_number": "3"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "128 128",
+            "rect": "0 0 256 256",
+            "texture": "missionselector/worlds_icons_8.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": "НОВЫЙ ПРИЛИВ",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "path": "game/worlds/world_09.xml",
+          "purchase": "World9",
+          "units_path": "game/worlds/units_world_05.xml",
+          "weather_name": "weather_world_0",
+          "world_number": "500",
+          "holiday_world": "3",
+          "tip_of_feast": "Рекомендуется пройти первые 12 уровней мира Первая Кровь прежде чем пытаться спасти Санту"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "128 128",
+            "rect": "0 0 256 256",
+            "texture": "missionselector/worlds/christmas/worlds_icons_christmas_2.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": "РОЖДЕСТВЕНСКИЙ ПЕРЕПОЛОХ",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "path": "game/worlds/world_10.xml",
+          "purchase": "World10",
+          "units_path": "game/worlds/units_world_01.xml",
+          "weather_name": "weather_world_0",
+          "world_number": "600",
+          "holiday_world": "4"
+        },
+        "icon": {
+          "@attributes": {
+            "hotspot": "128 128",
+            "rect": "0 0 256 256",
+            "texture": "missionselector/worlds/winter_games/worlds_icons_10.png",
+            "use_filter": "1"
+          }
+        },
+        "title": {
+          "@attributes": {
+            "align_vertical": "0",
+            "font": "fonts/soldier_font4.fnt",
+            "align": "0",
+            "multiline": "1",
+            "interlinear": "-15",
+            "hotspot": "160 50",
+            "size": "360 100",
+            "multiplier": "0.7",
+            "position": "-184 -210",
+            "spacewidth": "20",
+            "string": "ЗИМНИЕ ИГРЫ",
+            "texture": "fonts/soldier_font4.png",
+            "use_filter": "1"
+          }
+        }
+      }
+    ]
+  },
+  "my_btn": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "3",
+          "position": "0 -40",
+          "rect": "0 0 296 56",
+          "texture": "missionselector/background_0.png"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "3",
+          "position": "0 -40",
+          "rect": "0 0 296 56",
+          "texture": "missionselector/background_0.png"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+    "caption": {
+      "@attributes": {
+        "font": "fonts/soldier_font6.fnt",
+        "intersymbol": "0",
+        "multiplier": "0.7",
+        "position": "148 45",
+        "string": "",
+        "texture": "fonts/soldier_font6.png",
+        "use_filter": "1"
+      }
+    }
+  }
+}

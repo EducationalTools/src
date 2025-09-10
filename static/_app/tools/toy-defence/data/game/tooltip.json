@@ -1,0 +1,252 @@
+{
+  "@attributes": {"required_timeout": "0.5"},
+  "comment": {},
+  "tips": {
+    "tip": [
+      {
+        "@attributes": {
+          "text": "Сейчас игра стоит на паузе. Во время неё можно подготавливать своих солдатиков: покупать, ремонтировать, улучшать./n/nНажмите, чтобы продолжить.",
+          "width": "360"
+        }
+      },
+      {
+        "@attributes": {
+          "text": "Сейчас пора зайти в магазин.",
+          "width": "350"
+        }
+      },
+      {
+        "@attributes": {
+          "text": "Вы заработали звезды, за которые можно покупать улучшения.",
+          "width": "350"
+        }
+      },
+      {
+        "@attributes": {
+          "text": "Нажмите, чтобы улучшить солдатика.",
+          "width": "350"
+        }
+      },
+      {
+        "@attributes": {
+          "text": "Нажмите, чтобы отремонтировать солдатика.",
+          "width": "350"
+        }
+      },
+      {
+        "@attributes": {
+          "text": "Сохраните самых развитых солдатиков и выставьте их на поле в следующем бою!",
+          "width": "350"
+        }
+      },
+      {
+        "@attributes": {
+          "text": "Это очень мощные штуковины! Используйте их только в самом крайнем случае!",
+          "width": "350"
+        }
+      },
+      {
+        "@attributes": {
+          "text": "Используй сохраненных солдатиков - они стоят дешевлее.",
+          "width": "350"
+        }
+      }
+    ],
+    "comment": [
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "background": {
+    "background_up": {
+      "@attributes": {"arrow_delta": "15"},
+      "text": {
+        "@attributes": {
+          "align": "1",
+          "color": "ff9b1b1b",
+          "interlinear": "-10",
+          "align_vertical": "0",
+          "size": "370 115",
+          "multiline": "1",
+          "font": "fonts/soldier_font5.fnt",
+          "intersymbol": "0",
+          "multiplier": "0.5",
+          "position": "0 40",
+          "spacewidth": "20",
+          "texture": "fonts/soldier_font5.png"
+        }
+      },
+      "left": {
+        "@attributes": {
+          "hotspot": "16 -28",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_0.png"
+        }
+      },
+      "middle": {
+        "@attributes": {
+          "hotspot": "0 -28",
+          "rect": "0 0 60 134",
+          "texture": "common/tooltip_1.png"
+        }
+      },
+      "right": {
+        "@attributes": {
+          "hotspot": "0 -28",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_2.png"
+        }
+      },
+      "arrow": {
+        "@attributes": {
+          "hotspot": "15 -2",
+          "rect": "0 0 26 34",
+          "texture": "common/tooltip_3.png"
+        }
+      }
+    },
+    "background_dn": {
+      "@attributes": {"arrow_delta": "15"},
+      "text": {
+        "@attributes": {
+          "align": "1",
+          "color": "ff9b1b1b",
+          "interlinear": "-10",
+          "align_vertical": "0",
+          "size": "370 115",
+          "multiline": "1",
+          "font": "fonts/soldier_font5.fnt",
+          "intersymbol": "0",
+          "multiplier": "0.5",
+          "position": "0 -155",
+          "spacewidth": "20",
+          "texture": "fonts/soldier_font5.png"
+        }
+      },
+      "left": {
+        "@attributes": {
+          "hotspot": "16 164",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_0.png"
+        }
+      },
+      "middle": {
+        "@attributes": {
+          "hotspot": "0 164",
+          "rect": "0 0 60 134",
+          "texture": "common/tooltip_1.png"
+        }
+      },
+      "right": {
+        "@attributes": {
+          "hotspot": "0 164",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_2.png"
+        }
+      },
+      "arrow": {
+        "@attributes": {
+          "hotspot": "15 36",
+          "rect": "0 0 26 36",
+          "texture": "common/tooltip_4.png"
+        }
+      }
+    },
+    "background_ri": {
+      "@attributes": {"arrow_delta": "-4"},
+      "text": {
+        "@attributes": {
+          "align": "1",
+          "color": "ff9b1b1b",
+          "interlinear": "-10",
+          "align_vertical": "0",
+          "size": "370 115",
+          "multiline": "1",
+          "font": "fonts/soldier_font5.fnt",
+          "intersymbol": "0",
+          "multiplier": "0.5",
+          "position": "0 -155",
+          "spacewidth": "20",
+          "texture": "fonts/soldier_font5.png"
+        }
+      },
+      "left": {
+        "@attributes": {
+          "hotspot": "16 164",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_0.png"
+        }
+      },
+      "middle": {
+        "@attributes": {
+          "hotspot": "0 164",
+          "rect": "0 0 60 134",
+          "texture": "common/tooltip_1.png"
+        }
+      },
+      "right": {
+        "@attributes": {
+          "hotspot": "0 164",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_2.png"
+        }
+      },
+      "arrow": {
+        "@attributes": {
+          "hotspot": "40 0",
+          "rect": "0 0 26 36",
+          "texture": "common/tooltip_4.png"
+        }
+      }
+    },
+    "background_le": {
+      "@attributes": {"arrow_delta": "-4"},
+      "text": {
+        "@attributes": {
+          "align": "1",
+          "color": "ff9b1b1b",
+          "interlinear": "-10",
+          "align_vertical": "0",
+          "size": "370 115",
+          "multiline": "1",
+          "font": "fonts/soldier_font5.fnt",
+          "intersymbol": "0",
+          "multiplier": "0.5",
+          "position": "0 40",
+          "spacewidth": "20",
+          "texture": "fonts/soldier_font5.png"
+        }
+      },
+      "left": {
+        "@attributes": {
+          "hotspot": "16 164",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_0.png"
+        }
+      },
+      "middle": {
+        "@attributes": {
+          "hotspot": "0 164",
+          "rect": "0 0 60 134",
+          "texture": "common/tooltip_1.png"
+        }
+      },
+      "right": {
+        "@attributes": {
+          "hotspot": "0 164",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_2.png"
+        }
+      },
+      "arrow": {
+        "@attributes": {
+          "hotspot": "14 0",
+          "rect": "0 0 26 36",
+          "texture": "common/tooltip_4.png"
+        }
+      }
+    }
+  }
+}

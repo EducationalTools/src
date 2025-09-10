@@ -1,0 +1,534 @@
+{
+  "@attributes": {"hide_delta": "120"},
+  "tips": {
+    "tip_a": {"@attributes": {"text": "Стрелок./nСтреляет по воздушным и наземным целям"}},
+    "tip_b": {"@attributes": {"text": "Огнеметчик./nСтреляет только по наземным целям"}},
+    "tip_c": {"@attributes": {"text": "Пушка./nСтреляет только по наземным целям"}},
+    "tip_d": {"@attributes": {"text": "Зенитная установка./nСтреляет только по воздушным целям"}}
+  },
+  "tip": {
+    "@attributes": {
+      "delta": "0 -10",
+      "hide_length": "5",
+      "width": "300"
+    },
+    "background_up": {
+      "@attributes": {"arrow_delta": "15"},
+      "text": {
+        "@attributes": {
+          "align": "1",
+          "color": "ff9b1b1b",
+          "interlinear": "-10",
+          "align_vertical": "0",
+          "size": "366 115",
+          "multiline": "1",
+          "font": "fonts/soldier_font5.fnt",
+          "intersymbol": "0",
+          "multiplier": "0.65",
+          "position": "-5 40",
+          "spacewidth": "15",
+          "texture": "fonts/soldier_font5.png"
+        }
+      },
+      "left": {
+        "@attributes": {
+          "hotspot": "16 -28",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_0.png"
+        }
+      },
+      "middle": {
+        "@attributes": {
+          "hotspot": "0 -28",
+          "rect": "0 0 60 134",
+          "texture": "common/tooltip_1.png"
+        }
+      },
+      "right": {
+        "@attributes": {
+          "hotspot": "0 -28",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_2.png"
+        }
+      },
+      "arrow": {
+        "@attributes": {
+          "hotspot": "15 -2",
+          "rect": "0 0 26 34",
+          "texture": "common/tooltip_3.png"
+        }
+      }
+    },
+    "background_dn": {
+      "@attributes": {"arrow_delta": "15"},
+      "text": {
+        "@attributes": {
+          "align": "1",
+          "color": "ff9b1b1b",
+          "interlinear": "-10",
+          "align_vertical": "0",
+          "size": "366 115",
+          "multiline": "1",
+          "font": "fonts/soldier_font5.fnt",
+          "intersymbol": "0",
+          "multiplier": "0.65",
+          "position": "-5 -155",
+          "spacewidth": "15",
+          "texture": "fonts/soldier_font5.png"
+        }
+      },
+      "left": {
+        "@attributes": {
+          "hotspot": "16 164",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_0.png"
+        }
+      },
+      "middle": {
+        "@attributes": {
+          "hotspot": "0 164",
+          "rect": "0 0 60 134",
+          "texture": "common/tooltip_1.png"
+        }
+      },
+      "right": {
+        "@attributes": {
+          "hotspot": "0 164",
+          "rect": "0 0 16 134",
+          "texture": "common/tooltip_2.png"
+        }
+      },
+      "arrow": {
+        "@attributes": {
+          "hotspot": "15 36",
+          "rect": "0 0 26 36",
+          "texture": "common/tooltip_4.png"
+        }
+      }
+    }
+  },
+  "btndone": {
+    "@attributes": {"copy": "common/buttons.xml|buttons/button_medium_square"},
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "2",
+          "position": "50 50"
+        },
+        "sprite": {
+          "@attributes": {
+            "position": "0 -3",
+            "hotspot": "40 40",
+            "rect": "0 0 80 80",
+            "texture": "common/icons/next.png"
+          }
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "2",
+          "position": "50 50"
+        },
+        "sprite": {
+          "@attributes": {
+            "position": "0 -3",
+            "hotspot": "40 40",
+            "rect": "0 0 80 80",
+            "texture": "common/icons/next.png"
+          }
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+    "particle": {
+      "@attributes": {
+        "delta": "-16 -16",
+        "name": "button_big_flare"
+      }
+    }
+  },
+  "hero": {
+    "@attributes": {
+      "anchor": "3",
+      "icons_delta": "112 0",
+      "rank_icon_delta": "98 -60",
+      "rank_delta": "100 -20",
+      "slots_in_use": "3",
+      "slots_total": "4",
+      "start_pos": "0 118"
+    },
+    "slot": {
+      "@attributes": {
+        "hotspot": "-10 -50",
+        "rect": "0 0 110 76",
+        "texture": "game/infobar/infobar_12.png"
+      }
+    },
+    "slot_additional": {
+      "@attributes": {"price": "500"},
+      "button": {
+        "out": {
+          "@attributes": {
+            "anchor": "3",
+            "hotspot": "-10 -42",
+            "rect": "0 0 114 84",
+            "texture": "game/infobar/infobar_13.png"
+          }
+        },
+        "pressed": {
+          "@attributes": {
+            "anchor": "3",
+            "hotspot": "-10 -44",
+            "rect": "0 0 114 84",
+            "texture": "game/infobar/infobar_13.png"
+          }
+        }
+      }
+    },
+    "confirmation_dialog": {
+      "@attributes": {
+        "autocenter": "1",
+        "bounding_box": "504 240"
+      },
+      "static": {
+        "a": {
+          "@attributes": {
+            "color": "90000000",
+            "hotspot": "683 400",
+            "position": "252 120",
+            "rect": "0 0 1366 800"
+          }
+        },
+        "b": {
+          "@attributes": {
+            "rect": "0 0 72 72",
+            "texture": "common/tile.png",
+            "tile_size": "24 24",
+            "extents": "504 240"
+          }
+        },
+        "c": {
+          "@attributes": {
+            "rect": "0 0 48 48",
+            "position": "17 17",
+            "texture": "common/tile_shadow.png",
+            "tile_size": "16 16",
+            "extents": "464 128"
+          }
+        }
+      },
+      "comment": {},
+      "description": {
+        "@attributes": {
+          "align_vertical": "0",
+          "font": "fonts/soldier_font4_small.fnt",
+          "intersymbol": "0",
+          "align": "0",
+          "localized": "1",
+          "multiplier": "0.75",
+          "position": "45 22",
+          "interlinear": "-8",
+          "multiline": "1",
+          "size": "410 110",
+          "spacewidth": "15",
+          "string": "Желаете приобрести/nдополнительный слот за %d©?/nУ вас всего %d©.",
+          "texture": "fonts/soldier_font4_small.png",
+          "use_filter": "1"
+        }
+      },
+      "insufficient": {
+        "@attributes": {
+          "align_vertical": "0",
+          "font": "fonts/soldier_font4_small.fnt",
+          "intersymbol": "0",
+          "localized": "1",
+          "multiplier": "0.75",
+          "position": "35 22",
+          "interlinear": "-8",
+          "multiline": "1",
+          "size": "410 110",
+          "spacewidth": "20",
+          "string": "У вас недостаточное количество ©. Требуется %d©",
+          "texture": "fonts/soldier_font4_small.png",
+          "use_filter": "1"
+        }
+      },
+      "btnleft": {
+        "@attributes": {"copy": "common/buttons.xml|buttons/button_confirm_no"},
+        "button": {
+          "out": {
+            "@attributes": {"position": "430 187"},
+            "sprite": {
+              "@attributes": {
+                "position": "0 -2",
+                "hotspot": "25 25",
+                "rect": "0 0 50 50",
+                "texture": "common/icons/ico_yes_red.png"
+              }
+            }
+          },
+          "pressed": {
+            "@attributes": {"position": "430 189"},
+            "sprite": {
+              "@attributes": {
+                "position": "0 -2",
+                "hotspot": "25 25",
+                "rect": "0 0 50 50",
+                "texture": "common/icons/ico_yes_red.png"
+              }
+            }
+          }
+        }
+      },
+      "btnright": {
+        "@attributes": {"copy": "common/buttons.xml|buttons/button_confirm_no"},
+        "button": {
+          "out": {
+            "@attributes": {"position": "68 187"},
+            "sprite": {
+              "@attributes": {
+                "position": "0 -3",
+                "hotspot": "25 25",
+                "rect": "0 0 50 50",
+                "texture": "common/icons/ico_no.png"
+              }
+            }
+          },
+          "pressed": {
+            "@attributes": {"position": "68 189"},
+            "sprite": {
+              "@attributes": {
+                "position": "0 -3",
+                "hotspot": "25 25",
+                "rect": "0 0 50 50",
+                "texture": "common/icons/ico_no.png"
+              }
+            }
+          }
+        }
+      },
+      "btncenter": {
+        "@attributes": {"copy": "common/buttons.xml|buttons/button_shop_small"},
+        "button": {
+          "out": {"@attributes": {"position": "251 187"}},
+          "pressed": {"@attributes": {"position": "251 189"}}
+        },
+        "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+        "caption": {
+          "@attributes": {
+            "font": "fonts/soldier_font1.fnt",
+            "multiplier": "0.55",
+            "position": "-5 13",
+            "string": "Купить ©",
+            "texture": "fonts/soldier_font1.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      "btnrightcenter": {
+        "@attributes": {"copy": "common/buttons.xml|buttons/button_confirm_no"},
+        "button": {
+          "out": {
+            "@attributes": {"position": "249 187"},
+            "sprite": {
+              "@attributes": {
+                "position": "0 -3",
+                "hotspot": "25 25",
+                "rect": "0 0 50 50",
+                "texture": "common/icons/ico_no.png"
+              }
+            }
+          },
+          "pressed": {
+            "@attributes": {"position": "249 189"},
+            "sprite": {
+              "@attributes": {
+                "position": "0 -3",
+                "hotspot": "25 25",
+                "rect": "0 0 50 50",
+                "texture": "common/icons/ico_no.png"
+              }
+            }
+          }
+        }
+      },
+      "btnclose": {
+        "@attributes": {"copy": "common/buttons.xml|buttons/button_close"},
+        "button": {
+          "out": {"@attributes": {"position": "480 22"}},
+          "pressed": {"@attributes": {"position": "480 24"}}
+        }
+      }
+    }
+  },
+  "slots": {
+    "tower_a": {
+      "button": {
+        "out": {
+          "@attributes": {
+            "anchor": "2",
+            "position": "122 118",
+            "rect": "0 0 122 120",
+            "texture": "game/infobar/infobar_14.png"
+          }
+        },
+        "disabled": {
+          "@attributes": {
+            "anchor": "2",
+            "position": "122 118",
+            "rect": "0 0 122 119",
+            "texture": "game/infobar/infobar_15.png"
+          }
+        }
+      },
+      "price": {
+        "@attributes": {
+          "color": "ffffffff",
+          "font": "fonts/font_shilda1.fnt",
+          "intersymbol": "-1",
+          "localized": "1",
+          "multiplier": "0.95",
+          "position": "63 115",
+          "texture": "fonts/font_shilda1.png"
+        }
+      },
+      "price_disabled": {
+        "@attributes": {
+          "color": "ffffffff",
+          "font": "fonts/font_shilda2.fnt",
+          "intersymbol": "-1",
+          "localized": "1",
+          "multiplier": "0.95",
+          "position": "63 113",
+          "texture": "fonts/font_shilda1.png"
+        }
+      }
+    },
+    "tower_b": {
+      "button": {
+        "out": {
+          "@attributes": {
+            "anchor": "2",
+            "position": "236 118",
+            "rect": "0 0 122 120",
+            "texture": "game/infobar/infobar_16.png"
+          }
+        },
+        "disabled": {
+          "@attributes": {
+            "anchor": "2",
+            "position": "236 118",
+            "rect": "0 0 122 119",
+            "texture": "game/infobar/infobar_17.png"
+          }
+        }
+      },
+      "price": {
+        "@attributes": {
+          "color": "ffffffff",
+          "font": "fonts/font_shilda1.fnt",
+          "intersymbol": "-1",
+          "localized": "1",
+          "multiplier": "0.95",
+          "position": "68 115",
+          "texture": "fonts/font_shilda1.png"
+        }
+      },
+      "price_disabled": {
+        "@attributes": {
+          "color": "ffffffff",
+          "font": "fonts/font_shilda2.fnt",
+          "intersymbol": "-1",
+          "localized": "1",
+          "multiplier": "0.95",
+          "position": "68 113",
+          "texture": "fonts/font_shilda1.png"
+        }
+      }
+    },
+    "tower_c": {
+      "button": {
+        "out": {
+          "@attributes": {
+            "anchor": "2",
+            "position": "350 118",
+            "rect": "0 0 122 120",
+            "texture": "game/infobar/infobar_18.png"
+          }
+        },
+        "disabled": {
+          "@attributes": {
+            "anchor": "2",
+            "position": "350 118",
+            "rect": "0 0 122 119",
+            "texture": "game/infobar/infobar_19.png"
+          }
+        }
+      },
+      "price": {
+        "@attributes": {
+          "color": "ffffffff",
+          "font": "fonts/font_shilda1.fnt",
+          "intersymbol": "-1",
+          "localized": "1",
+          "multiplier": "0.95",
+          "position": "72 115",
+          "texture": "fonts/font_shilda1.png"
+        }
+      },
+      "price_disabled": {
+        "@attributes": {
+          "color": "ffffffff",
+          "font": "fonts/font_shilda2.fnt",
+          "intersymbol": "-1",
+          "localized": "1",
+          "multiplier": "0.95",
+          "position": "72 113",
+          "texture": "fonts/font_shilda1.png"
+        }
+      }
+    },
+    "tower_d": {
+      "button": {
+        "out": {
+          "@attributes": {
+            "anchor": "2",
+            "position": "464 118",
+            "rect": "0 0 122 120",
+            "texture": "game/infobar/infobar_20.png"
+          }
+        },
+        "disabled": {
+          "@attributes": {
+            "anchor": "2",
+            "position": "464 118",
+            "rect": "0 0 122 119",
+            "texture": "game/infobar/infobar_21.png"
+          }
+        }
+      },
+      "price": {
+        "@attributes": {
+          "color": "ffffffff",
+          "font": "fonts/font_shilda1.fnt",
+          "intersymbol": "-1",
+          "localized": "1",
+          "multiplier": "0.95",
+          "position": "73 115",
+          "texture": "fonts/font_shilda1.png"
+        }
+      },
+      "price_disabled": {
+        "@attributes": {
+          "color": "ffffffff",
+          "font": "fonts/font_shilda2.fnt",
+          "intersymbol": "-1",
+          "localized": "1",
+          "multiplier": "0.95",
+          "position": "73 113",
+          "texture": "fonts/font_shilda1.png"
+        }
+      }
+    }
+  }
+}

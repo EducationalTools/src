@@ -1,0 +1,680 @@
+{
+  "sounds": {
+    "sound": [
+      {
+        "@attributes": {
+          "filename": "sounds/music_menu.wav",
+          "max_count": "0",
+          "name": "music_menu"
+        }
+      },
+	  {
+        "@attributes": {
+          "filename": "sounds/game_game_over.wav",
+          "max_count": "0",
+          "name": "game_over"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_mission_completed.wav",
+          "max_count": "0",
+          "name": "mission_completed"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_mission_completed_world4.wav",
+          "max_count": "0",
+          "name": "world_4_mission_completed"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/ui_mission_completed.wav",
+          "max_count": "0",
+          "name": "next_mission_count_effect"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/ui_mission_final_effect.wav",
+          "max_count": "0",
+          "name": "next_mission_final_effect"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_lost_life.wav",
+          "max_count": "5",
+          "name": "lost_life",
+          "timeout": "0.5"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_ready_to_upgrade.wav",
+          "max_count": "2",
+          "name": "ready_to_upgrade",
+          "timeout": "1"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_build_tower.wav",
+          "max_count": "0",
+          "name": "build_tower"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_upgrade_tower.wav",
+          "max_count": "0",
+          "name": "upgrade_tower"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_sell_tower.wav",
+          "max_count": "0",
+          "name": "sell_tower"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_repair_tower.wav",
+          "max_count": "0",
+          "name": "repair_tower"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_wave_start_aircraft.wav",
+          "max_count": "0",
+          "name": "wave_start_aircraft"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_wave_boss_notification.wav",
+          "max_count": "0",
+          "name": "wave_boss_notification"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/happy_04.wav",
+          "max_count": "1",
+          "name": "explode_unit_soldier",
+          "timeout": "0.3"
+        },
+        "sound": [
+          {
+            "@attributes": {
+              "filename": "sounds/happy_01.wav",
+              "max_count": "1",
+              "timeout": "5"
+            }
+          },
+          {
+            "@attributes": {
+              "filename": "sounds/pumpkin.wav",
+              "max_count": "1",
+              "timeout": "5"
+            }
+          }
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_explode_unit_ground.wav",
+          "max_count": "3",
+          "name": "explode_unit_ground"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_explode_unit_air.wav",
+          "max_count": "3",
+          "name": "explode_unit_air"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_explode_unit_soldier_bonus_0.wav",
+          "max_count": "1",
+          "name": "explode_unit_soldier_bonus0",
+          "timeout": "0.7"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_explode_unit_soldier_bonus_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_soldier_bonus_2.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_soldier_bonus_3.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_soldier_bonus_4.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_soldier_bonus_5.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_soldier_bonus_6.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_soldier_bonus_7.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_soldier_bonus_8.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_soldier_bonus_9.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_explode_unit_truck_bonus_0.wav",
+          "max_count": "1",
+          "name": "explode_unit_truck_bonus",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_explode_unit_truck_bonus_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_truck_bonus_2.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_truck_bonus_3.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_truck_bonus_4.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_explode_unit_truck_bonus_0.wav",
+          "max_count": "1",
+          "name": "destroy_unit_god_mode",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_explode_unit_truck_bonus_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_truck_bonus_2.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_truck_bonus_3.wav"}},
+          {"@attributes": {"filename": "sounds/game_explode_unit_truck_bonus_4.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_explode_tower_0.wav",
+          "max_count": "3",
+          "name": "explode_tower",
+          "timeout": "0.1"
+        },
+        "comment": [
+          {},
+          {},
+          {}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_fire_tower_gun_0.wav",
+          "max_count": "3",
+          "name": "fire_tower_a",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_fire_tower_gun_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_fire_tower_gun_2.wav"}}
+        ],
+        "comment": {}
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_fire_tower_gun_double_0.wav",
+          "max_count": "3",
+          "name": "fire_tower_a_double",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_fire_tower_gun_double_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_fire_tower_gun_double_2.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_fire_tower_flame_0.wav",
+          "max_count": "3",
+          "name": "fire_tower_b",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_fire_tower_flame_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_fire_tower_flame_2.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_fire_tower_flame_fast_0.wav",
+          "max_count": "3",
+          "name": "fire_tower_b_fast",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_fire_tower_flame_fast_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_fire_tower_flame_fast_2.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_fire_tower_cannon_0.wav",
+          "max_count": "3",
+          "name": "fire_tower_c",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_fire_tower_cannon_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_fire_tower_cannon_2.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_fire_tower_antiaircraft_0.wav",
+          "max_count": "3",
+          "name": "fire_tower_d",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_fire_tower_antiaircraft_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_fire_tower_antiaircraft_2.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_fire_tower_antiaircraft_fast_0.wav",
+          "max_count": "3",
+          "name": "fire_tower_d_fast",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/game_fire_tower_antiaircraft_fast_1.wav"}},
+          {"@attributes": {"filename": "sounds/game_fire_tower_antiaircraft_fast_2.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_fire_unit_grenade_0.wav",
+          "max_count": "3",
+          "name": "fire_unit_grenade",
+          "timeout": "0.1"
+        },
+        "sound": {"@attributes": {"filename": "sounds/game_fire_unit_grenade_1.wav"}}
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_fire_unit_missile.wav",
+          "max_count": "3",
+          "name": "fire_unit_missile",
+          "timeout": "0.1"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_unit_tank_shoot.wav",
+          "max_count": "3",
+          "name": "fire_unit_tank_shoot",
+          "timeout": "0.1"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_unit_tank_hit.wav",
+          "max_count": "3",
+          "name": "fire_unit_tank_hit",
+          "timeout": "0.1"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_unit_soldier_step.wav",
+          "max_count": "1",
+          "name": "unit_soldier_step"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_unit_tank_heavy_engine.wav",
+          "max_count": "1",
+          "name": "unit_tank_heavy_engine"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_unit_tank_light_engine.wav",
+          "max_count": "1",
+          "name": "unit_tank_light_engine"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_unit_machine_engine_2.wav",
+          "max_count": "1",
+          "name": "unit_machine_engine_2"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_unit_machine_engine_1.wav",
+          "max_count": "1",
+          "name": "unit_machine_engine_1"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_unit_aircraft_engine.wav",
+          "max_count": "1",
+          "name": "unit_aircraft_engine"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/shop_star.wav",
+          "max_count": "1",
+          "name": "base_wave"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_repair_tower.wav",
+          "max_count": "1",
+          "name": "autorepair_tower"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/game_upgrade_tower.wav",
+          "max_count": "1",
+          "name": "ressurect_tower"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/ui_mission_completed.wav",
+          "max_count": "1",
+          "name": "show_bonus_dialog"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/ras_autorepear.wav",
+          "max_count": "2",
+          "name": "ras_autorepear"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/ras_god_killsolders_zp_01.wav",
+          "max_count": "5",
+          "name": "ras_god_killsolders",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/ras_god_killsolders_zp_02.wav"}},
+          {"@attributes": {"filename": "sounds/ras_god_killsolders_zp_03.wav"}},
+          {"@attributes": {"filename": "sounds/ras_god_killsolders_zp_04.wav"}},
+          {"@attributes": {"filename": "sounds/ras_god_killsolders_zp_05.wav"}},
+          {"@attributes": {"filename": "sounds/ras_god_killsolders_zp_06.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/ras_god_loose.wav",
+          "max_count": "4",
+          "name": "ras_god_loose"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/ras_voskrecshenie.wav",
+          "max_count": "1",
+          "name": "ras_voskrecshenie"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/ras_zaschitny_udar.wav",
+          "max_count": "1",
+          "name": "ras_zaschitny_udar"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/ras_god_technika_zp_01.wav",
+          "max_count": "5",
+          "name": "ras_god_technika",
+          "timeout": "0.1"
+        },
+        "sound": {"@attributes": {"filename": "sounds/ras_god_technika_zp_02.wav"}}
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/zvezda_01.wav",
+          "max_count": "2",
+          "name": "zvezda_fall"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/zvezda_dvigenie_01.wav",
+          "max_count": "1",
+          "name": "zvezda_fly"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/pumpkin.wav",
+          "max_count": "1",
+          "name": "explode_unit_soldier_bonus1",
+          "timeout": "0.7"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/happy_04.wav",
+          "max_count": "1",
+          "name": "explode_unit_soldier_add_bonus1",
+          "timeout": "5"
+        },
+        "sound": [
+          {
+            "@attributes": {
+              "filename": "sounds/happy_01.wav",
+              "max_count": "1",
+              "timeout": "5"
+            }
+          },
+          {
+            "@attributes": {
+              "filename": "sounds/pumpkin.wav",
+              "max_count": "1",
+              "timeout": "5"
+            }
+          }
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/chistmas_ded_pitch.wav",
+          "max_count": "1",
+          "name": "chistmas_ded_pitch"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/christmas_track_start.wav",
+          "max_count": "1",
+          "name": "christmas_track_start"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/christmas_drop_deer.wav",
+          "max_count": "1",
+          "name": "christmas_drop_deer"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/christmas_drop_bag.wav",
+          "max_count": "1",
+          "name": "christmas_drop_bag"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/christmas_freezing.wav",
+          "max_count": "1",
+          "name": "feast2_fire_tower_b"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/christmas_freezing_fast.wav",
+          "max_count": "1",
+          "name": "feast2_fire_tower_b_fast"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/christmas_lost_gift_1.wav",
+          "max_count": "3",
+          "name": "feast2_lost_life",
+          "timeout": "0.1"
+        },
+        "sound": [
+          {"@attributes": {"filename": "sounds/christmas_lost_gift_2.wav"}},
+          {"@attributes": {"filename": "sounds/christmas_lost_gift_3.wav"}},
+          {"@attributes": {"filename": "sounds/christmas_lost_gift_4.wav"}}
+        ]
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/sound_vezut_morozova.wav",
+          "max_count": "1",
+          "name": "christmas_mega_boss_start"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_pumpkin_appear.wav",
+          "max_count": "1",
+          "name": "halloween_pumpkin_appear"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_bad_pumpkin_appear.wav",
+          "max_count": "1",
+          "name": "halloween_bad_pumpkin_appear"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_pumpkin_expl.wav",
+          "max_count": "1",
+          "name": "halloween_pumpkin_expl"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_pumpkin_disappear.wav",
+          "max_count": "1",
+          "name": "halloween_pumpkin_disappear"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_bad_pumpkin_top_off.wav",
+          "max_count": "1",
+          "name": "halloween_bad_pumpkin_top_off"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_add_money.wav",
+          "max_count": "1",
+          "name": "halloween_add_money"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_dec_money.wav",
+          "max_count": "1",
+          "name": "halloween_dec_money"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_good_health.wav",
+          "max_count": "1",
+          "name": "halloween_good_health"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_scul.wav",
+          "max_count": "1",
+          "name": "halloween_scul"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_strong_enemies.wav",
+          "max_count": "1",
+          "name": "halloween_strong_enemies"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_week_enemies.wav",
+          "max_count": "1",
+          "name": "halloween_week_enemies"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_fear.wav",
+          "max_count": "1",
+          "name": "halloween_fear"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_noise.wav",
+          "max_count": "1",
+          "name": "halloween_noise"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_scarecrow_appearing.wav",
+          "max_count": "1",
+          "name": "halloween_scarecrow_appearing"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_happy.wav",
+          "max_count": "1",
+          "name": "halloween_happy"
+        }
+      },
+      {
+        "@attributes": {
+          "filename": "sounds/halloween_not_happy.wav",
+          "max_count": "1",
+          "name": "halloween_not_happy"
+        }
+      }
+    ],
+    "comment": [
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  }
+}
