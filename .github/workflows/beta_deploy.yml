@@ -24,9 +24,6 @@ jobs:
         with:
           version: 9
 
-      - name: Install dependencies
-        run: pnpm install && pnpm install -g firebase-tools
-
       - name: Build
         env:
           PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.PUBLIC_CLERK_PUBLISHABLE_KEY }}
