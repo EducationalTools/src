@@ -1,0 +1,568 @@
+{
+  "enemy_soldier": {
+    "@attributes": {
+      "power": "210",
+      "range": "1",
+      "speed": "30"
+    },
+    "comment": {},
+    "bullet": {
+      "@attributes": {
+        "hotspot": "16 16",
+        "rect": "0 0 32 32",
+        "rotate_speed": "2",
+        "scale_max": "0.8",
+        "scale_min": "0.3",
+        "texture": "game/bullets/bullets_0.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {
+      "@attributes": {
+        "name": "fire_unit_grenade",
+        "sound_at_end": "1"
+      }
+    }
+  },
+  "feast2_enemy_soldier": {
+    "@attributes": {
+      "power": "210",
+      "range": "1",
+      "speed": "30"
+    },
+    "comment": {},
+    "bullet": {
+      "@attributes": {
+        "hotspot": "16 16",
+        "rect": "0 0 32 32",
+        "rotate_speed": "2",
+        "scale_max": "0.8",
+        "scale_min": "0.3",
+        "texture": "game/bullets/bullets_5.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {
+      "@attributes": {
+        "name": "fire_unit_grenade",
+        "sound_at_end": "1"
+      }
+    }
+  },
+  "enemy_car": {
+    "@attributes": {
+      "power": "40",
+      "range": "2",
+      "speed": "70"
+    },
+    "comment": {},
+    "bullet": {
+      "@attributes": {
+        "hotspot": "4 1",
+        "rect": "0 0 8 2",
+        "texture": "game/bullets/bullets_1.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_unit_tank_shoot"}}
+  },
+  "enemy_tank_light": {
+    "@attributes": {
+      "power": "375",
+      "range": "10",
+      "speed": "60"
+    },
+    "comment": {},
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_unit_tank_shoot"}}
+  },
+  "enemy_tank_heavy": {
+    "@attributes": {
+      "power": "400",
+      "range": "20",
+      "speed": "60"
+    },
+    "comment": {},
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_unit_tank_shoot"}}
+  },
+  "enemy_tank_heavy_left": {
+    "@attributes": {
+      "power": "36",
+      "range": "10",
+      "speed": "60"
+    },
+    "comment": {},
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_unit_tank_shoot"}}
+  },
+  "enemy_tank_heavy_right": {
+    "@attributes": {
+      "power": "36",
+      "range": "10",
+      "speed": "60"
+    },
+    "comment": {},
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_unit_tank_shoot"}}
+  },
+  "enemy_airship": {
+    "@attributes": {
+      "power": "600",
+      "range": "15",
+      "speed": "45"
+    },
+    "comment": {},
+    "bullet": {
+      "@attributes": {
+        "hotspot": "4 1",
+        "rect": "0 0 8 2",
+        "texture": "game/bullets/bullets_1.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_unit_missile"}}
+  },
+  "enemy_bomber": {
+    "@attributes": {
+      "power": "800",
+      "range": "9",
+      "speed": "60"
+    },
+    "comment": {},
+    "bullet": {
+      "@attributes": {
+        "hotspot": "4 1",
+        "rect": "0 0 8 2",
+        "texture": "game/bullets/bullets_1.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_unit_missile"}}
+  },
+  "tower_a_0": {
+    "@attributes": {
+      "power": "4 5 6",
+      "range": "1 1 1",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "12 3",
+        "rect": "0 0 18 7",
+        "texture": "game/bullets/bullets_3.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_a"}}
+  },
+  "tower_a_1": {
+    "@attributes": {
+      "power": "6 6 6",
+      "range": "1 1 1",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "12 3",
+        "rect": "0 0 18 7",
+        "texture": "game/bullets/bullets_3.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_a"}}
+  },
+  "tower_a_2": {
+    "@attributes": {
+      "power": "7 7 7",
+      "range": "1 1 1",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "12 3",
+        "rect": "0 0 18 7",
+        "texture": "game/bullets/bullets_3.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_a"}}
+  },
+  "tower_a_3": {
+    "@attributes": {
+      "power": "7 8 9",
+      "range": "1 1 1",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "12 3",
+        "rect": "0 0 18 7",
+        "texture": "game/bullets/bullets_3.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_a"}}
+  },
+  "tower_a_4": {
+    "@attributes": {
+      "power": "8 9 10",
+      "range": "1 1 1",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "12 3",
+        "rect": "0 0 18 7",
+        "texture": "game/bullets/bullets_3.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_a"}}
+  },
+  "tower_a_5": {
+    "@attributes": {
+      "power": "45 60 70",
+      "range": "1 1 1",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "12 3",
+        "rect": "0 0 18 7",
+        "texture": "game/bullets/bullets_3.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_a"}}
+  },
+  "tower_a_6": {
+    "@attributes": {
+      "power": "10 11 12",
+      "range": "1 1 1",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "12 3",
+        "rect": "0 0 18 7",
+        "texture": "game/bullets/bullets_3.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_a"}}
+  },
+  "tower_b_0": {
+    "@attributes": {
+      "power": "80 85 90",
+      "range": "60 65 70",
+      "speed": "100 100 100"
+    },
+    "flame": {},
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_b",
+        "name_fast": "fire_tower_b_fast"
+      }
+    }
+  },
+  "tower_b_1": {
+    "@attributes": {
+      "power": "90 90 90",
+      "range": "73 76 79",
+      "speed": "100 100 100"
+    },
+    "flame": {},
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_b",
+        "name_fast": "fire_tower_b_fast"
+      }
+    }
+  },
+  "tower_b_2": {
+    "@attributes": {
+      "power": "100 100 100",
+      "range": "80 85 90",
+      "speed": "100 100 100"
+    },
+    "flame": {},
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_b",
+        "name_fast": "fire_tower_b_fast"
+      }
+    }
+  },
+  "tower_b_3": {
+    "@attributes": {
+      "power": "92 94 96",
+      "range": "80 80 80",
+      "speed": "100 100 100"
+    },
+    "flame": {},
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_b",
+        "name_fast": "fire_tower_b_fast"
+      }
+    }
+  },
+  "tower_b_4": {
+    "@attributes": {
+      "power": "110 120 130",
+      "range": "95 100 105",
+      "speed": "100 100 100"
+    },
+    "flame": {},
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_b",
+        "name_fast": "fire_tower_b_fast"
+      }
+    }
+  },
+  "tower_b_5": {
+    "@attributes": {
+      "power": "97 98 100",
+      "range": "80 80 80",
+      "speed": "100 100 100"
+    },
+    "flame": {},
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_b",
+        "name_fast": "fire_tower_b_fast"
+      }
+    }
+  },
+  "tower_c_0": {
+    "@attributes": {
+      "power": "300 325 350",
+      "range": "5 5 5",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_c"}}
+  },
+  "tower_c_1": {
+    "@attributes": {
+      "power": "350 350 350",
+      "range": "5 5 5",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_c"}}
+  },
+  "tower_c_2": {
+    "@attributes": {
+      "power": "350 350 350",
+      "range": "5 5 5",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_c"}}
+  },
+  "tower_c_3": {
+    "@attributes": {
+      "power": "350 350 350",
+      "range": "60 70 80",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_c"}}
+  },
+  "tower_c_4": {
+    "@attributes": {
+      "power": "350 375 390",
+      "range": "5 5 5",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_c"}}
+  },
+  "tower_c_5": {
+    "@attributes": {
+      "power": "350 350 350",
+      "range": "80 80 80",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "27 4",
+        "rect": "0 0 32 8",
+        "texture": "game/bullets/bullets_2.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {"@attributes": {"name": "fire_tower_c"}}
+  },
+  "tower_d_0": {
+    "@attributes": {
+      "power": "80 90 100",
+      "range": "3 3 3",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "28 3",
+        "rect": "0 0 32 6",
+        "texture": "game/bullets/bullets_4.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_d",
+        "name_fast": "fire_tower_d_fast"
+      }
+    }
+  },
+  "tower_d_1": {
+    "@attributes": {
+      "power": "100 100 100",
+      "range": "3 3 3",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "28 3",
+        "rect": "0 0 32 6",
+        "texture": "game/bullets/bullets_4.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_d",
+        "name_fast": "fire_tower_d_fast"
+      }
+    }
+  },
+  "tower_d_2": {
+    "@attributes": {
+      "power": "160 180 200",
+      "range": "3 3 3",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "28 3",
+        "rect": "0 0 32 6",
+        "texture": "game/bullets/bullets_4.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_d",
+        "name_fast": "fire_tower_d_fast"
+      }
+    }
+  },
+  "tower_d_3": {
+    "@attributes": {
+      "power": "115 130 145",
+      "range": "3 3 3",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "28 3",
+        "rect": "0 0 32 6",
+        "texture": "game/bullets/bullets_4.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_d",
+        "name_fast": "fire_tower_d_fast"
+      }
+    }
+  },
+  "tower_d_4": {
+    "@attributes": {
+      "power": "200 200 200",
+      "range": "3 3 3",
+      "speed": "400 400 400"
+    },
+    "bullet": {
+      "@attributes": {
+        "hotspot": "28 3",
+        "rect": "0 0 32 6",
+        "texture": "game/bullets/bullets_4.png",
+        "use_filter": "1"
+      }
+    },
+    "sound": {
+      "@attributes": {
+        "name": "fire_tower_d",
+        "name_fast": "fire_tower_d_fast"
+      }
+    }
+  }
+}

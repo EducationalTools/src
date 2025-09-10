@@ -1,0 +1,41 @@
+{
+    "autorepairs":
+    {
+        "unlock_level": 3,
+        "unlock_price": 150,
+        "unlock_count": 3,
+        "timeout": 60,
+        "asset": "game/infobar/infobar_35_0",
+        "asset_busy": "game/infobar/infobar_35_1"
+    },
+    "ressurections":
+    {
+        "unlock_level": 7,
+        "unlock_price": 300,
+        "unlock_count": 3,
+        "timeout": 0,
+        "asset": "game/infobar/infobar_37_0",
+        "asset_busy": "game/infobar/infobar_37_1"
+    },
+    "securitystrikes":
+    {
+        "unlock_level": 12,
+        "unlock_price": 700,
+        "unlock_count": 2,
+        "timeout": 0,
+        "asset": "game/infobar/infobar_38_0",
+        "asset_busy": "game/infobar/infobar_38_1",
+        "radius": 150,
+        "power": 1000000
+    },
+    "godhands":
+    {
+        "unlock_level": 17,
+        "unlock_price": 1500,
+        "unlock_count": 5,
+        "timeout": 60,
+        "asset": "game/infobar/infobar_36_0",
+        "asset_busy": "game/infobar/infobar_36_1",
+        "power": 1000000
+    }
+}

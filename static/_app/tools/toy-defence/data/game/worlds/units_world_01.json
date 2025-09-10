@@ -1,0 +1,597 @@
+{
+  "comment": {},
+  "units": {
+    "comment": [
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}
+    ],
+    "soldier": {
+      "@attributes": {
+        "health": "45",
+        "health_delta": "0 -20",
+        "kind": "0",
+        "money": "1",
+        "self_radius": "9",
+        "bonus_chance": "10",
+        "shoot_period": "23",
+        "speed": "80",
+        "time_stop_before_shoot": "2.5",
+        "track_delta": "30",
+        "track_name": "track_soldier",
+        "wreck_name": "wreck_soldier",
+        "internal_id": "0"
+      },
+      "base": {
+        "@attributes": {
+          "fps": "25",
+          "frames": "21",
+          "hotspot": "27 27",
+          "mode": "0",
+          "rect": "0 0 55 55",
+          "texture": "game/enemies/enemies_9.png",
+          "use_filter": "1"
+        }
+      },
+      "blaze": {
+        "@attributes": {
+          "fps": "25",
+          "frames": "11",
+          "hotspot": "21 19",
+          "mode": "0",
+          "rect": "0 0 42 38",
+          "texture": "game/enemies/animation/burning.png",
+          "use_filter": "1"
+        }
+      },
+      "cannons": {
+        "comment": {},
+        "cannon": {
+          "@attributes": {
+            "attack_radius": "80",
+            "attack_speed": "0.04",
+            "bullet_name": "enemy_soldier",
+            "hotspot": "9 0",
+            "rotation_speed": "15",
+            "use_filter": "1"
+          }
+        }
+      }
+    },
+    "truck": {
+      "@attributes": {
+        "health": "90",
+        "health_delta": "0 -30",
+        "kind": "1",
+        "money": "2",
+        "self_radius": "20",
+        "speed": "120",
+        "track_delta": "17",
+        "track_name": "enemy_car-tracks",
+        "wreck_name": "wreck_truck",
+        "internal_id": "1"
+      },
+      "base": {
+        "@attributes": {
+          "fps": "10",
+          "frames": "1",
+          "hotspot": "42 20",
+          "mode": "0",
+          "rect": "0 0 84 40",
+          "texture": "game/enemies/enemies_10.png",
+          "use_filter": "1"
+        }
+      },
+      "blaze": {
+        "@attributes": {
+          "fps": "25",
+          "frames": "11",
+          "hotspot": "27 27",
+          "mode": "0",
+          "rect": "0 0 42 38",
+          "texture": "game/enemies/animation/burning.png",
+          "use_filter": "1"
+        }
+      },
+      "animations": {
+        "animation": {
+          "@attributes": {
+            "fps": "16",
+            "frames": "8",
+            "hotspot": "16 0",
+            "position": "-35 -24",
+            "rect": "0 0 42 42",
+            "texture": "game/enemies/enemies_11.png"
+          }
+        }
+      },
+      "comment": {},
+      "troop_carrier": {
+        "@attributes": {
+          "contain_id": "soldier",
+          "count": "3",
+          "delta_time": "1"
+        },
+        "base_destroyed": {
+          "@attributes": {
+            "fps": "10",
+            "hotspot": "0 0",
+            "mode": "0"
+          },
+          "enemy": {
+            "@attributes": {
+              "hotspot": "35 24",
+              "rect": "0 0 70 47",
+              "texture": "game/enemies/enemies_5.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      }
+    },
+    "car": {
+      "@attributes": {
+        "health": "500",
+        "health_delta": "0 -20",
+        "kind": "1",
+        "money": "10",
+        "self_radius": "20",
+        "shoot_period": "11",
+        "speed": "70",
+        "time_stop_before_shoot": "0",
+        "track_delta": "17",
+        "track_name": "enemy_car-tracks",
+        "wreck_name": "wreck_car",
+        "internal_id": "2"
+      },
+      "base": {
+        "@attributes": {
+          "fps": "10",
+          "frames": "1",
+          "hotspot": "33 20",
+          "mode": "0",
+          "rect": "0 0 78 40",
+          "texture": "game/enemies/enemies_12.png",
+          "use_filter": "1"
+        }
+      },
+      "blaze": {
+        "@attributes": {
+          "fps": "25",
+          "frames": "11",
+          "hotspot": "27 27",
+          "mode": "0",
+          "rect": "0 0 42 38",
+          "texture": "game/enemies/animation/burning.png",
+          "use_filter": "1"
+        }
+      },
+      "cannons": {
+        "comment": {},
+        "cannon": {
+          "@attributes": {
+            "attack_radius": "150",
+            "attack_speed": "0.5",
+            "bullet_name": "enemy_car",
+            "hotspot": "15 14",
+            "position": "0 0",
+            "rect": "0 0 36 29",
+            "texture": "game/enemies/enemies_13.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      "animations": {
+        "animation": {
+          "@attributes": {
+            "fps": "16",
+            "frames": "8",
+            "hotspot": "16 0",
+            "position": "-12 -42",
+            "rect": "0 0 42 42",
+            "texture": "game/enemies/enemies_14.png"
+          }
+        }
+      }
+    },
+    "tank_light": {
+      "@attributes": {
+        "health": "1500",
+        "health_delta": "0 -20",
+        "kind": "1",
+        "money": "25",
+        "self_radius": "20",
+        "shoot_period": "10",
+        "speed": "30",
+        "time_stop_before_shoot": "3",
+        "track_delta": "17",
+        "track_name": "enemy_tank_light-tracks",
+        "wreck_name": "wreck_tank_light",
+        "internal_id": "3"
+      },
+      "base": {
+        "@attributes": {
+          "fps": "20",
+          "frames": "4",
+          "hotspot": "34 33",
+          "mode": "0",
+          "rect": "0 0 60 65",
+          "texture": "game/enemies/enemies_15.png",
+          "use_filter": "1"
+        }
+      },
+      "blaze": {
+        "@attributes": {
+          "fps": "25",
+          "frames": "11",
+          "hotspot": "27 27",
+          "mode": "0",
+          "rect": "0 0 42 38",
+          "texture": "game/enemies/animation/burning.png",
+          "use_filter": "1"
+        }
+      },
+      "cannons": {
+        "comment": {},
+        "cannon": {
+          "@attributes": {
+            "attack_radius": "200",
+            "attack_speed": "0.1",
+            "bullet_name": "enemy_tank_light",
+            "hotspot": "9 9",
+            "position": "0 0",
+            "rect": "0 0 36 17",
+            "texture": "game/enemies/enemies_16.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      "animations": {
+        "animation": {
+          "@attributes": {
+            "fps": "16",
+            "frames": "8",
+            "hotspot": "16 0",
+            "position": "-8 12",
+            "rect": "0 0 42 42",
+            "texture": "game/enemies/enemies_17.png"
+          }
+        }
+      }
+    },
+    "tank_heavy": {
+      "@attributes": {
+        "health": "3000",
+        "health_delta": "0 -20",
+        "kind": "1",
+        "money": "50",
+        "self_radius": "20",
+        "shoot_period": "5",
+        "speed": "20",
+        "time_stop_before_shoot": "0",
+        "track_delta": "17",
+        "track_name": "enemy_tank_heavy-tracks",
+        "wreck_name": "wreck_tank_heavy",
+        "internal_id": "4"
+      },
+      "base": {
+        "@attributes": {
+          "fps": "20",
+          "frames": "4",
+          "hotspot": "36 36",
+          "mode": "0",
+          "rect": "0 0 80 78",
+          "texture": "game/enemies/enemies_18.png",
+          "use_filter": "1"
+        }
+      },
+      "blaze": {
+        "@attributes": {
+          "fps": "25",
+          "frames": "11",
+          "hotspot": "27 27",
+          "mode": "0",
+          "rect": "0 0 42 38",
+          "texture": "game/enemies/animation/burning.png",
+          "use_filter": "1"
+        }
+      },
+      "cannons": {
+        "comment": [
+          {},
+          {},
+          {}
+        ],
+        "cannon": [
+          {
+            "@attributes": {
+              "attack_radius": "250",
+              "attack_speed": "0.05",
+              "bullet_name": "enemy_tank_heavy",
+              "hotspot": "0 0",
+              "position": "17 -35",
+              "rect": "0 0 0 0",
+              "texture": "game/enemies/enemies_19.png",
+              "use_filter": "1"
+            }
+          },
+          {
+            "@attributes": {
+              "attack_radius": "60",
+              "attack_speed": "0.25",
+              "bullet_name": "enemy_tank_heavy_left",
+              "hotspot": "0 0",
+              "position": "17 35",
+              "rect": "0 0 0 0",
+              "texture": "game/enemies/enemies_19.png",
+              "use_filter": "1"
+            }
+          },
+          {
+            "@attributes": {
+              "attack_radius": "60",
+              "attack_speed": "0.25",
+              "bullet_name": "enemy_tank_heavy_right",
+              "hotspot": "7 8",
+              "position": "12 4",
+              "rect": "0 0 26 17",
+              "texture": "game/enemies/enemies_20.png",
+              "use_filter": "1"
+            }
+          }
+        ]
+      },
+      "animations": {
+        "animation": {
+          "@attributes": {
+            "fps": "16",
+            "frames": "8",
+            "hotspot": "16 0",
+            "position": "-22 -41",
+            "rect": "0 0 42 42",
+            "texture": "game/enemies/enemies_14.png"
+          }
+        }
+      }
+    },
+    "troop_carrier": {
+      "@attributes": {
+        "health": "5000",
+        "health_delta": "0 -20",
+        "kind": "1",
+        "money": "85",
+        "self_radius": "20",
+        "speed": "15",
+        "track_delta": "17",
+        "track_name": "enemy_tank_heavy-tracks",
+        "wreck_name": "wreck_troop_carrier",
+        "internal_id": "5"
+      },
+      "base": {
+        "@attributes": {
+          "fps": "30",
+          "frames": "1",
+          "hotspot": "48 25",
+          "mode": "0",
+          "rect": "0 0 96 50",
+          "texture": "game/enemies/enemies_21.png",
+          "use_filter": "1"
+        }
+      },
+      "blaze": {
+        "@attributes": {
+          "fps": "25",
+          "frames": "11",
+          "hotspot": "27 27",
+          "mode": "0",
+          "rect": "0 0 42 38",
+          "texture": "game/enemies/animation/burning.png",
+          "use_filter": "1"
+        }
+      },
+      "comment": {},
+      "troop_carrier": {
+        "@attributes": {
+          "contain_id": "tank_light",
+          "count": "2",
+          "delta_time": "10"
+        },
+        "base_destroyed": {
+          "@attributes": {
+            "fps": "10",
+            "hotspot": "0 0",
+            "mode": "0"
+          },
+          "enemy": {
+            "@attributes": {
+              "hotspot": "55 38",
+              "rect": "0 0 105 76",
+              "texture": "game/enemies/enemies_8.png",
+              "use_filter": "1"
+            }
+          }
+        }
+      },
+      "animations": {
+        "animation": {
+          "@attributes": {
+            "fps": "16",
+            "frames": "8",
+            "hotspot": "16 0",
+            "position": "-47 -24",
+            "rect": "0 0 42 42",
+            "texture": "game/enemies/enemies_11.png"
+          }
+        }
+      }
+    },
+    "fighter": {
+      "@attributes": {
+        "health": "750",
+        "health_delta": "0 -20",
+        "kind": "2",
+        "money": "15",
+        "self_radius": "35",
+        "shoot_period": "5",
+        "speed": "60",
+        "time_stop_before_shoot": "0",
+        "track_delta": "10",
+        "wreck_name": "wreck_fighter",
+        "internal_id": "6"
+      },
+      "base": {
+        "@attributes": {
+          "fps": "20",
+          "frames": "8",
+          "hotspot": "50 54",
+          "mode": "0",
+          "rect": "0 0 120 120",
+          "texture": "game/enemies/enemies_22.png",
+          "use_filter": "1"
+        }
+      },
+      "comment": {},
+      "animations": {
+        "animation": {
+          "@attributes": {
+            "fps": "16",
+            "frames": "8",
+            "hotspot": "16 0",
+            "position": "4 6",
+            "rect": "0 0 42 42",
+            "texture": "game/enemies/enemies_23.png"
+          }
+        }
+      },
+      "aircraft": {
+        "@attributes": {
+          "altitude": "50",
+          "altitude_lower": "30",
+          "shadow_color": "50000000"
+        }
+      }
+    },
+    "airship": {
+      "@attributes": {
+        "health": "3000",
+        "health_delta": "0 -20",
+        "kind": "2",
+        "money": "50",
+        "self_radius": "50",
+        "shoot_period": "5",
+        "speed": "20",
+        "time_stop_before_shoot": "0",
+        "track_delta": "10",
+        "wreck_name": "wreck_airship",
+        "internal_id": "7"
+      },
+      "base": {
+        "@attributes": {
+          "fps": "10",
+          "hotspot": "96 34",
+          "mode": "0",
+          "rect": "0 0 180 64",
+          "texture": "game/enemies/enemies_24.png",
+          "use_filter": "1"
+        }
+      },
+      "cannons": {
+        "comment": {},
+        "cannon": {
+          "@attributes": {
+            "attack_radius": "50",
+            "attack_speed": "0.012",
+            "bullet_name": "enemy_airship",
+            "hotspot": "0 1",
+            "position": "0 0",
+            "rect": "0 0 10 3",
+            "texture": "game/enemies/enemies_25.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      "animations": {
+        "animation": {
+          "@attributes": {
+            "fps": "16",
+            "frames": "8",
+            "hotspot": "16 0",
+            "position": "-84 -23",
+            "rect": "0 0 42 42",
+            "texture": "game/enemies/enemies_11.png"
+          }
+        }
+      },
+      "aircraft": {
+        "@attributes": {
+          "altitude": "50",
+          "shadow_color": "50000000"
+        }
+      }
+    },
+    "bomber": {
+      "@attributes": {
+        "health": "2000",
+        "health_delta": "0 -20",
+        "kind": "2",
+        "money": "30",
+        "self_radius": "50",
+        "shoot_period": "5",
+        "speed": "60",
+        "time_stop_before_shoot": "0",
+        "track_delta": "10",
+        "wreck_name": "wreck_bomber",
+        "internal_id": "8"
+      },
+      "base": {
+        "@attributes": {
+          "fps": "10",
+          "hotspot": "100 78",
+          "mode": "0",
+          "rect": "0 0 145 156",
+          "texture": "game/enemies/enemies_26.png",
+          "use_filter": "1"
+        }
+      },
+      "cannons": {
+        "comment": {},
+        "cannon": {
+          "@attributes": {
+            "attack_radius": "50",
+            "attack_speed": "0.006",
+            "bullet_name": "enemy_bomber",
+            "hotspot": "0 1",
+            "position": "0 0",
+            "rect": "0 0 10 3",
+            "texture": "game/enemies/enemies_27.png",
+            "use_filter": "1"
+          }
+        }
+      },
+      "animations": {
+        "animation": {
+          "@attributes": {
+            "fps": "16",
+            "frames": "8",
+            "hotspot": "16 0",
+            "position": "-40 4",
+            "rect": "0 0 42 42",
+            "texture": "game/enemies/enemies_28.png"
+          }
+        }
+      },
+      "aircraft": {
+        "@attributes": {
+          "altitude": "50",
+          "shadow_color": "50000000"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,546 @@
+{
+  "@attributes": {
+    "idle_time": "2",
+    "speed": "0 200",
+    "start": "260 -100",
+    "target": "260 0"
+  },
+  "background": {
+    "left": {
+      "@attributes": {
+        "rect": "0 0 17 98",
+        "texture": "common/notifications_0.png"
+      }
+    },
+    "middle": {
+      "@attributes": {
+        "rect": "0 0 21 98",
+        "texture": "common/notifications_1.png"
+      }
+    },
+    "right": {
+      "@attributes": {
+        "rect": "0 0 25 98",
+        "texture": "common/notifications_2.png"
+      }
+    }
+  },
+  "common_item": {
+    "@attributes": {"width": "600"},
+    "image": {
+      "@attributes": {
+        "position": "21 10",
+        "rect": "0 0 62 62",
+        "texture": ""
+      }
+    },
+    "title": {
+      "@attributes": {
+        "auto_scale": "1",
+        "align_vertical": "2",
+        "align": "1",
+        "color": "FFeecd6e",
+        "font": "fonts/soldier_font5.fnt",
+        "intersymbol": "0",
+        "localized": "1",
+        "size": "490 36",
+        "interlinear": "-12",
+        "multiline": "1",
+        "multiplier": "0.7",
+        "position": "90 3",
+        "spacewidth": "15",
+        "string": "",
+        "texture": "fonts/soldier_font5.png"
+      }
+    },
+    "message": {
+      "@attributes": {
+        "auto_scale": "1",
+        "align_vertical": "1",
+        "align": "1",
+        "color": "FFeecd6e",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "-12",
+        "intersymbol": "0",
+        "localized": "1",
+        "multiline": "1",
+        "multiplier": "0.55",
+        "position": "90 32",
+        "size": "490 46",
+        "spacewidth": "18",
+        "string": "",
+        "texture": "fonts/soldier_font5.png"
+      }
+    }
+  },
+  "items": {
+    "item": [
+      {
+        "@attributes": {
+          "name": "ENEMY_WILL_BE_HELD",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_3.png"}},
+        "title": {"@attributes": {"string": "Враг не пройдет"}},
+        "message": {"@attributes": {"string": "Пройти миссию, не допустив вреда вашей базе."}}
+      },
+      {
+        "@attributes": {
+          "name": "GREEN_BERET",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_4.png"}},
+        "title": {"@attributes": {"string": "Зеленые береты"}},
+        "message": {"@attributes": {"string": "Пройти все миссии 'Первой крови'"}}
+      },
+      {
+        "@attributes": {
+          "name": "CONQUEST_OF_SNOW",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_5.png"}},
+        "title": {"@attributes": {"string": "Покорение снегов"}},
+        "message": {"@attributes": {"string": "Пройти все миссии 'Морозной Свежести'"}}
+      },
+      {
+        "@attributes": {
+          "name": "WAR_IN_THE_SANDBOX",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_6.png"}},
+        "title": {"@attributes": {"string": "Войны в песочнице"}},
+        "message": {"@attributes": {"string": "Пройти все миссии 'Остаться в живых'"}}
+      },
+      {
+        "@attributes": {
+          "name": "TOTAL_SWEEP",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_7.png"}},
+        "title": {"@attributes": {"string": "Тотальная зачистка"}},
+        "message": {"@attributes": {"string": "Пройти все миссии 'Первая кровь' на три звезды."}}
+      },
+      {
+        "@attributes": {
+          "name": "UNDER_THE_COVER_OF_SNOWFALL",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_8.png"}},
+        "title": {"@attributes": {"string": "Под покровом снегопада"}},
+        "message": {"@attributes": {"string": "Пройти все миссии 'Морозная Свежесть' на три звезды."}}
+      },
+      {
+        "@attributes": {
+          "name": "STORM_IN_THE_SANDBOX",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_9.png"}},
+        "title": {"@attributes": {"string": "Буря в песочнице"}},
+        "message": {"@attributes": {"string": "Пройти все миссии 'Остаться в живых' на три звезды."}}
+      },
+      {
+        "@attributes": {
+          "name": "ELITE_GUNNERS",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_10.png"}},
+        "title": {"@attributes": {"string": "Элитные пулеметчики"}},
+        "message": {"@attributes": {"string": "Приобрести все улучшения стрелков максимального уровня."}}
+      },
+      {
+        "@attributes": {
+          "name": "ELITE_FLAMETHROWER",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_11.png"}},
+        "title": {"@attributes": {"string": "Элитные огнеметчики"}},
+        "message": {"@attributes": {"string": "Приобрести все улучшения огнеметчиков максимального уровня."}}
+      },
+      {
+        "@attributes": {
+          "name": "ELITE_ARTILLERY",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_12.png"}},
+        "title": {"@attributes": {"string": "Элитная артиллерия"}},
+        "message": {"@attributes": {"string": "Приобрести все улучшения пушек максимального уровня."}}
+      },
+      {
+        "@attributes": {
+          "name": "ELITE_ANTIAIRCRAFT_GUNNERS",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_13.png"}},
+        "title": {"@attributes": {"string": "Элитные зенитчики"}},
+        "message": {"@attributes": {"string": "Приобрести все улучшения зениток максимального уровня."}}
+      },
+      {
+        "@attributes": {
+          "name": "INCREDIBLE_ARMY",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_14.png"}},
+        "title": {"@attributes": {"string": "Невероятная армия!"}},
+        "message": {"@attributes": {"string": "Приобрести все улучшения максимального уровня."}}
+      },
+      {
+        "@attributes": {
+          "name": "1000_SOLDIERS_AFTER",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_15.png"}},
+        "title": {"@attributes": {"string": "Тысячу солдатиков спустя"}},
+        "message": {"@attributes": {"string": "Сломайте 1000 вражеских солдатиков."}}
+      },
+      {
+        "@attributes": {
+          "name": "50_BIG_BARRELS",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_16.png"}},
+        "title": {"@attributes": {"string": "50 больших стволов"}},
+        "message": {"@attributes": {"string": "Установите 50 больших пушек."}}
+      },
+      {
+        "@attributes": {
+          "name": "NO_CHANCE_TO_THE_ENEMY",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_17.png"}},
+        "title": {"@attributes": {"string": "Ни шанса врагу"}},
+        "message": {"@attributes": {"string": "Улучшите все башни, установленные в одной миссии, до максимума."}}
+      },
+      {
+        "@attributes": {
+          "name": "PERFECTION",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_18.png"}},
+        "title": {"@attributes": {"string": "Совершенство"}},
+        "message": {"@attributes": {"string": "Добейтесь всех существующих достижений."}}
+      },
+      {
+        "@attributes": {
+          "name": "HOLIDAY1_LEVEL_PASS",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_19.png"}},
+        "title": {"@attributes": {"string": "Владыка Мертвых"}},
+        "message": {"@attributes": {"string": "Пройти уровень Ночной Кошмар."}}
+      },
+      {
+        "@attributes": {
+          "name": "HOLIDAY1_LEVEL_PASS_GOLD",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_20.png"}},
+        "title": {"@attributes": {"string": "Князь Тьмы"}},
+        "message": {"@attributes": {"string": "Пройти уровень Ночной Кошмар на золото."}}
+      },
+      {
+        "@attributes": {
+          "name": "HOLIDAY2_LEVEL_PASS",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_21.png"}},
+        "title": {"@attributes": {"string": "Новогодний переполох"}},
+        "message": {"@attributes": {"string": "Пройти все миссии 'Спасение Нового Года'."}}
+      },
+      {
+        "@attributes": {
+          "name": "HOLIDAY2_LEVEL_PASS_GOLD",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_22.png"}},
+        "title": {"@attributes": {"string": "Счастливый Новый Год"}},
+        "message": {"@attributes": {"string": "Пройти все миссии 'Спасение Нового Года' на золото."}}
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HOLIDAY4_ENEMY_WILL_BE_HELD",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_30.png"}},
+        "title": {"@attributes": {"string": "На страже порядка"}},
+        "message": {"@attributes": {"string": "Не допустить врагов, замаскировавшихся под спортсменов к Пламени Мира."}}
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HOLIDAY4_ZEUS",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_31.png"}},
+        "title": {"@attributes": {"string": "Зевс, не мухлюй!"}},
+        "message": {"@attributes": {"string": "Раздавить хотя бы одного врага с помощью руки бога в Зимних играх."}}
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HOLIDAY4_LEVEL_PASS",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_32.png"}},
+        "title": {"@attributes": {"string": "Участник Зимних игр"}},
+        "message": {"@attributes": {"string": "Пройти все миссии Зимних игр."}}
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HOLIDAY4_LEVEL_PASS_GOLD",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_33.png"}},
+        "title": {"@attributes": {"string": "Пламя Мира!"}},
+        "message": {"@attributes": {"string": "Пройти все мисии Зимних игр, сохранив Пламя Мира."}}
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_RESCUE_SANTA_CLAUS",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_27.png"}},
+        "title": {"@attributes": {"string": "Праздник волшебства!"}},
+        "message": {"@attributes": {"string": "Освободите Санта Клауса из плена"}}
+      },
+      {
+        "@attributes": {
+          "name": "PRIZE_BOX",
+          "copy": "|common_item"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_23.png"}},
+        "title": {"@attributes": {"string": "Дух Нового Года"}},
+        "message": {"@attributes": {"string": "Вернуть восемь оленей Деду Морозу."}}
+      },
+      {
+        "@attributes": {"copy": "|common_item"},
+        "image": {"@attributes": {"texture": "common/notifications_23.png"}},
+        "title": {},
+        "message": {
+          "@attributes": {
+            "align_vertical": "1",
+            "align": "1",
+            "color": "FFeecd6e",
+            "font": "fonts/soldier_font5.fnt",
+            "interlinear": "-10",
+            "intersymbol": "0",
+            "localized": "1",
+            "multiline": "1",
+            "multiplier": "0.5",
+            "position": "90 54",
+            "size": "380 40",
+            "spacewidth": "18",
+            "texture": "fonts/soldier_font5.png",
+            "string_before": "Вы получили ",
+            "string_after": "©"
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HONORABLE_DEFENDER",
+          "copy": "|common_item",
+          "amount": "500"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_24.png"}},
+        "title": {"@attributes": {"string": "Почетный защитник"}},
+        "message": {"@attributes": {"string": "Установить на одном устройстве Toy Defense и Toy Defense 2"}}
+      },
+      {
+        "@attributes": {
+          "name": "HALLOWEEN_2013_GIVE_SWEETS",
+          "copy": "|common_item",
+          "amount": "500"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_25.png"}},
+        "title": {"@attributes": {"string": "Сладость или гадость!?"}},
+        "message": {"@attributes": {"string": "Угостить страшилок звездными конфетами"}}
+      },
+      {
+        "@attributes": {
+          "name": "HALLOWEEN_2013_GOLD_MISSION",
+          "copy": "|common_item",
+          "amount": "500"
+        },
+        "image": {"@attributes": {"texture": "common/notifications_26.png"}},
+        "title": {"@attributes": {"string": "Дух Хэллоуина"}},
+        "message": {"@attributes": {"string": "Пройти вторую миссию Ночного Кошмара на золото, не давая звезд нечистой силе"}}
+      }
+    ]
+  },
+  "achievements": {
+    "a": [
+      {
+        "@attributes": {
+          "name": "ENEMY_WILL_BE_HELD",
+          "id": "0"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "GREEN_BERET",
+          "id": "1"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "CONQUEST_OF_SNOW",
+          "id": "2"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "WAR_IN_THE_SANDBOX",
+          "id": "3"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "TOTAL_SWEEP",
+          "id": "4"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "UNDER_THE_COVER_OF_SNOWFALL",
+          "id": "5"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "STORM_IN_THE_SANDBOX",
+          "id": "6"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "ELITE_GUNNERS",
+          "id": "7"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "ELITE_FLAMETHROWER",
+          "id": "8"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "ELITE_ARTILLERY",
+          "id": "9"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "ELITE_ANTIAIRCRAFT_GUNNERS",
+          "id": "10"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "INCREDIBLE_ARMY",
+          "id": "11"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "1000_SOLDIERS_AFTER",
+          "id": "12"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "50_BIG_BARRELS",
+          "id": "13"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "NO_CHANCE_TO_THE_ENEMY",
+          "id": "14"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "PERFECTION",
+          "id": "15"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "HOLIDAY1_LEVEL_PASS",
+          "id": "16"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "HOLIDAY1_LEVEL_PASS_GOLD",
+          "id": "17"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "HOLIDAY2_LEVEL_PASS",
+          "id": "18"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "HOLIDAY2_LEVEL_PASS_GOLD",
+          "id": "19"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HOLIDAY4_ENEMY_WILL_BE_HELD",
+          "id": "20"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HOLIDAY4_ZEUS",
+          "id": "21"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HOLIDAY4_LEVEL_PASS",
+          "id": "22"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HOLIDAY4_LEVEL_PASS_GOLD",
+          "id": "23"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_RESCUE_SANTA_CLAUS",
+          "id": "26"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "PRIZE_BOX",
+          "id": "27"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "NOTIFICATION_HONORABLE_DEFENDER",
+          "id": "29"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "HALLOWEEN_2013_GIVE_SWEETS",
+          "id": "30"
+        }
+      },
+      {
+        "@attributes": {
+          "name": "HALLOWEEN_2013_GOLD_MISSION",
+          "id": "31"
+        }
+      }
+    ]
+  }
+}
