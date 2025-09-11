@@ -3,7 +3,6 @@ import type { ParsedGmae } from '$lib/gmaes';
 import { renderComponent } from '$lib/components/ui/data-table/index.js';
 import TableActions from './table-actions.svelte';
 import Link from './link.svelte';
-import Tags from './tags.svelte';
 import HeaderButtonSort from './header-button-sort.svelte';
 
 export const columns: ColumnDef<ParsedGmae>[] = [
@@ -46,16 +45,6 @@ export const columns: ColumnDef<ParsedGmae>[] = [
 			renderComponent(HeaderButtonSort, {
 				content: 'Description'
 			})
-	},
-	{
-		accessorKey: 'tags',
-		header: ({ column }) =>
-			renderComponent(HeaderButtonSort, {
-				content: 'Tags'
-			}),
-		cell: ({ row }) => {
-			return renderComponent(Tags, { tags: row.original.tags });
-		}
 	},
 	{
 		id: 'actions',
