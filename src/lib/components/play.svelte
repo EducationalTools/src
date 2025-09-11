@@ -5,7 +5,6 @@
 	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
 	import { Drawer } from 'vaul-svelte';
 	import { toast } from 'svelte-sonner';
-	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { badgeVariants } from '$lib/components/ui/badge/index.js';
 
 	// Icons
@@ -76,21 +75,6 @@
 				>{gmaedata?.category}<ArrowRight class="ml-1 size-3" /></a
 			>
 			<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
-			<div class="flex w-full flex-row flex-wrap gap-2">
-				{#each gmaedata?.tags || [] as tag}
-					<Badge variant="default">#{tag}</Badge>
-				{/each}
-				{#each gmaedata?.links || [] as link}
-					<a
-						href={link.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class={badgeVariants({ variant: 'outline' })}
-					>
-						<OpenInNewTab class="mr-1 size-3" />{link.name}
-					</a>
-				{/each}
-			</div>
 			<p class="text-xl">{gmaedata?.description}</p>
 		</div>
 		<div class="grow"></div>
