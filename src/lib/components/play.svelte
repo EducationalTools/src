@@ -78,7 +78,7 @@
 					<Tooltip.Root>
 						<Tooltip.Trigger
 							onclick={() => {
-								toast.success('Focused on game');
+								toast.success('Focused on gmae');
 								document.querySelector('iframe')?.focus();
 							}}
 							class={clsx(badgeVariants(), 'w-fit')}
