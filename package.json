@@ -49,7 +49,7 @@
 	},
 	"dependencies": {
 		"@clerk/backend": "^2.9.3",
-		"@clerk/themes": "^2.4.12",
+		"@clerk/themes": "^2.4.19",
 		"@friendofsvelte/tipex": "0.0.7",
 		"@tanstack/match-sorter-utils": "^8.19.4",
 		"@tsparticles/slim": "^3.9.1",
