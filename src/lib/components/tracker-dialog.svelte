@@ -12,10 +12,17 @@
 		<Dialog.Title>Notice</Dialog.Title>
 		<Dialog.Description>
 			We use PostHog to detect/fix errors, track usage and roll out features. Please disable your
-			tracker/ad blocker to allow this. Don't worry, we won't show you any ads.
-			<br /><br />
+			tracker/ad blocker for this site to allow this. Don't worry, we won't show you any ads.
+			<br />
+			<br />
 			For more details about our data collection practices, see our
 			<a href="/privacy" class="text-blue-600 hover:underline" target="_blank">Privacy Policy</a>.
+			<br />
+			<br />
+			<details>
+				<summary>Techinal info</summary>
+				<p>We detected that hog.edutools.ingo.au is blocked by your ad/tracker blocker</p>
+			</details>
 		</Dialog.Description>
 		<Dialog.Footer>
 			<Dialog.Close onclick={() => ($trackerDialogClosed = true)}>
