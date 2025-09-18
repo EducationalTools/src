@@ -7,6 +7,7 @@
 	import { toast } from 'svelte-sonner';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { badgeVariants } from '$lib/components/ui/badge/index.js';
+	import * as Tooltip from '$lib/components/ui/tooltip/index.js';
 
 	// Icons
 	import Refresh from '@lucide/svelte/icons/refresh-cw';
@@ -72,25 +73,28 @@
 
 	<div class="flex w-full flex-col gap-2 md:flex-row">
 		<div class="flex flex-col gap-2">
-			<a href="/" class={clsx(badgeVariants({ variant: 'secondary' }), 'w-fit')}
-				>{gmaedata?.category}<ArrowRight class="ml-1 size-3" /></a
-			>
-			<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
 			<div class="flex w-full flex-row flex-wrap gap-2">
-				{#each gmaedata?.tags || [] as tag}
-					<Badge variant="default">#{tag}</Badge>
-				{/each}
-				{#each gmaedata?.links || [] as link}
-					<a
-						href={link.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class={badgeVariants({ variant: 'outline' })}
-					>
-						<OpenInNewTab class="mr-1 size-3" />{link.name}
-					</a>
-				{/each}
+				<Tooltip.Provider>
+					<Tooltip.Root>
+						<Tooltip.Trigger
+							onclick={() => {
+								toast.success('Focused on gmae');
+								document.querySelector('iframe')?.focus();
+							}}
+							class={clsx(badgeVariants(), 'w-fit')}
+						>
+							Focus Gmae
+						</Tooltip.Trigger>
+						<Tooltip.Content>
+							<p>If keyboard input isn't working</p>
+						</Tooltip.Content>
+					</Tooltip.Root>
+				</Tooltip.Provider>
+				<a href="/" class={clsx(badgeVariants({ variant: 'secondary' }), 'w-fit')}
+					>{gmaedata?.category}<ArrowRight class="ml-1 size-3" /></a
+				>
 			</div>
+			<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
 			<p class="text-xl">{gmaedata?.description}</p>
 		</div>
 		<div class="grow"></div>
@@ -113,6 +117,7 @@
 				onclick={() => {
 					posthog.capture('gmae_fullscreen', { gmae_id: gmaedata?.id });
 					document.querySelector('iframe')?.requestFullscreen();
+					document.querySelector('iframe')?.focus();
 				}}
 			>
 				<Fullscreen class="h-6 w-6" />

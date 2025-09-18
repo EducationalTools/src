@@ -19,7 +19,8 @@ jobs:
           version: 9
 
       - name: Install dependencies
-        run: pnpm install && pnpm install -g firebase-tools
+        run: |
+          pnpm install
 
       - name: Build
         env:
@@ -45,13 +46,6 @@ jobs:
           publish_dir: ./build
           user_name: 'Ingo Wolf'
           user_email: 'me@ingowolf.au'
-
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          channelId: live
-          projectId: edutools-d915e
 
       - name: Deploy to Infinityfree
         if: always()

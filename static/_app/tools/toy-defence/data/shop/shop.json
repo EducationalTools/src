@@ -1,0 +1,3020 @@
+{
+  "@attributes": {
+    "autocenter": "0",
+    "bounding_box": "920 520"
+  },
+  "background": {
+    "@attributes": {
+      "anchor": "4",
+      "hotspot": "683 384",
+      "rect": "0 0 1366 768",
+      "texture": "shop/background_0.png"
+    }
+  },
+  "static": {
+    "а": {
+      "@attributes": {
+        "anchor": "4",
+        "color": "FFFFFFFF",
+        "font": "fonts/soldier_font4.fnt",
+        "intersymbol": "0",
+        "localized": "1",
+        "multiplier": "0.66",
+        "position": "75 -220",
+        "align": "0",
+        "spacewidth": "30",
+        "string": "МАГАЗИН УЛУЧШЕНИЙ",
+        "texture": "fonts/soldier_font4.png",
+        "use_filter": "1"
+      }
+    }
+  },
+  "comment": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "bnt_beginners_action": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "0",
+          "position": "200 30",
+          "rect": "0 0 296 56",
+          "texture": "missionselector/background_0.png"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "0",
+          "position": "20032",
+          "rect": "0 0 296 56",
+          "texture": "missionselector/background_0.png"
+        }
+      }
+    },
+    "caption": {
+      "@attributes": {
+        "font": "fonts/soldier_font6.fnt",
+        "intersymbol": "0",
+        "multiplier": "0.7",
+        "position": "148 45",
+        "string": "Beginners",
+        "texture": "fonts/soldier_font6.png",
+        "use_filter": "1"
+      }
+    }
+  },
+  "bnt_commnaders_action": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "0",
+          "position": "200 90",
+          "rect": "0 0 296 56",
+          "texture": "missionselector/background_0.png"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "0",
+          "position": "200 92",
+          "rect": "0 0 296 56",
+          "texture": "missionselector/background_0.png"
+        }
+      }
+    },
+    "caption": {
+      "@attributes": {
+        "font": "fonts/soldier_font6.fnt",
+        "intersymbol": "0",
+        "multiplier": "0.7",
+        "position": "148 45",
+        "string": "Commanders",
+        "texture": "fonts/soldier_font6.png",
+        "use_filter": "1"
+      }
+    }
+  },
+  "btn_returners_action": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "0",
+          "position": "200 150",
+          "rect": "0 0 296 56",
+          "texture": "missionselector/background_0.png"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "0",
+          "position": "200 152",
+          "rect": "0 0 296 56",
+          "texture": "missionselector/background_0.png"
+        }
+      }
+    },
+    "caption": {
+      "@attributes": {
+        "font": "fonts/soldier_font6.fnt",
+        "intersymbol": "0",
+        "multiplier": "0.7",
+        "position": "148 45",
+        "string": "Returners",
+        "texture": "fonts/soldier_font6.png",
+        "use_filter": "1"
+      }
+    }
+  },
+  "btnback": {
+    "@attributes": {"copy": "common/buttons.xml|buttons/button_close"},
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "440 -278"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "440 -276"
+        }
+      }
+    }
+  },
+  "btncontinue": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "hotspot": "37 37",
+          "position": "418 252",
+          "rect": "0 0 74 74",
+          "texture": "shop/background_5.png"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "hotspot": "37 37",
+          "position": "418 254",
+          "rect": "0 0 74 74",
+          "texture": "shop/background_5.png"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}}
+  },
+  "btn_christmas_action": {
+    "update_particle": {
+      "@attributes": {
+        "name": "santa-menu-1-expl",
+        "position": "220 248",
+        "anchor": "4"
+      }
+    },
+    "progress_control": {
+      "@attributes": {"speed": "0.5"},
+      "progress": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "277 250",
+          "hotspot": "55 7",
+          "rect": "0 0 110 14",
+          "texture": "shop/christmas_progress.png",
+          "speed": "0.5"
+        }
+      },
+      "frame": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "276 252",
+          "hotspot": "57 10",
+          "rect": "0 0 114 20",
+          "texture": "shop/christmas_progress_frame.png"
+        }
+      }
+    },
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "133 198",
+          "rect": "0 0 234 102",
+          "texture": "shop/christmas_button.png"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "133 200",
+          "rect": "0 0 234 102",
+          "texture": "shop/christmas_button.png"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}}
+  },
+  "btntower_a": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 -135",
+          "rect": "0 0 80 80"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 -135",
+          "rect": "0 0 80 80"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}}
+  },
+  "btntower_b": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 -12",
+          "rect": "0 0 80 80"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 -12",
+          "rect": "0 0 80 80"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}}
+  },
+  "btntower_c": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 110",
+          "rect": "0 0 80 80"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 110",
+          "rect": "0 0 80 80"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}}
+  },
+  "btntower_d": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 231",
+          "rect": "0 0 80 80"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 231",
+          "rect": "0 0 80 80"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}}
+  },
+  "btnpacks": {
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 -239",
+          "rect": "0 0 80 80"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "color": "00000000",
+          "hotspot": "40 40",
+          "position": "-391 -239",
+          "rect": "0 0 80 80"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}}
+  },
+  "btn_buy_stars": {
+    "@attributes": {"copy": "common/buttons.xml|buttons/button_shop_small"},
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "-180 253"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "-180 255"
+        }
+      },
+      "group": {
+        "@attributes": {"group_id": "1"},
+        "out": {
+          "@attributes": {
+            "anchor": "4",
+            "position": "-180 253",
+            "hotspot": "99 37",
+            "rect": "0 0 198 74",
+            "texture": "common/buttons/button_shop_small.png"
+          },
+          "sprite": {
+            "@attributes": {
+              "position": "60 0",
+              "hotspot": "33 33",
+              "rect": "0 0 66 66",
+              "texture": "shop/tape.png"
+            }
+          }
+        },
+        "pressed": {
+          "@attributes": {
+            "anchor": "4",
+            "position": "-180 255",
+            "hotspot": "99 37",
+            "rect": "0 0 198 74",
+            "texture": "common/buttons/button_shop_small.png"
+          },
+          "sprite": {
+            "@attributes": {
+              "position": "60 0",
+              "hotspot": "33 33",
+              "rect": "0 0 66 66",
+              "texture": "shop/tape.png"
+            }
+          }
+        },
+        "disabled": {
+          "@attributes": {
+            "hotspot": "99 37",
+            "rect": "0 0 198 74",
+            "texture": "common/buttons/button_shop_small.png"
+          }
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+    "caption": {
+      "@attributes": {
+        "auto_scale": "1",
+        "align_vertical": "0",
+        "interlinear": "-12",
+        "multiline": "1",
+        "multiplier": "0.75",
+        "size": "140 50",
+        "font": "fonts/soldier_font1.fnt",
+        "position": "-70 -28",
+        "string": "Купить ©",
+        "texture": "fonts/soldier_font1.png",
+        "use_filter": "1"
+      },
+      "caption": {
+        "@attributes": {
+          "color": "ffeecd6e",
+          "angle": "-45",
+          "auto_scale": "1",
+          "align_vertical": "0",
+          "string": "АКЦИЯ",
+          "interlinear": "-17",
+          "multiline": "1",
+          "size": "60 28",
+          "texture": "fonts/soldier_font5.png",
+          "font": "fonts/soldier_font5.fnt",
+          "multiplier": "0.7",
+          "position": "34 18",
+          "deep": "4",
+          "use_filter": "1"
+        }
+      }
+    },
+    "particle": {
+      "@attributes": {
+        "delta": "-134 -34",
+        "name": "btn_buy_stars"
+      }
+    }
+  },
+  "btn_free_stars": {
+    "@attributes": {"copy": "common/buttons.xml|buttons/button_shop_small"},
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "28 253"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "28 255"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+    "caption": {
+      "@attributes": {
+        "auto_scale": "1",
+        "align_vertical": "0",
+        "interlinear": "-12",
+        "multiline": "1",
+        "multiplier": "0.7",
+        "size": "140 50",
+        "font": "fonts/soldier_font1.fnt",
+        "position": "-70 -28",
+        "string": "Бесплатные ©",
+        "texture": "fonts/soldier_font1.png",
+        "use_filter": "1"
+      }
+    }
+  },
+  "btn_promocode": {
+    "@attributes": {"copy": "common/buttons.xml|buttons/button_shop_small"},
+    "button": {
+      "out": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "236 253"
+        }
+      },
+      "pressed": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "236 255"
+        }
+      }
+    },
+    "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+    "caption": {
+      "@attributes": {
+        "font": "fonts/soldier_font1.fnt",
+        "align_vertical": "0",
+        "interlinear": "-20",
+        "multiline": "1",
+        "multiplier": "0.55",
+        "size": "150 50",
+        "auto_scale": "1",
+        "position": "-77 -28",
+        "string": "Ввод промокода",
+        "texture": "fonts/soldier_font1.png",
+        "use_filter": "1"
+      }
+    }
+  },
+  "page_towers": {
+    "info_pack": {
+      "@attributes": {
+        "anchor": "4",
+        "align": "0",
+        "color": "FFeecd6e",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "0",
+        "multiplier": "0.85",
+        "position": "200 96",
+        "spacewidth": "18",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_pack_second": {
+      "@attributes": {
+        "anchor": "4",
+        "align": "0",
+        "color": "FFeecd6e",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "0",
+        "multiplier": "0.9",
+        "position": "200 20",
+        "spacewidth": "18",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_money": {
+      "@attributes": {
+        "anchor": "4",
+        "align": "2",
+        "font": "fonts/soldier_font4.fnt",
+        "intersymbol": "1",
+        "multiplier": "0.72",
+        "position": "434 190",
+        "string_before": "©",
+        "texture": "fonts/soldier_font4.png",
+        "use_filter": "1"
+      }
+    },
+    "info_title": {
+      "@attributes": {
+        "auto_scale": "1",
+        "anchor": "4",
+        "align_vertical": "0",
+        "align": "1",
+        "color": "FFeecd6e",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "-18",
+        "intersymbol": "0",
+        "multiline": "1",
+        "multiplier": "0.7",
+        "position": "144 -157",
+        "size": "295 50",
+        "spacewidth": "14",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_description": {
+      "@attributes": {
+        "auto_scale": "1",
+        "align_vertical": "1",
+        "anchor": "4",
+        "align": "1",
+        "color": "FFeecd6e",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "-10",
+        "intersymbol": "0",
+        "multiline": "1",
+        "multiplier": "0.5",
+        "position": "144 -108",
+        "size": "295 110",
+        "spacewidth": "14",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_endless_description": {
+      "@attributes": {
+        "auto_scale": "1",
+        "align_vertical": "1",
+        "anchor": "4",
+        "align": "1",
+        "color": "FFa6c384",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "-10",
+        "intersymbol": "0",
+        "multiline": "1",
+        "multiplier": "0.5",
+        "position": "144 -9",
+        "size": "295 50",
+        "spacewidth": "14",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_supplies_title": {
+      "@attributes": {
+        "align_vertical": "0",
+        "auto_scale": "1",
+        "anchor": "4",
+        "align": "1",
+        "color": "FFeecd6e",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "-17",
+        "intersymbol": "0",
+        "multiline": "1",
+        "multiplier": "0.7",
+        "position": "144 -197",
+        "size": "295 50",
+        "spacewidth": "14",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_supplies_description": {
+      "@attributes": {
+        "auto_scale": "1",
+        "align_vertical": "1",
+        "anchor": "4",
+        "align": "1",
+        "color": "FFeecd6e",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "-10",
+        "intersymbol": "0",
+        "multiline": "1",
+        "multiplier": "0.5",
+        "position": "144 -148",
+        "size": "295 100",
+        "spacewidth": "14",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_unavailable": {
+      "@attributes": {
+        "align_vertical": "0",
+        "auto_scale": "1",
+        "anchor": "4",
+        "align": "1",
+        "color": "ffff5050",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "-10",
+        "multiline": "1",
+        "multiplier": "0.5",
+        "position": "144 60",
+        "spacewidth": "14",
+        "size": "295 50",
+        "string": "Требуется купить предыдущие улучшения",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_supplies_unavailable": {
+      "@attributes": {
+        "auto_scale": "1",
+        "align_vertical": "0",
+        "anchor": "4",
+        "align": "1",
+        "color": "ffff5050",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "-10",
+        "multiline": "1",
+        "multiplier": "0.5",
+        "spacewidth": "14",
+        "position": "144 -51",
+        "size": "295 45",
+        "string": "Будет доступно с %d уровня",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_unlock_supplies": {
+      "@attributes": {
+        "auto_scale": "1",
+        "align_vertical": "0",
+        "anchor": "4",
+        "align": "1",
+        "color": "FFeecd6e",
+        "font": "fonts/soldier_font5.fnt",
+        "interlinear": "-10",
+        "multiline": "1",
+        "multiplier": "0.5",
+        "spacewidth": "14",
+        "position": "144 -10",
+        "size": "295 55",
+        "string": "Открыть сейчас за %d звёзд и получить %d заряда?",
+        "texture": "fonts/soldier_font5.png",
+        "use_filter": "1"
+      }
+    },
+    "info_stars": {
+      "@attributes": {
+        "delta": "36",
+        "anchor": "4",
+        "position": "221 72"
+      }
+    },
+    "btn_buy_tower": {
+      "button": {
+        "out": {
+          "@attributes": {
+            "anchor": "4",
+            "hotspot": "77 35",
+            "position": "361 77",
+            "rect": "0 0 155 75",
+            "texture": "common/common_4.png"
+          }
+        },
+        "pressed": {
+          "@attributes": {
+            "anchor": "4",
+            "hotspot": "77 35",
+            "position": "361 79",
+            "rect": "0 0 155 75",
+            "texture": "common/common_4.png"
+          }
+        },
+        "disabled": {
+          "@attributes": {
+            "anchor": "4",
+            "color": "ff909090",
+            "hotspot": "77 35",
+            "position": "361 77",
+            "rect": "0 0 155 75",
+            "texture": "common/common_4.png"
+          }
+        }
+      },
+      "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+      "price": {
+        "@attributes": {
+          "auto_scale": "1",
+          "align_vertical": "0",
+          "interlinear": "-12",
+          "multiline": "1",
+          "string_before": "© ",
+          "multiplier": "0.8",
+          "size": "120 50",
+          "font": "fonts/soldier_font1.fnt",
+          "position": "-62 -25",
+          "texture": "fonts/soldier_font1.png",
+          "use_filter": "1"
+        }
+      }
+    },
+    "btn_buy_tower_second": {
+      "@attributes": {"copy": "|page_towers/btn_buy_tower"},
+      "button": {
+        "out": {"@attributes": {"position": "361 0"}},
+        "pressed": {"@attributes": {"position": "361 2"}},
+        "disabled": {"@attributes": {"position": "361 0"}}
+      }
+    },
+    "page_bonus": {
+      "@attributes": {"rank_delta": "0 35"},
+      "background": {
+        "@attributes": {
+          "anchor": "4",
+          "position": "-377 -48",
+          "hotspot": "110 260",
+          "rect": "0 0 220 520",
+          "texture": "shop/panel_towers_35.png"
+        }
+      },
+      "selection": {
+        "@attributes": {
+          "anchor": "4",
+          "hotspot": "70 70",
+          "rect": "0 0 140 140",
+          "texture": "shop/panel_towers_33.png"
+        }
+      },
+      "selection_page": {
+        "@attributes": {
+          "anchor": "4",
+          "hotspot": "50 50",
+          "position": "-391 -239",
+          "rect": "0 0 100 100",
+          "texture": "shop/panel_towers_9.png"
+        }
+      },
+      "particles": {
+        "@attributes": {
+          "icons": "shop_icons_effect",
+          "stars": "shop_stars_effect"
+        }
+      },
+      "icon": {
+        "@attributes": {
+          "anchor": "4",
+          "description": "",
+          "hotspot": "44 44",
+          "position": "-391 -239",
+          "rect": "0 0 88 88",
+          "texture": "common/icons_perks_21.png",
+          "title": ""
+        }
+      },
+      "bonuses": {
+        "icon_0": {
+          "@attributes": {
+            "description": "Башни ремонтируются бесплатно и автоматически, продолжительность %s сек.",
+            "title": "Ремонтники",
+            "pack_text": "+50",
+            "anchor": "4",
+            "price": "500",
+            "pack": "50",
+            "selection_pos": "-183 -74",
+            "id": "autorepairs",
+            "pack_text_2": "+1",
+            "price_2": "20",
+            "pack_2": "1"
+          },
+          "button": {
+            "pressed": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-177 -68",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_24.png"
+              }
+            },
+            "out": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-177 -68",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_24.png"
+              }
+            },
+            "grayed": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-177 -68",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_40.png"
+              }
+            }
+          },
+          "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+          "caption": {
+            "@attributes": {
+              "font": "fonts/soldier_font1.fnt",
+              "auto_scale": "1",
+              "interlinear": "-14",
+              "multiline": "1",
+              "size": "38 26",
+              "localized": "1",
+              "multiplier": "0.45",
+              "position": "22 -49",
+              "spacewidth": "30",
+              "string": "0",
+              "texture": "fonts/soldier_font1.png"
+            },
+            "caption": {
+              "@attributes": {
+                "font": "fonts/soldier_font1.fnt",
+                "auto_scale": "1",
+                "interlinear": "-14",
+                "multiline": "1",
+                "size": "48 30",
+                "localized": "1",
+                "multiplier": "0.5",
+                "position": "-20 30",
+                "spacewidth": "30",
+                "string": "500",
+                "texture": "fonts/soldier_font1.png"
+              }
+            }
+          },
+          "particle": {
+            "@attributes": {
+              "delta": "0 0",
+              "name": "btn_autorepair"
+            }
+          }
+        },
+        "icon_1": {
+          "@attributes": {
+            "description": "Одно использование позволяет воскресить разрушенную башню.",
+            "title": "Восстановление",
+            "price": "1000",
+            "pack_text": "+50",
+            "anchor": "4",
+            "pack": "50",
+            "selection_pos": "-183 63",
+            "id": "ressurections",
+            "price_2": "40",
+            "pack_text_2": "+1",
+            "pack_2": "1"
+          },
+          "button": {
+            "pressed": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-177 70",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_29.png"
+              }
+            },
+            "out": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-177 70",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_29.png"
+              }
+            },
+            "grayed": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-177 70",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_42.png"
+              }
+            }
+          },
+          "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+          "caption": {
+            "@attributes": {
+              "font": "fonts/soldier_font1.fnt",
+              "auto_scale": "1",
+              "interlinear": "-14",
+              "multiline": "1",
+              "size": "38 26",
+              "localized": "1",
+              "multiplier": "0.45",
+              "position": "22 -49",
+              "spacewidth": "30",
+              "string": "0",
+              "texture": "fonts/soldier_font1.png"
+            },
+            "caption": {
+              "@attributes": {
+                "font": "fonts/soldier_font1.fnt",
+                "auto_scale": "1",
+                "interlinear": "-14",
+                "multiline": "1",
+                "size": "48 30",
+                "localized": "1",
+                "multiplier": "0.5",
+                "position": "-20 30",
+                "spacewidth": "30",
+                "string": "1000",
+                "texture": "fonts/soldier_font1.png"
+              }
+            }
+          },
+          "particle": {
+            "@attributes": {
+              "delta": "-3 56",
+              "name": "btn_ressurection"
+            }
+          }
+        },
+        "icon_2": {
+          "@attributes": {
+            "description": "Мощный заградительный удар уничтожает солдат врага рядом с базой.",
+            "title": "Защитный удар",
+            "price": "1500",
+            "pack_text": "+50",
+            "anchor": "4",
+            "pack": "50",
+            "selection_pos": "-28 -74",
+            "id": "securitystrikes",
+            "price_2": "60",
+            "pack_text_2": "+1",
+            "pack_2": "1"
+          },
+          "button": {
+            "pressed": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-22 -68",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_31.png"
+              }
+            },
+            "out": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-22 -68",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_31.png"
+              }
+            },
+            "grayed": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-22 -68",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_43.png"
+              }
+            }
+          },
+          "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+          "caption": {
+            "@attributes": {
+              "font": "fonts/soldier_font1.fnt",
+              "auto_scale": "1",
+              "interlinear": "-14",
+              "multiline": "1",
+              "size": "38 26",
+              "localized": "1",
+              "multiplier": "0.45",
+              "position": "22 -49",
+              "spacewidth": "30",
+              "string": "0",
+              "texture": "fonts/soldier_font1.png"
+            },
+            "caption": {
+              "@attributes": {
+                "font": "fonts/soldier_font1.fnt",
+                "auto_scale": "1",
+                "interlinear": "-14",
+                "multiline": "1",
+                "size": "48 30",
+                "localized": "1",
+                "multiplier": "0.5",
+                "position": "-20 30",
+                "spacewidth": "30",
+                "string": "1500",
+                "texture": "fonts/soldier_font1.png"
+              }
+            }
+          },
+          "particle": {
+            "@attributes": {
+              "delta": "4 7",
+              "name": "btn_security_strike"
+            }
+          }
+        },
+        "icon_3": {
+          "@attributes": {
+            "description": "Давите врагов пальцем! Продолжительность %s сек.",
+            "title": "Запрещенный прием",
+            "price": "2500",
+            "pack": "50",
+            "pack_text": "+50",
+            "anchor": "4",
+            "selection_pos": "-28 63",
+            "id": "godhands",
+            "price_2": "100",
+            "pack_2": "1",
+            "pack_text_2": "+1"
+          },
+          "button": {
+            "pressed": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-22 70",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_26.png"
+              }
+            },
+            "out": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-22 70",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_26.png"
+              }
+            },
+            "grayed": {
+              "@attributes": {
+                "anchor": "4",
+                "hotspot": "70 70",
+                "position": "-22 70",
+                "rect": "0 0 140 140",
+                "texture": "shop/panel_towers_41.png"
+              }
+            }
+          },
+          "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+          "caption": {
+            "@attributes": {
+              "font": "fonts/soldier_font1.fnt",
+              "auto_scale": "1",
+              "interlinear": "-14",
+              "multiline": "1",
+              "size": "38 26",
+              "localized": "1",
+              "multiplier": "0.45",
+              "position": "22 -49",
+              "spacewidth": "30",
+              "string": "0",
+              "texture": "fonts/soldier_font1.png"
+            },
+            "caption": {
+              "@attributes": {
+                "font": "fonts/soldier_font1.fnt",
+                "auto_scale": "1",
+                "interlinear": "-14",
+                "multiline": "1",
+                "size": "48 30",
+                "localized": "1",
+                "multiplier": "0.5",
+                "position": "-20 30",
+                "spacewidth": "30",
+                "string": "2500",
+                "texture": "fonts/soldier_font1.png"
+              }
+            }
+          },
+          "particle": {
+            "@attributes": {
+              "delta": "0 0",
+              "name": "btn_god_hand"
+            }
+          }
+        }
+      }
+    },
+    "comment": {},
+    "pages": {
+      "page_tower_a": {
+        "@attributes": {"rank_delta": "0 35"},
+        "background": {
+          "@attributes": {
+            "anchor": "4",
+            "position": "-377 0",
+            "hotspot": "110 230",
+            "rect": "0 0 220 460",
+            "texture": "shop/panel_towers_36.png"
+          }
+        },
+        "selection": {
+          "@attributes": {
+            "anchor": "4",
+            "hotspot": "50 50",
+            "rect": "0 0 100 100",
+            "texture": "shop/panel_towers_9.png"
+          }
+        },
+        "particles": {
+          "@attributes": {
+            "anchor": "4",
+            "icons": "shop_icons_effect",
+            "stars": "shop_stars_effect"
+          }
+        },
+        "tower_type": {
+          "icon": [
+            {
+              "@attributes": {
+                "anchor": "4",
+                "position": "143 -192",
+                "rect": "0 0 40 40",
+                "texture": "shop/panel_towers_10.png"
+              }
+            },
+            {
+              "@attributes": {
+                "anchor": "4",
+                "position": "183 -192",
+                "rect": "0 0 40 40",
+                "texture": "shop/panel_towers_11.png"
+              }
+            },
+            {
+              "@attributes": {
+                "anchor": "4",
+                "position": "223 -192",
+                "rect": "0 0 40 40",
+                "texture": "shop/panel_towers_12.png"
+              }
+            }
+          ]
+        },
+        "towers": {
+          "icon_trooper": {
+            "@attributes": {
+              "description": "Стрелки эффективны против пехоты и авиации противника. Но малоэффективны против бронетехники.",
+              "description_1": "Стрелки эффективны против пехоты и авиации противника, но малоэффективны против бронетехники./nПараметры стрелков +30%.",
+              "description_2": "Параметры стрелков +20%.",
+              "description_endless": "Пассивный бонус:/nCледующее улучшение - Урон +5%",
+              "title": "Стрелок"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 -135",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 -135",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 -135",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-36 11",
+                "rect": "0 0 102 240",
+                "texture": "shop/panel_towers_13.png"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_0": {
+            "@attributes": {
+              "description": "Дальность стрельбы и прочность +10%.",
+              "description_1": "Дальность стрельбы и прочность +10%.",
+              "description_2": "Дальность стрельбы и прочность +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +5%",
+              "title": "Пулеметчик"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-33 12",
+                "rect": "0 0 70 32",
+                "texture": "shop/panel_towers_16.png"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            },
+            "particle": {
+              "@attributes": {
+                "delta": "0 12",
+                "name": "shop_btn_1"
+              }
+            }
+          },
+          "icon_1": {
+            "@attributes": {
+              "description": "Прочность стрелков +60%.",
+              "description_1": "Прочность стрелков +10%.",
+              "description_2": "Прочность стрелков +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Радиус атаки +10%",
+              "title": "Бронепластик"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-33 13",
+                "rect": "0 0 70 32",
+                "texture": "shop/panel_towers_16.png"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            },
+            "particle": {"@attributes": {"name": "shop_btn_3"}}
+          },
+          "icon_2": {
+            "@attributes": {
+              "description": "Урон +15%.",
+              "description_1": "Урон +13%.",
+              "description_2": "Урон +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Скорость атаки +10%",
+              "title": "Бронебойность"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-35 9",
+                "rect": "0 0 68 206",
+                "texture": "shop/panel_towers_17.png"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            },
+            "particle": {
+              "@attributes": {
+                "delta": "22 -22",
+                "name": "shop_btn_2"
+              }
+            }
+          },
+          "icon_3": {
+            "@attributes": {
+              "description": "Замедляет самолетики на 30% на 1 с.",
+              "description_1": "Замедляет самолетики на 45% на 2 с.",
+              "description_2": "Замедляет самолетики на 60% на 3 с.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение -  Урон +5%, Скорость атаки +5%",
+              "title": "Антивоздух"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "particle": {
+              "@attributes": {
+                "delta": "0 32",
+                "name": "shop_btn_5"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_4": {
+            "@attributes": {
+              "description": "Урон +400%, но скорость стрельбы снижена на 66%.",
+              "description_1": "Урон +30%.",
+              "description_2": "Урон +15%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Скорость атаки +15%",
+              "title": "Разящие пули"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            },
+            "particle": {
+              "@attributes": {
+                "delta": "0 32",
+                "name": "shop_btn_6"
+              }
+            }
+          },
+          "icon_5": {
+            "@attributes": {
+              "description": "Скорость стрельбы +40%.",
+              "description_1": "Скорость стрельбы +25%.",
+              "description_2": "Скорость стрельбы +20%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +20%",
+              "title": "Скорострельность"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "particle": {
+              "@attributes": {
+                "delta": "-24 -24",
+                "name": "shop_btn_9"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          }
+        }
+      },
+      "page_tower_b": {
+        "@attributes": {"rank_delta": "0 35"},
+        "background": {
+          "@attributes": {
+            "anchor": "4",
+            "position": "-377 -7",
+            "hotspot": "110 230",
+            "rect": "0 0 220 460",
+            "texture": "shop/panel_towers_38.png"
+          }
+        },
+        "selection": {
+          "@attributes": {
+            "anchor": "4",
+            "hotspot": "50 50",
+            "rect": "0 0 100 100",
+            "texture": "shop/panel_towers_9.png"
+          }
+        },
+        "particles": {
+          "@attributes": {
+            "icons": "shop_icons_effect",
+            "stars": "shop_stars_effect"
+          }
+        },
+        "tower_type": {
+          "icon": [
+            {
+              "@attributes": {
+                "anchor": "4",
+                "position": "143 -192",
+                "rect": "0 0 40 40",
+                "texture": "shop/panel_towers_10.png"
+              }
+            },
+            {
+              "@attributes": {
+                "anchor": "4",
+                "position": "183 -192",
+                "rect": "0 0 40 40",
+                "texture": "shop/panel_towers_11.png"
+              }
+            }
+          ]
+        },
+        "towers": {
+          "icon_fire": {
+            "@attributes": {
+              "description": "Очень эффективны против пехоты и лёгкой бронетехники. Атакуют только наземные цели.",
+              "description_1": "Очень эффективны против пехоты и лёгкой бронетехники. Атакуют только наземные цели./nВсе параметры +15%.",
+              "description_2": "Все параметры +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +5%",
+              "title": "Огнеметчик"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 -12",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 -12",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 -12",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-37 102",
+                "rect": "0 0 102 220",
+                "texture": "shop/panel_towers_19.png"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_17": {
+            "@attributes": {
+              "description": "Прочность +100%.",
+              "description_1": "Прочность +15%.",
+              "description_2": "Прочность +12%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Радиус атаки +5%",
+              "title": "Бронепластик"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-33 12",
+                "rect": "0 0 70 32",
+                "texture": "shop/panel_towers_16.png"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            },
+            "particle": {"@attributes": {"name": "shop_btn_3"}}
+          },
+          "icon_6": {
+            "@attributes": {
+              "description": "Замедляет все цели в области поражения на 20% на 1 с, урон +10%.",
+              "description_1": "Замедляет все цели в области поражения на 35% на 2 с.",
+              "description_2": "Замедляет все цели в области поражения на 50% на 3 с.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +10%",
+              "title": "Густое пламя"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-33 14",
+                "rect": "0 0 70 32",
+                "texture": "shop/panel_towers_16.png"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            },
+            "particle": {"@attributes": {"name": "shop_btn_3"}}
+          },
+          "icon_7": {
+            "@attributes": {
+              "description": "Огнеметчики атакуют две цели.",
+              "description_1": "Урон +5%.",
+              "description_2": "Урон +5%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Скорость атаки +10%",
+              "title": "Два ствола"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-32 12",
+                "rect": "0 0 70 32",
+                "texture": "shop/panel_towers_16.png"
+              }
+            },
+            "particle": {
+              "@attributes": {
+                "delta": "0 11",
+                "name": "shop_btn_1"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_8": {
+            "@attributes": {
+              "description": "Урон огнем +10%, скорость атаки +10%.",
+              "description_1": "Урон огнем +10%, скорость атаки +5%.",
+              "description_2": "Урон огнем +10%, скорость атаки +5%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +5%, Скорость атаки +5%",
+              "title": "Палящее пламя"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "particle": {
+              "@attributes": {
+                "anchor": "4",
+                "delta": "-27 22",
+                "name": "shop_btn_4"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_9": {
+            "@attributes": {
+              "description": "Огнеметчики атакуют три цели.",
+              "description_1": "Урон +5%.",
+              "description_2": "Урон +5%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +20%",
+              "title": "Три ствола"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "particle": {
+              "@attributes": {
+                "delta": "0 11",
+                "name": "shop_btn_1"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          }
+        }
+      },
+      "page_tower_c": {
+        "@attributes": {"rank_delta": "0 35"},
+        "background": {
+          "@attributes": {
+            "anchor": "4",
+            "position": "-377 0",
+            "hotspot": "110 220",
+            "rect": "0 0 220 440",
+            "texture": "shop/panel_towers_39.png"
+          }
+        },
+        "selection": {
+          "@attributes": {
+            "anchor": "4",
+            "hotspot": "50 50",
+            "rect": "0 0 100 100",
+            "texture": "shop/panel_towers_9.png"
+          }
+        },
+        "particles": {
+          "@attributes": {
+            "anchor": "4",
+            "icons": "shop_icons_effect",
+            "stars": "shop_stars_effect"
+          }
+        },
+        "tower_type": {
+          "icon": [
+            {
+              "@attributes": {
+                "anchor": "4",
+                "position": "143 -192",
+                "rect": "0 0 40 40",
+                "texture": "shop/panel_towers_10.png"
+              }
+            },
+            {
+              "@attributes": {
+                "anchor": "4",
+                "position": "183 -192",
+                "rect": "0 0 40 40",
+                "texture": "shop/panel_towers_11.png"
+              }
+            }
+          ]
+        },
+        "towers": {
+          "icon_cannon": {
+            "@attributes": {
+              "description": "Медлительная, но очень мощная пушка. Стреляет только по наземным целям.",
+              "description_1": "Медлительная, но очень мощная пушка. Стреляет только по наземным целям./nСкорость стрельбы +50%, урон +10%.",
+              "description_2": "Скорость стрельбы +35%, урон +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Радиус атаки +10%",
+              "title": "Пушка"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 110",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 110",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 110",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-35 138",
+                "rect": "0 0 104 150",
+                "texture": "shop/panel_towers_20.png"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_10": {
+            "@attributes": {
+              "description": "Дальность стрельбы +40%, прочность +10%.",
+              "description_1": "Дальность стрельбы +20%, прочность +10%.",
+              "description_2": "Дальность стрельбы +20%, прочность +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +10%",
+              "title": "Большой ствол"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -7",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -7",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -7",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-35 105",
+                "rect": "0 0 67 208",
+                "texture": "shop/panel_towers_21.png"
+              }
+            },
+            "particle": {
+              "@attributes": {
+                "delta": "0 11",
+                "name": "shop_btn_1"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_11": {
+            "@attributes": {
+              "description": "С вероятностью 10% оглушает цель на 1 с, прочность +10%.",
+              "description_1": "С вероятностью 10% оглушает цель на 2 с, прочность +10%.",
+              "description_2": "С вероятностью 10% оглушает цель на 3 с, прочность +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Радиус атаки +10%",
+              "title": "Оглушающий взрыв"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-32 16",
+                "rect": "0 0 70 32",
+                "texture": "shop/panel_towers_22.png"
+              }
+            },
+            "particle": {"@attributes": {"name": "shop_btn_7"}},
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_12": {
+            "@attributes": {
+              "description": "Зона взрыва +300%,/nпрочность +40%.",
+              "description_1": "Зона взрыва +20%,/nпрочность +35%",
+              "description_2": "Зона взрыва +20%,/nпрочность +25%",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Скорость атаки +10%",
+              "title": "Зона поражения"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-32 17",
+                "rect": "0 0 70 32",
+                "texture": "shop/panel_towers_22.png"
+              }
+            },
+            "particle": {
+              "@attributes": {
+                "delta": "0 11",
+                "name": "shop_btn_1"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_18": {
+            "@attributes": {
+              "description": "С вероятностью 15% оглушает цель./nУрон +5%, прочность +10%.",
+              "description_1": "С вероятностью 20% оглушает цель./nУрон +5%, прочность +10%.",
+              "description_2": "С вероятностью 30% оглушает цель/nУрон +5%, прочность +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +20%",
+              "title": "Контузия"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "particle": {"@attributes": {"name": "shop_btn_7"}},
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_13": {
+            "@attributes": {
+              "description": "Ослабляет цель на 30% на 1 с.",
+              "description_1": "Ослабляет цель на 40% на 2 с, прочность +25%.",
+              "description_2": "Ослабляет цель на 50% на 3 с, прочность +20%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон+5%, Скорость атаки +5%",
+              "title": "Ослабление брони"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "particle": {"@attributes": {"name": "shop_btn_3"}},
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          }
+        }
+      },
+      "page_tower_d": {
+        "@attributes": {"rank_delta": "0 35"},
+        "background": {
+          "@attributes": {
+            "anchor": "4",
+            "position": "-377 46",
+            "hotspot": "110 270",
+            "rect": "0 0 220 540",
+            "texture": "shop/panel_towers_37.png"
+          }
+        },
+        "selection": {
+          "@attributes": {
+            "anchor": "4",
+            "hotspot": "50 50",
+            "rect": "0 0 100 100",
+            "texture": "shop/panel_towers_9.png"
+          }
+        },
+        "particles": {
+          "@attributes": {
+            "icons": "shop_icons_effect",
+            "stars": "shop_stars_effect"
+          }
+        },
+        "tower_type": {
+          "icon": {
+            "@attributes": {
+              "anchor": "4",
+              "position": "143 -192",
+              "rect": "0 0 40 40",
+              "texture": "shop/panel_towers_12.png"
+            }
+          }
+        },
+        "towers": {
+          "icon_PVO": {
+            "@attributes": {
+              "description": "Лучшее средство против авиации противника. Атакует только воздушные цели.",
+              "description_1": "Лучшее средство против авиации противника. Атакует только воздушные цели./nВсе параметры зениток +10%.",
+              "description_2": "Все параметры зениток +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +5%, Скорость атаки +5%",
+              "title": "Зенитка"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 231",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 231",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-391 231",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-37 248",
+                "rect": "0 0 102 250",
+                "texture": "shop/panel_towers_23.png"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_14": {
+            "@attributes": {
+              "description": "Дальность стрельбы +15%, прочность +10%.",
+              "description_1": "Дальность стрельбы +5%, прочность +10%.",
+              "description_2": "Дальность стрельбы +5%, прочность +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Радиус атаки +10%",
+              "title": "Длинный ствол"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -7",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -7",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-217 -7",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-35 103",
+                "rect": "0 0 67 208",
+                "texture": "shop/panel_towers_21.png"
+              }
+            },
+            "particle": {
+              "@attributes": {
+                "delta": "0 11",
+                "name": "shop_btn_1"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_19": {
+            "@attributes": {
+              "description": "Урон +60%, прочность +10%.",
+              "description_1": "Урон +15%, прочность +10%.",
+              "description_2": "Урон +15%, прочность +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон+10%",
+              "title": "Разрывные снаряды"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "arrow": {
+              "@attributes": {
+                "anchor": "4",
+                "color_disabled": "807b9eb7",
+                "hotspot": "-32 14",
+                "rect": "0 0 70 32",
+                "texture": "shop/panel_towers_22.png"
+              }
+            },
+            "particle": {
+              "@attributes": {
+                "delta": "22 -22",
+                "name": "shop_btn_2"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_15": {
+            "@attributes": {
+              "description": "Скорость стрельбы +50%, урон +10%, прочность +10%.",
+              "description_1": "Скорость стрельбы +50%, урон +10%, прочность +10%.",
+              "description_2": "Скорость стрельбы +30%, урон +10%, прочность +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Урон +10%, Скорость атаки +5%",
+              "title": "Скорострельность"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "-79 84",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "particle": {
+              "@attributes": {
+                "delta": "-24 -24",
+                "name": "shop_btn_9"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          },
+          "icon_16": {
+            "@attributes": {
+              "description": "Дальность стрельбы +10%, прочность +10%.",
+              "description_1": "Дальность стрельбы +10%, прочность +10%.",
+              "description_2": "Дальность стрельбы +10%, прочность +10%.",
+              "description_endless": "Пассивный бонус:/nСледующее улучшение - Радиус атаки +20%",
+              "title": "Облегченные пули"
+            },
+            "button": {
+              "pressed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "out": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_14.png"
+                }
+              },
+              "grayed": {
+                "@attributes": {
+                  "anchor": "4",
+                  "hotspot": "44 44",
+                  "position": "59 -98",
+                  "rect": "0 0 88 88",
+                  "texture": "shop/panel_towers_15.png"
+                }
+              }
+            },
+            "sounds": {"@attributes": {"click": "sounds/ui_button_click.wav"}},
+            "particle": {
+              "@attributes": {
+                "delta": "0 12",
+                "name": "shop_btn_1"
+              }
+            },
+            "level_count": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-38 -35",
+                "hotspot": "18 18",
+                "rect": "0 0 36 36",
+                "texture": "shop/place_up.png",
+                "color_disabled": "807b9eb7"
+              }
+            },
+            "level_count_text": {
+              "@attributes": {
+                "anchor": "4",
+                "offset": "-41 -17",
+                "font": "fonts/soldier_font4_small.fnt",
+                "intersymbol": "-2",
+                "multiplier": "0.74",
+                "string": "First group",
+                "texture": "fonts/soldier_font4_small.png",
+                "use_filter": "1"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

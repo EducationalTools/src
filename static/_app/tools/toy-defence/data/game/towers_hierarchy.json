@@ -1,0 +1,399 @@
+{
+  "towers": {
+    "@attributes": {
+      "hero_tower_price_coefficient": "0.7",
+      "repair_coefficient": "0.20",
+      "sell_coefficient": "0.5"
+    },
+    "comment": [
+      {},
+      {},
+      {},
+      {}
+    ],
+    "level_0": [
+      {
+        "@attributes": {
+          "attack_radius": "130 130 130",
+          "attack_speed": "3 4 5",
+          "experience": "1000 2000 4000",
+          "health": "400 500 600",
+          "hit_coefficient": "1 0.5 0.2 0.2 0.1 0.1 1 1 1 0.5 0 0.5",
+          "icon_name": "icon_trooper",
+          "price": "20 10 15",
+          "price_shop": "10 45 55",
+          "repair": "",
+          "sell": "",
+          "tower_name": "level_0"
+        },
+        "level_1": {
+          "@attributes": {
+            "attack_radius": "145 155 165",
+            "attack_speed": "5 5 5",
+            "experience": "6000 8000 10000",
+            "health": "650 700 750",
+            "hit_coefficient": "1 0.5 0.2 0.2 0.1 0.1 1 1 1 0.5 0 0.5",
+            "icon_name": "icon_0",
+            "price": "20 25 30",
+            "price_shop": "75 110 150",
+            "repair": "",
+            "sell": "",
+            "tower_name": "level_1"
+          },
+          "level_3": {
+            "@attributes": {
+              "attack_radius": "165 165 165",
+              "attack_speed": "5 5 5",
+              "experience": "12000 14000 16000",
+              "health": "750 800 850",
+              "hit_coefficient": "1 0.5 0.2 0.2 0.1 0.1 1 1 1 0.5 0 0.5",
+              "icon_name": "icon_2",
+              "price": "40 60 80",
+              "price_shop": "160 240 320",
+              "repair": "",
+              "sell": "",
+              "tower_name": "level_3"
+            },
+            "level_5": {
+              "@attributes": {
+                "attack_radius": "170 175 180",
+                "attack_speed": "1.5 1.5 1.5",
+                "experience": "18000 20000 22000",
+                "health": "850 900 950",
+                "hit_coefficient": "1 0.5 0.2 0.2 0.1 0.1 1 1 1 0.5 0 0.5",
+                "icon_name": "icon_4",
+                "price": "100 120 140",
+                "price_shop": "600 750 900",
+                "repair": "",
+                "sell": "",
+                "tower_name": "level_5"
+              }
+            },
+            "level_6": {
+              "@attributes": {
+                "attack_radius": "170 175 180",
+                "attack_speed": "7 9 11",
+                "experience": "24000 26000 28000",
+                "health": "850 900 950",
+                "hit_coefficient": "1 0.5 0.2 0.2 0.1 0.1 1 1 1 0.5 0 0.5",
+                "icon_name": "icon_5",
+                "price": "100 120 140",
+                "price_shop": "500 600 700",
+                "repair": "",
+                "sell": "",
+                "tower_name": "level_6"
+              }
+            }
+          }
+        },
+        "level_2": {
+          "@attributes": {
+            "attack_radius": "135 140 145",
+            "attack_speed": "5 5 5",
+            "experience": "6000 8000 10000",
+            "health": "1200 1300 1400",
+            "hit_coefficient": "1 0.5 0.2 0.2 0.1 0.1 1 1 1 0.5 0 0.5",
+            "icon_name": "icon_1",
+            "price": "20 25 30",
+            "price_shop": "90 135 180",
+            "repair": "",
+            "sell": "",
+            "tower_name": "level_2"
+          },
+          "level_4": {
+            "@attributes": {
+              "attack_radius": "150 155 160",
+              "attack_speed": "5 5 5",
+              "experience": "14000 17000 21000",
+              "health": "1500 1600 1700",
+              "hit_coefficient": "1 0.5 0.2 0.2 0.1 0.1 1 1 1 0.5 0 0.5",
+              "icon_name": "icon_3",
+              "price": "40 50 65",
+              "price_shop": "240 450 900",
+              "repair": "",
+              "sell": "",
+              "slow": "0.7 0.55 0.4",
+              "slow_probability": "1 1 1",
+              "slow_time": "1 2 3",
+              "slow_unit_id": "0 0 0 0 0 0 1 1 1",
+              "tower_name": "level_4"
+            }
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "attack_radius": "80 90 100",
+          "attack_speed": "0.4 0.5 0.6",
+          "experience": "2000 6000 10000",
+          "health": "550 650 700",
+          "hit_coefficient": "0.4 0.4 0.45 0.2 0.1 0.05 0 0 0 0.7 0 0.7",
+          "icon_name": "icon_fire",
+          "price": "100 55 70",
+          "price_shop": "25 45 55",
+          "repair": "",
+          "sell": "",
+          "tower_name": "level_0"
+        },
+        "level_1": {
+          "@attributes": {
+            "attack_radius": "100 100 100",
+            "attack_speed": "0.6 0.6 0.6",
+            "experience": "14000 18000 22000",
+            "health": "1400 1600 1800",
+            "hit_coefficient": "0.4 0.4 0.45 0.2 0.1 0.05 0 0 0 0.7 0 0.7",
+            "icon_name": "icon_17",
+            "price": "90 110 125",
+            "price_shop": "90 130 170",
+            "repair": "",
+            "sell": "",
+            "tower_name": "level_1"
+          },
+          "level_3": {
+            "@attributes": {
+              "attack_radius": "100 100 100",
+              "attack_speed": "0.6 0.6 0.6",
+              "experience": "26000 30000 34000",
+              "health": "1800 1800 1800",
+              "hit_coefficient": "0.4 0.4 0.45 0.2 0.1 0.05 0 0 0 0.7 0 0.7",
+              "icon_name": "icon_7",
+              "price": "180 220 240",
+              "price_shop": "200 300 400",
+              "repair": "",
+              "sell": "",
+              "tower_name": "level_3"
+            },
+            "level_5": {
+              "@attributes": {
+                "attack_radius": "100 100 100",
+                "attack_speed": "0.6 0.6 0.6",
+                "experience": "38000 42000 46000",
+                "health": "1800 1800 1800",
+                "hit_coefficient": "0.4 0.4 0.45 0.2 0.1 0.05 0 0 0 0.7 0 0.7",
+                "icon_name": "icon_9",
+                "price": "320 360 400",
+                "price_shop": "900 1100 1200",
+                "repair": "",
+                "sell": "",
+                "tower_name": "level_5"
+              }
+            }
+          }
+        },
+        "level_2": {
+          "@attributes": {
+            "attack_radius": "100 100 100",
+            "attack_speed": "0.65 0.7 0.75",
+            "experience": "14000 18000 22000",
+            "health": "900 1000 1100",
+            "hit_coefficient": "0.4 0.4 0.45 0.2 0.1 0.05 0 0 0 0.7 0 0.7",
+            "icon_name": "icon_6",
+            "price": "90 110 125",
+            "price_shop": "110 170 230",
+            "repair": "",
+            "sell": "",
+            "slow": "0.8 0.65 0.5",
+            "slow_probability": "1 1 1",
+            "slow_time": "1 2 3",
+            "slow_unit_id": "1 1 1 1 1 1 0 0 0",
+            "tower_name": "level_2"
+          },
+          "level_4": {
+            "@attributes": {
+              "attack_radius": "100 100 100",
+              "attack_speed": "0.8 0.8 0.8",
+              "experience": "26000 30000 34000",
+              "health": "1200 1300 1400",
+              "hit_coefficient": "0.4 0.4 0.45 0.2 0.1 0.05 0 0 0 0.7 0 0.7",
+              "icon_name": "icon_8",
+              "price": "180 220 240",
+              "price_shop": "300 600 1200",
+              "repair": "",
+              "sell": "",
+              "slow": "0.5 0.5 0.5",
+              "slow_probability": "1 1 1",
+              "slow_time": "3 3 3",
+              "slow_unit_id": "1 1 1 1 1 1 0 0 0",
+              "tower_name": "level_4"
+            }
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "attack_radius": "160 163 165",
+          "attack_speed": "0.2 0.3 0.4",
+          "experience": "4000 8000 12000",
+          "health": "1500 1600 1700",
+          "hit_coefficient": "0.7 1 1 1 1 1 0 0 0 2 0 2",
+          "icon_name": "icon_cannon",
+          "price": "500 250 275",
+          "price_shop": "50 45 55",
+          "repair": "",
+          "sell": "",
+          "tower_name": "level_0"
+        },
+        "level_1": {
+          "@attributes": {
+            "attack_radius": "220 250 290",
+            "attack_speed": "0.4 0.4 0.4",
+            "experience": "16000 20000 24000",
+            "health": "1800 2000 2250",
+            "hit_coefficient": "0.7 1 1 1 1 1 0 0 0 2 0 2",
+            "icon_name": "icon_10",
+            "price": "320 355 380",
+            "price_shop": "100 150 200",
+            "repair": "",
+            "sell": "",
+            "tower_name": "level_1"
+          },
+          "level_2": {
+            "@attributes": {
+              "attack_radius": "290 290 290",
+              "attack_speed": "0.4 0.4 0.4",
+              "experience": "30000 40000 50000",
+              "health": "2500 2850 3000",
+              "hit_coefficient": "0.7 1 1 1 1 1 0 0 0 2 0 2",
+              "icon_name": "icon_11",
+              "price": "500 625 750",
+              "price_shop": "300 400 500",
+              "repair": "",
+              "sell": "",
+              "slow": "0 0 0",
+              "slow_probability": "0.1 0.1 0.1",
+              "slow_time": "1 2 3",
+              "slow_unit_id": "1 1 1 1 1 1 0 0 0",
+              "tower_name": "level_2"
+            },
+            "level_4": {
+              "@attributes": {
+                "attack_radius": "290 290 290",
+                "attack_speed": "0.4 0.4 0.4",
+                "experience": "62000 74000 86000",
+                "health": "3250 3500 4000",
+                "hit_coefficient": "0.7 1 1 1 1 1 0 0 0 2 0 2",
+                "icon_name": "icon_18",
+                "price": "900 1100 1300",
+                "price_shop": "600 750 900",
+                "repair": "",
+                "sell": "",
+                "slow": "0 0 0",
+                "slow_probability": "0.15 0.2 0.3",
+                "slow_time": "3 3 3",
+                "slow_unit_id": "1 1 1 1 1 1 0 0 0",
+                "tower_name": "level_4"
+              }
+            }
+          },
+          "level_3": {
+            "@attributes": {
+              "attack_radius": "290 290 290",
+              "attack_speed": "0.4 0.4 0.4",
+              "experience": "30000 40000 50000",
+              "health": "2500 2850 3000",
+              "hit_coefficient": "0.7 1 1 1 1 1 0 0 0 2 0 2",
+              "icon_name": "icon_12",
+              "price": "380 520 630",
+              "price_shop": "220 330 420",
+              "repair": "",
+              "sell": "",
+              "tower_name": "level_3"
+            },
+            "level_5": {
+              "@attributes": {
+                "attack_radius": "290 290 290",
+                "attack_speed": "0.4 0.4 0.4",
+                "defense": "0.7 0.6 0.5",
+                "defense_time": "1 2 3",
+                "experience": "62000 74000 86000",
+                "health": "4000 5000 6000",
+                "hit_coefficient": "0.7 1 1 1 1 1 0 0 0 2 0 2",
+                "icon_name": "icon_13",
+                "price": "750 900 1100",
+                "price_shop": "600 730 900",
+                "repair": "",
+                "sell": "",
+                "tower_name": "level_5"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@attributes": {
+          "attack_radius": "250 255 260",
+          "attack_speed": "0.5 0.6 0.7",
+          "experience": "2000 5000 8000",
+          "health": "1200 1250 1300",
+          "hit_coefficient": "0 0 0 0 0 0 1 1 1 0 0 0 0",
+          "icon_name": "icon_PVO",
+          "price": "120 60 70",
+          "price_shop": "35 45 55",
+          "repair": "9 5 7",
+          "sell": "60 50 25",
+          "tower_name": "level_0"
+        },
+        "level_1": {
+          "@attributes": {
+            "attack_radius": "280 290 300",
+            "attack_speed": "0.7 0.7 0.7",
+            "experience": "11000 14000 17000",
+            "health": "1400 1500 1600",
+            "hit_coefficient": "0 0 0 0 0 0 1 1 1 0 0 0 0",
+            "icon_name": "icon_14",
+            "price": "80 100 120",
+            "price_shop": "90 130 170",
+            "repair": "11 9 7",
+            "sell": "",
+            "tower_name": "level_1"
+          },
+          "level_2": {
+            "@attributes": {
+              "attack_radius": "305 310 315",
+              "attack_speed": "0.7 0.7 0.7",
+              "experience": "20000 23000 26000",
+              "health": "1700 1800 1900",
+              "hit_coefficient": "0 0 0 0 0 0 1 1 1 0 0 0 0",
+              "icon_name": "icon_19",
+              "price": "160 240 320",
+              "price_shop": "250 350 450",
+              "repair": "13 11 9",
+              "sell": "",
+              "tower_name": "level_2"
+            },
+            "level_4": {
+              "@attributes": {
+                "attack_radius": "330 345 360",
+                "attack_speed": "0.7 0.7 0.7",
+                "experience": "29000 32000 35000",
+                "health": "2000 2100 2200",
+                "hit_coefficient": "0 0 0 0 0 0 1 1 1 0 0 0 0",
+                "icon_name": "icon_16",
+                "price": "400 480 560",
+                "price_shop": "900 1300 1700",
+                "repair": "15 13 11",
+                "sell": "",
+                "tower_name": "level_4"
+              }
+            }
+          },
+          "level_3": {
+            "@attributes": {
+              "attack_radius": "295 300 305",
+              "attack_speed": "1 1.6 2.2",
+              "experience": "20000 23000 26000",
+              "health": "1700 1800 1900",
+              "hit_coefficient": "0 0 0 0 0 0 1 1 1 0 0 0 0",
+              "icon_name": "icon_15",
+              "price": "190 270 360",
+              "price_shop": "260 500 1000",
+              "repair": "13 11 9",
+              "sell": "",
+              "tower_name": "level_3"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
