@@ -93,16 +93,6 @@
 				<a href="/" class={clsx(badgeVariants({ variant: 'secondary' }), 'w-fit')}
 					>{gmaedata?.category}<ArrowRight class="ml-1 size-3" /></a
 				>
-				{#each gmaedata?.links || [] as link}
-					<a
-						href={link.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class={badgeVariants({ variant: 'outline' })}
-					>
-						<OpenInNewTab class="mr-1 size-3" />{link.name}
-					</a>
-				{/each}
 			</div>
 			<h1 class="text-4xl font-bold">{gmaedata?.name}</h1>
 			<p class="text-xl">{gmaedata?.description}</p>
