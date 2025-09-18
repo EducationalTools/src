@@ -113,6 +113,7 @@
 				onclick={() => {
 					posthog.capture('gmae_fullscreen', { gmae_id: gmaedata?.id });
 					document.querySelector('iframe')?.requestFullscreen();
+					document.querySelector('iframe')?.focus();
 				}}
 			>
 				<Fullscreen class="h-6 w-6" />
