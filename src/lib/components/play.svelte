@@ -7,6 +7,7 @@
 	import { toast } from 'svelte-sonner';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { badgeVariants } from '$lib/components/ui/badge/index.js';
+	import * as Tooltip from '$lib/components/ui/tooltip/index.js';
 
 	// Icons
 	import Refresh from '@lucide/svelte/icons/refresh-cw';
@@ -73,13 +74,22 @@
 	<div class="flex w-full flex-col gap-2 md:flex-row">
 		<div class="flex flex-col gap-2">
 			<div class="flex w-full flex-row flex-wrap gap-2">
-				<button
-					onclick={() => {
-						toast.success('Focused on game');
-						document.querySelector('iframe')?.focus();
-					}}
-					class={clsx(badgeVariants(), 'w-fit')}>Focus Gmae</button
-				>
+				<Tooltip.Provider>
+					<Tooltip.Root>
+						<Tooltip.Trigger
+							onclick={() => {
+								toast.success('Focused on game');
+								document.querySelector('iframe')?.focus();
+							}}
+							class={clsx(badgeVariants(), 'w-fit')}
+						>
+							Focus Gmae
+						</Tooltip.Trigger>
+						<Tooltip.Content>
+							<p>If keyboard input isn't working</p>
+						</Tooltip.Content>
+					</Tooltip.Root>
+				</Tooltip.Provider>
 				<a href="/" class={clsx(badgeVariants({ variant: 'secondary' }), 'w-fit')}
 					>{gmaedata?.category}<ArrowRight class="ml-1 size-3" /></a
 				>
