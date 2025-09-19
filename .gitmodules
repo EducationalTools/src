@@ -1,0 +1,33 @@
+[submodule "static/_app/tools/sz/2"]
+	path = static/_app/tools/sz/2
+	url = https://github.com/sz-games/Games2
+[submodule "static/_app/tools/sz/1"]
+	path = static/_app/tools/sz/1
+	url = https://github.com/sz-games/Games
+[submodule "static/_app/tools/sz/3"]
+	path = static/_app/tools/sz/3
+	url = https://github.com/sz-games/Games3
+[submodule "static/_app/tools/sz/4"]
+	path = static/_app/tools/sz/4
+	url = https://github.com/sz-games/Games4
+[submodule "static/_app/tools/sz/10"]
+	path = static/_app/tools/sz/10
+	url = https://github.com/sz-games/Games10
+[submodule "static/_app/tools/sz/5"]
+	path = static/_app/tools/sz/5
+	url = https://github.com/sz-games/Games5
+[submodule "static/_app/tools/sz/11"]
+	path = static/_app/tools/sz/11
+	url = https://github.com/sz-games/Games11
+[submodule "static/_app/tools/sz/9"]
+	path = static/_app/tools/sz/9
+	url = https://github.com/sz-games/Games9
+[submodule "static/_app/tools/sz/8"]
+	path = static/_app/tools/sz/8
+	url = https://github.com/sz-games/Games8
+[submodule "static/_app/tools/sz/6"]
+	path = static/_app/tools/sz/6
+	url = https://github.com/sz-games/Games6
+[submodule "static/_app/tools/sz/7"]
+	path = static/_app/tools/sz/7
+	url = https://github.com/sz-games/Games7
