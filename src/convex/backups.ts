@@ -1,6 +1,6 @@
 import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
-import { verifyJwtAndGetPayload } from './utils';
+import { getAndUpdateUser, verifyJwtAndGetPayload } from './utils';
 
 export const get = query({
 	args: {
@@ -33,8 +33,12 @@ export const create = mutation({
 		if (!payload.sub) {
 			throw new Error('Invalid JWT: missing subject');
 		}
+		const userInfo = await getAndUpdateUser(ctx, payload);
+		if (!userInfo?._id) {
+			throw new Error('Something went wrong');
+		}
 		await ctx.db.insert('backup', {
-			user: payload.sub,
+			user: userInfo?._id,
 			name: args.name,
 			data: args.data
 		});
