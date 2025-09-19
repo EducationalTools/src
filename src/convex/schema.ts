@@ -20,5 +20,5 @@ export default defineSchema({
 		username: v.string(),
 		verified: v.boolean(),
 		clerkId: v.string()
-	})
+	}).index('clerkid', ['clerkId'])
 });
