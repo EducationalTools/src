@@ -5,12 +5,12 @@ export default defineSchema({
 	comments: defineTable({
 		body: v.string(),
 		gmaeid: v.string(),
-		user: v.string()
+		user: v.id('users')
 	}),
 	backup: defineTable({
 		name: v.string(),
 		data: v.string(),
-		user: v.string()
+		user: v.id('users')
 	}),
 	users: defineTable({
 		email: v.string(),
