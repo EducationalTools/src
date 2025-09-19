@@ -1,6 +1,6 @@
 import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
-import { getAndUpdateUser, verifyJwtAndGetPayload } from './utils';
+import { getAndUpdateUser, getUser, verifyJwtAndGetPayload } from './utils';
 
 export const get = query({
 	args: {
@@ -8,11 +8,12 @@ export const get = query({
 	},
 	handler: async (ctx, args) => {
 		const payload = await verifyJwtAndGetPayload(args.jwt);
+		const userInfo = await getUser(ctx, payload);
 		const backups = await ctx.db
 			.query('backup')
 			.order('desc')
-			.filter((q) => q.eq(q.field('user'), payload.sub))
-			.take(100);
+			.filter((q) => q.eq(q.field('user'), userInfo._id))
+			.collect();
 		return backups.map((backup) => ({
 			name: backup.name,
 			data: backup.data,
@@ -56,6 +57,7 @@ export const remove = mutation({
 		if (backup?.user !== payload.sub) {
 			throw new Error('Unauthorized');
 		}
+		await getAndUpdateUser(ctx, payload);
 		await ctx.db.delete(args.id);
 	}
 });
