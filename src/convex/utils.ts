@@ -1,5 +1,5 @@
 import * as jose from 'jose';
-import type { MutationCtx } from './_generated/server';
+import type { MutationCtx, QueryCtx } from './_generated/server';
 import type { JwtPayload } from 'jsonwebtoken';
 
 // Shared helper function to verify JWT and return payload
@@ -16,6 +16,22 @@ export async function verifyJwtAndGetPayload(jwt: string) {
 		throw new Error('Invalid JWT');
 	}
 	return payload;
+}
+
+export async function getUser(ctx: QueryCtx, payload: JwtPayload) {
+	if (!payload.sub) {
+		throw new Error('Invalid JWT');
+	}
+	let user = await ctx.db
+		.query('users')
+		.withIndex('clerkid', (q) => q.eq('clerkId', payload.sub || ''))
+		.first();
+
+	if (!user) {
+		throw new Error('User not found');
+	}
+
+	return user;
 }
 
 export async function getAndUpdateUser(ctx: MutationCtx, payload: JwtPayload) {
