@@ -11,5 +11,13 @@ export default defineSchema({
 		name: v.string(),
 		data: v.string(),
 		user: v.string()
+	}),
+	users: defineTable({
+		email: v.string(),
+		firstName: v.string(),
+		lastName: v.string(),
+		avatar: v.string(),
+		username: v.string(),
+		verified: v.boolean()
 	})
 });
