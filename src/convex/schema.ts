@@ -14,9 +14,9 @@ export default defineSchema({
 	}),
 	users: defineTable({
 		email: v.string(),
-		firstName: v.string(),
-		lastName: v.string(),
-		avatar: v.string(),
+		firstName: v.optional(v.string()),
+		lastName: v.optional(v.string()),
+		avatar: v.optional(v.string()),
 		username: v.string(),
 		verified: v.boolean(),
 		clerkId: v.string()
