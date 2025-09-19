@@ -14,6 +14,7 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as backups from "../backups.js";
+import type * as types from "../types.js";
 import type * as utils from "../utils.js";
 
 /**
@@ -26,6 +27,7 @@ import type * as utils from "../utils.js";
  */
 declare const fullApi: ApiFromModules<{
   backups: typeof backups;
+  types: typeof types;
   utils: typeof utils;
 }>;
 export declare const api: FilterApi<
