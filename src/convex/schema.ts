@@ -18,6 +18,7 @@ export default defineSchema({
 		lastName: v.string(),
 		avatar: v.string(),
 		username: v.string(),
-		verified: v.boolean()
+		verified: v.boolean(),
+		clerkId: v.string()
 	})
 });
