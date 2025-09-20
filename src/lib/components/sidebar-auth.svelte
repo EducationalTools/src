@@ -42,6 +42,7 @@
 	import { syncSettingsStore } from '$lib/stores';
 	import clsx from 'clsx';
 	import { syncState } from '$lib/state.svelte';
+	import Label from './ui/label/label.svelte';
 </script>
 
 {#if page.url.hostname == 'edutools.ingo.au' || page.url.hostname == 'localhost'}
@@ -84,10 +85,24 @@
 					{/snippet}
 				</Popover.Trigger>
 				<Popover.Content side="right">
-					<div class="flex w-full flex-row">
-						<div>Sync</div>
-						<div class="grow"></div>
-						<Switch bind:checked={$syncSettingsStore.enabled} />
+					<div class="grid gap-2">
+						<div class="flex w-full flex-row">
+							<div>Sync</div>
+							<div class="grow"></div>
+							<Switch bind:checked={$syncSettingsStore.enabled} />
+						</div>
+						<div class="flex items-center gap-3">
+							<Checkbox id="settings" />
+							<Label for="settings">Settings</Label>
+						</div>
+						<div class="flex items-center gap-3">
+							<Checkbox id="history" />
+							<Label for="history">History</Label>
+						</div>
+						<div class="flex items-center gap-3">
+							<Checkbox id="saved" />
+							<Label for="saved">Saved</Label>
+						</div>
 					</div>
 				</Popover.Content>
 			</Popover.Root>
