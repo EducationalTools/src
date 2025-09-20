@@ -58,7 +58,15 @@
 				<Popover.Trigger>
 					{#snippet child({ props })}
 						<Sidebar.MenuButton isActive={page.url.pathname.startsWith('/sync')} {...props}>
-							<RefreshCw class={clsx($syncSettingsStore.enabled ? '' : 'text-gray-500')} />
+							<RefreshCw
+								class={clsx(
+									$syncSettingsStore.enabled
+										? syncState.current !== ''
+											? 'animate-spin'
+											: ''
+										: 'text-gray-500 transition-all duration-300'
+								)}
+							/>
 							Sync
 							<div class="grow"></div>
 							<div
