@@ -7,6 +7,7 @@
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import * as Popover from '$lib/components/ui/popover/index.js';
 	import { Checkbox } from '$lib/components/ui/checkbox/index.js';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
 
 	// Lucide icons
 	import Login from '@lucide/svelte/icons/log-in';
@@ -84,24 +85,40 @@
 						</Sidebar.MenuButton>
 					{/snippet}
 				</Popover.Trigger>
-				<Popover.Content side="right">
-					<div class="grid gap-2">
+				<Popover.Content side="right" align="end">
+					<div class="grid gap-3">
 						<div class="flex w-full flex-row">
 							<div>Sync</div>
 							<div class="grow"></div>
 							<Switch bind:checked={$syncSettingsStore.enabled} />
 						</div>
-						<div class="flex items-center gap-3">
-							<Checkbox id="settings" />
-							<Label for="settings">Settings</Label>
+						<div class="grid gap-2">
+							<div class="flex items-center gap-3">
+								<Checkbox id="settings" />
+								<Label for="settings">Settings</Label>
+							</div>
+							<div class="flex items-center gap-3">
+								<Checkbox id="history" />
+								<Label for="history">History</Label>
+							</div>
+							<div class="flex items-center gap-3">
+								<Checkbox id="saved" />
+								<Label for="saved">Saved</Label>
+							</div>
 						</div>
-						<div class="flex items-center gap-3">
-							<Checkbox id="history" />
-							<Label for="history">History</Label>
-						</div>
-						<div class="flex items-center gap-3">
-							<Checkbox id="saved" />
-							<Label for="saved">Saved</Label>
+						<div class="grid gap-2">
+							<Accordion.Root type="single">
+								<Accordion.Item value="Advanced">
+									<Accordion.Trigger>Advanced</Accordion.Trigger>
+									<Accordion.Content>
+										<div class="grid gap-2">
+											<Button size="sm" variant="ghost">Save</Button>
+											<Button size="sm" variant="ghost">Restore</Button>
+											<Button size="sm" variant="ghost">Delete Sync Data</Button>
+										</div>
+									</Accordion.Content>
+								</Accordion.Item>
+							</Accordion.Root>
 						</div>
 					</div>
 				</Popover.Content>
