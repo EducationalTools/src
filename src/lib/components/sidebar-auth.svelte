@@ -40,6 +40,7 @@
 	import { RefreshCw } from '@lucide/svelte';
 	import Switch from './ui/switch/switch.svelte';
 	import { syncSettingsStore } from '$lib/stores';
+	import clsx from 'clsx';
 </script>
 
 {#if page.url.hostname == 'edutools.ingo.au' || page.url.hostname == 'localhost'}
@@ -56,7 +57,7 @@
 				<Popover.Trigger>
 					{#snippet child({ props })}
 						<Sidebar.MenuButton isActive={page.url.pathname.startsWith('/sync')} {...props}>
-							<RefreshCw />
+							<RefreshCw class={clsx($syncSettingsStore.enabled ? '' : 'text-gray-500')} />
 							Sync
 							<div class="grow"></div>
 							<div
