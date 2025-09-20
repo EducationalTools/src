@@ -47,9 +47,9 @@
 	</ClerkLoading>
 	<SignedIn>
 		<Sidebar.MenuItem>
-			<Dialog.Root>
-				<Dialog.Trigger class="w-full">
-					<Sidebar.MenuButton>
+			<Sidebar.MenuButton>
+				{#snippet child({ props })}
+					<a href="/account" {...props}>
 						<Avatar.Root class="size-4">
 							<Avatar.Image src={ctx.user?.imageUrl} alt={ctx.user?.username} />
 							<Avatar.Fallback>
@@ -57,13 +57,10 @@
 							</Avatar.Fallback>
 						</Avatar.Root>
 
-						{ctx.user?.username}
-					</Sidebar.MenuButton>
-				</Dialog.Trigger>
-				<Dialog.Content class="w-fit !max-w-none p-0">
-					<UserProfile appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-				</Dialog.Content>
-			</Dialog.Root>
+						{ctx.user?.username}</a
+					>
+				{/snippet}
+			</Sidebar.MenuButton>
 		</Sidebar.MenuItem>
 		<Sidebar.MenuItem
 			onclick={() => {
