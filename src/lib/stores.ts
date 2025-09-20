@@ -21,3 +21,7 @@ export const preferencesStore = persisted('preferences', {
 
 export const favoritesStore = persisted('favorites', [] as string[]);
 export const historyStore = persisted('history', [] as string[]);
+
+export const syncSettingsStore = persisted('syncSettings', {
+	enabled: false
+});
