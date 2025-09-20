@@ -47,7 +47,7 @@
 	</ClerkLoading>
 	<SignedIn>
 		<Sidebar.MenuItem>
-			<Sidebar.MenuButton>
+			<Sidebar.MenuButton isActive={page.url.pathname.startsWith('/account')}>
 				{#snippet child({ props })}
 					<a href="/account" {...props}>
 						<Avatar.Root class="size-4">
