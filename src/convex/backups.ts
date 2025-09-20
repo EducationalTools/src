@@ -57,7 +57,9 @@ export const remove = mutation({
 	handler: async (ctx, args) => {
 		const payload = await verifyJwtAndGetPayload(args.jwt);
 		const backup = await ctx.db.get(args.id);
-		if (backup?.user !== payload.sub) {
+		const userInfo = await getAndUpdateUser(ctx, payload);
+
+		if (backup?.user !== userInfo?._id) {
 			throw new Error('Unauthorized');
 		}
 		await getAndUpdateUser(ctx, payload);
