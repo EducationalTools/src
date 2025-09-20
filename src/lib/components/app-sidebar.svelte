@@ -253,12 +253,14 @@
 							{...props}
 						>
 							<Code />
-							EducationalTools/src
+							<div class="truncate">EducationalTools/src</div>
 							<div class="grow"></div>
-							<Badge>
-								<GitBranch />
-								{process.env.BRANCH_NAME}</Badge
+							<div
+								class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 truncate rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
 							>
+								<GitBranch class="size-2" />
+								{process.env.BRANCH_NAME}
+							</div>
 						</a>
 					{/snippet}
 				</Sidebar.MenuButton>
