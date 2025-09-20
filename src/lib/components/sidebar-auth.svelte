@@ -95,27 +95,47 @@
 						</div>
 						<div class="grid gap-2">
 							<div class="flex items-center gap-3">
-								<Checkbox id="settings" bind:checked={$syncSettingsStore.settings} />
+								<Checkbox
+									disabled={!$syncSettingsStore.enabled}
+									id="settings"
+									bind:checked={$syncSettingsStore.settings}
+								/>
 								<Label for="settings">Settings</Label>
 							</div>
 							<div class="flex items-center gap-3">
-								<Checkbox id="history" bind:checked={$syncSettingsStore.history} />
+								<Checkbox
+									disabled={!$syncSettingsStore.enabled}
+									id="history"
+									bind:checked={$syncSettingsStore.history}
+								/>
 								<Label for="history">History</Label>
 							</div>
 							<div class="flex items-center gap-3">
-								<Checkbox id="saved" bind:checked={$syncSettingsStore.favorites} />
+								<Checkbox
+									disabled={!$syncSettingsStore.enabled}
+									id="saved"
+									bind:checked={$syncSettingsStore.favorites}
+								/>
 								<Label for="saved">Saved</Label>
 							</div>
 						</div>
 						<div class="grid gap-2">
 							<Accordion.Root type="single">
 								<Accordion.Item value="Advanced">
-									<Accordion.Trigger>Advanced</Accordion.Trigger>
+									<Accordion.Trigger disabled={!$syncSettingsStore.enabled}
+										>Advanced</Accordion.Trigger
+									>
 									<Accordion.Content>
 										<div class="grid gap-2">
-											<Button size="sm" variant="ghost">Save</Button>
-											<Button size="sm" variant="ghost">Restore</Button>
-											<Button size="sm" variant="ghost">Delete Sync Data</Button>
+											<Button size="sm" variant="ghost" disabled={!$syncSettingsStore.enabled}
+												>Save</Button
+											>
+											<Button size="sm" variant="ghost" disabled={!$syncSettingsStore.enabled}
+												>Restore</Button
+											>
+											<Button size="sm" variant="ghost" disabled={!$syncSettingsStore.enabled}
+												>Delete Sync Data</Button
+											>
 										</div>
 									</Accordion.Content>
 								</Accordion.Item>
