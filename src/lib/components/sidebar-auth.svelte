@@ -5,6 +5,8 @@
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
 	const sidebar = useSidebar();
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import * as Popover from '$lib/components/ui/popover/index.js';
+	import { Checkbox } from '$lib/components/ui/checkbox/index.js';
 
 	// Lucide icons
 	import Login from '@lucide/svelte/icons/log-in';
@@ -35,6 +37,9 @@
 	const ctx = useClerkContext();
 
 	import posthog from 'posthog-js';
+	import { RefreshCw } from '@lucide/svelte';
+	import Switch from './ui/switch/switch.svelte';
+	import { syncSettingsStore } from '$lib/stores';
 </script>
 
 {#if page.url.hostname == 'edutools.ingo.au' || page.url.hostname == 'localhost'}
@@ -46,6 +51,31 @@
 		</Sidebar.MenuItem>
 	</ClerkLoading>
 	<SignedIn>
+		<Sidebar.MenuItem>
+			<Popover.Root>
+				<Popover.Trigger>
+					{#snippet child({ props })}
+						<Sidebar.MenuButton isActive={page.url.pathname.startsWith('/sync')} {...props}>
+							<RefreshCw />
+							Sync
+							<div class="grow"></div>
+							<div
+								class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
+							>
+								{$syncSettingsStore.enabled}
+							</div>
+						</Sidebar.MenuButton>
+					{/snippet}
+				</Popover.Trigger>
+				<Popover.Content side="right">
+					<div class="flex w-full flex-row">
+						<div>Sync</div>
+						<div class="grow"></div>
+						<Switch bind:checked={$syncSettingsStore.enabled} />
+					</div>
+				</Popover.Content>
+			</Popover.Root>
+		</Sidebar.MenuItem>
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton isActive={page.url.pathname.startsWith('/account')}>
 				{#snippet child({ props })}
