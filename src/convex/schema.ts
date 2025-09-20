@@ -19,6 +19,25 @@ export default defineSchema({
 		avatar: v.optional(v.string()),
 		username: v.string(),
 		verified: v.boolean(),
-		clerkId: v.string()
+		clerkId: v.string(),
+		settings: v.optional(
+			v.object({
+				experimentalFeatures: v.boolean(),
+				open: v.string(),
+				theme: v.string(),
+				panic: v.object({
+					enabled: v.boolean(),
+					key: v.string(),
+					url: v.string(),
+					disableExperimentalMode: v.boolean()
+				}),
+				cloak: v.object({
+					mode: v.string(),
+					name: v.string(),
+					icon: v.string()
+				}),
+				history: v.boolean()
+			})
+		)
 	}).index('clerkid', ['clerkId'])
 });
