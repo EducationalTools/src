@@ -28,7 +28,7 @@ export async function getUser(ctx: QueryCtx, payload: JwtPayload) {
 		.first();
 
 	if (!user) {
-		throw new Error('User not found');
+		return null;
 	}
 
 	return user;

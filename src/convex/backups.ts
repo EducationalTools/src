@@ -9,6 +9,9 @@ export const get = query({
 	handler: async (ctx, args) => {
 		const payload = await verifyJwtAndGetPayload(args.jwt);
 		const userInfo = await getUser(ctx, payload);
+		if (!userInfo) {
+			return [];
+		}
 		const backups = await ctx.db
 			.query('backup')
 			.order('desc')
