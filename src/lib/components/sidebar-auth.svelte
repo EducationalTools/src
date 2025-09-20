@@ -94,15 +94,15 @@
 						</div>
 						<div class="grid gap-2">
 							<div class="flex items-center gap-3">
-								<Checkbox id="settings" />
+								<Checkbox id="settings" bind:checked={$syncSettingsStore.settings} />
 								<Label for="settings">Settings</Label>
 							</div>
 							<div class="flex items-center gap-3">
-								<Checkbox id="history" />
+								<Checkbox id="history" bind:checked={$syncSettingsStore.history} />
 								<Label for="history">History</Label>
 							</div>
 							<div class="flex items-center gap-3">
-								<Checkbox id="saved" />
+								<Checkbox id="saved" bind:checked={$syncSettingsStore.favorites} />
 								<Label for="saved">Saved</Label>
 							</div>
 						</div>
