@@ -15,7 +15,6 @@ export const preferencesStore = persisted('preferences', {
 		name: 'Home',
 		icon: 'https://ssl.gstatic.com/classroom/favicon.png'
 	},
-	analytics: true,
 	history: true
 });
 
