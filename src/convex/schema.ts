@@ -38,6 +38,8 @@ export default defineSchema({
 				}),
 				history: v.boolean()
 			})
-		)
+		),
+		favourites: v.array(v.string()),
+		history: v.array(v.string())
 	}).index('clerkid', ['clerkId'])
 });
