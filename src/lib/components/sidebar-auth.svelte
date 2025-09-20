@@ -66,7 +66,8 @@
 										? syncState.current !== ''
 											? 'animate-spin'
 											: ''
-										: 'text-gray-500 transition-all duration-300'
+										: 'text-gray-500 duration-300',
+									'transition-all'
 								)}
 							/>
 							Sync
