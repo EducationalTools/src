@@ -17,7 +17,26 @@ export async function save(
 	syncState.current = 'uploading';
 	let mutationData: { settings?: any; history?: any; favourites?: any } = {};
 
-	if (settings) mutationData.settings = get(preferencesStore);
+	if (settings) {
+		let preferences = get(preferencesStore);
+		mutationData.settings = {
+			experimentalFeatures: preferences.experimentalFeatures,
+			open: preferences.open,
+			theme: preferences.theme,
+			panic: {
+				enabled: preferences.panic.enabled,
+				key: preferences.panic.key,
+				url: preferences.panic.url,
+				disableExperimentalMode: preferences.panic.disableExperimentalMode
+			},
+			cloak: {
+				mode: preferences.cloak.mode,
+				name: preferences.cloak.name,
+				icon: preferences.cloak.icon
+			},
+			history: preferences.history
+		};
+	}
 	if (history) mutationData.history = get(historyStore);
 	if (favourites) mutationData.favourites = get(favoritesStore);
 
