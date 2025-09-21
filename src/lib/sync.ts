@@ -4,8 +4,6 @@ import { syncState } from './state.svelte';
 import { syncSettingsStore, preferencesStore, favoritesStore, historyStore } from './stores';
 import { useConvexClient } from 'convex-svelte';
 
-const client = useConvexClient();
-
 export async function save(
 	jwt: string,
 	{
@@ -14,6 +12,8 @@ export async function save(
 		favourites = false
 	}: { settings?: boolean; history?: boolean; favourites?: boolean }
 ) {
+	const client = useConvexClient();
+
 	syncState.current = 'uploading';
 	let mutationData: { settings?: any; history?: any; favourites?: any } = {};
 
