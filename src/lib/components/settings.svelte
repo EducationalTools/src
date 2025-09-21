@@ -38,15 +38,11 @@
 	});
 
 	function handleSettingsChange() {
-		console.log('Settings changed');
-	}
-
-	$effect(() => {
 		posthog.capture('settingschange', $preferencesStore);
 		if (sessionToken && sessionToken !== '') {
 			save(sessionToken, { settings: true });
 		}
-	});
+	}
 
 	$effect(() => {
 		if (ctx.session) {
