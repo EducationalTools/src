@@ -25,7 +25,9 @@
 	import { onMount } from 'svelte';
 	import { save } from '$lib/sync';
 	import { useClerkContext } from 'svelte-clerk';
+	import { useConvexClient } from 'convex-svelte';
 	const ctx = useClerkContext();
+	const client = useConvexClient();
 
 	let distinct_id = $state('Not available') as string;
 
@@ -40,7 +42,7 @@
 	function handleSettingsChange() {
 		posthog.capture('settingschange', $preferencesStore);
 		if (sessionToken && sessionToken !== '') {
-			save(sessionToken, { settings: true });
+			save(sessionToken, client, { settings: true });
 		}
 	}
 

@@ -6,14 +6,13 @@ import { useConvexClient } from 'convex-svelte';
 
 export async function save(
 	jwt: string,
+	client: ReturnType<typeof useConvexClient>,
 	{
 		settings = false,
 		history = false,
 		favourites = false
 	}: { settings?: boolean; history?: boolean; favourites?: boolean }
 ) {
-	const client = useConvexClient();
-
 	syncState.current = 'uploading';
 	let mutationData: { settings?: any; history?: any; favourites?: any } = {};
 
