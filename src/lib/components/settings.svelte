@@ -23,8 +23,13 @@
 	import Button from './ui/button/button.svelte';
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
+	import { save } from '$lib/sync';
+	import { useClerkContext } from 'svelte-clerk';
+	const ctx = useClerkContext();
 
 	let distinct_id = $state('Not available') as string;
+
+	let sessionToken = $state('');
 
 	onMount(() => {
 		setTimeout(() => {
@@ -34,7 +39,29 @@
 
 	$effect(() => {
 		posthog.capture('settingschange', $preferencesStore);
+		if (sessionToken && sessionToken !== '') {
+			save(sessionToken, { settings: true });
+		}
 	});
+
+	$effect(() => {
+		if (ctx.session) {
+			getToken().then((token) => {
+				sessionToken = token;
+			});
+		}
+	});
+
+	async function getToken() {
+		const token = await ctx.session?.getToken();
+		if (!token) {
+			if (ctx.session) {
+				toast.error('Something went wrong');
+			}
+			return '';
+		}
+		return token;
+	}
 
 	const themeTriggerContent = $derived(
 		themes.find((theme) => theme.value === $preferencesStore.theme)?.label ?? 'No theme :D'
