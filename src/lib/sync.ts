@@ -40,6 +40,10 @@ export async function save(
 	if (history) mutationData.history = get(historyStore);
 	if (favourites) mutationData.favourites = get(favoritesStore);
 
-	await client.mutation(api.sync.update, { ...mutationData, jwt });
+	try {
+		await client.mutation(api.sync.update, { ...mutationData, jwt });
+	} catch {
+		syncState.current = '';
+	}
 	syncState.current = '';
 }
