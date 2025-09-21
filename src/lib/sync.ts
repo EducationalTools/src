@@ -6,20 +6,21 @@ import { useConvexClient } from 'convex-svelte';
 
 const client = useConvexClient();
 
-export async function saveSettings(jwt: string) {
+export async function save(
+	jwt: string,
+	{
+		settings = false,
+		history = false,
+		favourites = false
+	}: { settings?: boolean; history?: boolean; favourites?: boolean }
+) {
 	syncState.current = 'uploading';
-	await client.mutation(api.sync.update, { settings: get(preferencesStore), jwt });
-	syncState.current = '';
-}
+	let mutationData: { settings?: any; history?: any; favourites?: any } = {};
 
-export async function saveHistory(jwt: string) {
-	syncState.current = 'uploading';
-	await client.mutation(api.sync.update, { history: get(historyStore), jwt });
-	syncState.current = '';
-}
+	if (settings) mutationData.settings = get(preferencesStore);
+	if (history) mutationData.history = get(historyStore);
+	if (favourites) mutationData.favourites = get(favoritesStore);
 
-export async function saveFavourites(jwt: string) {
-	syncState.current = 'uploading';
-	await client.mutation(api.sync.update, { favourites: get(favoritesStore), jwt });
+	await client.mutation(api.sync.update, { ...mutationData, jwt });
 	syncState.current = '';
 }
