@@ -5,7 +5,7 @@ import { useConvexClient } from 'convex-svelte';
 
 const client = useConvexClient();
 
-export function saveSettings(
+export async function saveSettings(
 	jwt: string,
 	settings: {
 		experimentalFeatures: boolean;
@@ -25,13 +25,19 @@ export function saveSettings(
 		history: boolean;
 	}
 ) {
-	client.mutation(api.sync.update, { settings, jwt });
+	syncState.current = 'uploading';
+	await client.mutation(api.sync.update, { settings, jwt });
+	syncState.current = '';
 }
 
-export function saveHistory(jwt: string, history: string[]) {
-	client.mutation(api.sync.update, { history, jwt });
+export async function saveHistory(jwt: string, history: string[]) {
+	syncState.current = 'uploading';
+	await client.mutation(api.sync.update, { history, jwt });
+	syncState.current = '';
 }
 
-export function saveFavourites(jwt: string, favourites: string[]) {
-	client.mutation(api.sync.update, { favourites, jwt });
+export async function saveFavourites(jwt: string, favourites: string[]) {
+	syncState.current = 'uploading';
+	await client.mutation(api.sync.update, { favourites, jwt });
+	syncState.current = '';
 }
