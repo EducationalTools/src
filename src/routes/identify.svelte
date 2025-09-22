@@ -11,8 +11,6 @@
 				name: userCtx.user.fullName,
 				clerkId: userCtx.user.id
 			});
-		} else {
-			posthog.reset();
 		}
 	});
 </script>
