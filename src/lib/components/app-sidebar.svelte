@@ -19,6 +19,7 @@
 	import Code from '@lucide/svelte/icons/code';
 	import Settings from '@lucide/svelte/icons/settings';
 	import PanelLeft from '@lucide/svelte/icons/panel-left';
+	import MessageCircle from '@lucide/svelte/icons/message-circle';
 
 	// App state and data
 	import { preferencesStore } from '$lib/stores';
@@ -259,6 +260,24 @@
 								<GitBranch />
 								{process.env.BRANCH_NAME}</Badge
 							>
+						</a>
+					{/snippet}
+				</Sidebar.MenuButton>
+			</Sidebar.MenuItem>
+			<Sidebar.MenuItem>
+				<Sidebar.MenuButton>
+					{#snippet child({ props })}
+						<a
+							onclick={() => {
+								sidebar.setOpenMobile(false);
+							}}
+							target="_blank"
+							href="https://discord.gg/AFec9wNar8"
+							rel="noopener noreferrer"
+							{...props}
+						>
+							<MessageCircle />
+							Discord
 						</a>
 					{/snippet}
 				</Sidebar.MenuButton>
