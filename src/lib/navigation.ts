@@ -10,6 +10,7 @@ import List from '@lucide/svelte/icons/list';
 import Plus from '@lucide/svelte/icons/plus';
 import Info from '@lucide/svelte/icons/info';
 import Shield from '@lucide/svelte/icons/shield';
+import MessageSquare from '@lucide/svelte/icons/message-square';
 
 export interface NavigationItem {
 	title: string;
@@ -113,6 +114,12 @@ export function createMainNavigation(
 			experimental: true,
 			icon: ArchiveRestore,
 			url: '/backups'
+		},
+		{
+			title: 'Discord',
+			experimental: true,
+			icon: MessageSquare,
+			url: 'https://discord.gg/AFec9wNar8'
 		},
 		{
 			title: 'About',
