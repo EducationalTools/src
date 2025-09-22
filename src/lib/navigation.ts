@@ -110,6 +110,12 @@ export function createMainNavigation(
 			url: '/mirrors/host'
 		},
 		{
+			title: 'Discord',
+			experimental: true,
+			icon: MessageSquare,
+			url: 'https://discord.gg/AFec9wNar8'
+		},
+		{
 			title: 'Backups',
 			experimental: true,
 			icon: ArchiveRestore,
@@ -126,12 +132,6 @@ export function createMainNavigation(
 			experimental: true,
 			icon: Shield,
 			url: '/privacy'
-		},
-		{
-			title: 'Discord',
-			experimental: true,
-			icon: MessageSquare,
-			url: 'https://discord.gg/AFec9wNar8'
 		}
 	];
 }
