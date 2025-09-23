@@ -48,7 +48,6 @@
 		"vite": "^6.3.5"
 	},
 	"dependencies": {
-		"@clerk/backend": "^2.9.3",
 		"@friendofsvelte/tipex": "0.0.7",
 		"@tanstack/match-sorter-utils": "^8.19.4",
 		"@tsparticles/slim": "^3.9.1",
