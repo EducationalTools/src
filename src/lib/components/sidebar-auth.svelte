@@ -5,6 +5,9 @@
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
 	const sidebar = useSidebar();
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import * as Popover from '$lib/components/ui/popover/index.js';
+	import { Checkbox } from '$lib/components/ui/checkbox/index.js';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
 
 	// Lucide icons
 	import Login from '@lucide/svelte/icons/log-in';
@@ -35,6 +38,12 @@
 	const ctx = useClerkContext();
 
 	import posthog from 'posthog-js';
+	import { RefreshCw } from '@lucide/svelte';
+	import Switch from './ui/switch/switch.svelte';
+	import { syncSettingsStore } from '$lib/stores';
+	import clsx from 'clsx';
+	import { syncState } from '$lib/state.svelte';
+	import Label from './ui/label/label.svelte';
 </script>
 
 {#if page.url.hostname == 'edutools.ingo.au' || page.url.hostname == 'localhost'}
@@ -46,10 +55,100 @@
 		</Sidebar.MenuItem>
 	</ClerkLoading>
 	<SignedIn>
+		<!-- <Sidebar.MenuItem>
+			<Popover.Root>
+				<Popover.Trigger>
+					{#snippet child({ props })}
+						<Sidebar.MenuButton isActive={page.url.pathname.startsWith('/sync')} {...props}>
+							<RefreshCw
+								class={clsx(
+									$syncSettingsStore.enabled
+										? syncState.current !== ''
+											? 'animate-spin'
+											: ''
+										: 'text-gray-500 duration-300',
+									'transition-all'
+								)}
+							/>
+							Sync
+							<div class="grow"></div>
+							<div
+								class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
+							>
+								{$syncSettingsStore.enabled
+									? syncState.current == 'uploading'
+										? 'Uploading'
+										: syncState.current == 'downloading'
+											? 'Downloading'
+											: 'Synced'
+									: 'Disabled'}
+							</div>
+						</Sidebar.MenuButton>
+					{/snippet}
+				</Popover.Trigger>
+				<Popover.Content side="right" align="end">
+					<div class="grid gap-3">
+						<div class="flex w-full flex-row">
+							<div>Sync</div>
+							<div class="grow"></div>
+							<Switch bind:checked={$syncSettingsStore.enabled} />
+						</div>
+						<div class="grid gap-2">
+							<div class="flex items-center gap-3">
+								<Checkbox
+									disabled={!$syncSettingsStore.enabled}
+									id="settings"
+									bind:checked={$syncSettingsStore.settings}
+								/>
+								<Label for="settings">Settings</Label>
+							</div>
+							<div class="flex items-center gap-3">
+								<Checkbox
+									disabled={!$syncSettingsStore.enabled}
+									id="history"
+									bind:checked={$syncSettingsStore.history}
+								/>
+								<Label for="history">History</Label>
+							</div>
+							<div class="flex items-center gap-3">
+								<Checkbox
+									disabled={!$syncSettingsStore.enabled}
+									id="saved"
+									bind:checked={$syncSettingsStore.favorites}
+								/>
+								<Label for="saved">Saved</Label>
+							</div>
+						</div>
+						<div class="grid gap-2">
+							<Accordion.Root type="single">
+								<Accordion.Item value="Advanced">
+									<Accordion.Trigger disabled={!$syncSettingsStore.enabled}
+										>Advanced</Accordion.Trigger
+									>
+									<Accordion.Content>
+										<div class="grid gap-2">
+											<Button size="sm" variant="ghost" disabled={!$syncSettingsStore.enabled}
+												>Save</Button
+											>
+											<Button size="sm" variant="ghost" disabled={!$syncSettingsStore.enabled}
+												>Restore</Button
+											>
+											<Button size="sm" variant="ghost" disabled={!$syncSettingsStore.enabled}
+												>Delete Sync Data</Button
+											>
+										</div>
+									</Accordion.Content>
+								</Accordion.Item>
+							</Accordion.Root>
+						</div>
+					</div>
+				</Popover.Content>
+			</Popover.Root>
+		</Sidebar.MenuItem> -->
 		<Sidebar.MenuItem>
-			<Dialog.Root>
-				<Dialog.Trigger class="w-full">
-					<Sidebar.MenuButton>
+			<Sidebar.MenuButton isActive={page.url.pathname.startsWith('/account')}>
+				{#snippet child({ props })}
+					<a href="/account" {...props}>
 						<Avatar.Root class="size-4">
 							<Avatar.Image src={ctx.user?.imageUrl} alt={ctx.user?.username} />
 							<Avatar.Fallback>
@@ -57,13 +156,10 @@
 							</Avatar.Fallback>
 						</Avatar.Root>
 
-						{ctx.user?.username}
-					</Sidebar.MenuButton>
-				</Dialog.Trigger>
-				<Dialog.Content class="w-fit !max-w-none p-0">
-					<UserProfile appearance={mode.current == 'dark' ? { baseTheme: dark } : {}} />
-				</Dialog.Content>
-			</Dialog.Root>
+						{ctx.user?.username}</a
+					>
+				{/snippet}
+			</Sidebar.MenuButton>
 		</Sidebar.MenuItem>
 		<Sidebar.MenuItem
 			onclick={() => {

@@ -15,9 +15,15 @@ export const preferencesStore = persisted('preferences', {
 		name: 'Home',
 		icon: 'https://ssl.gstatic.com/classroom/favicon.png'
 	},
-	analytics: true,
 	history: true
 });
 
 export const favoritesStore = persisted('favorites', [] as string[]);
 export const historyStore = persisted('history', [] as string[]);
+
+export const syncSettingsStore = persisted('syncSettings', {
+	enabled: false,
+	settings: true,
+	favorites: true,
+	history: true
+});
