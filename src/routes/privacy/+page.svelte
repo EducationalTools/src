@@ -78,19 +78,6 @@
 			</div>
 
 			<div class="rounded-lg border p-4">
-				<h4 class="font-medium">Clerk (Authentication)</h4>
-				<p class="text-muted-foreground text-sm">
-					User authentication and account management services.
-					<a
-						href="https://clerk.com/privacy"
-						class="text-blue-600 hover:underline"
-						target="_blank"
-						rel="noopener">Clerk Privacy Policy</a
-					>
-				</p>
-			</div>
-
-			<div class="rounded-lg border p-4">
 				<h4 class="font-medium">Convex (Database)</h4>
 				<p class="text-muted-foreground text-sm">
 					Database hosting for user backups and content.
