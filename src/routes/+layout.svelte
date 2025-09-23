@@ -14,7 +14,6 @@
 	import Cloak from '$lib/components/cloak.svelte';
 	import Providers from '$lib/components/providers.svelte';
 	import TrackerDialog from '$lib/components/tracker-dialog.svelte';
-	import Identify from './identify.svelte';
 	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
 
 	// Utilities
@@ -30,6 +29,7 @@
 	import { buttonVariants } from '$lib/components/ui/button';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import PanelLeftIcon from '@lucide/svelte/icons/panel-left';
+	import Identify from './identify.svelte';
 
 	// State
 	let trackerBlockerDialog = $state(false);

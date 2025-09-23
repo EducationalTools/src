@@ -39,22 +39,6 @@
 			(us.i.posthog.com).
 		</p>
 
-		<h3 class="text-xl font-medium">Account Data (Clerk Authentication)</h3>
-		<p>When you create an account (available only on edutools.ingo.au), we collect:</p>
-		<ul class="list-disc space-y-2 pl-6">
-			<li><strong>Profile Information:</strong> Username, email address, profile picture</li>
-			<li><strong>Authentication Data:</strong> Encrypted login credentials and session tokens</li>
-			<li><strong>Account Preferences:</strong> Settings and customizations you choose</li>
-		</ul>
-
-		<h3 class="text-xl font-medium">User Content (Convex Database)</h3>
-		<p>We store user-generated content to provide our services:</p>
-		<ul class="list-disc space-y-2 pl-6">
-			<li><strong>Backups:</strong> Save data for tools and games you choose to backup</li>
-			<li><strong>Comments:</strong> Comments you leave on games (when available)</li>
-			<li><strong>Progress Data:</strong> Game progress and tool preferences</li>
-		</ul>
-
 		<h3 class="text-xl font-medium">Local Storage</h3>
 		<p>Some data is stored locally in your browser:</p>
 		<ul class="list-disc space-y-2 pl-6">
@@ -94,19 +78,6 @@
 			</div>
 
 			<div class="rounded-lg border p-4">
-				<h4 class="font-medium">Clerk (Authentication)</h4>
-				<p class="text-muted-foreground text-sm">
-					User authentication and account management services.
-					<a
-						href="https://clerk.com/privacy"
-						class="text-blue-600 hover:underline"
-						target="_blank"
-						rel="noopener">Clerk Privacy Policy</a
-					>
-				</p>
-			</div>
-
-			<div class="rounded-lg border p-4">
 				<h4 class="font-medium">Convex (Database)</h4>
 				<p class="text-muted-foreground text-sm">
 					Database hosting for user backups and content.
@@ -132,9 +103,6 @@
 			<li>
 				<strong>Analytics Opt-out:</strong> You can disable analytics by using a tracker blocker or ad
 				blocker
-			</li>
-			<li>
-				<strong>Account Data:</strong> You can delete your account through Clerk's user interface
 			</li>
 			<li>
 				<strong>Local Data:</strong> You can clear local storage through your browser settings

@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@clerk/backend':
-        specifier: ^2.9.3
-        version: 2.9.3(react@19.1.0)
-      '@clerk/themes':
-        specifier: ^2.4.19
-        version: 2.4.19
       '@friendofsvelte/tipex':
         specifier: 0.0.7
         version: 0.0.7(highlight.js@11.8.0)(svelte@5.38.2)
@@ -53,9 +47,6 @@ importers:
       posthog-js:
         specifier: ^1.260.1
         version: 1.260.1
-      svelte-clerk:
-        specifier: ^0.16.7
-        version: 0.16.7(@sveltejs/kit@2.39.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(react@19.1.0)(svelte@5.38.2)
       svelte-persisted-store:
         specifier: ^0.12.0
         version: 0.12.0(svelte@5.38.2)
@@ -171,34 +162,6 @@ packages:
   '@babel/runtime@7.28.3':
     resolution: {integrity: sha512-9uIQ10o0WGdpP6GDhXcdOJPJuDgFtIDtN/9+ArJQ2NAfAmiuhTQdzkaTGR33v43GYS2UrSA0eX2pPPHoFVvpxA==}
     engines: {node: '>=6.9.0'}
-
-  '@clerk/backend@2.9.3':
-    resolution: {integrity: sha512-cHGnG/Xdr/FOkQOq2JgUzMWG8jTgBEGMBMvM3fVR5EC5lHCrR4xh7zMmAh5ILfBA6JFJAKxrdho6rSjaJS/9FA==}
-    engines: {node: '>=18.17.0'}
-
-  '@clerk/shared@3.21.2':
-    resolution: {integrity: sha512-aA6t4Y6/kH1ZVMPIN0NeRulIGYDwB3otfql4Y+5MbnEgegdOlv43WO5iAheytR0fHBXnOt5+VN5QjPQHu2kU4A==}
-    engines: {node: '>=18.17.0'}
-    peerDependencies:
-      react: ^18.0.0 || ^19.0.0 || ^19.0.0-0
-      react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-0
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-
-  '@clerk/themes@2.4.19':
-    resolution: {integrity: sha512-/NxZ1IGNkcR0bEhYC2gmR6LhHFj7NRUl82+3FoC6gxU8Xu1+yIret4DH65GlN4FGtdKT5I538UH/lsA+g3Ym8w==}
-    engines: {node: '>=18.17.0'}
-
-  '@clerk/types@4.80.0':
-    resolution: {integrity: sha512-WuvCNfxWY9hW+p/YR+cCx+Alg8ZHfmYir89pF67YG/wMv89ZKnJBWAgG4DM7oHpyNICcR1vxt1pXq6hRgtM4Nw==}
-    engines: {node: '>=18.17.0'}
-
-  '@clerk/types@4.86.0':
-    resolution: {integrity: sha512-YFaOYIAZWbpXehAmtgUB0YNf1v5b/hlwePvdqxlD5vdwrNsap28RpupWZat0hp1+PTtb9uAwSa5AFCOxkYLUJQ==}
-    engines: {node: '>=18.17.0'}
 
   '@dagrejs/dagre@1.1.5':
     resolution: {integrity: sha512-Ghgrh08s12DCL5SeiR6AoyE80mQELTWhJBRmXfFoqDiFkR458vPEdgTbbjA0T+9ETNxUblnD0QW55tfdvi5pjQ==}
@@ -716,9 +679,6 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
-
-  '@stablelib/base64@1.0.1':
-    resolution: {integrity: sha512-1bnPQqSxSuc3Ii6MhBysoWCg58j97aUjuCSZrGSmDxNqtytIi0k8utUenAwTZN4V5mXXYGsVUI9zeBqy+jBOSQ==}
 
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
@@ -1323,10 +1283,6 @@ packages:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
 
-  cookie@1.0.2:
-    resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
-    engines: {node: '>=18'}
-
   core-js@3.45.0:
     resolution: {integrity: sha512-c2KZL9lP4DjkN3hk/an4pWn5b5ZefhRJnAc42n6LJ19kSnbeRbdQZE5dSeE2LBol1OwJD3X1BQvFTAsa8ReeDA==}
 
@@ -1344,9 +1300,6 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
-
-  csstype@3.1.3:
-    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
   current-git-branch@2.0.1:
     resolution: {integrity: sha512-m24daDpf+LNAjeU3aZLQGe0lIE25iouTTBfJPYlhw14ZTkJBd+1BriWo/3gYYoYrqY1T2G6r/RFKXoYwks7peg==}
@@ -1473,10 +1426,6 @@ packages:
   delaunator@5.0.1:
     resolution: {integrity: sha512-8nvh+XBe96aCESrGOqMp/84b13H9cdKbG5P2ejQCh4d4sK9RL4371qou9drQjMhvnPmhWl5hnmqbEE0fXr9Xnw==}
 
-  dequal@2.0.3:
-    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
-    engines: {node: '>=6'}
-
   detect-libc@2.0.4:
     resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
     engines: {node: '>=8'}
@@ -1558,9 +1507,6 @@ packages:
     resolution: {integrity: sha512-h5+1OzzfCC3Ef7VbtKdcv7zsstUQwUDlYpUTvjeUsJAssPgLn7QzbboPtL5ro04Mq0rPOsMzl7q5hIbRs2wD1A==}
     engines: {node: '>=8.0.0'}
 
-  fast-sha256@1.3.0:
-    resolution: {integrity: sha512-n11RGP/lrWEFI/bWdygLxhI+pVeo1ZYIVwvvPkW7azl/rOy+F3HYRZ2K5zeE9mmkhQppyv9sQFx0JM9UabnpPQ==}
-
   fault@2.0.1:
     resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
 
@@ -1602,9 +1548,6 @@ packages:
   get-stream@9.0.1:
     resolution: {integrity: sha512-kVCxPF3vQM/N0B1PmoqVUqgHP+EeVjmZSQn+1oCRPxd2P21P2F19lIgbR3HBosbB1PUhOAoctJnfEn2GbN2eZA==}
     engines: {node: '>=18'}
-
-  glob-to-regexp@0.4.1:
-    resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
@@ -1667,10 +1610,6 @@ packages:
 
   jose@6.0.13:
     resolution: {integrity: sha512-Yms4GpbmdANamS51kKK6w4hRlKx8KTxbWyAAKT/MhUMtqbIqh5mb2HjhTNUbk7TFL8/MBB5zWSDohL7ed4k/UA==}
-
-  js-cookie@3.0.5:
-    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
-    engines: {node: '>=14'}
 
   json-schema-to-ts@3.1.1:
     resolution: {integrity: sha512-+DWg8jCJG2TEnpy7kOm/7/AxaYoaRbjVB4LFZLySZlWn8exGs3A4OLJR966cVvU26N7X9TWxl+Jsw7dzAqKT6g==}
@@ -2175,12 +2114,6 @@ packages:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
 
-  standardwebhooks@1.0.0:
-    resolution: {integrity: sha512-BbHGOQK9olHPMvQNHWul6MYlrRTAOKn03rOe4A8O3CLWhNf4YHBqq2HJKKC+sfqpxiBY52pNeesD6jIiLDz8jg==}
-
-  std-env@3.9.0:
-    resolution: {integrity: sha512-UGvjygr6F6tpH7o2qyqR6QYpwraIjKSdtzyBdyytFOHmPZY917kwdwLG0RbOjWOnKmnm3PeHjaoLLMie7kPLQw==}
-
   strip-final-newline@4.0.0:
     resolution: {integrity: sha512-aulFJcD6YK8V1G7iRB5tigAP4TsHBZZrOV8pjV++zdUwmeV8uzbY7yn6h9MswN62adStNZFuCIx4haBnRuMDaw==}
     engines: {node: '>=18'}
@@ -2199,12 +2132,6 @@ packages:
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
-
-  svelte-clerk@0.16.7:
-    resolution: {integrity: sha512-+vBlIhtAeZhfOzr7TdQppPGK0+sAxJqDscESdTwiXE+8ayvgIQiovzl9zT7KhUKX/Dz3jQuk2P0+9CEo3ofzxg==}
-    peerDependencies:
-      '@sveltejs/kit': ^2.20.0
-      svelte: ^5.11.0
 
   svelte-persisted-store@0.12.0:
     resolution: {integrity: sha512-BdBQr2SGSJ+rDWH8/aEV5GthBJDapVP0GP3fuUCA7TjYG5ctcB+O9Mj9ZC0+Jo1oJMfZUd1y9H68NFRR5MyIJA==}
@@ -2244,11 +2171,6 @@ packages:
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
       svelte: 3.x || 4.x || >=5.0.0-next.51
-
-  swr@2.3.4:
-    resolution: {integrity: sha512-bYd2lrhc+VarcpkgWclcUi92wYCpOgMws9Sd1hG1ntAu0NEy+14CbotuFjshBU2kt9rYj9TSmDcybpxpeTU1fg==}
-    peerDependencies:
-      react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
@@ -2336,11 +2258,6 @@ packages:
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
-
-  use-sync-external-store@1.5.0:
-    resolution: {integrity: sha512-Rb46I4cGGVBmjamjphe8L/UnvJD+uPPtTkNvX5mZgqdbavhI4EbgIWJiIHXJ8bc/i9EQGPRh4DwEURJ552Do0A==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -2464,41 +2381,6 @@ snapshots:
 
   '@babel/runtime@7.28.3':
     optional: true
-
-  '@clerk/backend@2.9.3(react@19.1.0)':
-    dependencies:
-      '@clerk/shared': 3.21.2(react@19.1.0)
-      '@clerk/types': 4.80.0
-      cookie: 1.0.2
-      standardwebhooks: 1.0.0
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - react
-      - react-dom
-
-  '@clerk/shared@3.21.2(react@19.1.0)':
-    dependencies:
-      '@clerk/types': 4.86.0
-      dequal: 2.0.3
-      glob-to-regexp: 0.4.1
-      js-cookie: 3.0.5
-      std-env: 3.9.0
-      swr: 2.3.4(react@19.1.0)
-    optionalDependencies:
-      react: 19.1.0
-
-  '@clerk/themes@2.4.19':
-    dependencies:
-      '@clerk/types': 4.86.0
-      tslib: 2.8.1
-
-  '@clerk/types@4.80.0':
-    dependencies:
-      csstype: 3.1.3
-
-  '@clerk/types@4.86.0':
-    dependencies:
-      csstype: 3.1.3
 
   '@dagrejs/dagre@1.1.5':
     dependencies:
@@ -2858,8 +2740,6 @@ snapshots:
     optional: true
 
   '@sindresorhus/merge-streams@4.0.0': {}
-
-  '@stablelib/base64@1.0.1': {}
 
   '@standard-schema/spec@1.0.0': {}
 
@@ -3544,8 +3424,6 @@ snapshots:
 
   cookie@0.6.0: {}
 
-  cookie@1.0.2: {}
-
   core-js@3.45.0: {}
 
   crelt@1.0.6: {}
@@ -3559,8 +3437,6 @@ snapshots:
   crypt@0.0.2: {}
 
   cssesc@3.0.0: {}
-
-  csstype@3.1.3: {}
 
   current-git-branch@2.0.1:
     dependencies:
@@ -3677,8 +3553,6 @@ snapshots:
   delaunator@5.0.1:
     dependencies:
       robust-predicates: 3.0.2
-
-  dequal@2.0.3: {}
 
   detect-libc@2.0.4: {}
 
@@ -3814,8 +3688,6 @@ snapshots:
       pure-rand: 6.1.0
     optional: true
 
-  fast-sha256@1.3.0: {}
-
   fault@2.0.1:
     dependencies:
       format: 0.2.2
@@ -3847,8 +3719,6 @@ snapshots:
     dependencies:
       '@sec-ant/readable-stream': 0.4.1
       is-stream: 4.0.1
-
-  glob-to-regexp@0.4.1: {}
 
   graceful-fs@4.2.11: {}
 
@@ -3900,8 +3770,6 @@ snapshots:
     optional: true
 
   jose@6.0.13: {}
-
-  js-cookie@3.0.5: {}
 
   json-schema-to-ts@3.1.1:
     dependencies:
@@ -4287,7 +4155,8 @@ snapshots:
   pure-rand@6.1.0:
     optional: true
 
-  react@19.1.0: {}
+  react@19.1.0:
+    optional: true
 
   readdirp@4.1.2: {}
 
@@ -4382,13 +4251,6 @@ snapshots:
   source-map@0.6.1:
     optional: true
 
-  standardwebhooks@1.0.0:
-    dependencies:
-      '@stablelib/base64': 1.0.1
-      fast-sha256: 1.3.0
-
-  std-env@3.9.0: {}
-
   strip-final-newline@4.0.0: {}
 
   style-to-object@1.0.9:
@@ -4409,18 +4271,6 @@ snapshots:
       typescript: 5.9.2
     transitivePeerDependencies:
       - picomatch
-
-  svelte-clerk@0.16.7(@sveltejs/kit@2.39.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(react@19.1.0)(svelte@5.38.2):
-    dependencies:
-      '@clerk/backend': 2.9.3(react@19.1.0)
-      '@clerk/shared': 3.21.2(react@19.1.0)
-      '@clerk/types': 4.80.0
-      '@sveltejs/kit': 2.39.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1))
-      set-cookie-parser: 2.7.1
-      svelte: 5.38.2
-    transitivePeerDependencies:
-      - react
-      - react-dom
 
   svelte-persisted-store@0.12.0(svelte@5.38.2):
     dependencies:
@@ -4495,12 +4345,6 @@ snapshots:
       - '@types/json-schema'
       - esbuild
       - typescript
-
-  swr@2.3.4(react@19.1.0):
-    dependencies:
-      dequal: 2.0.3
-      react: 19.1.0
-      use-sync-external-store: 1.5.0(react@19.1.0)
 
   tabbable@6.2.0: {}
 
@@ -4587,10 +4431,6 @@ snapshots:
       browserslist: 4.25.3
       escalade: 3.2.0
       picocolors: 1.1.1
-
-  use-sync-external-store@1.5.0(react@19.1.0):
-    dependencies:
-      react: 19.1.0
 
   util-deprecate@1.0.2: {}
 

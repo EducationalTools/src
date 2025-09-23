@@ -136,7 +136,6 @@ EduTools is a SvelteKit-based web application that provides various educational 
 Create a `.env` file based on `.env.example`:
 
 ```bash
-PUBLIC_CLERK_PUBLISHABLE_KEY=pk_something
 CONVEX_DEPLOYMENT=dev:something
 PUBLIC_CONVEX_URL=https://something.convex.cloud
 ```
@@ -215,7 +214,6 @@ PUBLIC_CONVEX_URL=https://something.convex.cloud
 
 ## Security Considerations
 
-- Uses Clerk for authentication (when configured)
 - Report security issues via GitHub Security Advisories
 - Environment variables contain sensitive keys - never commit .env files
 - Static games/tools should be reviewed for security if user-generated content is involved
