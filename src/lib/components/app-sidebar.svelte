@@ -10,7 +10,6 @@
 	import * as Command from '$lib/components/ui/command/index.js';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
 	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
-	import SidebarAuth from './sidebar-auth.svelte';
 
 	// Lucide icons
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
@@ -30,11 +29,9 @@
 	import { settingsOpen } from '$lib/state.svelte';
 
 	// Auth
-	import { useClerkContext } from 'svelte-clerk/client';
 	import posthog from 'posthog-js';
 	import { GitBranch } from '@lucide/svelte';
 	import Badge from './ui/badge/badge.svelte';
-	const ctx = useClerkContext();
 
 	import dayjs from 'dayjs';
 
@@ -283,7 +280,6 @@
 					</kbd>
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
-			<SidebarAuth />
 		{/if}
 		{#if !sidebar.isMobile}
 			<Sidebar.MenuItem>

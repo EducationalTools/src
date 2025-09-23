@@ -30,7 +30,6 @@ jobs:
 
       - name: Build
         env:
-          PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.PUBLIC_CLERK_PUBLISHABLE_KEY }}
           PUBLIC_CONVEX_URL: ${{ secrets.PUBLIC_CONVEX_URL }}
         run: |
           pnpm run build

@@ -1,28 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import {
-		SignedIn,
-		SignedOut,
-		SignInButton,
-		UserButton,
-		useClerkContext,
-		SignIn,
-		SignUp,
-		UserProfile
-	} from 'svelte-clerk/client';
-	const ctx = useClerkContext();
-
-	let sessionToken = $state('');
 
 	import dayjs from 'dayjs';
-
-	$effect(() => {
-		if (ctx.session) {
-			getToken().then((token) => {
-				sessionToken = token;
-			});
-		}
-	});
 
 	import { useConvexClient, useQuery } from 'convex-svelte';
 	import { api } from '$lib/../convex/_generated/api.js';
@@ -40,9 +19,9 @@
 	import * as Alert from '$lib/components/ui/alert/index.js';
 	import posthog from 'posthog-js';
 
-	let query = $state(useQuery(api.backups.get, { jwt: '' }));
-	const client = useConvexClient();
-	let enteredBackupName = $state('');
+	// let query = $state(useQuery(api.backups.get, { jwt: '' }));
+	// const client = useConvexClient();
+	// let enteredBackupName = $state('');
 	let loading = $state(false);
 
 	let backupData = $state('');
@@ -52,20 +31,9 @@
 		backupData = createBackup();
 	});
 
-	$effect(() => {
-		query = useQuery(api.backups.get, { jwt: sessionToken });
-	});
-
-	async function getToken() {
-		const token = await ctx.session?.getToken();
-		if (!token) {
-			if (ctx.session) {
-				toast.error('Something went wrong');
-			}
-			return '';
-		}
-		return token;
-	}
+	// $effect(() => {
+	// 	query = useQuery(api.backups.get, { jwt: sessionToken });
+	// });
 
 	function setLoading(value: boolean) {
 		loading = value;
@@ -117,7 +85,7 @@
 		</Card.Content>
 	</Card.Root>
 
-	<SignedIn>
+	<!-- <SignedIn>
 		<div class="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
 			<Card.Root>
 				<Card.Header><Card.Title>Create a Backup</Card.Title></Card.Header>
@@ -168,5 +136,5 @@
 				>Backup to the cloud with an EduTools account.</Alert.Description
 			></Alert.Root
 		>
-	</SignedOut>
+	</SignedOut> -->
 </div>
