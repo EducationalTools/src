@@ -55,7 +55,7 @@
 		</Sidebar.MenuItem>
 	</ClerkLoading>
 	<SignedIn>
-		<Sidebar.MenuItem>
+		<!-- <Sidebar.MenuItem>
 			<Popover.Root>
 				<Popover.Trigger>
 					{#snippet child({ props })}
@@ -144,7 +144,7 @@
 					</div>
 				</Popover.Content>
 			</Popover.Root>
-		</Sidebar.MenuItem>
+		</Sidebar.MenuItem> -->
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton isActive={page.url.pathname.startsWith('/account')}>
 				{#snippet child({ props })}

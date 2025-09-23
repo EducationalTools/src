@@ -41,9 +41,9 @@
 
 	function handleSettingsChange() {
 		posthog.capture('settingschange', $preferencesStore);
-		if (sessionToken && sessionToken !== '') {
-			save(sessionToken, client, { settings: true });
-		}
+		// if (sessionToken && sessionToken !== '') {
+		// 	save(sessionToken, client, { settings: true });
+		// }
 	}
 
 	$effect(() => {
