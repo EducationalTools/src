@@ -47,7 +47,7 @@ export async function getAndUpdateUser(ctx: MutationCtx, payload: JwtPayload) {
 			avatar: payload.avatar,
 			email: payload.email,
 			firstName: payload.firstname,
-			lastName: payload.firstname,
+			lastName: payload.lastname,
 			username: payload.username,
 			verified: payload.verified,
 			clerkId: payload.sub
