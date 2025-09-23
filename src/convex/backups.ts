@@ -1,22 +1,6 @@
 import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
-import * as jose from 'jose';
-
-// Shared helper function to verify JWT and return payload
-async function verifyJwtAndGetPayload(jwt: string) {
-	if (!process.env.CLERK_JWT_KEY) {
-		throw new Error('Missing CLERK_JWT_KEY environment variable');
-	}
-	const publicKey = await jose.importSPKI(process.env.CLERK_JWT_KEY, 'RS256');
-	if (jwt.length === 0) {
-		throw new Error('Missing JWT');
-	}
-	const { payload } = await jose.jwtVerify(jwt, publicKey, {});
-	if (!payload.sub) {
-		throw new Error('Invalid JWT');
-	}
-	return payload;
-}
+import { getAndUpdateUser, getUser, verifyJwtAndGetPayload } from './utils';
 
 export const get = query({
 	args: {
@@ -24,11 +8,15 @@ export const get = query({
 	},
 	handler: async (ctx, args) => {
 		const payload = await verifyJwtAndGetPayload(args.jwt);
+		const userInfo = await getUser(ctx, payload);
+		if (!userInfo) {
+			return [];
+		}
 		const backups = await ctx.db
 			.query('backup')
 			.order('desc')
-			.filter((q) => q.eq(q.field('user'), payload.sub))
-			.take(100);
+			.filter((q) => q.eq(q.field('user'), userInfo._id))
+			.collect();
 		return backups.map((backup) => ({
 			name: backup.name,
 			data: backup.data,
@@ -49,8 +37,12 @@ export const create = mutation({
 		if (!payload.sub) {
 			throw new Error('Invalid JWT: missing subject');
 		}
+		const userInfo = await getAndUpdateUser(ctx, payload);
+		if (!userInfo?._id) {
+			throw new Error('Something went wrong');
+		}
 		await ctx.db.insert('backup', {
-			user: payload.sub,
+			user: userInfo?._id,
 			name: args.name,
 			data: args.data
 		});
@@ -65,9 +57,12 @@ export const remove = mutation({
 	handler: async (ctx, args) => {
 		const payload = await verifyJwtAndGetPayload(args.jwt);
 		const backup = await ctx.db.get(args.id);
-		if (backup?.user !== payload.sub) {
+		const userInfo = await getAndUpdateUser(ctx, payload);
+
+		if (backup?.user !== userInfo?._id) {
 			throw new Error('Unauthorized');
 		}
+		await getAndUpdateUser(ctx, payload);
 		await ctx.db.delete(args.id);
 	}
 });

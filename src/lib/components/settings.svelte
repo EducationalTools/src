@@ -23,8 +23,15 @@
 	import Button from './ui/button/button.svelte';
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
+	import { save } from '$lib/sync';
+	import { useClerkContext } from 'svelte-clerk';
+	import { useConvexClient } from 'convex-svelte';
+	const ctx = useClerkContext();
+	const client = useConvexClient();
 
 	let distinct_id = $state('Not available') as string;
+
+	let sessionToken = $state('');
 
 	onMount(() => {
 		setTimeout(() => {
@@ -32,9 +39,31 @@
 		}, 1000);
 	});
 
-	$effect(() => {
+	function handleSettingsChange() {
 		posthog.capture('settingschange', $preferencesStore);
+		// if (sessionToken && sessionToken !== '') {
+		// 	save(sessionToken, client, { settings: true });
+		// }
+	}
+
+	$effect(() => {
+		if (ctx.session) {
+			getToken().then((token) => {
+				sessionToken = token;
+			});
+		}
 	});
+
+	async function getToken() {
+		const token = await ctx.session?.getToken();
+		if (!token) {
+			if (ctx.session) {
+				toast.error('Something went wrong');
+			}
+			return '';
+		}
+		return token;
+	}
 
 	const themeTriggerContent = $derived(
 		themes.find((theme) => theme.value === $preferencesStore.theme)?.label ?? 'No theme :D'
@@ -48,7 +77,7 @@
 				<Dialog.Title>Settings</Dialog.Title>
 			</Dialog.Header>
 			Open in
-			<RadioGroup.Root bind:value={$preferencesStore.open}>
+			<RadioGroup.Root onValueChange={handleSettingsChange} bind:value={$preferencesStore.open}>
 				<div class="flex items-center space-x-2">
 					<RadioGroup.Item value="tab" id="tab" />
 					<Label for="tab">Tab</Label>
@@ -70,7 +99,10 @@
 
 					<Dialog.Content class="p-0">
 						<div class="max-h-[80vh] overflow-auto p-6">
-							<RadioGroup.Root bind:value={$preferencesStore.theme}>
+							<RadioGroup.Root
+								onValueChange={handleSettingsChange}
+								bind:value={$preferencesStore.theme}
+							>
 								{#each themes as theme}
 									<div class="flex items-center space-x-2">
 										<RadioGroup.Item value={theme.value} id={theme.value} />
@@ -93,22 +125,37 @@
 			</div>
 			Panic key (requires refresh to apply)
 			<div class="flex items-center gap-3">
-				<Checkbox id="panic" bind:checked={$preferencesStore.panic.enabled} />
+				<Checkbox
+					id="panic"
+					onCheckedChange={handleSettingsChange}
+					bind:checked={$preferencesStore.panic.enabled}
+				/>
 				<Label for="panic">Enable Panic Key</Label>
 			</div>
 			<div class="flex items-center gap-3">
 				<Checkbox
 					id="panic-disable-experimental"
+					onCheckedChange={handleSettingsChange}
 					bind:checked={$preferencesStore.panic.disableExperimentalMode}
 				/>
 				<Label for="panic-disable-experimental">Disable Experimental Mode when triggered</Label>
 			</div>
 			<div class="flex flex-row gap-3">
-				<Input bind:value={$preferencesStore.panic.key} placeholder="Key" maxlength={1} />
-				<Input bind:value={$preferencesStore.panic.url} placeholder="URL" type="url" />
+				<Input
+					oninput={handleSettingsChange}
+					bind:value={$preferencesStore.panic.key}
+					placeholder="Key"
+					maxlength={1}
+				/>
+				<Input
+					oninput={handleSettingsChange}
+					bind:value={$preferencesStore.panic.url}
+					placeholder="URL"
+					type="url"
+				/>
 			</div>
 			Cloak
-			<Tabs.Root bind:value={$preferencesStore.cloak.mode}>
+			<Tabs.Root onValueChange={handleSettingsChange} bind:value={$preferencesStore.cloak.mode}>
 				<Tabs.List class="w-full">
 					<Tabs.Trigger value="off">Off</Tabs.Trigger>
 					<Tabs.Trigger value="blur">When not focused</Tabs.Trigger>
@@ -116,12 +163,24 @@
 				</Tabs.List>
 			</Tabs.Root>
 			<div class="flex flex-row gap-3">
-				<Input bind:value={$preferencesStore.cloak.name} placeholder="Page Name" />
-				<Input bind:value={$preferencesStore.cloak.icon} placeholder="Icon URL" />
+				<Input
+					oninput={handleSettingsChange}
+					bind:value={$preferencesStore.cloak.name}
+					placeholder="Page Name"
+				/>
+				<Input
+					oninput={handleSettingsChange}
+					bind:value={$preferencesStore.cloak.icon}
+					placeholder="Icon URL"
+				/>
 			</div>
 			Privacy
 			<div class="flex items-center gap-3">
-				<Checkbox id="history" bind:checked={$preferencesStore.history} />
+				<Checkbox
+					id="history"
+					onCheckedChange={handleSettingsChange}
+					bind:checked={$preferencesStore.history}
+				/>
 				<Label for="history">Enable History</Label>
 			</div>
 			<div class="flex min-h-12 flex-row gap-3 overflow-x-auto">

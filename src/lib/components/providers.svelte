@@ -2,6 +2,8 @@
 	import { ClerkProvider, GoogleOneTap } from 'svelte-clerk/client';
 	import { ModeWatcher } from 'mode-watcher';
 	import { setupConvex } from 'convex-svelte';
+	import { dark } from '@clerk/themes';
+	import { mode } from 'mode-watcher';
 
 	// Props
 	let { children } = $props();
@@ -19,7 +21,10 @@
 	}
 </script>
 
-<ClerkProvider publishableKey={process.env.PUBLIC_CLERK_PUBLISHABLE_KEY || ''}>
+<ClerkProvider
+	publishableKey={process.env.PUBLIC_CLERK_PUBLISHABLE_KEY || ''}
+	appearance={{ cssLayerName: 'clerk', ...(mode.current == 'dark' ? { baseTheme: dark } : {}) }}
+>
 	<GoogleOneTap />
 	<ModeWatcher disableTransitions={false} defaultMode={'dark'} />
 	{@render children()}
