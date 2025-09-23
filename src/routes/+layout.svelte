@@ -29,6 +29,7 @@
 	import { buttonVariants } from '$lib/components/ui/button';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import PanelLeftIcon from '@lucide/svelte/icons/panel-left';
+	import Identify from './identify.svelte';
 
 	// State
 	let trackerBlockerDialog = $state(false);
@@ -73,6 +74,7 @@
 	<Cloak />
 	<Toaster />
 	<Settings />
+	<Identify />
 
 	<!-- Main layout -->
 	<Sidebar.Provider class="flex flex-col md:flex-row">
