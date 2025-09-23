@@ -23,7 +23,7 @@
 	import Button from './ui/button/button.svelte';
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
-	import { save } from '$lib/sync';
+	// import { save } from '$lib/sync';
 
 	let distinct_id = $state('Not available') as string;
 
