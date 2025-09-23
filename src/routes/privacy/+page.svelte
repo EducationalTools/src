@@ -39,22 +39,6 @@
 			(us.i.posthog.com).
 		</p>
 
-		<h3 class="text-xl font-medium">Account Data (Clerk Authentication)</h3>
-		<p>When you create an account (available only on edutools.ingo.au), we collect:</p>
-		<ul class="list-disc space-y-2 pl-6">
-			<li><strong>Profile Information:</strong> Username, email address, profile picture</li>
-			<li><strong>Authentication Data:</strong> Encrypted login credentials and session tokens</li>
-			<li><strong>Account Preferences:</strong> Settings and customizations you choose</li>
-		</ul>
-
-		<h3 class="text-xl font-medium">User Content (Convex Database)</h3>
-		<p>We store user-generated content to provide our services:</p>
-		<ul class="list-disc space-y-2 pl-6">
-			<li><strong>Backups:</strong> Save data for tools and games you choose to backup</li>
-			<li><strong>Comments:</strong> Comments you leave on games (when available)</li>
-			<li><strong>Progress Data:</strong> Game progress and tool preferences</li>
-		</ul>
-
 		<h3 class="text-xl font-medium">Local Storage</h3>
 		<p>Some data is stored locally in your browser:</p>
 		<ul class="list-disc space-y-2 pl-6">
