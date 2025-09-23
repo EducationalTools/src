@@ -6,16 +6,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: 'archlinux:latest'
     permissions: write-all
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install packages
-        run: pacman -Sy pnpm nodejs npm chromium icu --noconfirm
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Install dependencies
         run: |
