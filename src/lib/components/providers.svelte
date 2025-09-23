@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { ModeWatcher } from 'mode-watcher';
 	import { setupConvex } from 'convex-svelte';
-	import { dark } from '@clerk/themes';
-	import { mode } from 'mode-watcher';
 
 	// Props
 	let { children } = $props();
