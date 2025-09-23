@@ -105,9 +105,6 @@
 				blocker
 			</li>
 			<li>
-				<strong>Account Data:</strong> You can delete your account through Clerk's user interface
-			</li>
-			<li>
 				<strong>Local Data:</strong> You can clear local storage through your browser settings
 			</li>
 			<li><strong>Data Access:</strong> Contact us to request a copy of your data</li>
