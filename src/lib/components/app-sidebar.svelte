@@ -30,11 +30,9 @@
 	import { settingsOpen } from '$lib/state.svelte';
 
 	// Auth
-	import { useClerkContext } from 'svelte-clerk/client';
 	import posthog from 'posthog-js';
 	import { GitBranch } from '@lucide/svelte';
 	import Badge from './ui/badge/badge.svelte';
-	const ctx = useClerkContext();
 
 	import dayjs from 'dayjs';
 
