@@ -11,9 +11,6 @@ importers:
       '@clerk/backend':
         specifier: ^2.9.3
         version: 2.9.3(react@19.1.0)
-      '@clerk/themes':
-        specifier: ^2.4.19
-        version: 2.4.19
       '@friendofsvelte/tipex':
         specifier: 0.0.7
         version: 0.0.7(highlight.js@11.8.0)(svelte@5.38.2)
@@ -53,9 +50,6 @@ importers:
       posthog-js:
         specifier: ^1.260.1
         version: 1.260.1
-      svelte-clerk:
-        specifier: ^0.16.7
-        version: 0.16.7(@sveltejs/kit@2.39.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(react@19.1.0)(svelte@5.38.2)
       svelte-persisted-store:
         specifier: ^0.12.0
         version: 0.12.0(svelte@5.38.2)
@@ -187,10 +181,6 @@ packages:
         optional: true
       react-dom:
         optional: true
-
-  '@clerk/themes@2.4.19':
-    resolution: {integrity: sha512-/NxZ1IGNkcR0bEhYC2gmR6LhHFj7NRUl82+3FoC6gxU8Xu1+yIret4DH65GlN4FGtdKT5I538UH/lsA+g3Ym8w==}
-    engines: {node: '>=18.17.0'}
 
   '@clerk/types@4.80.0':
     resolution: {integrity: sha512-WuvCNfxWY9hW+p/YR+cCx+Alg8ZHfmYir89pF67YG/wMv89ZKnJBWAgG4DM7oHpyNICcR1vxt1pXq6hRgtM4Nw==}
@@ -2200,12 +2190,6 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
 
-  svelte-clerk@0.16.7:
-    resolution: {integrity: sha512-+vBlIhtAeZhfOzr7TdQppPGK0+sAxJqDscESdTwiXE+8ayvgIQiovzl9zT7KhUKX/Dz3jQuk2P0+9CEo3ofzxg==}
-    peerDependencies:
-      '@sveltejs/kit': ^2.20.0
-      svelte: ^5.11.0
-
   svelte-persisted-store@0.12.0:
     resolution: {integrity: sha512-BdBQr2SGSJ+rDWH8/aEV5GthBJDapVP0GP3fuUCA7TjYG5ctcB+O9Mj9ZC0+Jo1oJMfZUd1y9H68NFRR5MyIJA==}
     engines: {node: '>=0.14'}
@@ -2486,11 +2470,6 @@ snapshots:
       swr: 2.3.4(react@19.1.0)
     optionalDependencies:
       react: 19.1.0
-
-  '@clerk/themes@2.4.19':
-    dependencies:
-      '@clerk/types': 4.86.0
-      tslib: 2.8.1
 
   '@clerk/types@4.80.0':
     dependencies:
@@ -4409,18 +4388,6 @@ snapshots:
       typescript: 5.9.2
     transitivePeerDependencies:
       - picomatch
-
-  svelte-clerk@0.16.7(@sveltejs/kit@2.39.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(react@19.1.0)(svelte@5.38.2):
-    dependencies:
-      '@clerk/backend': 2.9.3(react@19.1.0)
-      '@clerk/shared': 3.21.2(react@19.1.0)
-      '@clerk/types': 4.80.0
-      '@sveltejs/kit': 2.39.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(svelte@5.38.2)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1))
-      set-cookie-parser: 2.7.1
-      svelte: 5.38.2
-    transitivePeerDependencies:
-      - react
-      - react-dom
 
   svelte-persisted-store@0.12.0(svelte@5.38.2):
     dependencies:

@@ -49,7 +49,6 @@
 	},
 	"dependencies": {
 		"@clerk/backend": "^2.9.3",
-		"@clerk/themes": "^2.4.19",
 		"@friendofsvelte/tipex": "0.0.7",
 		"@tanstack/match-sorter-utils": "^8.19.4",
 		"@tsparticles/slim": "^3.9.1",
@@ -63,7 +62,6 @@
 		"jsonwebtoken": "^9.0.2",
 		"md5": "^2.3.0",
 		"posthog-js": "^1.260.1",
-		"svelte-clerk": "^0.16.7",
 		"svelte-persisted-store": "^0.12.0",
 		"tsparticles": "^3.9.1"
 	}
