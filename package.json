@@ -60,7 +60,7 @@
 		"jose": "^6.0.13",
 		"jsonwebtoken": "^9.0.2",
 		"md5": "^2.3.0",
-		"posthog-js": "^1.260.1",
+		"posthog-js": "^1.268.1",
 		"svelte-persisted-store": "^0.12.0",
 		"tsparticles": "^3.9.1"
 	}
