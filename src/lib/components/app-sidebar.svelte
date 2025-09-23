@@ -283,7 +283,7 @@
 					</kbd>
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
-			<SidebarAuth />
+			<!-- <SidebarAuth /> -->
 		{/if}
 		{#if !sidebar.isMobile}
 			<Sidebar.MenuItem>
