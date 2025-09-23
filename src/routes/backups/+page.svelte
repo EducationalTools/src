@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let sessionToken = $state('');
-
 	import dayjs from 'dayjs';
 
 	import { useConvexClient, useQuery } from 'convex-svelte';
@@ -21,9 +19,9 @@
 	import * as Alert from '$lib/components/ui/alert/index.js';
 	import posthog from 'posthog-js';
 
-	let query = $state(useQuery(api.backups.get, { jwt: '' }));
-	const client = useConvexClient();
-	let enteredBackupName = $state('');
+	// let query = $state(useQuery(api.backups.get, { jwt: '' }));
+	// const client = useConvexClient();
+	// let enteredBackupName = $state('');
 	let loading = $state(false);
 
 	let backupData = $state('');
@@ -33,9 +31,9 @@
 		backupData = createBackup();
 	});
 
-	$effect(() => {
-		query = useQuery(api.backups.get, { jwt: sessionToken });
-	});
+	// $effect(() => {
+	// 	query = useQuery(api.backups.get, { jwt: sessionToken });
+	// });
 
 	function setLoading(value: boolean) {
 		loading = value;
