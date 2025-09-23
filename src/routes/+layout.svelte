@@ -73,7 +73,6 @@
 	<Cloak />
 	<Toaster />
 	<Settings />
-	<Identify />
 
 	<!-- Main layout -->
 	<Sidebar.Provider class="flex flex-col md:flex-row">
