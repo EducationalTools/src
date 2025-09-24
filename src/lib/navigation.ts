@@ -98,18 +98,6 @@ export function createMainNavigation(
 			]
 		},
 		{
-			title: 'Mirrors',
-			experimental: true,
-			url: '/mirrors',
-			icon: Copy
-		},
-		{
-			title: 'Host a mirror',
-			experimental: true,
-			icon: Server,
-			url: '/mirrors/host'
-		},
-		{
 			title: 'Backups',
 			experimental: true,
 			icon: ArchiveRestore,
