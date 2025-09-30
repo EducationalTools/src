@@ -31,6 +31,7 @@
 	import PanelLeftIcon from '@lucide/svelte/icons/panel-left';
 	import Identify from './identify.svelte';
 	import { Search } from '@lucide/svelte';
+	import { commandOpen } from '$lib/state.svelte';
 
 	// State
 	let trackerBlockerDialog = $state(false);
@@ -96,7 +97,13 @@
 							<h1 class="text-xl">EduTools</h1>
 						</a>
 						<div class="grow"></div>
-						<Button variant="ghost" size="icon"><Search /></Button>
+						<Button
+							variant="ghost"
+							size="icon"
+							onclick={() => {
+								commandOpen.current = true;
+							}}><Search /></Button
+						>
 					</div>
 				</div>
 			{/if}
