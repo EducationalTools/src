@@ -110,7 +110,12 @@
 	></div>
 </div>
 
-<div class="z-30 flex w-full flex-col gap-3 p-2 md:pl-0 lg:flex-row">
+<div
+	class={clsx(
+		'z-30 flex w-full flex-col gap-3 p-2 lg:flex-row',
+		$preferencesStore.experimentalFeatures && 'md:pl-0'
+	)}
+>
 	<div
 		class={clsx(
 			'grid h-fit w-full gap-3',
