@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
-	let min: number = 1;
-	let max: number = 100;
-	let random: number = 0;
+	let min: number = $state(1);
+	let max: number = $state(100);
+	let random: number = $state(0);
 
 	function generate() {
 		let counter = 0;
