@@ -19,7 +19,7 @@
 	];
 </script>
 
-<div class="relative p-2 md:pl-0">
+<div class={clsx('relative p-2', $preferencesStore.experimentalFeatures && 'md:pl-0')}>
 	<div
 		class="bg-card relative flex w-full items-center justify-center overflow-hidden rounded-lg border py-52"
 	>
