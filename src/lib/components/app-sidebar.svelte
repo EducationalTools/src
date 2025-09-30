@@ -26,7 +26,7 @@
 
 	// Games data
 	import { gmaes } from '$lib/gmaes';
-	import { settingsOpen } from '$lib/state.svelte';
+	import { commandOpen, settingsOpen } from '$lib/state.svelte';
 
 	// Auth
 	import posthog from 'posthog-js';
@@ -40,12 +40,10 @@
 
 	const sidebar = useSidebar();
 
-	let commandOpen = $state(false);
-
 	function handleKeydown(e: KeyboardEvent) {
 		const shortcuts = createSidebarShortcuts({
 			set: (value: boolean) => {
-				commandOpen = value;
+				commandOpen.current = value;
 			}
 		});
 		if (handleGlobalKeydown(e, shortcuts)) {
@@ -104,7 +102,7 @@
 						size="lg"
 						onclick={function () {
 							posthog.capture('search');
-							commandOpen = true;
+							commandOpen.current = true;
 							sidebar.setOpenMobile(false);
 						}}
 					>
@@ -306,7 +304,7 @@
 	</Sidebar.Root>
 {/if}
 
-<Command.Dialog bind:open={commandOpen}>
+<Command.Dialog bind:open={commandOpen.current}>
 	<Command.Input placeholder="Type a command or search..." />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
@@ -316,7 +314,7 @@
 					{#each groupItem.items as item (item.title)}
 						<Command.LinkItem
 							href={item.url}
-							onSelect={() => (commandOpen = false)}
+							onSelect={() => (commandOpen.current = false)}
 							target={item.url.startsWith('http') ? '_blank' : undefined}
 							rel={item.url.startsWith('http') ? 'noopener noreferrer' : undefined}
 						>
@@ -329,7 +327,7 @@
 				<Command.Group>
 					<Command.LinkItem
 						href={groupItem.url}
-						onSelect={() => (commandOpen = false)}
+						onSelect={() => (commandOpen.current = false)}
 						target={groupItem.url.startsWith('http') ? '_blank' : undefined}
 						rel={groupItem.url.startsWith('http') ? 'noopener noreferrer' : undefined}
 					>
@@ -344,7 +342,7 @@
 				<Command.Item
 					onSelect={() => {
 						settingsOpen.current = true;
-						commandOpen = false;
+						commandOpen.current = false;
 					}}
 				>
 					<span>Settings</span>
