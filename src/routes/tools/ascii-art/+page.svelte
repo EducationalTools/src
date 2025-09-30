@@ -8,16 +8,9 @@
 		CardHeader,
 		CardTitle
 	} from '$lib/components/ui/card/index.js';
-	import {
-		Select,
-		SelectContent,
-		SelectItem,
-		SelectTrigger
-	} from '$lib/components/ui/select/index.js';
 
 	let inputText = $state('');
 	let output = $state('');
-	let font = $state('block');
 
 	// Simple ASCII art fonts
 	const fonts = {
@@ -51,38 +44,6 @@
 			' ': ['     ', '     ', '     ', '     ', '     '],
 			'!': ['  █  ', '  █  ', '  █  ', '     ', '  █  '],
 			'?': ['█████', '    █', '  ██ ', '     ', '  █  ']
-		},
-
-		small: {
-			A: ['█▀█', '█▀█', '█▄█'],
-			B: ['█▀▄', '█▀▄', '█▄▀'],
-			C: ['▄▀█', '█▄▄', '▀▀▀'],
-			D: ['█▀▄', '█▄█', '█▄▀'],
-			E: ['█▀▀', '█▀▀', '█▄▄'],
-			F: ['█▀▀', '█▀▀', '█▄▄'],
-			G: ['▄▀█', '█▄█', '▀▀█'],
-			H: ['█▄█', '█▀█', '█▄█'],
-			I: ['█', '█', '█'],
-			J: ['▄▄█', '▄▄█', '▀▀▀'],
-			K: ['█▄▀', '██▄', '█▄█'],
-			L: ['█▄▄', '█▄▄', '▀▀▀'],
-			M: ['█▄█', '█▀█', '█▄█'],
-			N: ['█▄█', '█▀█', '█▄█'],
-			O: ['▄▀█', '█▄█', '▀▀▀'],
-			P: ['█▀▄', '█▀▄', '█▄▄'],
-			Q: ['▄▀█', '█▄█', '▀▀█'],
-			R: ['█▀▄', '█▀▄', '█▄█'],
-			S: ['▄▀▀', '▀▀▄', '▄▄▀'],
-			T: ['▀█▀', '▄█▄', '▀▀▀'],
-			U: ['█▄█', '█▄█', '▀▀▀'],
-			V: ['█▄█', '▀█▀', '▄▀▄'],
-			W: ['█▄█', '█▀█', '▀▄▀'],
-			X: ['█▄█', '▀█▀', '█▄█'],
-			Y: ['█▄█', '▀█▀', '▄▀▄'],
-			Z: ['▀▀▀', '▄▀▄', '▀▀▀'],
-			' ': ['   ', '   ', '   '],
-			'!': ['█', '█', '█'],
-			'?': ['▀▀', '▄▀', '▀▀']
 		}
 	};
 
@@ -92,7 +53,7 @@
 			return;
 		}
 
-		const selectedFont = fonts[font as keyof typeof fonts];
+		const selectedFont = fonts.block;
 		const text = inputText.toUpperCase();
 		const lines: string[] = [];
 
@@ -133,7 +94,7 @@
 		output = '';
 	}
 
-	// Generate ASCII art when input or font changes
+	// Auto-generate ASCII art when input changes
 	$effect(() => {
 		generateAsciiArt();
 	});
@@ -143,10 +104,10 @@
 	<Card class="w-full max-w-4xl">
 		<CardHeader>
 			<CardTitle>ASCII Art Generator</CardTitle>
-			<CardDescription>Convert text into ASCII art using different fonts</CardDescription>
+			<CardDescription>Convert text into ASCII art</CardDescription>
 		</CardHeader>
 		<CardContent class="space-y-4">
-			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+			<div class="grid grid-cols-1 gap-4">
 				<div>
 					<label for="text" class="mb-2 block text-sm font-medium">Text to Convert:</label>
 					<Input
@@ -156,19 +117,6 @@
 						maxlength="20"
 						class="w-full"
 					/>
-				</div>
-
-				<div>
-					<label for="font" class="mb-2 block text-sm font-medium">Font Style:</label>
-					<Select bind:value={font}>
-						<SelectTrigger>
-							{font === 'block' ? 'Block' : 'Small'}
-						</SelectTrigger>
-						<SelectContent>
-							<SelectItem value="block">Block</SelectItem>
-							<SelectItem value="small">Small</SelectItem>
-						</SelectContent>
-					</Select>
 				</div>
 			</div>
 

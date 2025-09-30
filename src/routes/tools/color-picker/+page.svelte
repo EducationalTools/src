@@ -9,6 +9,8 @@
 		CardTitle
 	} from '$lib/components/ui/card/index.js';
 	import { Badge } from '$lib/components/ui/badge/index.js';
+	import { toast } from 'svelte-sonner';
+	import Copy from '@lucide/svelte/icons/copy';
 
 	let selectedColor = $state('#3b82f6');
 	let colorHistory = $state<string[]>([]);
@@ -76,6 +78,7 @@
 
 	function copyToClipboard(value: string) {
 		navigator.clipboard.writeText(value);
+		toast.success('Color value copied to clipboard');
 	}
 
 	function generateRandomColor() {
@@ -143,9 +146,9 @@
 							<span class="font-mono text-sm">HEX:</span>
 							<div class="flex items-center gap-2">
 								<Badge variant="outline" class="font-mono">{selectedColor.toUpperCase()}</Badge>
-								<Button size="sm" variant="ghost" onclick={() => copyToClipboard(selectedColor)}
-									>Copy</Button
-								>
+								<Button size="sm" variant="ghost" onclick={() => copyToClipboard(selectedColor)}>
+									<Copy class="h-4 w-4" />
+								</Button>
 							</div>
 						</div>
 
@@ -160,8 +163,9 @@
 										size="sm"
 										variant="ghost"
 										onclick={() => copyToClipboard(`rgb(${rgb()?.r}, ${rgb()?.g}, ${rgb()?.b})`)}
-										>Copy</Button
 									>
+										<Copy class="h-4 w-4" />
+									</Button>
 								</div>
 							</div>
 						{/if}
@@ -177,8 +181,9 @@
 										size="sm"
 										variant="ghost"
 										onclick={() => copyToClipboard(`hsl(${hsl()?.h}, ${hsl()?.s}%, ${hsl()?.l}%)`)}
-										>Copy</Button
 									>
+										<Copy class="h-4 w-4" />
+									</Button>
 								</div>
 							</div>
 						{/if}

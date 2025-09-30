@@ -165,13 +165,13 @@ That's a horizontal rule above this text.
 </script>
 
 <div class="flex h-full flex-col items-center justify-center gap-4 p-4">
-	<Card class="h-[80vh] w-full max-w-6xl">
+	<Card class="flex max-h-[80vh] w-full max-w-6xl flex-col">
 		<CardHeader>
 			<CardTitle>Markdown Preview</CardTitle>
 			<CardDescription>Write markdown and see the live preview</CardDescription>
 		</CardHeader>
-		<CardContent class="h-full space-y-4">
-			<Tabs value="split" class="flex h-full flex-col">
+		<CardContent class="flex min-h-0 flex-1 flex-col space-y-4">
+			<Tabs value="split" class="flex min-h-0 flex-1 flex-col">
 				<div class="flex items-center justify-between">
 					<TabsList>
 						<TabsTrigger value="split">Split View</TabsTrigger>
@@ -186,16 +186,16 @@ That's a horizontal rule above this text.
 					</div>
 				</div>
 
-				<TabsContent value="split" class="grid h-full flex-1 grid-cols-2 gap-4">
-					<div class="flex h-full flex-col">
+				<TabsContent value="split" class="grid min-h-0 flex-1 grid-cols-2 gap-4">
+					<div class="flex min-h-0 flex-col">
 						<h3 class="mb-2 text-sm font-medium">Markdown Input:</h3>
 						<Textarea
 							bind:value={markdownText}
 							placeholder="Enter your markdown here..."
-							class="flex-1 font-mono text-sm"
+							class="flex-1 resize-none font-mono text-sm"
 						/>
 					</div>
-					<div class="flex h-full flex-col">
+					<div class="flex min-h-0 flex-col">
 						<h3 class="mb-2 text-sm font-medium">Live Preview:</h3>
 						<div
 							class="bg-background prose prose-sm max-w-none flex-1 overflow-auto rounded-md border p-4"
@@ -205,15 +205,15 @@ That's a horizontal rule above this text.
 					</div>
 				</TabsContent>
 
-				<TabsContent value="markdown" class="h-full flex-1">
+				<TabsContent value="markdown" class="min-h-0 flex-1">
 					<Textarea
 						bind:value={markdownText}
 						placeholder="Enter your markdown here..."
-						class="h-full font-mono text-sm"
+						class="h-full resize-none font-mono text-sm"
 					/>
 				</TabsContent>
 
-				<TabsContent value="preview" class="h-full flex-1">
+				<TabsContent value="preview" class="min-h-0 flex-1">
 					<div
 						class="bg-background prose prose-sm h-full max-w-none overflow-auto rounded-md border p-4"
 					>
@@ -226,89 +226,89 @@ That's a horizontal rule above this text.
 </div>
 
 <style>
-	:global(.prose h1) { 
-		font-size: 1.5rem; 
-		font-weight: bold; 
-		margin-bottom: 1rem; 
+	:global(.prose h1) {
+		font-size: 1.5rem;
+		font-weight: bold;
+		margin-bottom: 1rem;
 	}
-	:global(.prose h2) { 
-		font-size: 1.25rem; 
-		font-weight: bold; 
-		margin-bottom: 0.75rem; 
+	:global(.prose h2) {
+		font-size: 1.25rem;
+		font-weight: bold;
+		margin-bottom: 0.75rem;
 	}
-	:global(.prose h3) { 
-		font-size: 1.125rem; 
-		font-weight: bold; 
-		margin-bottom: 0.5rem; 
+	:global(.prose h3) {
+		font-size: 1.125rem;
+		font-weight: bold;
+		margin-bottom: 0.5rem;
 	}
-	:global(.prose p) { 
-		margin-bottom: 1rem; 
+	:global(.prose p) {
+		margin-bottom: 1rem;
 	}
-	:global(.prose ul) { 
-		margin-bottom: 1rem; 
-		padding-left: 1.25rem; 
-		list-style-type: disc; 
+	:global(.prose ul) {
+		margin-bottom: 1rem;
+		padding-left: 1.25rem;
+		list-style-type: disc;
 	}
-	:global(.prose ol) { 
-		margin-bottom: 1rem; 
-		padding-left: 1.25rem; 
-		list-style-type: decimal; 
+	:global(.prose ol) {
+		margin-bottom: 1rem;
+		padding-left: 1.25rem;
+		list-style-type: decimal;
 	}
-	:global(.prose li) { 
-		margin-bottom: 0.25rem; 
+	:global(.prose li) {
+		margin-bottom: 0.25rem;
 	}
-	:global(.prose blockquote) { 
-		margin-bottom: 1rem; 
-		border-left: 4px solid #d1d5db; 
-		padding-left: 1rem; 
-		font-style: italic; 
+	:global(.prose blockquote) {
+		margin-bottom: 1rem;
+		border-left: 4px solid #d1d5db;
+		padding-left: 1rem;
+		font-style: italic;
 	}
-	:global(.prose code) { 
-		border-radius: 0.25rem; 
-		background-color: #f3f4f6; 
-		padding: 0.125rem 0.25rem; 
-		font-family: ui-monospace, SFMono-Regular, 'SF Mono', monospace; 
-		font-size: 0.875rem; 
+	:global(.prose code) {
+		border-radius: 0.25rem;
+		background-color: #f3f4f6;
+		padding: 0.125rem 0.25rem;
+		font-family: ui-monospace, SFMono-Regular, 'SF Mono', monospace;
+		font-size: 0.875rem;
 	}
-	:global(.prose pre) { 
-		margin-bottom: 1rem; 
-		overflow: auto; 
-		border-radius: 0.25rem; 
-		background-color: #f3f4f6; 
-		padding: 1rem; 
+	:global(.prose pre) {
+		margin-bottom: 1rem;
+		overflow: auto;
+		border-radius: 0.25rem;
+		background-color: #f3f4f6;
+		padding: 1rem;
 	}
-	:global(.prose pre code) { 
-		background-color: transparent; 
-		padding: 0; 
+	:global(.prose pre code) {
+		background-color: transparent;
+		padding: 0;
 	}
-	:global(.prose a) { 
-		color: #2563eb; 
-		text-decoration: none; 
+	:global(.prose a) {
+		color: #2563eb;
+		text-decoration: none;
 	}
-	:global(.prose a:hover) { 
-		text-decoration: underline; 
+	:global(.prose a:hover) {
+		text-decoration: underline;
 	}
-	:global(.prose hr) { 
-		margin: 1.5rem 0; 
-		border-top: 1px solid #d1d5db; 
-		border-bottom: none; 
-		border-left: none; 
-		border-right: none; 
+	:global(.prose hr) {
+		margin: 1.5rem 0;
+		border-top: 1px solid #d1d5db;
+		border-bottom: none;
+		border-left: none;
+		border-right: none;
 	}
-	:global(.prose table) { 
-		margin-bottom: 1rem; 
-		width: 100%; 
-		border-collapse: collapse; 
-		border: 1px solid #d1d5db; 
+	:global(.prose table) {
+		margin-bottom: 1rem;
+		width: 100%;
+		border-collapse: collapse;
+		border: 1px solid #d1d5db;
 	}
-	:global(.prose th) { 
-		border: 1px solid #d1d5db; 
-		padding: 0.5rem 1rem; 
-		background-color: #f3f4f6; 
-		font-weight: bold; 
+	:global(.prose th) {
+		border: 1px solid #d1d5db;
+		padding: 0.5rem 1rem;
+		background-color: #f3f4f6;
+		font-weight: bold;
 	}
-	:global(.prose td) { 
-		border: 1px solid #d1d5db; 
-		padding: 0.5rem 1rem; 
+	:global(.prose td) {
+		border: 1px solid #d1d5db;
+		padding: 0.5rem 1rem;
 	}
 </style>

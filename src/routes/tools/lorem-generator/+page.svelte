@@ -9,15 +9,8 @@
 		CardTitle
 	} from '$lib/components/ui/card/index.js';
 	import { Textarea } from '$lib/components/ui/textarea/index.js';
-	import {
-		Select,
-		SelectContent,
-		SelectItem,
-		SelectTrigger
-	} from '$lib/components/ui/select/index.js';
 
 	let count = $state(5);
-	let type = $state('paragraphs');
 	let output = $state('');
 	let startWithLorem = $state(true);
 
@@ -187,34 +180,16 @@
 	function generate() {
 		const results: string[] = [];
 
-		switch (type) {
-			case 'words':
-				const words = getRandomWords(count, startWithLorem);
-				results.push(words.join(' '));
-				break;
-
-			case 'sentences':
-				for (let i = 0; i < count; i++) {
-					const sentence =
-						i === 0 && startWithLorem
-							? generateSentence().replace(/^Lorem/i, 'Lorem ipsum')
-							: generateSentence();
-					results.push(sentence);
-				}
-				break;
-
-			case 'paragraphs':
-				for (let i = 0; i < count; i++) {
-					let paragraph = generateParagraph();
-					if (i === 0 && startWithLorem) {
-						paragraph = paragraph.replace(/^[A-Za-z]+/, 'Lorem ipsum');
-					}
-					results.push(paragraph);
-				}
-				break;
+		// Always generate paragraphs
+		for (let i = 0; i < count; i++) {
+			let paragraph = generateParagraph();
+			if (i === 0 && startWithLorem) {
+				paragraph = paragraph.replace(/^[A-Za-z]+/, 'Lorem ipsum');
+			}
+			results.push(paragraph);
 		}
 
-		output = results.join(type === 'paragraphs' ? '\n\n' : '\n');
+		output = results.join('\n\n');
 	}
 
 	function copyToClipboard() {
@@ -242,24 +217,10 @@
 			<CardDescription>Generate placeholder text for your designs and layouts</CardDescription>
 		</CardHeader>
 		<CardContent class="space-y-4">
-			<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 				<div>
-					<label for="count" class="mb-2 block text-sm font-medium">Count:</label>
+					<label for="count" class="mb-2 block text-sm font-medium">Paragraphs:</label>
 					<Input id="count" type="number" bind:value={count} min="1" max="100" class="w-full" />
-				</div>
-
-				<div>
-					<label for="type" class="mb-2 block text-sm font-medium">Type:</label>
-					<Select bind:value={type}>
-						<SelectTrigger>
-							{type === 'words' ? 'Words' : type === 'sentences' ? 'Sentences' : 'Paragraphs'}
-						</SelectTrigger>
-						<SelectContent>
-							<SelectItem value="words">Words</SelectItem>
-							<SelectItem value="sentences">Sentences</SelectItem>
-							<SelectItem value="paragraphs">Paragraphs</SelectItem>
-						</SelectContent>
-					</Select>
 				</div>
 
 				<div class="flex items-end">
@@ -293,8 +254,9 @@
 				{#if output}
 					<p>
 						<strong>Generated:</strong>
-						{output.split(' ').length} words, {output.split(/[.!?]+/).filter((s) => s.trim())
-							.length} sentences
+						{count} paragraph{count !== 1 ? 's' : ''}, {output.split(' ').length} words, {output
+							.split(/[.!?]+/)
+							.filter((s) => s.trim()).length} sentences
 					</p>
 				{/if}
 			</div>

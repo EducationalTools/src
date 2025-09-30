@@ -55,38 +55,6 @@
 		}
 	}
 
-	async function expandUrl() {
-		if (!inputUrl.trim()) return;
-
-		if (!isValidUrl(inputUrl)) {
-			error = 'Please enter a valid URL';
-			return;
-		}
-
-		loading = true;
-		error = '';
-
-		try {
-			// For URL expansion, we'll use a simple fetch to follow redirects
-			const response = await fetch(
-				`https://httpbin.org/redirect-to?url=${encodeURIComponent(inputUrl)}`,
-				{
-					method: 'HEAD',
-					redirect: 'follow'
-				}
-			);
-
-			outputUrl = response.url;
-		} catch (e) {
-			// Fallback: just show the input URL as many short URLs don't allow CORS
-			outputUrl = inputUrl;
-			error =
-				'Could not expand URL due to CORS restrictions. The URL might be valid but cannot be expanded in the browser.';
-		} finally {
-			loading = false;
-		}
-	}
-
 	function clearAll() {
 		inputUrl = '';
 		outputUrl = '';
@@ -124,13 +92,12 @@
 	<Card class="w-full max-w-4xl">
 		<CardHeader>
 			<CardTitle>URL Tools</CardTitle>
-			<CardDescription>Shorten URLs, expand short URLs, and analyze URL components</CardDescription>
+			<CardDescription>Shorten URLs and analyze URL components</CardDescription>
 		</CardHeader>
 		<CardContent class="space-y-4">
 			<Tabs value="shorten" class="w-full">
-				<TabsList class="grid w-full grid-cols-3">
+				<TabsList class="grid w-full grid-cols-2">
 					<TabsTrigger value="shorten">Shorten</TabsTrigger>
-					<TabsTrigger value="expand">Expand</TabsTrigger>
 					<TabsTrigger value="analyze">Analyze</TabsTrigger>
 				</TabsList>
 
@@ -144,19 +111,6 @@
 					</div>
 					<Button onclick={shortenUrl} disabled={!inputUrl.trim() || loading}>
 						{loading ? 'Shortening...' : 'Shorten URL'}
-					</Button>
-				</TabsContent>
-
-				<TabsContent value="expand" class="space-y-4">
-					<div>
-						<Input
-							bind:value={inputUrl}
-							placeholder="Enter short URL to expand (e.g., https://tinyurl.com/example)"
-							class="w-full"
-						/>
-					</div>
-					<Button onclick={expandUrl} disabled={!inputUrl.trim() || loading}>
-						{loading ? 'Expanding...' : 'Expand URL'}
 					</Button>
 				</TabsContent>
 
