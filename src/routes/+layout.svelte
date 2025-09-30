@@ -82,7 +82,7 @@
 		<Sidebar.Trigger />
 		<Sidebar.Inset>
 			<div
-				class="fixed -top-32 -left-32 hidden size-96 rounded-full bg-white/25 blur-3xl md:block"
+				class="fixed -top-32 -left-32 hidden size-96 rounded-full bg-white/10 blur-3xl md:block"
 			></div>
 			{@render children()}
 		</Sidebar.Inset>
