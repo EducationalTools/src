@@ -89,7 +89,7 @@
 				></div>
 			{:else}
 				<div class="w-full p-2 pb-0">
-					<div class="bg-card flex flex-row items-center gap-4 rounded-md border p-2">
+					<div class="flex flex-row items-center gap-4 rounded-md p-2">
 						<a href="/" class="inline-flex items-center gap-2">
 							<div class="size-10">
 								<img src="/edutools-black.svg" alt="" class="dark:invert" />
