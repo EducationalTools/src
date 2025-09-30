@@ -15,7 +15,17 @@
 		{ name: 'Word Counter', url: '/tools/word-counter' },
 		{ name: 'Password Generator', url: '/tools/password-generator' },
 		{ name: 'Random Number Generator', url: '/tools/random-number-generator' },
-		{ name: 'Stopwatch & Timer', url: '/tools/stopwatch-timer' }
+		{ name: 'Stopwatch & Timer', url: '/tools/stopwatch-timer' },
+		{ name: 'QR Code Generator', url: '/tools/qr-code-generator' },
+		{ name: 'Base64 Converter', url: '/tools/base64-converter' },
+		{ name: 'JSON Formatter', url: '/tools/json-formatter' },
+		{ name: 'Color Picker', url: '/tools/color-picker' },
+		{ name: 'URL Tools', url: '/tools/url-tools' },
+		{ name: 'Hash Generator', url: '/tools/hash-generator' },
+		{ name: 'Lorem Generator', url: '/tools/lorem-generator' },
+		{ name: 'ASCII Art', url: '/tools/ascii-art' },
+		{ name: 'Markdown Preview', url: '/tools/markdown-preview' },
+		{ name: 'Regex Tester', url: '/tools/regex-tester' }
 	];
 </script>
 
