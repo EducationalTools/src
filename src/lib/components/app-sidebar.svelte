@@ -306,7 +306,12 @@
 	</Sidebar.Root>
 {/if}
 
-<Command.Dialog bind:open={commandOpen.current}>
+<Command.Dialog
+	bind:open={commandOpen.current}
+	onOpenChangeComplete={(state) => {
+		if (!state) commandInput = '';
+	}}
+>
 	<Command.Input bind:value={commandInput} placeholder="Type a command or search..." />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
