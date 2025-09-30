@@ -62,6 +62,8 @@
 			(item) => !item.experimental || $preferencesStore.experimentalFeatures
 		)
 	);
+
+	let commandInput = $state('');
 </script>
 
 <svelte:document onkeydown={handleKeydown} />
@@ -305,7 +307,7 @@
 {/if}
 
 <Command.Dialog bind:open={commandOpen.current}>
-	<Command.Input placeholder="Type a command or search..." />
+	<Command.Input bind:value={commandInput} placeholder="Type a command or search..." />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
 		{#each filteredMainNavigation as groupItem (groupItem.title)}
@@ -337,7 +339,7 @@
 				<Command.Separator />
 			{/if}
 		{/each}
-		<Command.Group heading="More">
+		<Command.Group>
 			{#if $preferencesStore.experimentalFeatures}
 				<Command.Item
 					onSelect={() => {
@@ -349,6 +351,9 @@
 				</Command.Item>
 			{/if}
 			<Command.Item
+				class={clsx(
+					!(commandInput.includes('exp') || $preferencesStore.experimentalFeatures) && 'hidden'
+				)}
 				onSelect={() =>
 					($preferencesStore.experimentalFeatures = !$preferencesStore.experimentalFeatures)}
 			>
