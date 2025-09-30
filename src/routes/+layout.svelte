@@ -81,9 +81,11 @@
 		<AppSidebar />
 		<Sidebar.Trigger />
 		<Sidebar.Inset>
-			<div
-				class="fixed -top-32 -left-32 hidden size-96 rounded-full bg-white/10 blur-3xl md:block"
-			></div>
+			{#if $preferencesStore.experimentalFeatures}
+				<div
+					class="fixed -top-32 -left-32 hidden size-96 rounded-full bg-white/10 blur-3xl md:block"
+				></div>
+			{/if}
 			{@render children()}
 		</Sidebar.Inset>
 	</Sidebar.Provider>
