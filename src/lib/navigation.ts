@@ -67,6 +67,46 @@ export function createMainNavigation(
 				{
 					title: 'Stopwatch & Timer',
 					url: '/tools/stopwatch-timer'
+				},
+				{
+					title: 'QR Code Generator',
+					url: '/tools/qr-code-generator'
+				},
+				{
+					title: 'Base64 Converter',
+					url: '/tools/base64-converter'
+				},
+				{
+					title: 'JSON Formatter',
+					url: '/tools/json-formatter'
+				},
+				{
+					title: 'Color Picker',
+					url: '/tools/color-picker'
+				},
+				{
+					title: 'URL Tools',
+					url: '/tools/url-tools'
+				},
+				{
+					title: 'Hash Generator',
+					url: '/tools/hash-generator'
+				},
+				{
+					title: 'Lorem Generator',
+					url: '/tools/lorem-generator'
+				},
+				{
+					title: 'ASCII Art',
+					url: '/tools/ascii-art'
+				},
+				{
+					title: 'Markdown Preview',
+					url: '/tools/markdown-preview'
+				},
+				{
+					title: 'Regex Tester',
+					url: '/tools/regex-tester'
 				}
 			]
 		},
