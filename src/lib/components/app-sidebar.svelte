@@ -316,7 +316,7 @@
 			if (Math.random() > 0.05) {
 				commandPlaceholder = 'Search...';
 			} else {
-				commandPlaceholder = "The search begins, I'm back, so enjoy the trip, huh";
+				commandPlaceholder = "The search begins, I'm back, so enjoy the trip, huh"; // https://share.google/zDleRaqsFgtSUx2l3
 			}
 		}
 	}}
