@@ -3,11 +3,11 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
 	import dayjs from 'dayjs';
-	import { api } from '$lib/../convex/_generated/api.js';
+	// import { api } from '$lib/../convex/_generated/api.js';
 	import clsx from 'clsx';
 	import { toast } from 'svelte-sonner';
-	import type { ConvexClient } from 'convex/browser';
-	import type { Id } from '../../convex/_generated/dataModel';
+	// import type { ConvexClient } from 'convex/browser';
+	// import type { Id } from '../../convex/_generated/dataModel';
 	import Trash from '@lucide/svelte/icons/trash';
 	import Clipboard from '@lucide/svelte/icons/clipboard';
 	import History from '@lucide/svelte/icons/history';
@@ -16,7 +16,7 @@
 
 	let {
 		backup,
-		client,
+		// client,
 		getToken,
 		setLoading
 	}: {
@@ -24,9 +24,9 @@
 			name: string;
 			data: string;
 			creationTime: number;
-			id: Id<'backup'>;
+			// id: Id<'backup'>;
 		};
-		client: ConvexClient;
+		// client: ConvexClient;
 		getToken: () => Promise<string>;
 		setLoading: (value: boolean) => void;
 	} = $props();
