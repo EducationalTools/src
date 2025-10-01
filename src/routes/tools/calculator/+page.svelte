@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button/index.js';
 
-	let display = '0';
+	let display = $state('0');
 	let firstNumber = '';
 	let operator = '';
 	let newNumber = true;

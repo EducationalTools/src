@@ -15,92 +15,104 @@
 		{ name: 'Word Counter', url: '/tools/word-counter' },
 		{ name: 'Password Generator', url: '/tools/password-generator' },
 		{ name: 'Random Number Generator', url: '/tools/random-number-generator' },
-		{ name: 'Stopwatch & Timer', url: '/tools/stopwatch-timer' }
+		{ name: 'Stopwatch & Timer', url: '/tools/stopwatch-timer' },
+		{ name: 'QR Code Generator', url: '/tools/qr-code-generator' },
+		{ name: 'Base64 Converter', url: '/tools/base64-converter' },
+		{ name: 'JSON Formatter', url: '/tools/json-formatter' },
+		{ name: 'Color Picker', url: '/tools/color-picker' },
+		{ name: 'URL Tools', url: '/tools/url-tools' },
+		{ name: 'Hash Generator', url: '/tools/hash-generator' },
+		{ name: 'Lorem Generator', url: '/tools/lorem-generator' },
+		{ name: 'ASCII Art', url: '/tools/ascii-art' },
+		{ name: 'Markdown Preview', url: '/tools/markdown-preview' },
+		{ name: 'Regex Tester', url: '/tools/regex-tester' }
 	];
 </script>
 
-<div class="relative p-2 md:pl-0">
+<div class={clsx('relative p-2', $preferencesStore.experimentalFeatures && 'md:pl-0')}>
 	<div
 		class="bg-card relative flex w-full items-center justify-center overflow-hidden rounded-lg border py-52"
 	>
-		<Particles
-			id="hero-background"
-			class="absolute top-0 right-0 bottom-0 left-0"
-			options={{
-				clear: true,
-				fullScreen: false,
-				interactivity: {
-					detectsOn: 'window',
-					events: {
-						onHover: {
-							enable: true,
-							parallax: {
+		{#if $preferencesStore.experimentalFeatures}
+			<Particles
+				id="hero-background"
+				class="absolute top-0 right-0 bottom-0 left-0"
+				options={{
+					clear: true,
+					fullScreen: false,
+					interactivity: {
+						detectsOn: 'window',
+						events: {
+							onHover: {
 								enable: true,
-								force: 100,
-								smooth: 30
+								parallax: {
+									enable: true,
+									force: 100,
+									smooth: 30
+								}
 							}
 						}
-					}
-				},
-				particles: {
-					color: {
-						value: '#aaaaaa'
 					},
-					move: {
-						enable: true,
-						outModes: {
-							default: 'out',
-							bottom: 'out',
-							left: 'out',
-							right: 'out',
-							top: 'out'
-						},
-						speed: 2
-					},
-					number: {
-						density: {
-							enable: true,
-							width: 1920,
-							height: 1080
-						},
-						limit: {
-							mode: 'delete',
-							value: 0
-						},
-						value: 100
-					},
-					opacity: {
-						value: {
-							min: 0.5,
-							max: 1
-						}
-					},
-					shape: {
-						close: true,
-						fill: true,
-						options: {},
-						type: 'circle'
-					},
-					size: {
-						value: {
-							min: 1,
-							max: 5
-						}
-					},
-					links: {
+					particles: {
 						color: {
 							value: '#aaaaaa'
 						},
-						distance: 150,
-						enable: true,
-						frequency: 1,
-						opacity: 0.4,
-						width: 1,
-						warp: false
+						move: {
+							enable: true,
+							outModes: {
+								default: 'out',
+								bottom: 'out',
+								left: 'out',
+								right: 'out',
+								top: 'out'
+							},
+							speed: 2
+						},
+						number: {
+							density: {
+								enable: true,
+								width: 1920,
+								height: 1080
+							},
+							limit: {
+								mode: 'delete',
+								value: 0
+							},
+							value: 100
+						},
+						opacity: {
+							value: {
+								min: 0.5,
+								max: 1
+							}
+						},
+						shape: {
+							close: true,
+							fill: true,
+							options: {},
+							type: 'circle'
+						},
+						size: {
+							value: {
+								min: 1,
+								max: 5
+							}
+						},
+						links: {
+							color: {
+								value: '#aaaaaa'
+							},
+							distance: 150,
+							enable: true,
+							frequency: 1,
+							opacity: 0.4,
+							width: 1,
+							warp: false
+						}
 					}
-				}
-			}}
-		/>
+				}}
+			/>
+		{/if}
 		<h1 class="text-foreground z-10 text-4xl">
 			EduTools {#if $preferencesStore.experimentalFeatures}Experimental{/if}
 		</h1>
@@ -110,7 +122,12 @@
 	></div>
 </div>
 
-<div class="z-30 flex w-full flex-col gap-3 p-2 md:flex-row md:pl-0">
+<div
+	class={clsx(
+		'z-30 flex w-full flex-col gap-3 p-2 lg:flex-row',
+		$preferencesStore.experimentalFeatures && 'md:pl-0'
+	)}
+>
 	<div
 		class={clsx(
 			'grid h-fit w-full gap-3',

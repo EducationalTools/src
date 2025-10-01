@@ -16,7 +16,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
 
       - name: Install dependencies
         run: |
@@ -45,13 +45,3 @@ jobs:
           publish_dir: ./build
           user_name: 'Ingo Wolf'
           user_email: 'me@ingowolf.au'
-
-      - name: Deploy to Infinityfree
-        if: always()
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ftpupload.net
-          username: if0_37642311
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./build/
-          server-dir: /htdocs/

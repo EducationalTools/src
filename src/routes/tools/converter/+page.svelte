@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 
@@ -11,19 +13,21 @@
 		duration: ['s', 'min', 'h']
 	};
 
-	let selectedCategory = 'distance';
-	let selectedFromUnit = 'm';
-	let selectedToUnit = 'km';
-	let inputValue = '';
-	let outputValue = '';
+	let selectedCategory = $state('distance');
+	let selectedFromUnit = $state('m');
+	let selectedToUnit = $state('km');
+	let inputValue = $state('');
+	let outputValue = $state('');
 
 	// Reactive statement to handle category changes
-	$: if (selectedCategory) {
-		selectedFromUnit = unitsMap[selectedCategory][0];
-		selectedToUnit = unitsMap[selectedCategory][1];
-		inputValue = '';
-		outputValue = '';
-	}
+	run(() => {
+		if (selectedCategory) {
+			selectedFromUnit = unitsMap[selectedCategory][0];
+			selectedToUnit = unitsMap[selectedCategory][1];
+			inputValue = '';
+			outputValue = '';
+		}
+	});
 
 	function convert() {
 		const value = parseFloat(inputValue);

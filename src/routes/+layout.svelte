@@ -30,6 +30,8 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import PanelLeftIcon from '@lucide/svelte/icons/panel-left';
 	import Identify from './identify.svelte';
+	import { Search } from '@lucide/svelte';
+	import { commandOpen } from '$lib/state.svelte';
 
 	// State
 	let trackerBlockerDialog = $state(false);
@@ -81,9 +83,30 @@
 		<AppSidebar />
 		<Sidebar.Trigger />
 		<Sidebar.Inset>
-			<div
-				class="fixed -top-32 -left-32 hidden size-96 rounded-full bg-white/25 blur-3xl md:block"
-			></div>
+			{#if $preferencesStore.experimentalFeatures}
+				<div
+					class="fixed -top-32 -left-32 hidden size-96 rounded-full bg-white/10 blur-3xl md:block"
+				></div>
+			{:else}
+				<div class="w-full p-2 pb-0">
+					<div class="flex flex-row items-center gap-4 rounded-md p-2">
+						<a href="/" class="inline-flex items-center gap-2">
+							<div class="size-10">
+								<img src="/edutools-black.svg" alt="" class="dark:invert" />
+							</div>
+							<h1 class="text-xl">EduTools</h1>
+						</a>
+						<div class="grow"></div>
+						<Button
+							variant="ghost"
+							size="icon"
+							onclick={() => {
+								commandOpen.current = true;
+							}}><Search /></Button
+						>
+					</div>
+				</div>
+			{/if}
 			{@render children()}
 		</Sidebar.Inset>
 	</Sidebar.Provider>
