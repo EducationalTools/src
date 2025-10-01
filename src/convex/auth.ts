@@ -1,5 +1,5 @@
 import { createClient, type GenericCtx } from '@convex-dev/better-auth';
-import { convex } from '@convex-dev/better-auth/plugins';
+import { convex, crossDomain } from '@convex-dev/better-auth/plugins';
 import { components } from './_generated/api';
 import { type DataModel } from './_generated/dataModel';
 import { query } from './_generated/server';
@@ -21,6 +21,7 @@ export const createAuth = (
 		logger: {
 			disabled: optionsOnly
 		},
+		trustedOrigins: ['*'],
 		baseURL: siteUrl,
 		database: authComponent.adapter(ctx),
 		// Configure simple, non-verified email/password to get started
@@ -29,9 +30,15 @@ export const createAuth = (
 			requireEmailVerification: false
 		},
 		plugins: [
+			crossDomain({ siteUrl: 'http://localhost:5173/' }),
 			// The Convex plugin is required for Convex compatibility
 			convex()
-		]
+		],
+		advanced: {
+			defaultCookieAttributes: {
+				httpOnly: false
+			}
+		}
 	});
 };
 
