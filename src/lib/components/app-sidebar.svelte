@@ -64,6 +64,7 @@
 	);
 
 	let commandInput = $state('');
+	let commandPlaceholder = $state('Search...');
 </script>
 
 <svelte:document onkeydown={handleKeydown} />
@@ -312,7 +313,7 @@
 		if (!state) commandInput = '';
 	}}
 >
-	<Command.Input bind:value={commandInput} placeholder="Type a command or search..." />
+	<Command.Input bind:value={commandInput} placeholder={commandPlaceholder} />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
 		{#each filteredMainNavigation as groupItem (groupItem.title)}
