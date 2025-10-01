@@ -64,6 +64,7 @@
 	);
 
 	let commandInput = $state('');
+	let commandPlaceholder = $state('Search...');
 </script>
 
 <svelte:document onkeydown={handleKeydown} />
@@ -309,10 +310,18 @@
 <Command.Dialog
 	bind:open={commandOpen.current}
 	onOpenChangeComplete={(state) => {
-		if (!state) commandInput = '';
+		if (!state) {
+			commandInput = '';
+			// 100% not an easter egg
+			if (Math.random() > 0.05) {
+				commandPlaceholder = 'Search...';
+			} else {
+				commandPlaceholder = "The search begins, I'm back, so enjoy the trip, huh"; // https://share.google/zDleRaqsFgtSUx2l3
+			}
+		}
 	}}
 >
-	<Command.Input bind:value={commandInput} placeholder="Type a command or search..." />
+	<Command.Input bind:value={commandInput} placeholder={commandPlaceholder} />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
 		{#each filteredMainNavigation as groupItem (groupItem.title)}
