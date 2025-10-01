@@ -16,7 +16,10 @@ const config = {
 			fallback: '404.html',
 			precompress: false,
 			strict: true
-		})
+		}),
+		alias: {
+			$convex: './src/convex'
+		}
 	}
 };
 
