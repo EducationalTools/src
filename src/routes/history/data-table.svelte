@@ -17,6 +17,7 @@
 	import Label from '$lib/components/ui/label/label.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { historyStore } from '$lib/stores';
+	import { goto } from '$app/navigation';
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
 		data: TData[];
@@ -136,7 +137,11 @@
 		</Table.Header>
 		<Table.Body>
 			{#each table.getRowModel().rows as row (row.id)}
-				<Table.Row data-state={row.getIsSelected() && 'selected'}>
+				<Table.Row
+					data-state={row.getIsSelected() && 'selected'}
+					onclick={() => goto(`/g/${(row.original as { id: string }).id}`)}
+					class="cursor-pointer"
+				>
 					{#each row.getVisibleCells() as cell (cell.id)}
 						<Table.Cell>
 							<FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
