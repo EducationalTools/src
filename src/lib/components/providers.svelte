@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { ModeWatcher } from 'mode-watcher';
 	import { setupConvex } from 'convex-svelte';
+	import { createSvelteAuthClient } from '@mmailaender/convex-better-auth-svelte/svelte';
+	import { authClient } from '$lib/auth-client';
 
 	// Props
 	let { children } = $props();
@@ -10,6 +12,7 @@
 	if (process.env.PUBLIC_CONVEX_URL) {
 		try {
 			setupConvex(process.env.PUBLIC_CONVEX_URL);
+			createSvelteAuthClient({ authClient });
 		} catch (error) {
 			console.warn('Failed to setup Convex:', error);
 		}

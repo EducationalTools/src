@@ -33,11 +33,6 @@
 	import { Search } from '@lucide/svelte';
 	import { commandOpen } from '$lib/state.svelte';
 
-	import { createSvelteAuthClient } from '@mmailaender/convex-better-auth-svelte/svelte';
-	import { authClient } from '$lib/auth-client';
-
-	createSvelteAuthClient({ authClient });
-
 	// State
 	let trackerBlockerDialog = $state(false);
 
