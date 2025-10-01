@@ -18,6 +18,7 @@
 	import Info from '@lucide/svelte/icons/info';
 	import * as Alert from '$lib/components/ui/alert/index.js';
 	import posthog from 'posthog-js';
+	import { preferencesStore } from '$lib/stores.js';
 
 	// let query = $state(useQuery(api.backups.get, { jwt: '' }));
 	// const client = useConvexClient();
@@ -40,52 +41,53 @@
 	}
 </script>
 
-<div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
-	<h1 class="text-3xl">Backups</h1>
-	<AlertDialog.Root open={loading}
-		><AlertDialog.Content class="flex flex-row gap-3">
-			<LoaderCircle class="animate-spin" />
-			Loading
-		</AlertDialog.Content>
-	</AlertDialog.Root>
+{#if $preferencesStore.experimentalFeatures}
+	<div class="mx-auto flex w-full max-w-3xl flex-col gap-3 p-3">
+		<h1 class="text-3xl">Backups</h1>
+		<AlertDialog.Root open={loading}
+			><AlertDialog.Content class="flex flex-row gap-3">
+				<LoaderCircle class="animate-spin" />
+				Loading
+			</AlertDialog.Content>
+		</AlertDialog.Root>
 
-	<Card.Root>
-		<Card.Header><Card.Title>Local Backup</Card.Title></Card.Header>
-		<Card.Content class="flex flex-col gap-3">
-			Export
-			<div class="flex flex-row gap-3">
-				<Input disabled={true} value={backupData} />
-				<Button
-					size="icon"
-					onclick={() => {
-						posthog.capture('backup', { type: 'copy', location: 'local' });
-						navigator.clipboard
-							.writeText(backupData)
-							.then(() => {
-								toast.success('Backup copied to clipboard');
-							})
-							.catch((error) => {
-								toast.error('Failed to copy backup to clipboard');
-							});
-					}}><Clipboard /></Button
-				>
-			</div>
-			Import
-			<div class="flex flex-row gap-3">
-				<Input bind:value={inputtedBackupData} />
-				<Button
-					disabled={inputtedBackupData.length === 0}
-					onclick={() => {
-						posthog.capture('backup', { type: 'import', location: 'local' });
-						loading = true;
-						restoreBackup(inputtedBackupData);
-					}}>Import</Button
-				>
-			</div>
-		</Card.Content>
-	</Card.Root>
+		<Card.Root>
+			<Card.Header><Card.Title>Local Backup</Card.Title></Card.Header>
+			<Card.Content class="flex flex-col gap-3">
+				Export
+				<div class="flex flex-row gap-3">
+					<Input disabled={true} value={backupData} />
+					<Button
+						size="icon"
+						onclick={() => {
+							posthog.capture('backup', { type: 'copy', location: 'local' });
+							navigator.clipboard
+								.writeText(backupData)
+								.then(() => {
+									toast.success('Backup copied to clipboard');
+								})
+								.catch((error) => {
+									toast.error('Failed to copy backup to clipboard');
+								});
+						}}><Clipboard /></Button
+					>
+				</div>
+				Import
+				<div class="flex flex-row gap-3">
+					<Input bind:value={inputtedBackupData} />
+					<Button
+						disabled={inputtedBackupData.length === 0}
+						onclick={() => {
+							posthog.capture('backup', { type: 'import', location: 'local' });
+							loading = true;
+							restoreBackup(inputtedBackupData);
+						}}>Import</Button
+					>
+				</div>
+			</Card.Content>
+		</Card.Root>
 
-	<!-- <SignedIn>
+		<!-- <SignedIn>
 		<div class="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
 			<Card.Root>
 				<Card.Header><Card.Title>Create a Backup</Card.Title></Card.Header>
@@ -137,4 +139,11 @@
 			></Alert.Root
 		>
 	</SignedOut> -->
-</div>
+	</div>
+{:else}
+	<div class="flex h-full flex-col items-center justify-center gap-3">
+		<span class="text-6xl">404</span>
+		<span class="text-3xl">Not Found</span>
+		<Button variant="outline" href="/">Go home</Button>
+	</div>
+{/if}
