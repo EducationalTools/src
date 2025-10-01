@@ -100,8 +100,8 @@ importers:
         specifier: ^8.6.0
         version: 8.6.0(svelte@5.39.6)
       layerchart:
-        specifier: 2.0.0-next.37
-        version: 2.0.0-next.37(svelte@5.39.6)
+        specifier: 2.0.0-next.40
+        version: 2.0.0-next.40(svelte@5.39.6)
       mode-watcher:
         specifier: ^1.1.0
         version: 1.1.0(svelte@5.39.6)
@@ -1644,8 +1644,8 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
-  layerchart@2.0.0-next.37:
-    resolution: {integrity: sha512-PE16Hu3PA3AJ1B28LY68S1HqoiiEXfC2YNl4h5mdpjx5ZLwQSlP9sq68NxXYRcrzp/KPiytBVoDHpDHeJxnQCQ==}
+  layerchart@2.0.0-next.40:
+    resolution: {integrity: sha512-hf6VdPqMjinuKfh1HfFbqjWUPnxJupBhaYHHtSWCcyCOTROBBHf8b8+bLNPweLT3CcoeNrYMy68y45kDxVhGkg==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -2055,6 +2055,11 @@ packages:
 
   runed@0.29.2:
     resolution: {integrity: sha512-0cq6cA6sYGZwl/FvVqjx9YN+1xEBu9sDDyuWdDW1yWX7JF2wmvmVKfH+hVCZs+csW+P3ARH92MjI3H9QTagOQA==}
+    peerDependencies:
+      svelte: ^5.7.0
+
+  runed@0.31.1:
+    resolution: {integrity: sha512-v3czcTnO+EJjiPvD4dwIqfTdHLZ8oH0zJheKqAHh9QMViY7Qb29UlAMRpX7ZtHh7AFqV60KmfxaJ9QMy+L1igQ==}
     peerDependencies:
       svelte: ^5.7.0
 
@@ -3798,7 +3803,7 @@ snapshots:
 
   kleur@4.1.5: {}
 
-  layerchart@2.0.0-next.37(svelte@5.39.6):
+  layerchart@2.0.0-next.40(svelte@5.39.6):
     dependencies:
       '@dagrejs/dagre': 1.1.5
       '@layerstack/svelte-actions': 1.0.1-next.14
@@ -3826,7 +3831,7 @@ snapshots:
       d3-time: 3.1.0
       lodash-es: 4.17.21
       memoize: 10.1.0
-      runed: 0.28.0(svelte@5.39.6)
+      runed: 0.31.1(svelte@5.39.6)
       svelte: 5.39.6
 
   libphonenumber-js@1.12.23:
@@ -4192,6 +4197,11 @@ snapshots:
       svelte: 5.39.6
 
   runed@0.29.2(svelte@5.39.6):
+    dependencies:
+      esm-env: 1.2.2
+      svelte: 5.39.6
+
+  runed@0.31.1(svelte@5.39.6):
     dependencies:
       esm-env: 1.2.2
       svelte: 5.39.6
