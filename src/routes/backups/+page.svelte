@@ -3,8 +3,8 @@
 
 	import dayjs from 'dayjs';
 
-	import { useConvexClient, useQuery } from 'convex-svelte';
-	import { api } from '$lib/../convex/_generated/api.js';
+	// import { useConvexClient, useQuery } from 'convex-svelte';
+	// import { api } from '$lib/../convex/_generated/api.js';
 	import Button, { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Input from '$lib/components/ui/input/input.svelte';

@@ -1,8 +1,8 @@
 import { get } from 'svelte/store';
-import { api } from '../convex/_generated/api';
+// import { api } from '../convex/_generated/api';
 import { syncState } from './state.svelte';
 import { syncSettingsStore, preferencesStore, favoritesStore, historyStore } from './stores';
-import { useConvexClient } from 'convex-svelte';
+// import { useConvexClient } from 'convex-svelte';
 
 // export async function save(
 // 	jwt: string,
