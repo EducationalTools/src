@@ -15,4 +15,4 @@
 
 {isLoading}
 
-{JSON.stringify(user)}
+{user?.email}
