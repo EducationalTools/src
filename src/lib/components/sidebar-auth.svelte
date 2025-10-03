@@ -3,6 +3,8 @@
 	import { api } from '$convex/_generated/api';
 	import { useQuery } from 'convex-svelte';
 	import { useAuth } from '@mmailaender/convex-better-auth-svelte/svelte';
+	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import Skeleton from './ui/skeleton/skeleton.svelte';
 
 	// Auth state store
 	const auth = useAuth();
@@ -13,6 +15,20 @@
 	let user = $derived(currentUserResponse.data);
 </script>
 
-{isLoading}
-
-{user?.email}
+{#if isLoading}
+	<Sidebar.MenuItem>
+		<Sidebar.MenuButton class="flex flex-row">
+			<Skeleton class="aspect-square h-full" />
+			<Skeleton class="h-full grow" />
+		</Sidebar.MenuButton>
+		<Sidebar.MenuButton class="flex flex-row">
+			<Skeleton class="h-full grow" />
+		</Sidebar.MenuButton>
+	</Sidebar.MenuItem>
+{:else}
+	<Sidebar.MenuItem>
+		<Sidebar.MenuButton>
+			{user?.email}
+		</Sidebar.MenuButton>
+	</Sidebar.MenuItem>
+{/if}
