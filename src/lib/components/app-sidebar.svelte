@@ -34,6 +34,7 @@
 	import Badge from './ui/badge/badge.svelte';
 
 	import dayjs from 'dayjs';
+	import SidebarAuth from './sidebar-auth.svelte';
 
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
@@ -240,6 +241,7 @@
 		</Sidebar.Content>
 		<Sidebar.Footer class="[&>li]:list-none">
 			{#if $preferencesStore.experimentalFeatures === true}
+				<SidebarAuth />
 				<Sidebar.MenuItem>
 					<Sidebar.MenuButton>
 						{#snippet child({ props })}
