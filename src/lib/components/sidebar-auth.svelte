@@ -9,6 +9,9 @@
 	import { toast } from 'svelte-sonner';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
+	let signInDialogOpen = $state(false);
+	let signUpDialogOpen = $state(false);
+
 	// Auth state store
 	const auth = useAuth();
 	const isLoading = $derived(auth.isLoading);
@@ -51,7 +54,7 @@
 	</Sidebar.MenuItem>
 {:else}
 	<Sidebar.MenuItem>
-		<Dialog.Root>
+		<Dialog.Root bind:open={signInDialogOpen}>
 			<Sidebar.MenuButton>
 				{#snippet child({ props })}
 					<Dialog.Trigger {...props}>
@@ -68,7 +71,7 @@
 		</Dialog.Root>
 	</Sidebar.MenuItem>
 	<Sidebar.MenuItem>
-		<Dialog.Root>
+		<Dialog.Root bind:open={signUpDialogOpen}>
 			<Sidebar.MenuButton>
 				{#snippet child({ props })}
 					<Dialog.Trigger {...props}>
