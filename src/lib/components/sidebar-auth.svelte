@@ -6,6 +6,7 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import Skeleton from './ui/skeleton/skeleton.svelte';
 	import { LogIn, LogOut, UserPlus } from '@lucide/svelte';
+	import { toast } from 'svelte-sonner';
 
 	// Auth state store
 	const auth = useAuth();
@@ -14,6 +15,14 @@
 
 	const currentUserResponse = useQuery(api.auth.getCurrentUser, {});
 	let user = $derived(currentUserResponse.data);
+
+	async function signOut() {
+		const result = await authClient.signOut();
+		if (result.error) {
+			console.error('Sign out error:', result.error);
+			toast.error('Something went wrong');
+		}
+	}
 </script>
 
 {#if isLoading}
@@ -34,7 +43,7 @@
 	</Sidebar.MenuItem>
 
 	<Sidebar.MenuItem>
-		<Sidebar.MenuButton>
+		<Sidebar.MenuButton onclick={signOut}>
 			<LogOut />
 			Log out
 		</Sidebar.MenuButton>
