@@ -16,7 +16,7 @@
 
 	const id = $props.id();
 
-	let authDialogOpen = $state(true);
+	let authDialogOpen = $state(false);
 	let authMode = $state('login') as 'login' | 'createaccount';
 	let loading = $state(false);
 
@@ -171,10 +171,18 @@
 					<form onsubmit={handleSignIn}>
 						<div class="grid gap-4 py-4">
 							<div class="flex w-full flex-col gap-1.5">
-								<Input type="email" id="email-{id}" name="email" placeholder="Email" required />
+								<Input
+									disabled={loading}
+									type="email"
+									id="email-{id}"
+									name="email"
+									placeholder="Email"
+									required
+								/>
 							</div>
 							<div class="flex w-full flex-col gap-1.5">
 								<Input
+									disabled={loading}
 									type="password"
 									id="password-{id}"
 									name="password"
@@ -184,7 +192,7 @@
 							</div>
 						</div>
 						<Dialog.Footer>
-							<Button type="submit">Log in</Button>
+							<Button disabled={loading} type="submit">Log in</Button>
 						</Dialog.Footer>
 					</form>
 				</Tabs.Content>
@@ -193,6 +201,7 @@
 						<div class="grid gap-4 py-4">
 							<div class="flex w-full flex-col gap-1.5">
 								<Input
+									disabled={loading}
 									type="text"
 									id="name-{id}"
 									name="displayName"
@@ -202,11 +211,19 @@
 								<p class="text-muted-foreground text-sm">This is how you will appear on EduTools</p>
 							</div>
 							<div class="flex w-full flex-col gap-1.5">
-								<Input type="email" id="email-{id}" name="email" placeholder="Email" required />
+								<Input
+									disabled={loading}
+									type="email"
+									id="email-{id}"
+									name="email"
+									placeholder="Email"
+									required
+								/>
 								<p class="text-muted-foreground text-sm">This is what you will use to log in</p>
 							</div>
 							<div class="flex w-full flex-col gap-1.5">
 								<Input
+									disabled={loading}
 									minlength={6}
 									type="password"
 									id="password-{id}"
@@ -217,7 +234,7 @@
 							</div>
 						</div>
 						<Dialog.Footer>
-							<Button type="submit">Create account</Button>
+							<Button disabled={loading} type="submit">Create account</Button>
 						</Dialog.Footer>
 					</form>
 				</Tabs.Content>
