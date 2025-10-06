@@ -30,7 +30,7 @@ export const createAuth = (
 			requireEmailVerification: false
 		},
 		plugins: [
-			crossDomain({ siteUrl: 'http://localhost:5173/' }),
+			crossDomain({ siteUrl: siteUrl }),
 			// The Convex plugin is required for Convex compatibility
 			convex()
 		],
