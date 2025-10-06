@@ -163,88 +163,88 @@
 			Create account
 		</Sidebar.MenuButton>
 	</Sidebar.MenuItem>
-
-	<Dialog.Root bind:open={authDialogOpen}>
-		<Dialog.Content>
-			<Tabs.Root bind:value={authMode}>
-				<Dialog.Header>
-					<Tabs.List>
-						<Tabs.Trigger value="login">Log in</Tabs.Trigger>
-						<Tabs.Trigger value="createaccount">Create account</Tabs.Trigger>
-					</Tabs.List>
-				</Dialog.Header>
-				<Tabs.Content value="login">
-					<form onsubmit={handleSignIn}>
-						<div class="grid gap-4 py-4">
-							<div class="flex w-full flex-col gap-1.5">
-								<Input
-									disabled={loading}
-									type="email"
-									id="email-{id}"
-									name="email"
-									placeholder="Email"
-									required
-								/>
-							</div>
-							<div class="flex w-full flex-col gap-1.5">
-								<Input
-									disabled={loading}
-									type="password"
-									id="password-{id}"
-									name="password"
-									placeholder="Password"
-									required
-								/>
-							</div>
-						</div>
-						<Dialog.Footer>
-							<Button disabled={loading} type="submit">Log in</Button>
-						</Dialog.Footer>
-					</form>
-				</Tabs.Content>
-				<Tabs.Content value="createaccount">
-					<form onsubmit={handleSignUp}>
-						<div class="grid gap-4 py-4">
-							<div class="flex w-full flex-col gap-1.5">
-								<Input
-									disabled={loading}
-									type="text"
-									id="name-{id}"
-									name="displayName"
-									placeholder="Display name"
-									required
-								/>
-								<p class="text-muted-foreground text-sm">This is how you will appear on EduTools</p>
-							</div>
-							<div class="flex w-full flex-col gap-1.5">
-								<Input
-									disabled={loading}
-									type="email"
-									id="email-{id}"
-									name="email"
-									placeholder="Email"
-									required
-								/>
-								<p class="text-muted-foreground text-sm">This is what you will use to log in</p>
-							</div>
-							<div class="flex w-full flex-col gap-1.5">
-								<Input
-									disabled={loading}
-									minlength={6}
-									type="password"
-									id="password-{id}"
-									name="password"
-									placeholder="Password"
-									required
-								/>
-							</div>
-						</div>
-						<Dialog.Footer>
-							<Button disabled={loading} type="submit">Create account</Button>
-						</Dialog.Footer>
-					</form>
-				</Tabs.Content>
-			</Tabs.Root>
-		</Dialog.Content>
-	</Dialog.Root>
 {/if}
+
+<Dialog.Root bind:open={authDialogOpen}>
+	<Dialog.Content>
+		<Tabs.Root bind:value={authMode}>
+			<Dialog.Header>
+				<Tabs.List>
+					<Tabs.Trigger value="login">Log in</Tabs.Trigger>
+					<Tabs.Trigger value="createaccount">Create account</Tabs.Trigger>
+				</Tabs.List>
+			</Dialog.Header>
+			<Tabs.Content value="login">
+				<form onsubmit={handleSignIn}>
+					<div class="grid gap-4 py-4">
+						<div class="flex w-full flex-col gap-1.5">
+							<Input
+								disabled={loading}
+								type="email"
+								id="email-{id}"
+								name="email"
+								placeholder="Email"
+								required
+							/>
+						</div>
+						<div class="flex w-full flex-col gap-1.5">
+							<Input
+								disabled={loading}
+								type="password"
+								id="password-{id}"
+								name="password"
+								placeholder="Password"
+								required
+							/>
+						</div>
+					</div>
+					<Dialog.Footer>
+						<Button disabled={loading} type="submit">Log in</Button>
+					</Dialog.Footer>
+				</form>
+			</Tabs.Content>
+			<Tabs.Content value="createaccount">
+				<form onsubmit={handleSignUp}>
+					<div class="grid gap-4 py-4">
+						<div class="flex w-full flex-col gap-1.5">
+							<Input
+								disabled={loading}
+								type="text"
+								id="name-{id}"
+								name="displayName"
+								placeholder="Display name"
+								required
+							/>
+							<p class="text-muted-foreground text-sm">This is how you will appear on EduTools</p>
+						</div>
+						<div class="flex w-full flex-col gap-1.5">
+							<Input
+								disabled={loading}
+								type="email"
+								id="email-{id}"
+								name="email"
+								placeholder="Email"
+								required
+							/>
+							<p class="text-muted-foreground text-sm">This is what you will use to log in</p>
+						</div>
+						<div class="flex w-full flex-col gap-1.5">
+							<Input
+								disabled={loading}
+								minlength={6}
+								type="password"
+								id="password-{id}"
+								name="password"
+								placeholder="Password"
+								required
+							/>
+						</div>
+					</div>
+					<Dialog.Footer>
+						<Button disabled={loading} type="submit">Create account</Button>
+					</Dialog.Footer>
+				</form>
+			</Tabs.Content>
+		</Tabs.Root>
+	</Dialog.Content>
+</Dialog.Root>
