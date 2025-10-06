@@ -34,7 +34,7 @@
 	import Badge from './ui/badge/badge.svelte';
 
 	import dayjs from 'dayjs';
-	import SidebarAuth from './sidebar-auth.svelte';
+	import SidebarAuth from './sidebar-auth/sidebar-auth.svelte';
 
 	// Props
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
