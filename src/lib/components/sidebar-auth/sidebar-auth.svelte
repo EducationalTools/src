@@ -41,7 +41,7 @@
 		const fields = Object.fromEntries(data.entries());
 		let formData = signInFormSchema.safeParse(fields);
 		if (!formData.success) {
-			formData.error.issues[0].message;
+			toast.error(formData.error.issues[0].message);
 		} else {
 			const { email, password } = formData.data;
 		}
@@ -53,7 +53,7 @@
 		const fields = Object.fromEntries(data.entries());
 		let formData = signUpFormSchema.safeParse(fields);
 		if (!formData.success) {
-			formData.error.issues[0].message;
+			toast.error(formData.error.issues[0].message);
 		} else {
 			const { email, password } = formData.data;
 		}
