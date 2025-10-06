@@ -169,6 +169,11 @@
 	<Dialog.Content>
 		<Tabs.Root bind:value={authMode}>
 			<Dialog.Header>
+				<Button
+					onclick={() => {
+						authClient.signIn.social({ provider: 'github' });
+					}}>github</Button
+				>
 				<Tabs.List>
 					<Tabs.Trigger value="login">Log in</Tabs.Trigger>
 					<Tabs.Trigger value="createaccount">Create account</Tabs.Trigger>
