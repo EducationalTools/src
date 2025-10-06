@@ -10,6 +10,10 @@
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
+	import { Input } from '$lib/components/ui/input/index.js';
+	import { Label } from '$lib/components/ui/label/index.js';
+
+	const id = $props.id();
 
 	let authDialogOpen = $state(true);
 	let authMode = $state('login') as 'login' | 'createaccount';
@@ -89,16 +93,57 @@
 				</Tabs.List>
 			</Dialog.Header>
 			<Tabs.Content value="login">
-				<div class="grid gap-4 py-4"></div>
-				<Dialog.Footer>
-					<Button>Sign in</Button>
-				</Dialog.Footer>
+				<form action="">
+					<div class="grid gap-4 py-4">
+						<div class="flex w-full flex-col gap-1.5">
+							<Input type="email" id="email-{id}" name="email" placeholder="Email" required />
+						</div>
+						<div class="flex w-full flex-col gap-1.5">
+							<Input
+								type="password"
+								id="password-{id}"
+								name="password"
+								placeholder="Password"
+								required
+							/>
+						</div>
+					</div>
+					<Dialog.Footer>
+						<Button type="submit">Log in</Button>
+					</Dialog.Footer>
+				</form>
 			</Tabs.Content>
 			<Tabs.Content value="createaccount">
-				<div class="grid gap-4 py-4"></div>
-				<Dialog.Footer>
-					<Button>Create account</Button>
-				</Dialog.Footer>
+				<form action="">
+					<div class="grid gap-4 py-4">
+						<div class="flex w-full flex-col gap-1.5">
+							<Input
+								type="text"
+								id="name-{id}"
+								name="displayName"
+								placeholder="Display name"
+								required
+							/>
+							<p class="text-muted-foreground text-sm">This is how you will appear on EduTools</p>
+						</div>
+						<div class="flex w-full flex-col gap-1.5">
+							<Input type="email" id="email-{id}" name="email" placeholder="Email" required />
+							<p class="text-muted-foreground text-sm">This is what you will use to log in</p>
+						</div>
+						<div class="flex w-full flex-col gap-1.5">
+							<Input
+								type="password"
+								id="password-{id}"
+								name="password"
+								placeholder="Password"
+								required
+							/>
+						</div>
+					</div>
+					<Dialog.Footer>
+						<Button type="submit">Create account</Button>
+					</Dialog.Footer>
+				</form>
 			</Tabs.Content>
 		</Tabs.Root>
 	</Dialog.Content>
