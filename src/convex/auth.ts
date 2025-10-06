@@ -5,7 +5,7 @@ import { type DataModel } from './_generated/dataModel';
 import { query } from './_generated/server';
 import { betterAuth } from 'better-auth';
 
-const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // if it works don't touch it
+const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex deployment, which redirects to the referer. if it works don't touch it
 
 // The component client has methods needed for integrating Convex with Better Auth,
 // as well as helper methods for general use.
