@@ -18,6 +18,7 @@
 
 	let authDialogOpen = $state(true);
 	let authMode = $state('login') as 'login' | 'createaccount';
+	let loading = $state(false);
 
 	// Auth state store
 	const auth = useAuth();
@@ -36,6 +37,7 @@
 	}
 
 	async function handleSignIn(event: SubmitEvent) {
+		loading = true;
 		event.preventDefault();
 		const data = new FormData(event.target as HTMLFormElement);
 		const fields = Object.fromEntries(data.entries());
@@ -57,7 +59,10 @@
 								}
 							)
 							.then(resolve)
-							.catch(reject);
+							.catch(reject)
+							.finally(() => {
+								loading = false;
+							});
 					}),
 				{
 					loading: 'Signing in...',
@@ -69,6 +74,7 @@
 	}
 
 	async function handleSignUp(event: SubmitEvent) {
+		loading = true;
 		event.preventDefault();
 		const data = new FormData(event.target as HTMLFormElement);
 		const fields = Object.fromEntries(data.entries());
@@ -90,7 +96,10 @@
 								}
 							)
 							.then(resolve)
-							.catch(reject);
+							.catch(reject)
+							.finally(() => {
+								loading = false;
+							});
 					}),
 				{
 					loading: 'Signing in...',
