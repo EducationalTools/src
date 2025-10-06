@@ -130,7 +130,7 @@
 {:else if isAuthenticated}
 	<Sidebar.MenuItem>
 		<Sidebar.MenuButton>
-			{user?.email}
+			{user?.name}
 		</Sidebar.MenuButton>
 	</Sidebar.MenuItem>
 
