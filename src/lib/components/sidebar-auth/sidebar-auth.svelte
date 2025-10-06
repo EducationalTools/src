@@ -12,8 +12,7 @@
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Label } from '$lib/components/ui/label/index.js';
-	import { signInFormSchema, signUpFormSchema } from './schema';
-	import type { ZodError } from 'better-auth';
+	import { signInFormSchema, signUpFormSchema } from './schema.js';
 
 	const id = $props.id();
 
@@ -40,12 +39,11 @@
 		event.preventDefault();
 		const data = new FormData(event.target as HTMLFormElement);
 		const fields = Object.fromEntries(data.entries());
-		try {
-			let parsed = await signInFormSchema.parse(fields);
-			console.log(parsed);
-		} catch (error) {
-			toast.error(JSON.parse((error as ZodError).message)[0].message);
-			return;
+		let formData = signInFormSchema.safeParse(fields);
+		if (!formData.success) {
+			formData.error.issues[0].message;
+		} else {
+			const { email, password } = formData.data;
 		}
 	}
 
@@ -53,12 +51,11 @@
 		event.preventDefault();
 		const data = new FormData(event.target as HTMLFormElement);
 		const fields = Object.fromEntries(data.entries());
-		try {
-			let parsed = await signUpFormSchema.parse(fields);
-			console.log(parsed);
-		} catch (error) {
-			toast.error(JSON.parse((error as ZodError).message)[0].message);
-			return;
+		let formData = signUpFormSchema.safeParse(fields);
+		if (!formData.success) {
+			formData.error.issues[0].message;
+		} else {
+			const { email, password } = formData.data;
 		}
 	}
 </script>
