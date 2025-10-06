@@ -4,11 +4,11 @@
 	import { useQuery } from 'convex-svelte';
 	import { useAuth } from '@mmailaender/convex-better-auth-svelte/svelte';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import Skeleton from './ui/skeleton/skeleton.svelte';
+	import Skeleton from '$lib/components/ui/skeleton/skeleton.svelte';
 	import { LogIn, LogOut, Plus, UserPlus } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
-	import Button from './ui/button/button.svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
 
 	let authDialogOpen = $state(true);
