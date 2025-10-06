@@ -12,6 +12,8 @@
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Label } from '$lib/components/ui/label/index.js';
+	import { signInFormSchema, signUpFormSchema } from './schema';
+	import type { ZodError } from 'better-auth';
 
 	const id = $props.id();
 
@@ -31,6 +33,32 @@
 		if (result.error) {
 			console.error('Sign out error:', result.error);
 			toast.error('Something went wrong');
+		}
+	}
+
+	async function handleSignIn(event: SubmitEvent) {
+		event.preventDefault();
+		const data = new FormData(event.target as HTMLFormElement);
+		const fields = Object.fromEntries(data.entries());
+		try {
+			let parsed = await signInFormSchema.parse(fields);
+			console.log(parsed);
+		} catch (error) {
+			toast.error(JSON.parse((error as ZodError).message)[0].message);
+			return;
+		}
+	}
+
+	async function handleSignUp(event: SubmitEvent) {
+		event.preventDefault();
+		const data = new FormData(event.target as HTMLFormElement);
+		const fields = Object.fromEntries(data.entries());
+		try {
+			let parsed = await signUpFormSchema.parse(fields);
+			console.log(parsed);
+		} catch (error) {
+			toast.error(JSON.parse((error as ZodError).message)[0].message);
+			return;
 		}
 	}
 </script>
@@ -93,7 +121,7 @@
 				</Tabs.List>
 			</Dialog.Header>
 			<Tabs.Content value="login">
-				<form action="">
+				<form onsubmit={handleSignIn}>
 					<div class="grid gap-4 py-4">
 						<div class="flex w-full flex-col gap-1.5">
 							<Input type="email" id="email-{id}" name="email" placeholder="Email" required />
@@ -114,7 +142,7 @@
 				</form>
 			</Tabs.Content>
 			<Tabs.Content value="createaccount">
-				<form action="">
+				<form onsubmit={handleSignUp}>
 					<div class="grid gap-4 py-4">
 						<div class="flex w-full flex-col gap-1.5">
 							<Input
@@ -132,6 +160,7 @@
 						</div>
 						<div class="flex w-full flex-col gap-1.5">
 							<Input
+								minlength={6}
 								type="password"
 								id="password-{id}"
 								name="password"
