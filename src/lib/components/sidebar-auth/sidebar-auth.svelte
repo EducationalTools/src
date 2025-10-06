@@ -44,6 +44,27 @@
 			toast.error(formData.error.issues[0].message);
 		} else {
 			const { email, password } = formData.data;
+			toast.promise(
+				() =>
+					new Promise((resolve, reject) => {
+						authClient.signIn
+							.email(
+								{ email, password },
+								{
+									onError: (ctx) => {
+										reject(ctx.error.message);
+									}
+								}
+							)
+							.then(resolve)
+							.catch(reject);
+					}),
+				{
+					loading: 'Signing in...',
+					success: 'Signed in successfully',
+					error: (error) => `${error}`
+				}
+			);
 		}
 	}
 
@@ -55,7 +76,28 @@
 		if (!formData.success) {
 			toast.error(formData.error.issues[0].message);
 		} else {
-			const { email, password } = formData.data;
+			const { email, password, displayName } = formData.data;
+			toast.promise(
+				() =>
+					new Promise((resolve, reject) => {
+						authClient.signUp
+							.email(
+								{ email, password, name: displayName },
+								{
+									onError: (ctx) => {
+										reject(ctx.error.message);
+									}
+								}
+							)
+							.then(resolve)
+							.catch(reject);
+					}),
+				{
+					loading: 'Signing in...',
+					success: 'Signed in successfully',
+					error: (error) => `${error}`
+				}
+			);
 		}
 	}
 </script>
