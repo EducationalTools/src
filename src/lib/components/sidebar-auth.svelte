@@ -5,7 +5,7 @@
 	import { useAuth } from '@mmailaender/convex-better-auth-svelte/svelte';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import Skeleton from './ui/skeleton/skeleton.svelte';
-	import { LogIn, LogOut, UserPlus } from '@lucide/svelte';
+	import { LogIn, LogOut, Plus, UserPlus } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
 
 	// Auth state store
@@ -58,7 +58,7 @@
 
 	<Sidebar.MenuItem>
 		<Sidebar.MenuButton>
-			<UserPlus />
+			<Plus />
 			Sign up
 		</Sidebar.MenuButton>
 	</Sidebar.MenuItem>
