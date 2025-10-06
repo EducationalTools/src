@@ -7,6 +7,7 @@
 	import Skeleton from './ui/skeleton/skeleton.svelte';
 	import { LogIn, LogOut, Plus, UserPlus } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
 	// Auth state store
 	const auth = useAuth();
@@ -50,16 +51,37 @@
 	</Sidebar.MenuItem>
 {:else}
 	<Sidebar.MenuItem>
-		<Sidebar.MenuButton>
-			<LogIn />
-			Log in
-		</Sidebar.MenuButton>
+		<Dialog.Root>
+			<Sidebar.MenuButton>
+				{#snippet child({ props })}
+					<Dialog.Trigger {...props}>
+						<LogIn />
+						Log in
+					</Dialog.Trigger>
+				{/snippet}
+			</Sidebar.MenuButton>
+			<Dialog.Content>
+				<Dialog.Header>
+					<Dialog.Title>Log in</Dialog.Title>
+				</Dialog.Header>
+			</Dialog.Content>
+		</Dialog.Root>
 	</Sidebar.MenuItem>
-
 	<Sidebar.MenuItem>
-		<Sidebar.MenuButton>
-			<Plus />
-			Sign up
-		</Sidebar.MenuButton>
+		<Dialog.Root>
+			<Sidebar.MenuButton>
+				{#snippet child({ props })}
+					<Dialog.Trigger {...props}>
+						<Plus />
+						Sign up
+					</Dialog.Trigger>
+				{/snippet}
+			</Sidebar.MenuButton>
+			<Dialog.Content>
+				<Dialog.Header>
+					<Dialog.Title>Sign up</Dialog.Title>
+				</Dialog.Header>
+			</Dialog.Content>
+		</Dialog.Root>
 	</Sidebar.MenuItem>
 {/if}
