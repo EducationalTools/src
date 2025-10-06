@@ -8,9 +8,11 @@
 	import { LogIn, LogOut, Plus, UserPlus } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import Button from './ui/button/button.svelte';
+	import * as Tabs from '$lib/components/ui/tabs/index.js';
 
-	let signInDialogOpen = $state(false);
-	let signUpDialogOpen = $state(false);
+	let authDialogOpen = $state(true);
+	let authMode = $state('login') as 'login' | 'createaccount';
 
 	// Auth state store
 	const auth = useAuth();
@@ -54,37 +56,50 @@
 	</Sidebar.MenuItem>
 {:else}
 	<Sidebar.MenuItem>
-		<Dialog.Root bind:open={signInDialogOpen}>
-			<Sidebar.MenuButton>
-				{#snippet child({ props })}
-					<Dialog.Trigger {...props}>
-						<LogIn />
-						Log in
-					</Dialog.Trigger>
-				{/snippet}
-			</Sidebar.MenuButton>
-			<Dialog.Content>
-				<Dialog.Header>
-					<Dialog.Title>Log in</Dialog.Title>
-				</Dialog.Header>
-			</Dialog.Content>
-		</Dialog.Root>
+		<Sidebar.MenuButton
+			onclick={() => {
+				authMode = 'login';
+				authDialogOpen = true;
+			}}
+		>
+			<LogIn />
+			Log in
+		</Sidebar.MenuButton>
 	</Sidebar.MenuItem>
 	<Sidebar.MenuItem>
-		<Dialog.Root bind:open={signUpDialogOpen}>
-			<Sidebar.MenuButton>
-				{#snippet child({ props })}
-					<Dialog.Trigger {...props}>
-						<Plus />
-						Sign up
-					</Dialog.Trigger>
-				{/snippet}
-			</Sidebar.MenuButton>
-			<Dialog.Content>
-				<Dialog.Header>
-					<Dialog.Title>Sign up</Dialog.Title>
-				</Dialog.Header>
-			</Dialog.Content>
-		</Dialog.Root>
+		<Sidebar.MenuButton
+			onclick={() => {
+				authMode = 'createaccount';
+				authDialogOpen = true;
+			}}
+		>
+			<Plus />
+			Create account
+		</Sidebar.MenuButton>
 	</Sidebar.MenuItem>
 {/if}
+
+<Dialog.Root bind:open={authDialogOpen}>
+	<Dialog.Content>
+		<Tabs.Root bind:value={authMode}>
+			<Dialog.Header>
+				<Tabs.List>
+					<Tabs.Trigger value="login">Log in</Tabs.Trigger>
+					<Tabs.Trigger value="createaccount">Create account</Tabs.Trigger>
+				</Tabs.List>
+			</Dialog.Header>
+			<Tabs.Content value="login">
+				<div class="grid gap-4 py-4"></div>
+				<Dialog.Footer>
+					<Button>Sign in</Button>
+				</Dialog.Footer>
+			</Tabs.Content>
+			<Tabs.Content value="createaccount">
+				<div class="grid gap-4 py-4"></div>
+				<Dialog.Footer>
+					<Button>Create account</Button>
+				</Dialog.Footer>
+			</Tabs.Content>
+		</Tabs.Root>
+	</Dialog.Content>
+</Dialog.Root>
