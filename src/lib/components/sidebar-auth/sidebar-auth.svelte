@@ -66,7 +66,10 @@
 					}),
 				{
 					loading: 'Signing in...',
-					success: 'Signed in successfully',
+					success: () => {
+						authDialogOpen = false;
+						return 'Signed in successfully';
+					},
 					error: (error) => `${error}`
 				}
 			);
@@ -102,8 +105,11 @@
 							});
 					}),
 				{
-					loading: 'Signing in...',
-					success: 'Signed in successfully',
+					loading: 'Signing up...',
+					success: () => {
+						authDialogOpen = false;
+						return 'Signed up successfully';
+					},
 					error: (error) => `${error}`
 				}
 			);
