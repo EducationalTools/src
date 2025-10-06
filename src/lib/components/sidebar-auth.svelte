@@ -5,6 +5,7 @@
 	import { useAuth } from '@mmailaender/convex-better-auth-svelte/svelte';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import Skeleton from './ui/skeleton/skeleton.svelte';
+	import { LogIn, LogOut, UserPlus } from '@lucide/svelte';
 
 	// Auth state store
 	const auth = useAuth();
@@ -25,10 +26,31 @@
 			<Skeleton class="h-full grow" />
 		</Sidebar.MenuButton>
 	</Sidebar.MenuItem>
-{:else}
+{:else if isAuthenticated}
 	<Sidebar.MenuItem>
 		<Sidebar.MenuButton>
 			{user?.email}
+		</Sidebar.MenuButton>
+	</Sidebar.MenuItem>
+
+	<Sidebar.MenuItem>
+		<Sidebar.MenuButton>
+			<LogOut />
+			Log out
+		</Sidebar.MenuButton>
+	</Sidebar.MenuItem>
+{:else}
+	<Sidebar.MenuItem>
+		<Sidebar.MenuButton>
+			<LogIn />
+			Log in
+		</Sidebar.MenuButton>
+	</Sidebar.MenuItem>
+
+	<Sidebar.MenuItem>
+		<Sidebar.MenuButton>
+			<UserPlus />
+			Sign up
 		</Sidebar.MenuButton>
 	</Sidebar.MenuItem>
 {/if}
