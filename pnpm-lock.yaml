@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@friendofsvelte/tipex':
-        specifier: 0.0.7
-        version: 0.0.7(highlight.js@11.8.0)(svelte@5.39.6)
+        specifier: 0.0.9
+        version: 0.0.9(highlight.js@11.8.0)(svelte@5.39.6)
       '@tanstack/match-sorter-utils':
         specifier: ^8.19.4
         version: 8.19.4
@@ -332,8 +332,8 @@ packages:
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
 
-  '@friendofsvelte/tipex@0.0.7':
-    resolution: {integrity: sha512-f6efPSrKF9GlsvEURK3ggk2uOQz7A/IhU4MuWgJmCPaTziDyVqt3/wVq9PtFK6evvIwq3igb6Oba/6YPKBYpIQ==}
+  '@friendofsvelte/tipex@0.0.9':
+    resolution: {integrity: sha512-VpweuRChZRdhnmW93kFjr/HodizCRPDC7WbIfaQYwD1Cenzq6y+mc8boON6cYQu5JXN9YtrT9bZl+9jbDQ6cJA==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -813,6 +813,17 @@ packages:
     peerDependencies:
       '@tiptap/core': ^2.7.0
 
+  '@tiptap/extension-task-item@2.26.2':
+    resolution: {integrity: sha512-KFfl9QraNldIR9ayP7t+b69BvjmdGeE9Mr+u/6h6jOmUVFpnES45geuEBSYuWWpK4EeD3ZUKXo7WGEWnTLSyfQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.7.0
+      '@tiptap/pm': ^2.7.0
+
+  '@tiptap/extension-task-list@2.26.2':
+    resolution: {integrity: sha512-mQdB0BVULJiiFPGdst4JbQPm/ZGZMIeYafVu6iGSMYxdP4piMvMbY4txtLV8zN8oUEAO5zooiXXbS3OFFBDZyQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.7.0
+
   '@tiptap/extension-text-style@2.26.2':
     resolution: {integrity: sha512-rNkV3dgT3nTISEf3Ax/DdqQsSy9p46n2fOBkD8FCtdrwsWNH5N4uUh4jI/q0exYKJUyZGvl60uXwCkZiQ3pVBA==}
     peerDependencies:
@@ -820,6 +831,11 @@ packages:
 
   '@tiptap/extension-text@2.26.2':
     resolution: {integrity: sha512-Rb8Le/Li+EixQNc/pGkEJpLjozTjWYP9glaYfnjPtRVw4tHcd7khVm5mer0TQjonbBUjVC1zSuXv9gifXOv6DQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.7.0
+
+  '@tiptap/extension-underline@2.26.2':
+    resolution: {integrity: sha512-kpKJSfsn1+b8l96YPg2GRn3aaN78pLqSeyzfA5FYVbN0lyptbqRVOrNM8p3n6l0LbAkiEjc/TgOMwNNEL93kyA==}
     peerDependencies:
       '@tiptap/core': ^2.7.0
 
@@ -2292,7 +2308,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@friendofsvelte/tipex@0.0.7(highlight.js@11.8.0)(svelte@5.39.6)':
+  '@friendofsvelte/tipex@0.0.9(highlight.js@11.8.0)(svelte@5.39.6)':
     dependencies:
       '@tiptap/core': 2.26.2(@tiptap/pm@2.26.2)
       '@tiptap/extension-code-block': 2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))(@tiptap/pm@2.26.2)
@@ -2301,6 +2317,9 @@ snapshots:
       '@tiptap/extension-image': 2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))
       '@tiptap/extension-link': 2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))(@tiptap/pm@2.26.2)
       '@tiptap/extension-placeholder': 2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))(@tiptap/pm@2.26.2)
+      '@tiptap/extension-task-item': 2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))(@tiptap/pm@2.26.2)
+      '@tiptap/extension-task-list': 2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))
+      '@tiptap/extension-underline': 2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))
       '@tiptap/pm': 2.26.2
       '@tiptap/starter-kit': 2.26.1
       iconify-icon: 1.0.8
@@ -2728,11 +2747,24 @@ snapshots:
     dependencies:
       '@tiptap/core': 2.26.2(@tiptap/pm@2.26.2)
 
+  '@tiptap/extension-task-item@2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))(@tiptap/pm@2.26.2)':
+    dependencies:
+      '@tiptap/core': 2.26.2(@tiptap/pm@2.26.2)
+      '@tiptap/pm': 2.26.2
+
+  '@tiptap/extension-task-list@2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))':
+    dependencies:
+      '@tiptap/core': 2.26.2(@tiptap/pm@2.26.2)
+
   '@tiptap/extension-text-style@2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))':
     dependencies:
       '@tiptap/core': 2.26.2(@tiptap/pm@2.26.2)
 
   '@tiptap/extension-text@2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))':
+    dependencies:
+      '@tiptap/core': 2.26.2(@tiptap/pm@2.26.2)
+
+  '@tiptap/extension-underline@2.26.2(@tiptap/core@2.26.2(@tiptap/pm@2.26.2))':
     dependencies:
       '@tiptap/core': 2.26.2(@tiptap/pm@2.26.2)
 
