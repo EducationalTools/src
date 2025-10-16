@@ -36,7 +36,6 @@ export const createAuth = (
 			}
 		},
 		plugins: [
-			crossDomain({ siteUrl: siteUrl }),
 			// The Convex plugin is required for Convex compatibility
 			convex()
 		],
