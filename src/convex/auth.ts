@@ -41,7 +41,9 @@ export const createAuth = (
 		],
 		advanced: {
 			defaultCookieAttributes: {
-				httpOnly: false
+				sameSite: 'none',
+				secure: true,
+				partitioned: true // New browser standards will mandate this for foreign cookies
 			}
 		}
 	});
