@@ -13,6 +13,7 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import { signInFormSchema, signUpFormSchema } from './schema.js';
+	import { page } from '$app/state';
 
 	const id = $props.id();
 
@@ -171,7 +172,7 @@
 			<Dialog.Header>
 				<Button
 					onclick={() => {
-						authClient.signIn.social({ provider: 'github' });
+						authClient.signIn.social({ provider: 'github', callbackURL: page.url.href });
 					}}>github</Button
 				>
 				<Tabs.List>
