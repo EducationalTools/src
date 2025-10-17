@@ -33,7 +33,8 @@ export const createAuth = (
 		socialProviders: {
 			github: {
 				clientId: process.env.GITHUB_CLIENT_ID as string,
-				clientSecret: process.env.GITHUB_CLIENT_SECRET as string
+				clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+				redirectURI: 'https://rightful-dogfish-709.convex.site/api/auth/callback/github'
 			}
 		},
 		plugins: [
