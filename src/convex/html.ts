@@ -362,8 +362,7 @@ export function generateAuthPage(
 					!trusted
 						? `<div class="warning">
           <span class="warning-title">Security Check</span>
-          Make sure you trust the person hosting this mirror. Only continue if
-          you initiated this login and recognize this service.
+          This mirror is not hosted by EduTools. Make sure you trust the person hosting this mirror. Only continue if you initiated this login.
         </div>`
 						: ''
 				}
