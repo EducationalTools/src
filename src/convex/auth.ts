@@ -39,8 +39,7 @@ export const createAuth = (
 		},
 		plugins: [
 			// The Convex plugin is required for Convex compatibility
-			convex(),
-			oAuthProxy()
+			convex()
 		],
 		advanced: {
 			defaultCookieAttributes: {
