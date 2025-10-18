@@ -32,7 +32,7 @@ http.route({
 				sanitizedHost,
 				session?.user.name || '',
 				redirectUrl,
-				`https://${sanitizedHost}/ott?token=${token}&redirect=${encodeURIComponent(redirectUrl)}`,
+				`https://${sanitizedHost}/ott?token=${token.token}&redirect=${encodeURIComponent(redirectUrl)}`,
 				true
 			),
 			{
