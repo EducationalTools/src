@@ -4,7 +4,7 @@ import { components } from './_generated/api';
 import { type DataModel } from './_generated/dataModel';
 import { query } from './_generated/server';
 import { betterAuth } from 'better-auth';
-import { oAuthProxy } from 'better-auth/plugins';
+import { createAuthMiddleware, oAuthProxy } from 'better-auth/plugins';
 
 const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex deployment, which redirects to the referer. if it works don't touch it
 
@@ -39,7 +39,31 @@ export const createAuth = (
 		},
 		plugins: [
 			// The Convex plugin is required for Convex compatibility
-			convex()
+			convex(),
+			// refer to comment on line 25
+			{
+				id: 'disable-state-check',
+				hooks: {
+					before: [
+						{
+							matcher() {
+								return true;
+							},
+							handler: createAuthMiddleware(async (ctx) => {
+								return {
+									context: {
+										context: {
+											oauthConfig: {
+												skipStateCookieCheck: true
+											}
+										}
+									}
+								};
+							})
+						}
+					]
+				}
+			}
 		],
 		advanced: {
 			defaultCookieAttributes: {
