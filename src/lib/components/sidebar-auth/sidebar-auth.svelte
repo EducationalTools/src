@@ -172,7 +172,11 @@
 			<Dialog.Header>
 				<Button
 					onclick={() => {
-						authClient.signIn.social({ provider: 'github', callbackURL: page.url.href });
+						authClient.signIn.social({
+							provider: 'github',
+							callbackURL:
+								'https://rightful-dogfish-709.convex.site/auth?redirect=' + window.location.href
+						});
 					}}>github</Button
 				>
 				<Tabs.List>
