@@ -20,6 +20,10 @@ http.route({
 		const host = redirectUrlObj.hostname;
 		const sanitizedHost = host.replace(/[^a-zA-Z0-9.-]/g, '');
 
+		const { auth, headers } = await authComponent.getAuth(createAuth, ctx);
+
+		const session = await auth.api.getSession({ headers: request.headers });
+
 		return new Response(
 			`
 <!DOCTYPE html>
@@ -189,7 +193,7 @@ http.route({
 <body>
   <div class="card">
     <div class="text-sm">Logging into</div>
-    <div class="url" id="redirectUrl">${sanitizedHost}</div>
+    <div class="url" id="redirectUrl">${sanitizedHost} ${session?.user.name}</div>
     <div class="warning">Make sure you trust the person hosting this mirror. If you are not sure, cancel.</div>
     <div class="button-group">
       <button class="btn-secondary" onclick="handleCancel()">
