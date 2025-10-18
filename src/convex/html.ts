@@ -48,7 +48,8 @@ export function generateAuthPage(
           --sidebar-border: oklch(0.922 0 0);
           --sidebar-ring: oklch(0.708 0 0);
           --logo-color: oklch(0.145 0 0);
-          --trusted-color: oklch(0.5 0.15 240);
+          --trusted-bg: oklch(0.9 0.05 240);
+          --trusted-color: oklch(0.45 0.15 240);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -85,7 +86,8 @@ export function generateAuthPage(
             --sidebar-border: oklch(1 0 0 / 10%);
             --sidebar-ring: oklch(0.556 0 0);
             --logo-color: oklch(0.985 0 0);
-            --trusted-color: oklch(0.6 0.15 240);
+            --trusted-bg: oklch(0.25 0.05 240);
+            --trusted-color: oklch(0.65 0.15 240);
           }
         }
 
@@ -128,7 +130,6 @@ export function generateAuthPage(
           max-width: 480px;
           width: 100%;
           box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-          text-align: center;
         }
 
         .text-sm {
@@ -152,20 +153,33 @@ export function generateAuthPage(
           line-height: 1.2;
         }
 
+        .host-container {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
         .host {
           font-size: 1.125rem;
           color: var(--muted-foreground);
           font-weight: 500;
+        }
+
+        .trusted-chip {
           display: inline-flex;
           align-items: center;
           gap: 0.375rem;
-          justify-content: center;
+          background: var(--trusted-bg);
+          color: var(--trusted-color);
+          padding: 0.25rem 0.625rem;
+          border-radius: 9999px;
+          font-size: 0.8125rem;
+          font-weight: 600;
         }
 
-        .trusted-badge {
-          width: 20px;
-          height: 20px;
-          color: var(--trusted-color);
+        .trusted-chip svg {
+          width: 16px;
+          height: 16px;
           flex-shrink: 0;
         }
 
@@ -178,7 +192,6 @@ export function generateAuthPage(
           color: var(--foreground);
           margin-bottom: 1.5rem;
           line-height: 1.5;
-          text-align: left;
         }
 
         .warning-title {
@@ -257,7 +270,6 @@ export function generateAuthPage(
           border-radius: var(--radius);
           padding: 0.875rem;
           margin-bottom: 0.875rem;
-          text-align: center;
         }
 
         .security-notice-title {
@@ -274,13 +286,11 @@ export function generateAuthPage(
         }
 
         .redirect-info {
-          text-align: center;
         }
 
         .redirect-label {
           font-size: 0.6875rem;
           color: var(--muted-foreground);
-          text-align: center;
           margin-bottom: 0.25rem;
           opacity: 0.6;
           text-transform: uppercase;
@@ -291,7 +301,6 @@ export function generateAuthPage(
         .redirect-url {
           font-size: 0.75rem;
           color: var(--muted-foreground);
-          text-align: center;
           word-break: break-all;
           opacity: 0.7;
           font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
@@ -314,6 +323,10 @@ export function generateAuthPage(
           .button-group {
             flex-direction: column-reverse;
           }
+
+          .host-container {
+            flex-wrap: wrap;
+          }
         }
       </style>
     </head>
@@ -333,11 +346,14 @@ export function generateAuthPage(
         <div class="text-sm">Logging in as</div>
         <div class="user-info">
           <div class="username" id="userName">${name}</div>
-          <div class="host" id="hostName">
-            ${host}
+          <div class="host-container">
+            <div class="host" id="hostName">${host}</div>
             ${
 							trusted
-								? `<svg xmlns="http://www.w3.org/2000/svg" class="trusted-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>`
+								? `<div class="trusted-chip">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+              Trusted
+            </div>`
 								: ''
 						}
           </div>
@@ -359,9 +375,9 @@ export function generateAuthPage(
             class="btn-primary"
             id="continueBtn"
             onclick="handleContinue()"
-            disabled
+            ${!trusted ? 'disabled' : ''}
           >
-            Continue (<span id="countdown">3</span>)
+            ${!trusted ? `Continue (<span id="countdown">3</span>)` : 'Continue'}
           </button>
         </div>
       </div>
@@ -389,23 +405,27 @@ export function generateAuthPage(
       </div>
 
       <script>
-        let countdown = 3;
+        const trusted = ${trusted};
         const continueBtn = document.getElementById("continueBtn");
-        const countdownSpan = document.getElementById("countdown");
 
-        continueBtn.classList.add("loading");
+        if (!trusted) {
+          let countdown = 3;
+          const countdownSpan = document.getElementById("countdown");
 
-        const interval = setInterval(() => {
-          countdown--;
-          countdownSpan.textContent = countdown;
+          continueBtn.classList.add("loading");
 
-          if (countdown === 0) {
-            clearInterval(interval);
-            continueBtn.disabled = false;
-            continueBtn.textContent = "Continue";
-            continueBtn.classList.remove("loading");
-          }
-        }, 1000);
+          const interval = setInterval(() => {
+            countdown--;
+            countdownSpan.textContent = countdown;
+
+            if (countdown === 0) {
+              clearInterval(interval);
+              continueBtn.disabled = false;
+              continueBtn.textContent = "Continue";
+              continueBtn.classList.remove("loading");
+            }
+          }, 1000);
+        }
 
         function handleContinue() {
           if (!continueBtn.disabled) {
