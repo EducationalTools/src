@@ -40,6 +40,8 @@ export const createAuth = (
 		plugins: [
 			// The Convex plugin is required for Convex compatibility
 			convex(),
+
+			// Disable state check
 			// refer to comment on line 25
 			{
 				id: 'disable-state-check',
