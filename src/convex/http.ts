@@ -25,8 +25,16 @@ http.route({
 
 		const session = await auth.api.getSession({ headers: request.headers });
 
+		const token = await auth.api.generateOneTimeToken({ headers: request.headers });
+
 		return new Response(
-			generateAuthPage(sanitizedHost, session?.user.name || '', redirectUrl, 'test', true),
+			generateAuthPage(
+				sanitizedHost,
+				session?.user.name || '',
+				redirectUrl,
+				`https://${sanitizedHost}/ott?token=${token}&redirect=${encodeURIComponent(redirectUrl)}`,
+				true
+			),
 			{
 				headers: { 'Content-Type': 'text/html' }
 			}
