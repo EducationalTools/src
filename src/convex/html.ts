@@ -48,6 +48,7 @@ export function generateAuthPage(
           --sidebar-border: oklch(0.922 0 0);
           --sidebar-ring: oklch(0.708 0 0);
           --logo-color: oklch(0.145 0 0);
+          --trusted-color: oklch(0.5 0.15 240);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -84,6 +85,7 @@ export function generateAuthPage(
             --sidebar-border: oklch(1 0 0 / 10%);
             --sidebar-ring: oklch(0.556 0 0);
             --logo-color: oklch(0.985 0 0);
+            --trusted-color: oklch(0.6 0.15 240);
           }
         }
 
@@ -154,6 +156,17 @@ export function generateAuthPage(
           font-size: 1.125rem;
           color: var(--muted-foreground);
           font-weight: 500;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.375rem;
+          justify-content: center;
+        }
+
+        .trusted-badge {
+          width: 20px;
+          height: 20px;
+          color: var(--trusted-color);
+          flex-shrink: 0;
         }
 
         .warning {
@@ -320,13 +333,24 @@ export function generateAuthPage(
         <div class="text-sm">Logging in as</div>
         <div class="user-info">
           <div class="username" id="userName">${name}</div>
-          <div class="host" id="hostName">${host}</div>
+          <div class="host" id="hostName">
+            ${host}
+            ${
+							trusted
+								? `<svg xmlns="http://www.w3.org/2000/svg" class="trusted-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>`
+								: ''
+						}
+          </div>
         </div>
-        <div class="warning">
+        ${
+					!trusted
+						? `<div class="warning">
           <span class="warning-title">Security Check</span>
           Make sure you trust the person hosting this mirror. Only continue if
           you initiated this login and recognize this service.
-        </div>
+        </div>`
+						: ''
+				}
         <div class="button-group">
           <button class="btn-secondary" onclick="handleCancel()">
             Cancel
@@ -343,14 +367,18 @@ export function generateAuthPage(
       </div>
 
       <div class="footer-info">
-        <div class="security-notice">
+        ${
+					!trusted
+						? `<div class="security-notice">
           <div class="security-notice-title">Seeing this unexpectedly?</div>
           <div class="security-notice-text">
             If you didn't initiate this login, someone may be attempting to
             access your account. Close this page immediately and check your
             account security.
           </div>
-        </div>
+        </div>`
+						: ''
+				}
 
         <div class="redirect-info">
           <div class="redirect-label">Redirect URL</div>
@@ -381,12 +409,12 @@ export function generateAuthPage(
 
         function handleContinue() {
           if (!continueBtn.disabled) {
-            location.href = ${continueUrl}
+            location.href = "${continueUrl}";
           }
         }
 
         function handleCancel() {
-          // Handle cancel action
+          window.close();
         }
       </script>
     </body>
