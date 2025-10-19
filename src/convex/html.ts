@@ -433,7 +433,7 @@ export function generateAuthPage(
         }
 
         function handleCancel() {
-          window.close();
+          history.back();
         }
       </script>
     </body>
