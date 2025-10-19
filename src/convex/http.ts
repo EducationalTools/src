@@ -2,6 +2,7 @@ import { httpRouter } from 'convex/server';
 import { authComponent, createAuth } from './auth';
 import { httpAction } from './_generated/server';
 import { generateAuthPage } from './html';
+import validator from 'validator';
 
 const http = httpRouter();
 
@@ -18,8 +19,8 @@ http.route({
 			throw new Error('Missing redirect parameter');
 		}
 		const redirectUrlObj = new URL(redirectUrl);
-		const host = redirectUrlObj.hostname;
-		const sanitizedHost = host.replace(/[^a-zA-Z0-9.-]/g, '');
+		const redirectHost = redirectUrlObj.host;
+		const sanitizedRedirectHost = validator.escape(redirectHost);
 
 		const { auth, headers } = await authComponent.getAuth(createAuth, ctx);
 
@@ -29,10 +30,12 @@ http.route({
 
 		return new Response(
 			generateAuthPage(
-				sanitizedHost,
-				session?.user.name || '',
-				redirectUrl,
-				`https://${sanitizedHost}/ott?token=${token.token}&redirect=${encodeURIComponent(redirectUrl)}`,
+				sanitizedRedirectHost,
+				validator.escape(session?.user.name || session?.user.email || ''),
+				validator.escape(redirectUrlObj.toString()),
+				validator.escape(
+					`https://${sanitizedRedirectHost}/ott?token=${token.token}&redirect=${encodeURIComponent(redirectUrl)}`
+				),
 				true
 			),
 			{
