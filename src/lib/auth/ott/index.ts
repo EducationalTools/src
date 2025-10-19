@@ -1,11 +1,12 @@
 import * as z from 'zod';
-import { defaultKeyHasher } from 'better-auth/plugins';
+import { defaultKeyHasher, ERROR_CODES } from 'better-auth/plugins';
 import { createAuthEndpoint } from 'better-auth/api';
 import { sessionMiddleware } from 'better-auth/api';
 import { generateRandomString } from 'better-auth/crypto';
 import type { BetterAuthPlugin } from 'better-auth';
 import type { Session, User } from 'better-auth/types';
 import type { GenericEndpointContext } from 'better-auth';
+import { setSessionCookie } from 'better-auth/cookies';
 
 interface OneTimeTokenOptions {
 	/**
@@ -104,6 +105,74 @@ export const oneTimeToken = (options?: OneTimeTokenOptions) => {
 						expiresAt
 					});
 					return c.json({ token });
+				}
+			),
+			/**
+			 * ### Endpoint
+			 *
+			 * POST `/one-time-token/login`
+			 *
+			 * ### API Methods
+			 *
+			 * **server:**
+			 * `auth.api.loginWithOneTimeToken`
+			 *
+			 * **client:**
+			 * `authClient.oneTimeToken.login`
+			 *
+			 * @see [Read our docs to learn more.](https://better-auth.com/docs/plugins/one-time-token#api-method-one-time-token-verify)
+			 */
+			loginWithOneTimeToken: createAuthEndpoint(
+				'/one-time-token/login',
+				{
+					method: 'POST',
+					body: z.object({
+						token: z.string().meta({
+							description: 'The token to verify. Eg: "some-token"'
+						})
+					})
+				},
+				async (c) => {
+					const { token } = c.body;
+					const storedToken = await storeToken(c, token);
+					const verificationValue = await c.context.internalAdapter.findVerificationValue(
+						`one-time-token:${storedToken}`
+					);
+					if (!verificationValue) {
+						throw c.error('BAD_REQUEST', {
+							message: 'Invalid token'
+						});
+					}
+					await c.context.internalAdapter.deleteVerificationValue(verificationValue.id);
+					if (verificationValue.expiresAt < new Date()) {
+						throw c.error('BAD_REQUEST', {
+							message: 'Token expired'
+						});
+					}
+					const session = await c.context.internalAdapter.findSession(verificationValue.value);
+					if (!session) {
+						throw c.error('BAD_REQUEST', {
+							message: 'Session not found'
+						});
+					}
+					const createdSession = await c.context.internalAdapter.createSession(
+						session.user.id,
+						c,
+						false
+					);
+					if (!createdSession) {
+						return c.json(null, {
+							status: 400,
+							body: {
+								message: 'Could not create session'
+							}
+						});
+					}
+					await setSessionCookie(c, {
+						session: createdSession,
+						user: session.user
+					});
+					return c.json(session);
 				}
 			),
 			/**
