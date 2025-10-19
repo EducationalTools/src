@@ -4,5 +4,5 @@ import { oneTimeTokenClient } from '$lib/auth/ott/client';
 
 export const authClient = createAuthClient({
 	plugins: [convexClient(), oneTimeTokenClient()],
-	baseURL: 'https://rightful-dogfish-709.convex.site'
+	baseURL: process.env.PUBLIC_CONVEX_SITE_URL
 });

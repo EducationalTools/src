@@ -70,13 +70,13 @@
 			<Dialog.Title>Sign in to EduTools</Dialog.Title>
 			<Dialog.Description>Sign in with your GitHub account to continue</Dialog.Description>
 		</Dialog.Header>
-		<div class="flex flex-col gap-4 py-4">
+		<div class="flex flex-col gap-4">
 			<Button
 				onclick={() => {
 					authClient.signIn.social({
 						provider: 'github',
 						callbackURL:
-							'https://rightful-dogfish-709.convex.site/auth?redirect=' + window.location.href
+							process.env.PUBLIC_CONVEX_SITE_URL + '/auth?redirect=' + window.location.href
 					});
 				}}
 			>

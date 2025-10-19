@@ -10,6 +10,7 @@ export default defineConfig(({ mode }) => {
 		plugins: [tailwindcss(), sveltekit()],
 		define: {
 			'process.env.PUBLIC_CONVEX_URL': JSON.stringify(env.PUBLIC_CONVEX_URL),
+			'process.env.PUBLIC_CONVEX_SITE_URL': JSON.stringify(env.PUBLIC_CONVEX_SITE_URL),
 			'process.env.BRANCH_NAME': JSON.stringify(branchName())
 		}
 	};
