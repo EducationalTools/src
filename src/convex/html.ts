@@ -440,7 +440,7 @@ export function generateAuthPage(
   </html>`;
 }
 
-export function generateErrorPage(errorMessage: string, errorDescription?: string) {
+export function generateErrorPage(errorMessage: string) {
 	return `
   <!DOCTYPE html>
   <html lang="en">
@@ -665,8 +665,6 @@ export function generateErrorPage(errorMessage: string, errorDescription?: strin
         </div>
 
         <div class="error-message">${errorMessage}</div>
-
-        ${errorDescription ? `<div class="error-details">${errorDescription}</div>` : ''}
       </div>
     </body>
   </html>`;
