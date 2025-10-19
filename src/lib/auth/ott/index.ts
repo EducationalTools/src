@@ -118,12 +118,12 @@ export const oneTimeToken = (options?: OneTimeTokenOptions) => {
 			 * `auth.api.loginWithOneTimeToken`
 			 *
 			 * **client:**
-			 * `authClient.oneTimeToken.login`
+			 * `authClient.signIn.ott`
 			 *
 			 * @see [Read our docs to learn more.](https://better-auth.com/docs/plugins/one-time-token#api-method-one-time-token-verify)
 			 */
-			loginWithOneTimeToken: createAuthEndpoint(
-				'/one-time-token/login',
+			loginWithOTT: createAuthEndpoint(
+				'/sign-in/ott',
 				{
 					method: 'POST',
 					body: z.object({
