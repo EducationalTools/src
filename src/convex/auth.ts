@@ -4,7 +4,8 @@ import { components } from './_generated/api';
 import { type DataModel } from './_generated/dataModel';
 import { query } from './_generated/server';
 import { betterAuth } from 'better-auth';
-import { createAuthMiddleware, oAuthProxy, oneTimeToken } from 'better-auth/plugins';
+import { createAuthMiddleware, oAuthProxy } from 'better-auth/plugins';
+import { oneTimeToken } from '../lib/auth/ott';
 
 const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex deployment, which redirects to the referer. if it works don't touch it
 
