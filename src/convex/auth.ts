@@ -26,11 +26,6 @@ export const createAuth = (
 		trustedOrigins: ['*'], // security? fuck that
 		baseURL: siteUrl,
 		database: authComponent.adapter(ctx),
-		// Configure simple, non-verified email/password to get started
-		emailAndPassword: {
-			enabled: true,
-			requireEmailVerification: false
-		},
 		socialProviders: {
 			github: {
 				clientId: process.env.GITHUB_CLIENT_ID as string,
