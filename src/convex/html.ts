@@ -606,7 +606,6 @@ export function generateErrorPage(errorMessage: string) {
           padding: 0.875rem;
           font-size: 0.875rem;
           color: var(--foreground);
-          margin-bottom: ${errorDescription ? '1rem' : '0'};
           line-height: 1.5;
         }
 
