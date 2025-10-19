@@ -24,6 +24,12 @@ http.route({
 		const redirectHost = redirectUrlObj.host;
 		const sanitizedRedirectHost = validator.escape(redirectHost);
 
+		if (redirectUrlObj.toString().startsWith('javascript:')) {
+			return new Response(generateErrorPage('no'), {
+				headers: { 'Content-Type': 'text/html' }
+			});
+		}
+
 		const { auth, headers } = await authComponent.getAuth(createAuth, ctx);
 
 		const session = await auth.api.getSession({ headers: request.headers });
