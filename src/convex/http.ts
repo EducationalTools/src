@@ -1,7 +1,7 @@
 import { httpRouter } from 'convex/server';
 import { authComponent, createAuth } from './auth';
 import { httpAction } from './_generated/server';
-import { generateAuthPage } from './html';
+import { generateAuthPage, generateErrorPage } from './html';
 import validator from 'validator';
 
 const http = httpRouter();
@@ -16,7 +16,9 @@ http.route({
 		const queryParams = new URLSearchParams(url.search);
 		const redirectUrl = queryParams.get('redirect');
 		if (!redirectUrl) {
-			throw new Error('Missing redirect parameter');
+			return new Response(generateErrorPage('Missing redirect parameter'), {
+				headers: { 'Content-Type': 'text/html' }
+			});
 		}
 		const redirectUrlObj = new URL(redirectUrl);
 		const redirectHost = redirectUrlObj.host;
