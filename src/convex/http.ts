@@ -41,7 +41,7 @@ http.route({
 				sanitizedRedirectHost,
 				validator.escape(session?.user.name || session?.user.email || ''),
 				validator.escape(redirectUrlObj.toString()),
-				`https://${sanitizedRedirectHost}/ott?token=${token.token}&redirect=${encodeURIComponent(redirectUrl)}`,
+				`${redirectUrlObj.protocol == 'https' ? 'https' : 'http'}://${sanitizedRedirectHost}/ott?token=${token.token}&redirect=${encodeURIComponent(redirectUrl)}`,
 				true
 			),
 			{
