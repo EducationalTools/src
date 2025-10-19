@@ -172,7 +172,10 @@ export const oneTimeToken = (options?: OneTimeTokenOptions) => {
 						session: createdSession,
 						user: session.user
 					});
-					return c.json(session);
+					return c.json({
+						token: createdSession.token,
+						user: session.user
+					});
 				}
 			),
 			/**
