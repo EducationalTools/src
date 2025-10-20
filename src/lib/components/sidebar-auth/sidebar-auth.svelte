@@ -9,6 +9,7 @@
 	import { toast } from 'svelte-sonner';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import AuthButton from './auth-button.svelte';
 
 	const id = $props.id();
 
@@ -71,17 +72,8 @@
 			<Dialog.Description>Sign in with your GitHub account to continue</Dialog.Description>
 		</Dialog.Header>
 		<div class="flex flex-col gap-4">
-			<Button
-				onclick={() => {
-					authClient.signIn.social({
-						provider: 'github',
-						callbackURL:
-							process.env.PUBLIC_CONVEX_SITE_URL + '/auth?redirect=' + window.location.href
-					});
-				}}
-			>
-				Sign in with GitHub
-			</Button>
+			<AuthButton provider="github">Github</AuthButton>
+			<AuthButton provider="google">Google</AuthButton>
 		</div>
 	</Dialog.Content>
 </Dialog.Root>
