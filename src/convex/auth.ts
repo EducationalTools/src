@@ -4,7 +4,7 @@ import { components } from './_generated/api';
 import { type DataModel } from './_generated/dataModel';
 import { query } from './_generated/server';
 import { betterAuth } from 'better-auth';
-import { createAuthMiddleware, oAuthProxy } from 'better-auth/plugins';
+import { createAuthMiddleware, genericOAuth, oAuthProxy } from 'better-auth/plugins';
 import { oneTimeToken } from '../lib/auth/ott';
 
 const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex deployment, which redirects to the referer. if it works don't touch it
@@ -37,6 +37,17 @@ export const createAuth = (
 			convex(),
 
 			oneTimeToken(),
+
+			genericOAuth({
+				config: [
+					{
+						providerId: 'username-password',
+						clientId: 'gYMYrelgdysRVxiTLAHzknSz0XappYYI',
+						clientSecret: 'VyduGcPTCQPnvya3sDqE8GUw60jgSosa7Gxht5R3gACclDR0Jz41tZwfGRzwm0lo',
+						discoveryUrl: 'https://educationaltools.au.auth0.com/.well-known/openid-configuration'
+					}
+				]
+			}),
 
 			// Disable state check
 			// refer to comment on line 26
