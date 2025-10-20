@@ -69,7 +69,6 @@
 	<Dialog.Content>
 		<Dialog.Header>
 			<Dialog.Title>Sign in to EduTools</Dialog.Title>
-			<Dialog.Description>Sign in with your GitHub account to continue</Dialog.Description>
 		</Dialog.Header>
 		<div class="flex flex-col gap-2">
 			<AuthButton provider="github">Github</AuthButton>
