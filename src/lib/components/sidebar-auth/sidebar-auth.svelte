@@ -5,7 +5,7 @@
 	import { useAuth } from '@mmailaender/convex-better-auth-svelte/svelte';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import Skeleton from '$lib/components/ui/skeleton/skeleton.svelte';
-	import { LogOut, User } from '@lucide/svelte';
+	import { LogIn, LogOut, User } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import Button from '$lib/components/ui/button/button.svelte';
@@ -59,8 +59,8 @@
 				authDialogOpen = true;
 			}}
 		>
-			<User />
-			Account
+			<LogIn />
+			Log in
 		</Sidebar.MenuButton>
 	</Sidebar.MenuItem>
 {/if}
