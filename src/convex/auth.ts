@@ -41,7 +41,7 @@ export const createAuth = (
 			genericOAuth({
 				config: [
 					{
-						providerId: 'username-password',
+						providerId: 'email',
 						clientId: 'gYMYrelgdysRVxiTLAHzknSz0XappYYI',
 						clientSecret: 'VyduGcPTCQPnvya3sDqE8GUw60jgSosa7Gxht5R3gACclDR0Jz41tZwfGRzwm0lo',
 						discoveryUrl: 'https://educationaltools.au.auth0.com/.well-known/openid-configuration'
