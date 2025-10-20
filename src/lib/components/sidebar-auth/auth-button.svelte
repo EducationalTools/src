@@ -9,6 +9,7 @@
 </script>
 
 <Button
+	variant="outline"
 	disabled={loading}
 	onclick={() => {
 		loading = true;
