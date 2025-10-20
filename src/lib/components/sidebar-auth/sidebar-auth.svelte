@@ -10,6 +10,7 @@
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import AuthButton from './auth-button.svelte';
+	import * as Popover from '$lib/components/ui/popover/index.js';
 
 	const id = $props.id();
 
@@ -41,16 +42,22 @@
 	</Sidebar.MenuItem>
 {:else if isAuthenticated}
 	<Sidebar.MenuItem>
-		<Sidebar.MenuButton>
-			{user?.name}
-		</Sidebar.MenuButton>
-	</Sidebar.MenuItem>
-
-	<Sidebar.MenuItem>
-		<Sidebar.MenuButton onclick={signOut}>
-			<LogOut />
-			Log out
-		</Sidebar.MenuButton>
+		<Popover.Root>
+			<Sidebar.MenuButton>
+				{#snippet child({ props })}
+					<Popover.Trigger {...props}>
+						{user?.name}
+					</Popover.Trigger>
+				{/snippet}
+			</Sidebar.MenuButton>
+			<Popover.Content side="right" class="flex flex-col gap-2">
+				<div>
+					<div class="text-md">{user?.name}</div>
+					<div class="text-sm">{user?.email}</div>
+				</div>
+				<div class="flex flex-row"><Button onclick={signOut}><LogOut /> Log out</Button></div>
+			</Popover.Content>
+		</Popover.Root>
 	</Sidebar.MenuItem>
 {:else}
 	<Sidebar.MenuItem>
