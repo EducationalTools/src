@@ -39,7 +39,7 @@ export const createAuth = (
 			oneTimeToken(),
 
 			// Disable state check
-			// refer to comment on line 25
+			// refer to comment on line 26
 			{
 				id: 'disable-state-check',
 				hooks: {
