@@ -50,6 +50,7 @@ export const createAuth = (
 		logger: {
 			disabled: optionsOnly
 		},
+		emailAndPassword: { enabled: false },
 		trustedOrigins: ['*'], // security? fuck that
 		baseURL: siteUrl,
 		database: authComponent.adapter(ctx),
