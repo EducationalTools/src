@@ -29,6 +29,21 @@ export const authComponent = createClient<DataModel>(components.betterAuth, {
 					});
 				}
 			},
+			onUpdate: async (ctx, doc) => {
+				const user = await ctx.db
+					.query('profiles')
+					.withIndex('by_user', (q) => q.eq('userId', doc._id))
+					.first();
+
+				if (!user) {
+					await ctx.db.insert('profiles', {
+						userId: doc._id,
+						name: doc.name
+					});
+				} else {
+					await ctx.db.patch(user._id, { name: doc.name });
+				}
+			},
 			onDelete: async (ctx, doc) => {
 				const user = await ctx.db
 					.query('profiles')
