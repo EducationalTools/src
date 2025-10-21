@@ -4,5 +4,5 @@ import { v } from 'convex/values';
 export default defineSchema({
 	trustedMirrors: defineTable({
 		host: v.string()
-	})
+	}).index('by_host', ['host'])
 });
