@@ -3,7 +3,7 @@ import { authComponent, createAuth } from './auth';
 import { httpAction } from './_generated/server';
 import { generateAuthPage, generateErrorPage } from './html';
 import validator from 'validator';
-import { api, internal } from './_generated/api';
+import { internal } from './_generated/api';
 
 const http = httpRouter();
 
