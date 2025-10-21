@@ -14,7 +14,16 @@ export const getCurrent = query({
 		if (!profile) {
 			throw new Error('Profile not found');
 		}
+		let pictureUrl;
+		if (profile.picture) {
+			pictureUrl = await ctx.storage.getUrl(profile.picture);
+		} else {
+			pictureUrl = null;
+		}
 
-		return profile;
+		return {
+			picture: pictureUrl,
+			...profile
+		};
 	}
 });
