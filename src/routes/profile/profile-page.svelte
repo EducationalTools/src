@@ -23,8 +23,8 @@
 	} = $props();
 </script>
 
-<div class="mx-auto w-full max-w-2xl p-2">
-	<div class="bg-card flex w-full flex-col gap-4 rounded-md border p-4">
+<div class="mx-auto w-full max-w-2xl p-4">
+	<div class="bg-card flex w-full flex-col gap-4 rounded-xl border p-4">
 		{#if loading}
 			<div class="flex w-full flex-row gap-4">
 				<Skeleton class="size-20 rounded-full" />
