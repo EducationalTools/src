@@ -11,6 +11,8 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import AuthButton from './auth-button.svelte';
 	import * as Popover from '$lib/components/ui/popover/index.js';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import { goto } from '$app/navigation';
 
 	const id = $props.id();
 
@@ -42,22 +44,33 @@
 	</Sidebar.MenuItem>
 {:else if isAuthenticated}
 	<Sidebar.MenuItem>
-		<Popover.Root>
+		<DropdownMenu.Root>
 			<Sidebar.MenuButton>
 				{#snippet child({ props })}
-					<Popover.Trigger {...props}>
+					<DropdownMenu.Trigger {...props}>
 						{user?.name}
-					</Popover.Trigger>
+					</DropdownMenu.Trigger>
 				{/snippet}
 			</Sidebar.MenuButton>
-			<Popover.Content side="right" class="flex flex-col gap-2">
-				<div>
-					<div class="text-md">{user?.name}</div>
-					<div class="text-sm">{user?.email}</div>
-				</div>
-				<div class="flex flex-row"><Button onclick={signOut}><LogOut /> Log out</Button></div>
-			</Popover.Content>
-		</Popover.Root>
+			<DropdownMenu.Content side="right">
+				<DropdownMenu.Item onclick={() => goto('/profile')}>
+					<div>
+						<div class="text-md">{user?.name}</div>
+						<div class="text-sm">{user?.email}</div>
+					</div>
+				</DropdownMenu.Item>
+				<DropdownMenu.Item
+					onclick={() =>
+						toast.promise(signOut, {
+							loading: 'Logging out...',
+							success: 'Logged out successfully',
+							error: 'Failed to log out'
+						})}
+				>
+					Log out
+				</DropdownMenu.Item>
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
 	</Sidebar.MenuItem>
 {:else}
 	<Sidebar.MenuItem>
