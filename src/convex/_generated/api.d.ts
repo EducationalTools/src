@@ -11,6 +11,7 @@
 import type * as auth from "../auth.js";
 import type * as html from "../html.js";
 import type * as http from "../http.js";
+import type * as profiles from "../profiles.js";
 import type * as trustedmirrors from "../trustedmirrors.js";
 
 import type {
@@ -31,6 +32,7 @@ declare const fullApi: ApiFromModules<{
   auth: typeof auth;
   html: typeof html;
   http: typeof http;
+  profiles: typeof profiles;
   trustedmirrors: typeof trustedmirrors;
 }>;
 declare const fullApiWithMounts: typeof fullApi;
