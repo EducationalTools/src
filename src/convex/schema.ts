@@ -11,5 +11,5 @@ export default defineSchema({
 		picture: v.optional(v.id('_storage')),
 		bio: v.optional(v.string()),
 		pronouns: v.optional(v.string())
-	})
+	}).index('by_user', ['userId'])
 });
