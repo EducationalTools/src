@@ -7,7 +7,6 @@ export default defineSchema({
 	}).index('by_host', ['host']),
 	profiles: defineTable({
 		userId: v.string(),
-		name: v.optional(v.string()),
 		picture: v.optional(v.id('_storage')),
 		bio: v.optional(v.string()),
 		pronouns: v.optional(v.string())

@@ -24,8 +24,7 @@ export const authComponent = createClient<DataModel>(components.betterAuth, {
 
 				if (!user) {
 					await ctx.db.insert('profiles', {
-						userId: doc._id,
-						name: doc.name
+						userId: doc._id
 					});
 				}
 			},
@@ -37,11 +36,8 @@ export const authComponent = createClient<DataModel>(components.betterAuth, {
 
 				if (!user) {
 					await ctx.db.insert('profiles', {
-						userId: doc._id,
-						name: doc.name
+						userId: doc._id
 					});
-				} else {
-					await ctx.db.patch(user._id, { name: doc.name });
 				}
 			},
 			onDelete: async (ctx, doc) => {
