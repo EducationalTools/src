@@ -24,7 +24,8 @@ export const authComponent = createClient<DataModel>(components.betterAuth, {
 
 				if (!user) {
 					await ctx.db.insert('profiles', {
-						userId: doc._id
+						userId: doc._id,
+						name: doc.name
 					});
 				}
 			},
