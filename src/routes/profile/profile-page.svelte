@@ -48,8 +48,10 @@
 								error: 'Failed to copy'
 							}
 						);
-					}}><Share /></Button
+					}}
 				>
+					<Share />
+				</Button>
 			</div>
 			<p class="text-sm">{bio}</p>
 		</div>
