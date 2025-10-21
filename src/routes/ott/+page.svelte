@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { authClient } from '$lib/auth-client';
-	import { LoaderCircle } from '@lucide/svelte';
+	import { CircleAlert, LoaderCircle } from '@lucide/svelte';
 	import { useConvexAuth } from 'convex/react';
 	// import { onMount } from 'svelte';
 	import { page } from '$app/state';
@@ -10,6 +10,9 @@
 	import { toast } from 'svelte-sonner';
 
 	const auth = useAuth();
+
+	let error = $state(false);
+	let errorMessage = $state('');
 
 	function explicitEffect(fn: () => void, depsFn: () => any[]) {
 		$effect(() => {
@@ -30,7 +33,15 @@
 					.ott({
 						token: page.url.searchParams.get('token') || ''
 					})
-					.then();
+					.then((response) => {
+						if (response.error) {
+							error = true;
+							errorMessage = response.error.message;
+						}
+					})
+					.catch(() => {
+						error = true;
+					});
 			}
 		},
 		() => [auth.isLoading]
@@ -38,6 +49,11 @@
 </script>
 
 <div class="flex h-full w-full flex-row items-center justify-center gap-2 p-10">
-	<LoaderCircle class="animate-spin" />
-	Logging in...
+	{#if error}
+		<CircleAlert />
+		{errorMessage}
+	{:else}
+		<LoaderCircle class="animate-spin" />
+		Logging in...
+	{/if}
 </div>
