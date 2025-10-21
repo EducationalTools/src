@@ -1,0 +1,35 @@
+<script lang="ts">
+	import * as Avatar from '$lib/components/ui/avatar/index.js';
+
+	const {
+		picture,
+		name,
+		bio,
+		pronouns,
+		loading
+	}: {
+		picture: string | null | undefined;
+		name: string | null | undefined;
+		bio: string | undefined;
+		pronouns: string | undefined;
+		loading: boolean;
+	} = $props();
+</script>
+
+{#if loading}{:else}
+	<div class="mx-auto w-full max-w-2xl p-2">
+		<div class="w-full rounded-md border p-4">
+			<div class="flex w-full flex-col gap-4">
+				<Avatar.Root class="size-20">
+					<Avatar.Image src={picture} />
+					<Avatar.Fallback>{name?.charAt(0)}</Avatar.Fallback>
+				</Avatar.Root>
+				<div class="flex flex-col">
+					<h1 class="text-3xl">{name}</h1>
+					<h2 class="text-xl">{pronouns}</h2>
+					<p class="text-sm">{bio}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{/if}
