@@ -1,6 +1,6 @@
 import { v } from 'convex/values';
-import { query } from './_generated/server';
-import { authComponent } from './auth';
+import { mutation, query } from './_generated/server';
+import { authComponent, createAuth } from './auth';
 
 export const getCurrent = query({
 	args: {},
@@ -28,6 +28,33 @@ export const getCurrent = query({
 			bio: profile.bio,
 			pronouns: profile.pronouns
 		};
+	}
+});
+
+export const updateCurrent = mutation({
+	args: {
+		name: v.string(),
+		bio: v.string(),
+		pronouns: v.string()
+	},
+	handler: async (ctx, { name, bio, pronouns }) => {
+		const { auth, headers } = await authComponent.getAuth(createAuth, ctx);
+
+		const currentUser = await authComponent.getAuthUser(ctx);
+
+		const profile = await ctx.db
+			.query('profiles')
+			.withIndex('by_user', (q) => q.eq('userId', currentUser._id))
+			.first();
+
+		if (!profile) {
+			throw new Error('Profile not found');
+		}
+
+		await ctx.db.patch(profile._id, {
+			bio,
+			pronouns
+		});
 	}
 });
 
