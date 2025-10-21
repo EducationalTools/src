@@ -25,7 +25,7 @@ http.route({
 		const redirectHost = redirectUrlObj.host;
 		const sanitizedRedirectHost = validator.escape(redirectHost);
 
-		const trusted = ctx.runQuery(internal.trustedmirrors.isTrusted, { host: redirectHost });
+		const trusted = await ctx.runQuery(internal.trustedmirrors.isTrusted, { host: redirectHost });
 
 		if (redirectUrlObj.toString().startsWith('javascript:')) {
 			return new Response(generateErrorPage('no'), {
@@ -45,7 +45,7 @@ http.route({
 				validator.escape(session?.user.name || session?.user.email || ''),
 				validator.escape(redirectUrlObj.toString()),
 				`${redirectUrlObj.protocol == 'https' ? 'https' : 'http'}://${sanitizedRedirectHost}/ott?token=${token.token}&redirect=${encodeURIComponent(redirectUrl)}`,
-				true
+				trusted
 			),
 			{
 				headers: { 'Content-Type': 'text/html' }
