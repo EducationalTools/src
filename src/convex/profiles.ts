@@ -25,7 +25,8 @@ export const getCurrent = query({
 		return {
 			picture: pictureUrl,
 			name: currentUser.name,
-			...profile
+			bio: profile.bio,
+			pronouns: profile.pronouns
 		};
 	}
 });
@@ -58,7 +59,8 @@ export const get = query({
 		return {
 			picture: pictureUrl,
 			name: user.name,
-			...profile
+			bio: profile.bio,
+			pronouns: profile.pronouns
 		};
 	}
 });
