@@ -53,7 +53,7 @@
 					<Share />
 				</Button>
 			</div>
-			<p class="text-sm">{bio}</p>
+			<p class="text-md">{bio}</p>
 		</div>
 	</div>
 {/if}
