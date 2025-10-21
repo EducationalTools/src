@@ -6,7 +6,7 @@ export const isTrusted = internalQuery({
 		host: v.string()
 	},
 	handler: async (ctx, args) => {
-		const entry = ctx.db
+		const entry = await ctx.db
 			.query('trustedMirrors')
 			.withIndex('by_host', (q) => q.eq('host', args.host))
 			.first();
