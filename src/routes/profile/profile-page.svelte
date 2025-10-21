@@ -4,6 +4,7 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { Share } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
+	import { Skeleton } from '$lib/components/ui/skeleton/index.js';
 
 	const {
 		picture,
@@ -22,9 +23,19 @@
 	} = $props();
 </script>
 
-{#if loading}{:else}
-	<div class="mx-auto w-full max-w-2xl p-2">
-		<div class="bg-card flex w-full flex-col gap-4 rounded-md border p-4">
+<div class="mx-auto w-full max-w-2xl p-2">
+	<div class="bg-card flex w-full flex-col gap-4 rounded-md border p-4">
+		{#if loading}
+			<div class="flex w-full flex-row gap-4">
+				<Skeleton class="size-20 rounded-full" />
+				<div class="flex flex-col gap-2">
+					<Skeleton class="h-8 w-[150px]" />
+					<Skeleton class="h-6 w-[75px]" />
+				</div>
+			</div>
+			<Skeleton class="h-8 w-full" />
+			<Skeleton class="h-8 w-full" />
+		{:else}
 			<div class="flex w-full flex-row gap-4">
 				<Avatar.Root class="size-20">
 					<Avatar.Image src={picture} />
@@ -54,6 +65,6 @@
 				</Button>
 			</div>
 			<p class="text-md">{bio}</p>
-		</div>
+		{/if}
 	</div>
-{/if}
+</div>
