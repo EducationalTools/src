@@ -11,7 +11,34 @@ const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex 
 
 // The component client has methods needed for integrating Convex with Better Auth,
 // as well as helper methods for general use.
-export const authComponent = createClient<DataModel>(components.betterAuth);
+export const authComponent = createClient<DataModel>(components.betterAuth, {
+	triggers: {
+		user: {
+			onCreate: async (ctx, doc) => {
+				const user = await ctx.db
+					.query('profiles')
+					.withIndex('by_user', (q) => q.eq('userId', doc._id))
+					.first();
+
+				if (!user) {
+					await ctx.db.insert('profiles', {
+						userId: doc._id
+					});
+				}
+			},
+			onDelete: async (ctx, doc) => {
+				const user = await ctx.db
+					.query('profiles')
+					.withIndex('by_user', (q) => q.eq('userId', doc._id))
+					.first();
+
+				if (!user) return;
+
+				await ctx.db.delete(user._id);
+			}
+		}
+	}
+});
 
 export const createAuth = (
 	ctx: GenericCtx<DataModel>,
