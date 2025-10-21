@@ -3,6 +3,7 @@ import { authComponent, createAuth } from './auth';
 import { httpAction } from './_generated/server';
 import { generateAuthPage, generateErrorPage } from './html';
 import validator from 'validator';
+import { api, internal } from './_generated/api';
 
 const http = httpRouter();
 
@@ -23,6 +24,8 @@ http.route({
 		const redirectUrlObj = new URL(redirectUrl);
 		const redirectHost = redirectUrlObj.host;
 		const sanitizedRedirectHost = validator.escape(redirectHost);
+
+		const trusted = ctx.runQuery(internal.trustedmirrors.isTrusted, { host: redirectHost });
 
 		if (redirectUrlObj.toString().startsWith('javascript:')) {
 			return new Response(generateErrorPage('no'), {
