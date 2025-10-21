@@ -24,7 +24,7 @@
 
 {#if loading}{:else}
 	<div class="mx-auto w-full max-w-2xl p-2">
-		<div class="flex w-full flex-col gap-4 rounded-md border p-4">
+		<div class="bg-card flex w-full flex-col gap-4 rounded-md border p-4">
 			<div class="flex w-full flex-row gap-4">
 				<Avatar.Root class="size-20">
 					<Avatar.Image src={picture} />
