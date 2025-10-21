@@ -6,13 +6,15 @@
 		name,
 		bio,
 		pronouns,
-		loading
+		loading,
+		id
 	}: {
 		picture: string | null | undefined;
 		name: string | null | undefined;
 		bio: string | undefined;
 		pronouns: string | undefined;
 		loading: boolean;
+		id: string | null | undefined;
 	} = $props();
 </script>
 

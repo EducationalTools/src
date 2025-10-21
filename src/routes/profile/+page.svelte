@@ -5,9 +5,11 @@
 	import { useQuery } from 'convex-svelte';
 
 	const profile = useQuery(api.profiles.getCurrent, {});
+	const user = useQuery(api.auth.getCurrentUser, {});
 </script>
 
 <ProfilePage
+	id={user.data?._id}
 	bio={profile?.data?.bio}
 	picture={profile?.data?.picture}
 	name={profile?.data?.name}

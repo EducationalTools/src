@@ -10,6 +10,7 @@
 </script>
 
 <ProfilePage
+	id={page.params.id}
 	bio={profile?.data?.bio}
 	picture={profile?.data?.picture}
 	name={profile?.data?.name}
