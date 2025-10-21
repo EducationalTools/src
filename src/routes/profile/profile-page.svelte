@@ -18,8 +18,8 @@
 
 {#if loading}{:else}
 	<div class="mx-auto w-full max-w-2xl p-2">
-		<div class="w-full rounded-md border p-4">
-			<div class="flex w-full flex-col gap-4">
+		<div class="flex w-full flex-col gap-4 rounded-md border p-4">
+			<div class="flex w-full flex-row gap-4">
 				<Avatar.Root class="size-20">
 					<Avatar.Image src={picture} />
 					<Avatar.Fallback>{name?.charAt(0)}</Avatar.Fallback>
@@ -27,9 +27,9 @@
 				<div class="flex flex-col">
 					<h1 class="text-3xl">{name}</h1>
 					<h2 class="text-xl">{pronouns}</h2>
-					<p class="text-sm">{bio}</p>
 				</div>
 			</div>
+			<p class="text-sm">{bio}</p>
 		</div>
 	</div>
 {/if}
