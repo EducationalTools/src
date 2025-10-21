@@ -1,6 +1,6 @@
-import { createClient, type GenericCtx } from '@convex-dev/better-auth';
+import { AuthFunctions, createClient, type GenericCtx } from '@convex-dev/better-auth';
 import { convex, crossDomain } from '@convex-dev/better-auth/plugins';
-import { components } from './_generated/api';
+import { components, internal } from './_generated/api';
 import { type DataModel } from './_generated/dataModel';
 import { query } from './_generated/server';
 import { betterAuth } from 'better-auth';
@@ -8,10 +8,12 @@ import { createAuthMiddleware, genericOAuth, oAuthProxy } from 'better-auth/plug
 import { oneTimeToken } from '../lib/auth/ott';
 
 const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex deployment, which redirects to the referer. if it works don't touch it
+const authFunctions: AuthFunctions = internal.auth;
 
 // The component client has methods needed for integrating Convex with Better Auth,
 // as well as helper methods for general use.
 export const authComponent = createClient<DataModel>(components.betterAuth, {
+	authFunctions,
 	triggers: {
 		user: {
 			onCreate: async (ctx, doc) => {
@@ -105,6 +107,8 @@ export const createAuth = (
 		}
 	});
 };
+
+export const { onCreate, onUpdate, onDelete } = authComponent.triggersApi();
 
 // Example function for getting the current user
 // Feel free to edit, omit, etc.
