@@ -1,5 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
+	import Button from '$lib/components/ui/button/button.svelte';
+	import { Share } from '@lucide/svelte';
+	import { toast } from 'svelte-sonner';
 
 	const {
 		picture,
@@ -30,6 +34,22 @@
 					<h1 class="text-3xl">{name}</h1>
 					<h2 class="text-xl">{pronouns}</h2>
 				</div>
+				<div class="grow"></div>
+				<Button
+					size="icon"
+					variant="ghost"
+					onclick={() => {
+						toast.promise(
+							navigator.clipboard.writeText(
+								page.url.protocol + '://' + page.url.host + '/profile/' + id || ''
+							),
+							{
+								success: 'Copied!',
+								error: 'Failed to copy'
+							}
+						);
+					}}><Share /></Button
+				>
 			</div>
 			<p class="text-sm">{bio}</p>
 		</div>
