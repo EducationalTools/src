@@ -70,17 +70,6 @@ export const createAuth = (
 
 			oneTimeToken(),
 
-			genericOAuth({
-				config: [
-					{
-						providerId: 'email',
-						clientId: 'gYMYrelgdysRVxiTLAHzknSz0XappYYI',
-						clientSecret: 'VyduGcPTCQPnvya3sDqE8GUw60jgSosa7Gxht5R3gACclDR0Jz41tZwfGRzwm0lo',
-						discoveryUrl: 'https://educationaltools.au.auth0.com/.well-known/openid-configuration'
-					}
-				]
-			}),
-
 			// Disable state check
 			// refer to comment on line 26
 			{
