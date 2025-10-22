@@ -14,6 +14,7 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import { goto } from '$app/navigation';
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
+	import EditProfileDialog from './edit-profile-dialog.svelte';
 
 	const id = $props.id();
 
@@ -34,8 +35,11 @@
 			toast.error('Something went wrong');
 		}
 	}
+
+	let editProfileDialogOpen = $state(false);
 </script>
 
+<EditProfileDialog bind:open={editProfileDialogOpen} />
 {#if isLoading}
 	<Sidebar.MenuItem>
 		<Sidebar.MenuButton class="flex flex-row">
@@ -68,7 +72,9 @@
 						<div class="text-sm">{user.data?.email}</div>
 					</div>
 				</DropdownMenu.Item>
-				<DropdownMenu.Item onclick={() => goto('/profile/edit')}>Edit profile</DropdownMenu.Item>
+				<DropdownMenu.Item onclick={() => (editProfileDialogOpen = true)}
+					>Edit profile</DropdownMenu.Item
+				>
 				<DropdownMenu.Item
 					onclick={() =>
 						toast.promise(signOut, {
