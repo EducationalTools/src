@@ -13,6 +13,7 @@
 	import * as Popover from '$lib/components/ui/popover/index.js';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import { goto } from '$app/navigation';
+	import * as Avatar from '$lib/components/ui/avatar/index.js';
 
 	const id = $props.id();
 
@@ -48,12 +49,20 @@
 			<Sidebar.MenuButton>
 				{#snippet child({ props })}
 					<DropdownMenu.Trigger {...props}>
+						<Avatar.Root class="size-4">
+							<Avatar.Image src={profile.data?.picture} />
+							<Avatar.Fallback>{profile.data?.name?.charAt(0)}</Avatar.Fallback>
+						</Avatar.Root>
 						{profile.data?.name}
 					</DropdownMenu.Trigger>
 				{/snippet}
 			</Sidebar.MenuButton>
 			<DropdownMenu.Content side="right">
 				<DropdownMenu.Item onclick={() => goto('/profile')}>
+					<Avatar.Root>
+						<Avatar.Image src={profile.data?.picture} />
+						<Avatar.Fallback>{profile.data?.name?.charAt(0)}</Avatar.Fallback>
+					</Avatar.Root>
 					<div>
 						<div class="text-md">{profile.data?.name}</div>
 						<div class="text-sm">{user.data?.email}</div>
