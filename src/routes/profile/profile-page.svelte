@@ -64,7 +64,7 @@
 					<Share />
 				</Button>
 			</div>
-			<p class="text-md">{bio}</p>
+			<p class="text-md whitespace-pre-wrap">{bio}</p>
 		{/if}
 	</div>
 </div>
