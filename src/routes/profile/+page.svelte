@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { api } from '$convex/_generated/api';
-	import ProfilePage from './profile-page.svelte';
+	import ProfilePage from '$lib/components/profile-page.svelte';
 
 	import { useQuery } from 'convex-svelte';
 
