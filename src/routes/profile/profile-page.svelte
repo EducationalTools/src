@@ -41,9 +41,9 @@
 					<Avatar.Image src={picture} />
 					<Avatar.Fallback>{name?.charAt(0)}</Avatar.Fallback>
 				</Avatar.Root>
-				<div class="flex flex-col">
+				<div class="flex flex-col justify-center">
 					<h1 class="text-3xl">{name}</h1>
-					<h2 class="text-xl">{pronouns}</h2>
+					<h2 class="text-sm">{pronouns}</h2>
 				</div>
 				<div class="grow"></div>
 				<Button
