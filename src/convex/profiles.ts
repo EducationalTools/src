@@ -24,7 +24,7 @@ export const getCurrent = query({
 
 		return {
 			picture: pictureUrl,
-			name: currentUser.name,
+			name: profile.name,
 			bio: profile.bio,
 			pronouns: profile.pronouns
 		};
@@ -38,8 +38,6 @@ export const updateCurrent = mutation({
 		pronouns: v.string()
 	},
 	handler: async (ctx, { name, bio, pronouns }) => {
-		const { auth, headers } = await authComponent.getAuth(createAuth, ctx);
-
 		const currentUser = await authComponent.getAuthUser(ctx);
 
 		const profile = await ctx.db
@@ -52,6 +50,7 @@ export const updateCurrent = mutation({
 		}
 
 		await ctx.db.patch(profile._id, {
+			name,
 			bio,
 			pronouns
 		});
@@ -66,12 +65,6 @@ export const get = query({
 			.withIndex('by_user', (q) => q.eq('userId', userId))
 			.first();
 
-		const user = await authComponent.getAnyUserById(ctx, userId);
-
-		if (!user) {
-			throw new Error('User not found');
-		}
-
 		if (!profile) {
 			throw new Error('Profile not found');
 		}
@@ -85,7 +78,7 @@ export const get = query({
 
 		return {
 			picture: pictureUrl,
-			name: user.name,
+			name: profile.name,
 			bio: profile.bio,
 			pronouns: profile.pronouns
 		};
