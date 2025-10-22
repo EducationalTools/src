@@ -66,7 +66,10 @@
 									name: name,
 									pronouns: pronouns
 								})
-								.then(resolve)
+								.then((...args) => {
+									resolve(...args);
+									open = false;
+								})
 								.catch(reject)
 								.finally(() => (loading = false));
 						}),
