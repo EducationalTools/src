@@ -23,8 +23,8 @@
 	const isLoading = $derived(auth.isLoading);
 	const isAuthenticated = $derived(auth.isAuthenticated);
 
-	const currentUserResponse = useQuery(api.auth.getCurrentUser, {});
-	let user = $derived(currentUserResponse.data);
+	const user = useQuery(api.auth.getCurrentUser, {});
+	const profile = useQuery(api.profiles.getCurrent, {});
 
 	async function signOut() {
 		const result = await authClient.signOut();
@@ -48,15 +48,15 @@
 			<Sidebar.MenuButton>
 				{#snippet child({ props })}
 					<DropdownMenu.Trigger {...props}>
-						{user?.name}
+						{profile.data?.name}
 					</DropdownMenu.Trigger>
 				{/snippet}
 			</Sidebar.MenuButton>
 			<DropdownMenu.Content side="right">
 				<DropdownMenu.Item onclick={() => goto('/profile')}>
 					<div>
-						<div class="text-md">{user?.name}</div>
-						<div class="text-sm">{user?.email}</div>
+						<div class="text-md">{profile.data?.name}</div>
+						<div class="text-sm">{user.data?.email}</div>
 					</div>
 				</DropdownMenu.Item>
 				<DropdownMenu.Item
