@@ -91,3 +91,9 @@ export const get = query({
 		};
 	}
 });
+
+export const generateUploadUrl = mutation({
+	handler: async (ctx) => {
+		return await ctx.storage.generateUploadUrl();
+	}
+});
