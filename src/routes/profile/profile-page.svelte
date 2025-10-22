@@ -28,9 +28,9 @@
 		{#if loading}
 			<div class="flex w-full flex-row gap-4">
 				<Skeleton class="size-20 rounded-full" />
-				<div class="flex flex-col gap-2">
+				<div class="flex flex-col justify-center gap-2">
 					<Skeleton class="h-8 w-[150px]" />
-					<Skeleton class="h-6 w-[75px]" />
+					<Skeleton class="h-5 w-[75px]" />
 				</div>
 			</div>
 			<Skeleton class="h-8 w-full" />
