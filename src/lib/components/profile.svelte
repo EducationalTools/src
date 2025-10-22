@@ -33,7 +33,6 @@
 			</div>
 		</div>
 		<Skeleton class="h-8 w-full" />
-		<Skeleton class="h-8 w-full" />
 	{:else}
 		<div class="flex w-full flex-row gap-4">
 			<Avatar.Root class="size-20">
