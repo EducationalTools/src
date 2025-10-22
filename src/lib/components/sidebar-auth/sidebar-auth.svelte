@@ -15,6 +15,7 @@
 	import { goto } from '$app/navigation';
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
 	import EditProfileDialog from './edit-profile-dialog.svelte';
+	import { currentProfileId } from '$lib/state.svelte';
 
 	const id = $props.id();
 
@@ -62,7 +63,11 @@
 				{/snippet}
 			</Sidebar.MenuButton>
 			<DropdownMenu.Content side="right">
-				<DropdownMenu.Item onclick={() => goto('/profile')}>
+				<DropdownMenu.Item
+					onclick={() => {
+						currentProfileId.current = user.data?._id || '';
+					}}
+				>
 					<Avatar.Root>
 						<Avatar.Image src={profile.data?.picture} />
 						<Avatar.Fallback>{profile.data?.name?.charAt(0)}</Avatar.Fallback>
