@@ -27,6 +27,13 @@ export const authComponent = createClient<DataModel>(components.betterAuth, {
 						userId: doc._id,
 						name: doc.name
 					});
+
+					if (doc.image) {
+						await ctx.scheduler.runAfter(0, internal.profilepicture.setFromUrl, {
+							url: doc.image,
+							userId: doc._id
+						});
+					}
 				}
 			},
 			onUpdate: async (ctx, doc) => {
@@ -40,6 +47,13 @@ export const authComponent = createClient<DataModel>(components.betterAuth, {
 						userId: doc._id,
 						name: doc.name
 					});
+
+					if (doc.image) {
+						await ctx.scheduler.runAfter(0, internal.profilepicture.setFromUrl, {
+							url: doc.image,
+							userId: doc._id
+						});
+					}
 				}
 			},
 			onDelete: async (ctx, doc) => {
