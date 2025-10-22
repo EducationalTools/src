@@ -68,6 +68,7 @@
 						<div class="text-sm">{user.data?.email}</div>
 					</div>
 				</DropdownMenu.Item>
+				<DropdownMenu.Item onclick={() => goto('/profile/edit')}>Edit profile</DropdownMenu.Item>
 				<DropdownMenu.Item
 					onclick={() =>
 						toast.promise(signOut, {
