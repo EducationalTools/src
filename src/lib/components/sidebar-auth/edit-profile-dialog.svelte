@@ -9,6 +9,7 @@
 	import { untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import { currentProfileId } from '$lib/state.svelte';
 
 	function explicitEffect(fn: () => void, depsFn: () => any[]) {
 		$effect(() => {
@@ -19,6 +20,7 @@
 
 	const client = useConvexClient();
 	const profile = useQuery(api.profiles.getCurrent, {});
+	const user = useQuery(api.auth.getCurrentUser, {});
 
 	let name = $state('');
 	let pronouns = $state('');
@@ -69,6 +71,7 @@
 								.then((...args) => {
 									resolve(...args);
 									open = false;
+									currentProfileId.current = user.data?._id || '';
 								})
 								.catch(reject)
 								.finally(() => (loading = false));
