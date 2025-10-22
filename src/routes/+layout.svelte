@@ -32,6 +32,7 @@
 	import Identify from './identify.svelte';
 	import { Search } from '@lucide/svelte';
 	import { commandOpen } from '$lib/state.svelte';
+	import ProfileDialog from '$lib/components/profile/dialog.svelte';
 
 	// State
 	let trackerBlockerDialog = $state(false);
@@ -77,6 +78,7 @@
 	<Toaster />
 	<Settings />
 	<Identify />
+	<ProfileDialog />
 
 	<!-- Main layout -->
 	<Sidebar.Provider class="flex flex-col md:flex-row">
