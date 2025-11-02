@@ -10,14 +10,12 @@
 		picture,
 		name,
 		bio,
-		pronouns,
 		loading,
 		id
 	}: {
 		picture: string | null | undefined;
 		name: string | null | undefined;
 		bio: string | undefined;
-		pronouns: string | undefined;
 		loading: boolean;
 		id: string | null | undefined;
 	} = $props();
@@ -41,7 +39,6 @@
 			</Avatar.Root>
 			<div class="flex flex-col justify-center">
 				<h1 class="text-3xl">{name}</h1>
-				<h2 class="text-sm">{pronouns}</h2>
 			</div>
 			<div class="grow"></div>
 			<Button

@@ -10,7 +10,6 @@ export default defineSchema({
 		name: v.optional(v.string()),
 		picture: v.optional(v.id('_storage')),
 		bio: v.optional(v.string()),
-		pronouns: v.optional(v.string()),
 		badges: v.optional(v.array(v.string()))
 	}).index('by_user', ['userId'])
 });

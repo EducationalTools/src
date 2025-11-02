@@ -23,7 +23,6 @@
 	const user = useQuery(api.auth.getCurrentUser, {});
 
 	let name = $state('');
-	let pronouns = $state('');
 	let bio = $state('');
 
 	let loading = $state(false);
@@ -31,9 +30,6 @@
 	explicitEffect(
 		() => {
 			if (profile) {
-				if (profile?.data?.pronouns) {
-					pronouns = profile.data.pronouns;
-				}
 				if (profile?.data?.name) {
 					name = profile.data.name;
 				}
@@ -65,8 +61,7 @@
 							client
 								.mutation(api.profiles.updateCurrent, {
 									bio: bio,
-									name: name,
-									pronouns: pronouns
+									name: name
 								})
 								.then((...args) => {
 									resolve(...args);
@@ -96,10 +91,6 @@
 							placeholder="This is how you will appear"
 							bind:value={name}
 						/>
-					</div>
-					<div class="flex w-full flex-col gap-1.5">
-						<Label for="pronouns-{id}">Pronouns</Label>
-						<Input disabled={loading} type="text" id="pronouns-{id}" bind:value={pronouns} />
 					</div>
 				</div>
 				<div class="grid w-full gap-1.5">

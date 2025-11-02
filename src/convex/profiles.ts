@@ -25,8 +25,7 @@ export const getCurrent = query({
 		return {
 			picture: pictureUrl,
 			name: profile.name,
-			bio: profile.bio,
-			pronouns: profile.pronouns
+			bio: profile.bio
 		};
 	}
 });
@@ -34,8 +33,7 @@ export const getCurrent = query({
 export const updateCurrent = mutation({
 	args: {
 		name: v.string(),
-		bio: v.string(),
-		pronouns: v.string()
+		bio: v.string()
 	},
 	handler: async (ctx, { name, bio, pronouns }) => {
 		const currentUser = await authComponent.getAuthUser(ctx);
@@ -51,8 +49,7 @@ export const updateCurrent = mutation({
 
 		await ctx.db.patch(profile._id, {
 			name,
-			bio,
-			pronouns
+			bio
 		});
 	}
 });
@@ -79,8 +76,7 @@ export const get = query({
 		return {
 			picture: pictureUrl,
 			name: profile.name,
-			bio: profile.bio,
-			pronouns: profile.pronouns
+			bio: profile.bio
 		};
 	}
 });

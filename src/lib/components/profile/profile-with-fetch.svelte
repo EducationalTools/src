@@ -14,6 +14,5 @@
 	bio={profile?.data?.bio}
 	picture={profile?.data?.picture}
 	name={profile?.data?.name}
-	pronouns={profile?.data?.pronouns}
 	loading={profile?.isLoading ?? false}
 />
