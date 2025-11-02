@@ -80,18 +80,16 @@
 				}}
 				class="flex flex-col gap-4"
 			>
-				<div class=" grid grid-cols-2 gap-4">
-					<div class="flex w-full flex-col gap-1.5">
-						<Label for="name-{id}">Display Name</Label>
-						<Input
-							disabled={loading}
-							required
-							type="text"
-							id="name-{id}"
-							placeholder="This is how you will appear"
-							bind:value={name}
-						/>
-					</div>
+				<div class="flex w-full flex-col gap-1.5">
+					<Label for="name-{id}">Display Name</Label>
+					<Input
+						disabled={loading}
+						required
+						type="text"
+						id="name-{id}"
+						placeholder="This is how you will appear"
+						bind:value={name}
+					/>
 				</div>
 				<div class="grid w-full gap-1.5">
 					<Label for="bio-{id}">Bio</Label>
