@@ -35,7 +35,7 @@ export const updateCurrent = mutation({
 		name: v.string(),
 		bio: v.string()
 	},
-	handler: async (ctx, { name, bio, pronouns }) => {
+	handler: async (ctx, { name, bio }) => {
 		const currentUser = await authComponent.getAuthUser(ctx);
 
 		const profile = await ctx.db
