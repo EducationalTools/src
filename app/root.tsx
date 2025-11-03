@@ -34,18 +34,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <ThemeProvider defaultTheme="dark" storageKey="edutools-ui-theme">
-          {children}
-          <ScrollRestoration />
-          <Scripts />
-        </ThemeProvider>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
       </body>
     </html>
   );
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <ThemeProvider defaultTheme="dark" storageKey="edutools-ui-theme">
+        <Outlet />
+      </ThemeProvider>
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
