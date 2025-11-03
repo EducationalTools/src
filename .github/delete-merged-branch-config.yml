@@ -1,4 +1,0 @@
-exclude:
-  - main
-  - prod
-delete_closed_pr: true
