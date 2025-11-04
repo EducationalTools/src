@@ -11,6 +11,10 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { ThemeProvider } from "components/theme-provider";
 
+export function meta({}: Route.MetaArgs) {
+  return [{ title: "EduTools" }];
+}
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
