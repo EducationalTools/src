@@ -15,7 +15,7 @@ import { MENU_ITEMS } from "~/lib/constants";
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
