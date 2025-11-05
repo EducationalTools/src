@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { ThemeProvider } from "components/theme-provider";
+import { ThemeProvider } from "~/components/theme-provider";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
