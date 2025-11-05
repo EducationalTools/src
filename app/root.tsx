@@ -11,6 +11,9 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { ThemeProvider } from "~/components/theme-provider";
 
+import { SidebarProvider, SidebarTrigger } from "~/components/ui/sidebar";
+import { AppSidebar } from "~/components/app-sidebar";
+
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
 }
@@ -38,7 +41,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <SidebarProvider>
+          <AppSidebar />
+          <main>{children}</main>
+        </SidebarProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
