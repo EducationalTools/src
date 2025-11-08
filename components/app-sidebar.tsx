@@ -12,7 +12,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { MENU_ITEMS } from "@/lib/constants";
+import { MENU_ITEMS } from "@/lib/menu";
 
 export function AppSidebar() {
   return (
