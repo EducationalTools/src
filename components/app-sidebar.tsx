@@ -10,6 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarRail,
 } from "@/components/ui/sidebar";
 import { MENU_ITEMS } from "@/lib/constants";
 
@@ -51,6 +52,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter />
+      <SidebarRail />
     </Sidebar>
   );
 }
