@@ -14,10 +14,10 @@ export const useExperimentalFeatures = create<ExperimentalFeaturesState>(
 
 interface UiState {
   searchOpen: boolean;
-  toggleSearch: () => void;
+  setSearchOpen: (open: boolean) => void;
 }
 
 export const useUiState = create<UiState>((set) => ({
   searchOpen: false,
-  toggleSearch: () => set((state) => ({ searchOpen: !state.searchOpen })),
+  setSearchOpen: (open: boolean) => set({ searchOpen: open }),
 }));
