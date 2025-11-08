@@ -1,2 +1,4 @@
+import { Home } from "lucide-react";
+
 export const APP_NAME = "EduTools";
-export const MENU_ITEMS = [{ label: "Home", href: "/" }];
+export const MENU_ITEMS = [{ label: "Home", href: "/", icon: Home }];

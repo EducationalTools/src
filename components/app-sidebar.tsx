@@ -42,6 +42,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton asChild>
                     <Link to={item.href}>
+                      {item.icon && <item.icon className="size-4" />}
                       <span>{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
