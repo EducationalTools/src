@@ -9,10 +9,10 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { ThemeProvider } from "~/components/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 
-import { SidebarProvider, SidebarTrigger } from "~/components/ui/sidebar";
-import { AppSidebar } from "~/components/app-sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];

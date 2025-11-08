@@ -10,8 +10,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "~/components/ui/sidebar";
-import { MENU_ITEMS } from "~/lib/constants";
+} from "@/components/ui/sidebar";
+import { MENU_ITEMS } from "@/lib/constants";
 
 export function AppSidebar() {
   return (
