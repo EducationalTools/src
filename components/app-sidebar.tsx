@@ -1,4 +1,4 @@
-import { GalleryVerticalEnd, PanelLeft, Settings } from "lucide-react";
+import { GalleryVerticalEnd, PanelLeft, Search, Settings } from "lucide-react";
 import { Link } from "react-router";
 import {
   Sidebar,
@@ -20,6 +20,7 @@ import { useUiState } from "@/lib/state";
 export function AppSidebar() {
   const sidebar = useSidebar();
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
+  const setSearchOpen = useUiState((state) => state.setSearchOpen);
 
   return (
     <Sidebar collapsible="icon">
@@ -36,6 +37,18 @@ export function AppSidebar() {
                   <span className="">v1.0.0</span>
                 </div>
               </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              onClick={() => setSearchOpen(true)}
+              size="lg"
+              className="border rounded-lg p-3 cursor-text"
+            >
+              <Search className="size-4" />
+              Search
+              <div className="grow"></div>
+              <Kbd className="text-nowrap">Ctrl + K</Kbd>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
