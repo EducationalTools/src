@@ -14,6 +14,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import Hotkeys from "@/components/hotkeys";
+import Search from "@/components/search";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -49,6 +50,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ScrollRestoration />
         <Scripts />
         <Hotkeys />
+        <Search />
       </body>
     </html>
   );
