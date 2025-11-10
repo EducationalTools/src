@@ -27,7 +27,11 @@ export function AppSidebar() {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+            <SidebarMenuButton
+              size="lg"
+              className="bg-muted rounded-xl rounded-b-sm"
+              asChild
+            >
               <Link to="/">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <GalleryVerticalEnd className="size-4" />
@@ -43,7 +47,7 @@ export function AppSidebar() {
             <SidebarMenuButton
               onClick={() => setSearchOpen(true)}
               size="lg"
-              className="border rounded-lg p-3 cursor-text"
+              className="border rounded-lg p-3 cursor-text rounded-t-sm"
             >
               <Search className="size-4" />
               Search
