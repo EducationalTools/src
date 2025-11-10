@@ -3,12 +3,14 @@ import { create } from "zustand";
 interface ExperimentalFeaturesState {
   enabled: boolean;
   toggle: () => void;
+  setEnabled: (enabled: boolean) => void;
 }
 
 export const useExperimentalFeatures = create<ExperimentalFeaturesState>(
   (set) => ({
     enabled: false,
     toggle: () => set((state) => ({ enabled: !state.enabled })),
+    setEnabled: (enabled: boolean) => set({ enabled }),
   }),
 );
 
