@@ -23,7 +23,11 @@ export function AppSidebar() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar
+      collapsible="icon"
+      variant="floating"
+      className="*:data-[slot='sidebar-inner']:rounded-xl"
+    >
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
