@@ -13,6 +13,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import Hotkeys from "@/components/hotkeys";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -47,6 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </SidebarProvider>
         <ScrollRestoration />
         <Scripts />
+        <Hotkeys />
       </body>
     </html>
   );
