@@ -60,10 +60,14 @@ function ExperimentalFeatures() {
   const toggleExperimentalFeatures = useExperimentalFeatures(
     (state) => state.toggle,
   );
+  const setSearchOpen = useUiState((state) => state.setSearchOpen);
 
   return (
     <CommandItem
-      onSelect={() => toggleExperimentalFeatures()}
+      onSelect={() => {
+        toggleExperimentalFeatures();
+        setSearchOpen(false);
+      }}
       className={search.toLowerCase().includes("exp") ? "" : "hidden"}
     >
       <span>
