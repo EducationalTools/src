@@ -1,4 +1,4 @@
-import { useUiState } from "@/lib/state";
+import { useExperimentalFeatures, useUiState } from "@/lib/state";
 import {
   CommandDialog,
   CommandEmpty,
@@ -9,6 +9,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { useCommandState } from "cmdk";
 
 export default function Search() {
   const searchOpen = useUiState((state) => state.searchOpen);
@@ -20,6 +21,7 @@ export default function Search() {
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
+          <ExperimentalFeatures />
           <CommandItem>
             <span>Calendar</span>
           </CommandItem>
@@ -47,5 +49,26 @@ export default function Search() {
         </CommandGroup>
       </CommandList>
     </CommandDialog>
+  );
+}
+
+function ExperimentalFeatures() {
+  const search = useCommandState((state) => state.search);
+  const experimentalFeatures = useExperimentalFeatures(
+    (state) => state.enabled,
+  );
+  const toggleExperimentalFeatures = useExperimentalFeatures(
+    (state) => state.toggle,
+  );
+
+  return (
+    <CommandItem
+      onSelect={() => toggleExperimentalFeatures()}
+      className={search.toLowerCase().includes("exp") ? "" : "hidden"}
+    >
+      <span>
+        {experimentalFeatures ? "Disable" : "Enable"} Experimental Features
+      </span>
+    </CommandItem>
   );
 }
