@@ -14,6 +14,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { MENU_ITEMS } from "@/lib/menu";
+import { Kbd } from "./ui/kbd";
 
 export function AppSidebar() {
   const sidebar = useSidebar();
@@ -64,6 +65,8 @@ export function AppSidebar() {
             >
               <PanelLeft />
               Sidebar
+              <div className="grow"></div>
+              <Kbd className="text-nowrap">Ctrl + B</Kbd>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
