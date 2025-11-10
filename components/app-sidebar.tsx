@@ -33,7 +33,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton
               size="lg"
-              className="bg-muted rounded-xl rounded-b-sm"
+              className="bg-muted rounded-lg rounded-b-sm group-data-[collapsible=icon]:rounded-b-lg! duration-200 ease-out"
               asChild
             >
               <Link to="/">
@@ -55,7 +55,7 @@ export function AppSidebar() {
             <SidebarMenuButton
               onClick={() => setSearchOpen(true)}
               size="lg"
-              className="border rounded-lg p-3 cursor-text rounded-t-sm"
+              className="border rounded-lg p-3 cursor-text rounded-t-sm group-data-[collapsible=icon]:p-2! group-data-[collapsible=icon]:border-0! group-data-[collapsible=icon]:rounded-t-lg"
             >
               <Search className="size-4" />
               Search
