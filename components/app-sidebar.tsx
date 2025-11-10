@@ -34,11 +34,15 @@ export function AppSidebar() {
             >
               <Link to="/">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <GalleryVerticalEnd className="size-4" />
+                  <img
+                    src="/edutools-black.svg"
+                    className="dark:invert size-6"
+                    alt=""
+                  />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="font-medium">EduTools</span>
-                  <span className="">v1.0.0</span>
+                  {/*<span className="">v1.0.0</span>*/}
                 </div>
               </Link>
             </SidebarMenuButton>
