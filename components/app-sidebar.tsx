@@ -1,4 +1,4 @@
-import { GalleryVerticalEnd, PanelLeft } from "lucide-react";
+import { GalleryVerticalEnd, PanelLeft, Settings } from "lucide-react";
 import { Link } from "react-router";
 import {
   Sidebar,
@@ -15,9 +15,11 @@ import {
 } from "@/components/ui/sidebar";
 import { MENU_ITEMS } from "@/lib/menu";
 import { Kbd } from "./ui/kbd";
+import { useUiState } from "@/lib/state";
 
 export function AppSidebar() {
   const sidebar = useSidebar();
+  const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
 
   return (
     <Sidebar collapsible="icon">
@@ -58,6 +60,17 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              className="cursor-pointer"
+              onClick={() => setSettingsOpen(true)}
+            >
+              <Settings />
+              Settings
+              <div className="grow"></div>
+              <Kbd className="text-nowrap">Ctrl + ,</Kbd>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton
               className="cursor-pointer"
