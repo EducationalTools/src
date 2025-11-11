@@ -15,6 +15,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import Hotkeys from "@/components/hotkeys";
 import Search from "@/components/search";
+import Settings from "@/components/settings";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -51,6 +52,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
         <Hotkeys />
         <Search />
+        <Settings />
       </body>
     </html>
   );
