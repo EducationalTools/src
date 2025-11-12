@@ -122,7 +122,13 @@ export function AppSidebar() {
 
                 if (item.children && item.children.length > 0) {
                   return (
-                    <Collapsible key={item.label} className="group/collapsible">
+                    <Collapsible
+                      key={item.label}
+                      className="group/collapsible"
+                      defaultOpen={item.children.some(
+                        (child) => child.href == location.pathname,
+                      )}
+                    >
                       <SidebarMenuItem>
                         <CollapsibleTrigger asChild>
                           {renderMenuItem(item)}
