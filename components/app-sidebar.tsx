@@ -80,7 +80,12 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.label}>
                   {item.href ? (
                     <SidebarMenuButton asChild>
-                      <Link to={item.href}>{renderMenuItemContent(item)}</Link>
+                      <Link
+                        to={item.href}
+                        target={item.newTab ? "_blank" : "_self"}
+                      >
+                        {renderMenuItemContent(item)}
+                      </Link>
                     </SidebarMenuButton>
                   ) : (
                     <SidebarMenuButton>
