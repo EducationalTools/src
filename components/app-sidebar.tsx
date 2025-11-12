@@ -81,7 +81,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.label}>
                   {item.href ? (
                     <SidebarMenuButton
-                      isActive={location.pathname == item.href}
+                      isActive={location.pathname.startsWith(item.href)}
                       asChild
                     >
                       <Link
@@ -92,9 +92,7 @@ export function AppSidebar() {
                       </Link>
                     </SidebarMenuButton>
                   ) : (
-                    <SidebarMenuButton
-                      isActive={location.pathname == item.href}
-                    >
+                    <SidebarMenuButton>
                       {renderMenuItemContent(item)}
                     </SidebarMenuButton>
                   )}
