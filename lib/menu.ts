@@ -1,4 +1,11 @@
-import { ArchiveRestore, Gamepad2, Home, Wrench } from "lucide-react";
+import {
+  ArchiveRestore,
+  FileText,
+  Gamepad2,
+  Home,
+  ShieldUser,
+  Wrench,
+} from "lucide-react";
 import DiscordIcon from "~icons/fa7-brands/discord";
 
 interface MenuItem {
@@ -41,5 +48,17 @@ export const MENU_ITEMS: MenuItem[] = [
     icon: DiscordIcon,
     experimental: true,
     newTab: true,
+  },
+  {
+    label: "About",
+    href: "/about",
+    icon: FileText,
+    experimental: true,
+  },
+  {
+    label: "Privacy",
+    href: "/privacy",
+    icon: ShieldUser,
+    experimental: true,
   },
 ];
