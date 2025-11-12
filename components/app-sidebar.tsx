@@ -10,9 +10,17 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+
 import { MENU_ITEMS } from "@/lib/menu";
 import { Kbd } from "./ui/kbd";
 import { useUiState } from "@/lib/state";
@@ -77,30 +85,72 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {MENU_ITEMS.map((item) => (
-                <SidebarMenuItem key={item.label}>
-                  {item.href ? (
-                    <SidebarMenuButton
-                      isActive={
-                        !(item.href == "/" && !(location.pathname === "/")) &&
-                        location.pathname.startsWith(item.href)
-                      }
-                      asChild
-                    >
-                      <Link
-                        to={item.href}
-                        target={item.newTab ? "_blank" : "_self"}
+              {MENU_ITEMS.map((item) => {
+                const renderMenuItem = (
+                  menuItem: typeof item,
+                  isSubItem = false,
+                ) => {
+                  const content = renderMenuItemContent(menuItem);
+                  const MenuButtonWrapper = isSubItem
+                    ? SidebarMenuSubItem
+                    : SidebarMenuItem;
+
+                  if (menuItem.href) {
+                    const MenuButton = isSubItem
+                      ? SidebarMenuButton
+                      : SidebarMenuButton;
+                    return (
+                      <MenuButton
+                        isActive={
+                          !(
+                            menuItem.href == "/" && !(location.pathname === "/")
+                          ) && location.pathname.startsWith(menuItem.href)
+                        }
+                        asChild
                       >
-                        {renderMenuItemContent(item)}
-                      </Link>
-                    </SidebarMenuButton>
-                  ) : (
-                    <SidebarMenuButton>
-                      {renderMenuItemContent(item)}
-                    </SidebarMenuButton>
-                  )}
-                </SidebarMenuItem>
-              ))}
+                        <Link
+                          to={menuItem.href}
+                          target={menuItem.newTab ? "_blank" : "_self"}
+                        >
+                          {content}
+                        </Link>
+                      </MenuButton>
+                    );
+                  }
+                  return <SidebarMenuButton>{content}</SidebarMenuButton>;
+                };
+
+                if (item.children && item.children.length > 0) {
+                  return (
+                    <Collapsible
+                      key={item.label}
+                      defaultOpen
+                      className="group/collapsible"
+                    >
+                      <SidebarMenuItem>
+                        <CollapsibleTrigger asChild>
+                          {renderMenuItem(item)}
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <SidebarMenuSub>
+                            {item.children.map((child) => (
+                              <SidebarMenuSubItem key={child.label}>
+                                {renderMenuItem(child, true)}
+                              </SidebarMenuSubItem>
+                            ))}
+                          </SidebarMenuSub>
+                        </CollapsibleContent>
+                      </SidebarMenuItem>
+                    </Collapsible>
+                  );
+                }
+
+                return (
+                  <SidebarMenuItem key={item.label}>
+                    {renderMenuItem(item)}
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
