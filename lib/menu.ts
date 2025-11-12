@@ -26,13 +26,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     label: "Tools",
-    href: "/tools",
     icon: Wrench,
     experimental: false,
   },
   {
     label: "Gmaes",
-    href: "/gmaes",
     icon: Gamepad2,
     experimental: true,
   },
