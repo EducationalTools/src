@@ -2,9 +2,9 @@ import { Home } from "lucide-react";
 
 interface MenuItem {
   label: string;
-  href: string;
-  icon: React.ComponentType;
-  experimental: boolean;
+  href?: string;
+  icon?: React.ComponentType;
+  experimental?: boolean;
   children?: MenuItem[];
   newTab?: boolean;
 }
