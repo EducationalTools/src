@@ -1,5 +1,5 @@
 import { GalleryVerticalEnd, PanelLeft, Search, Settings } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import {
   Sidebar,
   SidebarContent,
@@ -21,6 +21,7 @@ export function AppSidebar() {
   const sidebar = useSidebar();
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
+  const location = useLocation();
 
   const renderMenuItemContent = (item: (typeof MENU_ITEMS)[number]) => (
     <>
@@ -79,7 +80,10 @@ export function AppSidebar() {
               {MENU_ITEMS.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   {item.href ? (
-                    <SidebarMenuButton asChild>
+                    <SidebarMenuButton
+                      isActive={location.pathname == item.href}
+                      asChild
+                    >
                       <Link
                         to={item.href}
                         target={item.newTab ? "_blank" : "_self"}
@@ -88,7 +92,9 @@ export function AppSidebar() {
                       </Link>
                     </SidebarMenuButton>
                   ) : (
-                    <SidebarMenuButton>
+                    <SidebarMenuButton
+                      isActive={location.pathname == item.href}
+                    >
                       {renderMenuItemContent(item)}
                     </SidebarMenuButton>
                   )}
