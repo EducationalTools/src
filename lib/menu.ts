@@ -1,3 +1,18 @@
 import { Home } from "lucide-react";
 
-export const MENU_ITEMS = [{ label: "Home", href: "/", icon: Home }];
+interface MenuItem {
+  label: string;
+  href: string;
+  icon: React.ComponentType;
+  experimental: boolean;
+  children?: MenuItem[];
+}
+
+export const MENU_ITEMS: MenuItem[] = [
+  {
+    label: "Home",
+    href: "/",
+    icon: Home,
+    experimental: false,
+  },
+];
