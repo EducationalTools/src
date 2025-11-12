@@ -1,4 +1,5 @@
 import { ArchiveRestore, Gamepad2, Home, Wrench } from "lucide-react";
+import DiscordIcon from "~icons/fa7-brands/discord";
 
 interface MenuItem {
   label: string;
@@ -33,5 +34,12 @@ export const MENU_ITEMS: MenuItem[] = [
     href: "/backups",
     icon: ArchiveRestore,
     experimental: true,
+  },
+  {
+    label: "Discord",
+    href: "https://discord.gg/AFec9wNar8",
+    icon: DiscordIcon,
+    experimental: true,
+    newTab: true,
   },
 ];
