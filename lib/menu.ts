@@ -6,6 +6,7 @@ interface MenuItem {
   icon: React.ComponentType;
   experimental: boolean;
   children?: MenuItem[];
+  newTab?: boolean;
 }
 
 export const MENU_ITEMS: MenuItem[] = [
