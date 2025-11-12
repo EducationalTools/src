@@ -28,6 +28,20 @@ export const MENU_ITEMS: MenuItem[] = [
     label: "Tools",
     icon: Wrench,
     experimental: false,
+    children: [
+      {
+        label: "Tool 1",
+        href: "/tools/tool1",
+        icon: Wrench,
+        experimental: false,
+      },
+      {
+        label: "Tool 2",
+        href: "/tools/tool2",
+        icon: Wrench,
+        experimental: false,
+      },
+    ],
   },
   {
     label: "Gmaes",
