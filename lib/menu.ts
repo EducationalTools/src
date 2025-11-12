@@ -1,9 +1,17 @@
 import {
   ArchiveRestore,
+  Binary,
+  Calculator,
+  Clock,
+  Dices,
   FileText,
   Gamepad2,
   Home,
+  Key,
+  Palette,
+  Scale,
   ShieldUser,
+  Type,
   Wrench,
 } from "lucide-react";
 import DiscordIcon from "~icons/fa7-brands/discord";
@@ -30,19 +38,56 @@ export const MENU_ITEMS: MenuItem[] = [
     experimental: false,
     children: [
       {
-        label: "Tool 1",
-        href: "/tools/tool1",
-        icon: Wrench,
+        label: "Calculator",
+        href: "/tools/calculator",
+        icon: Calculator,
         experimental: false,
       },
       {
-        label: "Tool 2",
-        href: "/tools/tool2",
-        icon: Wrench,
+        label: "Unit Converter",
+        href: "/tools/unit-converter",
+        icon: Scale,
+        experimental: false,
+      },
+      {
+        label: "Word Counter",
+        href: "/tools/word-counter",
+        icon: Type,
+        experimental: false,
+      },
+      {
+        label: "Password Generator",
+        href: "/tools/password-generator",
+        icon: Key,
+        experimental: false,
+      },
+      {
+        label: "Random Number",
+        href: "/tools/random-number",
+        icon: Dices,
+        experimental: false,
+      },
+      {
+        label: "Stopwatch & Timer",
+        href: "/tools/stopwatch-timer",
+        icon: Clock,
+        experimental: false,
+      },
+      {
+        label: "Base64 Converter",
+        href: "/tools/base64-converter",
+        icon: Binary,
+        experimental: false,
+      },
+      {
+        label: "Color Picker",
+        href: "/tools/color-picker",
+        icon: Palette,
         experimental: false,
       },
     ],
   },
+
   {
     label: "Gmaes",
     icon: Gamepad2,

@@ -1,3 +1,13 @@
-import { type RouteConfig, index } from "@react-router/dev/routes";
+import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
-export default [index("routes/home.tsx")] satisfies RouteConfig;
+export default [
+  index("routes/home.tsx"),
+  route("tools/calculator", "routes/tools/calculator.tsx"),
+  route("tools/unit-converter", "routes/tools/unit-converter.tsx"),
+  route("tools/word-counter", "routes/tools/word-counter.tsx"),
+  route("tools/password-generator", "routes/tools/password-generator.tsx"),
+  route("tools/random-number", "routes/tools/random-number.tsx"),
+  route("tools/stopwatch-timer", "routes/tools/stopwatch-timer.tsx"),
+  route("tools/base64-converter", "routes/tools/base64-converter.tsx"),
+  route("tools/color-picker", "routes/tools/color-picker.tsx"),
+] satisfies RouteConfig;
