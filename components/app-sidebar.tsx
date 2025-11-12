@@ -1,4 +1,10 @@
-import { GalleryVerticalEnd, PanelLeft, Search, Settings } from "lucide-react";
+import {
+  ChevronDown,
+  GalleryVerticalEnd,
+  PanelLeft,
+  Search,
+  Settings,
+} from "lucide-react";
 import { Link, useLocation } from "react-router";
 import {
   Sidebar,
@@ -35,6 +41,9 @@ export function AppSidebar() {
     <>
       {item.icon && <item.icon />}
       <span>{item.label}</span>
+      {item.children && item.children.length > 0 && (
+        <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+      )}
     </>
   );
 
