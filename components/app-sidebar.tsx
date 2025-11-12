@@ -22,6 +22,13 @@ export function AppSidebar() {
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
 
+  const renderMenuItemContent = (item: (typeof MENU_ITEMS)[number]) => (
+    <>
+      {item.icon && <item.icon />}
+      <span>{item.label}</span>
+    </>
+  );
+
   return (
     <Sidebar
       collapsible="icon"
@@ -71,12 +78,15 @@ export function AppSidebar() {
             <SidebarMenu>
               {MENU_ITEMS.map((item) => (
                 <SidebarMenuItem key={item.label}>
-                  <SidebarMenuButton asChild>
-                    <Link to={item.href}>
-                      {item.icon && <item.icon className="size-4" />}
-                      <span>{item.label}</span>
-                    </Link>
-                  </SidebarMenuButton>
+                  {item.href ? (
+                    <SidebarMenuButton asChild>
+                      <Link to={item.href}>{renderMenuItemContent(item)}</Link>
+                    </SidebarMenuButton>
+                  ) : (
+                    <SidebarMenuButton>
+                      {renderMenuItemContent(item)}
+                    </SidebarMenuButton>
+                  )}
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
