@@ -146,7 +146,10 @@ export function AppSidebar() {
                       )}
                     >
                       <SidebarMenuItem>
-                        <CollapsibleTrigger asChild>
+                        <CollapsibleTrigger
+                          className="sticky top-0 z-10 bg-sidebar/50 backdrop-blur-2xl"
+                          asChild
+                        >
                           {renderMenuItem(item)}
                         </CollapsibleTrigger>
                         <CollapsibleContent>
