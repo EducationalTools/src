@@ -16,6 +16,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import Hotkeys from "@/components/hotkeys";
 import Search from "@/components/search";
 import Settings from "@/components/settings";
+import { Toaster } from "@/components/ui/sonner";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -53,6 +54,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Hotkeys />
         <Search />
         <Settings />
+        <Toaster />
       </body>
     </html>
   );
