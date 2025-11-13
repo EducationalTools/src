@@ -73,17 +73,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
             credentials={false}
             social={{
               providers: ["github"],
-              signIn: (params) =>
-                authClient.signIn.social({
+              signIn: (params) => {
+                const currentUrl = new URL(window.location.href);
+                const convexSiteUrl = new URL(
+                  import.meta.env.VITE_CONVEX_SITE_URL,
+                );
+
+                const redirectUrl = new URL("/auth", convexSiteUrl);
+                redirectUrl.searchParams.set(
+                  "redirect",
+                  `${currentUrl.protocol}//${currentUrl.host}${params.callbackURL || ""}`,
+                );
+
+                return authClient.signIn.social({
                   ...params,
-                  callbackURL:
-                    import.meta.env.VITE_CONVEX_SITE_URL +
-                    "/auth?redirect=" +
-                    window.location.protocol +
-                    "//" +
-                    window.location.host +
-                    encodeURIComponent(params.callbackURL || ""),
-                }),
+                  callbackURL: redirectUrl.toString(),
+                });
+              },
             }}
           >
             <SidebarProvider>
