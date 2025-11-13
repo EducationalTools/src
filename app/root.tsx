@@ -46,7 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <SidebarProvider>
           <AppSidebar />
-          <main>{children}</main>
+          <main className="w-full">{children}</main>
         </SidebarProvider>
         <ScrollRestoration />
         <Scripts />
