@@ -17,6 +17,7 @@ import Hotkeys from "@/components/hotkeys";
 import Search from "@/components/search";
 import Settings from "@/components/settings";
 import { Toaster } from "@/components/ui/sonner";
+import { ConvexProvider, ConvexReactClient } from "convex/react";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -36,6 +37,9 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const convex = new ConvexReactClient(
+    import.meta.env.VITE_CONVEX_URL as string,
+  );
   return (
     <html className="dark" lang="en">
       <head>
@@ -45,16 +49,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <SidebarProvider>
-          <AppSidebar />
-          <main className="w-full">{children}</main>
-        </SidebarProvider>
-        <ScrollRestoration />
-        <Scripts />
-        <Hotkeys />
-        <Search />
-        <Settings />
-        <Toaster />
+        <ConvexProvider client={convex}>
+          <SidebarProvider>
+            <AppSidebar />
+            <main className="w-full">{children}</main>
+          </SidebarProvider>
+          <ScrollRestoration />
+          <Scripts />
+          <Hotkeys />
+          <Search />
+          <Settings />
+          <Toaster />
+        </ConvexProvider>
       </body>
     </html>
   );
