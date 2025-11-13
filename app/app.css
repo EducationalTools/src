@@ -4,6 +4,9 @@
 @source not "../public/assets/g";
 
 @custom-variant dark (&:is(.dark *));
+@variant fullscreen (&:fullscreen);
+@variant group-fullscreen (.group:fullscreen &);
+@variant peer-fullscreen (.peer:fullscreen &);
 
 @theme {
   --font-sans:
