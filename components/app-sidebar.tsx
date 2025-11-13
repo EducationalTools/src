@@ -29,13 +29,16 @@ import {
 
 import { MENU_ITEMS } from "@/lib/menu";
 import { Kbd } from "./ui/kbd";
-import { useUiState } from "@/lib/state";
+import { useExperimentalFeatures, useUiState } from "@/lib/state";
 
 export function AppSidebar() {
   const sidebar = useSidebar();
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const location = useLocation();
+  const experimentalFeatures = useExperimentalFeatures(
+    (state) => state.enabled,
+  );
 
   const renderMenuItemContent = (item: (typeof MENU_ITEMS)[number]) => (
     <>
@@ -45,6 +48,10 @@ export function AppSidebar() {
         <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
       )}
     </>
+  );
+
+  const menuItems = MENU_ITEMS.filter(
+    (item) => !(item.experimental && !experimentalFeatures),
   );
 
   return (
@@ -94,7 +101,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {MENU_ITEMS.map((item) => {
+              {menuItems.map((item) => {
                 const renderMenuItem = (
                   menuItem: typeof item,
                   isSubItem = false,
