@@ -117,11 +117,7 @@ export function AppSidebar() {
                       : SidebarMenuButton;
                     return (
                       <MenuButton
-                        isActive={
-                          !(
-                            menuItem.href == "/" && !(location.pathname === "/")
-                          ) && location.pathname.startsWith(menuItem.href)
-                        }
+                        isActive={menuItem.href == location.pathname}
                         asChild
                       >
                         <Link
