@@ -13,4 +13,5 @@ export default [
   route("g", "routes/g/index.tsx"),
   route("g/:id", "routes/g/play.tsx"),
   route("auth/:pathname", "routes/auth/auth-view.tsx"),
+  route("ott", "routes/auth/ott.tsx"),
 ] satisfies RouteConfig;
