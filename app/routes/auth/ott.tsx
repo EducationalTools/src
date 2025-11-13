@@ -27,7 +27,7 @@ export default function Ott() {
         setLoading(false);
       } else {
         toast.success("Logged in");
-        navigate(redirect || "/");
+        navigate(new URL(redirect || "").pathname);
       }
     } catch (error) {
       setMessage("Something went wrong");
