@@ -47,7 +47,7 @@ export default function Play({ params }: Route.ComponentProps) {
           <p className="leading-7">{gmae?.description}</p>
         </div>
         <div className="grow"></div>
-        <div className="flex flex-col gap-2 items-end">
+        <div className="flex flex-col gap-2 items-end justify-center">
           <ButtonGroup>
             <Tooltip>
               <TooltipTrigger asChild>
