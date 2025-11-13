@@ -5,6 +5,7 @@ import { DataModel } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 import { betterAuth } from "better-auth";
 import { createAuthMiddleware } from "better-auth/plugins";
+import { oneTimeToken } from "../lib/auth/ott";
 
 const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex deployment, which redirects to the referer. if it works don't touch it
 
@@ -29,6 +30,7 @@ export const createAuth = (
     plugins: [
       // The Convex plugin is required for Convex compatibility
       convex(),
+      oneTimeToken(),
       // Disable state check
       {
         id: "disable-state-check",
