@@ -73,6 +73,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
             credentials={false}
             social={{
               providers: ["github"],
+              signIn: (params) =>
+                authClient.signIn.social({
+                  ...params,
+                  callbackURL:
+                    import.meta.env.VITE_CONVEX_SITE_URL +
+                    "/auth?redirect=" +
+                    window.location.protocol +
+                    "//" +
+                    window.location.host +
+                    encodeURIComponent(params.callbackURL || ""),
+                }),
             }}
           >
             <SidebarProvider>
