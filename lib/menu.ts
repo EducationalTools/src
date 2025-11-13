@@ -15,6 +15,7 @@ import {
   Wrench,
 } from "lucide-react";
 import DiscordIcon from "~icons/fa7-brands/discord";
+import { gmaes } from "./gmaes";
 
 interface MenuItem {
   label: string;
@@ -92,6 +93,16 @@ export const MENU_ITEMS: MenuItem[] = [
     label: "Gmaes",
     icon: Gamepad2,
     experimental: true,
+    children: [
+      {
+        label: "All Gmaes",
+        href: "/g",
+      },
+      ...gmaes.map((gmae) => ({
+        label: gmae.name,
+        href: `/g/${gmae.id}`,
+      })),
+    ],
   },
   {
     label: "Backups",
