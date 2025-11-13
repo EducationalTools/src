@@ -32,6 +32,7 @@ export default function Play({ params }: Route.ComponentProps) {
       <iframe src={gmae?.url} className="w-full h-full rounded-lg"></iframe>
       <div className="flex flex-col md:flex-row gap-2 bg-card border rounded-lg p-2">
         <div className="flex flex-col p-2">
+          <p className="text-sm text-muted-foreground">{gmae?.category}</p>
           <h1 className="text-4xl font-extrabold tracking-tight">
             {gmae?.name}
           </h1>
