@@ -6,12 +6,19 @@ import {
   Bookmark,
   ExternalLink,
   Fullscreen,
+  Keyboard,
   Maximize,
   RefreshCw,
+  Scan,
   Share,
   Square,
 } from "lucide-react";
 import { ButtonGroup } from "@/components/ui/button-group";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export async function clientLoader({ params }: Route.ActionArgs) {
   if (!params.id) throw data(null, { status: 404 });
@@ -31,30 +38,56 @@ export default function Play({ params }: Route.ComponentProps) {
           <p className="leading-7">{gmae?.description}</p>
         </div>
         <div className="grow"></div>
-        <ButtonGroup>
-          <Button size="icon" variant="outline">
-            <Share />
-            <span className="sr-only">Share</span>
-          </Button>
-          <Button size="icon" variant="outline">
-            <Bookmark />
-            <span className="sr-only">Bookmark</span>
-          </Button>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button size="icon" variant="outline">
-            <RefreshCw />
-            <span className="sr-only">Refresh</span>
-          </Button>
-          <Button size="icon" variant="outline">
-            <ExternalLink />
-            <span className="sr-only">Open in new tab</span>
-          </Button>
-          <Button size="icon">
-            <Maximize />
-            <span className="sr-only">Fullscreen</span>
-          </Button>
-        </ButtonGroup>
+        <div className="flex flex-col gap-2 items-end">
+          <ButtonGroup>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="icon" variant="outline">
+                  <Keyboard />
+                  <span className="sr-only">Fix keyboard input</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Fix keyboard input</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="icon" variant="outline">
+                  <RefreshCw />
+                  <span className="sr-only">Reload</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Reload</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="icon" variant="outline">
+                  <ExternalLink />
+                  <span className="sr-only">Open in new tab</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Open in new tab</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="icon">
+                  <Maximize />
+                  <span className="sr-only">Fullscreen</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Fullscreen</TooltipContent>
+            </Tooltip>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button variant="outline">
+              <Bookmark />
+              Save
+            </Button>
+            <Button variant="outline">
+              <Share />
+              Share
+            </Button>
+          </ButtonGroup>
+        </div>
       </div>
     </div>
   );
