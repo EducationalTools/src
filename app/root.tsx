@@ -70,6 +70,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
             authClient={authClient}
             navigate={navigate}
             Link={LinkComponent}
+            credentials={false}
+            social={{
+              providers: ["github"],
+            }}
           >
             <SidebarProvider>
               <AppSidebar />
