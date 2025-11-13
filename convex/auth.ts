@@ -4,8 +4,9 @@ import { components } from "./_generated/api";
 import { DataModel } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 import { betterAuth } from "better-auth";
+import { createAuthMiddleware } from "better-auth/plugins";
 
-const siteUrl = process.env.SITE_URL!;
+const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex deployment, which redirects to the referer. if it works don't touch it
 
 // The component client has methods needed for integrating Convex with Better Auth,
 // as well as helper methods for general use.
@@ -21,19 +22,55 @@ export const createAuth = (
     logger: {
       disabled: optionsOnly,
     },
-    trustedOrigins: [siteUrl],
+    trustedOrigins: ["*"], // security? fuck that
     database: authComponent.adapter(ctx),
     // Configure simple, non-verified email/password to get started
-    emailAndPassword: {
-      enabled: true,
-      requireEmailVerification: false,
-    },
+    emailAndPassword: { enabled: false },
     plugins: [
-      // The cross domain plugin is required for client side frameworks
-      crossDomain({ siteUrl }),
       // The Convex plugin is required for Convex compatibility
       convex(),
+      // Disable state check
+      {
+        id: "disable-state-check",
+        hooks: {
+          before: [
+            {
+              matcher() {
+                return true;
+              },
+              handler: createAuthMiddleware(async (ctx) => {
+                return {
+                  context: {
+                    context: {
+                      oauthConfig: {
+                        skipStateCookieCheck: true,
+                      },
+                    },
+                  },
+                };
+              }),
+            },
+          ],
+        },
+      },
     ],
+    socialProviders: {
+      github: {
+        clientId: process.env.GITHUB_CLIENT_ID as string,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      },
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID as string,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      },
+    },
+    advanced: {
+      defaultCookieAttributes: {
+        sameSite: "none",
+        secure: true,
+        partitioned: true, // New browser standards will mandate this for foreign cookies
+      },
+    },
   });
 };
 
