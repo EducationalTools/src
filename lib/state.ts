@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 interface ExperimentalFeaturesState {
   enabled: boolean;
@@ -6,12 +7,18 @@ interface ExperimentalFeaturesState {
   setEnabled: (enabled: boolean) => void;
 }
 
-export const useExperimentalFeatures = create<ExperimentalFeaturesState>(
-  (set) => ({
-    enabled: false,
-    toggle: () => set((state) => ({ enabled: !state.enabled })),
-    setEnabled: (enabled: boolean) => set({ enabled }),
-  }),
+export const useExperimentalFeatures = create<ExperimentalFeaturesState>()(
+  persist(
+    (set) => ({
+      enabled: false,
+      toggle: () => set((state) => ({ enabled: !state.enabled })),
+      setEnabled: (enabled: boolean) => set({ enabled }),
+    }),
+    {
+      name: "edutools-experimental-features",
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
 );
 
 interface UiState {
