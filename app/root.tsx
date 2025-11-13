@@ -18,6 +18,8 @@ import Search from "@/components/search";
 import Settings from "@/components/settings";
 import { Toaster } from "@/components/ui/sonner";
 import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { ConvexBetterAuthProvider } from "@convex-dev/better-auth/react";
+import { authClient } from "@/lib/auth-client";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -49,7 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <ConvexProvider client={convex}>
+        <ConvexBetterAuthProvider client={convex} authClient={authClient}>
           <SidebarProvider>
             <AppSidebar />
             <main className="w-full">{children}</main>
@@ -60,7 +62,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <Search />
           <Settings />
           <Toaster />
-        </ConvexProvider>
+        </ConvexBetterAuthProvider>
       </body>
     </html>
   );
