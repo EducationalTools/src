@@ -121,17 +121,14 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    scrollbar-width: 1px;
+    -ms-overflow-style: none;
   }
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
   body {
     @apply bg-background text-foreground min-h-screen;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }
