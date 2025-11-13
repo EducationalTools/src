@@ -320,7 +320,7 @@ gmaes.forEach((gmae) => {
 
 parsedGmaes.sort((a, b) => a.name.localeCompare(b.name));
 
-export function getGameById(id: string) {
+export function getGmaeById(id: string) {
   return parsedGmaes.find((gmae) => gmae.id === id);
 }
 
