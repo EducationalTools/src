@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @config "../tailwind.config.ts";
 @source not "../public/assets/g";
+@import "@daveyplate/better-auth-ui/css";
 
 @custom-variant dark (&:is(.dark *));
 @variant fullscreen (&:fullscreen);

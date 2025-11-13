@@ -12,4 +12,5 @@ export default [
   route("tools/color-picker", "routes/tools/color-picker.tsx"),
   route("g", "routes/g/index.tsx"),
   route("g/:id", "routes/g/play.tsx"),
+  route("auth/:pathname", "routes/auth/auth-view.tsx"),
 ] satisfies RouteConfig;

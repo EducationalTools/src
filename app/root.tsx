@@ -1,10 +1,12 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigate,
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -20,6 +22,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { ConvexBetterAuthProvider } from "@convex-dev/better-auth/react";
 import { authClient } from "@/lib/auth-client";
+import { AuthUIProvider } from "@daveyplate/better-auth-ui";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -42,6 +45,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const convex = new ConvexReactClient(
     import.meta.env.VITE_CONVEX_URL as string,
   );
+  const navigate = useNavigate();
+
+  const LinkComponent = ({
+    href,
+    ...props
+  }: {
+    href: string;
+    className?: string;
+    children: React.ReactNode;
+  }) => <Link to={href} {...props} />;
+
   return (
     <html className="dark" lang="en">
       <head>
@@ -52,16 +66,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ConvexBetterAuthProvider client={convex} authClient={authClient}>
-          <SidebarProvider>
-            <AppSidebar />
-            <main className="w-full">{children}</main>
-          </SidebarProvider>
-          <ScrollRestoration />
-          <Scripts />
-          <Hotkeys />
-          <Search />
-          <Settings />
-          <Toaster />
+          <AuthUIProvider
+            authClient={authClient}
+            navigate={navigate}
+            Link={LinkComponent}
+          >
+            <SidebarProvider>
+              <AppSidebar />
+              <main className="w-full">{children}</main>
+            </SidebarProvider>
+            <ScrollRestoration />
+            <Scripts />
+            <Hotkeys />
+            <Search />
+            <Settings />
+            <Toaster />
+          </AuthUIProvider>
         </ConvexBetterAuthProvider>
       </body>
     </html>
