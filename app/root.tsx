@@ -85,7 +85,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
             social={{
               providers: ["github", "google", "discord"],
               signIn: (params) => {
-                const currentUrl = new URL(window.location.href);
                 const convexSiteUrl = new URL(
                   import.meta.env.VITE_CONVEX_SITE_URL,
                 );
@@ -93,7 +92,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 const redirectUrl = new URL("/auth", convexSiteUrl);
                 redirectUrl.searchParams.set(
                   "redirect",
-                  `${currentUrl.protocol}//${currentUrl.host}${params.callbackURL || ""}`,
+                  params.callbackURL || "",
                 );
 
                 return authClient.signIn.social({
