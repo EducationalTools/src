@@ -56,20 +56,13 @@ export function AppSidebar() {
   );
 
   return (
-    <Sidebar
-      variant="inset"
-      // className="*:data-[slot='sidebar-inner']:rounded-xl"
-    >
+    <Sidebar variant="inset" className="p-0">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              size="lg"
-              className="bg-muted rounded-lg rounded-b-sm group-data-[collapsible=icon]:rounded-b-lg! duration-200 ease-out"
-              asChild
-            >
+            <SidebarMenuButton size="lg" asChild>
               <Link to="/">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <img
                     src="/edutools-black.svg"
                     className="dark:invert size-6"
@@ -86,8 +79,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton
               onClick={() => setSearchOpen(true)}
-              size="lg"
-              className="border rounded-lg p-3 cursor-text rounded-t-sm group-data-[collapsible=icon]:p-2! group-data-[collapsible=icon]:border-0! group-data-[collapsible=icon]:rounded-t-lg"
+              className="border cursor-text"
             >
               <Search className="size-4" />
               Search
