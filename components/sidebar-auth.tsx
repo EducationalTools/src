@@ -1,18 +1,19 @@
-import { AuthLoading } from "convex/react";
+import { Authenticated, AuthLoading } from "convex/react";
 import { Skeleton } from "./ui/skeleton";
 import { SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
+import { UserButton } from "@daveyplate/better-auth-ui";
 
 export default function SidebarAuth() {
   return (
     <>
-      <AuthLoading>
-        <SidebarMenuItem>
-          <SidebarMenuButton>
-            <Skeleton className="aspect-square h-full" />
-            <Skeleton className="w-[150px] h-full" />
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      </AuthLoading>
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild>
+          <UserButton
+            size="sm"
+            className="bg-sidebar text-sidebar-foreground"
+          />
+        </SidebarMenuButton>
+      </SidebarMenuItem>
     </>
   );
 }
