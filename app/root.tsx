@@ -76,7 +76,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             Link={LinkComponent}
             credentials={false}
             social={{
-              providers: ["github", "google"],
+              providers: ["github", "google", "discord"],
               signIn: (params) => {
                 const currentUrl = new URL(window.location.href);
                 const convexSiteUrl = new URL(
