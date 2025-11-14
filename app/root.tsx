@@ -98,7 +98,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           >
             <SidebarProvider>
               <AppSidebar />
-              <SidebarInset className="w-full overflow-auto">
+              <SidebarInset className="w-full rounded-md! overflow-auto">
                 <main className="w-full h-full">{children}</main>
               </SidebarInset>
             </SidebarProvider>
