@@ -30,6 +30,7 @@ import {
 import { MENU_ITEMS } from "@/lib/menu";
 import { Kbd } from "./ui/kbd";
 import { useExperimentalFeatures, useUiState } from "@/lib/state";
+import SidebarAuth from "./sidebar-auth";
 
 export function AppSidebar() {
   const sidebar = useSidebar();
@@ -174,6 +175,7 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
+          <SidebarAuth />
           <SidebarMenuItem>
             <SidebarMenuButton
               className="cursor-pointer"
