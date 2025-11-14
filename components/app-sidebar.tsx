@@ -57,8 +57,8 @@ export function AppSidebar() {
 
   return (
     <Sidebar
-      variant="floating"
-      className="*:data-[slot='sidebar-inner']:rounded-xl"
+      variant="inset"
+      // className="*:data-[slot='sidebar-inner']:rounded-xl"
     >
       <SidebarHeader>
         <SidebarMenu>

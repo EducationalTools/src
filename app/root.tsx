@@ -13,7 +13,11 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import Hotkeys from "@/components/hotkeys";
 import Search from "@/components/search";
@@ -94,7 +98,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
           >
             <SidebarProvider>
               <AppSidebar />
-              <main className="w-full">{children}</main>
+              <SidebarInset className="w-full overflow-auto">
+                <main className="w-full h-full">{children}</main>
+              </SidebarInset>
             </SidebarProvider>
             <ScrollRestoration />
             <Scripts />
