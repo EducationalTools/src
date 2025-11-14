@@ -45,14 +45,14 @@ export function Play({ params }: Route.ComponentProps) {
   const [maximized, setMaximized] = useState(false);
 
   return (
-    <div className="w-full h-full flex flex-col p-2 md:pl-0 gap-2">
+    <div className="w-full h-full flex flex-col gap-2 bg-sidebar">
       <iframe
         src={gmae?.url}
         ref={iframeRef}
-        className="w-full h-full rounded-lg fullscreen:rounded-none"
+        className="w-full h-full rounded-md fullscreen:rounded-none"
       ></iframe>
       {!maximized ? (
-        <div className="flex flex-col md:flex-row gap-2 bg-card border rounded-lg p-2">
+        <div className="flex flex-col md:flex-row gap-2 bg-card p-2">
           <div className="flex flex-col p-2">
             <p className="text-sm text-muted-foreground">{gmae?.category}</p>
             <h1 className="text-4xl font-extrabold tracking-tight">
