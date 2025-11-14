@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
   useNavigate,
 } from "react-router";
 
@@ -27,6 +28,7 @@ import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { ConvexBetterAuthProvider } from "@convex-dev/better-auth/react";
 import { authClient } from "@/lib/auth-client";
 import { AuthUIProvider } from "@daveyplate/better-auth-ui";
+import { useEffect, useState } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -50,6 +52,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
     import.meta.env.VITE_CONVEX_URL as string,
   );
   const navigate = useNavigate();
+  const [baseUrl, setBaseUrl] = useState<string>("");
+
+  useEffect(() => {
+    setBaseUrl(location.protocol + "//" + location.host);
+  }, []);
 
   const LinkComponent = ({
     href,
@@ -99,6 +106,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             optimistic={true}
             avatar={true}
             changeEmail={false}
+            baseURL={baseUrl}
           >
             <SidebarProvider>
               <AppSidebar />
