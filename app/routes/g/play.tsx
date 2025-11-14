@@ -52,7 +52,7 @@ export function Play({ params }: Route.ComponentProps) {
         className="w-full h-full rounded-md fullscreen:rounded-none"
       ></iframe>
       {!maximized ? (
-        <div className="flex flex-col md:flex-row gap-2 bg-card p-2">
+        <div className="flex flex-col md:flex-row gap-2 bg-card md:p-0 p-2">
           <div className="flex flex-col p-2">
             <p className="text-sm text-muted-foreground">{gmae?.category}</p>
             <h1 className="text-4xl font-extrabold tracking-tight">
