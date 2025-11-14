@@ -95,6 +95,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 });
               },
             }}
+            deleteUser={true}
           >
             <SidebarProvider>
               <AppSidebar />

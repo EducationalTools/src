@@ -73,6 +73,11 @@ export const createAuth = (
         partitioned: true, // New browser standards will mandate this for foreign cookies
       },
     },
+    user: {
+      deleteUser: {
+        enabled: true,
+      },
+    },
   });
 };
 
