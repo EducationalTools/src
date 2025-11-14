@@ -165,7 +165,7 @@ export function Play({ params }: Route.ComponentProps) {
           </div>
         </div>
       ) : (
-        <div className="p-2 flex flex-row">
+        <div className="p-2 md:py-0 flex flex-row">
           <h1 className="text-xl">{gmae?.name}</h1>
           <div className="grow"></div>
           <Button
