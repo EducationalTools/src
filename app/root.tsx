@@ -98,6 +98,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             deleteUser={true}
             optimistic={true}
             avatar={true}
+            changeEmail={false}
           >
             <SidebarProvider>
               <AppSidebar />
