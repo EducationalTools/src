@@ -57,7 +57,6 @@ export function AppSidebar() {
 
   return (
     <Sidebar
-      collapsible="icon"
       variant="floating"
       className="*:data-[slot='sidebar-inner']:rounded-xl"
     >
