@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router";
 import { useSidebar } from "./ui/sidebar";
 import { Button, buttonVariants } from "./ui/button";
-import { Sidebar } from "lucide-react";
+import { Code, Sidebar } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Breadcrumb,
@@ -18,7 +18,7 @@ export default function Header() {
   const location = useLocation();
 
   return (
-    <div className="flex flex-row gap-1 items-center px-2">
+    <div className="flex flex-row gap-1 items-center">
       <AnimatePresence mode="popLayout">
         {!sidebar.open && (
           <motion.div
@@ -49,7 +49,17 @@ export default function Header() {
           </Button>
         </motion.div>
         <div className="grow"></div>
-        <UserButton size="sm" variant="ghost" />
+        <div className="flex flex-row" key="header-right">
+          <Button variant="ghost" asChild>
+            <Link to="https://github.com/EducationalTools/src" target="_blank">
+              <Code />
+              EducationalTools/src
+            </Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <UserButton size="sm" variant="ghost" />
+          </Button>
+        </div>
       </AnimatePresence>
     </div>
   );
