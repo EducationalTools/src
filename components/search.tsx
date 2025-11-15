@@ -10,41 +10,50 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { useCommandState } from "cmdk";
+import { MENU_ITEMS } from "@/lib/menu";
 
 export default function Search() {
   const searchOpen = useUiState((state) => state.searchOpen);
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
+  const experimentalFeatures = useExperimentalFeatures(
+    (state) => state.enabled,
+  );
+
+  const menuItems = MENU_ITEMS.filter(
+    (item) => !(item.experimental && !experimentalFeatures),
+  );
 
   return (
     <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <CommandItem>
-            <span>Calendar</span>
-          </CommandItem>
-          <CommandItem>
-            <span>Search Emoji</span>
-          </CommandItem>
-          <CommandItem>
-            <span>Calculator</span>
-          </CommandItem>
+        <CommandGroup>
+          {menuItems
+            .filter((item) => item.href)
+            .map((item) => (
+              <CommandItem key={item.href} value={item.href}>
+                {item.icon && <item.icon />}
+                {item.label}
+              </CommandItem>
+            ))}
         </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Settings">
-          <CommandItem>
-            <span>Profile</span>
-            <CommandShortcut>⌘P</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <span>Billing</span>
-            <CommandShortcut>⌘B</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <span>Settings</span>
-            <CommandShortcut>⌘S</CommandShortcut>
-          </CommandItem>
+        {menuItems
+          .filter((item) => item.children)
+          .map((item) => (
+            <CommandGroup key={item.label} heading={item.label}>
+              {item.children &&
+                item.children
+                  .filter((item) => item.href)
+                  .map((item) => (
+                    <CommandItem key={item.href} value={item.href}>
+                      {item.icon && <item.icon />}
+                      {item.label}
+                    </CommandItem>
+                  ))}
+            </CommandGroup>
+          ))}
+        <CommandGroup>
           <ExperimentalFeatures />
         </CommandGroup>
       </CommandList>
