@@ -27,7 +27,7 @@ export default function Search() {
 
   return (
     <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
-      <CommandInput placeholder="Type a command or search..." />
+      <CommandInput placeholder="Search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup>
