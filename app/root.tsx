@@ -109,9 +109,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
           >
             <SidebarProvider>
               <AppSidebar />
-              <SidebarInset className="w-full rounded-md!">
-                <main className="w-full h-full">{children}</main>
-              </SidebarInset>
+              <div className="flex flex-col w-full p-2 gap-2">
+                <div className="flex flex-row">
+                  <SidebarTrigger />
+                </div>
+                <SidebarInset className="w-full rounded-md!">
+                  <main className="w-full h-full">{children}</main>
+                </SidebarInset>
+              </div>
             </SidebarProvider>
             <ScrollRestoration />
             <Scripts />
