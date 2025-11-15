@@ -29,6 +29,7 @@ import { ConvexBetterAuthProvider } from "@convex-dev/better-auth/react";
 import { authClient } from "@/lib/auth-client";
 import { AuthUIProvider } from "@daveyplate/better-auth-ui";
 import { useEffect, useState } from "react";
+import Header from "@/components/header";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -110,9 +111,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <SidebarProvider>
               <AppSidebar />
               <div className="flex flex-col w-full p-2 gap-2">
-                <div className="flex flex-row">
-                  <SidebarTrigger />
-                </div>
+                <Header />
                 <SidebarInset className="w-full rounded-md!">
                   <main className="w-full h-full">{children}</main>
                 </SidebarInset>
