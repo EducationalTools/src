@@ -24,6 +24,7 @@ import {
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 import { useSidebar } from "@/components/ui/sidebar";
+import { useExperimentalFeatures } from "@/lib/state";
 
 export async function clientLoader({ params }: Route.ActionArgs) {
   if (!params.id) throw data(null, { status: 404 });
@@ -31,6 +32,9 @@ export async function clientLoader({ params }: Route.ActionArgs) {
 }
 
 export default function PlayPage(props: Route.ComponentProps) {
+  const experimental = useExperimentalFeatures((state) => state.enabled);
+
+  if (!experimental) return;
   return (
     <>
       <Play key={props.params.id} {...props} />
