@@ -18,21 +18,17 @@ export const createAuth = (
   { optionsOnly } = { optionsOnly: false },
 ) => {
   return betterAuth({
-    // disable logging when createAuth is called just to generate options.
-    // this is not required, but there's a lot of noise in logs without it.
     logger: {
       disabled: optionsOnly,
     },
     baseURL: siteUrl,
     trustedOrigins: ["*"], // security? fuck that
     database: authComponent.adapter(ctx),
-    // Configure simple, non-verified email/password to get started
     emailAndPassword: { enabled: false },
     plugins: [
-      // The Convex plugin is required for Convex compatibility
       convex(),
       oneTimeToken(),
-      // Disable state check
+      // Disable state check, see line 25
       {
         id: "disable-state-check",
         hooks: {
