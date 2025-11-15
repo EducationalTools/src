@@ -93,6 +93,11 @@ export const createAuth = (
         allowDifferentEmails: true,
       },
     },
+    rateLimit: {
+      window: 10,
+      max: 100,
+      enabled: true,
+    },
   });
 };
 
