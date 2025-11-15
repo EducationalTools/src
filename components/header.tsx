@@ -15,6 +15,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             key="header-logo"
           >
             <Button variant="ghost" size="icon" asChild>
