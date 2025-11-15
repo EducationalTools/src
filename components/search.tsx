@@ -21,7 +21,6 @@ export default function Search() {
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
-          <ExperimentalFeatures />
           <CommandItem>
             <span>Calendar</span>
           </CommandItem>
@@ -46,6 +45,7 @@ export default function Search() {
             <span>Settings</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>
+          <ExperimentalFeatures />
         </CommandGroup>
       </CommandList>
     </CommandDialog>
@@ -68,7 +68,11 @@ function ExperimentalFeatures() {
         toggleExperimentalFeatures();
         setSearchOpen(false);
       }}
-      className={search.toLowerCase().includes("exp") ? "" : "hidden"}
+      className={
+        search.toLowerCase().includes("exp") || experimentalFeatures
+          ? ""
+          : "hidden"
+      }
     >
       <span>
         {experimentalFeatures ? "Disable" : "Enable"} Experimental Features
