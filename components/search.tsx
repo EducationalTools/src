@@ -12,6 +12,7 @@ import {
 import { useCommandState } from "cmdk";
 import { MENU_ITEMS } from "@/lib/menu";
 import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
 
 export default function Search() {
   const searchOpen = useUiState((state) => state.searchOpen);
@@ -20,14 +21,26 @@ export default function Search() {
     (state) => state.enabled,
   );
   const navigate = useNavigate();
+  const [placeholder, setPlaceholder] = useState("Search...");
 
   const menuItems = MENU_ITEMS.filter(
     (item) => !(item.experimental && !experimentalFeatures),
   );
 
+  useEffect(() => {
+    if (searchOpen == true) {
+      if (Math.random() < 0.05) {
+        // https://share.google/hDyEYsAfkwuZNZNAi
+        setPlaceholder("The search begins, I'm back, so enjoy the trip, huh");
+      } else {
+        setPlaceholder("Search...");
+      }
+    }
+  }, [searchOpen]);
+
   return (
     <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
-      <CommandInput placeholder="Search..." />
+      <CommandInput placeholder={placeholder} />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup>
