@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/command";
 import { useCommandState } from "cmdk";
 import { MENU_ITEMS } from "@/lib/menu";
+import { useNavigate } from "react-router";
 
 export default function Search() {
   const searchOpen = useUiState((state) => state.searchOpen);
@@ -18,6 +19,7 @@ export default function Search() {
   const experimentalFeatures = useExperimentalFeatures(
     (state) => state.enabled,
   );
+  const navigate = useNavigate();
 
   const menuItems = MENU_ITEMS.filter(
     (item) => !(item.experimental && !experimentalFeatures),
@@ -32,8 +34,14 @@ export default function Search() {
           {menuItems
             .filter((item) => item.href)
             .map((item) => (
-              <CommandItem key={item.href} value={item.href}>
-                {item.icon && <item.icon />}
+              <CommandItem
+                key={item.href}
+                value={item.href}
+                onSelect={() => {
+                  navigate({ pathname: item.href });
+                  setSearchOpen(false);
+                }}
+              >
                 {item.label}
               </CommandItem>
             ))}
@@ -46,8 +54,14 @@ export default function Search() {
                 item.children
                   .filter((item) => item.href)
                   .map((item) => (
-                    <CommandItem key={item.href} value={item.href}>
-                      {item.icon && <item.icon />}
+                    <CommandItem
+                      key={item.href}
+                      value={item.href}
+                      onSelect={() => {
+                        navigate({ pathname: item.href });
+                        setSearchOpen(false);
+                      }}
+                    >
                       {item.label}
                     </CommandItem>
                   ))}
