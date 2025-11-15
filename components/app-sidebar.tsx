@@ -178,17 +178,6 @@ export function AppSidebar() {
               <Kbd className="text-nowrap">Ctrl + ,</Kbd>
             </SidebarMenuButton>
           </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              className="cursor-pointer"
-              onClick={() => sidebar.toggleSidebar()}
-            >
-              <PanelLeft />
-              Sidebar
-              <div className="grow"></div>
-              <Kbd className="text-nowrap">Ctrl + B</Kbd>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
       <SidebarRail />
