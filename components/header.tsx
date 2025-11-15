@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { SidebarTrigger, useSidebar } from "./ui/sidebar";
+import { useSidebar } from "./ui/sidebar";
 import { Button } from "./ui/button";
 import { Sidebar } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
