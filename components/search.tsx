@@ -32,7 +32,7 @@ export default function Search() {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup>
           {menuItems
-            .filter((item) => item.href)
+            .filter((item) => item.href && !item.newTab)
             .map((item) => (
               <CommandItem
                 key={item.href}
@@ -52,7 +52,7 @@ export default function Search() {
             <CommandGroup key={item.label} heading={item.label}>
               {item.children &&
                 item.children
-                  .filter((item) => item.href)
+                  .filter((item) => item.href && !item.newTab)
                   .map((item) => (
                     <CommandItem
                       key={item.href}
