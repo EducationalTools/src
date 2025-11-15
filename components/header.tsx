@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
 import { useSidebar } from "./ui/sidebar";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { Sidebar } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -11,6 +11,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { UserButton } from "@daveyplate/better-auth-ui";
 
 export default function Header() {
   const sidebar = useSidebar();
@@ -47,6 +48,8 @@ export default function Header() {
             <Sidebar />
           </Button>
         </motion.div>
+        <div className="grow"></div>
+        <UserButton size="sm" variant="ghost" />
       </AnimatePresence>
     </div>
   );
