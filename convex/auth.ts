@@ -97,6 +97,7 @@ export const createAuth = (
       window: 10,
       max: 100,
       enabled: true,
+      storage: "database",
     },
   });
 };

@@ -63,6 +63,16 @@ export const tables = {
     privateKey: v.string(),
     createdAt: v.number(),
   }),
+  rateLimit: defineTable({
+    key: v.optional(v.union(v.null(), v.string())),
+    count: v.optional(v.union(v.null(), v.number())),
+    lastRequest: v.optional(v.union(v.null(), v.number())),
+  }).index("key", ["key"]),
+  ratelimit: defineTable({
+    key: v.string(),
+    count: v.number(),
+    lastRequest: v.number(),
+  }).index("key", ["key"]),
 };
 
 const schema = defineSchema(tables);
