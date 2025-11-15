@@ -6,12 +6,20 @@ import { query } from "./_generated/server";
 import { betterAuth } from "better-auth";
 import { createAuthMiddleware } from "better-auth/plugins";
 import { oneTimeToken } from "../lib/auth/ott";
+import authSchema from "./betterAuth/schema";
 
 const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex deployment, which redirects to the referer. if it works don't touch it
 
 // The component client has methods needed for integrating Convex with Better Auth,
 // as well as helper methods for general use.
-export const authComponent = createClient<DataModel>(components.betterAuth);
+export const authComponent = createClient<DataModel, typeof authSchema>(
+  components.betterAuth,
+  {
+    local: {
+      schema: authSchema,
+    },
+  },
+);
 
 export const createAuth = (
   ctx: GenericCtx<DataModel>,
