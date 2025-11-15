@@ -49,7 +49,7 @@ export default function Header() {
           </Button>
         </motion.div>
         <div className="grow"></div>
-        <div className="flex flex-row" key="header-right">
+        <div className="flex flex-row gap-1" key="header-right">
           <Button variant="ghost" asChild>
             <Link to="https://github.com/EducationalTools/src" target="_blank">
               <Code />
