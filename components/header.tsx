@@ -47,43 +47,6 @@ export default function Header() {
             <Sidebar />
           </Button>
         </motion.div>
-        <motion.div
-          layout
-          key="header-breadcrumb"
-          transition={{ duration: 0.2 }}
-        >
-          <Breadcrumb>
-            {" "}
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/">Home</Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              {location.pathname.split("/").map(
-                (path, index) =>
-                  path && (
-                    <BreadcrumbItem key={index}>
-                      <BreadcrumbSeparator />
-                      <BreadcrumbLink asChild>
-                        <Link
-                          to={location.pathname
-                            .split("/")
-                            .slice(0, index + 1)
-                            .join("/")}
-                        >
-                          {(
-                            path.charAt(0).toUpperCase() +
-                            path.slice(1).toLowerCase()
-                          ).replace("-", " ")}
-                        </Link>
-                      </BreadcrumbLink>
-                    </BreadcrumbItem>
-                  ),
-              )}
-            </BreadcrumbList>
-          </Breadcrumb>
-        </motion.div>
       </AnimatePresence>
     </div>
   );
