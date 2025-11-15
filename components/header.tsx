@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router";
 import { useSidebar } from "./ui/sidebar";
 import { Button, buttonVariants } from "./ui/button";
-import { Code, Sidebar } from "lucide-react";
+import { Code, Search, Sidebar } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Breadcrumb,
@@ -12,10 +12,11 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { UserButton } from "@daveyplate/better-auth-ui";
+import { useUiState } from "@/lib/state";
 
 export default function Header() {
   const sidebar = useSidebar();
-  const location = useLocation();
+  const setSearchOpen = useUiState((state) => state.setSearchOpen);
 
   return (
     <div className="flex flex-row gap-1 items-center">
@@ -26,7 +27,8 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            key="header-logo"
+            key="header-sidebar-collapsed-buttons"
+            className="flex flex-row gap-2"
           >
             <Button variant="ghost" size="icon" asChild>
               <Link to="/">
@@ -36,6 +38,13 @@ export default function Header() {
                   alt=""
                 />
               </Link>
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSearchOpen(true)}
+            >
+              <Search />
             </Button>
           </motion.div>
         )}
