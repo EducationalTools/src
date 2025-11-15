@@ -30,6 +30,7 @@ import {
 import { MENU_ITEMS } from "@/lib/menu";
 import { Kbd } from "./ui/kbd";
 import { useExperimentalFeatures, useUiState } from "@/lib/state";
+import clsx from "clsx";
 
 export function AppSidebar() {
   const sidebar = useSidebar();
@@ -55,7 +56,13 @@ export function AppSidebar() {
   );
 
   return (
-    <Sidebar variant="inset" className="p-0">
+    <Sidebar
+      variant="inset"
+      className={clsx(
+        "p-0 duration-200 transition-all ease-out",
+        !sidebar.open && "blur-xs scale-95",
+      )}
+    >
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
