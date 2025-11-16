@@ -19,12 +19,16 @@ export const columns: ColumnDef<ParsedGmae>[] = [
         </Button>
       );
     },
-    cell: ({ row }) => <div className="font-medium">{row.getValue("name")}</div>,
+    cell: ({ row }) => (
+      <div className="font-medium">{row.getValue("name")}</div>
+    ),
   },
   {
     accessorKey: "description",
     header: "Description",
-    cell: ({ row }) => <div className="max-w-md truncate">{row.getValue("description")}</div>,
+    cell: ({ row }) => (
+      <div className="max-w-md truncate">{row.getValue("description")}</div>
+    ),
   },
   {
     accessorKey: "category",
@@ -39,6 +43,8 @@ export const columns: ColumnDef<ParsedGmae>[] = [
         </Button>
       );
     },
-    cell: ({ row }) => <div className="capitalize">{row.getValue("category")}</div>,
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("category")}</div>
+    ),
   },
 ];
