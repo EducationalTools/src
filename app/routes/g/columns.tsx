@@ -8,6 +8,7 @@ import type { ParsedGmae } from "@/lib/gmaes";
 export const columns: ColumnDef<ParsedGmae>[] = [
   {
     accessorKey: "name",
+    filterFn: "fuzzy",
     header: ({ column }) => {
       return (
         <Button

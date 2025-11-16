@@ -5,6 +5,7 @@ import type {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
+  FilterFn,
 } from "@tanstack/react-table";
 import {
   flexRender,
@@ -29,13 +30,35 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
+const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
+  const itemValue = row.getValue(columnId) as string;
+  
+  if (!value) return true;
+  
+  const searchValue = value.toLowerCase();
+  const targetValue = itemValue.toLowerCase();
+  
+  // Check for exact substring match first
+  if (targetValue.includes(searchValue)) return true;
+  
+  // Fuzzy matching: check if all characters in search appear in order
+  let searchIndex = 0;
+  for (let i = 0; i < targetValue.length && searchIndex < searchValue.length; i++) {
+    if (targetValue[i] === searchValue[searchIndex]) {
+      searchIndex++;
+    }
+  }
+  
+  return searchIndex === searchValue.length;
+};
+
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    [],
+    []
   );
 
   const table = useReactTable({
@@ -46,6 +69,9 @@ export function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    filterFns: {
+      fuzzy: fuzzyFilter,
+    },
     state: {
       sorting,
       columnFilters,
@@ -76,7 +102,7 @@ export function DataTable<TData, TValue>({
                         ? null
                         : flexRender(
                             header.column.columnDef.header,
-                            header.getContext(),
+                            header.getContext()
                           )}
                     </TableHead>
                   );
@@ -100,7 +126,7 @@ export function DataTable<TData, TValue>({
                       <TableCell key={cell.id}>
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext(),
+                          cell.getContext()
                         )}
                       </TableCell>
                     ))}
