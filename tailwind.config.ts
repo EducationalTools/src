@@ -6,12 +6,32 @@ export default {
     extend: {
       keyframes: {
         "collapsible-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-collapsible-content-height)" },
+          from: {
+            height: "0",
+            filter: "blur(5px)",
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          to: {
+            height: "var(--radix-collapsible-content-height)",
+            filter: "blur(0)",
+            opacity: "1",
+            transform: "translateY(0)",
+          },
         },
         "collapsible-up": {
-          from: { height: "var(--radix-collapsible-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-collapsible-content-height)",
+            filter: "blur(0)",
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+          to: {
+            height: "0",
+            filter: "blur(5px)",
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
         },
       },
       animation: {
