@@ -23,8 +23,14 @@ export default function Header() {
       <AnimatePresence mode="popLayout">
         {(!sidebar.open || sidebar.isMobile) && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{
+              opacity: 0,
+              filter: "blur(5px)",
+            }}
+            animate={{
+              opacity: 1,
+              filter: "blur(0)",
+            }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             key="header-sidebar-collapsed-buttons"
