@@ -5,8 +5,12 @@ export default function Hotkeys() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
 
-  useHotkeys("mod+k", () => setSearchOpen(true));
-  useHotkeys("mod+,", () => setSettingsOpen(true));
+  useHotkeys("mod+k", () => setSearchOpen(true), {
+    preventDefault: true,
+  });
+  useHotkeys("mod+comma", () => setSettingsOpen(true), {
+    preventDefault: true,
+  });
 
   return null;
 }
