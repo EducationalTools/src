@@ -96,7 +96,7 @@ export function DataTable<TData, TValue>({
                   className="cursor-pointer hover:bg-muted/50"
                 >
                   <Link
-                    to={`/g/play?id=${(row.original as any).id}`}
+                    to={`/g/${(row.original as any).id}`}
                     className="contents"
                   >
                     {row.getVisibleCells().map((cell) => (
