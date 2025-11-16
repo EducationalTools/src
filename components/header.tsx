@@ -13,6 +13,12 @@ import {
 } from "@/components/ui/breadcrumb";
 import { UserButton } from "@daveyplate/better-auth-ui";
 import { useUiState } from "@/lib/state";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Kbd } from "./ui/kbd";
 
 export default function Header() {
   const sidebar = useSidebar();
@@ -45,23 +51,37 @@ export default function Header() {
                 />
               </Link>
             </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setSearchOpen(true)}
-            >
-              <Search />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setSearchOpen(true)}
+                >
+                  <Search />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                Search <Kbd>Ctrl + K</Kbd>
+              </TooltipContent>
+            </Tooltip>
           </motion.div>
         )}
         <motion.div layout key="header-sidebar" transition={{ duration: 0.2 }}>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => sidebar.toggleSidebar()}
-          >
-            <Sidebar />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => sidebar.toggleSidebar()}
+              >
+                <Sidebar />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              Toggle Sidebar <Kbd>Ctrl + B</Kbd>
+            </TooltipContent>
+          </Tooltip>
         </motion.div>
         <div className="grow"></div>
         <div className="flex flex-row gap-1" key="header-right">
