@@ -32,23 +32,27 @@ interface DataTableProps<TData, TValue> {
 
 const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   const itemValue = row.getValue(columnId) as string;
-  
+
   if (!value) return true;
-  
+
   const searchValue = value.toLowerCase();
   const targetValue = itemValue.toLowerCase();
-  
+
   // Check for exact substring match first
   if (targetValue.includes(searchValue)) return true;
-  
+
   // Fuzzy matching: check if all characters in search appear in order
   let searchIndex = 0;
-  for (let i = 0; i < targetValue.length && searchIndex < searchValue.length; i++) {
+  for (
+    let i = 0;
+    i < targetValue.length && searchIndex < searchValue.length;
+    i++
+  ) {
     if (targetValue[i] === searchValue[searchIndex]) {
       searchIndex++;
     }
   }
-  
+
   return searchIndex === searchValue.length;
 };
 
