@@ -4,7 +4,7 @@ import { DataTable } from "./data-table";
 
 export default function GmaeIndex() {
   return (
-    <div className="h-full">
+    <div>
       <DataTable columns={columns} data={gmaes} />
     </div>
   );
