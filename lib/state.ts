@@ -34,3 +34,19 @@ export const useUiState = create<UiState>((set) => ({
   settingsOpen: false,
   setSettingsOpen: (open: boolean) => set({ settingsOpen: open }),
 }));
+
+interface SettingsState {
+  theme: {
+    mode: string;
+    theme: string;
+  };
+  setTheme: (theme: { mode: string; theme: string }) => void;
+}
+
+export const useSettingsState = create<SettingsState>((set) => ({
+  theme: {
+    mode: "light",
+    theme: "default",
+  },
+  setTheme: (theme) => set({ theme }),
+}));

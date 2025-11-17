@@ -12,7 +12,6 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { ThemeProvider } from "@/components/theme-provider";
 
 import {
   SidebarInset,
@@ -69,7 +68,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }) => <Link to={href} {...props} />;
 
   return (
-    <html className="dark" lang="en">
+    <html className="theme-default dark" lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -133,9 +132,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <>
-      <ThemeProvider defaultTheme="dark" storageKey="edutools-ui-theme">
-        <Outlet />
-      </ThemeProvider>
+      <Outlet />
     </>
   );
 }
