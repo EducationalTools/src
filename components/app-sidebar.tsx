@@ -185,7 +185,7 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <div className="p-4 flex flex-col border rounded-xl text-sm gap-2 opacity-25 hover:opacity-100 duration-200">
+            <div className="p-4 flex flex-col border rounded-xl text-sm gap-2 opacity-25 hover:opacity-100 duration-200 bg-card">
               <Link
                 to="https://github.com/EducationalTools/src"
                 target="_blank"
