@@ -10,6 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { ThemeSelector } from "./theme-selector";
+import { ThemeModeSelector } from "./theme-mode-selector";
 
 export default function Settings() {
   const open = useUiState((state) => state.settingsOpen);
@@ -22,7 +23,10 @@ export default function Settings() {
         <DialogHeader>
           <DialogTitle>Settings</DialogTitle>
         </DialogHeader>
-        <ThemeSelector />
+        <div className="flex items-center gap-2">
+          <ThemeSelector className="flex-1" />
+          <ThemeModeSelector />
+        </div>
       </DialogContent>
     </Dialog>
   );
