@@ -40,13 +40,13 @@ interface SettingsState {
     mode: string;
     theme: string;
   };
-  setTheme: (theme: { mode: string; theme: string }) => void;
+  setTheme: (theme: { mode?: string; theme?: string }) => void;
 }
 
-export const useSettingsState = create<SettingsState>((set) => ({
+export const useSettingsState = create<SettingsState>((set, get) => ({
   theme: {
     mode: "light",
     theme: "default",
   },
-  setTheme: (theme) => set({ theme }),
+  setTheme: (theme) => set({ theme: { ...theme, ...get().theme } }),
 }));
