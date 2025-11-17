@@ -67,7 +67,7 @@ export function ThemeSelector({ className }: { className?: string }) {
                       "ml-auto",
                       theme.theme === themeOption.value
                         ? "opacity-100"
-                        : "opacity-0",
+                        : "opacity-0"
                     )}
                   />
                 </CommandItem>
