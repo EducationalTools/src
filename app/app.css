@@ -133,6 +133,6 @@
   }
 
   body {
-    @apply bg-background text-foreground min-h-screen;
+    @apply bg-sidebar text-foreground min-h-screen;
   }
 }
