@@ -55,6 +55,7 @@ export default function Search() {
                   setSearchOpen(false);
                 }}
               >
+                {item.icon && <item.icon />}
                 {item.label}
               </CommandItem>
             ))}
@@ -75,6 +76,7 @@ export default function Search() {
                         setSearchOpen(false);
                       }}
                     >
+                      {item.icon && <item.icon />}
                       {item.label}
                     </CommandItem>
                   ))}
