@@ -71,7 +71,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
     root.classList.remove("dark");
 
+    // if theme doesn't support selected mode
     if (!themes[theme.theme][theme.mode]) {
+      // use supported mode
       if (!(theme.mode == "dark")) {
         root.classList.add("dark");
       }
