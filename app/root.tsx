@@ -29,6 +29,8 @@ import { authClient } from "@/lib/auth-client";
 import { AuthUIProvider } from "@daveyplate/better-auth-ui";
 import { useEffect, useState } from "react";
 import Header from "@/components/header";
+import { useSettingsState, useUiState } from "@/lib/state";
+import { themes } from "@/lib/themes/theme";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -57,6 +59,28 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setBaseUrl(location.protocol + "//" + location.host);
   }, []);
+
+  const theme = useSettingsState((state) => state.theme);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+
+    Object.keys(themes).forEach((key) => {
+      root.classList.remove(key);
+    });
+
+    root.classList.remove("dark");
+
+    if (!themes[theme.theme][theme.mode]) {
+      if (!(theme.mode == "dark")) {
+        root.classList.add("dark");
+      }
+    } else {
+      if (theme.mode == "dark") {
+        root.classList.add("dark");
+      }
+    }
+  }, [theme]);
 
   const LinkComponent = ({
     href,
