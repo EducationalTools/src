@@ -1,15 +1,12 @@
 interface Theme {
   name: string;
-  id: string;
   dark: boolean;
   light: boolean;
 }
-
-export const themes: Theme[] = [
-  {
+export const themes: Record<string, Theme> = {
+  default: {
     name: "Default",
-    id: "default",
     dark: true,
     light: true,
   },
-];
+};
