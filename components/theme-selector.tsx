@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
+import { Check, ChevronsUpDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -18,34 +18,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import clsx from "clsx";
+import { themes } from "@/lib/themes/themes";
+import { useSettingsState } from "@/lib/state";
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
+const themeOptions = Object.entries(themes).map(([value, theme]) => ({
+  value,
+  label: theme.name,
+}));
 
 export function ThemeSelector({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const theme = useSettingsState((state) => state.theme);
+  const setTheme = useSettingsState((state) => state.setTheme);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -54,36 +38,38 @@ export function ThemeSelector({ className }: { className?: string }) {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={clsx("justify-between", className)}
+          className={cn("w-[200px] justify-between", className)}
         >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Theme"}
-          <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          {theme.theme
+            ? themeOptions.find((t) => t.value === theme.theme)?.label
+            : "Select theme..."}
+          <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="p-0">
+      <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." />
+          <CommandInput placeholder="Search theme..." className="h-9" />
           <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandEmpty>No theme found.</CommandEmpty>
             <CommandGroup>
-              {frameworks.map((framework) => (
+              {themeOptions.map((themeOption) => (
                 <CommandItem
-                  key={framework.value}
-                  value={framework.value}
+                  key={themeOption.value}
+                  value={themeOption.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                    setTheme({ theme: currentValue });
                     setOpen(false);
                   }}
                 >
-                  <CheckIcon
+                  {themeOption.label}
+                  <Check
                     className={cn(
-                      "mr-2 h-4 w-4",
-                      value === framework.value ? "opacity-100" : "opacity-0",
+                      "ml-auto",
+                      theme.theme === themeOption.value
+                        ? "opacity-100"
+                        : "opacity-0",
                     )}
                   />
-                  {framework.label}
                 </CommandItem>
               ))}
             </CommandGroup>

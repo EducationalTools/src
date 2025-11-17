@@ -41,7 +41,7 @@ interface SettingsState {
     mode: "light" | "dark";
     theme: keyof typeof themes;
   };
-  setTheme: (theme: { mode?: string; theme?: string }) => void;
+  setTheme: (theme: { mode?: "light" | "dark"; theme?: string }) => void;
 }
 
 export const useSettingsState = create<SettingsState>((set, get) => ({
@@ -49,5 +49,5 @@ export const useSettingsState = create<SettingsState>((set, get) => ({
     mode: "dark",
     theme: "default",
   },
-  setTheme: (theme) => set({ theme: { ...theme, ...get().theme } }),
+  setTheme: (theme) => set({ theme: { ...get().theme, ...theme } }),
 }));
