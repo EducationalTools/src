@@ -110,7 +110,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           >
             <SidebarProvider>
               <AppSidebar />
-              <div className="flex flex-col w-full p-2 gap-2">
+              <div className="flex flex-col w-full p-2 pt-0">
                 <Header />
                 <SidebarInset className="w-full rounded-md!">
                   <main className="w-full h-full">{children}</main>

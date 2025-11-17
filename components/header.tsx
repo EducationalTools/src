@@ -25,7 +25,7 @@ export default function Header() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
 
   return (
-    <div className="flex flex-row gap-1 items-center">
+    <div className="flex flex-row gap-1 items-center sticky top-0 z-50 from-sidebar to-transparent bg-linear-to-b py-2">
       <AnimatePresence mode="popLayout">
         {(!sidebar.open || sidebar.isMobile) && (
           <motion.div
