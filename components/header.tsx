@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router";
 import { useSidebar } from "./ui/sidebar";
 import { Button, buttonVariants } from "./ui/button";
-import { Code, Search, Sidebar } from "lucide-react";
+import { Code, Search, Settings, Sidebar } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Breadcrumb,
@@ -23,6 +23,7 @@ import { Kbd } from "./ui/kbd";
 export default function Header() {
   const sidebar = useSidebar();
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
+  const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
 
   return (
     <div className="flex flex-row gap-1 items-center sticky top-0 z-50 from-sidebar to-transparent bg-linear-to-b py-2">
@@ -94,6 +95,20 @@ export default function Header() {
           <Button variant="ghost" asChild>
             <UserButton size="sm" variant="ghost" />
           </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setSettingsOpen(true)}
+              >
+                <Settings />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              Settings <Kbd>Ctrl + ,</Kbd>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </AnimatePresence>
     </div>

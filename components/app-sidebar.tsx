@@ -34,7 +34,6 @@ import clsx from "clsx";
 
 export function AppSidebar() {
   const sidebar = useSidebar();
-  const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const location = useLocation();
   const experimentalFeatures = useExperimentalFeatures(
@@ -172,17 +171,7 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              className="cursor-pointer"
-              onClick={() => setSettingsOpen(true)}
-            >
-              <Settings />
-              Settings
-              <div className="grow"></div>
-              <Kbd className="text-nowrap">Ctrl + ,</Kbd>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          <SidebarMenuItem></SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
       <SidebarRail />
