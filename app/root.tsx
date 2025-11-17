@@ -30,7 +30,7 @@ import { AuthUIProvider } from "@daveyplate/better-auth-ui";
 import { useEffect, useState } from "react";
 import Header from "@/components/header";
 import { useSettingsState, useUiState } from "@/lib/state";
-import { themes } from "@/lib/themes/theme";
+import { themes } from "@/lib/themes/themes";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -51,7 +51,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const convex = new ConvexReactClient(
-    import.meta.env.VITE_CONVEX_URL as string,
+    import.meta.env.VITE_CONVEX_URL as string
   );
   const navigate = useNavigate();
   const [baseUrl, setBaseUrl] = useState<string>("");
@@ -112,13 +112,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
               providers: ["github", "google", "discord"],
               signIn: (params) => {
                 const convexSiteUrl = new URL(
-                  import.meta.env.VITE_CONVEX_SITE_URL,
+                  import.meta.env.VITE_CONVEX_SITE_URL
                 );
 
                 const redirectUrl = new URL("/auth", convexSiteUrl);
                 redirectUrl.searchParams.set(
                   "redirect",
-                  params.callbackURL || "",
+                  params.callbackURL || ""
                 );
 
                 return authClient.signIn.social({

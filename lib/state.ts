@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { themes } from "./themes/theme";
+import { themes } from "./themes/themes";
 
 interface ExperimentalFeaturesState {
   enabled: boolean;
@@ -18,8 +18,8 @@ export const useExperimentalFeatures = create<ExperimentalFeaturesState>()(
     {
       name: "edutools-experimental-features",
       storage: createJSONStorage(() => localStorage),
-    },
-  ),
+    }
+  )
 );
 
 interface UiState {
