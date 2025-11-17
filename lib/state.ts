@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { themes } from "./themes/theme";
 
 interface ExperimentalFeaturesState {
   enabled: boolean;
@@ -37,15 +38,15 @@ export const useUiState = create<UiState>((set) => ({
 
 interface SettingsState {
   theme: {
-    mode: string;
-    theme: string;
+    mode: "light" | "dark";
+    theme: keyof typeof themes;
   };
   setTheme: (theme: { mode?: string; theme?: string }) => void;
 }
 
 export const useSettingsState = create<SettingsState>((set, get) => ({
   theme: {
-    mode: "light",
+    mode: "dark",
     theme: "default",
   },
   setTheme: (theme) => set({ theme: { ...theme, ...get().theme } }),
