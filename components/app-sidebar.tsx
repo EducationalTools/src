@@ -1,6 +1,9 @@
 import {
   ChevronDown,
+  Clock,
+  Code,
   GalleryVerticalEnd,
+  GitBranch,
   PanelLeft,
   Search,
   Settings,
@@ -26,11 +29,21 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 import { MENU_ITEMS } from "@/lib/menu";
 import { Kbd } from "./ui/kbd";
 import { useExperimentalFeatures, useUiState } from "@/lib/state";
 import clsx from "clsx";
+import { Button } from "./ui/button";
 
 export function AppSidebar() {
   const sidebar = useSidebar();
@@ -171,7 +184,26 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
-          <SidebarMenuItem></SidebarMenuItem>
+          <SidebarMenuItem>
+            <div className="p-4 flex flex-col border rounded-xl text-sm gap-2 opacity-25 hover:opacity-100 duration-200">
+              <Link
+                to="https://github.com/EducationalTools/src"
+                target="_blank"
+                className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center "
+              >
+                <Code />
+                EducationalTools/src
+              </Link>
+              <div className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center">
+                <GitBranch />
+                prod
+              </div>
+              <div className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center">
+                <Clock />
+                Built on 17th Nov 2025
+              </div>
+            </div>
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
       <SidebarRail />

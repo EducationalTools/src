@@ -87,12 +87,6 @@ export default function Header() {
         <div className="grow"></div>
         <div className="flex flex-row gap-1" key="header-right">
           <Button variant="ghost" asChild>
-            <Link to="https://github.com/EducationalTools/src" target="_blank">
-              <Code />
-              EducationalTools/src
-            </Link>
-          </Button>
-          <Button variant="ghost" asChild>
             <UserButton size="sm" variant="ghost" />
           </Button>
           <Tooltip>
