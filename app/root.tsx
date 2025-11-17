@@ -66,7 +66,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     const root = window.document.documentElement;
 
     Object.keys(themes).forEach((key) => {
-      root.classList.remove(key);
+      root.classList.remove("theme-" + key);
     });
 
     root.classList.remove("dark");
@@ -82,6 +82,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         root.classList.add("dark");
       }
     }
+
+    root.classList.add("theme-" + theme.theme);
   }, [theme]);
 
   const LinkComponent = ({
