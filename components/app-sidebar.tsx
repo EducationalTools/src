@@ -72,7 +72,7 @@ export function AppSidebar() {
       variant="inset"
       className={clsx(
         "p-0 duration-200 transition-all ease-out",
-        !sidebar.open && "blur-xs opacity-0",
+        !sidebar.open && "blur-lg opacity-0",
       )}
     >
       <SidebarHeader>
