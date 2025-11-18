@@ -1,4 +1,4 @@
-.ingo-au.dark {
+.theme-ingo-au.dark {
   --background: #11111b;
   --foreground: #cdd6f4;
   --card: #1e1e2e;
@@ -54,4 +54,8 @@
   --shadow-xl:
     0px 4px 6px 0px hsl(0 0% 0% / 0.12), 0px 8px 10px -1px hsl(0 0% 0% / 0.12);
   --shadow-2xl: 0px 4px 6px 0px hsl(0 0% 0% / 0.3);
+}
+
+.theme-ingo-au.dark * {
+  @apply border-dashed;
 }
