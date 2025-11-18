@@ -33,12 +33,14 @@ export default function Header() {
             initial={{
               opacity: 0,
               filter: "blur(5px)",
+              x: -50,
             }}
             animate={{
               opacity: 1,
               filter: "blur(0)",
+              x: 0,
             }}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 0, filter: "blur(5px)", x: -50 }}
             transition={{ duration: 0.2 }}
             key="header-sidebar-collapsed-buttons"
             className="flex flex-row gap-2"
