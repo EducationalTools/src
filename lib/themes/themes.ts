@@ -25,4 +25,9 @@ export const themes: Record<string, Theme> = {
     dark: true,
     light: true,
   },
+  mono: {
+    name: "Mono",
+    dark: true,
+    light: true,
+  },
 };
