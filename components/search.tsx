@@ -13,6 +13,7 @@ import { useCommandState } from "cmdk";
 import { MENU_ITEMS } from "@/lib/menu";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 export default function Search() {
   const searchOpen = useUiState((state) => state.searchOpen);
@@ -55,7 +56,7 @@ export default function Search() {
                   setSearchOpen(false);
                 }}
               >
-                {item.icon && <item.icon />}
+                {item.icon ? <item.icon /> : <ArrowRight />}
                 {item.label}
               </CommandItem>
             ))}
@@ -76,7 +77,7 @@ export default function Search() {
                         setSearchOpen(false);
                       }}
                     >
-                      {item.icon && <item.icon />}
+                      {item.icon ? <item.icon /> : <ArrowRight />}
                       {item.label}
                     </CommandItem>
                   ))}
