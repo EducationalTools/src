@@ -13,7 +13,7 @@ import { useCommandState } from "cmdk";
 import { MENU_ITEMS } from "@/lib/menu";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Circle, CircleCheck } from "lucide-react";
 
 export default function Search() {
   const searchOpen = useUiState((state) => state.searchOpen);
@@ -113,9 +113,8 @@ function ExperimentalFeatures() {
           : "hidden"
       }
     >
-      <span>
-        {experimentalFeatures ? "Disable" : "Enable"} Experimental Features
-      </span>
+      {experimentalFeatures ? <CircleCheck /> : <Circle />}
+      {experimentalFeatures ? "Disable" : "Enable"} Experimental Features
     </CommandItem>
   );
 }
