@@ -51,7 +51,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const convex = new ConvexReactClient(
-    import.meta.env.VITE_CONVEX_URL as string
+    import.meta.env.VITE_CONVEX_URL as string,
   );
   const navigate = useNavigate();
   const [baseUrl, setBaseUrl] = useState<string>("");
@@ -114,13 +114,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
               providers: ["github", "google", "discord"],
               signIn: (params) => {
                 const convexSiteUrl = new URL(
-                  import.meta.env.VITE_CONVEX_SITE_URL
+                  import.meta.env.VITE_CONVEX_SITE_URL,
                 );
 
                 const redirectUrl = new URL("/auth", convexSiteUrl);
                 redirectUrl.searchParams.set(
                   "redirect",
-                  params.callbackURL || ""
+                  params.callbackURL || "",
                 );
 
                 return authClient.signIn.social({
@@ -139,7 +139,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <AppSidebar />
               <div className="flex flex-col w-full p-2 pt-0">
                 <Header />
-                <SidebarInset className="w-full rounded-md!">
+                <SidebarInset className="w-full rounded-md! overflow-hidden">
                   <main className="w-full h-full">{children}</main>
                 </SidebarInset>
               </div>
