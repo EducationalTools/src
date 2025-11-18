@@ -30,4 +30,9 @@ export const themes: Record<string, Theme> = {
     dark: true,
     light: true,
   },
+  noeco: {
+    name: "Noe Co.",
+    dark: true,
+    light: false,
+  },
 };
