@@ -18,8 +18,8 @@ export const useExperimentalFeatures = create<ExperimentalFeaturesState>()(
     {
       name: "edutools-experimental-features",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );
 
 interface UiState {
@@ -44,10 +44,18 @@ interface SettingsState {
   setTheme: (theme: { mode?: "light" | "dark"; theme?: string }) => void;
 }
 
-export const useSettingsState = create<SettingsState>((set, get) => ({
-  theme: {
-    mode: "dark",
-    theme: "default",
-  },
-  setTheme: (theme) => set({ theme: { ...get().theme, ...theme } }),
-}));
+export const useSettingsState = create<SettingsState>()(
+  persist(
+    (set, get) => ({
+      theme: {
+        mode: "dark",
+        theme: "default",
+      },
+      setTheme: (theme) => set({ theme: { ...get().theme, ...theme } }),
+    }),
+    {
+      name: "edutools-theme",
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);
