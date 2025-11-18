@@ -6,6 +6,8 @@
 
 @import "../lib/themes/default.css";
 @import "../lib/themes/terminal.css";
+@import "../lib/themes/catppuccin.css";
+@import "../lib/themes/better-catppuccin.css";
 
 @custom-variant dark (&:is(.dark *));
 @variant fullscreen (&:fullscreen);
