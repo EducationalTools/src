@@ -54,7 +54,7 @@ export const useSettingsState = create<SettingsState>()(
       setTheme: (theme) => set({ theme: { ...get().theme, ...theme } }),
     }),
     {
-      name: "edutools-theme",
+      name: "edutools-settings",
       storage: createJSONStorage(() => localStorage),
     },
   ),
