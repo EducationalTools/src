@@ -35,4 +35,9 @@ export const themes: Record<string, Theme> = {
     dark: true,
     light: false,
   },
+  "ingo-au": {
+    name: "ingo.au",
+    dark: true,
+    light: false,
+  },
 };

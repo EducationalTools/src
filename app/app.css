@@ -10,6 +10,7 @@
 @import "../lib/themes/better-catppuccin.css";
 @import "../lib/themes/mono.css";
 @import "../lib/themes/noeco.css";
+@import "../lib/themes/ingo-au.css";
 
 @custom-variant dark (&:is(.dark *));
 @variant fullscreen (&:fullscreen);
