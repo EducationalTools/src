@@ -5,6 +5,7 @@
 @import "@daveyplate/better-auth-ui/css";
 
 @import "../lib/themes/default.css";
+@import "../lib/themes/terminal.css";
 
 @custom-variant dark (&:is(.dark *));
 @variant fullscreen (&:fullscreen);

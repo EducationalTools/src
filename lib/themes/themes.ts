@@ -10,24 +10,9 @@ export const themes: Record<string, Theme> = {
     dark: true,
     light: true,
   },
-  rose: {
-    name: "Rose",
+  terminal: {
+    name: "Terminal",
     dark: true,
-    light: true,
-  },
-  blue: {
-    name: "Blue",
-    dark: true,
-    light: true,
-  },
-  green: {
-    name: "Green",
-    dark: true,
-    light: true,
-  },
-  orange: {
-    name: "Orange",
-    dark: true,
-    light: true,
+    light: false,
   },
 };
