@@ -326,10 +326,7 @@ export default function AdminPage() {
                         size="sm"
                         onClick={() => {
                           const reason = prompt("Ban reason:");
-                          handleBanUser(
-                            selectedUser.id,
-                            reason || undefined
-                          );
+                          handleBanUser(selectedUser.id, reason || undefined);
                         }}
                       >
                         Ban User
