@@ -31,6 +31,11 @@ import { useEffect, useState } from "react";
 import Header from "@/components/header";
 import { useSettingsState, useUiState } from "@/lib/state";
 import { themes } from "@/lib/themes/themes";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Copy } from "lucide-react";
+import { toast } from "sonner";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -140,7 +145,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <div className="flex flex-col w-full p-2 pt-0 md:pl-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:pl-2 duration-200">
                 <Header />
                 <SidebarInset className="w-full rounded-md! overflow-hidden">
-                  <main className="w-full h-full">{children}</main>
+                  <main className="w-full h-full relative">{children}</main>
                 </SidebarInset>
               </div>
             </SidebarProvider>
@@ -166,7 +171,7 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
+  let message = "Something went wrong";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
 
@@ -182,14 +187,43 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
+    <main className="w-full h-full max-w-screen flex flex-col gap-2 items-center justify-center p-4">
+      <div className="max-w-4xl flex flex-col gap-4 items-center justify-center">
+        <h1 className="text-4xl text-center">{message}</h1>
+        <p className="text-center">{details}</p>
+        {stack && (
+          <Dialog>
+            <ButtonGroup>
+              <Button variant="outline" asChild>
+                <DialogTrigger>Technical Information</DialogTrigger>
+              </Button>
+              <Button
+                size="icon"
+                variant="outline"
+                onClick={() => {
+                  navigator.clipboard
+                    .writeText(stack || "")
+                    .then(() => {
+                      toast.success("Copied to clipboard");
+                    })
+                    .catch((error) => {
+                      toast.error("Failed to copy to clipboard");
+                    });
+                }}
+              >
+                <Copy />
+              </Button>
+            </ButtonGroup>
+            <DialogContent>
+              {stack && (
+                <pre className="w-full p-4 overflow-x-auto">
+                  <code>{stack}</code>
+                </pre>
+              )}
+            </DialogContent>
+          </Dialog>
+        )}
+      </div>
     </main>
   );
 }
