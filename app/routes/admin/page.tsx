@@ -24,6 +24,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { Spinner } from "@/components/ui/spinner";
 
 type Session = {
   id: string;
@@ -219,17 +220,15 @@ export default function AdminPage() {
 
   const columns = createColumns();
 
-  if (loading) {
-    return (
-      <div className="p-6">
-        <div>Loading users...</div>
-      </div>
-    );
-  }
-
   return (
     <div className="p-6">
-      <DataTable columns={columns} data={users} onRowClick={handleRowClick} />
+      {loading ? (
+        <div className="flex justify-center py-12">
+          <Spinner className="size-6" />
+        </div>
+      ) : (
+        <DataTable columns={columns} data={users} onRowClick={handleRowClick} />
+      )}
 
       <Dialog open={showUserDialog} onOpenChange={handleDialogClose}>
         <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
@@ -348,8 +347,8 @@ export default function AdminPage() {
                 <div className="space-y-4">
                   <h3 className="text-sm font-medium">Active Sessions</h3>
                   {loadingSessions ? (
-                    <div className="text-center py-8 text-muted-foreground">
-                      Loading sessions...
+                    <div className="flex justify-center py-8">
+                      <Spinner />
                     </div>
                   ) : sessions.length > 0 ? (
                     <div className="space-y-3">
@@ -357,8 +356,8 @@ export default function AdminPage() {
                         <Card key={session.id}>
                           <CardContent className="p-4">
                             <div className="flex items-start justify-between gap-4">
-                              <div className="space-y-1 flex-1 min-w-0">
-                                <div className="flex items-center gap-4 text-sm">
+                              <div className="space-y-1 flex-1 overflow-hidden">
+                                <div className="flex items-center gap-4 text-sm flex-wrap">
                                   <div>
                                     <span className="text-muted-foreground">
                                       Created:
@@ -388,7 +387,7 @@ export default function AdminPage() {
                                     {session.ipAddress || "N/A"}
                                   </span>
                                 </div>
-                                <div className="text-sm truncate">
+                                <div className="text-sm break-all">
                                   <span className="text-muted-foreground">
                                     User Agent:
                                   </span>
@@ -400,6 +399,7 @@ export default function AdminPage() {
                               <Button
                                 variant="destructive"
                                 size="sm"
+                                className="shrink-0"
                                 onClick={() =>
                                   handleRevokeSession(session.token)
                                 }
