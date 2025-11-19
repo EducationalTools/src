@@ -46,6 +46,8 @@ export default function AdminPage() {
   const [loadingSessions, setLoadingSessions] = useState(false);
   const [showBanDialog, setShowBanDialog] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [showRoleDialog, setShowRoleDialog] = useState(false);
+  const [pendingRole, setPendingRole] = useState<"admin" | "user" | null>(null);
   const [banReason, setBanReason] = useState("");
 
   const loadUsers = async () => {
@@ -74,20 +76,23 @@ export default function AdminPage() {
     loadUsers();
   }, []);
 
-  const handleSetRole = async (userId: string, role: string) => {
+  const handleSetRole = async () => {
+    if (!selectedUser || !pendingRole) return;
     try {
       const response = await authClient.admin.setRole({
-        userId,
-        role: role as "admin" | "user",
+        userId: selectedUser.id,
+        role: pendingRole,
       });
 
       if (response.error) {
         toast.error("Failed to set role: " + response.error.message);
       } else {
-        toast.success(`Role updated to ${role}`);
+        toast.success(`Role updated to ${pendingRole}`);
+        setShowRoleDialog(false);
+        setPendingRole(null);
         // Update the selected user's role in state
         if (selectedUser) {
-          setSelectedUser({ ...selectedUser, role });
+          setSelectedUser({ ...selectedUser, role: pendingRole });
         }
         loadUsers();
       }
@@ -301,7 +306,10 @@ export default function AdminPage() {
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => handleSetRole(selectedUser.id, "user")}
+                        onClick={() => {
+                          setPendingRole("user");
+                          setShowRoleDialog(true);
+                        }}
                       >
                         Set as User
                       </Button>
@@ -309,7 +317,10 @@ export default function AdminPage() {
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => handleSetRole(selectedUser.id, "admin")}
+                        onClick={() => {
+                          setPendingRole("admin");
+                          setShowRoleDialog(true);
+                        }}
                       >
                         Set as Admin
                       </Button>
@@ -469,6 +480,30 @@ export default function AdminPage() {
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
               Delete User
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Change Role Alert Dialog */}
+      <AlertDialog open={showRoleDialog} onOpenChange={(open) => {
+        setShowRoleDialog(open);
+        if (!open) setPendingRole(null);
+      }}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Change User Role</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to change {selectedUser?.email}'s role to{" "}
+              <span className="font-semibold">{pendingRole}</span>?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setPendingRole(null)}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={handleSetRole}>
+              Change Role
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
