@@ -65,11 +65,13 @@ export default function Header() {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                Search
-                <KbdGroup>
-                  <Kbd className="text-nowrap">⌘</Kbd>
-                  <Kbd className="text-nowrap">K</Kbd>
-                </KbdGroup>
+                <div className="flex items-center gap-2">
+                  Search
+                  <KbdGroup>
+                    <Kbd className="text-nowrap">⌘</Kbd>
+                    <Kbd className="text-nowrap">K</Kbd>
+                  </KbdGroup>
+                </div>
               </TooltipContent>
             </Tooltip>
           </motion.div>
@@ -86,11 +88,13 @@ export default function Header() {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              Toggle Sidebar
-              <KbdGroup>
-                <Kbd className="text-nowrap">⌘</Kbd>
-                <Kbd className="text-nowrap">B</Kbd>
-              </KbdGroup>
+              <div className="flex items-center gap-2">
+                Toggle Sidebar
+                <KbdGroup>
+                  <Kbd className="text-nowrap">⌘</Kbd>
+                  <Kbd className="text-nowrap">B</Kbd>
+                </KbdGroup>
+              </div>
             </TooltipContent>
           </Tooltip>
         </motion.div>
@@ -110,11 +114,13 @@ export default function Header() {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              Settings
-              <KbdGroup>
-                <Kbd className="text-nowrap">⌘</Kbd>
-                <Kbd className="text-nowrap">,</Kbd>
-              </KbdGroup>
+              <div className="flex items-center gap-2">
+                Settings
+                <KbdGroup>
+                  <Kbd className="text-nowrap">⌘</Kbd>
+                  <Kbd className="text-nowrap">,</Kbd>
+                </KbdGroup>
+              </div>
             </TooltipContent>
           </Tooltip>
         </div>
