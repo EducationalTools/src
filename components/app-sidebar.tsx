@@ -40,7 +40,7 @@ import {
 } from "@/components/ui/card";
 
 import { MENU_ITEMS } from "@/lib/menu";
-import { Kbd } from "./ui/kbd";
+import { Kbd, KbdGroup } from "./ui/kbd";
 import { useExperimentalFeatures, useUiState } from "@/lib/state";
 import clsx from "clsx";
 import { Button } from "./ui/button";
@@ -57,7 +57,13 @@ export function AppSidebar() {
     <>
       {item.icon && <item.icon />}
       <span>{item.label}</span>
-      {item.kbd && <Kbd className="ml-auto">{item.kbd}</Kbd>}
+      {item.kbd && (
+        <KbdGroup>
+          {item.kbd.split(" ").map((key) => (
+            <Kbd key={key}>{key}</Kbd>
+          ))}
+        </KbdGroup>
+      )}
       {item.children && item.children.length > 0 && (
         <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
       )}
@@ -102,8 +108,10 @@ export function AppSidebar() {
             >
               <Search className="size-4" />
               Search
-              <div className="grow"></div>
-              <Kbd className="text-nowrap">⌘ + K</Kbd>
+              <KbdGroup className="ml-auto">
+                <Kbd className="text-nowrap">⌘</Kbd>
+                <Kbd className="text-nowrap">K</Kbd>
+              </KbdGroup>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

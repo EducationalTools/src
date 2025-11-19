@@ -34,7 +34,7 @@ export const MENU_ITEMS: MenuItem[] = [
     href: "/",
     icon: Home,
     experimental: false,
-    kbd: "⌘ + ⇧ + H",
+    kbd: "⌘ ⇧ H",
   },
   {
     label: "Tools",
@@ -56,7 +56,7 @@ export const MENU_ITEMS: MenuItem[] = [
       {
         label: "All Gmaes",
         href: "/g",
-        kbd: "⌘ + ⇧ + G",
+        kbd: "⌘ ⇧ G",
       },
       ...gmaes.map((gmae) => ({
         label: gmae.name,

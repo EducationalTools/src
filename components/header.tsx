@@ -18,7 +18,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Kbd } from "./ui/kbd";
+import { Kbd, KbdGroup } from "./ui/kbd";
 
 export default function Header() {
   const sidebar = useSidebar();
@@ -65,7 +65,11 @@ export default function Header() {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                Search <Kbd>⌘ + K</Kbd>
+                Search
+                <KbdGroup>
+                  <Kbd className="text-nowrap">⌘</Kbd>
+                  <Kbd className="text-nowrap">K</Kbd>
+                </KbdGroup>
               </TooltipContent>
             </Tooltip>
           </motion.div>
@@ -82,7 +86,11 @@ export default function Header() {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              Toggle Sidebar <Kbd>⌘ + B</Kbd>
+              Toggle Sidebar
+              <KbdGroup>
+                <Kbd className="text-nowrap">⌘</Kbd>
+                <Kbd className="text-nowrap">B</Kbd>
+              </KbdGroup>
             </TooltipContent>
           </Tooltip>
         </motion.div>
@@ -102,7 +110,11 @@ export default function Header() {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              Settings <Kbd>⌘ + ,</Kbd>
+              Settings
+              <KbdGroup>
+                <Kbd className="text-nowrap">⌘</Kbd>
+                <Kbd className="text-nowrap">,</Kbd>
+              </KbdGroup>
             </TooltipContent>
           </Tooltip>
         </div>
