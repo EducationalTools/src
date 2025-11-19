@@ -36,7 +36,7 @@ export const createAuth = (
     plugins: [
       convex(),
       oneTimeToken(),
-      // Disable state check, see line 25
+      // Disable state check, see line 33
       {
         id: "disable-state-check",
         hooks: {
