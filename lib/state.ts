@@ -93,12 +93,20 @@ interface GmaeHistory {
 
 export const useGmaeHistory = create<GmaeHistory>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       history: [],
       addToHistory: (gmaeId) =>
-        set((state) => ({
-          history: [...state.history, gmaeId],
-        })),
+        set((state) => {
+          // If included, move to end
+          if (state.history.includes(gmaeId)) {
+            return {
+              history: [...state.history.filter((id) => id !== gmaeId), gmaeId],
+            };
+          }
+          return {
+            history: [...state.history, gmaeId],
+          };
+        }),
       clearHistory: () => set({ history: [] }),
     }),
     {
