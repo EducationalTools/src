@@ -10,6 +10,7 @@ import {
   Key,
   Palette,
   Scale,
+  Shield,
   ShieldUser,
   Type,
   Wrench,
@@ -26,6 +27,7 @@ interface MenuItem {
   children?: MenuItem[];
   newTab?: boolean;
   kbd?: string;
+  requiresAdmin?: boolean;
 }
 
 export const MENU_ITEMS: MenuItem[] = [
@@ -69,6 +71,12 @@ export const MENU_ITEMS: MenuItem[] = [
     href: "/backups",
     icon: ArchiveRestore,
     experimental: true,
+  },
+  {
+    label: "Admin",
+    href: "/admin",
+    icon: Shield,
+    requiresAdmin: true,
   },
   {
     label: "Discord",

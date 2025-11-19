@@ -44,6 +44,8 @@ import { Kbd, KbdGroup } from "./ui/kbd";
 import { useExperimentalFeatures, useUiState } from "@/lib/state";
 import clsx from "clsx";
 import { Button } from "./ui/button";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 export function AppSidebar() {
   const sidebar = useSidebar();
@@ -52,6 +54,7 @@ export function AppSidebar() {
   const experimentalFeatures = useExperimentalFeatures(
     (state) => state.enabled,
   );
+  const currentUser = useQuery(api.auth.getCurrentUser);
 
   const renderMenuItemContent = (item: (typeof MENU_ITEMS)[number]) => (
     <>
@@ -70,8 +73,12 @@ export function AppSidebar() {
     </>
   );
 
+  const isAdmin = currentUser?.role === "admin";
+
   const menuItems = MENU_ITEMS.filter(
-    (item) => !(item.experimental && !experimentalFeatures),
+    (item) =>
+      !(item.experimental && !experimentalFeatures) &&
+      !(item.requiresAdmin && !isAdmin),
   );
 
   return (
