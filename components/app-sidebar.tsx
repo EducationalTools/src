@@ -196,7 +196,7 @@ export function AppSidebar() {
               </Link>
               <div className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center">
                 <GitBranch />
-                prod
+                {process.env.BRANCH_NAME}
               </div>
               <div className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center">
                 <Clock />

@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import Icons from "unplugin-icons/vite";
+import branchName from "current-git-branch";
 
 export default defineConfig({
   plugins: [
@@ -11,4 +12,8 @@ export default defineConfig({
     tsconfigPaths(),
     Icons({ compiler: "jsx", jsx: "react" }),
   ],
+  define: {
+    // Get git branch name
+    "process.env.BRANCH_NAME": JSON.stringify(branchName()),
+  },
 });
