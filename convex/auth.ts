@@ -4,7 +4,7 @@ import { components } from "./_generated/api";
 import { DataModel } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 import { betterAuth } from "better-auth";
-import { createAuthMiddleware } from "better-auth/plugins";
+import { admin, createAuthMiddleware } from "better-auth/plugins";
 import { oneTimeToken } from "../lib/auth/ott";
 import authSchema from "./betterAuth/schema";
 
@@ -36,6 +36,7 @@ export const createAuth = (
     plugins: [
       convex(),
       oneTimeToken(),
+      admin(),
       // Disable state check, see line 33
       {
         id: "disable-state-check",

@@ -14,8 +14,12 @@ export const tables = {
     createdAt: v.number(),
     updatedAt: v.number(),
     userId: v.optional(v.union(v.null(), v.string())),
+    role: v.optional(v.union(v.null(), v.string())),
+    banned: v.optional(v.union(v.null(), v.boolean())),
+    banReason: v.optional(v.union(v.null(), v.string())),
+    banExpires: v.optional(v.union(v.null(), v.number())),
   })
-    .index("email_name", ["email", "name"])
+    .index("email_name", ["email","name"])
     .index("name", ["name"])
     .index("userId", ["userId"]),
   session: defineTable({
@@ -26,9 +30,10 @@ export const tables = {
     ipAddress: v.optional(v.union(v.null(), v.string())),
     userAgent: v.optional(v.union(v.null(), v.string())),
     userId: v.string(),
+    impersonatedBy: v.optional(v.union(v.null(), v.string())),
   })
     .index("expiresAt", ["expiresAt"])
-    .index("expiresAt_userId", ["expiresAt", "userId"])
+    .index("expiresAt_userId", ["expiresAt","userId"])
     .index("token", ["token"])
     .index("userId", ["userId"]),
   account: defineTable({
@@ -46,8 +51,8 @@ export const tables = {
     updatedAt: v.number(),
   })
     .index("accountId", ["accountId"])
-    .index("accountId_providerId", ["accountId", "providerId"])
-    .index("providerId_userId", ["providerId", "userId"])
+    .index("accountId_providerId", ["accountId","providerId"])
+    .index("providerId_userId", ["providerId","userId"])
     .index("userId", ["userId"]),
   verification: defineTable({
     identifier: v.string(),
@@ -67,12 +72,14 @@ export const tables = {
     key: v.optional(v.union(v.null(), v.string())),
     count: v.optional(v.union(v.null(), v.number())),
     lastRequest: v.optional(v.union(v.null(), v.number())),
-  }).index("key", ["key"]),
+  })
+    .index("key", ["key"]),
   ratelimit: defineTable({
     key: v.string(),
     count: v.number(),
     lastRequest: v.number(),
-  }).index("key", ["key"]),
+  })
+    .index("key", ["key"]),
 };
 
 const schema = defineSchema(tables);
