@@ -41,6 +41,16 @@ export default function Home() {
         })
         .reverse()
         .slice(0, 20),
+      empty: (
+        <Empty className="border border-dashed max-h-52">
+          <EmptyHeader>
+            <EmptyMedia variant="icon">
+              <History />
+            </EmptyMedia>
+            <EmptyTitle>No history</EmptyTitle>
+          </EmptyHeader>
+        </Empty>
+      ),
     },
     {
       title: "Saved",
