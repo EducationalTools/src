@@ -57,6 +57,7 @@ export function AppSidebar() {
     <>
       {item.icon && <item.icon />}
       <span>{item.label}</span>
+      {item.kbd && <Kbd className="ml-auto">{item.kbd}</Kbd>}
       {item.children && item.children.length > 0 && (
         <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
       )}

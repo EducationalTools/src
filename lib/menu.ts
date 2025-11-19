@@ -25,6 +25,7 @@ interface MenuItem {
   experimental?: boolean;
   children?: MenuItem[];
   newTab?: boolean;
+  kbd?: string;
 }
 
 export const MENU_ITEMS: MenuItem[] = [
@@ -33,6 +34,7 @@ export const MENU_ITEMS: MenuItem[] = [
     href: "/",
     icon: Home,
     experimental: false,
+    kbd: "Ctrl + Shift + H",
   },
   {
     label: "Tools",
