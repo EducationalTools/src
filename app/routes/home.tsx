@@ -2,9 +2,15 @@ import { TOOLS } from "@/lib/tools";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
-import { History, Wrench } from "lucide-react";
+import { Bookmark, History, Wrench } from "lucide-react";
 import { useGmaeHistory } from "@/lib/state";
 import { getGmaeById } from "@/lib/gmaes";
+import {
+  Empty,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
 
 export default function Home() {
   const history = useGmaeHistory((state) => state.history);
@@ -13,6 +19,8 @@ export default function Home() {
     title: string;
     icon: any;
     items: { href: string; label: string; icon?: any; id: string }[];
+    actions?: React.ReactNode;
+    empty?: React.ReactNode;
   }[] = [
     {
       title: "Tools",
@@ -33,6 +41,21 @@ export default function Home() {
         })
         .reverse()
         .slice(0, 20),
+    },
+    {
+      title: "Saved",
+      icon: Bookmark,
+      items: [],
+      empty: (
+        <Empty className="border border-dashed max-h-52">
+          <EmptyHeader>
+            <EmptyMedia variant="icon">
+              <Bookmark />
+            </EmptyMedia>
+            <EmptyTitle>No saved gmaes</EmptyTitle>
+          </EmptyHeader>
+        </Empty>
+      ),
     },
   ];
 
@@ -62,6 +85,8 @@ export default function Home() {
                 </Link>
               </Button>
             ))}
+            {section.actions && section.actions}
+            {section.empty && section.items.length === 0 && section.empty}
           </div>
         ))}
       </div>
