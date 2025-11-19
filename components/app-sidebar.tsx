@@ -58,7 +58,7 @@ export function AppSidebar() {
       {item.icon && <item.icon />}
       <span>{item.label}</span>
       {item.kbd && (
-        <KbdGroup>
+        <KbdGroup className="ml-auto">
           {item.kbd.split(" ").map((key) => (
             <Kbd key={key}>{key}</Kbd>
           ))}
