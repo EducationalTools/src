@@ -34,7 +34,7 @@ export const MENU_ITEMS: MenuItem[] = [
     href: "/",
     icon: Home,
     experimental: false,
-    kbd: "Ctrl + Shift + H",
+    kbd: "⌘ + ⇧ + H",
   },
   {
     label: "Tools",

@@ -103,7 +103,7 @@ export function AppSidebar() {
               <Search className="size-4" />
               Search
               <div className="grow"></div>
-              <Kbd className="text-nowrap">Ctrl + K</Kbd>
+              <Kbd className="text-nowrap">⌘ + K</Kbd>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

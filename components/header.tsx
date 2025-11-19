@@ -65,7 +65,7 @@ export default function Header() {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                Search <Kbd>Ctrl + K</Kbd>
+                Search <Kbd>⌘ + K</Kbd>
               </TooltipContent>
             </Tooltip>
           </motion.div>
@@ -82,7 +82,7 @@ export default function Header() {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              Toggle Sidebar <Kbd>Ctrl + B</Kbd>
+              Toggle Sidebar <Kbd>⌘ + B</Kbd>
             </TooltipContent>
           </Tooltip>
         </motion.div>
@@ -102,7 +102,7 @@ export default function Header() {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              Settings <Kbd>Ctrl + ,</Kbd>
+              Settings <Kbd>⌘ + ,</Kbd>
             </TooltipContent>
           </Tooltip>
         </div>
