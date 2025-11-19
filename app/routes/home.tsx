@@ -2,14 +2,37 @@ import { TOOLS } from "@/lib/tools";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
-import { Wrench } from "lucide-react";
+import { History, Wrench } from "lucide-react";
+import { useGmaeHistory } from "@/lib/state";
+import { getGmaeById } from "@/lib/gmaes";
 
 export default function Home() {
-  const sections = [
+  const history = useGmaeHistory((state) => state.history);
+
+  const sections: {
+    title: string;
+    icon: any;
+    items: { href: string; label: string; icon?: any; id: string }[];
+  }[] = [
     {
       title: "Tools",
       icon: Wrench,
       items: TOOLS.map((tool) => ({ ...tool, href: `/tools/${tool.id}` })),
+    },
+    {
+      title: "History",
+      icon: History,
+      items: history
+        .map((id) => {
+          const gmae = getGmaeById(id);
+          return {
+            id,
+            href: `/g/${gmae?.id}`,
+            label: gmae?.name || "",
+          };
+        })
+        .reverse()
+        .slice(0, 20),
     },
   ];
 
