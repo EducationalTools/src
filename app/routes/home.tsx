@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <div className="bg-card">
-      <div className="w-full h-72 flex justify-center items-center">
+      <div className="w-full h-72 flex justify-center items-center mb-2 rounded-md">
         <h1 className="text-4xl">EduTools</h1>
       </div>
       <div className="p-4 rounded-lg rounded-b-none bg-background grid grid-cols-3 gap-2">
