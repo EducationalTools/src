@@ -1,6 +1,7 @@
 import { TOOLS } from "@/lib/tools";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -12,14 +13,17 @@ export default function Home() {
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl">Tools</h2>
           {TOOLS.map((tool) => (
-            <Link
-              to={`/tools/${tool.id}`}
-              key={tool.id}
-              className="bg-card p-4 rounded-lg border flex items-center gap-2"
+            <Button
+              className="h-16 justify-start rounded-lg"
+              variant="outline"
+              size="lg"
+              asChild
             >
-              <tool.icon />
-              <h2 className="text-xl">{tool.label}</h2>
-            </Link>
+              <Link to={`/tools/${tool.id}`} key={tool.id}>
+                <tool.icon />
+                <h2 className="text-xl">{tool.label}</h2>
+              </Link>
+            </Button>
           ))}
         </div>
       </div>
