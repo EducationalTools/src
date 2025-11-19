@@ -19,6 +19,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 type Session = {
   id: string;
@@ -35,8 +37,9 @@ export default function AdminPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [sessions, setSessions] = useState<Session[]>([]);
-  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
-  const [showSessionDialog, setShowSessionDialog] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [showUserDialog, setShowUserDialog] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
 
   const loadUsers = async () => {
     try {
@@ -143,7 +146,7 @@ export default function AdminPage() {
     }
   };
 
-  const handleViewSessions = async (userId: string) => {
+  const loadUserSessions = async (userId: string) => {
     try {
       const response = await authClient.admin.listUserSessions({
         userId,
@@ -151,8 +154,6 @@ export default function AdminPage() {
 
       if (response.data) {
         setSessions(response.data.sessions as Session[]);
-        setSelectedUserId(userId);
-        setShowSessionDialog(true);
       } else if (response.error) {
         toast.error("Failed to load sessions: " + response.error.message);
       }
@@ -172,8 +173,8 @@ export default function AdminPage() {
         toast.error("Failed to revoke session: " + response.error.message);
       } else {
         toast.success("Session revoked successfully");
-        if (selectedUserId) {
-          handleViewSessions(selectedUserId);
+        if (selectedUser) {
+          loadUserSessions(selectedUser.id);
         }
       }
     } catch (error) {
@@ -192,6 +193,8 @@ export default function AdminPage() {
         toast.error("Failed to delete user: " + response.error.message);
       } else {
         toast.success("User deleted successfully");
+        setShowUserDialog(false);
+        setSelectedUser(null);
         loadUsers();
       }
     } catch (error) {
@@ -200,83 +203,247 @@ export default function AdminPage() {
     }
   };
 
-  const columns = createColumns(
-    handleSetRole,
-    handleSetPassword,
-    handleBanUser,
-    handleUnbanUser,
-    handleViewSessions,
-    handleDeleteUser
-  );
+  const handleRowClick = async (user: User) => {
+    setSelectedUser(user);
+    setNewPassword("");
+    await loadUserSessions(user.id);
+    setShowUserDialog(true);
+  };
+
+  const handleDialogClose = () => {
+    setShowUserDialog(false);
+    setSelectedUser(null);
+    setSessions([]);
+    setNewPassword("");
+  };
+
+  const columns = createColumns();
 
   if (loading) {
     return (
-      <div className="container mx-auto py-10">
-        <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
+      <div className="p-6">
         <div>Loading users...</div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
-      <DataTable columns={columns} data={users} />
+    <div className="p-6">
+      <DataTable columns={columns} data={users} onRowClick={handleRowClick} />
 
-      <Dialog open={showSessionDialog} onOpenChange={setShowSessionDialog}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>User Sessions</DialogTitle>
-            <DialogDescription>
-              View and manage all sessions for this user
-            </DialogDescription>
-          </DialogHeader>
-          <div className="rounded-md border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Created</TableHead>
-                  <TableHead>Expires</TableHead>
-                  <TableHead>IP Address</TableHead>
-                  <TableHead>User Agent</TableHead>
-                  <TableHead>Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {sessions.length > 0 ? (
-                  sessions.map((session) => (
-                    <TableRow key={session.id}>
-                      <TableCell>
-                        {new Date(session.createdAt).toLocaleString()}
-                      </TableCell>
-                      <TableCell>
-                        {new Date(session.expiresAt).toLocaleString()}
-                      </TableCell>
-                      <TableCell>{session.ipAddress || "N/A"}</TableCell>
-                      <TableCell className="max-w-xs truncate">
-                        {session.userAgent || "N/A"}
-                      </TableCell>
-                      <TableCell>
-                        <Button
-                          variant="destructive"
-                          size="sm"
-                          onClick={() => handleRevokeSession(session.token)}
-                        >
-                          Revoke
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                ) : (
-                  <TableRow>
-                    <TableCell colSpan={5} className="text-center">
-                      No active sessions
-                    </TableCell>
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </div>
+      <Dialog open={showUserDialog} onOpenChange={handleDialogClose}>
+        <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
+          {selectedUser && (
+            <>
+              <DialogHeader>
+                <DialogTitle>{selectedUser.name}</DialogTitle>
+                <DialogDescription>{selectedUser.email}</DialogDescription>
+              </DialogHeader>
+
+              <div className="space-y-6">
+                {/* User Info */}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium">User Information</h3>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="text-muted-foreground">Role:</span>
+                      <span className="ml-2 font-medium capitalize">
+                        {selectedUser.role || "user"}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Status:</span>
+                      <span
+                        className={`ml-2 font-medium ${
+                          selectedUser.banned
+                            ? "text-red-600"
+                            : "text-green-600"
+                        }`}
+                      >
+                        {selectedUser.banned ? "Banned" : "Active"}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Verified:</span>
+                      <span
+                        className={`ml-2 font-medium ${
+                          selectedUser.emailVerified
+                            ? "text-green-600"
+                            : "text-yellow-600"
+                        }`}
+                      >
+                        {selectedUser.emailVerified ? "Yes" : "No"}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Created:</span>
+                      <span className="ml-2">
+                        {new Date(selectedUser.createdAt).toLocaleDateString()}
+                      </span>
+                    </div>
+                    {selectedUser.banned && selectedUser.banReason && (
+                      <div className="col-span-2">
+                        <span className="text-muted-foreground">
+                          Ban Reason:
+                        </span>
+                        <span className="ml-2">{selectedUser.banReason}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Actions */}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium">Actions</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleSetRole(selectedUser.id, "admin")}
+                    >
+                      Set as Admin
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleSetRole(selectedUser.id, "user")}
+                    >
+                      Set as User
+                    </Button>
+                    {selectedUser.banned ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleUnbanUser(selectedUser.id)}
+                      >
+                        Unban User
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          const reason = prompt("Ban reason:");
+                          handleBanUser(
+                            selectedUser.id,
+                            reason || undefined
+                          );
+                        }}
+                      >
+                        Ban User
+                      </Button>
+                    )}
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      onClick={() => {
+                        if (
+                          confirm(
+                            `Are you sure you want to delete user ${selectedUser.email}? This cannot be undone.`
+                          )
+                        ) {
+                          handleDeleteUser(selectedUser.id);
+                        }
+                      }}
+                    >
+                      Delete User
+                    </Button>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Set Password */}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium">Set Password</h3>
+                  <div className="flex gap-2">
+                    <div className="flex-1">
+                      <Input
+                        type="password"
+                        placeholder="New password"
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                      />
+                    </div>
+                    <Button
+                      onClick={() => {
+                        if (newPassword) {
+                          handleSetPassword(selectedUser.id, newPassword);
+                          setNewPassword("");
+                        }
+                      }}
+                      disabled={!newPassword}
+                    >
+                      Update Password
+                    </Button>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Sessions */}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium">Active Sessions</h3>
+                  <div className="rounded-md border">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Created</TableHead>
+                          <TableHead>Expires</TableHead>
+                          <TableHead>IP Address</TableHead>
+                          <TableHead>User Agent</TableHead>
+                          <TableHead>Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {sessions.length > 0 ? (
+                          sessions.map((session) => (
+                            <TableRow key={session.id}>
+                              <TableCell>
+                                {new Date(
+                                  session.createdAt
+                                ).toLocaleDateString()}
+                              </TableCell>
+                              <TableCell>
+                                {new Date(
+                                  session.expiresAt
+                                ).toLocaleDateString()}
+                              </TableCell>
+                              <TableCell>
+                                {session.ipAddress || "N/A"}
+                              </TableCell>
+                              <TableCell className="max-w-xs truncate">
+                                {session.userAgent || "N/A"}
+                              </TableCell>
+                              <TableCell>
+                                <Button
+                                  variant="destructive"
+                                  size="sm"
+                                  onClick={() =>
+                                    handleRevokeSession(session.token)
+                                  }
+                                >
+                                  Revoke
+                                </Button>
+                              </TableCell>
+                            </TableRow>
+                          ))
+                        ) : (
+                          <TableRow>
+                            <TableCell colSpan={5} className="text-center">
+                              No active sessions
+                            </TableCell>
+                          </TableRow>
+                        )}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </DialogContent>
       </Dialog>
     </div>

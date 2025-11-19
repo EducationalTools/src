@@ -52,7 +52,7 @@ export function AppSidebar() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const location = useLocation();
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled,
+    (state) => state.enabled
   );
   const currentUser = useQuery(api.auth.getCurrentUser);
 
@@ -78,7 +78,7 @@ export function AppSidebar() {
   const menuItems = MENU_ITEMS.filter(
     (item) =>
       !(item.experimental && !experimentalFeatures) &&
-      !(item.requiresAdmin && !isAdmin),
+      !(item.requiresAdmin && !isAdmin)
   );
 
   return (
@@ -86,7 +86,7 @@ export function AppSidebar() {
       variant="inset"
       className={clsx(
         "p-0 duration-200 transition-all ease-out",
-        !sidebar.open && "blur-lg opacity-0",
+        !sidebar.open && "blur-lg opacity-0"
       )}
     >
       <SidebarHeader>
@@ -130,7 +130,7 @@ export function AppSidebar() {
               {menuItems.map((item) => {
                 const renderMenuItem = (
                   menuItem: typeof item,
-                  isSubItem = false,
+                  isSubItem = false
                 ) => {
                   const content = renderMenuItemContent(menuItem);
                   const MenuButtonWrapper = isSubItem
@@ -164,7 +164,7 @@ export function AppSidebar() {
                       key={item.label}
                       className="group/collapsible"
                       defaultOpen={item.children.some(
-                        (child) => child.href == location.pathname,
+                        (child) => child.href == location.pathname
                       )}
                     >
                       <SidebarMenuItem>

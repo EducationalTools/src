@@ -1,16 +1,8 @@
 "use client";
 
 import { type ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal, ArrowUpDown } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export type User = {
   id: string;
@@ -25,14 +17,7 @@ export type User = {
   updatedAt: number;
 };
 
-export const createColumns = (
-  onSetRole: (userId: string, role: string) => void,
-  onSetPassword: (userId: string, newPassword: string) => void,
-  onBanUser: (userId: string, reason?: string, expiresIn?: number) => void,
-  onUnbanUser: (userId: string) => void,
-  onViewSessions: (userId: string) => void,
-  onDeleteUser: (userId: string) => void
-): ColumnDef<User>[] => [
+export const createColumns = (): ColumnDef<User>[] => [
   {
     accessorKey: "email",
     header: ({ column }) => {
@@ -112,80 +97,6 @@ export const createColumns = (
     cell: ({ row }) => {
       const date = new Date(row.getValue("createdAt"));
       return <div>{date.toLocaleDateString()}</div>;
-    },
-  },
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      const user = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id)}
-            >
-              Copy user ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => onSetRole(user.id, "admin")}>
-              Set as Admin
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onSetRole(user.id, "user")}>
-              Set as User
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => {
-                const password = prompt("Enter new password:");
-                if (password) onSetPassword(user.id, password);
-              }}
-            >
-              Set Password
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => onViewSessions(user.id)}>
-              View Sessions
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            {user.banned ? (
-              <DropdownMenuItem onClick={() => onUnbanUser(user.id)}>
-                Unban User
-              </DropdownMenuItem>
-            ) : (
-              <DropdownMenuItem
-                onClick={() => {
-                  const reason = prompt("Ban reason:");
-                  onBanUser(user.id, reason || undefined);
-                }}
-              >
-                Ban User
-              </DropdownMenuItem>
-            )}
-            <DropdownMenuItem
-              onClick={() => {
-                if (
-                  confirm(
-                    `Are you sure you want to delete user ${user.email}? This cannot be undone.`
-                  )
-                ) {
-                  onDeleteUser(user.id);
-                }
-              }}
-              className="text-red-600"
-            >
-              Delete User
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
     },
   },
 ];
