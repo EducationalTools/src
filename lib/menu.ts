@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import DiscordIcon from "~icons/fa7-brands/discord";
 import { gmaes } from "./gmaes";
+import { TOOLS } from "./tools";
 
 interface MenuItem {
   label: string;
@@ -37,56 +38,12 @@ export const MENU_ITEMS: MenuItem[] = [
     label: "Tools",
     icon: Wrench,
     experimental: false,
-    children: [
-      {
-        label: "Calculator",
-        href: "/tools/calculator",
-        icon: Calculator,
-        experimental: false,
-      },
-      {
-        label: "Unit Converter",
-        href: "/tools/unit-converter",
-        icon: Scale,
-        experimental: false,
-      },
-      {
-        label: "Word Counter",
-        href: "/tools/word-counter",
-        icon: Type,
-        experimental: false,
-      },
-      {
-        label: "Password Generator",
-        href: "/tools/password-generator",
-        icon: Key,
-        experimental: false,
-      },
-      {
-        label: "Random Number",
-        href: "/tools/random-number",
-        icon: Dices,
-        experimental: false,
-      },
-      {
-        label: "Stopwatch & Timer",
-        href: "/tools/stopwatch-timer",
-        icon: Clock,
-        experimental: false,
-      },
-      {
-        label: "Base64 Converter",
-        href: "/tools/base64-converter",
-        icon: Binary,
-        experimental: false,
-      },
-      {
-        label: "Color Picker",
-        href: "/tools/color-picker",
-        icon: Palette,
-        experimental: false,
-      },
-    ],
+    children: TOOLS.map((tool) => ({
+      label: tool.label,
+      href: `/tools/${tool.id}`,
+      experimental: false,
+      icon: tool.icon,
+    })),
   },
 
   {
