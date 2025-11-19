@@ -207,7 +207,7 @@ export function AppSidebar() {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
-      <SidebarRail />
+      <SidebarRail className="z-50" />
     </Sidebar>
   );
 }
