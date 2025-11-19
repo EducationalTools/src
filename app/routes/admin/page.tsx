@@ -11,14 +11,18 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
 type Session = {
@@ -39,6 +43,9 @@ export default function AdminPage() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [showUserDialog, setShowUserDialog] = useState(false);
   const [loadingSessions, setLoadingSessions] = useState(false);
+  const [showBanDialog, setShowBanDialog] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [banReason, setBanReason] = useState("");
 
   const loadUsers = async () => {
     try {
@@ -89,22 +96,23 @@ export default function AdminPage() {
     }
   };
 
-  const handleBanUser = async (
-    userId: string,
-    reason?: string,
-    expiresIn?: number
-  ) => {
+  const handleBanUser = async () => {
+    if (!selectedUser) return;
     try {
       const response = await authClient.admin.banUser({
-        userId,
-        banReason: reason,
-        banExpiresIn: expiresIn,
+        userId: selectedUser.id,
+        banReason: banReason || undefined,
       });
 
       if (response.error) {
         toast.error("Failed to ban user: " + response.error.message);
       } else {
         toast.success("User banned successfully");
+        setShowBanDialog(false);
+        setBanReason("");
+        if (selectedUser) {
+          setSelectedUser({ ...selectedUser, banned: true, banReason });
+        }
         loadUsers();
       }
     } catch (error) {
@@ -171,16 +179,18 @@ export default function AdminPage() {
     }
   };
 
-  const handleDeleteUser = async (userId: string) => {
+  const handleDeleteUser = async () => {
+    if (!selectedUser) return;
     try {
       const response = await authClient.admin.removeUser({
-        userId,
+        userId: selectedUser.id,
       });
 
       if (response.error) {
         toast.error("Failed to delete user: " + response.error.message);
       } else {
         toast.success("User deleted successfully");
+        setShowDeleteDialog(false);
         setShowUserDialog(false);
         setSelectedUser(null);
         loadUsers();
@@ -204,6 +214,7 @@ export default function AdminPage() {
     setSelectedUser(null);
     setSessions([]);
     setLoadingSessions(false);
+    setBanReason("");
   };
 
   const columns = createColumns();
@@ -316,10 +327,7 @@ export default function AdminPage() {
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => {
-                          const reason = prompt("Ban reason:");
-                          handleBanUser(selectedUser.id, reason || undefined);
-                        }}
+                        onClick={() => setShowBanDialog(true)}
                       >
                         Ban User
                       </Button>
@@ -327,15 +335,7 @@ export default function AdminPage() {
                     <Button
                       variant="destructive"
                       size="sm"
-                      onClick={() => {
-                        if (
-                          confirm(
-                            `Are you sure you want to delete user ${selectedUser.email}? This cannot be undone.`
-                          )
-                        ) {
-                          handleDeleteUser(selectedUser.id);
-                        }
-                      }}
+                      onClick={() => setShowDeleteDialog(true)}
                     >
                       Delete User
                     </Button>
@@ -347,72 +347,132 @@ export default function AdminPage() {
                 {/* Sessions */}
                 <div className="space-y-4">
                   <h3 className="text-sm font-medium">Active Sessions</h3>
-                  <div className="rounded-md border">
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>Created</TableHead>
-                          <TableHead>Expires</TableHead>
-                          <TableHead>IP Address</TableHead>
-                          <TableHead>User Agent</TableHead>
-                          <TableHead>Actions</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {loadingSessions ? (
-                          <TableRow>
-                            <TableCell colSpan={5} className="text-center py-8">
-                              Loading sessions...
-                            </TableCell>
-                          </TableRow>
-                        ) : sessions.length > 0 ? (
-                          sessions.map((session) => (
-                            <TableRow key={session.id}>
-                              <TableCell>
-                                {new Date(
-                                  session.createdAt
-                                ).toLocaleDateString()}
-                              </TableCell>
-                              <TableCell>
-                                {new Date(
-                                  session.expiresAt
-                                ).toLocaleDateString()}
-                              </TableCell>
-                              <TableCell>
-                                {session.ipAddress || "N/A"}
-                              </TableCell>
-                              <TableCell className="max-w-xs truncate">
-                                {session.userAgent || "N/A"}
-                              </TableCell>
-                              <TableCell>
-                                <Button
-                                  variant="destructive"
-                                  size="sm"
-                                  onClick={() =>
-                                    handleRevokeSession(session.token)
-                                  }
-                                >
-                                  Revoke
-                                </Button>
-                              </TableCell>
-                            </TableRow>
-                          ))
-                        ) : (
-                          <TableRow>
-                            <TableCell colSpan={5} className="text-center">
-                              No active sessions
-                            </TableCell>
-                          </TableRow>
-                        )}
-                      </TableBody>
-                    </Table>
-                  </div>
+                  {loadingSessions ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      Loading sessions...
+                    </div>
+                  ) : sessions.length > 0 ? (
+                    <div className="space-y-3">
+                      {sessions.map((session) => (
+                        <Card key={session.id}>
+                          <CardContent className="p-4">
+                            <div className="flex items-start justify-between gap-4">
+                              <div className="space-y-1 flex-1 min-w-0">
+                                <div className="flex items-center gap-4 text-sm">
+                                  <div>
+                                    <span className="text-muted-foreground">
+                                      Created:
+                                    </span>
+                                    <span className="ml-2">
+                                      {new Date(
+                                        session.createdAt
+                                      ).toLocaleDateString()}
+                                    </span>
+                                  </div>
+                                  <div>
+                                    <span className="text-muted-foreground">
+                                      Expires:
+                                    </span>
+                                    <span className="ml-2">
+                                      {new Date(
+                                        session.expiresAt
+                                      ).toLocaleDateString()}
+                                    </span>
+                                  </div>
+                                </div>
+                                <div className="text-sm">
+                                  <span className="text-muted-foreground">
+                                    IP:
+                                  </span>
+                                  <span className="ml-2">
+                                    {session.ipAddress || "N/A"}
+                                  </span>
+                                </div>
+                                <div className="text-sm truncate">
+                                  <span className="text-muted-foreground">
+                                    User Agent:
+                                  </span>
+                                  <span className="ml-2">
+                                    {session.userAgent || "N/A"}
+                                  </span>
+                                </div>
+                              </div>
+                              <Button
+                                variant="destructive"
+                                size="sm"
+                                onClick={() =>
+                                  handleRevokeSession(session.token)
+                                }
+                              >
+                                Revoke
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 text-muted-foreground">
+                      No active sessions
+                    </div>
+                  )}
                 </div>
               </div>
             </>
           )}
         </DialogContent>
       </Dialog>
+
+      {/* Ban User Alert Dialog */}
+      <AlertDialog open={showBanDialog} onOpenChange={setShowBanDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Ban User</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to ban {selectedUser?.email}? You can
+              provide an optional reason below.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <div className="py-4">
+            <Input
+              placeholder="Ban reason (optional)"
+              value={banReason}
+              onChange={(e) => setBanReason(e.target.value)}
+            />
+          </div>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setBanReason("")}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={handleBanUser}>
+              Ban User
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Delete User Alert Dialog */}
+      <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete User</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to permanently delete {selectedUser?.email}?
+              This action cannot be undone and will remove all user data from
+              the system.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleDeleteUser}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Delete User
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

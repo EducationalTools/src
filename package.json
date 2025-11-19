@@ -11,6 +11,7 @@
   "dependencies": {
     "@convex-dev/better-auth": "^0.9.7",
     "@daveyplate/better-auth-ui": "^3.2.8",
+    "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
