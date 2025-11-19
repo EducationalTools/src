@@ -15,4 +15,7 @@ export default [
   route("auth/:pathname", "routes/auth/auth-view.tsx"),
   route("account/:pathname", "routes/auth/account-view.tsx"),
   route("ott", "routes/auth/ott.tsx"),
+  route("backups", "routes/backups/page.tsx"),
+  route("about", "routes/about/page.tsx"),
+  route("privacy", "routes/privacy/page.tsx"),
 ] satisfies RouteConfig;
