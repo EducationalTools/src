@@ -3,6 +3,7 @@
 @config "../tailwind.config.ts";
 @source not "../public/assets/g";
 @import "@daveyplate/better-auth-ui/css";
+@plugin "@tailwindcss/typography";
 
 @import "../lib/themes/default.css";
 @import "../lib/themes/terminal.css";
