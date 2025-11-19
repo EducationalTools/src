@@ -2,6 +2,7 @@ import { TOOLS } from "@/lib/tools";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { Wrench } from "lucide-react";
 
 export default function Home() {
   return (
@@ -11,7 +12,10 @@ export default function Home() {
       </div>
       <div className="p-4 rounded-lg rounded-b-none bg-background grid grid-cols-3 gap-4">
         <div className="flex flex-col gap-2">
-          <h2 className="text-2xl">Tools</h2>
+          <h2 className="text-2xl flex flex-row items-center gap-2">
+            <Wrench />
+            Tools
+          </h2>
           {TOOLS.map((tool) => (
             <Button
               className="h-16 justify-start rounded-lg"
