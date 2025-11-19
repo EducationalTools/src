@@ -9,7 +9,7 @@ export default function Home() {
       <div className="w-full h-72 flex justify-center items-center">
         <h1 className="text-4xl">EduTools</h1>
       </div>
-      <div className="p-4 rounded-lg rounded-b-none bg-background grid grid-cols-3">
+      <div className="p-4 rounded-lg rounded-b-none bg-background grid grid-cols-3 gap-4">
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl">Tools</h2>
           {TOOLS.map((tool) => (
