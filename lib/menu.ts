@@ -56,6 +56,7 @@ export const MENU_ITEMS: MenuItem[] = [
       {
         label: "All Gmaes",
         href: "/g",
+        kbd: "⌘ + ⇧ + G",
       },
       ...gmaes.map((gmae) => ({
         label: gmae.name,
