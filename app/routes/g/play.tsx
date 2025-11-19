@@ -21,10 +21,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useSidebar } from "@/components/ui/sidebar";
-import { useExperimentalFeatures } from "@/lib/state";
+import { useExperimentalFeatures, useGmaeHistory } from "@/lib/state";
 
 export async function clientLoader({ params }: Route.ActionArgs) {
   if (!params.id) throw data(null, { status: 404 });
@@ -47,6 +47,14 @@ export function Play({ params }: Route.ComponentProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const sidebar = useSidebar();
   const [maximized, setMaximized] = useState(false);
+
+  const addToHistory = useGmaeHistory((state) => state.addToHistory);
+
+  useEffect(() => {
+    if (gmae?.id) {
+      addToHistory(gmae.id);
+    }
+  }, [gmae?.id]);
 
   return (
     <div className="w-full h-full flex flex-col gap-2 bg-sidebar">
