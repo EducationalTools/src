@@ -19,7 +19,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
 type Session = {
@@ -39,7 +38,7 @@ export default function AdminPage() {
   const [sessions, setSessions] = useState<Session[]>([]);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [showUserDialog, setShowUserDialog] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
+  const [loadingSessions, setLoadingSessions] = useState(false);
 
   const loadUsers = async () => {
     try {
@@ -78,28 +77,14 @@ export default function AdminPage() {
         toast.error("Failed to set role: " + response.error.message);
       } else {
         toast.success(`Role updated to ${role}`);
+        // Update the selected user's role in state
+        if (selectedUser) {
+          setSelectedUser({ ...selectedUser, role });
+        }
         loadUsers();
       }
     } catch (error) {
       toast.error("Failed to set role");
-      console.error(error);
-    }
-  };
-
-  const handleSetPassword = async (userId: string, newPassword: string) => {
-    try {
-      const response = await authClient.admin.setUserPassword({
-        userId,
-        newPassword,
-      });
-
-      if (response.error) {
-        toast.error("Failed to set password: " + response.error.message);
-      } else {
-        toast.success("Password updated successfully");
-      }
-    } catch (error) {
-      toast.error("Failed to set password");
       console.error(error);
     }
   };
@@ -148,6 +133,7 @@ export default function AdminPage() {
 
   const loadUserSessions = async (userId: string) => {
     try {
+      setLoadingSessions(true);
       const response = await authClient.admin.listUserSessions({
         userId,
       });
@@ -160,6 +146,8 @@ export default function AdminPage() {
     } catch (error) {
       toast.error("Failed to load sessions");
       console.error(error);
+    } finally {
+      setLoadingSessions(false);
     }
   };
 
@@ -203,18 +191,19 @@ export default function AdminPage() {
     }
   };
 
-  const handleRowClick = async (user: User) => {
+  const handleRowClick = (user: User) => {
     setSelectedUser(user);
-    setNewPassword("");
-    await loadUserSessions(user.id);
+    setSessions([]);
     setShowUserDialog(true);
+    // Load sessions after dialog is open
+    loadUserSessions(user.id);
   };
 
   const handleDialogClose = () => {
     setShowUserDialog(false);
     setSelectedUser(null);
     setSessions([]);
-    setNewPassword("");
+    setLoadingSessions(false);
   };
 
   const columns = createColumns();
@@ -298,20 +287,23 @@ export default function AdminPage() {
                 <div className="space-y-4">
                   <h3 className="text-sm font-medium">Actions</h3>
                   <div className="flex flex-wrap gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleSetRole(selectedUser.id, "admin")}
-                    >
-                      Set as Admin
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleSetRole(selectedUser.id, "user")}
-                    >
-                      Set as User
-                    </Button>
+                    {selectedUser.role === "admin" ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleSetRole(selectedUser.id, "user")}
+                      >
+                        Set as User
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleSetRole(selectedUser.id, "admin")}
+                      >
+                        Set as Admin
+                      </Button>
+                    )}
                     {selectedUser.banned ? (
                       <Button
                         variant="outline"
@@ -352,34 +344,6 @@ export default function AdminPage() {
 
                 <Separator />
 
-                {/* Set Password */}
-                <div className="space-y-4">
-                  <h3 className="text-sm font-medium">Set Password</h3>
-                  <div className="flex gap-2">
-                    <div className="flex-1">
-                      <Input
-                        type="password"
-                        placeholder="New password"
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                      />
-                    </div>
-                    <Button
-                      onClick={() => {
-                        if (newPassword) {
-                          handleSetPassword(selectedUser.id, newPassword);
-                          setNewPassword("");
-                        }
-                      }}
-                      disabled={!newPassword}
-                    >
-                      Update Password
-                    </Button>
-                  </div>
-                </div>
-
-                <Separator />
-
                 {/* Sessions */}
                 <div className="space-y-4">
                   <h3 className="text-sm font-medium">Active Sessions</h3>
@@ -395,7 +359,13 @@ export default function AdminPage() {
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        {sessions.length > 0 ? (
+                        {loadingSessions ? (
+                          <TableRow>
+                            <TableCell colSpan={5} className="text-center py-8">
+                              Loading sessions...
+                            </TableCell>
+                          </TableRow>
+                        ) : sessions.length > 0 ? (
                           sessions.map((session) => (
                             <TableRow key={session.id}>
                               <TableCell>
