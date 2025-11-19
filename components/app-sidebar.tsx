@@ -185,11 +185,11 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <div className="p-4 flex flex-col border rounded-lg text-sm gap-2 opacity-25 hover:opacity-100 duration-200 bg-card">
+            <div className="p-4 flex flex-col border rounded-lg text-sm gap-2 opacity-25 hover:opacity-100 duration-200 bg-muted">
               <Link
                 to="https://github.com/EducationalTools/src"
                 target="_blank"
-                className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center "
+                className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center"
               >
                 <Code />
                 EducationalTools/src
