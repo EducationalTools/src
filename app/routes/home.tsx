@@ -33,7 +33,7 @@ export default function Home() {
                 asChild
               >
                 <Link to={item.href} key={item.id}>
-                  <item.icon />
+                  {item.icon && <item.icon />}
                   <h2 className="text-xl">{item.label}</h2>
                 </Link>
               </Button>
