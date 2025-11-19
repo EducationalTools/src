@@ -59,3 +59,51 @@ export const useSettingsState = create<SettingsState>()(
     },
   ),
 );
+
+interface SavedGmaes {
+  saved: string[];
+  isSaved: (gmaeId: string) => boolean;
+  toggleSaved: (gmaeId: string) => void;
+}
+
+export const useSavedGmaes = create<SavedGmaes>()(
+  persist(
+    (set, get) => ({
+      saved: [],
+      isSaved: (gmaeId) => get().saved.includes(gmaeId),
+      toggleSaved: (gmaeId) =>
+        set((state) => ({
+          saved: state.saved.includes(gmaeId)
+            ? state.saved.filter((id) => id !== gmaeId)
+            : [...state.saved, gmaeId],
+        })),
+    }),
+    {
+      name: "edutools-saved-gmaes",
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);
+
+interface GmaeHistory {
+  history: string[];
+  addToHistory: (gmaeId: string) => void;
+  clearHistory: () => void;
+}
+
+export const useGmaeHistory = create<GmaeHistory>()(
+  persist(
+    (set) => ({
+      history: [],
+      addToHistory: (gmaeId) =>
+        set((state) => ({
+          history: [...state.history, gmaeId],
+        })),
+      clearHistory: () => set({ history: [] }),
+    }),
+    {
+      name: "edutools-gmae-history",
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);
