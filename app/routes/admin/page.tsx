@@ -486,10 +486,13 @@ export default function AdminPage() {
       </AlertDialog>
 
       {/* Change Role Alert Dialog */}
-      <AlertDialog open={showRoleDialog} onOpenChange={(open) => {
-        setShowRoleDialog(open);
-        if (!open) setPendingRole(null);
-      }}>
+      <AlertDialog
+        open={showRoleDialog}
+        onOpenChange={(open) => {
+          setShowRoleDialog(open);
+          if (!open) setPendingRole(null);
+        }}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Change User Role</AlertDialogTitle>
