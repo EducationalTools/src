@@ -43,19 +43,20 @@ export default function Home() {
       </div>
       <div className="p-4 rounded-lg rounded-b-none bg-background grid grid-cols-3 gap-2">
         {sections.map((section) => (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2" key={section.title}>
             <h2 className="text-2xl flex flex-row items-center gap-2">
               <section.icon />
               {section.title}
             </h2>
             {section.items.map((item) => (
               <Button
+                key={item.id}
                 className="h-16 justify-start rounded-lg"
                 variant="outline"
                 size="lg"
                 asChild
               >
-                <Link to={item.href} key={item.id}>
+                <Link to={item.href}>
                   {item.icon && <item.icon />}
                   <h2 className="text-xl">{item.label}</h2>
                 </Link>
