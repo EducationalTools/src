@@ -200,7 +200,8 @@ export function AppSidebar() {
               </div>
               <div className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center">
                 <Clock />
-                Built on 17th Nov 2025
+                Built on{" "}
+                {new Date(process.env.BUILD_TIME || 0).toLocaleString({})}
               </div>
             </div>
           </SidebarMenuItem>

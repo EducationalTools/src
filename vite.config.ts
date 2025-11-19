@@ -15,5 +15,6 @@ export default defineConfig({
   define: {
     // Get git branch name
     "process.env.BRANCH_NAME": JSON.stringify(branchName()),
+    "process.env.BUILD_TIME": JSON.stringify(Date.now()),
   },
 });
