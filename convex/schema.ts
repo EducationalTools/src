@@ -14,5 +14,6 @@ export default defineSchema({
     data: v.string(),
     version: v.number(),
     userId: v.string(),
+    name: v.string(),
   }).index("by_user", ["userId"]),
 });
