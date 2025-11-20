@@ -9,4 +9,10 @@ export default defineSchema({
     userId: v.string(),
     badges: v.optional(v.array(v.string())),
   }).index("by_user", ["userId"]),
+
+  backups: defineTable({
+    data: v.string(),
+    version: v.number(),
+    userId: v.string(),
+  }).index("by_user", ["userId"]),
 });
