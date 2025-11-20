@@ -5,7 +5,14 @@ import { api } from "@/convex/_generated/api";
 import createBackup from "@/lib/backups/create-backup";
 import restoreBackup from "@/lib/backups/restore-backup";
 import { useMutation, useQuery } from "convex/react";
-import { ArchiveRestore, Clipboard, Copy, Delete, Trash } from "lucide-react";
+import {
+  ArchiveRestore,
+  ArrowRight,
+  Clipboard,
+  Copy,
+  Delete,
+  Trash,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -72,13 +79,14 @@ export default function BackupsPage() {
           <CardHeader>
             <CardTitle>Cloud Backup</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col gap-2">
+          <CardContent className="flex flex-row gap-2">
             <Input
               value={inputtedBackupName}
               onChange={(e) => setInputtedBackupName(e.target.value)}
               placeholder="Backup Name"
             />
             <Button
+              size="icon"
               onClick={async () => {
                 setLoading(true);
                 const result = await createCloudBackup({
@@ -94,7 +102,7 @@ export default function BackupsPage() {
                 setLoading(false);
               }}
             >
-              Create Backup
+              <ArrowRight />
             </Button>
           </CardContent>
         </Card>
