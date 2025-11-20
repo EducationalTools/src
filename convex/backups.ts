@@ -12,7 +12,7 @@ export const createBackup = mutation({
     const user = await authComponent.safeGetAuthUser(ctx);
 
     if (!user || !user._id) {
-      throw new Error("Unauthorized");
+      return { success: false, error: "Unauthorized" };
     }
 
     const backup = await ctx.db
@@ -26,7 +26,7 @@ export const createBackup = mutation({
         throw new Error("Failed to create backup");
       });
 
-    return backup;
+    return { success: true, backupId: backup };
   },
 });
 
@@ -34,13 +34,13 @@ export const getBackups = query({
   handler: async (ctx) => {
     const user = await authComponent.safeGetAuthUser(ctx);
     if (!user || !user._id) {
-      throw new Error("Unauthorized");
+      return { success: false, error: "Unauthorized" };
     }
 
     const backups = await ctx.db
       .query("backups")
       .withIndex("by_user", (q) => q.eq("userId", user._id))
       .collect();
-    return backups;
+    return { success: true, backups: backups };
   },
 });
