@@ -1,16 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { api } from "@/convex/_generated/api";
 import createBackup from "@/lib/backups/create-backup";
 import restoreBackup from "@/lib/backups/restore-backup";
-import { Clipboard } from "lucide-react";
+import { useMutation, useQuery } from "convex/react";
+import { ArchiveRestore, Clipboard, Copy, Delete, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export default function BackupsPage() {
   const [backupData, setBackupData] = useState("");
   const [inputtedBackupData, setInputtedBackupData] = useState("");
+  const [inputtedBackupName, setInputtedBackupName] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const cloudBackups = useQuery(api.backups.getBackups);
+  const createCloudBackup = useMutation(api.backups.createBackup);
 
   useEffect(() => {
     setBackupData(createBackup());
@@ -61,6 +67,63 @@ export default function BackupsPage() {
           </div>
         </CardContent>
       </Card>
+      <div className="grid grid-cols-2 gap-4">
+        <Card>
+          <CardHeader>
+            <CardTitle>Cloud Backup</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2">
+            <Input
+              value={inputtedBackupName}
+              onChange={(e) => setInputtedBackupName(e.target.value)}
+              placeholder="Backup Name"
+            />
+            <Button
+              onClick={async () => {
+                setLoading(true);
+                const result = await createCloudBackup({
+                  data: createBackup(),
+                  name: inputtedBackupName,
+                });
+                if (result?.success) {
+                  toast.success("Backup created");
+                  setInputtedBackupName("");
+                } else {
+                  toast.error("Failed to create backup");
+                }
+                setLoading(false);
+              }}
+            >
+              Create Backup
+            </Button>
+          </CardContent>
+        </Card>
+        {cloudBackups?.success &&
+          cloudBackups?.backups?.map((backup) => (
+            <Card key={backup._id}>
+              <CardHeader>
+                <CardTitle>{backup.name}</CardTitle>
+              </CardHeader>
+              <div className="grow"></div>
+              <CardContent className="flex flex-row gap-2 justify-end">
+                <Button variant="destructive" size="icon">
+                  <Trash />
+                </Button>
+                <Button variant="outline" size="icon">
+                  <Copy />
+                </Button>
+                <Button
+                  onClick={() => {
+                    restoreBackup(backup.data);
+                  }}
+                >
+                  <ArchiveRestore />
+                  Restore
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+      </div>
     </div>
   );
 }
