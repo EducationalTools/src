@@ -9,6 +9,7 @@
  */
 
 import type * as auth from "../auth.js";
+import type * as backups from "../backups.js";
 import type * as html from "../html.js";
 import type * as http from "../http.js";
 import type * as trustedmirrors from "../trustedmirrors.js";
@@ -21,6 +22,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
+  backups: typeof backups;
   html: typeof html;
   http: typeof http;
   trustedmirrors: typeof trustedmirrors;
