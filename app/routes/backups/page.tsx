@@ -361,18 +361,25 @@ export default function BackupsPage() {
                   </AnimatePresence>
                 </div>
               ) : (
-                <Empty>
-                  <EmptyHeader>
-                    <EmptyMedia variant="icon">
-                      <Archive className="size-6" />
-                    </EmptyMedia>
-                    <EmptyTitle>No backups yet</EmptyTitle>
-                    <EmptyDescription>
-                      Create your first backup to get started. Your backups will
-                      appear here.
-                    </EmptyDescription>
-                  </EmptyHeader>
-                </Empty>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ ease: NICE_EASE }}
+                >
+                  <Empty>
+                    <EmptyHeader>
+                      <EmptyMedia variant="icon">
+                        <Archive className="size-6" />
+                      </EmptyMedia>
+                      <EmptyTitle>No backups yet</EmptyTitle>
+                      <EmptyDescription>
+                        Create your first backup to get started. Your backups will
+                        appear here.
+                      </EmptyDescription>
+                    </EmptyHeader>
+                  </Empty>
+                </motion.div>
               )}
             </motion.div>
           )}
