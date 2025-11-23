@@ -169,6 +169,7 @@ export function AppSidebar() {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ ease: NICE_EASE }}
+                        layout
                       >
                         <Collapsible
                           className="group/collapsible"
@@ -205,10 +206,9 @@ export function AppSidebar() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ ease: NICE_EASE }}
+                      layout
                     >
-                      <SidebarMenuItem>
-                        {renderMenuItem(item)}
-                      </SidebarMenuItem>
+                      <SidebarMenuItem>{renderMenuItem(item)}</SidebarMenuItem>
                     </motion.div>
                   );
                 })}
