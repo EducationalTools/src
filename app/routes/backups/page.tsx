@@ -208,9 +208,11 @@ export default function BackupsPage() {
               className="flex flex-col gap-2"
             >
               <h2 className="text-2xl">Cloud Backups</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div className="border bg-card rounded-xl p-4 flex flex-col gap-2">
-                  <h3 className="text-lg">Create Backup</h3>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Create Backup</CardTitle>
+                </CardHeader>
+                <CardContent>
                   <div className="flex flex-row gap-2">
                     <Input
                       value={inputtedBackupName}
@@ -231,7 +233,9 @@ export default function BackupsPage() {
                       <ArrowRight />
                     </Button>
                   </div>
-                </div>
+                </CardContent>
+              </Card>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <AnimatePresence mode="popLayout" initial={false}>
                   {cloudBackups?.success &&
                     cloudBackups?.backups?.map((backup) => (
