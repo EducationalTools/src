@@ -74,12 +74,11 @@ export default function BackupsPage() {
           </div>
         </CardContent>
       </Card>
-      <div className="grid grid-cols-2 gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Cloud Backup</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-row gap-2">
+      <h2 className="text-2xl">Cloud Backups</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div className="border bg-card rounded-xl p-4 flex flex-col gap-2">
+          <h3 className="text-lg">Create Backup</h3>
+          <div className="flex flex-row gap-2">
             <Input
               value={inputtedBackupName}
               onChange={(e) => setInputtedBackupName(e.target.value)}
@@ -104,16 +103,17 @@ export default function BackupsPage() {
             >
               <ArrowRight />
             </Button>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
         {cloudBackups?.success &&
           cloudBackups?.backups?.map((backup) => (
-            <Card key={backup._id}>
-              <CardHeader>
-                <CardTitle>{backup.name}</CardTitle>
-              </CardHeader>
+            <div
+              key={backup._id}
+              className="flex flex-col gap-2 bg-card rounded-xl p-4 border"
+            >
+              <h3 className="text-lg">{backup.name}</h3>
               <div className="grow"></div>
-              <CardContent className="flex flex-row gap-2 justify-end">
+              <div className="flex flex-row gap-2 justify-end">
                 <Button variant="destructive" size="icon">
                   <Trash />
                 </Button>
@@ -128,8 +128,8 @@ export default function BackupsPage() {
                   <ArchiveRestore />
                   Restore
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
       </div>
     </div>
