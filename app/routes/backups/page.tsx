@@ -3,11 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
+import { authClient } from "@/lib/auth-client";
 import createBackup from "@/lib/backups/create-backup";
 import restoreBackup from "@/lib/backups/restore-backup";
 import {
   Authenticated,
   AuthLoading,
+  useConvexAuth,
   useMutation,
   useQuery,
 } from "convex/react";
@@ -30,6 +32,8 @@ export default function BackupsPage() {
 
   const cloudBackups = useQuery(api.backups.getBackups);
   const createCloudBackup = useMutation(api.backups.createBackup);
+  const session = authClient.useSession();
+  const convexAuth = useConvexAuth();
 
   useEffect(() => {
     setBackupData(createBackup());
@@ -81,14 +85,17 @@ export default function BackupsPage() {
         </CardContent>
       </Card>
 
-      <AuthLoading>
-        <Skeleton className="h-10 w-[150px]" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          <Skeleton className="h-24 w-full rounded-xl" />
-          <Skeleton className="h-24 w-full rounded-xl" />
-          <Skeleton className="h-24 w-full rounded-xl" />
-        </div>
-      </AuthLoading>
+      {session.data?.user &&
+        (convexAuth.isLoading || !cloudBackups?.success) && (
+          <>
+            <Skeleton className="h-10 w-[150px]" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <Skeleton className="h-24 w-full rounded-xl" />
+              <Skeleton className="h-24 w-full rounded-xl" />
+              <Skeleton className="h-24 w-full rounded-xl" />
+            </div>
+          </>
+        )}
       <Authenticated>
         <h2 className="text-2xl">Cloud Backups</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
