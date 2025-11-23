@@ -362,9 +362,16 @@ export default function BackupsPage() {
                     <motion.div
                       key="empty-state"
                       initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ ease: NICE_EASE }}
+                      animate={{
+                        opacity: 1,
+                        scale: 1,
+                        transition: { ease: NICE_EASE, delay: 0.2 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0.95,
+                        transition: { ease: NICE_EASE },
+                      }}
                       className="md:col-span-2"
                     >
                       <Empty>
