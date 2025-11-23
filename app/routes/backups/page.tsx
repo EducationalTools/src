@@ -220,7 +220,22 @@ export default function BackupsPage() {
                               </AlertDialogFooter>
                             </AlertDialogContent>
                           </AlertDialog>
-                          <Button variant="outline" size="icon">
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => {
+                              navigator.clipboard
+                                .writeText(backup.data)
+                                .then(() => {
+                                  toast.success("Backup copied to clipboard");
+                                })
+                                .catch((error) => {
+                                  toast.error(
+                                    "Failed to copy backup to clipboard"
+                                  );
+                                });
+                            }}
+                          >
                             <Copy />
                           </Button>
                           <Button
