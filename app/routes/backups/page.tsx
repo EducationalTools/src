@@ -244,11 +244,11 @@ export default function BackupsPage() {
                 </CardContent>
               </Card>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                {cloudBackups?.success &&
-                cloudBackups?.backups &&
-                cloudBackups.backups.length > 0 ? (
-                  <AnimatePresence mode="popLayout" initial={false}>
-                    {cloudBackups.backups.map((backup) => (
+                <AnimatePresence mode="popLayout" initial={false}>
+                  {cloudBackups?.success &&
+                  cloudBackups?.backups &&
+                  cloudBackups.backups.length > 0 ? (
+                    cloudBackups.backups.map((backup) => (
                       <motion.div
                         key={backup.backupKey}
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -357,10 +357,10 @@ export default function BackupsPage() {
                           </AlertDialog>
                         </div>
                       </motion.div>
-                      ))}
-                    </AnimatePresence>
+                    ))
                   ) : (
                     <motion.div
+                      key="empty-state"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
@@ -381,6 +381,7 @@ export default function BackupsPage() {
                       </Empty>
                     </motion.div>
                   )}
+                </AnimatePresence>
               </div>
             </motion.div>
           )}
