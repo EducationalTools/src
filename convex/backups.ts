@@ -46,3 +46,30 @@ export const getBackups = query({
     return { success: true, backups: backups };
   },
 });
+
+export const deleteBackup = mutation({
+  args: {
+    id: v.id("backups"),
+  },
+  handler: async (ctx, args) => {
+    const { id } = args;
+    const user = await authComponent.safeGetAuthUser(ctx);
+
+    if (!user || !user._id) {
+      return { success: false, error: "Unauthorized" };
+    }
+
+    const backup = await ctx.db.get(id);
+    if (!backup || backup.userId !== user._id) {
+      return { success: false, error: "Unauthorized" };
+    }
+
+    try {
+      await ctx.db.delete(id);
+      return { success: true };
+    } catch (error) {
+      console.error("Failed to delete backup:", error);
+      return { success: false, error: "Failed to delete backup" };
+    }
+  },
+});
