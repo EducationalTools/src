@@ -105,7 +105,7 @@ export default function BackupsPage() {
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <h2 className="font-bold">Import</h2>
+            <h2 className="font-bold">Restore</h2>
             <p className="text-sm text-muted-foreground">
               This will overwrite your current data.
             </p>
@@ -121,7 +121,7 @@ export default function BackupsPage() {
                   restoreBackup(inputtedBackupData);
                 }}
               >
-                Import
+                Restore
               </Button>
             </div>
           </div>
