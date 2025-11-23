@@ -157,11 +157,16 @@ export default function BackupsPage() {
                       value={inputtedBackupName}
                       onChange={(e) => setInputtedBackupName(e.target.value)}
                       onKeyDown={(e) => {
-                        if (e.key === "Enter" && !loading && inputtedBackupName.trim()) {
+                        if (
+                          e.key === "Enter" &&
+                          !loading &&
+                          inputtedBackupName.trim()
+                        ) {
                           handleCreateBackup();
                         }
                       }}
                       placeholder="Backup Name"
+                      disabled={loading}
                     />
                     <Button
                       size="icon"
