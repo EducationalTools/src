@@ -145,36 +145,43 @@ export default function BackupsPage() {
                     </Button>
                   </div>
                 </div>
-                {cloudBackups?.success &&
-                  cloudBackups?.backups?.map((backup) => (
-                    <div
-                      key={backup._id}
-                      className="flex flex-col gap-2 bg-card rounded-xl p-4 border"
-                    >
-                      <h3 className="text-lg">{backup.name}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Created at{" "}
-                        {new Date(backup._creationTime).toLocaleString()}
-                      </p>
-                      <div className="grow"></div>
-                      <div className="flex flex-row gap-2 justify-end">
-                        <Button variant="destructive" size="icon">
-                          <Trash />
-                        </Button>
-                        <Button variant="outline" size="icon">
-                          <Copy />
-                        </Button>
-                        <Button
-                          onClick={() => {
-                            restoreBackup(backup.data);
-                          }}
-                        >
-                          <ArchiveRestore />
-                          Restore
-                        </Button>
-                      </div>
-                    </div>
-                  ))}
+                <AnimatePresence mode="popLayout" initial={false}>
+                  {cloudBackups?.success &&
+                    cloudBackups?.backups?.map((backup) => (
+                      <motion.div
+                        key={backup._id}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ ease: NICE_EASE }}
+                        layout
+                        className="flex flex-col gap-2 bg-card rounded-xl p-4 border"
+                      >
+                        <h3 className="text-lg">{backup.name}</h3>
+                        <p className="text-sm text-muted-foreground">
+                          Created at{" "}
+                          {new Date(backup._creationTime).toLocaleString()}
+                        </p>
+                        <div className="grow"></div>
+                        <div className="flex flex-row gap-2 justify-end">
+                          <Button variant="destructive" size="icon">
+                            <Trash />
+                          </Button>
+                          <Button variant="outline" size="icon">
+                            <Copy />
+                          </Button>
+                          <Button
+                            onClick={() => {
+                              restoreBackup(backup.data);
+                            }}
+                          >
+                            <ArchiveRestore />
+                            Restore
+                          </Button>
+                        </div>
+                      </motion.div>
+                    ))}
+                </AnimatePresence>
               </div>
             </motion.div>
           )}
