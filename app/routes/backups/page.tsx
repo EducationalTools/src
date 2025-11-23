@@ -26,6 +26,17 @@ import { toast } from "sonner";
 import { AnimatePresence, motion } from "motion/react";
 import { auth } from "@/convex/betterAuth/auth";
 import { NICE_EASE } from "@/lib/constants";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from "@/components/ui/alert-dialog";
 
 export default function BackupsPage() {
   const [backupData, setBackupData] = useState("");
@@ -37,6 +48,8 @@ export default function BackupsPage() {
   const createCloudBackup = useMutation(api.backups.createBackup);
   const session = authClient.useSession();
   const convexAuth = useConvexAuth();
+
+  const deleteCloudBackup = useMutation(api.backups.deleteBackup);
 
   useEffect(() => {
     setBackupData(createBackup());
@@ -164,9 +177,49 @@ export default function BackupsPage() {
                         </p>
                         <div className="grow"></div>
                         <div className="flex flex-row gap-2 justify-end">
-                          <Button variant="destructive" size="icon">
-                            <Trash />
-                          </Button>
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button variant="destructive" size="icon">
+                                <Trash />
+                              </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>
+                                  Delete Backup
+                                </AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  Are you sure you want to delete this backup?
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={() => {
+                                    toast.promise(
+                                      new Promise(async (resolve, reject) => {
+                                        const result = await deleteCloudBackup({
+                                          id: backup._id,
+                                        });
+                                        if (result?.success) {
+                                          resolve(true);
+                                        } else {
+                                          reject(result?.error);
+                                        }
+                                      }),
+                                      {
+                                        loading: "Deleting backup...",
+                                        success: "Backup deleted",
+                                        error: "Failed to delete backup",
+                                      }
+                                    );
+                                  }}
+                                >
+                                  Delete
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
                           <Button variant="outline" size="icon">
                             <Copy />
                           </Button>
