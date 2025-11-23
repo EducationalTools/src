@@ -83,40 +83,47 @@ export default function BackupsPage() {
           <CardTitle>Local Backup</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          Export
-          <div className="flex flex-row gap-3">
-            <Input disabled={true} value={backupData} />
-            <Button
-              size="icon"
-              onClick={() => {
-                navigator.clipboard
-                  .writeText(backupData)
-                  .then(() => {
-                    toast.success("Backup copied to clipboard");
-                  })
-                  .catch((error) => {
-                    toast.error("Failed to copy backup to clipboard");
-                  });
-              }}
-            >
-              <Clipboard />
-            </Button>
+          <div className="flex flex-col gap-2">
+            <h2 className="font-bold">Export</h2>
+            <div className="flex flex-row gap-3">
+              <Input disabled={true} value={backupData} />
+              <Button
+                size="icon"
+                onClick={() => {
+                  navigator.clipboard
+                    .writeText(backupData)
+                    .then(() => {
+                      toast.success("Backup copied to clipboard");
+                    })
+                    .catch((error) => {
+                      toast.error("Failed to copy backup to clipboard");
+                    });
+                }}
+              >
+                <Clipboard />
+              </Button>
+            </div>
           </div>
-          Import
-          <div className="flex flex-row gap-3">
-            <Input
-              value={inputtedBackupData}
-              onChange={(e) => setInputtedBackupData(e.target.value)}
-            />
-            <Button
-              disabled={inputtedBackupData.length === 0}
-              onClick={() => {
-                setLoading(true);
-                restoreBackup(inputtedBackupData);
-              }}
-            >
-              Import
-            </Button>
+          <div className="flex flex-col gap-2">
+            <h2 className="font-bold">Import</h2>
+            <p className="text-sm text-muted-foreground">
+              This will overwrite your current data.
+            </p>
+            <div className="flex flex-row gap-3">
+              <Input
+                value={inputtedBackupData}
+                onChange={(e) => setInputtedBackupData(e.target.value)}
+              />
+              <Button
+                disabled={inputtedBackupData.length === 0}
+                onClick={() => {
+                  setLoading(true);
+                  restoreBackup(inputtedBackupData);
+                }}
+              >
+                Import
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
