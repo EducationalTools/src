@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Empty,
+  EmptyHeader,
+  EmptyTitle,
+  EmptyDescription,
+  EmptyMedia,
+} from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
@@ -15,6 +22,7 @@ import {
   useQuery,
 } from "convex/react";
 import {
+  Archive,
   ArchiveRestore,
   ArrowRight,
   Clipboard,
@@ -235,10 +243,12 @@ export default function BackupsPage() {
                   </div>
                 </CardContent>
               </Card>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <AnimatePresence mode="popLayout" initial={false}>
-                  {cloudBackups?.success &&
-                    cloudBackups?.backups?.map((backup) => (
+              {cloudBackups?.success &&
+              cloudBackups?.backups &&
+              cloudBackups.backups.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {cloudBackups.backups.map((backup) => (
                       <motion.div
                         key={backup.backupKey}
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -348,8 +358,22 @@ export default function BackupsPage() {
                         </div>
                       </motion.div>
                     ))}
-                </AnimatePresence>
-              </div>
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Empty>
+                  <EmptyHeader>
+                    <EmptyMedia variant="icon">
+                      <Archive className="size-6" />
+                    </EmptyMedia>
+                    <EmptyTitle>No backups yet</EmptyTitle>
+                    <EmptyDescription>
+                      Create your first backup to get started. Your backups will
+                      appear here.
+                    </EmptyDescription>
+                  </EmptyHeader>
+                </Empty>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
