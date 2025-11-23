@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
 import { api } from "@/convex/_generated/api";
+import type { Id } from "@/convex/_generated/dataModel";
 import { authClient } from "@/lib/auth-client";
 import createBackup from "@/lib/backups/create-backup";
 import restoreBackup from "@/lib/backups/restore-backup";
@@ -46,7 +47,32 @@ export default function BackupsPage() {
   const [loading, setLoading] = useState(false);
 
   const cloudBackups = useQuery(api.backups.getBackups);
-  const createCloudBackup = useMutation(api.backups.createBackup);
+  const createCloudBackup = useMutation(
+    api.backups.createBackup
+  ).withOptimisticUpdate((localStore, args) => {
+    const { data, name } = args;
+    const currentBackups = localStore.getQuery(api.backups.getBackups);
+    // If we've loaded the backups query, add an optimistic backup
+    if (currentBackups?.success && currentBackups.backups !== undefined) {
+      const now = Date.now();
+      const newBackup = {
+        _id: crypto.randomUUID() as Id<"backups">,
+        _creationTime: now,
+        name,
+        data,
+        version: 1,
+        userId: "", // Temporary, will be replaced
+      };
+      localStore.setQuery(
+        api.backups.getBackups,
+        {},
+        {
+          success: true,
+          backups: [newBackup, ...currentBackups.backups],
+        }
+      );
+    }
+  });
   const session = authClient.useSession();
   const convexAuth = useConvexAuth();
 
@@ -62,17 +88,28 @@ export default function BackupsPage() {
       return;
     }
     setLoading(true);
-    const result = await createCloudBackup({
-      data: createBackup(),
-      name: inputtedBackupName,
-    });
-    if (result?.success) {
-      toast.success("Backup created");
-      setInputtedBackupName("");
-    } else {
-      toast.error("Failed to create backup");
-    }
-    setLoading(false);
+    toast.promise(
+      createCloudBackup({
+        data: createBackup(),
+        name: inputtedBackupName,
+      })
+        .then((result) => {
+          if (result?.success) {
+            setInputtedBackupName("");
+            return result;
+          } else {
+            throw new Error(result?.error || "Failed to create backup");
+          }
+        })
+        .finally(() => {
+          setLoading(false);
+        }),
+      {
+        loading: "Creating backup...",
+        success: "Backup created",
+        error: (error) => error.message || "Failed to create backup",
+      }
+    );
   };
 
   return (
@@ -189,7 +226,7 @@ export default function BackupsPage() {
                   {cloudBackups?.success &&
                     cloudBackups?.backups?.map((backup) => (
                       <motion.div
-                        key={backup._id}
+                        key={`${backup.name}-${backup._creationTime}`}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
