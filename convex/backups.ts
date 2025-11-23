@@ -42,6 +42,7 @@ export const getBackups = query({
     const backups = await ctx.db
       .query("backups")
       .withIndex("by_user", (q) => q.eq("userId", user._id))
+      .order("desc")
       .collect();
     return { success: true, backups: backups };
   },
