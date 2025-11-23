@@ -243,10 +243,10 @@ export default function BackupsPage() {
                   </div>
                 </CardContent>
               </Card>
-              {cloudBackups?.success &&
-              cloudBackups?.backups &&
-              cloudBackups.backups.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                {cloudBackups?.success &&
+                cloudBackups?.backups &&
+                cloudBackups.backups.length > 0 ? (
                   <AnimatePresence mode="popLayout" initial={false}>
                     {cloudBackups.backups.map((backup) => (
                       <motion.div
@@ -357,30 +357,31 @@ export default function BackupsPage() {
                           </AlertDialog>
                         </div>
                       </motion.div>
-                    ))}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ ease: NICE_EASE }}
-                >
-                  <Empty>
-                    <EmptyHeader>
-                      <EmptyMedia variant="icon">
-                        <Archive className="size-6" />
-                      </EmptyMedia>
-                      <EmptyTitle>No backups yet</EmptyTitle>
-                      <EmptyDescription>
-                        Create your first backup to get started. Your backups will
-                        appear here.
-                      </EmptyDescription>
-                    </EmptyHeader>
-                  </Empty>
-                </motion.div>
-              )}
+                      ))}
+                    </AnimatePresence>
+                  ) : (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ ease: NICE_EASE }}
+                      className="md:col-span-2"
+                    >
+                      <Empty>
+                        <EmptyHeader>
+                          <EmptyMedia variant="icon">
+                            <Archive className="size-6" />
+                          </EmptyMedia>
+                          <EmptyTitle>No backups yet</EmptyTitle>
+                          <EmptyDescription>
+                            Create your first backup to get started. Your backups
+                            will appear here.
+                          </EmptyDescription>
+                        </EmptyHeader>
+                      </Empty>
+                    </motion.div>
+                  )}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
