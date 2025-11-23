@@ -374,8 +374,8 @@ export default function BackupsPage() {
                           </EmptyMedia>
                           <EmptyTitle>No backups yet</EmptyTitle>
                           <EmptyDescription>
-                            Create your first backup to get started. Your backups
-                            will appear here.
+                            Create your first backup to get started. Your
+                            backups will appear here.
                           </EmptyDescription>
                         </EmptyHeader>
                       </Empty>
