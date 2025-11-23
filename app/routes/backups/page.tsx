@@ -86,76 +86,77 @@ export default function BackupsPage() {
       </Card>
 
       {session.data?.user &&
-        (convexAuth.isLoading || !cloudBackups?.success) && (
-          <>
-            <Skeleton className="h-10 w-[150px]" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              <Skeleton className="h-24 w-full rounded-xl" />
-              <Skeleton className="h-24 w-full rounded-xl" />
-              <Skeleton className="h-24 w-full rounded-xl" />
-            </div>
-          </>
-        )}
-      <Authenticated>
-        <h2 className="text-2xl">Cloud Backups</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          <div className="border bg-card rounded-xl p-4 flex flex-col gap-2">
-            <h3 className="text-lg">Create Backup</h3>
-            <div className="flex flex-row gap-2">
-              <Input
-                value={inputtedBackupName}
-                onChange={(e) => setInputtedBackupName(e.target.value)}
-                placeholder="Backup Name"
-              />
-              <Button
-                size="icon"
-                onClick={async () => {
-                  setLoading(true);
-                  const result = await createCloudBackup({
-                    data: createBackup(),
-                    name: inputtedBackupName,
-                  });
-                  if (result?.success) {
-                    toast.success("Backup created");
-                    setInputtedBackupName("");
-                  } else {
-                    toast.error("Failed to create backup");
-                  }
-                  setLoading(false);
-                }}
-              >
-                <ArrowRight />
-              </Button>
-            </div>
+      (convexAuth.isLoading || !cloudBackups?.success) ? (
+        <>
+          <Skeleton className="h-10 w-[150px]" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <Skeleton className="h-24 w-full rounded-xl" />
+            <Skeleton className="h-24 w-full rounded-xl" />
+            <Skeleton className="h-24 w-full rounded-xl" />
           </div>
-          {cloudBackups?.success &&
-            cloudBackups?.backups?.map((backup) => (
-              <div
-                key={backup._id}
-                className="flex flex-col gap-2 bg-card rounded-xl p-4 border"
-              >
-                <h3 className="text-lg">{backup.name}</h3>
-                <div className="grow"></div>
-                <div className="flex flex-row gap-2 justify-end">
-                  <Button variant="destructive" size="icon">
-                    <Trash />
-                  </Button>
-                  <Button variant="outline" size="icon">
-                    <Copy />
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      restoreBackup(backup.data);
-                    }}
-                  >
-                    <ArchiveRestore />
-                    Restore
-                  </Button>
-                </div>
+        </>
+      ) : (
+        <>
+          <h2 className="text-2xl">Cloud Backups</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="border bg-card rounded-xl p-4 flex flex-col gap-2">
+              <h3 className="text-lg">Create Backup</h3>
+              <div className="flex flex-row gap-2">
+                <Input
+                  value={inputtedBackupName}
+                  onChange={(e) => setInputtedBackupName(e.target.value)}
+                  placeholder="Backup Name"
+                />
+                <Button
+                  size="icon"
+                  onClick={async () => {
+                    setLoading(true);
+                    const result = await createCloudBackup({
+                      data: createBackup(),
+                      name: inputtedBackupName,
+                    });
+                    if (result?.success) {
+                      toast.success("Backup created");
+                      setInputtedBackupName("");
+                    } else {
+                      toast.error("Failed to create backup");
+                    }
+                    setLoading(false);
+                  }}
+                >
+                  <ArrowRight />
+                </Button>
               </div>
-            ))}
-        </div>
-      </Authenticated>
+            </div>
+            {cloudBackups?.success &&
+              cloudBackups?.backups?.map((backup) => (
+                <div
+                  key={backup._id}
+                  className="flex flex-col gap-2 bg-card rounded-xl p-4 border"
+                >
+                  <h3 className="text-lg">{backup.name}</h3>
+                  <div className="grow"></div>
+                  <div className="flex flex-row gap-2 justify-end">
+                    <Button variant="destructive" size="icon">
+                      <Trash />
+                    </Button>
+                    <Button variant="outline" size="icon">
+                      <Copy />
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        restoreBackup(backup.data);
+                      }}
+                    >
+                      <ArchiveRestore />
+                      Restore
+                    </Button>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
