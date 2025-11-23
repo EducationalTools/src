@@ -46,6 +46,8 @@ import clsx from "clsx";
 import { Button } from "./ui/button";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { AnimatePresence, motion } from "motion/react";
+import { NICE_EASE } from "@/lib/constants";
 
 export function AppSidebar() {
   const sidebar = useSidebar();
@@ -127,73 +129,90 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item) => {
-                const renderMenuItem = (
-                  menuItem: typeof item,
-                  isSubItem = false
-                ) => {
-                  const content = renderMenuItemContent(menuItem);
-                  const MenuButtonWrapper = isSubItem
-                    ? SidebarMenuSubItem
-                    : SidebarMenuItem;
+              <AnimatePresence mode="popLayout" initial={false}>
+                {menuItems.map((item) => {
+                  const renderMenuItem = (
+                    menuItem: typeof item,
+                    isSubItem = false
+                  ) => {
+                    const content = renderMenuItemContent(menuItem);
+                    const MenuButtonWrapper = isSubItem
+                      ? SidebarMenuSubItem
+                      : SidebarMenuItem;
 
-                  if (menuItem.href) {
-                    const MenuButton = isSubItem
-                      ? SidebarMenuButton
-                      : SidebarMenuButton;
-                    return (
-                      <MenuButton
-                        isActive={menuItem.href == location.pathname}
-                        asChild
-                      >
-                        <Link
-                          to={menuItem.href}
-                          target={menuItem.newTab ? "_blank" : "_self"}
-                        >
-                          {content}
-                        </Link>
-                      </MenuButton>
-                    );
-                  }
-                  return <SidebarMenuButton>{content}</SidebarMenuButton>;
-                };
-
-                if (item.children && item.children.length > 0) {
-                  return (
-                    <Collapsible
-                      key={item.label}
-                      className="group/collapsible"
-                      defaultOpen={item.children.some(
-                        (child) => child.href == location.pathname
-                      )}
-                    >
-                      <SidebarMenuItem>
-                        <CollapsibleTrigger
-                          className="sticky top-0 z-10 bg-sidebar/50 backdrop-blur-2xl"
+                    if (menuItem.href) {
+                      const MenuButton = isSubItem
+                        ? SidebarMenuButton
+                        : SidebarMenuButton;
+                      return (
+                        <MenuButton
+                          isActive={menuItem.href == location.pathname}
                           asChild
                         >
-                          {renderMenuItem(item)}
-                        </CollapsibleTrigger>
-                        <CollapsibleContent>
-                          <SidebarMenuSub>
-                            {item.children.map((child) => (
-                              <SidebarMenuSubItem key={child.label}>
-                                {renderMenuItem(child, true)}
-                              </SidebarMenuSubItem>
-                            ))}
-                          </SidebarMenuSub>
-                        </CollapsibleContent>
-                      </SidebarMenuItem>
-                    </Collapsible>
-                  );
-                }
+                          <Link
+                            to={menuItem.href}
+                            target={menuItem.newTab ? "_blank" : "_self"}
+                          >
+                            {content}
+                          </Link>
+                        </MenuButton>
+                      );
+                    }
+                    return <SidebarMenuButton>{content}</SidebarMenuButton>;
+                  };
 
-                return (
-                  <SidebarMenuItem key={item.label}>
-                    {renderMenuItem(item)}
-                  </SidebarMenuItem>
-                );
-              })}
+                  if (item.children && item.children.length > 0) {
+                    return (
+                      <motion.div
+                        key={item.label}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ ease: NICE_EASE }}
+                      >
+                        <Collapsible
+                          className="group/collapsible"
+                          defaultOpen={item.children.some(
+                            (child) => child.href == location.pathname
+                          )}
+                        >
+                          <SidebarMenuItem>
+                            <CollapsibleTrigger
+                              className="sticky top-0 z-10 bg-sidebar/50 backdrop-blur-2xl"
+                              asChild
+                            >
+                              {renderMenuItem(item)}
+                            </CollapsibleTrigger>
+                            <CollapsibleContent>
+                              <SidebarMenuSub>
+                                {item.children.map((child) => (
+                                  <SidebarMenuSubItem key={child.label}>
+                                    {renderMenuItem(child, true)}
+                                  </SidebarMenuSubItem>
+                                ))}
+                              </SidebarMenuSub>
+                            </CollapsibleContent>
+                          </SidebarMenuItem>
+                        </Collapsible>
+                      </motion.div>
+                    );
+                  }
+
+                  return (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ ease: NICE_EASE }}
+                    >
+                      <SidebarMenuItem>
+                        {renderMenuItem(item)}
+                      </SidebarMenuItem>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
