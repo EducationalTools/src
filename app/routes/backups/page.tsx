@@ -257,14 +257,35 @@ export default function BackupsPage() {
                           >
                             <Copy />
                           </Button>
-                          <Button
-                            onClick={() => {
-                              restoreBackup(backup.data);
-                            }}
-                          >
-                            <ArchiveRestore />
-                            Restore
-                          </Button>
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button>
+                                <ArchiveRestore />
+                                Restore
+                              </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>
+                                  Restore Backup
+                                </AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  Are you sure you want to restore this backup?
+                                  This will overwrite your current data.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={() => {
+                                    restoreBackup(backup.data);
+                                  }}
+                                >
+                                  Restore
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
                         </div>
                       </motion.div>
                     ))}
