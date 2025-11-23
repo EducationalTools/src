@@ -75,7 +75,26 @@ export default function BackupsPage() {
   const session = authClient.useSession();
   const convexAuth = useConvexAuth();
 
-  const deleteCloudBackup = useMutation(api.backups.deleteBackup);
+  const deleteCloudBackup = useMutation(
+    api.backups.deleteBackup
+  ).withOptimisticUpdate((localStore, args) => {
+    const { id } = args;
+    const currentBackups = localStore.getQuery(api.backups.getBackups);
+    // If we've loaded the backups query, remove the backup being deleted
+    if (currentBackups?.success && currentBackups.backups !== undefined) {
+      const filteredBackups = currentBackups.backups.filter(
+        (backup) => backup._id !== id
+      );
+      localStore.setQuery(
+        api.backups.getBackups,
+        {},
+        {
+          success: true,
+          backups: filteredBackups,
+        }
+      );
+    }
+  });
 
   useEffect(() => {
     setBackupData(createBackup());
