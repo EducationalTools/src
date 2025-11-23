@@ -172,6 +172,7 @@ export default function BackupsPage() {
                           handleCreateBackup();
                         }
                       }}
+                      autoFocus
                       placeholder="Backup Name"
                       disabled={loading}
                     />
