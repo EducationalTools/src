@@ -42,6 +42,21 @@ export default function BackupsPage() {
     setBackupData(createBackup());
   }, []);
 
+  const handleCreateBackup = async () => {
+    setLoading(true);
+    const result = await createCloudBackup({
+      data: createBackup(),
+      name: inputtedBackupName,
+    });
+    if (result?.success) {
+      toast.success("Backup created");
+      setInputtedBackupName("");
+    } else {
+      toast.error("Failed to create backup");
+    }
+    setLoading(false);
+  };
+
   return (
     <div className="max-w-4xl mx-auto w-full p-4 flex flex-col gap-4">
       <h1 className="text-4xl">Backups</h1>
@@ -125,23 +140,7 @@ export default function BackupsPage() {
                       onChange={(e) => setInputtedBackupName(e.target.value)}
                       placeholder="Backup Name"
                     />
-                    <Button
-                      size="icon"
-                      onClick={async () => {
-                        setLoading(true);
-                        const result = await createCloudBackup({
-                          data: createBackup(),
-                          name: inputtedBackupName,
-                        });
-                        if (result?.success) {
-                          toast.success("Backup created");
-                          setInputtedBackupName("");
-                        } else {
-                          toast.error("Failed to create backup");
-                        }
-                        setLoading(false);
-                      }}
-                    >
+                    <Button size="icon" onClick={handleCreateBackup}>
                       <ArrowRight />
                     </Button>
                   </div>
