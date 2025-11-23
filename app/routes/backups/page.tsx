@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Spinner } from "@/components/ui/spinner";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import { authClient } from "@/lib/auth-client";
@@ -44,7 +43,6 @@ export default function BackupsPage() {
   const [backupData, setBackupData] = useState("");
   const [inputtedBackupData, setInputtedBackupData] = useState("");
   const [inputtedBackupName, setInputtedBackupName] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const cloudBackups = useQuery(api.backups.getBackups);
   const createCloudBackup = useMutation(
@@ -88,25 +86,21 @@ export default function BackupsPage() {
       toast.error("Please enter a backup name");
       return;
     }
-    setLoading(true);
     const backupKey = crypto.randomUUID();
+    const backupName = inputtedBackupName;
+    setInputtedBackupName("");
     toast.promise(
       createCloudBackup({
         data: createBackup(),
-        name: inputtedBackupName,
+        name: backupName,
         backupKey,
-      })
-        .then((result) => {
-          if (result?.success) {
-            setInputtedBackupName("");
-            return result;
-          } else {
-            throw new Error(result?.error || "Failed to create backup");
-          }
-        })
-        .finally(() => {
-          setLoading(false);
-        }),
+      }).then((result) => {
+        if (result?.success) {
+          return result;
+        } else {
+          throw new Error(result?.error || "Failed to create backup");
+        }
+      }),
       {
         loading: "Creating backup...",
         success: "Backup created",
@@ -157,7 +151,6 @@ export default function BackupsPage() {
               <Button
                 disabled={inputtedBackupData.length === 0}
                 onClick={() => {
-                  setLoading(true);
                   restoreBackup(inputtedBackupData);
                 }}
               >
@@ -204,24 +197,19 @@ export default function BackupsPage() {
                       value={inputtedBackupName}
                       onChange={(e) => setInputtedBackupName(e.target.value)}
                       onKeyDown={(e) => {
-                        if (
-                          e.key === "Enter" &&
-                          !loading &&
-                          inputtedBackupName.trim()
-                        ) {
+                        if (e.key === "Enter" && inputtedBackupName.trim()) {
                           handleCreateBackup();
                         }
                       }}
                       autoFocus
                       placeholder="Backup Name"
-                      disabled={loading}
                     />
                     <Button
                       size="icon"
                       onClick={handleCreateBackup}
-                      disabled={loading || !inputtedBackupName.trim()}
+                      disabled={!inputtedBackupName.trim()}
                     >
-                      {loading ? <Spinner /> : <ArrowRight />}
+                      <ArrowRight />
                     </Button>
                   </div>
                 </div>
