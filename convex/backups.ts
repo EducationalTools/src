@@ -6,10 +6,11 @@ export const createBackup = mutation({
   args: {
     data: v.string(),
     name: v.string(),
+    backupKey: v.string(),
   },
 
   handler: async (ctx, args) => {
-    const { data, name } = args;
+    const { data, name, backupKey } = args;
     const user = await authComponent.safeGetAuthUser(ctx);
 
     if (!user || !user._id) {
@@ -22,6 +23,7 @@ export const createBackup = mutation({
         version: 1,
         userId: user._id,
         name,
+        backupKey,
       })
       .catch((error) => {
         console.error("Failed to create backup:", error);

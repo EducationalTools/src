@@ -50,7 +50,7 @@ export default function BackupsPage() {
   const createCloudBackup = useMutation(
     api.backups.createBackup
   ).withOptimisticUpdate((localStore, args) => {
-    const { data, name } = args;
+    const { data, name, backupKey } = args;
     const currentBackups = localStore.getQuery(api.backups.getBackups);
     // If we've loaded the backups query, add an optimistic backup
     if (currentBackups?.success && currentBackups.backups !== undefined) {
@@ -62,6 +62,7 @@ export default function BackupsPage() {
         data,
         version: 1,
         userId: "", // Temporary, will be replaced
+        backupKey,
       };
       localStore.setQuery(
         api.backups.getBackups,
@@ -88,10 +89,12 @@ export default function BackupsPage() {
       return;
     }
     setLoading(true);
+    const backupKey = crypto.randomUUID();
     toast.promise(
       createCloudBackup({
         data: createBackup(),
         name: inputtedBackupName,
+        backupKey,
       })
         .then((result) => {
           if (result?.success) {
@@ -226,7 +229,7 @@ export default function BackupsPage() {
                   {cloudBackups?.success &&
                     cloudBackups?.backups?.map((backup) => (
                       <motion.div
-                        key={`${backup.name}-${backup._creationTime}`}
+                        key={backup.backupKey}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}

@@ -15,5 +15,6 @@ export default defineSchema({
     version: v.number(),
     userId: v.string(),
     name: v.string(),
+    backupKey: v.string(),
   }).index("by_user", ["userId"]),
 });
