@@ -153,6 +153,10 @@ export default function BackupsPage() {
                       className="flex flex-col gap-2 bg-card rounded-xl p-4 border"
                     >
                       <h3 className="text-lg">{backup.name}</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Created at{" "}
+                        {new Date(backup._creationTime).toLocaleString()}
+                      </p>
                       <div className="grow"></div>
                       <div className="flex flex-row gap-2 justify-end">
                         <Button variant="destructive" size="icon">
