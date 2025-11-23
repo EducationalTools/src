@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Spinner } from "@/components/ui/spinner";
 import { api } from "@/convex/_generated/api";
 import { authClient } from "@/lib/auth-client";
 import createBackup from "@/lib/backups/create-backup";
@@ -56,6 +57,10 @@ export default function BackupsPage() {
   }, []);
 
   const handleCreateBackup = async () => {
+    if (!inputtedBackupName.trim()) {
+      toast.error("Please enter a backup name");
+      return;
+    }
     setLoading(true);
     const result = await createCloudBackup({
       data: createBackup(),
@@ -151,10 +156,19 @@ export default function BackupsPage() {
                     <Input
                       value={inputtedBackupName}
                       onChange={(e) => setInputtedBackupName(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !loading && inputtedBackupName.trim()) {
+                          handleCreateBackup();
+                        }
+                      }}
                       placeholder="Backup Name"
                     />
-                    <Button size="icon" onClick={handleCreateBackup}>
-                      <ArrowRight />
+                    <Button
+                      size="icon"
+                      onClick={handleCreateBackup}
+                      disabled={loading || !inputtedBackupName.trim()}
+                    >
+                      {loading ? <Spinner /> : <ArrowRight />}
                     </Button>
                   </div>
                 </div>
