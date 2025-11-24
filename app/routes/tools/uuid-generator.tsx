@@ -14,16 +14,16 @@ export default function UuidGenerator() {
   const generateUuid = () => {
     const newUuids = [];
     for (let i = 0; i < count; i++) {
-      let uuid = crypto.randomUUID();
-      
+      let uuid: string = crypto.randomUUID();
+
       if (!hyphens) {
         uuid = uuid.replace(/-/g, "");
       }
-      
+
       if (uppercase) {
         uuid = uuid.toUpperCase();
       }
-      
+
       newUuids.push(uuid);
     }
     setUuids(newUuids);
@@ -56,30 +56,51 @@ export default function UuidGenerator() {
               <div className="space-y-6">
                 <div className="space-y-3">
                   <label className="text-sm font-medium">Quantity</label>
-                  <Input 
-                     type="number" 
-                     min={1} 
-                     max={100} 
-                     value={count} 
-                     onChange={(e) => setCount(Math.min(100, Math.max(1, parseInt(e.target.value) || 1)))}
+                  <Input
+                    type="number"
+                    min={1}
+                    max={100}
+                    value={count}
+                    onChange={(e) =>
+                      setCount(
+                        Math.min(
+                          100,
+                          Math.max(1, parseInt(e.target.value) || 1)
+                        )
+                      )
+                    }
                   />
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <label htmlFor="hyphens" className="text-sm font-medium cursor-pointer">Hyphens</label>
-                  <Checkbox 
+                  <label
+                    htmlFor="hyphens"
+                    className="text-sm font-medium cursor-pointer"
+                  >
+                    Hyphens
+                  </label>
+                  <Checkbox
                     id="hyphens"
-                    checked={hyphens} 
-                    onCheckedChange={(checked) => setHyphens(checked as boolean)}
+                    checked={hyphens}
+                    onCheckedChange={(checked) =>
+                      setHyphens(checked as boolean)
+                    }
                   />
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <label htmlFor="uppercase" className="text-sm font-medium cursor-pointer">Uppercase</label>
-                  <Checkbox 
+                  <label
+                    htmlFor="uppercase"
+                    className="text-sm font-medium cursor-pointer"
+                  >
+                    Uppercase
+                  </label>
+                  <Checkbox
                     id="uppercase"
-                    checked={uppercase} 
-                    onCheckedChange={(checked) => setUppercase(checked as boolean)}
+                    checked={uppercase}
+                    onCheckedChange={(checked) =>
+                      setUppercase(checked as boolean)
+                    }
                   />
                 </div>
 
@@ -101,7 +122,11 @@ export default function UuidGenerator() {
                       <Button variant="outline" size="sm" onClick={copyAll}>
                         <Copy className="mr-2 h-4 w-4" /> Copy All
                       </Button>
-                      <Button variant="ghost" size="sm" onClick={() => setUuids([])}>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setUuids([])}
+                      >
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </>
@@ -112,8 +137,13 @@ export default function UuidGenerator() {
               {uuids.length > 0 ? (
                 <div className="bg-muted rounded-md p-4 flex-1 overflow-auto max-h-[600px] space-y-2">
                   {uuids.map((uuid, i) => (
-                    <div key={i} className="flex items-center justify-between group">
-                      <code className="font-mono text-sm break-all">{uuid}</code>
+                    <div
+                      key={i}
+                      className="flex items-center justify-between group"
+                    >
+                      <code className="font-mono text-sm break-all">
+                        {uuid}
+                      </code>
                       <Button
                         variant="ghost"
                         size="icon"
