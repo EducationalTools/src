@@ -1,4 +1,10 @@
+import { useExperimentalFeatures } from "@/lib/state";
+
 export default function PrivacyPage() {
+  const experimentalFeatures = useExperimentalFeatures(
+    (state) => state.enabled
+  );
+
   return (
     <div className="prose dark:prose-invert p-4 mx-auto">
       <h1>Privacy Policy</h1>
@@ -45,20 +51,23 @@ export default function PrivacyPage() {
         </ul>
       </section>
 
-      <section>
-        <h2>Gmaes and Third-Party Content</h2>
-        <p>
-          Our platform includes access to various gmaes that may have their own
-          privacy policies and data collection practices. These gmaes may
-          collect and process your data independently according to their own
-          terms and privacy policies.
-        </p>
-        <p>
-          We are not responsible for the privacy practices of these third-party
-          gmaes. We encourage you to review the privacy policies of any gmaes
-          you interact with to understand how they handle your data.
-        </p>
-      </section>
+      {experimentalFeatures && (
+        <section>
+          <h2>Gmaes and Third-Party Content</h2>
+          <p>
+            Our platform includes access to various gmaes that may have their
+            own privacy policies and data collection practices. These gmaes may
+            collect and process your data independently according to their own
+            terms and privacy policies.
+          </p>
+          <p>
+            We are not responsible for the privacy practices of these
+            third-party gmaes. We encourage you to review the privacy policies
+            of any gmaes you interact with to understand how they handle your
+            data.
+          </p>
+        </section>
+      )}
 
       <section>
         <h2>Your Rights and Data Deletion</h2>
@@ -77,10 +86,12 @@ export default function PrivacyPage() {
             or authentication providers) may be subject to their own data
             retention policies
           </li>
-          <li>
-            Data collected by third-party gmaes will be governed by their
-            respective privacy policies
-          </li>
+          {experimentalFeatures && (
+            <li>
+              Data collected by third-party gmaes will be governed by their
+              respective privacy policies
+            </li>
+          )}
         </ul>
       </section>
 
