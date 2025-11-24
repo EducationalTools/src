@@ -80,40 +80,8 @@ export default function QrCodeGenerator() {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Foreground</label>
-                <div className="flex gap-2">
-                  <Input
-                    type="color"
-                    value={fgColor}
-                    onChange={(e) => setFgColor(e.target.value)}
-                    className="w-12 h-12 p-1 cursor-pointer"
-                  />
-                  <Input
-                    type="text"
-                    value={fgColor}
-                    onChange={(e) => setFgColor(e.target.value)}
-                    className="flex-1"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Background</label>
-                <div className="flex gap-2">
-                  <Input
-                    type="color"
-                    value={bgColor}
-                    onChange={(e) => setBgColor(e.target.value)}
-                    className="w-12 h-12 p-1 cursor-pointer"
-                  />
-                  <Input
-                    type="text"
-                    value={bgColor}
-                    onChange={(e) => setBgColor(e.target.value)}
-                    className="flex-1"
-                  />
-                </div>
-              </div>
+              <ColorInput label="Foreground" value={fgColor} onChange={setFgColor} />
+              <ColorInput label="Background" value={bgColor} onChange={setBgColor} />
             </div>
           </div>
 
@@ -142,6 +110,42 @@ export default function QrCodeGenerator() {
               </div>
             )}
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ColorInput({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <div className="space-y-2">
+      <label className="text-sm font-medium">{label}</label>
+      <div className="relative">
+        <Input
+          type="text"
+          value={value.toUpperCase()}
+          onChange={(e) => onChange(e.target.value)}
+          className="pl-10 font-mono uppercase"
+          maxLength={7}
+        />
+        <div 
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 rounded border shadow-sm overflow-hidden cursor-pointer"
+          style={{ backgroundColor: value }}
+        >
+          <input
+            type="color"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            className="opacity-0 w-full h-full cursor-pointer"
+          />
         </div>
       </div>
     </div>
