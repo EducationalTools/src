@@ -1,4 +1,13 @@
 import { useExperimentalFeatures } from "@/lib/state";
+import type { Route } from "./+types/page";
+import { data } from "react-router";
+import { isExperimentalFeaturesEnabled } from "@/lib/experimental-check";
+
+export async function clientLoader() {
+  if (!isExperimentalFeaturesEnabled()) {
+    throw data(null, { status: 404 });
+  }
+}
 
 export default function PrivacyPage() {
   const experimentalFeatures = useExperimentalFeatures(

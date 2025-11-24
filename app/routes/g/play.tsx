@@ -30,16 +30,18 @@ import {
   useGmaeHistory,
   useSavedGmaes,
 } from "@/lib/state";
+import { isExperimentalFeaturesEnabled } from "@/lib/experimental-check";
 
 export async function clientLoader({ params }: Route.ActionArgs) {
   if (!params.id) throw data(null, { status: 404 });
   if (!getGmaeById(params.id)) throw data(null, { status: 404 });
+  
+  if (!isExperimentalFeaturesEnabled()) {
+    throw data(null, { status: 404 });
+  }
 }
 
 export default function PlayPage(props: Route.ComponentProps) {
-  const experimental = useExperimentalFeatures((state) => state.enabled);
-
-  if (!experimental) return;
   return (
     <>
       <Play key={props.params.id} {...props} />
