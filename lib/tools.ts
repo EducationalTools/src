@@ -9,6 +9,7 @@ import {
   Fingerprint,
   Hash,
   Key,
+  Link,
   Lock,
   Palette,
   QrCode,
@@ -91,5 +92,10 @@ export const TOOLS = [
     label: "Hash Generator",
     id: "hash-generator",
     icon: Lock,
+  },
+  {
+    label: "URL Encoder/Decoder",
+    id: "url-encoder",
+    icon: Link,
   },
 ];
