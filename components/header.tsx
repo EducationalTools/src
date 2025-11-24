@@ -12,7 +12,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { UserButton } from "@daveyplate/better-auth-ui";
-import { useUiState } from "@/lib/state";
+import { useUiState, useExperimentalFeatures } from "@/lib/state";
 import {
   Tooltip,
   TooltipContent,
@@ -24,11 +24,14 @@ export default function Header() {
   const sidebar = useSidebar();
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
+  const experimentalFeatures = useExperimentalFeatures(
+    (state) => state.enabled
+  );
 
   return (
     <div className="flex flex-row gap-1 items-center sticky top-0 z-40 from-sidebar to-transparent bg-linear-to-b py-2">
       <AnimatePresence mode="popLayout">
-        {(!sidebar.open || sidebar.isMobile) && (
+        {(!experimentalFeatures || !sidebar.open || sidebar.isMobile) && (
           <motion.div
             initial={{
               opacity: 0,
@@ -76,28 +79,30 @@ export default function Header() {
             </Tooltip>
           </motion.div>
         )}
-        <motion.div layout key="header-sidebar" transition={{ duration: 0.2 }}>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => sidebar.toggleSidebar()}
-              >
-                <Sidebar />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <div className="flex items-center gap-2">
-                Toggle Sidebar
-                <KbdGroup>
-                  <Kbd className="text-nowrap">⌘</Kbd>
-                  <Kbd className="text-nowrap">B</Kbd>
-                </KbdGroup>
-              </div>
-            </TooltipContent>
-          </Tooltip>
-        </motion.div>
+        {experimentalFeatures && (
+          <motion.div layout key="header-sidebar" transition={{ duration: 0.2 }}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => sidebar.toggleSidebar()}
+                >
+                  <Sidebar />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className="flex items-center gap-2">
+                  Toggle Sidebar
+                  <KbdGroup>
+                    <Kbd className="text-nowrap">⌘</Kbd>
+                    <Kbd className="text-nowrap">B</Kbd>
+                  </KbdGroup>
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </motion.div>
+        )}
         <div className="grow"></div>
         <div className="flex flex-row gap-1" key="header-right">
           <Button variant="ghost" asChild>

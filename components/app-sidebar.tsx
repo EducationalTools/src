@@ -83,6 +83,11 @@ export function AppSidebar() {
       !(item.requiresAdmin && !isAdmin)
   );
 
+  // Hide sidebar completely when experimental features are off
+  if (!experimentalFeatures) {
+    return null;
+  }
+
   return (
     <Sidebar
       variant="inset"
