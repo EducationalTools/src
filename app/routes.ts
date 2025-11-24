@@ -14,6 +14,7 @@ export default [
   route("tools/uuid-generator", "routes/tools/uuid-generator.tsx"),
   route("tools/json-formatter", "routes/tools/json-formatter.tsx"),
   route("tools/periodic-table", "routes/tools/periodic-table.tsx"),
+  route("tools/roman-numeral", "routes/tools/roman-numeral.tsx"),
   route("g", "routes/g/index.tsx"),
   route("g/:id", "routes/g/play.tsx"),
   route("auth/:pathname", "routes/auth/auth-view.tsx"),

@@ -6,6 +6,7 @@ import {
   Dices,
   FileJson,
   Fingerprint,
+  Hash,
   Key,
   Palette,
   QrCode,
@@ -73,5 +74,10 @@ export const TOOLS = [
     label: "Periodic Table",
     id: "periodic-table",
     icon: Atom,
+  },
+  {
+    label: "Roman Numeral Converter",
+    id: "roman-numeral",
+    icon: Hash,
   },
 ];
