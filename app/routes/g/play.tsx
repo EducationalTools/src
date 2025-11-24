@@ -4,6 +4,7 @@ import { data } from "react-router";
 import { Button } from "@/components/ui/button";
 import {
   Bookmark,
+  BookmarkCheck,
   ChevronDown,
   ChevronUp,
   ExternalLink,
@@ -24,7 +25,11 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useSidebar } from "@/components/ui/sidebar";
-import { useExperimentalFeatures, useGmaeHistory } from "@/lib/state";
+import {
+  useExperimentalFeatures,
+  useGmaeHistory,
+  useSavedGmaes,
+} from "@/lib/state";
 
 export async function clientLoader({ params }: Route.ActionArgs) {
   if (!params.id) throw data(null, { status: 404 });
@@ -49,6 +54,9 @@ export function Play({ params }: Route.ComponentProps) {
   const [maximized, setMaximized] = useState(false);
 
   const addToHistory = useGmaeHistory((state) => state.addToHistory);
+  const saved = useSavedGmaes((state) => state.saved);
+  const toggleSaved = useSavedGmaes((state) => state.toggleSaved);
+  const isSaved = gmae?.id ? saved.includes(gmae.id) : false;
 
   useEffect(() => {
     if (gmae?.id) {
@@ -165,9 +173,19 @@ export function Play({ params }: Route.ComponentProps) {
               </Tooltip>
             </ButtonGroup>
             <ButtonGroup>
-              <Button variant="outline">
-                <Bookmark />
-                Save
+              <Button
+                variant={isSaved ? "default" : "outline"}
+                onClick={() => {
+                  if (gmae?.id) {
+                    toggleSaved(gmae.id);
+                    toast.success(
+                      isSaved ? "Removed from saved" : "Saved to favorites"
+                    );
+                  }
+                }}
+              >
+                {isSaved ? <BookmarkCheck /> : <Bookmark />}
+                {isSaved ? "Saved" : "Save"}
               </Button>
               <Button
                 variant="outline"
