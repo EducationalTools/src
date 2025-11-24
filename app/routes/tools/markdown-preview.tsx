@@ -150,7 +150,7 @@ export default function MarkdownPreview() {
                 <Copy className="mr-2 h-4 w-4" /> Copy HTML
               </Button>
             </div>
-            <div className="h-[600px] overflow-auto p-4 border rounded-md bg-muted/30 prose prose-sm max-w-none">
+            <div className="h-[600px] overflow-auto p-4 border rounded-md bg-muted/30 prose prose-sm dark:prose-invert max-w-none">
               <div
                 dangerouslySetInnerHTML={{ __html: parseMarkdown(markdown) }}
               />
