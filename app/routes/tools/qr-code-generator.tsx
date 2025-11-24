@@ -71,9 +71,9 @@ export default function QrCodeGenerator() {
                   className="w-full"
                 >
                   <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="128">Small</TabsTrigger>
-                    <TabsTrigger value="256">Medium</TabsTrigger>
-                    <TabsTrigger value="512">Large</TabsTrigger>
+                    <TabsTrigger value="128">128x128</TabsTrigger>
+                    <TabsTrigger value="256">256x256</TabsTrigger>
+                    <TabsTrigger value="512">512x512</TabsTrigger>
                   </TabsList>
                 </Tabs>
               </div>
