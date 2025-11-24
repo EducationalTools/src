@@ -2,6 +2,7 @@ import {
   Atom,
   Binary,
   Calculator,
+  CaseSensitive,
   Clock,
   Dices,
   FileJson,
@@ -79,5 +80,10 @@ export const TOOLS = [
     label: "Roman Numeral Converter",
     id: "roman-numeral",
     icon: Hash,
+  },
+  {
+    label: "Text Case Converter",
+    id: "text-case",
+    icon: CaseSensitive,
   },
 ];

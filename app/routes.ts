@@ -15,6 +15,7 @@ export default [
   route("tools/json-formatter", "routes/tools/json-formatter.tsx"),
   route("tools/periodic-table", "routes/tools/periodic-table.tsx"),
   route("tools/roman-numeral", "routes/tools/roman-numeral.tsx"),
+  route("tools/text-case", "routes/tools/text-case.tsx"),
   route("g", "routes/g/index.tsx"),
   route("g/:id", "routes/g/play.tsx"),
   route("auth/:pathname", "routes/auth/auth-view.tsx"),
