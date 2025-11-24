@@ -4,6 +4,7 @@ import {
   Calculator,
   CaseSensitive,
   Clock,
+  Code,
   Dices,
   FileJson,
   FileText,
@@ -103,5 +104,10 @@ export const TOOLS = [
     label: "Markdown Preview",
     id: "markdown-preview",
     icon: FileText,
+  },
+  {
+    label: "Regex Tester",
+    id: "regex-tester",
+    icon: Code,
   },
 ];

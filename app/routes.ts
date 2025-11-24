@@ -19,6 +19,7 @@ export default [
   route("tools/hash-generator", "routes/tools/hash-generator.tsx"),
   route("tools/url-encoder", "routes/tools/url-encoder.tsx"),
   route("tools/markdown-preview", "routes/tools/markdown-preview.tsx"),
+  route("tools/regex-tester", "routes/tools/regex-tester.tsx"),
   route("g", "routes/g/index.tsx"),
   route("g/:id", "routes/g/play.tsx"),
   route("auth/:pathname", "routes/auth/auth-view.tsx"),
