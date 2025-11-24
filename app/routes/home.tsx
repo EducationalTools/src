@@ -66,11 +66,6 @@ export default function Home() {
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             EduTools
           </h1>
-          <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-            Your personal dashboard for educational tools
-            {experimentalFeatures ? ", utilities, and games" : " and utilities"}
-            .
-          </p>
         </div>
       </section>
 
