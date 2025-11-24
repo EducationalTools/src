@@ -8,16 +8,16 @@ export default function QrCodeGenerator() {
   const [size, setSize] = useState(256);
   const [fgColor, setFgColor] = useState("#000000");
   const [bgColor, setBgColor] = useState("#ffffff");
-  
+
   const downloadQrCode = () => {
     const svg = document.getElementById("qr-code-svg");
     if (!svg) return;
-    
+
     const svgData = new XMLSerializer().serializeToString(svg);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     const img = new Image();
-    
+
     img.onload = () => {
       canvas.width = size;
       canvas.height = size;
@@ -32,7 +32,7 @@ export default function QrCodeGenerator() {
         downloadLink.click();
       }
     };
-    
+
     img.src = "data:image/svg+xml;base64," + btoa(svgData);
   };
 
@@ -40,7 +40,9 @@ export default function QrCodeGenerator() {
     <div className="container mx-auto p-6 max-w-4xl">
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">QR Code Generator</h1>
+          <h1 className="text-3xl font-bold tracking-tight">
+            QR Code Generator
+          </h1>
           <p className="text-muted-foreground mt-2">
             Generate QR codes for text, URLs, or other data
           </p>
@@ -62,25 +64,25 @@ export default function QrCodeGenerator() {
               <div className="space-y-2">
                 <label className="text-sm font-medium">Size: {size}px</label>
                 <div className="flex gap-4">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={() => setSize(128)}
                     className={size === 128 ? "border-primary" : ""}
                   >
                     Small
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={() => setSize(256)}
                     className={size === 256 ? "border-primary" : ""}
                   >
                     Medium
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={() => setSize(512)}
                     className={size === 512 ? "border-primary" : ""}
                   >
@@ -143,9 +145,7 @@ export default function QrCodeGenerator() {
                     includeMargin={true}
                   />
                 </div>
-                <Button onClick={downloadQrCode}>
-                  Download PNG
-                </Button>
+                <Button onClick={downloadQrCode}>Download PNG</Button>
               </>
             ) : (
               <div className="text-center text-muted-foreground">
@@ -158,4 +158,3 @@ export default function QrCodeGenerator() {
     </div>
   );
 }
-
