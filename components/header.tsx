@@ -106,30 +106,32 @@ export default function Header() {
         <div className="grow"></div>
         <div className="flex flex-row gap-1" key="header-right">
           {experimentalFeatures && (
-            <Button variant="ghost" asChild>
-              <UserButton size="sm" variant="ghost" />
-            </Button>
-          )}
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setSettingsOpen(true)}
-              >
-                <Settings />
+            <>
+              <Button variant="ghost" asChild>
+                <UserButton size="sm" variant="ghost" />
               </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <div className="flex items-center gap-2">
-                Settings
-                <KbdGroup>
-                  <Kbd className="text-nowrap">⌘</Kbd>
-                  <Kbd className="text-nowrap">,</Kbd>
-                </KbdGroup>
-              </div>
-            </TooltipContent>
-          </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setSettingsOpen(true)}
+                  >
+                    <Settings />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div className="flex items-center gap-2">
+                    Settings
+                    <KbdGroup>
+                      <Kbd className="text-nowrap">⌘</Kbd>
+                      <Kbd className="text-nowrap">,</Kbd>
+                    </KbdGroup>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </>
+          )}
         </div>
       </AnimatePresence>
     </div>
