@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { QRCodeSVG } from "qrcode.react";
+import { Download } from "lucide-react";
 
 export default function QrCodeGenerator() {
   const [text, setText] = useState("");
@@ -61,34 +63,19 @@ export default function QrCodeGenerator() {
             </div>
 
             <div className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Size: {size}px</label>
-                <div className="flex gap-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setSize(128)}
-                    className={size === 128 ? "border-primary" : ""}
-                  >
-                    Small
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setSize(256)}
-                    className={size === 256 ? "border-primary" : ""}
-                  >
-                    Medium
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setSize(512)}
-                    className={size === 512 ? "border-primary" : ""}
-                  >
-                    Large
-                  </Button>
-                </div>
+              <div className="space-y-3">
+                <label className="text-sm font-medium">Size</label>
+                <Tabs 
+                  value={size.toString()} 
+                  onValueChange={(v) => setSize(parseInt(v))}
+                  className="w-full"
+                >
+                  <TabsList className="grid w-full grid-cols-3">
+                    <TabsTrigger value="128">Small</TabsTrigger>
+                    <TabsTrigger value="256">Medium</TabsTrigger>
+                    <TabsTrigger value="512">Large</TabsTrigger>
+                  </TabsList>
+                </Tabs>
               </div>
             </div>
 
@@ -145,7 +132,9 @@ export default function QrCodeGenerator() {
                     includeMargin={true}
                   />
                 </div>
-                <Button onClick={downloadQrCode}>Download PNG</Button>
+                <Button onClick={downloadQrCode} className="w-full">
+                  <Download className="mr-2 h-4 w-4" /> Download PNG
+                </Button>
               </>
             ) : (
               <div className="text-center text-muted-foreground">
