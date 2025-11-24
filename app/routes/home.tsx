@@ -3,7 +3,7 @@ import type { Route } from "./+types/home";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Bookmark, History, Wrench } from "lucide-react";
-import { useGmaeHistory } from "@/lib/state";
+import { useGmaeHistory, useSavedGmaes } from "@/lib/state";
 import { getGmaeById } from "@/lib/gmaes";
 import {
   Empty,
@@ -14,6 +14,7 @@ import {
 
 export default function Home() {
   const history = useGmaeHistory((state) => state.history);
+  const saved = useSavedGmaes((state) => state.saved);
 
   const sections: {
     title: string;
@@ -55,7 +56,17 @@ export default function Home() {
     {
       title: "Saved",
       icon: Bookmark,
-      items: [],
+      items: saved
+        .map((id) => {
+          const gmae = getGmaeById(id);
+          return {
+            id,
+            href: `/g/${gmae?.id}`,
+            label: gmae?.name || "",
+          };
+        })
+        .reverse()
+        .slice(0, 20),
       empty: (
         <Empty className="border border-dashed max-h-52">
           <EmptyHeader>
