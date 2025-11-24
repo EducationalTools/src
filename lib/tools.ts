@@ -110,4 +110,9 @@ export const TOOLS = [
     id: "regex-tester",
     icon: Code,
   },
+  {
+    label: "Number Base Converter",
+    id: "number-base",
+    icon: Hash,
+  },
 ];
