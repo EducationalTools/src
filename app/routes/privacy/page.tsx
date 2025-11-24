@@ -1,6 +1,6 @@
 export default function PrivacyPage() {
   return (
-    <div className="prose dark:prose-invert p-4 mx-auto max-w-3xl">
+    <div className="prose dark:prose-invert p-4 mx-auto">
       <h1>Privacy Policy</h1>
       <p className="text-muted-foreground">
         Last updated: {new Date().toLocaleDateString()}
