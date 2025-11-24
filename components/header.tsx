@@ -105,9 +105,11 @@ export default function Header() {
         )}
         <div className="grow"></div>
         <div className="flex flex-row gap-1" key="header-right">
-          <Button variant="ghost" asChild>
-            <UserButton size="sm" variant="ghost" />
-          </Button>
+          {experimentalFeatures && (
+            <Button variant="ghost" asChild>
+              <UserButton size="sm" variant="ghost" />
+            </Button>
+          )}
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
