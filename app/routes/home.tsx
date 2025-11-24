@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <div className="container mx-auto max-w-7xl p-4 space-y-8">
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-background to-background border border-border/50 shadow-sm">
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-background to-background">
         <div className="flex flex-col items-center justify-center py-16 px-4 text-center space-y-4">
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             EduTools
