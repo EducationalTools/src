@@ -118,7 +118,7 @@ export default function TextCase() {
                   <Button
                     key={type.value}
                     variant={selectedCase === type.value ? "default" : "outline"}
-                    className="w-full justify-start"
+                    className="w-full justify-start py-4 px-4"
                     onClick={() => handleCaseChange(type.value)}
                   >
                     <div className="text-left">
