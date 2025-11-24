@@ -1,6 +1,5 @@
 import {
   Binary,
-  BookOpen,
   Calculator,
   CaseSensitive,
   Clock,
@@ -109,10 +108,5 @@ export const TOOLS = [
     label: "Number Base Converter",
     id: "number-base",
     icon: Hash,
-  },
-  {
-    label: "Math Formula Reference",
-    id: "math-formulas",
-    icon: BookOpen,
   },
 ];
