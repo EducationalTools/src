@@ -222,7 +222,7 @@ export default function RegexTester() {
             <div>
               <div className="font-semibold mb-1">Email</div>
               <div className="text-muted-foreground">
-                [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}
+                {'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}'}
               </div>
             </div>
             <div>
