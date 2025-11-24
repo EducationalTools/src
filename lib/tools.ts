@@ -16,6 +16,7 @@ import {
   Palette,
   QrCode,
   Scale,
+  Sparkles,
   Type,
 } from "lucide-react";
 
@@ -114,5 +115,10 @@ export const TOOLS = [
     label: "Number Base Converter",
     id: "number-base",
     icon: Hash,
+  },
+  {
+    label: "ASCII Art Generator",
+    id: "ascii-art",
+    icon: Sparkles,
   },
 ];
