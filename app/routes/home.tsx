@@ -63,11 +63,6 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-background to-background border border-border/50 shadow-sm">
         <div className="flex flex-col items-center justify-center py-16 px-4 text-center space-y-4">
-          {experimentalFeatures && (
-            <div className="bg-primary/10 p-3 rounded-2xl mb-2">
-              <Gamepad2 className="w-12 h-12 text-primary" />
-            </div>
-          )}
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             EduTools
           </h1>
