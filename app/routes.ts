@@ -10,6 +10,7 @@ export default [
   route("tools/stopwatch-timer", "routes/tools/stopwatch-timer.tsx"),
   route("tools/base64-converter", "routes/tools/base64-converter.tsx"),
   route("tools/color-picker", "routes/tools/color-picker.tsx"),
+  route("tools/qr-code-generator", "routes/tools/qr-code-generator.tsx"),
   route("g", "routes/g/index.tsx"),
   route("g/:id", "routes/g/play.tsx"),
   route("auth/:pathname", "routes/auth/auth-view.tsx"),

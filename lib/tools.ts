@@ -5,6 +5,7 @@ import {
   Dices,
   Key,
   Palette,
+  QrCode,
   Scale,
   Type,
 } from "lucide-react";
@@ -49,5 +50,10 @@ export const TOOLS = [
     label: "Color Picker",
     id: "color-picker",
     icon: Palette,
+  },
+  {
+    label: "QR Code Generator",
+    id: "qr-code-generator",
+    icon: QrCode,
   },
 ];
