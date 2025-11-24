@@ -178,9 +178,6 @@ export function Play({ params }: Route.ComponentProps) {
                 onClick={() => {
                   if (gmae?.id) {
                     toggleSaved(gmae.id);
-                    toast.success(
-                      isSaved ? "Removed from saved" : "Saved to favorites"
-                    );
                   }
                 }}
               >
