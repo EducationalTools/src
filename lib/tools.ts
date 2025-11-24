@@ -3,6 +3,7 @@ import {
   Calculator,
   Clock,
   Dices,
+  Fingerprint,
   Key,
   Palette,
   QrCode,
@@ -55,5 +56,10 @@ export const TOOLS = [
     label: "QR Code Generator",
     id: "qr-code-generator",
     icon: QrCode,
+  },
+  {
+    label: "UUID Generator",
+    id: "uuid-generator",
+    icon: Fingerprint,
   },
 ];
