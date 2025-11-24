@@ -103,7 +103,9 @@ export default function TextCase() {
     <div className="container mx-auto p-6 max-w-4xl">
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Text Case Converter</h1>
+          <h1 className="text-3xl font-bold tracking-tight">
+            Text Case Converter
+          </h1>
           <p className="text-muted-foreground mt-2">
             Convert text between different case formats
           </p>
@@ -111,14 +113,17 @@ export default function TextCase() {
 
         <div className="grid md:grid-cols-3 gap-6">
           <div className="md:col-span-1">
-            <Card className="p-6 space-y-4">
+            <Card className="p-6">
               <h2 className="text-lg font-semibold">Case Type</h2>
               <div className="space-y-2">
                 {caseTypes.map((type) => (
                   <Button
                     key={type.value}
-                    variant={selectedCase === type.value ? "default" : "outline"}
-                    className="w-full justify-start py-4 px-4"
+                    variant={
+                      selectedCase === type.value ? "default" : "outline"
+                    }
+                    size="lg"
+                    className="w-full justify-start p-4 h-fit"
                     onClick={() => handleCaseChange(type.value)}
                   >
                     <div className="text-left">
@@ -174,4 +179,3 @@ export default function TextCase() {
     </div>
   );
 }
-
