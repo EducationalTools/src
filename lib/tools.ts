@@ -9,6 +9,7 @@ import {
   Fingerprint,
   Hash,
   Key,
+  Lock,
   Palette,
   QrCode,
   Scale,
@@ -85,5 +86,10 @@ export const TOOLS = [
     label: "Text Case Converter",
     id: "text-case",
     icon: CaseSensitive,
+  },
+  {
+    label: "Hash Generator",
+    id: "hash-generator",
+    icon: Lock,
   },
 ];
