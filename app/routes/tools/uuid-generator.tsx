@@ -59,15 +59,9 @@ export default function UuidGenerator() {
                   <Input
                     type="number"
                     min={1}
-                    max={100}
                     value={count}
                     onChange={(e) =>
-                      setCount(
-                        Math.min(
-                          100,
-                          Math.max(1, parseInt(e.target.value) || 1)
-                        )
-                      )
+                      setCount(Math.max(1, parseInt(e.target.value) || 1))
                     }
                   />
                 </div>
