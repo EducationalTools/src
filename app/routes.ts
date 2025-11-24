@@ -13,6 +13,7 @@ export default [
   route("tools/qr-code-generator", "routes/tools/qr-code-generator.tsx"),
   route("tools/uuid-generator", "routes/tools/uuid-generator.tsx"),
   route("tools/json-formatter", "routes/tools/json-formatter.tsx"),
+  route("tools/periodic-table", "routes/tools/periodic-table.tsx"),
   route("g", "routes/g/index.tsx"),
   route("g/:id", "routes/g/play.tsx"),
   route("auth/:pathname", "routes/auth/auth-view.tsx"),

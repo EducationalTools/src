@@ -1,4 +1,5 @@
 import {
+  Atom,
   Binary,
   Calculator,
   Clock,
@@ -67,5 +68,10 @@ export const TOOLS = [
     label: "JSON Formatter",
     id: "json-formatter",
     icon: FileJson,
+  },
+  {
+    label: "Periodic Table",
+    id: "periodic-table",
+    icon: Atom,
   },
 ];
