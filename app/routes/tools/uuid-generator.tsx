@@ -52,18 +52,16 @@ export default function UuidGenerator() {
           {/* Settings */}
           <div className="md:col-span-1 space-y-6">
             <div className="bg-card border rounded-lg shadow-sm p-6 space-y-6">
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Quantity: {count}</label>
-                  <div className="flex gap-4 items-center">
-                     <Input 
-                        type="number" 
-                        min={1} 
-                        max={100} 
-                        value={count} 
-                        onChange={(e) => setCount(Math.min(100, Math.max(1, parseInt(e.target.value) || 1)))}
-                     />
-                  </div>
+              <div className="space-y-6">
+                <div className="space-y-3">
+                  <label className="text-sm font-medium">Quantity</label>
+                  <Input 
+                     type="number" 
+                     min={1} 
+                     max={100} 
+                     value={count} 
+                     onChange={(e) => setCount(Math.min(100, Math.max(1, parseInt(e.target.value) || 1)))}
+                  />
                 </div>
 
                 <div className="flex items-center justify-between">
