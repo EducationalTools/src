@@ -6,6 +6,7 @@ import {
   Clock,
   Dices,
   FileJson,
+  FileText,
   Fingerprint,
   Hash,
   Key,
@@ -97,5 +98,10 @@ export const TOOLS = [
     label: "URL Encoder/Decoder",
     id: "url-encoder",
     icon: Link,
+  },
+  {
+    label: "Markdown Preview",
+    id: "markdown-preview",
+    icon: FileText,
   },
 ];
