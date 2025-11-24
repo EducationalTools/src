@@ -3,7 +3,7 @@ import type { Route } from "./+types/home";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Bookmark, History, Wrench, ArrowRight, Star, Gamepad2 } from "lucide-react";
-import { useGmaeHistory, useSavedGmaes } from "@/lib/state";
+import { useGmaeHistory, useSavedGmaes, useExperimentalFeatures } from "@/lib/state";
 import { getGmaeById } from "@/lib/gmaes";
 import {
   Card,
@@ -24,6 +24,7 @@ import { cn } from "@/lib/utils";
 export default function Home() {
   const history = useGmaeHistory((state) => state.history);
   const saved = useSavedGmaes((state) => state.saved);
+  const experimentalFeatures = useExperimentalFeatures((state) => state.enabled);
 
   // Helper to get game details
   const getGameDetails = (id: string) => {
@@ -65,9 +66,9 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className={cn("grid gap-6", experimentalFeatures ? "grid-cols-1 lg:grid-cols-3" : "grid-cols-1 lg:grid-cols-2")}>
         {/* Tools Section */}
-        <Card className="lg:col-span-1 h-fit">
+        <Card className={cn("h-fit", experimentalFeatures ? "lg:col-span-1" : "lg:col-span-2")}>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Wrench className="w-5 h-5 text-primary" />
@@ -100,102 +101,104 @@ export default function Home() {
         </Card>
 
         {/* Main Content Area (History & Saved) */}
-        <div className="lg:col-span-2 space-y-6">
-          
-          {/* Saved Games */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Bookmark className="w-5 h-5 text-primary" />
-                Saved
-              </CardTitle>
-              <CardDescription>Your bookmarked items</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {savedGames.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {savedGames.map((item) => (
-                    <Button
-                      key={item.id}
-                      variant="secondary"
-                      className="justify-start h-auto py-3 px-4 w-full group"
-                      asChild
-                    >
-                      <Link to={item.href}>
-                        <div className="flex items-center gap-3 w-full">
-                           <div className="bg-background/50 p-2 rounded-md">
-                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20" />
-                           </div>
-                          <span className="font-medium truncate flex-1 text-left">{item.label}</span>
-                        </div>
-                      </Link>
-                    </Button>
-                  ))}
-                </div>
-              ) : (
-                <Empty className="min-h-[200px]">
-                  <EmptyHeader>
-                    <EmptyMedia variant="icon">
-                      <Bookmark />
-                    </EmptyMedia>
-                    <EmptyTitle>No saved items</EmptyTitle>
-                    <EmptyDescription>
-                      Items you bookmark will appear here for quick access.
-                    </EmptyDescription>
-                  </EmptyHeader>
-                </Empty>
-              )}
-            </CardContent>
-          </Card>
+        {experimentalFeatures && (
+          <div className="lg:col-span-2 space-y-6">
+            
+            {/* Saved Games */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Bookmark className="w-5 h-5 text-primary" />
+                  Saved
+                </CardTitle>
+                <CardDescription>Your bookmarked items</CardDescription>
+              </CardHeader>
+              <CardContent>
+                {savedGames.length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {savedGames.map((item) => (
+                      <Button
+                        key={item.id}
+                        variant="secondary"
+                        className="justify-start h-auto py-3 px-4 w-full group"
+                        asChild
+                      >
+                        <Link to={item.href}>
+                          <div className="flex items-center gap-3 w-full">
+                             <div className="bg-background/50 p-2 rounded-md">
+                                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20" />
+                             </div>
+                            <span className="font-medium truncate flex-1 text-left">{item.label}</span>
+                          </div>
+                        </Link>
+                      </Button>
+                    ))}
+                  </div>
+                ) : (
+                  <Empty className="min-h-[200px]">
+                    <EmptyHeader>
+                      <EmptyMedia variant="icon">
+                        <Bookmark />
+                      </EmptyMedia>
+                      <EmptyTitle>No saved items</EmptyTitle>
+                      <EmptyDescription>
+                        Items you bookmark will appear here for quick access.
+                      </EmptyDescription>
+                    </EmptyHeader>
+                  </Empty>
+                )}
+              </CardContent>
+            </Card>
 
-          {/* Recent History */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <History className="w-5 h-5 text-primary" />
-                History
-              </CardTitle>
-              <CardDescription>Recently accessed items</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {recentHistory.length > 0 ? (
-                <div className="flex flex-col gap-2">
-                  {recentHistory.map((item) => (
-                    <Button
-                      key={item.id}
-                      variant="ghost"
-                      className="justify-start h-auto py-3 px-4 w-full border border-transparent hover:border-border hover:bg-accent/50 transition-all"
-                      asChild
-                    >
-                      <Link to={item.href}>
-                        <div className="flex items-center gap-3 w-full">
-                          <History className="w-4 h-4 text-muted-foreground" />
-                          <span className="font-medium truncate flex-1 text-left">{item.label}</span>
-                          <span className="text-xs text-muted-foreground">
-                             Go
-                          </span>
-                        </div>
-                      </Link>
-                    </Button>
-                  ))}
-                </div>
-              ) : (
-                <Empty className="min-h-[200px]">
-                  <EmptyHeader>
-                    <EmptyMedia variant="icon">
-                      <History />
-                    </EmptyMedia>
-                    <EmptyTitle>No history</EmptyTitle>
-                    <EmptyDescription>
-                      Your recently visited items will show up here.
-                    </EmptyDescription>
-                  </EmptyHeader>
-                </Empty>
-              )}
-            </CardContent>
-          </Card>
+            {/* Recent History */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <History className="w-5 h-5 text-primary" />
+                  History
+                </CardTitle>
+                <CardDescription>Recently accessed items</CardDescription>
+              </CardHeader>
+              <CardContent>
+                {recentHistory.length > 0 ? (
+                  <div className="flex flex-col gap-2">
+                    {recentHistory.map((item) => (
+                      <Button
+                        key={item.id}
+                        variant="ghost"
+                        className="justify-start h-auto py-3 px-4 w-full border border-transparent hover:border-border hover:bg-accent/50 transition-all"
+                        asChild
+                      >
+                        <Link to={item.href}>
+                          <div className="flex items-center gap-3 w-full">
+                            <History className="w-4 h-4 text-muted-foreground" />
+                            <span className="font-medium truncate flex-1 text-left">{item.label}</span>
+                            <span className="text-xs text-muted-foreground">
+                               Go
+                            </span>
+                          </div>
+                        </Link>
+                      </Button>
+                    ))}
+                  </div>
+                ) : (
+                  <Empty className="min-h-[200px]">
+                    <EmptyHeader>
+                      <EmptyMedia variant="icon">
+                        <History />
+                      </EmptyMedia>
+                      <EmptyTitle>No history</EmptyTitle>
+                      <EmptyDescription>
+                        Your recently visited items will show up here.
+                      </EmptyDescription>
+                    </EmptyHeader>
+                  </Empty>
+                )}
+              </CardContent>
+            </Card>
 
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
