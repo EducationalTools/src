@@ -1,5 +1,4 @@
 import {
-  Atom,
   Binary,
   BookOpen,
   Calculator,
@@ -76,11 +75,6 @@ export const TOOLS = [
     label: "JSON Formatter",
     id: "json-formatter",
     icon: FileJson,
-  },
-  {
-    label: "Periodic Table",
-    id: "periodic-table",
-    icon: Atom,
   },
   {
     label: "Roman Numeral Converter",
