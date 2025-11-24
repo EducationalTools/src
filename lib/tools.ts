@@ -3,6 +3,7 @@ import {
   Calculator,
   Clock,
   Dices,
+  FileJson,
   Fingerprint,
   Key,
   Palette,
@@ -61,5 +62,10 @@ export const TOOLS = [
     label: "UUID Generator",
     id: "uuid-generator",
     icon: Fingerprint,
+  },
+  {
+    label: "JSON Formatter",
+    id: "json-formatter",
+    icon: FileJson,
   },
 ];

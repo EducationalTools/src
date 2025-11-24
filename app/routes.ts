@@ -12,6 +12,7 @@ export default [
   route("tools/color-picker", "routes/tools/color-picker.tsx"),
   route("tools/qr-code-generator", "routes/tools/qr-code-generator.tsx"),
   route("tools/uuid-generator", "routes/tools/uuid-generator.tsx"),
+  route("tools/json-formatter", "routes/tools/json-formatter.tsx"),
   route("g", "routes/g/index.tsx"),
   route("g/:id", "routes/g/play.tsx"),
   route("auth/:pathname", "routes/auth/auth-view.tsx"),
