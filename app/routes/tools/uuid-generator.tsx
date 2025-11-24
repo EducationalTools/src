@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Copy, RefreshCw, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -65,22 +66,20 @@ export default function UuidGenerator() {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">Hyphens</label>
-                  <input 
-                    type="checkbox" 
-                    className="h-5 w-5 rounded border-input bg-background text-primary focus:ring-primary accent-primary cursor-pointer"
+                  <label htmlFor="hyphens" className="text-sm font-medium cursor-pointer">Hyphens</label>
+                  <Checkbox 
+                    id="hyphens"
                     checked={hyphens} 
-                    onChange={(e) => setHyphens(e.target.checked)}
+                    onCheckedChange={(checked) => setHyphens(checked as boolean)}
                   />
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">Uppercase</label>
-                  <input 
-                    type="checkbox" 
-                    className="h-5 w-5 rounded border-input bg-background text-primary focus:ring-primary accent-primary cursor-pointer"
+                  <label htmlFor="uppercase" className="text-sm font-medium cursor-pointer">Uppercase</label>
+                  <Checkbox 
+                    id="uppercase"
                     checked={uppercase} 
-                    onChange={(e) => setUppercase(e.target.checked)}
+                    onCheckedChange={(checked) => setUppercase(checked as boolean)}
                   />
                 </div>
 
