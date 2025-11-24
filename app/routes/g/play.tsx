@@ -169,7 +169,33 @@ export function Play({ params }: Route.ComponentProps) {
                 <Bookmark />
                 Save
               </Button>
-              <Button variant="outline">
+              <Button
+                variant="outline"
+                onClick={async () => {
+                  const url = new URL(window.location.href);
+                  url.searchParams.set("utm_medium", "share");
+                  url.searchParams.set("utm_source", "edutools");
+                  url.searchParams.set("utm_campaign", "play-page-share");
+                  if (!navigator.canShare || !navigator.share) {
+                    if (!navigator.clipboard) {
+                      toast.error("Failed to share");
+                      return;
+                    }
+                    navigator.clipboard.writeText(url.toString()).then(() => {
+                      toast.success("Copied to clipboard");
+                    });
+                  } else {
+                    navigator
+                      .share({
+                        url: url.toString(),
+                      })
+                      .catch((error) => {
+                        if (error == "AbortError: Share canceled") return;
+                        toast.error("Failed to share");
+                      });
+                  }
+                }}
+              >
                 <Share />
                 Share
               </Button>
