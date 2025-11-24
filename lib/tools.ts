@@ -1,6 +1,7 @@
 import {
   Atom,
   Binary,
+  BookOpen,
   Calculator,
   CaseSensitive,
   Clock,
@@ -120,5 +121,10 @@ export const TOOLS = [
     label: "ASCII Art Generator",
     id: "ascii-art",
     icon: Sparkles,
+  },
+  {
+    label: "Math Formula Reference",
+    id: "math-formulas",
+    icon: BookOpen,
   },
 ];

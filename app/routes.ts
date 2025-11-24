@@ -22,6 +22,7 @@ export default [
   route("tools/regex-tester", "routes/tools/regex-tester.tsx"),
   route("tools/number-base", "routes/tools/number-base.tsx"),
   route("tools/ascii-art", "routes/tools/ascii-art.tsx"),
+  route("tools/math-formulas", "routes/tools/math-formulas.tsx"),
   route("g", "routes/g/index.tsx"),
   route("g/:id", "routes/g/play.tsx"),
   route("auth/:pathname", "routes/auth/auth-view.tsx"),
