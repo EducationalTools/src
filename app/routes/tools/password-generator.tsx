@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Slider } from "@/components/ui/slider";
 import { Copy, RefreshCw, ShieldCheck } from "lucide-react";
 
 export default function PasswordGenerator() {
@@ -34,7 +33,9 @@ export default function PasswordGenerator() {
 
     let result = "";
     for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
     }
 
     setPassword(result);
@@ -68,21 +69,23 @@ export default function PasswordGenerator() {
         <CardContent className="p-6 space-y-8">
           {/* Generated Password Display */}
           <div className="space-y-3">
-            <label className="text-sm font-medium leading-none">Generated Password</label>
+            <label className="text-sm font-medium leading-none">
+              Generated Password
+            </label>
             <div className="flex gap-2">
               <div className="relative flex-1">
-                  <Input
-                    type="text"
-                    value={password}
-                    readOnly
-                    placeholder="Click generate..."
-                    className="font-mono text-lg h-12 bg-muted pr-12"
-                  />
-                   {password && (
-                     <div className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 pointer-events-none">
-                       <ShieldCheck className="w-5 h-5" />
-                     </div>
-                   )}
+                <Input
+                  type="text"
+                  value={password}
+                  readOnly
+                  placeholder="Click generate..."
+                  className="font-mono text-lg h-12 bg-muted pr-12"
+                />
+                {password && (
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 pointer-events-none">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                )}
               </div>
               <Button
                 onClick={copyToClipboard}
@@ -102,7 +105,7 @@ export default function PasswordGenerator() {
                 Password Length: {length}
               </label>
             </div>
-             {/* Fallback to input range if Slider is not available, but Slider is standard Shadcn. I'll use input range for safety as I haven't checked Slider availability */}
+            {/* Fallback to input range if Slider is not available, but Slider is standard Shadcn. I'll use input range for safety as I haven't checked Slider availability */}
             <input
               type="range"
               min="4"
@@ -132,8 +135,8 @@ export default function PasswordGenerator() {
                   className="w-4 h-4 rounded border-input accent-primary cursor-pointer"
                 />
                 <div className="flex flex-col">
-                    <span className="text-sm font-medium">Uppercase</span>
-                    <span className="text-xs text-muted-foreground">A-Z</span>
+                  <span className="text-sm font-medium">Uppercase</span>
+                  <span className="text-xs text-muted-foreground">A-Z</span>
                 </div>
               </label>
 
@@ -145,8 +148,8 @@ export default function PasswordGenerator() {
                   className="w-4 h-4 rounded border-input accent-primary cursor-pointer"
                 />
                 <div className="flex flex-col">
-                    <span className="text-sm font-medium">Lowercase</span>
-                    <span className="text-xs text-muted-foreground">a-z</span>
+                  <span className="text-sm font-medium">Lowercase</span>
+                  <span className="text-xs text-muted-foreground">a-z</span>
                 </div>
               </label>
 
@@ -158,8 +161,8 @@ export default function PasswordGenerator() {
                   className="w-4 h-4 rounded border-input accent-primary cursor-pointer"
                 />
                 <div className="flex flex-col">
-                    <span className="text-sm font-medium">Numbers</span>
-                    <span className="text-xs text-muted-foreground">0-9</span>
+                  <span className="text-sm font-medium">Numbers</span>
+                  <span className="text-xs text-muted-foreground">0-9</span>
                 </div>
               </label>
 
@@ -170,9 +173,11 @@ export default function PasswordGenerator() {
                   onChange={(e) => setIncludeSymbols(e.target.checked)}
                   className="w-4 h-4 rounded border-input accent-primary cursor-pointer"
                 />
-                 <div className="flex flex-col">
-                    <span className="text-sm font-medium">Symbols</span>
-                    <span className="text-xs text-muted-foreground">!@#$%^&*</span>
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium">Symbols</span>
+                  <span className="text-xs text-muted-foreground">
+                    !@#$%^&*
+                  </span>
                 </div>
               </label>
             </div>
