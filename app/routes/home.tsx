@@ -91,7 +91,12 @@ export default function Home() {
             </CardTitle>
             <CardDescription>Helpful tools for everyday tasks</CardDescription>
           </CardHeader>
-          <CardContent className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2">
+          <CardContent
+            className={cn(
+              "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2",
+              !experimentalFeatures && "lg:grid-cols-3"
+            )}
+          >
             {TOOLS.map((tool) => (
               <Button
                 key={tool.id}
