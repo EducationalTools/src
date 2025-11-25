@@ -60,6 +60,67 @@ export const useSettingsState = create<SettingsState>()(
   ),
 );
 
+interface GeneralSettingsState {
+  gmaeOpenMode: "tab" | "window";
+  setGmaeOpenMode: (mode: "tab" | "window") => void;
+  panicKey: {
+    enabled: boolean;
+    key: string;
+    url: string;
+    disableExperimental: boolean;
+  };
+  setPanicKey: (panicKey: Partial<GeneralSettingsState["panicKey"]>) => void;
+  cloak: {
+    mode: "off" | "always" | "unfocused";
+    title: string;
+    favicon: string;
+  };
+  setCloak: (cloak: Partial<GeneralSettingsState["cloak"]>) => void;
+  reset: () => void;
+}
+
+export const useGeneralSettings = create<GeneralSettingsState>()(
+  persist(
+    (set, get) => ({
+      gmaeOpenMode: "tab",
+      setGmaeOpenMode: (mode) => set({ gmaeOpenMode: mode }),
+      panicKey: {
+        enabled: false,
+        key: "`",
+        url: "https://google.com",
+        disableExperimental: true,
+      },
+      setPanicKey: (panicKey) =>
+        set({ panicKey: { ...get().panicKey, ...panicKey } }),
+      cloak: {
+        mode: "off",
+        title: "Google",
+        favicon: "https://google.com/favicon.ico",
+      },
+      setCloak: (cloak) => set({ cloak: { ...get().cloak, ...cloak } }),
+      reset: () =>
+        set({
+          gmaeOpenMode: "tab",
+          panicKey: {
+            enabled: false,
+            key: "`",
+            url: "https://google.com",
+            disableExperimental: true,
+          },
+          cloak: {
+            mode: "off",
+            title: "Google",
+            favicon: "https://google.com/favicon.ico",
+          },
+        }),
+    }),
+    {
+      name: "edutools-general-settings",
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);
+
 interface SavedGmaes {
   saved: string[];
   isSaved: (gmaeId: string) => boolean;
@@ -87,6 +148,8 @@ export const useSavedGmaes = create<SavedGmaes>()(
 
 interface GmaeHistory {
   history: string[];
+  enabled: boolean;
+  toggleEnabled: () => void;
   addToHistory: (gmaeId: string) => void;
   clearHistory: () => void;
 }
@@ -95,8 +158,11 @@ export const useGmaeHistory = create<GmaeHistory>()(
   persist(
     (set, get) => ({
       history: [],
+      enabled: true,
+      toggleEnabled: () => set((state) => ({ enabled: !state.enabled })),
       addToHistory: (gmaeId) =>
         set((state) => {
+          if (!state.enabled) return {};
           // If included, move to end
           if (state.history.includes(gmaeId)) {
             return {

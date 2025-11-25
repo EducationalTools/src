@@ -14,6 +14,7 @@ import {
   useGmaeHistory,
   useSavedGmaes,
   useExperimentalFeatures,
+  useGeneralSettings,
 } from "@/lib/state";
 import { getGmaeById } from "@/lib/gmaes";
 import {
@@ -38,6 +39,7 @@ export default function Home() {
   );
   const history = useGmaeHistory((state) => state.history);
   const saved = useSavedGmaes((state) => state.saved);
+  const gmaeOpenMode = useGeneralSettings((state) => state.gmaeOpenMode);
 
   // Helper to get game details
   const getGameDetails = (id: string) => {
@@ -147,7 +149,20 @@ export default function Home() {
                         className="justify-start h-auto py-3 px-4 w-full group"
                         asChild
                       >
-                        <Link to={item.href}>
+                        <Link
+                          to={item.href}
+                          target={gmaeOpenMode === "tab" ? "_blank" : undefined}
+                          onClick={(e) => {
+                            if (gmaeOpenMode === "window") {
+                              e.preventDefault();
+                              window.open(
+                                item.href,
+                                "_blank",
+                                "popup=yes,width=800,height=600"
+                              );
+                            }
+                          }}
+                        >
                           <div className="flex items-center gap-3 w-full">
                             <div className="bg-background/50 p-2 rounded-md">
                               <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20" />
@@ -195,7 +210,20 @@ export default function Home() {
                         className="justify-start h-auto py-3 px-4 w-full border border-transparent hover:border-border hover:bg-accent/50 transition-all"
                         asChild
                       >
-                        <Link to={item.href}>
+                        <Link
+                          to={item.href}
+                          target={gmaeOpenMode === "tab" ? "_blank" : undefined}
+                          onClick={(e) => {
+                            if (gmaeOpenMode === "window") {
+                              e.preventDefault();
+                              window.open(
+                                item.href,
+                                "_blank",
+                                "popup=yes,width=800,height=600"
+                              );
+                            }
+                          }}
+                        >
                           <div className="flex items-center gap-3 w-full">
                             <History className="w-4 h-4 text-muted-foreground" />
                             <span className="font-medium truncate flex-1 text-left">

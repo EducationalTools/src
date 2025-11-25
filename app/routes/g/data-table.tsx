@@ -24,6 +24,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Link } from "react-router";
+import { useGeneralSettings } from "@/lib/state";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -64,6 +65,7 @@ export function DataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const gmaeOpenMode = useGeneralSettings((state) => state.gmaeOpenMode);
 
   const table = useReactTable({
     data,
@@ -125,6 +127,17 @@ export function DataTable<TData, TValue>({
                   <Link
                     to={`/g/${(row.original as any).id}`}
                     className="contents"
+                    target={gmaeOpenMode === "tab" ? "_blank" : undefined}
+                    onClick={(e) => {
+                      if (gmaeOpenMode === "window") {
+                        e.preventDefault();
+                        window.open(
+                          `/g/${(row.original as any).id}`,
+                          "_blank",
+                          "popup=yes,width=800,height=600"
+                        );
+                      }
+                    }}
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>

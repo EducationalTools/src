@@ -33,6 +33,7 @@ import {
   useSettingsState,
   useUiState,
   useExperimentalFeatures,
+  useGeneralSettings,
 } from "@/lib/state";
 import { themes } from "@/lib/themes/themes";
 import { cn } from "@/lib/utils";
@@ -58,6 +59,104 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
 ];
+
+function GlobalFeatures() {
+  const panicKey = useGeneralSettings((state) => state.panicKey);
+  const cloak = useGeneralSettings((state) => state.cloak);
+  const setExperimentalEnabled = useExperimentalFeatures(
+    (state) => state.setEnabled
+  );
+
+  useEffect(() => {
+    if (!panicKey.enabled) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === panicKey.key) {
+        if (panicKey.disableExperimental) {
+          setExperimentalEnabled(false);
+        }
+        window.location.href = panicKey.url;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [panicKey, setExperimentalEnabled]);
+
+  useEffect(() => {
+    if (cloak.mode === "off") return;
+
+    let originalTitle = document.title;
+    let originalFavicon =
+      (document.querySelector("link[rel*='icon']") as HTMLLinkElement)?.href ||
+      "/favicon.ico";
+
+    const updateCloak = () => {
+      const shouldCloak =
+        cloak.mode === "always" ||
+        (cloak.mode === "unfocused" && document.hidden);
+
+      if (shouldCloak) {
+        if (document.title !== cloak.title) {
+             // Only save if it's not already the cloak title
+             if (document.title !== cloak.title) {
+                 originalTitle = document.title;
+             }
+        }
+        
+        document.title = cloak.title;
+        
+        let link = document.querySelector(
+          "link[rel*='icon']"
+        ) as HTMLLinkElement;
+        if (!link) {
+          link = document.createElement("link");
+          link.rel = "icon";
+          document.head.appendChild(link);
+        }
+        // Save original if we haven't
+        if (link.href !== cloak.favicon && link.href !== originalFavicon) {
+             originalFavicon = link.href;
+        }
+        link.href = cloak.favicon;
+      } else {
+        if (document.title === cloak.title) {
+             document.title = originalTitle;
+        }
+        
+        let link = document.querySelector(
+          "link[rel*='icon']"
+        ) as HTMLLinkElement;
+        if (link && link.href === cloak.favicon) {
+             link.href = originalFavicon;
+        }
+      }
+    };
+
+    updateCloak();
+    document.addEventListener("visibilitychange", updateCloak);
+    
+    // Also interval to check for route changes if 'always' or 'unfocused' and hidden
+    const interval = setInterval(updateCloak, 500);
+
+    return () => {
+      document.removeEventListener("visibilitychange", updateCloak);
+      clearInterval(interval);
+      // Restore on unmount/change
+       if (document.title === cloak.title) {
+             document.title = originalTitle;
+        }
+        let link = document.querySelector(
+          "link[rel*='icon']"
+        ) as HTMLLinkElement;
+        if (link && link.href === cloak.favicon) {
+             link.href = originalFavicon;
+        }
+    };
+  }, [cloak]);
+
+  return null;
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const convex = new ConvexReactClient(
@@ -165,6 +264,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <Scripts />
             <Hotkeys />
             <Search />
+            <GlobalFeatures />
             <Settings />
             <Toaster />
           </AuthUIProvider>
