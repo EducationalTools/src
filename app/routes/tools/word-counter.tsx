@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ClipboardPaste, Trash2 } from "lucide-react";
 
 export default function WordCounter() {
   const [text, setText] = useState("");
@@ -53,83 +55,61 @@ export default function WordCounter() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Word Counter</h1>
-          <p className="text-muted-foreground mt-2">
-            Count words, characters, sentences, and paragraphs in your text
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-4xl space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Word Counter</h1>
+        <p className="text-muted-foreground text-lg">
+          Count words, characters, sentences, and paragraphs in your text.
+        </p>
+      </div>
 
-        <div className="bg-card border rounded-lg shadow-sm p-6">
-          <div className="space-y-4">
-            <div className="flex gap-2 justify-end">
-              <Button variant="outline" onClick={handlePaste}>
-                Paste
-              </Button>
-              <Button variant="outline" onClick={handleClear}>
-                Clear
-              </Button>
-            </div>
-
-            <textarea
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              placeholder="Start typing or paste your text here..."
-              className="w-full min-h-[300px] p-4 rounded-md border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-y font-mono"
-            />
-          </div>
-        </div>
+      <div className="grid gap-6">
+        <Card className="flex flex-col shadow-md">
+            <CardHeader className="flex flex-row items-center justify-between py-3 px-4 border-b space-y-0">
+                 <CardTitle className="text-base font-medium">Input Text</CardTitle>
+                 <div className="flex gap-2">
+                    <Button variant="ghost" size="sm" onClick={handlePaste} className="h-8 px-2 text-xs">
+                        <ClipboardPaste className="w-3.5 h-3.5 mr-1" /> Paste
+                    </Button>
+                    <Button variant="ghost" size="sm" onClick={handleClear} className="h-8 px-2 text-xs">
+                        <Trash2 className="w-3.5 h-3.5 mr-1" /> Clear
+                    </Button>
+                </div>
+            </CardHeader>
+            <CardContent className="p-0">
+                <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="Start typing or paste your text here..."
+                className="w-full min-h-[300px] p-6 border-none bg-transparent text-base focus:outline-none resize-y font-mono"
+                />
+            </CardContent>
+        </Card>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <div className="bg-card border rounded-lg shadow-sm p-6">
-            <div className="text-sm font-medium text-muted-foreground mb-1">
-              Words
-            </div>
-            <div className="text-3xl font-bold">{stats.wordCount}</div>
-          </div>
-
-          <div className="bg-card border rounded-lg shadow-sm p-6">
-            <div className="text-sm font-medium text-muted-foreground mb-1">
-              Characters
-            </div>
-            <div className="text-3xl font-bold">{stats.characterCount}</div>
-          </div>
-
-          <div className="bg-card border rounded-lg shadow-sm p-6">
-            <div className="text-sm font-medium text-muted-foreground mb-1">
-              Characters (no spaces)
-            </div>
-            <div className="text-3xl font-bold">
-              {stats.characterCountNoSpaces}
-            </div>
-          </div>
-
-          <div className="bg-card border rounded-lg shadow-sm p-6">
-            <div className="text-sm font-medium text-muted-foreground mb-1">
-              Sentences
-            </div>
-            <div className="text-3xl font-bold">{stats.sentenceCount}</div>
-          </div>
-
-          <div className="bg-card border rounded-lg shadow-sm p-6">
-            <div className="text-sm font-medium text-muted-foreground mb-1">
-              Paragraphs
-            </div>
-            <div className="text-3xl font-bold">{stats.paragraphCount}</div>
-          </div>
-
-          <div className="bg-card border rounded-lg shadow-sm p-6">
-            <div className="text-sm font-medium text-muted-foreground mb-1">
-              Reading Time
-            </div>
-            <div className="text-3xl font-bold">
-              {stats.readingTime} min
-            </div>
-          </div>
+          <StatsCard label="Words" value={stats.wordCount} />
+          <StatsCard label="Characters" value={stats.characterCount} />
+          <StatsCard label="Characters (no spaces)" value={stats.characterCountNoSpaces} />
+          <StatsCard label="Sentences" value={stats.sentenceCount} />
+          <StatsCard label="Paragraphs" value={stats.paragraphCount} />
+          <StatsCard label="Reading Time" value={`${stats.readingTime} min`} />
         </div>
       </div>
     </div>
   );
+}
+
+function StatsCard({ label, value }: { label: string; value: string | number }) {
+    return (
+        <Card>
+            <CardContent className="p-6 flex flex-col items-center justify-center text-center">
+                <div className="text-sm font-medium text-muted-foreground mb-1 uppercase tracking-wider">
+                    {label}
+                </div>
+                <div className="text-3xl font-bold tracking-tight">
+                    {value}
+                </div>
+            </CardContent>
+        </Card>
+    )
 }

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Copy, RefreshCw } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Copy, RefreshCw, ArrowRightLeft, Type, Calculator } from "lucide-react";
 import { toast } from "sonner";
 
 const ROMAN_VALUES: Record<string, number> = {
@@ -117,121 +117,165 @@ export default function RomanNumeral() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Roman Numeral Converter</h1>
-          <p className="text-muted-foreground mt-2">
-            Convert between Arabic numbers and Roman numerals (1-3999)
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-4xl space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Roman Numeral Converter</h1>
+        <p className="text-muted-foreground text-lg">
+          Convert between Arabic numbers and Roman numerals (1-3999).
+        </p>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card className="p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Arabic Number</h2>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setDirection("to-roman")}
-              >
-                Convert to Roman
-              </Button>
-            </div>
-            <div className="space-y-2">
+      <div className="grid md:grid-cols-2 gap-6">
+        <Card className="flex flex-col">
+          <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                  <Calculator className="w-5 h-5 text-muted-foreground" />
+                  Arabic Number
+              </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 flex-1">
+             <div className="space-y-2">
               <Input
                 type="number"
                 min={1}
                 max={3999}
                 placeholder="Enter number (1-3999)"
                 value={number}
-                onChange={(e) => handleNumberChange(e.target.value)}
+                onChange={(e) => {
+                    setDirection("to-roman");
+                    handleNumberChange(e.target.value);
+                }}
+                className="text-lg h-12"
               />
-              <div className="text-sm text-muted-foreground">
-                Enter a number between 1 and 3999
+              <div className="text-xs text-muted-foreground">
+                Valid range: 1 - 3999
               </div>
             </div>
-          </Card>
-
-          <Card className="p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Roman Numeral</h2>
-              <Button
-                variant="ghost"
+             <Button
+                variant="secondary"
                 size="sm"
-                onClick={() => setDirection("from-roman")}
-              >
-                Convert to Number
-              </Button>
-            </div>
+                className="w-full"
+                onClick={() => {
+                    setDirection("to-roman");
+                    // Focus input if needed
+                }}
+            >
+                Active Input
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card className="flex flex-col">
+          <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                  <Type className="w-5 h-5 text-muted-foreground" />
+                  Roman Numeral
+              </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 flex-1">
             <div className="space-y-2">
               <Input
                 type="text"
-                placeholder="Enter Roman numeral"
+                placeholder="Enter Roman numeral (e.g. MMXXIV)"
                 value={roman}
-                onChange={(e) => handleRomanChange(e.target.value)}
-                className="font-mono text-lg"
+                onChange={(e) => {
+                    setDirection("from-roman");
+                    handleRomanChange(e.target.value);
+                }}
+                className="font-mono text-lg h-12 uppercase"
               />
-              <div className="text-sm text-muted-foreground">
-                Enter a valid Roman numeral
+              <div className="text-xs text-muted-foreground">
+                 Standard numerals only (I, V, X, L, C, D, M)
               </div>
             </div>
-          </Card>
-        </div>
+            <Button
+                variant="secondary"
+                size="sm"
+                className="w-full"
+                 onClick={() => {
+                    setDirection("from-roman");
+                }}
+            >
+                 Active Input
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
 
-        {(number || roman) && (
-          <Card className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm text-muted-foreground mb-1">Result</div>
-                <div className="text-2xl font-bold">
+      {(number || roman) && (
+        <Card className="bg-primary/5 border-primary/20">
+          <CardContent className="p-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="text-center md:text-left">
+                <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wider font-semibold">Conversion Result</div>
+                <div className="text-3xl sm:text-4xl font-bold flex flex-wrap items-center gap-3 justify-center md:justify-start">
                   {direction === "to-roman" ? (
                     <>
-                      {number} = <span className="font-mono">{roman}</span>
+                      <span className="text-muted-foreground">{number || "?"}</span>
+                      <ArrowRightLeft className="w-6 h-6 text-muted-foreground opacity-50" />
+                      <span className="font-mono text-primary">{roman || "?"}</span>
                     </>
                   ) : (
-                    <>
-                      <span className="font-mono">{roman}</span> = {number}
+                     <>
+                      <span className="font-mono text-muted-foreground">{roman || "?"}</span>
+                      <ArrowRightLeft className="w-6 h-6 text-muted-foreground opacity-50" />
+                      <span className="text-primary">{number || "?"}</span>
                     </>
                   )}
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <Button
-                  variant="outline"
-                  size="sm"
+                  variant="default"
                   onClick={() => copyToClipboard(roman || number)}
+                  className="h-10 px-6"
                 >
-                  <Copy className="mr-2 h-4 w-4" /> Copy
+                  <Copy className="mr-2 h-4 w-4" /> Copy Result
                 </Button>
-                <Button variant="ghost" size="sm" onClick={clear}>
+                <Button variant="outline" size="icon" onClick={clear} className="h-10 w-10">
                   <RefreshCw className="h-4 w-4" />
                 </Button>
               </div>
             </div>
-          </Card>
-        )}
-
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Roman Numeral Guide</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-            <div>I = 1</div>
-            <div>V = 5</div>
-            <div>X = 10</div>
-            <div>L = 50</div>
-            <div>C = 100</div>
-            <div>D = 500</div>
-            <div>M = 1000</div>
-            <div className="text-muted-foreground">IV = 4</div>
-            <div className="text-muted-foreground">IX = 9</div>
-            <div className="text-muted-foreground">XL = 40</div>
-            <div className="text-muted-foreground">XC = 90</div>
-            <div className="text-muted-foreground">CD = 400</div>
-            <div className="text-muted-foreground">CM = 900</div>
-          </div>
+          </CardContent>
         </Card>
-      </div>
+      )}
+
+      <Card className="bg-muted/50 border-none shadow-none">
+        <CardContent className="p-6">
+          <h3 className="font-semibold mb-4">Roman Numeral Reference</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4 text-center">
+            <div className="bg-background rounded-lg p-3 border shadow-sm">
+                <div className="font-bold text-lg font-mono">I</div>
+                <div className="text-xs text-muted-foreground mt-1">1</div>
+            </div>
+            <div className="bg-background rounded-lg p-3 border shadow-sm">
+                <div className="font-bold text-lg font-mono">V</div>
+                <div className="text-xs text-muted-foreground mt-1">5</div>
+            </div>
+            <div className="bg-background rounded-lg p-3 border shadow-sm">
+                <div className="font-bold text-lg font-mono">X</div>
+                <div className="text-xs text-muted-foreground mt-1">10</div>
+            </div>
+             <div className="bg-background rounded-lg p-3 border shadow-sm">
+                <div className="font-bold text-lg font-mono">L</div>
+                <div className="text-xs text-muted-foreground mt-1">50</div>
+            </div>
+            <div className="bg-background rounded-lg p-3 border shadow-sm">
+                <div className="font-bold text-lg font-mono">C</div>
+                <div className="text-xs text-muted-foreground mt-1">100</div>
+            </div>
+            <div className="bg-background rounded-lg p-3 border shadow-sm">
+                <div className="font-bold text-lg font-mono">D</div>
+                <div className="text-xs text-muted-foreground mt-1">500</div>
+            </div>
+             <div className="bg-background rounded-lg p-3 border shadow-sm">
+                <div className="font-bold text-lg font-mono">M</div>
+                <div className="text-xs text-muted-foreground mt-1">1000</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
-

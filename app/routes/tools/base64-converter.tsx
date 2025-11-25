@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Copy, ArrowRightLeft, Trash2, ClipboardPaste } from "lucide-react";
 
 export default function Base64Converter() {
   const [mode, setMode] = useState<"encode" | "decode">("encode");
@@ -82,159 +84,149 @@ export default function Base64Converter() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">
-            Base64 Converter
-          </h1>
-          <p className="text-muted-foreground mt-2">
-            Encode or decode Base64 strings
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-4xl space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Base64 Converter</h1>
+        <p className="text-muted-foreground text-lg">
+          Encode text to Base64 format or decode Base64 strings.
+        </p>
+      </div>
 
-        <div className="bg-card border rounded-lg shadow-sm p-6">
-          <div className="space-y-6">
-            {/* Mode Toggle */}
-            <div className="grid grid-cols-2 gap-2">
-              <Button
-                variant={mode === "encode" ? "default" : "outline"}
-                onClick={() => {
-                  setMode("encode");
-                  setError("");
-                  setCopied(false);
-                }}
-                size="lg"
-              >
-                Encode
-              </Button>
-              <Button
-                variant={mode === "decode" ? "default" : "outline"}
-                onClick={() => {
-                  setMode("decode");
-                  setError("");
-                  setCopied(false);
-                }}
-                size="lg"
-              >
-                Decode
+      <Card>
+        <CardContent className="p-6 space-y-6">
+          {/* Mode Toggle */}
+          <div className="flex p-1 bg-muted rounded-lg w-fit">
+            <Button
+              variant={mode === "encode" ? "default" : "ghost"}
+              onClick={() => {
+                setMode("encode");
+                setError("");
+                setCopied(false);
+              }}
+              size="sm"
+              className="w-32"
+            >
+              Encode
+            </Button>
+            <Button
+              variant={mode === "decode" ? "default" : "ghost"}
+              onClick={() => {
+                setMode("decode");
+                setError("");
+                setCopied(false);
+              }}
+              size="sm"
+              className="w-32"
+            >
+              Decode
+            </Button>
+          </div>
+
+          {/* Input Section */}
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                {mode === "encode" ? "Text to Encode" : "Base64 to Decode"}
+              </label>
+              <Button variant="ghost" size="sm" onClick={pasteFromClipboard} className="h-8 px-2 text-xs">
+                <ClipboardPaste className="w-3.5 h-3.5 mr-1" />
+                Paste
               </Button>
             </div>
+            <textarea
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                setError("");
+                setCopied(false);
+              }}
+              placeholder={
+                mode === "encode"
+                  ? "Enter text to encode..."
+                  : "Enter Base64 string to decode..."
+              }
+              className="flex min-h-[200px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 font-mono resize-y"
+            />
+          </div>
 
-            {/* Input Section */}
-            <div className="space-y-2">
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button
+              onClick={handleConvert}
+              className="flex-1 h-11 text-base"
+            >
+              {mode === "encode" ? "Encode to Base64" : "Decode from Base64"}
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-11 w-11 shrink-0"
+              onClick={handleSwap}
+              disabled={!output}
+              title="Swap Input/Output"
+            >
+              <ArrowRightLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              className="h-11 shrink-0"
+              onClick={handleClear}
+            >
+              <Trash2 className="w-4 h-4 mr-2" />
+              Clear
+            </Button>
+          </div>
+
+          {/* Error Message */}
+          {error && (
+            <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4 text-sm text-destructive font-medium">
+              {error}
+            </div>
+          )}
+
+          {/* Output Section */}
+          {output && !error && (
+            <div className="space-y-3 pt-4 border-t">
               <div className="flex justify-between items-center">
-                <label className="text-sm font-medium">
-                  {mode === "encode" ? "Text to Encode" : "Base64 to Decode"}
+                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  {mode === "encode" ? "Base64 Output" : "Decoded Text"}
                 </label>
-                <Button variant="outline" size="sm" onClick={pasteFromClipboard}>
-                  Paste
-                </Button>
-              </div>
-              <textarea
-                value={input}
-                onChange={(e) => {
-                  setInput(e.target.value);
-                  setError("");
-                  setCopied(false);
-                }}
-                placeholder={
-                  mode === "encode"
-                    ? "Enter text to encode..."
-                    : "Enter Base64 string to decode..."
-                }
-                className="w-full min-h-[200px] p-4 rounded-md border border-input bg-background text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-y font-mono"
-              />
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-2">
-              <Button
-                onClick={handleConvert}
-                className="flex-1 h-12 text-base"
-                size="lg"
-              >
-                {mode === "encode" ? "Encode to Base64" : "Decode from Base64"}
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-12"
-                onClick={handleSwap}
-                disabled={!output}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M7 10L2 15l5 5" />
-                  <path d="M2 15h20" />
-                  <path d="M17 14l5-5-5-5" />
-                  <path d="M22 9H2" />
-                </svg>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-12"
-                onClick={handleClear}
-              >
-                Clear
-              </Button>
-            </div>
-
-            {/* Error Message */}
-            {error && (
-              <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4">
-                <p className="text-sm text-destructive font-medium">{error}</p>
-              </div>
-            )}
-
-            {/* Output Section */}
-            {output && !error && (
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <label className="text-sm font-medium">
-                    {mode === "encode" ? "Base64 Output" : "Decoded Text"}
-                  </label>
+                <div className="flex items-center gap-2">
+                   <span className="text-xs text-muted-foreground">
+                    {output.length} chars
+                  </span>
                   <Button
                     variant={copied ? "default" : "outline"}
                     size="sm"
                     onClick={copyToClipboard}
+                    className="h-8 px-2 text-xs"
                   >
+                    <Copy className="w-3.5 h-3.5 mr-1" />
                     {copied ? "Copied!" : "Copy"}
                   </Button>
                 </div>
-                <div className="bg-muted rounded-lg p-4 min-h-[200px] max-h-[400px] overflow-y-auto">
-                  <pre className="text-sm font-mono whitespace-pre-wrap break-all">
-                    {output}
-                  </pre>
-                </div>
-                <div className="text-xs text-muted-foreground text-right">
-                  {output.length} characters
-                </div>
               </div>
-            )}
-          </div>
-        </div>
+              <div className="bg-muted rounded-lg p-4 min-h-[100px] max-h-[400px] overflow-y-auto border">
+                <pre className="text-sm font-mono whitespace-pre-wrap break-all">
+                  {output}
+                </pre>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
 
-        {/* Info Section */}
-        <div className="bg-muted/50 border rounded-lg p-4">
-          <h3 className="text-sm font-semibold mb-2">What is Base64?</h3>
-          <p className="text-sm text-muted-foreground">
+      {/* Info Section */}
+      <Card className="bg-muted/50 border-none shadow-none">
+        <CardContent className="p-6">
+          <h3 className="font-semibold mb-2">What is Base64?</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Base64 is a binary-to-text encoding scheme that represents binary data in
             an ASCII string format. It's commonly used for encoding data in emails,
-            URLs, and data URIs.
+            URLs, and data URIs to ensure that the data remains intact without modification during transport.
           </p>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

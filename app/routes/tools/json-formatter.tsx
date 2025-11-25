@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Copy, Trash2, FileJson, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Copy, Trash2, AlertCircle, CheckCircle2, ClipboardPaste, FileJson, Minimize2, AlignLeft } from "lucide-react";
 import { toast } from "sonner";
 
 export default function JsonFormatter() {
@@ -71,96 +72,108 @@ export default function JsonFormatter() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-[1600px]">
-      <div className="space-y-6 h-[calc(100vh-140px)] flex flex-col">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">JSON Formatter & Validator</h1>
-          <p className="text-muted-foreground mt-2">
-            Format, validate, and minify JSON data
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-[1600px] h-[calc(100vh-4rem)] flex flex-col space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">JSON Formatter & Validator</h1>
+        <p className="text-muted-foreground text-lg">
+          Format, validate, and minify JSON data
+        </p>
+      </div>
 
-        <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-0">
-          {/* Input Section */}
-          <div className="flex flex-col gap-4 h-full min-h-0">
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-medium">Input JSON</label>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={pasteInput}>
-                  Paste
-                </Button>
-                <Button variant="outline" size="sm" onClick={clearAll}>
-                  <Trash2 className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-            <textarea
-              className="flex-1 w-full p-4 rounded-lg border bg-card font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary"
-              placeholder="Paste your JSON here..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-          </div>
-
-          {/* Output Section */}
-          <div className="flex flex-col gap-4 h-full min-h-0">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <label className="text-sm font-medium">Output</label>
-                {error && (
-                  <span className="text-xs text-destructive flex items-center gap-1">
-                    <AlertCircle className="h-3 w-3" /> Invalid JSON
-                  </span>
-                )}
-                {output && !error && (
-                   <span className="text-xs text-green-500 flex items-center gap-1">
-                    <CheckCircle2 className="h-3 w-3" /> Valid JSON
-                  </span>
-                )}
-              </div>
-              <div className="flex gap-2">
-                <div className="flex border rounded-md overflow-hidden mr-2">
-                    <button 
-                        className={`px-3 py-1 text-xs ${indentation === 2 ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}
-                        onClick={() => { setIndentation(2); if (output && !error) formatJson(); }}
-                    >
-                        2 Spaces
-                    </button>
-                    <button 
-                        className={`px-3 py-1 text-xs ${indentation === 4 ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}
-                        onClick={() => { setIndentation(4); if (output && !error) formatJson(); }}
-                    >
-                        4 Spaces
-                    </button>
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-0 pb-6">
+        {/* Input Section */}
+        <Card className="flex flex-col min-h-0 h-full shadow-md">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 py-3 px-4 border-b">
+                <CardTitle className="text-base font-medium flex items-center gap-2">
+                    <FileJson className="w-4 h-4" />
+                    Input JSON
+                </CardTitle>
+                <div className="flex gap-2">
+                    <Button variant="ghost" size="sm" onClick={pasteInput} className="h-8 px-2 text-xs">
+                        <ClipboardPaste className="w-3.5 h-3.5 mr-1" />
+                        Paste
+                    </Button>
+                    <Button variant="ghost" size="sm" onClick={clearAll} className="h-8 px-2 text-xs hover:text-destructive">
+                        <Trash2 className="w-3.5 h-3.5 mr-1" />
+                        Clear
+                    </Button>
                 </div>
-                <Button variant="outline" size="sm" onClick={minifyJson}>
-                  Minify
-                </Button>
-                <Button variant="default" size="sm" onClick={formatJson}>
-                  Format
-                </Button>
-                 <Button variant="outline" size="icon" onClick={copyOutput} disabled={!output}>
-                  <Copy className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-            
-            {error ? (
-              <div className="flex-1 w-full p-4 rounded-lg border border-destructive/50 bg-destructive/5 font-mono text-sm text-destructive overflow-auto">
-                {error}
-              </div>
-            ) : (
-              <textarea
-                className="flex-1 w-full p-4 rounded-lg border bg-muted font-mono text-sm resize-none focus:outline-none"
-                placeholder="Formatted JSON will appear here..."
-                value={output}
-                readOnly
-              />
-            )}
-          </div>
-        </div>
+            </CardHeader>
+            <CardContent className="flex-1 p-0 min-h-0 relative">
+                <textarea
+                    className="absolute inset-0 w-full h-full p-4 bg-transparent font-mono text-sm resize-none focus:outline-none focus:ring-0"
+                    placeholder="Paste your JSON here..."
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                />
+            </CardContent>
+        </Card>
+
+        {/* Output Section */}
+        <Card className="flex flex-col min-h-0 h-full shadow-md">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 py-3 px-4 border-b">
+                <div className="flex items-center gap-4">
+                     <CardTitle className="text-base font-medium">Output</CardTitle>
+                     {error && (
+                        <span className="text-xs text-destructive flex items-center gap-1 bg-destructive/10 px-2 py-0.5 rounded-full">
+                            <AlertCircle className="h-3 w-3" /> Invalid JSON
+                        </span>
+                    )}
+                    {output && !error && (
+                        <span className="text-xs text-green-600 flex items-center gap-1 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full">
+                            <CheckCircle2 className="h-3 w-3" /> Valid JSON
+                        </span>
+                    )}
+                </div>
+
+                <div className="flex items-center gap-2">
+                    <div className="flex items-center bg-muted rounded-md border p-0.5 h-8">
+                         <Button
+                            variant={indentation === 2 ? "secondary" : "ghost"}
+                            size="sm"
+                            onClick={() => { setIndentation(2); if (output && !error) formatJson(); }}
+                            className="h-6 px-2 text-xs"
+                        >
+                            2 Spaces
+                        </Button>
+                        <Button
+                            variant={indentation === 4 ? "secondary" : "ghost"}
+                            size="sm"
+                            onClick={() => { setIndentation(4); if (output && !error) formatJson(); }}
+                            className="h-6 px-2 text-xs"
+                        >
+                            4 Spaces
+                        </Button>
+                    </div>
+                    
+                    <Button variant="outline" size="icon" onClick={minifyJson} className="h-8 w-8" title="Minify">
+                        <Minimize2 className="h-3.5 w-3.5" />
+                    </Button>
+                    <Button variant="outline" size="icon" onClick={formatJson} className="h-8 w-8" title="Format">
+                        <AlignLeft className="h-3.5 w-3.5" />
+                    </Button>
+                    <Button variant="default" size="sm" onClick={copyOutput} disabled={!output} className="h-8 text-xs">
+                        <Copy className="h-3.5 w-3.5 mr-1" />
+                        Copy
+                    </Button>
+                </div>
+            </CardHeader>
+            <CardContent className="flex-1 p-0 min-h-0 relative">
+                 {error ? (
+                    <div className="absolute inset-0 w-full h-full p-4 bg-destructive/5 font-mono text-sm text-destructive overflow-auto">
+                        {error}
+                    </div>
+                ) : (
+                    <textarea
+                        className="absolute inset-0 w-full h-full p-4 bg-muted/30 font-mono text-sm resize-none focus:outline-none focus:ring-0"
+                        placeholder="Formatted JSON will appear here..."
+                        value={output}
+                        readOnly
+                    />
+                )}
+            </CardContent>
+        </Card>
       </div>
     </div>
   );
 }
-

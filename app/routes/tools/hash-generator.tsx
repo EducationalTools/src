@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Copy, RefreshCw } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Copy, RefreshCw, Trash2, FileLock2 } from "lucide-react";
 import { toast } from "sonner";
 
 async function hashText(text: string, algorithm: string): Promise<string> {
@@ -58,17 +58,19 @@ export default function HashGenerator() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Hash Generator</h1>
-          <p className="text-muted-foreground mt-2">
-            Generate cryptographic hashes using SHA algorithms
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-4xl space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Hash Generator</h1>
+        <p className="text-muted-foreground text-lg">
+          Generate cryptographic hashes using SHA algorithms.
+        </p>
+      </div>
 
-        <Card className="p-6 space-y-4">
-          <h2 className="text-lg font-semibold">Input Text</h2>
+      <Card>
+        <CardHeader>
+           <CardTitle>Input Text</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
           <Input
             placeholder="Enter text to hash..."
             value={input}
@@ -79,59 +81,70 @@ export default function HashGenerator() {
                 generateHashes();
               }
             }}
+            className="h-11"
           />
           <div className="flex gap-2">
-            <Button onClick={generateHashes} disabled={loading || !input}>
+            <Button onClick={generateHashes} disabled={loading || !input} className="h-11">
               <RefreshCw className={`mr-2 h-4 w-4 ${loading ? "animate-spin" : ""}`} />
               Generate Hashes
             </Button>
-            <Button variant="outline" onClick={clear}>
+            <Button variant="outline" onClick={clear} className="h-11">
+              <Trash2 className="mr-2 h-4 w-4" />
               Clear
             </Button>
           </div>
-        </Card>
+        </CardContent>
+      </Card>
 
+      {Object.keys(hashes).length > 0 && (
         <div className="space-y-4">
           {algorithms.map((algo) => (
-            <Card key={algo.value} className="p-6">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-lg font-semibold">{algo.label}</h3>
-                {hashes[algo.value] && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => copyToClipboard(hashes[algo.value])}
-                  >
-                    <Copy className="mr-2 h-4 w-4" /> Copy
-                  </Button>
-                )}
-              </div>
-              <div className="bg-muted rounded-md p-4 min-h-[60px]">
-                {hashes[algo.value] ? (
-                  <code className="font-mono text-sm break-all">
-                    {hashes[algo.value]}
-                  </code>
-                ) : (
-                  <div className="text-muted-foreground text-sm">
-                    Hash will appear here...
-                  </div>
-                )}
-              </div>
+            <Card key={algo.value}>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-base font-semibold flex items-center gap-2">
+                    <FileLock2 className="w-4 h-4 text-muted-foreground" />
+                    {algo.label}
+                  </h3>
+                  {hashes[algo.value] && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => copyToClipboard(hashes[algo.value])}
+                      className="h-8 px-2 text-xs"
+                    >
+                      <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+                    </Button>
+                  )}
+                </div>
+                <div className="bg-muted rounded-lg p-4 min-h-[60px] border relative group">
+                  {hashes[algo.value] ? (
+                    <code className="font-mono text-sm break-all text-foreground">
+                      {hashes[algo.value]}
+                    </code>
+                  ) : (
+                    <div className="text-muted-foreground text-sm italic">
+                      Hash will appear here...
+                    </div>
+                  )}
+                </div>
+              </CardContent>
             </Card>
           ))}
         </div>
+      )}
 
-        <Card className="p-6 bg-muted/50">
-          <h3 className="text-lg font-semibold mb-2">About Hash Functions</h3>
-          <p className="text-sm text-muted-foreground">
+      <Card className="bg-muted/50 border-none shadow-none">
+        <CardContent className="p-6">
+          <h3 className="font-semibold mb-2">About Hash Functions</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Hash functions are one-way cryptographic functions that convert input data
             into a fixed-size string of characters. They are commonly used for data
             integrity verification, password storage, and digital signatures. SHA-256
             and SHA-512 are widely used in modern applications.
           </p>
-        </Card>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
-

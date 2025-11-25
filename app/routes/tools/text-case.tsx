@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Copy, RefreshCw } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Copy, RefreshCw, CaseUpper, CaseLower, Type } from "lucide-react";
 import { toast } from "sonner";
 
 type CaseType =
@@ -100,80 +100,81 @@ export default function TextCase() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">
-            Text Case Converter
-          </h1>
-          <p className="text-muted-foreground mt-2">
-            Convert text between different case formats
-          </p>
+    <div className="container mx-auto p-6 max-w-4xl space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">
+          Text Case Converter
+        </h1>
+        <p className="text-muted-foreground text-lg">
+          Convert text between different case formats.
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-1">
+          <Card>
+             <CardHeader>
+                <CardTitle>Case Type</CardTitle>
+             </CardHeader>
+            <CardContent className="space-y-2">
+              {caseTypes.map((type) => (
+                <Button
+                  key={type.value}
+                  variant={selectedCase === type.value ? "default" : "ghost"}
+                  size="sm"
+                  className="w-full justify-start h-auto py-2 px-3"
+                  onClick={() => handleCaseChange(type.value)}
+                >
+                  <div className="text-left">
+                    <div className="font-medium">{type.label}</div>
+                    <div className="text-xs opacity-70">
+                      {type.description}
+                    </div>
+                  </div>
+                </Button>
+              ))}
+            </CardContent>
+          </Card>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="md:col-span-1">
-            <Card className="p-6">
-              <h2 className="text-lg font-semibold">Case Type</h2>
-              <div className="space-y-2">
-                {caseTypes.map((type) => (
-                  <Button
-                    key={type.value}
-                    variant={
-                      selectedCase === type.value ? "default" : "outline"
-                    }
-                    size="lg"
-                    className="w-full justify-start p-4 h-fit"
-                    onClick={() => handleCaseChange(type.value)}
-                  >
-                    <div className="text-left">
-                      <div className="font-medium">{type.label}</div>
-                      <div className="text-xs text-muted-foreground">
-                        {type.description}
-                      </div>
-                    </div>
-                  </Button>
-                ))}
-              </div>
-            </Card>
-          </div>
-
-          <div className="md:col-span-2 space-y-4">
-            <Card className="p-6 space-y-4">
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold">Input</h2>
-                <Button variant="ghost" size="sm" onClick={clear}>
-                  <RefreshCw className="h-4 w-4" />
+        <div className="lg:col-span-2 space-y-6">
+          <Card className="flex flex-col">
+            <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
+                <CardTitle className="text-base">Input</CardTitle>
+                 <Button variant="ghost" size="sm" onClick={clear} className="h-8 px-2 text-xs">
+                  <RefreshCw className="h-3.5 w-3.5 mr-1" /> Clear
                 </Button>
-              </div>
-              <Input
+            </CardHeader>
+            <CardContent className="p-0">
+              <textarea
                 placeholder="Enter text to convert..."
                 value={input}
                 onChange={(e) => handleInputChange(e.target.value)}
-                className="font-mono"
+                className="w-full h-32 p-4 border-none bg-transparent font-mono text-sm resize-y focus:outline-none"
               />
-            </Card>
+            </CardContent>
+          </Card>
 
-            <Card className="p-6 space-y-4">
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold">Output</h2>
+          <Card className="flex flex-col">
+             <CardHeader className="flex flex-row items-center justify-between py-4 border-b bg-muted/30">
+                <CardTitle className="text-base">Output</CardTitle>
                 {output && (
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => copyToClipboard(output)}
+                     className="h-8 px-2 text-xs"
                   >
-                    <Copy className="mr-2 h-4 w-4" /> Copy
+                    <Copy className="mr-2 h-3.5 w-3.5" /> Copy
                   </Button>
                 )}
+            </CardHeader>
+            <CardContent className="p-4 min-h-[120px] bg-muted/30">
+              <div className="font-mono break-words whitespace-pre-wrap text-sm">
+                {output || <span className="text-muted-foreground italic">Converted text will appear here...</span>}
               </div>
-              <div className="bg-muted rounded-md p-4 min-h-[100px]">
-                <div className="font-mono break-words whitespace-pre-wrap">
-                  {output || "Converted text will appear here..."}
-                </div>
-              </div>
-            </Card>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

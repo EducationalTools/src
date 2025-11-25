@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Calculator() {
   const [display, setDisplay] = useState("0");
@@ -108,18 +109,18 @@ export default function Calculator() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-2xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Calculator</h1>
-          <p className="text-muted-foreground mt-2">
-            A simple calculator for basic arithmetic operations
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-md space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Calculator</h1>
+        <p className="text-muted-foreground text-lg">
+          A simple calculator for basic arithmetic operations.
+        </p>
+      </div>
 
-        <div className="bg-card border rounded-lg shadow-sm p-6">
-          <div className="bg-muted/50 rounded-md p-6 mb-6">
-            <div className="text-right text-5xl font-mono font-semibold tracking-tight break-all min-h-[60px] flex items-center justify-end">
+      <Card>
+        <CardContent className="p-6 space-y-6">
+          <div className="bg-muted rounded-lg p-6 mb-6 border">
+            <div className="text-right text-5xl font-mono font-semibold tracking-tight break-all min-h-[60px] flex items-center justify-end text-foreground">
               {display}
             </div>
           </div>
@@ -127,32 +128,28 @@ export default function Calculator() {
           <div className="grid grid-cols-4 gap-3">
             {/* Row 1 */}
             <Button
-              variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold"
+              variant="secondary"
+              className="h-16 text-xl font-medium"
               onClick={clear}
             >
               AC
             </Button>
             <Button
-              variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold"
+              variant="secondary"
+              className="h-16 text-xl font-medium"
               onClick={toggleSign}
             >
               +/−
             </Button>
             <Button
-              variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold"
+              variant="secondary"
+              className="h-16 text-xl font-medium"
               onClick={percentage}
             >
               %
             </Button>
             <Button
-              size="lg"
-              className="h-16 text-lg font-semibold bg-primary hover:bg-primary/90"
+              className="h-16 text-xl font-medium"
               onClick={() => performOperation("/")}
             >
               ÷
@@ -161,31 +158,27 @@ export default function Calculator() {
             {/* Row 2 */}
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={() => inputDigit("7")}
             >
               7
             </Button>
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={() => inputDigit("8")}
             >
               8
             </Button>
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={() => inputDigit("9")}
             >
               9
             </Button>
             <Button
-              size="lg"
-              className="h-16 text-lg font-semibold bg-primary hover:bg-primary/90"
+              className="h-16 text-xl font-medium"
               onClick={() => performOperation("*")}
             >
               ×
@@ -194,31 +187,27 @@ export default function Calculator() {
             {/* Row 3 */}
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={() => inputDigit("4")}
             >
               4
             </Button>
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={() => inputDigit("5")}
             >
               5
             </Button>
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={() => inputDigit("6")}
             >
               6
             </Button>
             <Button
-              size="lg"
-              className="h-16 text-lg font-semibold bg-primary hover:bg-primary/90"
+              className="h-16 text-xl font-medium"
               onClick={() => performOperation("-")}
             >
               −
@@ -227,31 +216,27 @@ export default function Calculator() {
             {/* Row 4 */}
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={() => inputDigit("1")}
             >
               1
             </Button>
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={() => inputDigit("2")}
             >
               2
             </Button>
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={() => inputDigit("3")}
             >
               3
             </Button>
             <Button
-              size="lg"
-              className="h-16 text-lg font-semibold bg-primary hover:bg-primary/90"
+              className="h-16 text-xl font-medium"
               onClick={() => performOperation("+")}
             >
               +
@@ -260,30 +245,27 @@ export default function Calculator() {
             {/* Row 5 */}
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold col-span-2 hover:bg-muted"
+              className="h-16 text-xl font-medium col-span-2"
               onClick={() => inputDigit("0")}
             >
               0
             </Button>
             <Button
               variant="outline"
-              size="lg"
-              className="h-16 text-lg font-semibold hover:bg-muted"
+              className="h-16 text-xl font-medium"
               onClick={inputDecimal}
             >
               .
             </Button>
             <Button
-              size="lg"
-              className="h-16 text-lg font-semibold bg-primary hover:bg-primary/90"
+              className="h-16 text-xl font-medium"
               onClick={handleEquals}
             >
               =
             </Button>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

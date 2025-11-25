@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Copy, RefreshCw, Trash2 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Copy, RefreshCw, Trash2, Fingerprint } from "lucide-react";
 import { toast } from "sonner";
 
 export default function UuidGenerator() {
@@ -40,22 +41,24 @@ export default function UuidGenerator() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">UUID Generator</h1>
-          <p className="text-muted-foreground mt-2">
-            Generate Version 4 UUIDs (Universally Unique Identifiers)
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-4xl space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">UUID Generator</h1>
+        <p className="text-muted-foreground text-lg">
+          Generate Version 4 UUIDs (Universally Unique Identifiers).
+        </p>
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {/* Settings */}
-          <div className="md:col-span-1 space-y-6">
-            <div className="bg-card border rounded-lg shadow-sm p-6 space-y-6">
-              <div className="space-y-6">
+      <div className="grid md:grid-cols-3 gap-6">
+        {/* Settings */}
+        <div className="md:col-span-1 space-y-6">
+          <Card>
+            <CardHeader>
+                <CardTitle>Configuration</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
                 <div className="space-y-3">
-                  <label className="text-sm font-medium">Quantity</label>
+                  <label className="text-sm font-medium leading-none">Quantity</label>
                   <Input
                     type="number"
                     min={1}
@@ -69,7 +72,7 @@ export default function UuidGenerator() {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="hyphens"
-                    className="text-sm font-medium cursor-pointer"
+                    className="text-sm font-medium cursor-pointer leading-none"
                   >
                     Hyphens
                   </label>
@@ -85,7 +88,7 @@ export default function UuidGenerator() {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="uppercase"
-                    className="text-sm font-medium cursor-pointer"
+                    className="text-sm font-medium cursor-pointer leading-none"
                   >
                     Uppercase
                   </label>
@@ -101,61 +104,64 @@ export default function UuidGenerator() {
                 <Button className="w-full" size="lg" onClick={generateUuid}>
                   <RefreshCw className="mr-2 h-4 w-4" /> Generate
                 </Button>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
+        </div>
 
-          {/* Results */}
-          <div className="md:col-span-2">
-            <div className="bg-card border rounded-lg shadow-sm p-6 min-h-[400px] flex flex-col">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-semibold">Generated UUIDs</h2>
+        {/* Results */}
+        <div className="md:col-span-2">
+          <Card className="flex flex-col h-full min-h-[400px]">
+            <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
+                <CardTitle className="text-base">Generated UUIDs</CardTitle>
                 <div className="flex gap-2">
                   {uuids.length > 0 && (
                     <>
-                      <Button variant="outline" size="sm" onClick={copyAll}>
-                        <Copy className="mr-2 h-4 w-4" /> Copy All
+                      <Button variant="outline" size="sm" onClick={copyAll} className="h-8 px-2 text-xs">
+                        <Copy className="mr-2 h-3.5 w-3.5" /> Copy All
                       </Button>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => setUuids([])}
+                         className="h-8 w-8 p-0"
+                         title="Clear"
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </>
                   )}
                 </div>
-              </div>
-
+            </CardHeader>
+            <CardContent className="flex-1 p-0 overflow-hidden relative">
               {uuids.length > 0 ? (
-                <div className="bg-muted rounded-md p-4 flex-1 overflow-auto max-h-[600px] space-y-2">
+                <div className="absolute inset-0 overflow-auto p-4 space-y-2">
                   {uuids.map((uuid, i) => (
                     <div
                       key={i}
-                      className="flex items-center justify-between group"
+                      className="flex items-center justify-between group p-2 rounded hover:bg-muted/50 transition-colors"
                     >
-                      <code className="font-mono text-sm break-all">
+                      <code className="font-mono text-sm break-all text-foreground/90">
                         {uuid}
                       </code>
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity"
                         onClick={() => copyToClipboard(uuid)}
                       >
-                        <Copy className="h-4 w-4" />
+                        <Copy className="h-3.5 w-3.5" />
                       </Button>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="flex-1 flex items-center justify-center text-muted-foreground">
-                  Click Generate to create UUIDs
+                <div className="flex flex-col items-center justify-center h-full text-muted-foreground space-y-4">
+                  <Fingerprint className="w-12 h-12 opacity-20" />
+                  <p>Click Generate to create UUIDs</p>
                 </div>
               )}
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
