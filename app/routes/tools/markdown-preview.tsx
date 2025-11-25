@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Copy, RefreshCw } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Copy, RefreshCw, FileText, Eye } from "lucide-react";
 import { toast } from "sonner";
 
 // Simple markdown parser
@@ -102,93 +102,73 @@ export default function MarkdownPreview() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-6xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Markdown Preview</h1>
-          <p className="text-muted-foreground mt-2">
-            Write markdown and see it rendered in real-time
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-[1600px] h-[calc(100vh-4rem)] flex flex-col space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Markdown Preview</h1>
+        <p className="text-muted-foreground text-lg">
+          Write markdown and see it rendered in real-time.
+        </p>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card className="p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Markdown</h2>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={loadSample}>
-                  Load Sample
-                </Button>
-                <Button variant="ghost" size="sm" onClick={clear}>
-                  <RefreshCw className="h-4 w-4" />
-                </Button>
-              </div>
+      <div className="flex-1 grid lg:grid-cols-2 gap-6 min-h-0 pb-6">
+        <Card className="flex flex-col min-h-0 shadow-md">
+          <CardHeader className="flex flex-row items-center justify-between py-3 px-4 border-b space-y-0">
+            <CardTitle className="text-base font-medium flex items-center gap-2">
+              <FileText className="w-4 h-4" />
+              Markdown
+            </CardTitle>
+            <div className="flex gap-2">
+              <Button variant="ghost" size="sm" onClick={loadSample} className="h-8 px-2 text-xs">
+                Load Sample
+              </Button>
+              <Button variant="ghost" size="sm" onClick={clear} className="h-8 px-2 text-xs">
+                <RefreshCw className="h-3.5 w-3.5 mr-1" />
+                Clear
+              </Button>
+               <Button
+                variant="outline"
+                size="sm"
+                onClick={() => copyToClipboard(markdown)}
+                className="h-8 px-2 text-xs"
+              >
+                <Copy className="mr-2 h-3.5 w-3.5" /> Copy MD
+              </Button>
             </div>
+          </CardHeader>
+          <CardContent className="flex-1 p-0 relative">
             <textarea
-              className="w-full h-[600px] p-4 border rounded-md font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-ring"
+              className="absolute inset-0 w-full h-full p-4 bg-transparent font-mono text-sm resize-none focus:outline-none focus:ring-0"
               value={markdown}
               onChange={(e) => setMarkdown(e.target.value)}
               placeholder="Enter markdown here..."
             />
+          </CardContent>
+        </Card>
+
+        <Card className="flex flex-col min-h-0 shadow-md">
+          <CardHeader className="flex flex-row items-center justify-between py-3 px-4 border-b space-y-0">
+            <CardTitle className="text-base font-medium flex items-center gap-2">
+              <Eye className="w-4 h-4" />
+              Preview
+            </CardTitle>
             <Button
               variant="outline"
               size="sm"
-              onClick={() => copyToClipboard(markdown)}
+              onClick={() => copyToClipboard(parseMarkdown(markdown))}
+              className="h-8 px-2 text-xs"
             >
-              <Copy className="mr-2 h-4 w-4" /> Copy Markdown
+              <Copy className="mr-2 h-3.5 w-3.5" /> Copy HTML
             </Button>
-          </Card>
-
-          <Card className="p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Preview</h2>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => copyToClipboard(parseMarkdown(markdown))}
-              >
-                <Copy className="mr-2 h-4 w-4" /> Copy HTML
-              </Button>
-            </div>
-            <div className="h-[600px] overflow-auto p-4 border rounded-md bg-muted/30 prose prose-sm dark:prose-invert max-w-none">
+          </CardHeader>
+          <CardContent className="flex-1 p-0 relative bg-white dark:bg-zinc-950 overflow-hidden rounded-b-lg">
+             <div className="absolute inset-0 w-full h-full overflow-auto p-6 prose prose-sm dark:prose-invert max-w-none">
               <div
                 dangerouslySetInnerHTML={{ __html: parseMarkdown(markdown) }}
               />
             </div>
-          </Card>
-        </div>
-
-        <Card className="p-6 bg-muted/50">
-          <h3 className="text-lg font-semibold mb-2">Markdown Syntax Guide</h3>
-          <div className="grid md:grid-cols-2 gap-4 text-sm text-muted-foreground">
-            <div>
-              <div className="font-semibold mb-1">Headers</div>
-              <div># H1, ## H2, ### H3</div>
-            </div>
-            <div>
-              <div className="font-semibold mb-1">Emphasis</div>
-              <div>**bold**, *italic*</div>
-            </div>
-            <div>
-              <div className="font-semibold mb-1">Code</div>
-              <div>`inline`, ```block```</div>
-            </div>
-            <div>
-              <div className="font-semibold mb-1">Links</div>
-              <div>[text](url)</div>
-            </div>
-            <div>
-              <div className="font-semibold mb-1">Lists</div>
-              <div>- item, 1. item</div>
-            </div>
-            <div>
-              <div className="font-semibold mb-1">Images</div>
-              <div>![alt](url)</div>
-            </div>
-          </div>
+          </CardContent>
         </Card>
       </div>
     </div>
   );
 }
-

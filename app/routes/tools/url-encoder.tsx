@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Copy, RefreshCw, ArrowLeftRight } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Copy, RefreshCw, Link, Globe } from "lucide-react";
 import { toast } from "sonner";
 
 export default function UrlEncoder() {
@@ -46,106 +46,91 @@ export default function UrlEncoder() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">URL Encoder/Decoder</h1>
-          <p className="text-muted-foreground mt-2">
-            Encode and decode URLs and URL components
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-4xl space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">URL Encoder/Decoder</h1>
+        <p className="text-muted-foreground text-lg">
+          Encode and decode URLs and URL components.
+        </p>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card className="p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Decoded URL</h2>
+      <div className="grid md:grid-cols-2 gap-6">
+        <Card className="flex flex-col">
+          <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Link className="w-4 h-4 text-muted-foreground" />
+                Decoded URL
+              </CardTitle>
               {decoded && (
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="sm"
                   onClick={() => copyToClipboard(decoded)}
+                  className="h-8 px-2 text-xs"
                 >
-                  <Copy className="mr-2 h-4 w-4" /> Copy
+                  <Copy className="mr-2 h-3.5 w-3.5" /> Copy
                 </Button>
               )}
-            </div>
-            <Input
+          </CardHeader>
+          <CardContent className="p-0 flex-1">
+            <textarea
               placeholder="Enter URL or text to encode..."
               value={decoded}
               onChange={(e) => handleDecodedChange(e.target.value)}
-              className="font-mono"
+              className="w-full h-full min-h-[200px] p-4 border-none bg-transparent font-mono text-sm resize-none focus:outline-none"
             />
-            <div className="text-sm text-muted-foreground">
-              Enter a URL or text to encode
-            </div>
-          </Card>
+          </CardContent>
+        </Card>
 
-          <Card className="p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Encoded URL</h2>
+        <Card className="flex flex-col">
+          <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
+               <CardTitle className="text-base flex items-center gap-2">
+                <Globe className="w-4 h-4 text-muted-foreground" />
+                Encoded URL
+              </CardTitle>
               {encoded && (
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="sm"
                   onClick={() => copyToClipboard(encoded)}
+                  className="h-8 px-2 text-xs"
                 >
-                  <Copy className="mr-2 h-4 w-4" /> Copy
+                  <Copy className="mr-2 h-3.5 w-3.5" /> Copy
                 </Button>
               )}
-            </div>
-            <Input
+          </CardHeader>
+          <CardContent className="p-0 flex-1">
+             <textarea
               placeholder="Enter encoded URL to decode..."
               value={encoded}
               onChange={(e) => handleEncodedChange(e.target.value)}
-              className="font-mono"
+               className="w-full h-full min-h-[200px] p-4 border-none bg-transparent font-mono text-sm resize-none focus:outline-none"
             />
-            <div className="text-sm text-muted-foreground">
-              Enter an encoded URL to decode
-            </div>
-          </Card>
-        </div>
+          </CardContent>
+        </Card>
+      </div>
 
-        <div className="flex justify-center">
-          <Button variant="ghost" onClick={clear}>
-            <RefreshCw className="mr-2 h-4 w-4" /> Clear
-          </Button>
-        </div>
+      <div className="flex justify-center">
+        <Button variant="outline" onClick={clear}>
+          <RefreshCw className="mr-2 h-4 w-4" /> Clear All
+        </Button>
+      </div>
 
-        {(decoded || encoded) && (
-          <Card className="p-6">
-            <div className="space-y-4">
-              <div>
-                <div className="text-sm text-muted-foreground mb-2">Preview</div>
-                <div className="bg-muted rounded-md p-4 space-y-2">
-                  <div>
-                    <div className="text-xs text-muted-foreground mb-1">Decoded:</div>
-                    <div className="font-mono text-sm break-all">{decoded || "(empty)"}</div>
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground mb-1">Encoded:</div>
-                    <div className="font-mono text-sm break-all">{encoded || "(empty)"}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        )}
-
-        <Card className="p-6 bg-muted/50">
-          <h3 className="text-lg font-semibold mb-2">About URL Encoding</h3>
+      <Card className="bg-muted/50 border-none shadow-none">
+        <CardContent className="p-6">
+          <h3 className="font-semibold mb-2">About URL Encoding</h3>
           <p className="text-sm text-muted-foreground mb-2">
             URL encoding converts characters into a format that can be transmitted over
             the Internet. Special characters are replaced with a percent sign (%) followed
             by two hexadecimal digits.
           </p>
-          <div className="text-sm text-muted-foreground space-y-1">
-            <div>• Space becomes %20</div>
-            <div>• Special characters are encoded (e.g., & becomes %26)</div>
-            <div>• Used in query strings, form data, and URLs</div>
-          </div>
-        </Card>
-      </div>
+          <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+            <li>Space becomes %20</li>
+            <li>Special characters are encoded (e.g., & becomes %26)</li>
+            <li>Used in query strings, form data, and URLs</li>
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   );
 }
-

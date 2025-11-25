@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRightLeft } from "lucide-react";
 
 type UnitCategory = "length" | "weight" | "temperature" | "volume";
 
@@ -187,42 +189,40 @@ export default function UnitConverter() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-3xl">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Unit Converter</h1>
-          <p className="text-muted-foreground mt-2">
-            Convert between different units of measurement
-          </p>
-        </div>
+    <div className="container mx-auto p-6 max-w-3xl space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Unit Converter</h1>
+        <p className="text-muted-foreground text-lg">
+          Convert between different units of measurement.
+        </p>
+      </div>
 
-        <div className="bg-card border rounded-lg shadow-sm p-6">
-          <div className="space-y-6">
-            {/* Category Selection */}
-            <div>
-              <label className="text-sm font-medium mb-3 block">
-                Category
-              </label>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                {(["length", "weight", "temperature", "volume"] as UnitCategory[]).map(
-                  (cat) => (
-                    <Button
-                      key={cat}
-                      variant={category === cat ? "default" : "outline"}
-                      onClick={() => handleCategoryChange(cat)}
-                      className="capitalize"
-                    >
-                      {cat}
-                    </Button>
-                  )
-                )}
-              </div>
+      <Card>
+        <CardContent className="p-6 space-y-8">
+          {/* Category Selection */}
+          <div className="space-y-3">
+            <label className="text-sm font-medium leading-none">Category</label>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {(["length", "weight", "temperature", "volume"] as UnitCategory[]).map(
+                (cat) => (
+                  <Button
+                    key={cat}
+                    variant={category === cat ? "default" : "outline"}
+                    onClick={() => handleCategoryChange(cat)}
+                    className="capitalize w-full"
+                  >
+                    {cat}
+                  </Button>
+                )
+              )}
             </div>
+          </div>
 
+          <div className="grid gap-6 sm:grid-cols-[1fr_auto_1fr] items-start">
             {/* From Unit */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">From</label>
-              <div className="grid gap-3 md:grid-cols-2">
+            <div className="space-y-3">
+              <label className="text-sm font-medium leading-none">From</label>
+              <div className="space-y-2">
                 <Input
                   type="number"
                   placeholder="Enter value"
@@ -233,7 +233,7 @@ export default function UnitConverter() {
                 <select
                   value={fromUnit}
                   onChange={(e) => handleFromUnitChange(e.target.value)}
-                  className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {Object.entries(units[category]).map(([key, unit]) => (
                     <option key={key} value={key}>
@@ -245,36 +245,21 @@ export default function UnitConverter() {
             </div>
 
             {/* Swap Button */}
-            <div className="flex justify-center">
+            <div className="flex justify-center pt-8">
               <Button
-                variant="outline"
+                variant="ghost"
                 size="icon"
                 onClick={swapUnits}
-                className="rounded-full"
+                className="rounded-full h-10 w-10 hover:bg-muted"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M7 10L2 15l5 5" />
-                  <path d="M2 15h20" />
-                  <path d="M17 14l5-5-5-5" />
-                  <path d="M22 9H2" />
-                </svg>
+                <ArrowRightLeft className="w-5 h-5" />
               </Button>
             </div>
 
             {/* To Unit */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">To</label>
-              <div className="grid gap-3 md:grid-cols-2">
+            <div className="space-y-3">
+              <label className="text-sm font-medium leading-none">To</label>
+              <div className="space-y-2">
                 <Input
                   type="number"
                   placeholder="Result"
@@ -285,7 +270,7 @@ export default function UnitConverter() {
                 <select
                   value={toUnit}
                   onChange={(e) => handleToUnitChange(e.target.value)}
-                  className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {Object.entries(units[category]).map(([key, unit]) => (
                     <option key={key} value={key}>
@@ -296,8 +281,8 @@ export default function UnitConverter() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
