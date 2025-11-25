@@ -94,7 +94,8 @@ export default function Home() {
           <CardContent
             className={cn(
               "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2",
-              !experimentalFeatures && "lg:grid-cols-3"
+              !experimentalFeatures && "lg:grid-cols-3",
+              experimentalFeatures && "max-h-[600px] overflow-y-auto pr-2"
             )}
           >
             {TOOLS.map((tool) => (
