@@ -88,6 +88,7 @@ export const useSavedGmaes = create<SavedGmaes>()(
 interface GmaeHistory {
   history: string[];
   addToHistory: (gmaeId: string) => void;
+  removeFromHistory: (gmaeId: string) => void;
   clearHistory: () => void;
 }
 
@@ -107,6 +108,10 @@ export const useGmaeHistory = create<GmaeHistory>()(
             history: [...state.history, gmaeId],
           };
         }),
+      removeFromHistory: (gmaeId) =>
+        set((state) => ({
+          history: state.history.filter((id) => id !== gmaeId),
+        })),
       clearHistory: () => set({ history: [] }),
     }),
     {
