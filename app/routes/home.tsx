@@ -9,6 +9,8 @@ import {
   ArrowRight,
   Star,
   Gamepad2,
+  Trash2,
+  X,
 } from "lucide-react";
 import {
   useGmaeHistory,
@@ -36,8 +38,17 @@ export default function Home() {
   const experimentalFeatures = useExperimentalFeatures(
     (state) => state.enabled
   );
-  const history = useGmaeHistory((state) => state.history);
-  const saved = useSavedGmaes((state) => state.saved);
+  const { history, removeFromHistory, clearHistory } = useGmaeHistory(
+    (state) => ({
+      history: state.history,
+      removeFromHistory: state.removeFromHistory,
+      clearHistory: state.clearHistory,
+    })
+  );
+  const { saved, toggleSaved } = useSavedGmaes((state) => ({
+    saved: state.saved,
+    toggleSaved: state.toggleSaved,
+  }));
 
   // Helper to get game details
   const getGameDetails = (id: string) => {
@@ -141,23 +152,37 @@ export default function Home() {
                 {savedGames.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {savedGames.map((item) => (
-                      <Button
-                        key={item.id}
-                        variant="secondary"
-                        className="justify-start h-auto py-3 px-4 w-full group"
-                        asChild
-                      >
-                        <Link to={item.href}>
-                          <div className="flex items-center gap-3 w-full">
-                            <div className="bg-background/50 p-2 rounded-md">
-                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20" />
+                      <div key={item.id} className="relative group">
+                        <Button
+                          variant="secondary"
+                          className="justify-start h-auto py-3 px-4 w-full pr-12"
+                          asChild
+                        >
+                          <Link to={item.href}>
+                            <div className="flex items-center gap-3 w-full">
+                              <div className="bg-background/50 p-2 rounded-md">
+                                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20" />
+                              </div>
+                              <span className="font-medium truncate flex-1 text-left">
+                                {item.label}
+                              </span>
                             </div>
-                            <span className="font-medium truncate flex-1 text-left">
-                              {item.label}
-                            </span>
-                          </div>
-                        </Link>
-                      </Button>
+                          </Link>
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 opacity-0 group-hover:opacity-100 transition-all hover:bg-destructive/10 hover:text-destructive"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleSaved(item.id);
+                          }}
+                        >
+                          <X className="h-4 w-4" />
+                          <span className="sr-only">Remove from saved</span>
+                        </Button>
+                      </div>
                     ))}
                   </div>
                 ) : (
@@ -178,35 +203,62 @@ export default function Home() {
 
             {/* Recent History */}
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <History className="w-5 h-5 text-primary" />
-                  History
-                </CardTitle>
-                <CardDescription>Recently accessed items</CardDescription>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <div className="space-y-1.5">
+                  <CardTitle className="flex items-center gap-2">
+                    <History className="w-5 h-5 text-primary" />
+                    History
+                  </CardTitle>
+                  <CardDescription>Recently accessed items</CardDescription>
+                </div>
+                {history.length > 0 && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:text-destructive h-8 px-2"
+                    onClick={clearHistory}
+                  >
+                    <Trash2 className="w-4 h-4 mr-2" />
+                    Clear
+                  </Button>
+                )}
               </CardHeader>
               <CardContent>
                 {recentHistory.length > 0 ? (
                   <div className="flex flex-col gap-2">
                     {recentHistory.map((item) => (
-                      <Button
-                        key={item.id}
-                        variant="ghost"
-                        className="justify-start h-auto py-3 px-4 w-full border border-transparent hover:border-border hover:bg-accent/50 transition-all"
-                        asChild
-                      >
-                        <Link to={item.href}>
-                          <div className="flex items-center gap-3 w-full">
-                            <History className="w-4 h-4 text-muted-foreground" />
-                            <span className="font-medium truncate flex-1 text-left">
-                              {item.label}
-                            </span>
-                            <span className="text-xs text-muted-foreground">
-                              Go
-                            </span>
-                          </div>
-                        </Link>
-                      </Button>
+                      <div key={item.id} className="relative group">
+                        <Button
+                          variant="ghost"
+                          className="justify-start h-auto py-3 px-4 w-full border border-transparent hover:border-border hover:bg-accent/50 transition-all pr-12"
+                          asChild
+                        >
+                          <Link to={item.href}>
+                            <div className="flex items-center gap-3 w-full">
+                              <History className="w-4 h-4 text-muted-foreground" />
+                              <span className="font-medium truncate flex-1 text-left">
+                                {item.label}
+                              </span>
+                              <span className="text-xs text-muted-foreground group-hover:opacity-0 transition-opacity">
+                                Go
+                              </span>
+                            </div>
+                          </Link>
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 opacity-0 group-hover:opacity-100 transition-all hover:bg-destructive/10 hover:text-destructive"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            removeFromHistory(item.id);
+                          }}
+                        >
+                          <X className="h-4 w-4" />
+                          <span className="sr-only">Remove from history</span>
+                        </Button>
+                      </div>
                     ))}
                   </div>
                 ) : (
