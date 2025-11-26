@@ -38,17 +38,12 @@ export default function Home() {
   const experimentalFeatures = useExperimentalFeatures(
     (state) => state.enabled
   );
-  const { history, removeFromHistory, clearHistory } = useGmaeHistory(
-    (state) => ({
-      history: state.history,
-      removeFromHistory: state.removeFromHistory,
-      clearHistory: state.clearHistory,
-    })
-  );
-  const { saved, toggleSaved } = useSavedGmaes((state) => ({
-    saved: state.saved,
-    toggleSaved: state.toggleSaved,
-  }));
+  const history = useGmaeHistory((state) => state.history);
+  const removeFromHistory = useGmaeHistory((state) => state.removeFromHistory);
+  const clearHistory = useGmaeHistory((state) => state.clearHistory);
+
+  const saved = useSavedGmaes((state) => state.saved);
+  const toggleSaved = useSavedGmaes((state) => state.toggleSaved);
 
   // Helper to get game details
   const getGameDetails = (id: string) => {
