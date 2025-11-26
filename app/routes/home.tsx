@@ -147,7 +147,7 @@ export default function Home() {
                 {savedGames.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {savedGames.map((item) => (
-                      <div key={item.id} className="relative group">
+                      <div key={item.id} className="relative">
                         <Button
                           variant="secondary"
                           className="justify-start h-auto py-3 px-4 w-full pr-12"
@@ -155,27 +155,26 @@ export default function Home() {
                         >
                           <Link to={item.href}>
                             <div className="flex items-center gap-3 w-full">
-                              <div className="bg-background/50 p-2 rounded-md">
-                                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20" />
-                              </div>
+                              <Button
+                                variant="outline"
+                                size="icon"
+                                className="group"
+                              >
+                                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20 absolute group-hover:opacity-0 transition-opacity" />
+                                <X
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    toggleSaved(item.id);
+                                  }}
+                                  className="w-4 h-4 text-muted-foreground absolute opacity-0 group-hover:opacity-100 transition-opacity"
+                                />
+                              </Button>
                               <span className="font-medium truncate flex-1 text-left">
                                 {item.label}
                               </span>
                             </div>
                           </Link>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 opacity-0 group-hover:opacity-100 transition-all hover:bg-destructive/10 hover:text-destructive"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            toggleSaved(item.id);
-                          }}
-                        >
-                          <X className="h-4 w-4" />
-                          <span className="sr-only">Remove from saved</span>
                         </Button>
                       </div>
                     ))}
