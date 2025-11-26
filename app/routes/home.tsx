@@ -147,33 +147,27 @@ export default function Home() {
                 {savedGames.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {savedGames.map((item) => (
-                      <div key={item.id} className="relative">
+                      <div key={item.id} className="flex items-stretch">
                         <Button
                           variant="secondary"
-                          className="justify-start h-auto py-3 px-4 w-full pr-12"
+                          className="rounded-r-none px-3 group/btn"
+                          onClick={() => toggleSaved(item.id)}
+                        >
+                          <div className="relative w-4 h-4">
+                            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20 absolute transition-opacity opacity-100 group-hover/btn:opacity-0" />
+                            <X className="w-4 h-4 text-muted-foreground absolute transition-opacity opacity-0 group-hover/btn:opacity-100" />
+                          </div>
+                          <span className="sr-only">Remove</span>
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          className="justify-start h-auto py-3 px-4 flex-1 rounded-l-none"
                           asChild
                         >
                           <Link to={item.href}>
-                            <div className="flex items-center gap-3 w-full">
-                              <Button
-                                variant="outline"
-                                size="icon"
-                                className="group"
-                              >
-                                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20 absolute group-hover:opacity-0 transition-opacity" />
-                                <X
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    toggleSaved(item.id);
-                                  }}
-                                  className="w-4 h-4 text-muted-foreground absolute opacity-0 group-hover:opacity-100 transition-opacity"
-                                />
-                              </Button>
-                              <span className="font-medium truncate flex-1 text-left">
-                                {item.label}
-                              </span>
-                            </div>
+                            <span className="font-medium truncate flex-1 text-left">
+                              {item.label}
+                            </span>
                           </Link>
                         </Button>
                       </div>
