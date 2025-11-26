@@ -234,9 +234,6 @@ export default function Home() {
                               <span className="font-medium truncate flex-1 text-left">
                                 {item.label}
                               </span>
-                              <span className="text-xs text-muted-foreground group-hover:opacity-0 transition-opacity">
-                                Go
-                              </span>
                             </div>
                           </Link>
                         </Button>
