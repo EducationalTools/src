@@ -72,6 +72,14 @@ export default function Settings() {
     (state) => state.setHistoryCollectionEnabled
   );
   const history = useGmaeHistory((state) => state.history);
+  const disableBlur = useSettingsState((state) => state.disableBlur);
+  const setDisableBlur = useSettingsState((state) => state.setDisableBlur);
+  const disableAnimations = useSettingsState(
+    (state) => state.disableAnimations
+  );
+  const setDisableAnimations = useSettingsState(
+    (state) => state.setDisableAnimations
+  );
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -91,6 +99,45 @@ export default function Settings() {
             </CardHeader>
             <CardContent className="flex flex-col gap-4 p-0 h-full">
               <ThemeSelector />
+              <Separator className="mx-6" />
+              <div className="flex flex-col gap-4 px-6 pb-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-1">
+                    <label
+                      htmlFor="disable-blur"
+                      className="text-sm font-medium leading-none cursor-pointer"
+                    >
+                      Disable Blur Effects
+                    </label>
+                    <p className="text-xs text-muted-foreground">
+                      Remove all blur effects from the interface
+                    </p>
+                  </div>
+                  <Switch
+                    id="disable-blur"
+                    checked={disableBlur}
+                    onCheckedChange={setDisableBlur}
+                  />
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-1">
+                    <label
+                      htmlFor="disable-animations"
+                      className="text-sm font-medium leading-none cursor-pointer"
+                    >
+                      Disable Animations
+                    </label>
+                    <p className="text-xs text-muted-foreground">
+                      Remove all animations and transitions
+                    </p>
+                  </div>
+                  <Switch
+                    id="disable-animations"
+                    checked={disableAnimations}
+                    onCheckedChange={setDisableAnimations}
+                  />
+                </div>
+              </div>
             </CardContent>
           </Card>
 
