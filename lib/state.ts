@@ -69,8 +69,10 @@ interface SettingsState {
     title?: string;
     favicon?: string;
   }) => void;
-  disableBlur: boolean;
-  setDisableBlur: (disabled: boolean) => void;
+  disableBlurBehind: boolean;
+  setDisableBlurBehind: (disabled: boolean) => void;
+  disableAllBlur: boolean;
+  setDisableAllBlur: (disabled: boolean) => void;
   disableAnimations: boolean;
   setDisableAnimations: (disabled: boolean) => void;
 }
@@ -102,8 +104,19 @@ export const useSettingsState = create<SettingsState>()(
         set({
           cloak: { ...get().cloak, ...cloak },
         }),
-      disableBlur: false,
-      setDisableBlur: (disabled: boolean) => set({ disableBlur: disabled }),
+      disableBlurBehind: false,
+      setDisableBlurBehind: (disabled: boolean) => {
+        set({ disableBlurBehind: disabled });
+      },
+      disableAllBlur: false,
+      setDisableAllBlur: (disabled: boolean) => {
+        if (disabled) {
+          // When enabling disableAllBlur, force enable disableBlurBehind
+          set({ disableAllBlur: true, disableBlurBehind: true });
+        } else {
+          set({ disableAllBlur: false });
+        }
+      },
       disableAnimations: false,
       setDisableAnimations: (disabled: boolean) =>
         set({ disableAnimations: disabled }),
@@ -218,7 +231,8 @@ export const resetSettings = () => {
       title: "",
       favicon: "",
     },
-    disableBlur: false,
+    disableBlurBehind: false,
+    disableAllBlur: false,
     disableAnimations: false,
   };
   useSettingsState.setState(defaultSettings);
