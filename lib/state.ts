@@ -106,6 +106,10 @@ export const useSettingsState = create<SettingsState>()(
         }),
       disableBlurBehind: false,
       setDisableBlurBehind: (disabled: boolean) => {
+        // If disableAllBlur is enabled, keep disableBlurBehind enabled
+        if (get().disableAllBlur && !disabled) {
+          return; // Don't allow disabling when all blur is disabled
+        }
         set({ disableBlurBehind: disabled });
       },
       disableAllBlur: false,
