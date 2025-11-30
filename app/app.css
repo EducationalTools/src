@@ -77,12 +77,22 @@
   }
 }
 
-/* Disable blur effects */
-.disable-blur *,
-.disable-blur *::before,
-.disable-blur *::after {
+/* Disable blur behind effects (backdrop-filter only) */
+.disable-blur-behind *,
+.disable-blur-behind *::before,
+.disable-blur-behind *::after {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+}
+
+/* Disable all blur effects (backdrop-filter + filter blur) */
+.disable-all-blur *,
+.disable-all-blur *::before,
+.disable-all-blur *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  /* Note: filter blur removal would break other filters, so we only handle backdrop-filter here */
+  /* Filter blur effects in animations/components need to be handled separately */
 }
 
 /* Disable animations */
