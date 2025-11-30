@@ -42,7 +42,7 @@ export default function Hotkeys() {
   useHotkeys(
     panicKey.key,
     () => {
-      if (panicKey.enabled && panicKey.url) {
+      if (panicKey.enabled && panicKey.url && experimental) {
         // Optionally disable experimental features
         if (panicKey.disableExperimentalOnTrigger) {
           setExperimentalEnabled(false);
@@ -54,7 +54,7 @@ export default function Hotkeys() {
     },
     {
       preventDefault: true,
-      enabled: panicKey.enabled && !!panicKey.url,
+      enabled: panicKey.enabled && !!panicKey.url && experimental,
     }
   );
 
