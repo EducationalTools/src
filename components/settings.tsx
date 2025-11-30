@@ -48,7 +48,7 @@ export default function Settings() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-h-[85vh] overflow-y-auto max-w-none! w-[90vw]">
+      <DialogContent className="max-h-[85vh] overflow-y-auto max-w-7xl! w-[90vw]">
         <DialogHeader>
           <DialogTitle>Settings</DialogTitle>
         </DialogHeader>
