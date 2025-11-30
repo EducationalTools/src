@@ -54,18 +54,16 @@ export default function Settings() {
         </DialogHeader>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {/* Appearance Section */}
-          <Card>
+          <Card className="gap-0 pb-0 overflow-hidden">
             <CardHeader>
-              <div className="flex items-center gap-2">
+              <div className="flex gap-2">
                 <Palette className="h-4 w-4 text-muted-foreground" />
-                <CardTitle>Appearance</CardTitle>
+                <CardTitle>Theme</CardTitle>
+                <ThemeModeSelector className="ml-auto" />
               </div>
             </CardHeader>
-            <CardContent className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <ThemeSelector className="flex-1" />
-                <ThemeModeSelector />
-              </div>
+            <CardContent className="flex flex-col gap-4 p-0 h-full">
+              <ThemeSelector />
             </CardContent>
           </Card>
 
