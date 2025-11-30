@@ -59,6 +59,16 @@ interface SettingsState {
     key?: string;
     disableExperimentalOnTrigger?: boolean;
   }) => void;
+  cloak: {
+    mode: "off" | "when-not-focused" | "on";
+    title: string;
+    favicon: string;
+  };
+  setCloak: (cloak: {
+    mode?: "off" | "when-not-focused" | "on";
+    title?: string;
+    favicon?: string;
+  }) => void;
 }
 
 export const useSettingsState = create<SettingsState>()(
@@ -78,6 +88,15 @@ export const useSettingsState = create<SettingsState>()(
       setPanicKey: (panicKey) =>
         set({
           panicKey: { ...get().panicKey, ...panicKey },
+        }),
+      cloak: {
+        mode: "off",
+        title: "",
+        favicon: "",
+      },
+      setCloak: (cloak) =>
+        set({
+          cloak: { ...get().cloak, ...cloak },
         }),
     }),
     {

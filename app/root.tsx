@@ -41,6 +41,7 @@ import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
+import { useCloak } from "@/hooks/use-cloak";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -76,6 +77,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 
   const panicModeActivated = useUiState((state) => state.panicModeActivated);
+
+  // Apply cloak feature
+  useCloak();
 
   useEffect(() => {
     const root = window.document.documentElement;

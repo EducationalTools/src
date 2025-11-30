@@ -1,4 +1,8 @@
-import { useSettingsState, useUiState } from "@/lib/state";
+import {
+  useSettingsState,
+  useUiState,
+  useExperimentalFeatures,
+} from "@/lib/state";
 import {
   Dialog,
   DialogClose,
@@ -11,6 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { ThemeSelector } from "./theme-selector";
 import { ThemeModeSelector } from "./theme-mode-selector";
+import { CloakModeSelector } from "./cloak-mode-selector";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -18,9 +23,13 @@ import { Input } from "@/components/ui/input";
 export default function Settings() {
   const open = useUiState((state) => state.settingsOpen);
   const setOpen = useUiState((state) => state.setSettingsOpen);
-  const settingsState = useSettingsState();
   const panicKey = useSettingsState((state) => state.panicKey);
   const setPanicKey = useSettingsState((state) => state.setPanicKey);
+  const cloak = useSettingsState((state) => state.cloak);
+  const setCloak = useSettingsState((state) => state.setCloak);
+  const experimentalFeatures = useExperimentalFeatures(
+    (state) => state.enabled
+  );
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -106,6 +115,56 @@ export default function Settings() {
               </div>
             )}
           </div>
+          {experimentalFeatures && (
+            <>
+              <Separator />
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="cloak-mode"
+                    className="text-sm font-medium leading-none"
+                  >
+                    Cloak Mode
+                  </label>
+                  <CloakModeSelector />
+                </div>
+                {cloak.mode !== "off" && (
+                  <div className="flex flex-col gap-3 p-4 rounded-md border bg-card">
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="cloak-title"
+                        className="text-sm font-medium leading-none"
+                      >
+                        Title
+                      </label>
+                      <Input
+                        id="cloak-title"
+                        type="text"
+                        placeholder="Google Classroom"
+                        value={cloak.title}
+                        onChange={(e) => setCloak({ title: e.target.value })}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="cloak-favicon"
+                        className="text-sm font-medium leading-none"
+                      >
+                        Favicon URL
+                      </label>
+                      <Input
+                        id="cloak-favicon"
+                        type="url"
+                        placeholder="https://example.com/favicon.ico"
+                        value={cloak.favicon}
+                        onChange={(e) => setCloak({ favicon: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
         </div>
       </DialogContent>
     </Dialog>
