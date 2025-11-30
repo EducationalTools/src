@@ -33,6 +33,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
+import { cn } from "@/lib/utils";
 
 export default function Settings() {
   const open = useUiState((state) => state.settingsOpen);
@@ -85,80 +86,86 @@ export default function Settings() {
               </div>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
-              {panicKey.enabled && (
-                <div className="flex flex-col gap-4 pt-2 pl-7 border-l-2 border-border">
-                  <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2">
-                      <Globe className="h-3.5 w-3.5 text-muted-foreground" />
-                      <label
-                        htmlFor="panic-key-url"
-                        className="text-sm font-medium leading-none"
-                      >
-                        Redirect URL
-                      </label>
-                    </div>
-                    <Input
-                      id="panic-key-url"
-                      type="url"
-                      placeholder="https://classroom.google.com"
-                      value={panicKey.url}
-                      onChange={(e) => setPanicKey({ url: e.target.value })}
-                    />
-                    <p className="text-xs text-muted-foreground">
-                      The URL to redirect to when the panic key is pressed
+              <div
+                className={cn(
+                  "flex flex-col gap-4",
+                  !panicKey.enabled && "opacity-50"
+                )}
+              >
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <Globe className="h-3.5 w-3.5 text-muted-foreground" />
+                    <label
+                      htmlFor="panic-key-url"
+                      className="text-sm font-medium leading-none"
+                    >
+                      Redirect URL
+                    </label>
+                  </div>
+                  <Input
+                    id="panic-key-url"
+                    type="url"
+                    placeholder="https://classroom.google.com"
+                    value={panicKey.url}
+                    onChange={(e) => setPanicKey({ url: e.target.value })}
+                    disabled={!panicKey.enabled}
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    The URL to redirect to when the panic key is pressed
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <Keyboard className="h-3.5 w-3.5 text-muted-foreground" />
+                    <label
+                      htmlFor="panic-key-combination"
+                      className="text-sm font-medium leading-none"
+                    >
+                      Key Combination
+                    </label>
+                  </div>
+                  <Input
+                    id="panic-key-combination"
+                    type="text"
+                    placeholder="mod+shift+p"
+                    value={panicKey.key}
+                    onChange={(e) => setPanicKey({ key: e.target.value })}
+                    disabled={!panicKey.enabled}
+                  />
+                  <div className="flex items-start gap-2 text-xs text-muted-foreground">
+                    <Info className="h-3.5 w-3.5 mt-0.5 shrink-0" />
+                    <p>
+                      Use format like "mod+shift+p" or "escape". "mod" is Cmd on
+                      Mac, Ctrl on Windows/Linux.
                     </p>
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2">
-                      <Keyboard className="h-3.5 w-3.5 text-muted-foreground" />
-                      <label
-                        htmlFor="panic-key-combination"
-                        className="text-sm font-medium leading-none"
-                      >
-                        Key Combination
-                      </label>
-                    </div>
-                    <Input
-                      id="panic-key-combination"
-                      type="text"
-                      placeholder="mod+shift+p"
-                      value={panicKey.key}
-                      onChange={(e) => setPanicKey({ key: e.target.value })}
-                    />
-                    <div className="flex items-start gap-2 text-xs text-muted-foreground">
-                      <Info className="h-3.5 w-3.5 mt-0.5 shrink-0" />
-                      <p>
-                        Use format like "mod+shift+p" or "escape". "mod" is Cmd
-                        on Mac, Ctrl on Windows/Linux.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3 pt-2">
-                    <Checkbox
-                      id="panic-key-disable-experimental"
-                      checked={panicKey.disableExperimentalOnTrigger}
-                      onCheckedChange={(checked) =>
-                        setPanicKey({
-                          disableExperimentalOnTrigger: checked === true,
-                        })
-                      }
-                      className="mt-1"
-                    />
-                    <div className="flex-1 space-y-1">
-                      <label
-                        htmlFor="panic-key-disable-experimental"
-                        className="text-sm font-medium leading-none cursor-pointer"
-                      >
-                        Disable Experimental Features on Trigger
-                      </label>
-                      <p className="text-xs text-muted-foreground">
-                        Automatically disable experimental features when panic
-                        key is activated
-                      </p>
-                    </div>
+                </div>
+                <div className="flex items-start gap-3 pt-2">
+                  <Checkbox
+                    id="panic-key-disable-experimental"
+                    checked={panicKey.disableExperimentalOnTrigger}
+                    onCheckedChange={(checked) =>
+                      setPanicKey({
+                        disableExperimentalOnTrigger: checked === true,
+                      })
+                    }
+                    className="mt-1"
+                    disabled={!panicKey.enabled}
+                  />
+                  <div className="flex-1 space-y-1">
+                    <label
+                      htmlFor="panic-key-disable-experimental"
+                      className="text-sm font-medium leading-none cursor-pointer"
+                    >
+                      Disable Experimental Features on Trigger
+                    </label>
+                    <p className="text-xs text-muted-foreground">
+                      Automatically disable experimental features when panic key
+                      is activated
+                    </p>
                   </div>
                 </div>
-              )}
+              </div>
             </CardContent>
           </Card>
 
@@ -193,51 +200,54 @@ export default function Settings() {
                     </TabsList>
                   </Tabs>
                 </div>
-                {cloak.mode !== "off" && (
-                  <>
-                    <Separator />
-                    <div className="flex flex-col gap-4">
-                      <div className="flex flex-col gap-2">
-                        <label
-                          htmlFor="cloak-title"
-                          className="text-sm font-medium leading-none"
-                        >
-                          Tab Title
-                        </label>
-                        <Input
-                          id="cloak-title"
-                          type="text"
-                          placeholder="Google Classroom"
-                          value={cloak.title}
-                          onChange={(e) => setCloak({ title: e.target.value })}
-                        />
-                        <p className="text-xs text-muted-foreground">
-                          The title that will appear in the browser tab
-                        </p>
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <label
-                          htmlFor="cloak-favicon"
-                          className="text-sm font-medium leading-none"
-                        >
-                          Favicon URL
-                        </label>
-                        <Input
-                          id="cloak-favicon"
-                          type="url"
-                          placeholder="https://classroom.google.com/favicon.ico"
-                          value={cloak.favicon}
-                          onChange={(e) =>
-                            setCloak({ favicon: e.target.value })
-                          }
-                        />
-                        <p className="text-xs text-muted-foreground">
-                          URL to the favicon that will appear in the browser tab
-                        </p>
-                      </div>
+                <div
+                  className={cn(
+                    "flex flex-col gap-4",
+                    cloak.mode === "off" && "opacity-50"
+                  )}
+                >
+                  <Separator />
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="cloak-title"
+                        className="text-sm font-medium leading-none"
+                      >
+                        Tab Title
+                      </label>
+                      <Input
+                        id="cloak-title"
+                        type="text"
+                        placeholder="Google Classroom"
+                        value={cloak.title}
+                        onChange={(e) => setCloak({ title: e.target.value })}
+                        disabled={cloak.mode === "off"}
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        The title that will appear in the browser tab
+                      </p>
                     </div>
-                  </>
-                )}
+                    <div className="flex flex-col gap-2">
+                      <label
+                        htmlFor="cloak-favicon"
+                        className="text-sm font-medium leading-none"
+                      >
+                        Favicon URL
+                      </label>
+                      <Input
+                        id="cloak-favicon"
+                        type="url"
+                        placeholder="https://classroom.google.com/favicon.ico"
+                        value={cloak.favicon}
+                        onChange={(e) => setCloak({ favicon: e.target.value })}
+                        disabled={cloak.mode === "off"}
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        URL to the image that will appear in the browser tab
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           )}
