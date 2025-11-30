@@ -69,6 +69,10 @@ interface SettingsState {
     title?: string;
     favicon?: string;
   }) => void;
+  disableBlur: boolean;
+  setDisableBlur: (disabled: boolean) => void;
+  disableAnimations: boolean;
+  setDisableAnimations: (disabled: boolean) => void;
 }
 
 export const useSettingsState = create<SettingsState>()(
@@ -98,6 +102,11 @@ export const useSettingsState = create<SettingsState>()(
         set({
           cloak: { ...get().cloak, ...cloak },
         }),
+      disableBlur: false,
+      setDisableBlur: (disabled: boolean) => set({ disableBlur: disabled }),
+      disableAnimations: false,
+      setDisableAnimations: (disabled: boolean) =>
+        set({ disableAnimations: disabled }),
     }),
     {
       name: "edutools-settings",
@@ -209,6 +218,8 @@ export const resetSettings = () => {
       title: "",
       favicon: "",
     },
+    disableBlur: false,
+    disableAnimations: false,
   };
   useSettingsState.setState(defaultSettings);
 };
