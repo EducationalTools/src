@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/dialog";
 import { ThemeSelector } from "./theme-selector";
 import { ThemeModeSelector } from "./theme-mode-selector";
-import { CloakModeSelector } from "./cloak-mode-selector";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
@@ -33,6 +32,7 @@ import {
   Info,
   ArrowRight,
 } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
 export default function Settings() {
   const open = useUiState((state) => state.settingsOpen);
@@ -168,7 +168,7 @@ export default function Settings() {
               <CardHeader>
                 <div className="flex items-center gap-2">
                   <Eye className="h-4 w-4 text-muted-foreground" />
-                  <CardTitle>Cloak Mode</CardTitle>
+                  <CardTitle>Cloak</CardTitle>
                 </div>
                 <CardDescription>
                   Change the title and icon of the browser tab
@@ -176,16 +176,22 @@ export default function Settings() {
               </CardHeader>
               <CardContent className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="cloak-mode"
-                    className="text-sm font-medium leading-none"
+                  <Tabs
+                    value={cloak.mode}
+                    onValueChange={(value) =>
+                      setCloak({
+                        mode: value as "off" | "when-not-focused" | "on",
+                      })
+                    }
                   >
-                    Mode
-                  </label>
-                  <CloakModeSelector />
-                  <p className="text-xs text-muted-foreground">
-                    Choose when the cloak should be active
-                  </p>
+                    <TabsList className="w-full">
+                      <TabsTrigger value="off">Off</TabsTrigger>
+                      <TabsTrigger value="when-not-focused">
+                        Unfocused
+                      </TabsTrigger>
+                      <TabsTrigger value="on">Always</TabsTrigger>
+                    </TabsList>
+                  </Tabs>
                 </div>
                 {cloak.mode !== "off" && (
                   <>
