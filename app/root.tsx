@@ -66,7 +66,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   const theme = useSettingsState((state) => state.theme);
-  const disableBlur = useSettingsState((state) => state.disableBlur);
   const disableAnimations = useSettingsState((state) => state.disableAnimations);
   const experimentalFeatures = useExperimentalFeatures(
     (state) => state.enabled
@@ -100,15 +99,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
     root.classList.add("theme-" + theme.theme);
   }, [theme]);
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (disableBlur) {
-      root.classList.add("disable-blur");
-    } else {
-      root.classList.remove("disable-blur");
-    }
-  }, [disableBlur]);
 
   useEffect(() => {
     const root = window.document.documentElement;
