@@ -73,8 +73,14 @@ export default function Settings() {
     (state) => state.setHistoryCollectionEnabled
   );
   const history = useGmaeHistory((state) => state.history);
-  const disableBlur = useSettingsState((state) => state.disableBlur);
-  const setDisableBlur = useSettingsState((state) => state.setDisableBlur);
+  const disableBlurBehind = useSettingsState(
+    (state) => state.disableBlurBehind
+  );
+  const setDisableBlurBehind = useSettingsState(
+    (state) => state.setDisableBlurBehind
+  );
+  const disableAllBlur = useSettingsState((state) => state.disableAllBlur);
+  const setDisableAllBlur = useSettingsState((state) => state.setDisableAllBlur);
   const disableAnimations = useSettingsState(
     (state) => state.disableAnimations
   );
@@ -301,19 +307,44 @@ export default function Settings() {
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-1">
                   <label
-                    htmlFor="disable-blur"
+                    htmlFor="disable-all-blur"
                     className="text-sm font-medium leading-none cursor-pointer"
                   >
-                    Disable Blur Effects
+                    Disable All Blur Effects
                   </label>
                   <p className="text-xs text-muted-foreground">
-                    Remove all blur effects from the interface
+                    Remove all blur effects including backdrop blur and filter blur
                   </p>
                 </div>
                 <Switch
-                  id="disable-blur"
-                  checked={disableBlur}
-                  onCheckedChange={setDisableBlur}
+                  id="disable-all-blur"
+                  checked={disableAllBlur}
+                  onCheckedChange={setDisableAllBlur}
+                />
+              </div>
+              <Separator />
+              <div
+                className={cn(
+                  "flex items-center justify-between",
+                  disableAllBlur && "opacity-50"
+                )}
+              >
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="disable-blur-behind"
+                    className="text-sm font-medium leading-none cursor-pointer"
+                  >
+                    Disable Blur Behind Effects
+                  </label>
+                  <p className="text-xs text-muted-foreground">
+                    Remove backdrop blur effects only
+                  </p>
+                </div>
+                <Switch
+                  id="disable-blur-behind"
+                  checked={disableBlurBehind}
+                  onCheckedChange={setDisableBlurBehind}
+                  disabled={disableAllBlur}
                 />
               </div>
               <Separator />
