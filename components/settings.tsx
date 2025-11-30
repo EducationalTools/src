@@ -2,6 +2,11 @@ import {
   useSettingsState,
   useUiState,
   useExperimentalFeatures,
+  usePrivacyState,
+  useGmaeHistory,
+  clearAllHistory,
+  resetSettings,
+  clearEverything,
 } from "@/lib/state";
 import {
   Dialog,
@@ -31,9 +36,24 @@ import {
   Globe,
   Info,
   ArrowRight,
+  Trash2,
+  RotateCcw,
+  AlertTriangle,
 } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export default function Settings() {
   const open = useUiState((state) => state.settingsOpen);
@@ -45,6 +65,13 @@ export default function Settings() {
   const experimentalFeatures = useExperimentalFeatures(
     (state) => state.enabled
   );
+  const historyCollectionEnabled = usePrivacyState(
+    (state) => state.historyCollectionEnabled
+  );
+  const setHistoryCollectionEnabled = usePrivacyState(
+    (state) => state.setHistoryCollectionEnabled
+  );
+  const history = useGmaeHistory((state) => state.history);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -249,6 +276,186 @@ export default function Settings() {
               </CardContent>
             </Card>
           )}
+
+          {/* Privacy Section */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <Shield className="h-4 w-4 text-muted-foreground" />
+                <CardTitle>Privacy</CardTitle>
+              </div>
+              <CardDescription>
+                Manage your privacy settings and data
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+              {/* History Collection Toggle */}
+              <div className="flex items-center justify-between">
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="history-collection"
+                    className="text-sm font-medium leading-none cursor-pointer"
+                  >
+                    History Collection
+                  </label>
+                  <p className="text-xs text-muted-foreground">
+                    Track your browsing history for quick access
+                  </p>
+                </div>
+                <Switch
+                  id="history-collection"
+                  checked={historyCollectionEnabled}
+                  onCheckedChange={setHistoryCollectionEnabled}
+                />
+              </div>
+
+              <Separator />
+
+              {/* Clear History */}
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-1">
+                    <p className="text-sm font-medium leading-none">
+                      Clear History
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Remove all items from your browsing history
+                      {history.length > 0 && ` (${history.length} items)`}
+                    </p>
+                  </div>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        disabled={history.length === 0}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                        Clear
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Clear History</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          Are you sure you want to clear all browsing history?
+                          This action cannot be undone.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={clearAllHistory}
+                          className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                        >
+                          Clear History
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </div>
+              </div>
+
+              <Separator />
+
+              {/* Reset Settings */}
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-1">
+                    <p className="text-sm font-medium leading-none">
+                      Reset Settings
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Reset all settings to their default values
+                    </p>
+                  </div>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="outline" size="sm">
+                        <RotateCcw className="h-4 w-4" />
+                        Reset
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Reset Settings</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          Are you sure you want to reset all settings to their
+                          default values? This action cannot be undone.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={resetSettings}
+                          className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                        >
+                          Reset Settings
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </div>
+              </div>
+
+              <Separator />
+
+              {/* Clear Everything */}
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-1">
+                    <p className="text-sm font-medium leading-none">
+                      Clear Everything
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Clear all local storage, cookies, and data. This will
+                      reload the page.
+                    </p>
+                  </div>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="destructive" size="sm">
+                        <AlertTriangle className="h-4 w-4" />
+                        Clear All
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle className="flex items-center gap-2">
+                          <AlertTriangle className="h-5 w-5 text-destructive" />
+                          Clear Everything
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This will permanently delete all your data including:
+                          <ul className="list-disc list-inside mt-2 space-y-1">
+                            <li>All settings and preferences</li>
+                            <li>Browsing history</li>
+                            <li>Saved games</li>
+                            <li>Local storage data</li>
+                            <li>Cookies</li>
+                            <li>Session storage</li>
+                          </ul>
+                          <p className="mt-2 font-medium">
+                            This action cannot be undone and will reload the
+                            page.
+                          </p>
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={clearEverything}
+                          className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                        >
+                          Clear Everything
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </DialogContent>
     </Dialog>

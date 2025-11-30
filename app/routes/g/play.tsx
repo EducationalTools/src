@@ -30,6 +30,7 @@ import {
   useExperimentalFeatures,
   useGmaeHistory,
   useSavedGmaes,
+  usePrivacyState,
 } from "@/lib/state";
 import { isExperimentalFeaturesEnabled } from "@/lib/experimental-check";
 
@@ -59,13 +60,16 @@ export function Play({ params }: Route.ComponentProps) {
   const addToHistory = useGmaeHistory((state) => state.addToHistory);
   const saved = useSavedGmaes((state) => state.saved);
   const toggleSaved = useSavedGmaes((state) => state.toggleSaved);
+  const historyCollectionEnabled = usePrivacyState(
+    (state) => state.historyCollectionEnabled
+  );
   const isSaved = gmae?.id ? saved.includes(gmae.id) : false;
 
   useEffect(() => {
-    if (gmae?.id) {
+    if (gmae?.id && historyCollectionEnabled) {
       addToHistory(gmae.id);
     }
-  }, [gmae?.id]);
+  }, [gmae?.id, historyCollectionEnabled, addToHistory]);
 
   return (
     <div className="w-full h-full flex flex-col gap-2 bg-sidebar">

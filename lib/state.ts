@@ -166,3 +166,83 @@ export const useGmaeHistory = create<GmaeHistory>()(
     }
   )
 );
+
+interface PrivacyState {
+  historyCollectionEnabled: boolean;
+  setHistoryCollectionEnabled: (enabled: boolean) => void;
+}
+
+export const usePrivacyState = create<PrivacyState>()(
+  persist(
+    (set) => ({
+      historyCollectionEnabled: true,
+      setHistoryCollectionEnabled: (enabled: boolean) =>
+        set({ historyCollectionEnabled: enabled }),
+    }),
+    {
+      name: "edutools-privacy",
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+);
+
+// Utility functions for privacy actions
+export const clearAllHistory = () => {
+  useGmaeHistory.getState().clearHistory();
+};
+
+export const resetSettings = () => {
+  // Reset to default settings
+  const defaultSettings = {
+    theme: {
+      mode: "dark" as const,
+      theme: "default" as keyof typeof themes,
+    },
+    panicKey: {
+      enabled: false,
+      url: "https://classroom.google.com",
+      key: "shift+escape",
+      disableExperimentalOnTrigger: true,
+    },
+    cloak: {
+      mode: "off" as const,
+      title: "",
+      favicon: "",
+    },
+  };
+  useSettingsState.setState(defaultSettings);
+};
+
+export const clearEverything = () => {
+  // Clear all localStorage items
+  const keysToKeep: string[] = []; // Add any keys you want to preserve
+  Object.keys(localStorage).forEach((key) => {
+    if (!keysToKeep.includes(key)) {
+      localStorage.removeItem(key);
+    }
+  });
+
+  // Clear all sessionStorage items
+  Object.keys(sessionStorage).forEach((key) => {
+    sessionStorage.removeItem(key);
+  });
+
+  // Clear all cookies
+  document.cookie.split(";").forEach((cookie) => {
+    const trimmed = cookie.trim();
+    if (trimmed) {
+      const eqPos = trimmed.indexOf("=");
+      const name = eqPos > -1 ? trimmed.substring(0, eqPos) : trimmed;
+      // Skip malformed cookies that do not contain '='
+      if (name) {
+        // Set cookie to expire in the past
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+        // Also try with domain
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=${window.location.hostname}`;
+      }
+    }
+  });
+
+  // Reload the page to reset all state
+  window.location.reload();
+};
