@@ -68,7 +68,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   const theme = useSettingsState((state) => state.theme);
-  const disableBlur = useSettingsState((state) => state.disableBlur);
+  const disableBlurBehind = useSettingsState(
+    (state) => state.disableBlurBehind
+  );
+  const disableAllBlur = useSettingsState((state) => state.disableAllBlur);
   const disableAnimations = useSettingsState(
     (state) => state.disableAnimations
   );
@@ -107,12 +110,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const root = window.document.documentElement;
-    if (disableBlur) {
-      root.classList.add("disable-blur");
+    if (disableBlurBehind || disableAllBlur) {
+      root.classList.add("disable-blur-behind");
     } else {
-      root.classList.remove("disable-blur");
+      root.classList.remove("disable-blur-behind");
     }
-  }, [disableBlur]);
+  }, [disableBlurBehind, disableAllBlur]);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (disableAllBlur) {
+      root.classList.add("disable-all-blur");
+    } else {
+      root.classList.remove("disable-all-blur");
+    }
+  }, [disableAllBlur]);
 
   useEffect(() => {
     const root = window.document.documentElement;
