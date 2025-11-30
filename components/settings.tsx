@@ -51,7 +51,7 @@ export default function Settings() {
               </label>
             </div>
             {panicKey.enabled && (
-              <div className="flex flex-col gap-3 pl-6">
+              <div className="flex flex-col gap-3 p-4 rounded-md border bg-card">
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="panic-key-url"
