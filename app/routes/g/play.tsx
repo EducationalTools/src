@@ -3,6 +3,7 @@ import type { Route } from "./+types/play";
 import { data } from "react-router";
 import { Button } from "@/components/ui/button";
 import {
+  AppWindow,
   Bookmark,
   BookmarkCheck,
   ChevronDown,
@@ -35,7 +36,7 @@ import { isExperimentalFeaturesEnabled } from "@/lib/experimental-check";
 export async function clientLoader({ params }: Route.ActionArgs) {
   if (!params.id) throw data(null, { status: 404 });
   if (!getGmaeById(params.id)) throw data(null, { status: 404 });
-  
+
   if (!isExperimentalFeaturesEnabled()) {
     throw data(null, { status: 404 });
   }
@@ -115,6 +116,36 @@ export function Play({ params }: Route.ComponentProps) {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>Reload</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    onClick={() => {
+                      const win = window.open(
+                        "",
+                        "",
+                        "width=500px,height=500px"
+                      );
+
+                      let frame = document.createElement("iframe");
+                      frame.src = gmae?.url || "";
+                      frame.style.width = "100%";
+                      frame.style.height = "100%";
+                      frame.style.border = "none";
+                      win?.document.body.appendChild(frame);
+                      if (win) {
+                        win.document.body.style.margin = "0";
+                        win.document.title = "Google";
+                      }
+                    }}
+                  >
+                    <AppWindow />
+                    <span className="sr-only">Open in new window</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Open in new window</TooltipContent>
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger asChild>
