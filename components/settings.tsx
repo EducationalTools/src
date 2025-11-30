@@ -23,7 +23,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Palette, Shield, Eye, Keyboard, Globe, Info } from "lucide-react";
+import {
+  Palette,
+  Shield,
+  Eye,
+  Keyboard,
+  Globe,
+  Info,
+  ArrowRight,
+} from "lucide-react";
 
 export default function Settings() {
   const open = useUiState((state) => state.settingsOpen);
@@ -41,9 +49,6 @@ export default function Settings() {
       <DialogContent className="max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Settings</DialogTitle>
-          <DialogDescription>
-            Customize your EduTools experience
-          </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-6">
           {/* Appearance Section */}
@@ -53,9 +58,6 @@ export default function Settings() {
                 <Palette className="h-4 w-4 text-muted-foreground" />
                 <CardTitle>Appearance</CardTitle>
               </div>
-              <CardDescription>
-                Customize the look and feel of the application
-              </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
@@ -69,12 +71,9 @@ export default function Settings() {
           <Card>
             <CardHeader>
               <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 text-muted-foreground" />
+                <ArrowRight className="h-4 w-4 text-muted-foreground" />
                 <CardTitle>Panic Key</CardTitle>
               </div>
-              <CardDescription>
-                Quickly redirect to a safe page when needed
-              </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
               <div className="flex items-start gap-3">
@@ -93,10 +92,6 @@ export default function Settings() {
                   >
                     Enable Panic Key
                   </label>
-                  <p className="text-xs text-muted-foreground">
-                    Press your configured key combination to instantly redirect
-                    to a safe page
-                  </p>
                 </div>
               </div>
               {panicKey.enabled && (
@@ -185,7 +180,7 @@ export default function Settings() {
                   <CardTitle>Cloak Mode</CardTitle>
                 </div>
                 <CardDescription>
-                  Disguise the browser tab to look like another website
+                  Change the title and icon of the browser tab
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col gap-4">
