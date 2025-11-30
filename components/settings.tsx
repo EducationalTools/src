@@ -42,7 +42,6 @@ export default function Settings() {
             <ThemeSelector className="flex-1" />
             <ThemeModeSelector />
           </div>
-          <Separator />
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <Checkbox
@@ -117,7 +116,6 @@ export default function Settings() {
           </div>
           {experimentalFeatures && (
             <>
-              <Separator />
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2">
                   <label
