@@ -150,7 +150,7 @@ export default function Home() {
                       <div key={item.id} className="flex items-stretch">
                         <Button
                           variant="secondary"
-                          className="rounded-r-none px-3 group/btn"
+                          className="rounded-r-none px-3 group/btn h-full aspect-square"
                           onClick={() => toggleSaved(item.id)}
                         >
                           <div className="relative w-4 h-4">
@@ -161,7 +161,7 @@ export default function Home() {
                         </Button>
                         <Button
                           variant="secondary"
-                          className="justify-start h-auto py-3 px-4 flex-1 rounded-l-none"
+                          className="justify-start py-4 px-4 flex-1 rounded-l-none h-full"
                           asChild
                         >
                           <Link to={item.href}>
