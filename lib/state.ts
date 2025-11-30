@@ -18,8 +18,8 @@ export const useExperimentalFeatures = create<ExperimentalFeaturesState>()(
     {
       name: "edutools-experimental-features",
       storage: createJSONStorage(() => localStorage),
-    },
-  ),
+    }
+  )
 );
 
 interface UiState {
@@ -67,7 +67,7 @@ export const useSettingsState = create<SettingsState>()(
       panicKey: {
         enabled: false,
         url: "",
-        key: "mod+shift+p",
+        key: "`",
         disableExperimentalOnTrigger: true,
       },
       setPanicKey: (panicKey) =>
@@ -78,8 +78,8 @@ export const useSettingsState = create<SettingsState>()(
     {
       name: "edutools-settings",
       storage: createJSONStorage(() => localStorage),
-    },
-  ),
+    }
+  )
 );
 
 interface SavedGmaes {
@@ -103,8 +103,8 @@ export const useSavedGmaes = create<SavedGmaes>()(
     {
       name: "edutools-saved-gmaes",
       storage: createJSONStorage(() => localStorage),
-    },
-  ),
+    }
+  )
 );
 
 interface GmaeHistory {
@@ -139,6 +139,6 @@ export const useGmaeHistory = create<GmaeHistory>()(
     {
       name: "edutools-gmae-history",
       storage: createJSONStorage(() => localStorage),
-    },
-  ),
+    }
+  )
 );
