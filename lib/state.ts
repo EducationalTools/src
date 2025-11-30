@@ -66,8 +66,8 @@ export const useSettingsState = create<SettingsState>()(
       setTheme: (theme) => set({ theme: { ...get().theme, ...theme } }),
       panicKey: {
         enabled: false,
-        url: "",
-        key: "`",
+        url: "https://classroom.google.com",
+        key: "shift+escape",
         disableExperimentalOnTrigger: true,
       },
       setPanicKey: (panicKey) =>
