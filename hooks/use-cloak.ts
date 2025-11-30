@@ -11,19 +11,13 @@ export function useCloak() {
   const originalFaviconRef = useRef<string | null>(null);
   const faviconLinkRef = useRef<HTMLLinkElement | null>(null);
 
-  // Store original title and favicon on mount
+  // Get or create favicon link element and store original values on mount
   useEffect(() => {
     if (originalTitleRef.current === null) {
       originalTitleRef.current = document.title;
     }
-    if (originalFaviconRef.current === null) {
-      const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
-      originalFaviconRef.current = favicon?.href || "";
-    }
-  }, []);
-
-  // Get or create favicon link element
-  useEffect(() => {
+    
+    // Get or create favicon element
     if (!faviconLinkRef.current) {
       let favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
       if (!favicon) {
@@ -32,6 +26,22 @@ export function useCloak() {
         document.head.appendChild(favicon);
       }
       faviconLinkRef.current = favicon;
+      
+      // Store the current favicon href as absolute URL
+      if (originalFaviconRef.current === null) {
+        const currentHref = favicon.href || favicon.getAttribute("href") || "";
+        // Convert to absolute URL if it's relative
+        if (currentHref) {
+          try {
+            originalFaviconRef.current = new URL(currentHref, window.location.href).href;
+          } catch {
+            originalFaviconRef.current = currentHref;
+          }
+        } else {
+          // Fallback to default favicon path
+          originalFaviconRef.current = new URL("/favicon.ico", window.location.href).href;
+        }
+      }
     }
   }, []);
 
@@ -65,12 +75,14 @@ export function useCloak() {
     }
 
     const handleVisibilityChange = () => {
+      if (!faviconLinkRef.current) return;
+      
       if (document.hidden) {
         // Tab is not focused - apply cloak
         if (cloak.title) {
           document.title = cloak.title;
         }
-        if (cloak.favicon && faviconLinkRef.current) {
+        if (cloak.favicon) {
           faviconLinkRef.current.href = cloak.favicon;
         }
       } else {
@@ -78,7 +90,7 @@ export function useCloak() {
         if (originalTitleRef.current) {
           document.title = originalTitleRef.current;
         }
-        if (originalFaviconRef.current && faviconLinkRef.current) {
+        if (originalFaviconRef.current) {
           faviconLinkRef.current.href = originalFaviconRef.current;
         }
       }
