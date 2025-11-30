@@ -75,6 +75,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
     (state) => state.enabled
   );
 
+  const panicModeActivated = useUiState((state) => state.panicModeActivated);
+
   useEffect(() => {
     const root = window.document.documentElement;
 
@@ -148,19 +150,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
             changeEmail={false}
             baseURL={baseUrl}
           >
-            <SidebarProvider className={cn(!experimentalFeatures && "md:pl-2")}>
-              <AppSidebar />
-              <div
-                className={cn(
-                  "flex flex-col w-full p-2 pt-0 md:pl-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:pl-2 duration-200"
-                )}
+            {!panicModeActivated && (
+              <SidebarProvider
+                className={cn(!experimentalFeatures && "md:pl-2")}
               >
-                <Header />
-                <SidebarInset className="w-full rounded-md! overflow-hidden">
-                  <main className="w-full h-full relative">{children}</main>
-                </SidebarInset>
-              </div>
-            </SidebarProvider>
+                <AppSidebar />
+                <div
+                  className={cn(
+                    "flex flex-col w-full p-2 pt-0 md:pl-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:pl-2 duration-200"
+                  )}
+                >
+                  <Header />
+                  <SidebarInset className="w-full rounded-md! overflow-hidden">
+                    <main className="w-full h-full relative">{children}</main>
+                  </SidebarInset>
+                </div>
+              </SidebarProvider>
+            )}
             <ScrollRestoration />
             <Scripts />
             <Hotkeys />
