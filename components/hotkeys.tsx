@@ -11,10 +11,13 @@ export default function Hotkeys() {
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
   const experimental = useExperimentalFeatures((state) => state.enabled);
   const setExperimentalEnabled = useExperimentalFeatures(
-    (state) => state.setEnabled,
+    (state) => state.setEnabled
   );
   const navigate = useNavigate();
   const panicKey = useSettingsState((state) => state.panicKey);
+  const setPanicModeActivated = useUiState(
+    (state) => state.setPanicModeActivated
+  );
 
   useHotkeys("mod+k", () => setSearchOpen(true), {
     preventDefault: true,
@@ -32,7 +35,7 @@ export default function Hotkeys() {
     },
     {
       preventDefault: true,
-    },
+    }
   );
 
   // Panic key handler
@@ -44,6 +47,7 @@ export default function Hotkeys() {
         if (panicKey.disableExperimentalOnTrigger) {
           setExperimentalEnabled(false);
         }
+        setPanicModeActivated(true);
         // Redirect to the configured URL
         window.location.href = panicKey.url;
       }
@@ -51,7 +55,7 @@ export default function Hotkeys() {
     {
       preventDefault: true,
       enabled: panicKey.enabled && !!panicKey.url,
-    },
+    }
   );
 
   return null;

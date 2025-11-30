@@ -27,6 +27,8 @@ interface UiState {
   setSearchOpen: (open: boolean) => void;
   settingsOpen: boolean;
   setSettingsOpen: (open: boolean) => void;
+  panicModeActivated: boolean;
+  setPanicModeActivated: (activated: boolean) => void;
 }
 
 export const useUiState = create<UiState>((set) => ({
@@ -34,6 +36,9 @@ export const useUiState = create<UiState>((set) => ({
   setSearchOpen: (open: boolean) => set({ searchOpen: open }),
   settingsOpen: false,
   setSettingsOpen: (open: boolean) => set({ settingsOpen: open }),
+  panicModeActivated: false,
+  setPanicModeActivated: (activated: boolean) =>
+    set({ panicModeActivated: activated }),
 }));
 
 interface SettingsState {
