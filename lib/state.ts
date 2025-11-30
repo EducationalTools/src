@@ -42,6 +42,18 @@ interface SettingsState {
     theme: keyof typeof themes;
   };
   setTheme: (theme: { mode?: "light" | "dark"; theme?: string }) => void;
+  panicKey: {
+    enabled: boolean;
+    url: string;
+    key: string;
+    disableExperimentalOnTrigger: boolean;
+  };
+  setPanicKey: (panicKey: {
+    enabled?: boolean;
+    url?: string;
+    key?: string;
+    disableExperimentalOnTrigger?: boolean;
+  }) => void;
 }
 
 export const useSettingsState = create<SettingsState>()(
@@ -52,6 +64,16 @@ export const useSettingsState = create<SettingsState>()(
         theme: "default",
       },
       setTheme: (theme) => set({ theme: { ...get().theme, ...theme } }),
+      panicKey: {
+        enabled: false,
+        url: "",
+        key: "mod+shift+p",
+        disableExperimentalOnTrigger: true,
+      },
+      setPanicKey: (panicKey) =>
+        set({
+          panicKey: { ...get().panicKey, ...panicKey },
+        }),
     }),
     {
       name: "edutools-settings",
