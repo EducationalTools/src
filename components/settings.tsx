@@ -15,6 +15,7 @@ import { ThemeModeSelector } from "./theme-mode-selector";
 import { CloakModeSelector } from "./cloak-mode-selector";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import {
   Card,
@@ -70,30 +71,20 @@ export default function Settings() {
           {/* Panic Key Section */}
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-2">
-                <ArrowRight className="h-4 w-4 text-muted-foreground" />
-                <CardTitle>Panic Key</CardTitle>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                  <CardTitle>Panic Key</CardTitle>
+                </div>
+                <Switch
+                  checked={panicKey.enabled}
+                  onCheckedChange={(checked) =>
+                    setPanicKey({ enabled: checked })
+                  }
+                />
               </div>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
-              <div className="flex items-start gap-3">
-                <Checkbox
-                  id="panic-key-enabled"
-                  checked={panicKey.enabled}
-                  onCheckedChange={(checked) =>
-                    setPanicKey({ enabled: checked === true })
-                  }
-                  className="mt-1"
-                />
-                <div className="flex-1 space-y-1">
-                  <label
-                    htmlFor="panic-key-enabled"
-                    className="text-sm font-medium leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Enable Panic Key
-                  </label>
-                </div>
-              </div>
               {panicKey.enabled && (
                 <div className="flex flex-col gap-4 pt-2 pl-7 border-l-2 border-border">
                   <div className="flex flex-col gap-2">
