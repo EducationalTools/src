@@ -132,7 +132,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ConvexBetterAuthProvider client={convex} authClient={authClient}>
-          <MotionConfig reducedMotion={disableAnimations ? "always" : "user"}>
+          <MotionConfig
+            reducedMotion={disableAnimations ? "always" : "user"}
+            transition={{ ease: NICE_EASE }}
+          >
             <AuthUIProvider
               authClient={authClient}
               navigate={navigate}
