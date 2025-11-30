@@ -41,7 +41,11 @@ import {
 
 import { MENU_ITEMS } from "@/lib/menu";
 import { Kbd, KbdGroup } from "./ui/kbd";
-import { useExperimentalFeatures, useUiState } from "@/lib/state";
+import {
+  useExperimentalFeatures,
+  useSettingsState,
+  useUiState,
+} from "@/lib/state";
 import clsx from "clsx";
 import { Button } from "./ui/button";
 import { useQuery } from "convex/react";
@@ -57,6 +61,8 @@ export function AppSidebar() {
     (state) => state.enabled
   );
   const currentUser = useQuery(api.auth.getCurrentUser);
+
+  const disableAllBlur = useSettingsState((state) => state.disableAllBlur);
 
   const renderMenuItemContent = (item: (typeof MENU_ITEMS)[number]) => (
     <>
@@ -93,7 +99,7 @@ export function AppSidebar() {
       variant="inset"
       className={clsx(
         "p-0 duration-200 transition-all ease-out",
-        !sidebar.open && "blur-lg opacity-0"
+        !sidebar.open && !disableAllBlur && "blur-lg opacity-0"
       )}
     >
       <SidebarHeader>
