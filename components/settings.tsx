@@ -80,7 +80,9 @@ export default function Settings() {
     (state) => state.setDisableBlurBehind
   );
   const disableAllBlur = useSettingsState((state) => state.disableAllBlur);
-  const setDisableAllBlur = useSettingsState((state) => state.setDisableAllBlur);
+  const setDisableAllBlur = useSettingsState(
+    (state) => state.setDisableAllBlur
+  );
   const disableAnimations = useSettingsState(
     (state) => state.disableAnimations
   );
@@ -299,9 +301,6 @@ export default function Settings() {
                 <Gauge className="h-4 w-4 text-muted-foreground" />
                 <CardTitle>Performance</CardTitle>
               </div>
-              <CardDescription>
-                Optimize performance and reduce motion
-              </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
@@ -312,9 +311,6 @@ export default function Settings() {
                   >
                     Disable All Blur Effects
                   </label>
-                  <p className="text-xs text-muted-foreground">
-                    Remove all blur effects including backdrop blur and filter blur
-                  </p>
                 </div>
                 <Switch
                   id="disable-all-blur"
@@ -336,9 +332,6 @@ export default function Settings() {
                   >
                     Disable Blur Behind Effects
                   </label>
-                  <p className="text-xs text-muted-foreground">
-                    Remove backdrop blur effects only
-                  </p>
                 </div>
                 <Switch
                   id="disable-blur-behind"
@@ -356,9 +349,6 @@ export default function Settings() {
                   >
                     Disable Animations
                   </label>
-                  <p className="text-xs text-muted-foreground">
-                    Remove all animations and transitions for better performance
-                  </p>
                 </div>
                 <Switch
                   id="disable-animations"
