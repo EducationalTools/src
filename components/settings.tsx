@@ -73,6 +73,8 @@ export default function Settings() {
     (state) => state.setHistoryCollectionEnabled
   );
   const history = useGmaeHistory((state) => state.history);
+  const disableBlur = useSettingsState((state) => state.disableBlur);
+  const setDisableBlur = useSettingsState((state) => state.setDisableBlur);
   const disableAnimations = useSettingsState(
     (state) => state.disableAnimations
   );
@@ -296,6 +298,25 @@ export default function Settings() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="disable-blur"
+                    className="text-sm font-medium leading-none cursor-pointer"
+                  >
+                    Disable Blur Effects
+                  </label>
+                  <p className="text-xs text-muted-foreground">
+                    Remove all blur effects from the interface
+                  </p>
+                </div>
+                <Switch
+                  id="disable-blur"
+                  checked={disableBlur}
+                  onCheckedChange={setDisableBlur}
+                />
+              </div>
+              <Separator />
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-1">
                   <label
