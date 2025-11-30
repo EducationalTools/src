@@ -42,6 +42,8 @@ import { ButtonGroup } from "@/components/ui/button-group";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
 import { useCloak } from "@/hooks/use-cloak";
+import { MotionConfig } from "motion/react";
+import { NICE_EASE } from "@/lib/constants";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -66,7 +68,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   const theme = useSettingsState((state) => state.theme);
-  const disableAnimations = useSettingsState((state) => state.disableAnimations);
+  const disableAnimations = useSettingsState(
+    (state) => state.disableAnimations
+  );
   const experimentalFeatures = useExperimentalFeatures(
     (state) => state.enabled
   );
@@ -128,60 +132,62 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ConvexBetterAuthProvider client={convex} authClient={authClient}>
-          <AuthUIProvider
-            authClient={authClient}
-            navigate={navigate}
-            Link={LinkComponent}
-            credentials={false}
-            social={{
-              providers: ["github", "google", "discord"],
-              signIn: (params) => {
-                const convexSiteUrl = new URL(
-                  import.meta.env.VITE_CONVEX_SITE_URL
-                );
+          <MotionConfig reducedMotion={disableAnimations ? "always" : "user"}>
+            <AuthUIProvider
+              authClient={authClient}
+              navigate={navigate}
+              Link={LinkComponent}
+              credentials={false}
+              social={{
+                providers: ["github", "google", "discord"],
+                signIn: (params) => {
+                  const convexSiteUrl = new URL(
+                    import.meta.env.VITE_CONVEX_SITE_URL
+                  );
 
-                const redirectUrl = new URL("/auth", convexSiteUrl);
-                redirectUrl.searchParams.set(
-                  "redirect",
-                  params.callbackURL || ""
-                );
+                  const redirectUrl = new URL("/auth", convexSiteUrl);
+                  redirectUrl.searchParams.set(
+                    "redirect",
+                    params.callbackURL || ""
+                  );
 
-                return authClient.signIn.social({
-                  ...params,
-                  callbackURL: redirectUrl.toString(),
-                });
-              },
-            }}
-            deleteUser={true}
-            optimistic={true}
-            avatar={true}
-            changeEmail={false}
-            baseURL={baseUrl}
-          >
-            {!panicModeActivated && (
-              <SidebarProvider
-                className={cn(!experimentalFeatures && "md:pl-2")}
-              >
-                <AppSidebar />
-                <div
-                  className={cn(
-                    "flex flex-col w-full p-2 pt-0 md:pl-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:pl-2 duration-200"
-                  )}
+                  return authClient.signIn.social({
+                    ...params,
+                    callbackURL: redirectUrl.toString(),
+                  });
+                },
+              }}
+              deleteUser={true}
+              optimistic={true}
+              avatar={true}
+              changeEmail={false}
+              baseURL={baseUrl}
+            >
+              {!panicModeActivated && (
+                <SidebarProvider
+                  className={cn(!experimentalFeatures && "md:pl-2")}
                 >
-                  <Header />
-                  <SidebarInset className="w-full rounded-md! overflow-hidden">
-                    <main className="w-full h-full relative">{children}</main>
-                  </SidebarInset>
-                </div>
-              </SidebarProvider>
-            )}
-            <ScrollRestoration />
-            <Scripts />
-            <Hotkeys />
-            <Search />
-            <Settings />
-            <Toaster />
-          </AuthUIProvider>
+                  <AppSidebar />
+                  <div
+                    className={cn(
+                      "flex flex-col w-full p-2 pt-0 md:pl-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:pl-2 duration-200"
+                    )}
+                  >
+                    <Header />
+                    <SidebarInset className="w-full rounded-md! overflow-hidden">
+                      <main className="w-full h-full relative">{children}</main>
+                    </SidebarInset>
+                  </div>
+                </SidebarProvider>
+              )}
+              <ScrollRestoration />
+              <Scripts />
+              <Hotkeys />
+              <Search />
+              <Settings />
+              <Toaster />
+            </AuthUIProvider>
+          </MotionConfig>
         </ConvexBetterAuthProvider>
       </body>
     </html>
