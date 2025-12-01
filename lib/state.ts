@@ -97,8 +97,8 @@ export const useSettingsState = create<SettingsState>()(
         }),
       cloak: {
         mode: "off",
-        title: "",
-        favicon: "",
+        title: "Home",
+        favicon: "https://ssl.gstatic.com/classroom/favicon.png",
       },
       setCloak: (cloak) =>
         set({

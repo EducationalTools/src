@@ -260,7 +260,6 @@ export default function Settings() {
                       <Input
                         id="cloak-title"
                         type="text"
-                        placeholder="Google Classroom"
                         value={cloak.title}
                         onChange={(e) => setCloak({ title: e.target.value })}
                         disabled={cloak.mode === "off"}
@@ -279,7 +278,6 @@ export default function Settings() {
                       <Input
                         id="cloak-favicon"
                         type="url"
-                        placeholder="https://classroom.google.com/favicon.ico"
                         value={cloak.favicon}
                         onChange={(e) => setCloak({ favicon: e.target.value })}
                         disabled={cloak.mode === "off"}
