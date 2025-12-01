@@ -53,7 +53,7 @@
 		"@tsparticles/slim": "^3.9.1",
 		"@tsparticles/svelte": "^3.1.1",
 		"current-git-branch": "^2.0.2",
-		"dayjs": "^1.11.18",
+		"dayjs": "^1.11.19",
 		"formsnap": "^2.0.1",
 		"jose": "^6.1.0",
 		"jsonwebtoken": "^9.0.2",
