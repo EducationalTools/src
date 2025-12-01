@@ -225,7 +225,9 @@ export default function StopwatchTimer() {
             {/* Laps */}
             {laps.length > 0 && (
               <div className="space-y-3 pt-4 border-t">
-                <h3 className="text-sm font-medium text-muted-foreground">Laps</h3>
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  Laps
+                </h3>
                 <div className="bg-muted/30 rounded-lg p-2 max-h-64 overflow-y-auto space-y-1 border">
                   {laps
                     .slice()
@@ -238,7 +240,9 @@ export default function StopwatchTimer() {
                           key={index}
                           className="flex justify-between items-center bg-background rounded border px-4 py-3 text-sm"
                         >
-                          <span className="font-medium text-muted-foreground">Lap {lapNumber}</span>
+                          <span className="font-medium text-muted-foreground">
+                            Lap {lapNumber}
+                          </span>
                           <span className="font-mono font-semibold">
                             {lapDisplay.minutes}:{lapDisplay.seconds}.
                             {lapDisplay.milliseconds}
@@ -264,7 +268,9 @@ export default function StopwatchTimer() {
                   <>
                     <div
                       className={`text-6xl sm:text-7xl font-bold tracking-tighter ${
-                        timerFinished ? "text-destructive animate-pulse" : "text-primary"
+                        timerFinished
+                          ? "text-destructive animate-pulse"
+                          : "text-primary"
                       }`}
                     >
                       {timerDisplay.hours}:{timerDisplay.minutes}:
@@ -296,7 +302,10 @@ export default function StopwatchTimer() {
                       value={timerHours}
                       onChange={(e) =>
                         setTimerHours(
-                          Math.max(0, Math.min(23, parseInt(e.target.value) || 0))
+                          Math.max(
+                            0,
+                            Math.min(23, parseInt(e.target.value) || 0),
+                          ),
                         )
                       }
                       className="h-16 text-center text-2xl font-mono"
@@ -314,7 +323,10 @@ export default function StopwatchTimer() {
                       value={timerMinutes}
                       onChange={(e) =>
                         setTimerMinutes(
-                          Math.max(0, Math.min(59, parseInt(e.target.value) || 0))
+                          Math.max(
+                            0,
+                            Math.min(59, parseInt(e.target.value) || 0),
+                          ),
                         )
                       }
                       className="h-16 text-center text-2xl font-mono"
@@ -332,7 +344,10 @@ export default function StopwatchTimer() {
                       value={timerSeconds}
                       onChange={(e) =>
                         setTimerSeconds(
-                          Math.max(0, Math.min(59, parseInt(e.target.value) || 0))
+                          Math.max(
+                            0,
+                            Math.min(59, parseInt(e.target.value) || 0),
+                          ),
                         )
                       }
                       className="h-16 text-center text-2xl font-mono"
@@ -348,17 +363,17 @@ export default function StopwatchTimer() {
                 <div className="grid grid-cols-4 gap-2">
                   {[1, 5, 10, 30].map((m) => (
                     <Button
-                        key={m}
-                        variant="outline"
-                        size="sm"
-                        onClick={() => {
-                            setTimerHours(0);
-                            setTimerMinutes(m);
-                            setTimerSeconds(0);
-                        }}
-                        className="text-xs"
+                      key={m}
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        setTimerHours(0);
+                        setTimerMinutes(m);
+                        setTimerSeconds(0);
+                      }}
+                      className="text-xs"
                     >
-                        {m}m
+                      {m}m
                     </Button>
                   ))}
                 </div>

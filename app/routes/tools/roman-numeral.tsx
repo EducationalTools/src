@@ -2,7 +2,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Copy, RefreshCw, ArrowRightLeft, Type, Calculator } from "lucide-react";
+import {
+  Copy,
+  RefreshCw,
+  ArrowRightLeft,
+  Type,
+  Calculator,
+} from "lucide-react";
 import { toast } from "sonner";
 
 const ROMAN_VALUES: Record<string, number> = {
@@ -78,7 +84,9 @@ function fromRoman(roman: string): number {
 export default function RomanNumeral() {
   const [number, setNumber] = useState("");
   const [roman, setRoman] = useState("");
-  const [direction, setDirection] = useState<"to-roman" | "from-roman">("to-roman");
+  const [direction, setDirection] = useState<"to-roman" | "from-roman">(
+    "to-roman",
+  );
 
   const handleNumberChange = (value: string) => {
     setNumber(value);
@@ -119,7 +127,9 @@ export default function RomanNumeral() {
   return (
     <div className="container mx-auto p-6 max-w-4xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Roman Numeral Converter</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">
+          Roman Numeral Converter
+        </h1>
         <p className="text-muted-foreground text-lg">
           Convert between Arabic numbers and Roman numerals (1-3999).
         </p>
@@ -128,13 +138,13 @@ export default function RomanNumeral() {
       <div className="grid md:grid-cols-2 gap-6">
         <Card className="flex flex-col">
           <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                  <Calculator className="w-5 h-5 text-muted-foreground" />
-                  Arabic Number
-              </CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <Calculator className="w-5 h-5 text-muted-foreground" />
+              Arabic Number
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 flex-1">
-             <div className="space-y-2">
+            <div className="space-y-2">
               <Input
                 type="number"
                 min={1}
@@ -142,8 +152,8 @@ export default function RomanNumeral() {
                 placeholder="Enter number (1-3999)"
                 value={number}
                 onChange={(e) => {
-                    setDirection("to-roman");
-                    handleNumberChange(e.target.value);
+                  setDirection("to-roman");
+                  handleNumberChange(e.target.value);
                 }}
                 className="text-lg h-12"
               />
@@ -151,26 +161,26 @@ export default function RomanNumeral() {
                 Valid range: 1 - 3999
               </div>
             </div>
-             <Button
-                variant="secondary"
-                size="sm"
-                className="w-full"
-                onClick={() => {
-                    setDirection("to-roman");
-                    // Focus input if needed
-                }}
+            <Button
+              variant="secondary"
+              size="sm"
+              className="w-full"
+              onClick={() => {
+                setDirection("to-roman");
+                // Focus input if needed
+              }}
             >
-                Active Input
+              Active Input
             </Button>
           </CardContent>
         </Card>
 
         <Card className="flex flex-col">
           <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                  <Type className="w-5 h-5 text-muted-foreground" />
-                  Roman Numeral
-              </CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <Type className="w-5 h-5 text-muted-foreground" />
+              Roman Numeral
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 flex-1">
             <div className="space-y-2">
@@ -179,24 +189,24 @@ export default function RomanNumeral() {
                 placeholder="Enter Roman numeral (e.g. MMXXIV)"
                 value={roman}
                 onChange={(e) => {
-                    setDirection("from-roman");
-                    handleRomanChange(e.target.value);
+                  setDirection("from-roman");
+                  handleRomanChange(e.target.value);
                 }}
                 className="font-mono text-lg h-12 uppercase"
               />
               <div className="text-xs text-muted-foreground">
-                 Standard numerals only (I, V, X, L, C, D, M)
+                Standard numerals only (I, V, X, L, C, D, M)
               </div>
             </div>
             <Button
-                variant="secondary"
-                size="sm"
-                className="w-full"
-                 onClick={() => {
-                    setDirection("from-roman");
-                }}
+              variant="secondary"
+              size="sm"
+              className="w-full"
+              onClick={() => {
+                setDirection("from-roman");
+              }}
             >
-                 Active Input
+              Active Input
             </Button>
           </CardContent>
         </Card>
@@ -207,17 +217,25 @@ export default function RomanNumeral() {
           <CardContent className="p-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-center md:text-left">
-                <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wider font-semibold">Conversion Result</div>
+                <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wider font-semibold">
+                  Conversion Result
+                </div>
                 <div className="text-3xl sm:text-4xl font-bold flex flex-wrap items-center gap-3 justify-center md:justify-start">
                   {direction === "to-roman" ? (
                     <>
-                      <span className="text-muted-foreground">{number || "?"}</span>
+                      <span className="text-muted-foreground">
+                        {number || "?"}
+                      </span>
                       <ArrowRightLeft className="w-6 h-6 text-muted-foreground opacity-50" />
-                      <span className="font-mono text-primary">{roman || "?"}</span>
+                      <span className="font-mono text-primary">
+                        {roman || "?"}
+                      </span>
                     </>
                   ) : (
-                     <>
-                      <span className="font-mono text-muted-foreground">{roman || "?"}</span>
+                    <>
+                      <span className="font-mono text-muted-foreground">
+                        {roman || "?"}
+                      </span>
                       <ArrowRightLeft className="w-6 h-6 text-muted-foreground opacity-50" />
                       <span className="text-primary">{number || "?"}</span>
                     </>
@@ -232,7 +250,12 @@ export default function RomanNumeral() {
                 >
                   <Copy className="mr-2 h-4 w-4" /> Copy Result
                 </Button>
-                <Button variant="outline" size="icon" onClick={clear} className="h-10 w-10">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={clear}
+                  className="h-10 w-10"
+                >
                   <RefreshCw className="h-4 w-4" />
                 </Button>
               </div>
@@ -246,32 +269,32 @@ export default function RomanNumeral() {
           <h3 className="font-semibold mb-4">Roman Numeral Reference</h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4 text-center">
             <div className="bg-background rounded-lg p-3 border shadow-sm">
-                <div className="font-bold text-lg font-mono">I</div>
-                <div className="text-xs text-muted-foreground mt-1">1</div>
+              <div className="font-bold text-lg font-mono">I</div>
+              <div className="text-xs text-muted-foreground mt-1">1</div>
             </div>
             <div className="bg-background rounded-lg p-3 border shadow-sm">
-                <div className="font-bold text-lg font-mono">V</div>
-                <div className="text-xs text-muted-foreground mt-1">5</div>
+              <div className="font-bold text-lg font-mono">V</div>
+              <div className="text-xs text-muted-foreground mt-1">5</div>
             </div>
             <div className="bg-background rounded-lg p-3 border shadow-sm">
-                <div className="font-bold text-lg font-mono">X</div>
-                <div className="text-xs text-muted-foreground mt-1">10</div>
-            </div>
-             <div className="bg-background rounded-lg p-3 border shadow-sm">
-                <div className="font-bold text-lg font-mono">L</div>
-                <div className="text-xs text-muted-foreground mt-1">50</div>
+              <div className="font-bold text-lg font-mono">X</div>
+              <div className="text-xs text-muted-foreground mt-1">10</div>
             </div>
             <div className="bg-background rounded-lg p-3 border shadow-sm">
-                <div className="font-bold text-lg font-mono">C</div>
-                <div className="text-xs text-muted-foreground mt-1">100</div>
+              <div className="font-bold text-lg font-mono">L</div>
+              <div className="text-xs text-muted-foreground mt-1">50</div>
             </div>
             <div className="bg-background rounded-lg p-3 border shadow-sm">
-                <div className="font-bold text-lg font-mono">D</div>
-                <div className="text-xs text-muted-foreground mt-1">500</div>
+              <div className="font-bold text-lg font-mono">C</div>
+              <div className="text-xs text-muted-foreground mt-1">100</div>
             </div>
-             <div className="bg-background rounded-lg p-3 border shadow-sm">
-                <div className="font-bold text-lg font-mono">M</div>
-                <div className="text-xs text-muted-foreground mt-1">1000</div>
+            <div className="bg-background rounded-lg p-3 border shadow-sm">
+              <div className="font-bold text-lg font-mono">D</div>
+              <div className="text-xs text-muted-foreground mt-1">500</div>
+            </div>
+            <div className="bg-background rounded-lg p-3 border shadow-sm">
+              <div className="font-bold text-lg font-mono">M</div>
+              <div className="text-xs text-muted-foreground mt-1">1000</div>
             </div>
           </div>
         </CardContent>

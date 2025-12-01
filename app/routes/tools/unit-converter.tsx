@@ -191,7 +191,9 @@ export default function UnitConverter() {
   return (
     <div className="container mx-auto p-6 max-w-3xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Unit Converter</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">
+          Unit Converter
+        </h1>
         <p className="text-muted-foreground text-lg">
           Convert between different units of measurement.
         </p>
@@ -203,18 +205,18 @@ export default function UnitConverter() {
           <div className="space-y-3">
             <label className="text-sm font-medium leading-none">Category</label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {(["length", "weight", "temperature", "volume"] as UnitCategory[]).map(
-                (cat) => (
-                  <Button
-                    key={cat}
-                    variant={category === cat ? "default" : "outline"}
-                    onClick={() => handleCategoryChange(cat)}
-                    className="capitalize w-full"
-                  >
-                    {cat}
-                  </Button>
-                )
-              )}
+              {(
+                ["length", "weight", "temperature", "volume"] as UnitCategory[]
+              ).map((cat) => (
+                <Button
+                  key={cat}
+                  variant={category === cat ? "default" : "outline"}
+                  onClick={() => handleCategoryChange(cat)}
+                  className="capitalize w-full"
+                >
+                  {cat}
+                </Button>
+              ))}
             </div>
           </div>
 

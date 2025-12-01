@@ -61,7 +61,7 @@ export function Play({ params }: Route.ComponentProps) {
   const saved = useSavedGmaes((state) => state.saved);
   const toggleSaved = useSavedGmaes((state) => state.toggleSaved);
   const historyCollectionEnabled = usePrivacyState(
-    (state) => state.historyCollectionEnabled
+    (state) => state.historyCollectionEnabled,
   );
   const isSaved = gmae?.id ? saved.includes(gmae.id) : false;
 
@@ -130,7 +130,7 @@ export function Play({ params }: Route.ComponentProps) {
                       const win = window.open(
                         "",
                         "",
-                        "width=500px,height=500px"
+                        "width=500px,height=500px",
                       );
 
                       let frame = document.createElement("iframe");

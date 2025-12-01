@@ -18,8 +18,8 @@ export const useExperimentalFeatures = create<ExperimentalFeaturesState>()(
     {
       name: "edutools-experimental-features",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );
 
 interface UiState {
@@ -141,8 +141,8 @@ export const useSettingsState = create<SettingsState>()(
     {
       name: "edutools-settings",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );
 
 interface SavedGmaes {
@@ -166,8 +166,8 @@ export const useSavedGmaes = create<SavedGmaes>()(
     {
       name: "edutools-saved-gmaes",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );
 
 interface GmaeHistory {
@@ -202,8 +202,8 @@ export const useGmaeHistory = create<GmaeHistory>()(
     {
       name: "edutools-gmae-history",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );
 
 interface PrivacyState {
@@ -221,8 +221,8 @@ export const usePrivacyState = create<PrivacyState>()(
     {
       name: "edutools-privacy",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );
 
 // Utility functions for privacy actions

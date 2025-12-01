@@ -5,7 +5,7 @@ import { useExperimentalFeatures } from "@/lib/state";
 export function useCloak() {
   const cloak = useSettingsState((state) => state.cloak);
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
+    (state) => state.enabled,
   );
   const originalTitleRef = useRef<string | null>(null);
   const originalFaviconRef = useRef<string | null>(null);
@@ -16,30 +16,38 @@ export function useCloak() {
     if (originalTitleRef.current === null) {
       originalTitleRef.current = document.title;
     }
-    
+
     // Get or create favicon element
     if (!faviconLinkRef.current) {
-      let favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
+      let favicon = document.querySelector(
+        'link[rel="icon"]',
+      ) as HTMLLinkElement;
       if (!favicon) {
         favicon = document.createElement("link");
         favicon.rel = "icon";
         document.head.appendChild(favicon);
       }
       faviconLinkRef.current = favicon;
-      
+
       // Store the current favicon href as absolute URL
       if (originalFaviconRef.current === null) {
         const currentHref = favicon.href || favicon.getAttribute("href") || "";
         // Convert to absolute URL if it's relative
         if (currentHref) {
           try {
-            originalFaviconRef.current = new URL(currentHref, window.location.href).href;
+            originalFaviconRef.current = new URL(
+              currentHref,
+              window.location.href,
+            ).href;
           } catch {
             originalFaviconRef.current = currentHref;
           }
         } else {
           // Fallback to default favicon path
-          originalFaviconRef.current = new URL("/favicon.ico", window.location.href).href;
+          originalFaviconRef.current = new URL(
+            "/favicon.ico",
+            window.location.href,
+          ).href;
         }
       }
     }
@@ -76,7 +84,7 @@ export function useCloak() {
 
     const handleVisibilityChange = () => {
       if (!faviconLinkRef.current) return;
-      
+
       if (document.hidden) {
         // Tab is not focused - apply cloak
         if (cloak.title) {
@@ -128,4 +136,3 @@ export function useCloak() {
     }
   }, [experimentalFeatures, cloak.mode]);
 }
-

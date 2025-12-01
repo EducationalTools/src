@@ -20,7 +20,7 @@ export function ThemeModeSelector({ className }: { className?: string }) {
 
   // Get the current theme configuration
   const currentTheme = themes[theme.theme];
-  
+
   // Only show if current theme supports both light and dark
   if (!currentTheme || !currentTheme.dark || !currentTheme.light) {
     return null;

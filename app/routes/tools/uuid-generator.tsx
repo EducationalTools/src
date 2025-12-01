@@ -43,7 +43,9 @@ export default function UuidGenerator() {
   return (
     <div className="container mx-auto p-6 max-w-4xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">UUID Generator</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">
+          UUID Generator
+        </h1>
         <p className="text-muted-foreground text-lg">
           Generate Version 4 UUIDs (Universally Unique Identifiers).
         </p>
@@ -54,56 +56,56 @@ export default function UuidGenerator() {
         <div className="md:col-span-1 space-y-6">
           <Card>
             <CardHeader>
-                <CardTitle>Configuration</CardTitle>
+              <CardTitle>Configuration</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-                <div className="space-y-3">
-                  <label className="text-sm font-medium leading-none">Quantity</label>
-                  <Input
-                    type="number"
-                    min={1}
-                    value={count}
-                    onChange={(e) =>
-                      setCount(Math.max(1, parseInt(e.target.value) || 1))
-                    }
-                  />
-                </div>
+              <div className="space-y-3">
+                <label className="text-sm font-medium leading-none">
+                  Quantity
+                </label>
+                <Input
+                  type="number"
+                  min={1}
+                  value={count}
+                  onChange={(e) =>
+                    setCount(Math.max(1, parseInt(e.target.value) || 1))
+                  }
+                />
+              </div>
 
-                <div className="flex items-center justify-between">
-                  <label
-                    htmlFor="hyphens"
-                    className="text-sm font-medium cursor-pointer leading-none"
-                  >
-                    Hyphens
-                  </label>
-                  <Checkbox
-                    id="hyphens"
-                    checked={hyphens}
-                    onCheckedChange={(checked) =>
-                      setHyphens(checked as boolean)
-                    }
-                  />
-                </div>
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor="hyphens"
+                  className="text-sm font-medium cursor-pointer leading-none"
+                >
+                  Hyphens
+                </label>
+                <Checkbox
+                  id="hyphens"
+                  checked={hyphens}
+                  onCheckedChange={(checked) => setHyphens(checked as boolean)}
+                />
+              </div>
 
-                <div className="flex items-center justify-between">
-                  <label
-                    htmlFor="uppercase"
-                    className="text-sm font-medium cursor-pointer leading-none"
-                  >
-                    Uppercase
-                  </label>
-                  <Checkbox
-                    id="uppercase"
-                    checked={uppercase}
-                    onCheckedChange={(checked) =>
-                      setUppercase(checked as boolean)
-                    }
-                  />
-                </div>
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor="uppercase"
+                  className="text-sm font-medium cursor-pointer leading-none"
+                >
+                  Uppercase
+                </label>
+                <Checkbox
+                  id="uppercase"
+                  checked={uppercase}
+                  onCheckedChange={(checked) =>
+                    setUppercase(checked as boolean)
+                  }
+                />
+              </div>
 
-                <Button className="w-full" size="lg" onClick={generateUuid}>
-                  <RefreshCw className="mr-2 h-4 w-4" /> Generate
-                </Button>
+              <Button className="w-full" size="lg" onClick={generateUuid}>
+                <RefreshCw className="mr-2 h-4 w-4" /> Generate
+              </Button>
             </CardContent>
           </Card>
         </div>
@@ -112,25 +114,30 @@ export default function UuidGenerator() {
         <div className="md:col-span-2">
           <Card className="flex flex-col h-full min-h-[400px]">
             <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
-                <CardTitle className="text-base">Generated UUIDs</CardTitle>
-                <div className="flex gap-2">
-                  {uuids.length > 0 && (
-                    <>
-                      <Button variant="outline" size="sm" onClick={copyAll} className="h-8 px-2 text-xs">
-                        <Copy className="mr-2 h-3.5 w-3.5" /> Copy All
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => setUuids([])}
-                         className="h-8 w-8 p-0"
-                         title="Clear"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </>
-                  )}
-                </div>
+              <CardTitle className="text-base">Generated UUIDs</CardTitle>
+              <div className="flex gap-2">
+                {uuids.length > 0 && (
+                  <>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={copyAll}
+                      className="h-8 px-2 text-xs"
+                    >
+                      <Copy className="mr-2 h-3.5 w-3.5" /> Copy All
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setUuids([])}
+                      className="h-8 w-8 p-0"
+                      title="Clear"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </>
+                )}
+              </div>
             </CardHeader>
             <CardContent className="flex-1 p-0 overflow-hidden relative">
               {uuids.length > 0 ? (

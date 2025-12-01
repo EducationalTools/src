@@ -11,7 +11,7 @@ export async function clientLoader() {
 
 export default function PrivacyPage() {
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
+    (state) => state.enabled,
   );
 
   return (

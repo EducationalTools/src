@@ -26,10 +26,16 @@ function parseMarkdown(markdown: string): string {
   html = html.replace(/`([^`]+)`/gim, "<code>$1</code>");
 
   // Links
-  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  html = html.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/gim,
+    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
+  );
 
   // Images
-  html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img src="$2" alt="$1" />');
+  html = html.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/gim,
+    '<img src="$2" alt="$1" />',
+  );
 
   // Lists
   html = html.replace(/^\* (.*$)/gim, "<li>$1</li>");
@@ -104,7 +110,9 @@ export default function MarkdownPreview() {
   return (
     <div className="container mx-auto p-6 max-w-[1600px] h-[calc(100vh-4rem)] flex flex-col space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Markdown Preview</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">
+          Markdown Preview
+        </h1>
         <p className="text-muted-foreground text-lg">
           Write markdown and see it rendered in real-time.
         </p>
@@ -118,14 +126,24 @@ export default function MarkdownPreview() {
               Markdown
             </CardTitle>
             <div className="flex gap-2">
-              <Button variant="ghost" size="sm" onClick={loadSample} className="h-8 px-2 text-xs">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={loadSample}
+                className="h-8 px-2 text-xs"
+              >
                 Load Sample
               </Button>
-              <Button variant="ghost" size="sm" onClick={clear} className="h-8 px-2 text-xs">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={clear}
+                className="h-8 px-2 text-xs"
+              >
                 <RefreshCw className="h-3.5 w-3.5 mr-1" />
                 Clear
               </Button>
-               <Button
+              <Button
                 variant="outline"
                 size="sm"
                 onClick={() => copyToClipboard(markdown)}
@@ -161,7 +179,7 @@ export default function MarkdownPreview() {
             </Button>
           </CardHeader>
           <CardContent className="flex-1 p-0 relative bg-white dark:bg-zinc-950 overflow-hidden rounded-b-lg">
-             <div className="absolute inset-0 w-full h-full overflow-auto p-6 prose prose-sm dark:prose-invert max-w-none">
+            <div className="absolute inset-0 w-full h-full overflow-auto p-6 prose prose-sm dark:prose-invert max-w-none">
               <div
                 dangerouslySetInnerHTML={{ __html: parseMarkdown(markdown) }}
               />

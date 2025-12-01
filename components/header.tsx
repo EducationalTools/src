@@ -28,7 +28,7 @@ export default function Header() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
+    (state) => state.enabled,
   );
 
   const session = authClient.useSession();

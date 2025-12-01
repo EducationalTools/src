@@ -54,11 +54,13 @@ export default function QrCodeGenerator() {
         {/* Controls */}
         <Card>
           <CardHeader>
-             <CardTitle>Configuration</CardTitle>
+            <CardTitle>Configuration</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-3">
-              <label className="text-sm font-medium leading-none">Content</label>
+              <label className="text-sm font-medium leading-none">
+                Content
+              </label>
               <Input
                 placeholder="Enter text or URL..."
                 value={text}
@@ -68,9 +70,9 @@ export default function QrCodeGenerator() {
             </div>
 
             <div className="space-y-3">
-               <label className="text-sm font-medium leading-none">Size</label>
-              <Tabs 
-                value={size.toString()} 
+              <label className="text-sm font-medium leading-none">Size</label>
+              <Tabs
+                value={size.toString()}
                 onValueChange={(v) => setSize(parseInt(v))}
                 className="w-full"
               >
@@ -83,16 +85,24 @@ export default function QrCodeGenerator() {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <ColorInput label="Foreground" value={fgColor} onChange={setFgColor} />
-              <ColorInput label="Background" value={bgColor} onChange={setBgColor} />
+              <ColorInput
+                label="Foreground"
+                value={fgColor}
+                onChange={setFgColor}
+              />
+              <ColorInput
+                label="Background"
+                value={bgColor}
+                onChange={setBgColor}
+              />
             </div>
           </CardContent>
         </Card>
 
         {/* Preview */}
         <Card className="flex flex-col">
-           <CardHeader>
-             <CardTitle>Preview</CardTitle>
+          <CardHeader>
+            <CardTitle>Preview</CardTitle>
           </CardHeader>
           <CardContent className="flex-1 flex flex-col items-center justify-center space-y-6 min-h-[300px]">
             {text ? (
@@ -145,7 +155,7 @@ function ColorInput({
           className="pl-10 font-mono uppercase h-10"
           maxLength={7}
         />
-        <div 
+        <div
           className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border shadow-sm overflow-hidden cursor-pointer hover:scale-110 transition-transform"
           style={{ backgroundColor: value }}
         >

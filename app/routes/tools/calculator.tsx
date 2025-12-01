@@ -257,10 +257,7 @@ export default function Calculator() {
             >
               .
             </Button>
-            <Button
-              className="h-16 text-xl font-medium"
-              onClick={handleEquals}
-            >
+            <Button className="h-16 text-xl font-medium" onClick={handleEquals}>
               =
             </Button>
           </div>

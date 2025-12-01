@@ -48,7 +48,9 @@ export default function UrlEncoder() {
   return (
     <div className="container mx-auto p-6 max-w-4xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">URL Encoder/Decoder</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">
+          URL Encoder/Decoder
+        </h1>
         <p className="text-muted-foreground text-lg">
           Encode and decode URLs and URL components.
         </p>
@@ -57,20 +59,20 @@ export default function UrlEncoder() {
       <div className="grid md:grid-cols-2 gap-6">
         <Card className="flex flex-col">
           <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
-              <CardTitle className="text-base flex items-center gap-2">
-                <Link className="w-4 h-4 text-muted-foreground" />
-                Decoded URL
-              </CardTitle>
-              {decoded && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => copyToClipboard(decoded)}
-                  className="h-8 px-2 text-xs"
-                >
-                  <Copy className="mr-2 h-3.5 w-3.5" /> Copy
-                </Button>
-              )}
+            <CardTitle className="text-base flex items-center gap-2">
+              <Link className="w-4 h-4 text-muted-foreground" />
+              Decoded URL
+            </CardTitle>
+            {decoded && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => copyToClipboard(decoded)}
+                className="h-8 px-2 text-xs"
+              >
+                <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+              </Button>
+            )}
           </CardHeader>
           <CardContent className="p-0 flex-1">
             <textarea
@@ -84,27 +86,27 @@ export default function UrlEncoder() {
 
         <Card className="flex flex-col">
           <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
-               <CardTitle className="text-base flex items-center gap-2">
-                <Globe className="w-4 h-4 text-muted-foreground" />
-                Encoded URL
-              </CardTitle>
-              {encoded && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => copyToClipboard(encoded)}
-                  className="h-8 px-2 text-xs"
-                >
-                  <Copy className="mr-2 h-3.5 w-3.5" /> Copy
-                </Button>
-              )}
+            <CardTitle className="text-base flex items-center gap-2">
+              <Globe className="w-4 h-4 text-muted-foreground" />
+              Encoded URL
+            </CardTitle>
+            {encoded && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => copyToClipboard(encoded)}
+                className="h-8 px-2 text-xs"
+              >
+                <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+              </Button>
+            )}
           </CardHeader>
           <CardContent className="p-0 flex-1">
-             <textarea
+            <textarea
               placeholder="Enter encoded URL to decode..."
               value={encoded}
               onChange={(e) => handleEncodedChange(e.target.value)}
-               className="w-full h-full min-h-[200px] p-4 border-none bg-transparent font-mono text-sm resize-none focus:outline-none"
+              className="w-full h-full min-h-[200px] p-4 border-none bg-transparent font-mono text-sm resize-none focus:outline-none"
             />
           </CardContent>
         </Card>
@@ -120,9 +122,9 @@ export default function UrlEncoder() {
         <CardContent className="p-6">
           <h3 className="font-semibold mb-2">About URL Encoding</h3>
           <p className="text-sm text-muted-foreground mb-2">
-            URL encoding converts characters into a format that can be transmitted over
-            the Internet. Special characters are replaced with a percent sign (%) followed
-            by two hexadecimal digits.
+            URL encoding converts characters into a format that can be
+            transmitted over the Internet. Special characters are replaced with
+            a percent sign (%) followed by two hexadecimal digits.
           </p>
           <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
             <li>Space becomes %20</li>

@@ -78,37 +78,37 @@ export default function Settings() {
   const cloak = useSettingsState((state) => state.cloak);
   const setCloak = useSettingsState((state) => state.setCloak);
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
+    (state) => state.enabled,
   );
   const historyCollectionEnabled = usePrivacyState(
-    (state) => state.historyCollectionEnabled
+    (state) => state.historyCollectionEnabled,
   );
   const setHistoryCollectionEnabled = usePrivacyState(
-    (state) => state.setHistoryCollectionEnabled
+    (state) => state.setHistoryCollectionEnabled,
   );
   const history = useGmaeHistory((state) => state.history);
   const disableBlurBehind = useSettingsState(
-    (state) => state.disableBlurBehind
+    (state) => state.disableBlurBehind,
   );
   const setDisableBlurBehind = useSettingsState(
-    (state) => state.setDisableBlurBehind
+    (state) => state.setDisableBlurBehind,
   );
   const disableAllBlur = useSettingsState((state) => state.disableAllBlur);
   const setDisableAllBlur = useSettingsState(
-    (state) => state.setDisableAllBlur
+    (state) => state.setDisableAllBlur,
   );
   const disableAnimations = useSettingsState(
-    (state) => state.disableAnimations
+    (state) => state.disableAnimations,
   );
   const setDisableAnimations = useSettingsState(
-    (state) => state.setDisableAnimations
+    (state) => state.setDisableAnimations,
   );
 
   const setLoadingOverlayOpen = useUiState(
-    (state) => state.setLoadingOverlayOpen
+    (state) => state.setLoadingOverlayOpen,
   );
   const setLoadingOverlayMessage = useUiState(
-    (state) => state.setLoadingOverlayMessage
+    (state) => state.setLoadingOverlayMessage,
   );
 
   const session = authClient.useSession();
@@ -183,7 +183,7 @@ export default function Settings() {
               <div
                 className={cn(
                   "flex flex-col gap-4",
-                  !panicKey.enabled && "opacity-50"
+                  !panicKey.enabled && "opacity-50",
                 )}
               >
                 <div className="flex flex-col gap-2">
@@ -297,7 +297,7 @@ export default function Settings() {
                 <div
                   className={cn(
                     "flex flex-col gap-4",
-                    cloak.mode === "off" && "opacity-50"
+                    cloak.mode === "off" && "opacity-50",
                   )}
                 >
                   <Separator />
@@ -372,7 +372,7 @@ export default function Settings() {
               <div
                 className={cn(
                   "flex items-center justify-between",
-                  disableAllBlur && "opacity-50"
+                  disableAllBlur && "opacity-50",
                 )}
               >
                 <div className="flex flex-col gap-1">

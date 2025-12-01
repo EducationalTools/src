@@ -9,17 +9,17 @@ import { useNavigate } from "react-router";
 export default function Hotkeys() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const setCommandPaletteOpen = useUiState(
-    (state) => state.setCommandPaletteOpen
+    (state) => state.setCommandPaletteOpen,
   );
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
   const experimental = useExperimentalFeatures((state) => state.enabled);
   const setExperimentalEnabled = useExperimentalFeatures(
-    (state) => state.setEnabled
+    (state) => state.setEnabled,
   );
   const navigate = useNavigate();
   const panicKey = useSettingsState((state) => state.panicKey);
   const setPanicModeActivated = useUiState(
-    (state) => state.setPanicModeActivated
+    (state) => state.setPanicModeActivated,
   );
 
   useHotkeys("mod+k", () => setSearchOpen(true), {
@@ -41,7 +41,7 @@ export default function Hotkeys() {
     },
     {
       preventDefault: true,
-    }
+    },
   );
 
   // Panic key handler
@@ -61,7 +61,7 @@ export default function Hotkeys() {
     {
       preventDefault: true,
       enabled: panicKey.enabled && !!panicKey.url && experimental,
-    }
+    },
   );
 
   return null;

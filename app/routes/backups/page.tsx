@@ -63,7 +63,7 @@ export default function BackupsPage() {
 
   const cloudBackups = useQuery(api.backups.getBackups);
   const createCloudBackup = useMutation(
-    api.backups.createBackup
+    api.backups.createBackup,
   ).withOptimisticUpdate((localStore, args) => {
     const { data, name, backupKey } = args;
     const currentBackups = localStore.getQuery(api.backups.getBackups);
@@ -85,7 +85,7 @@ export default function BackupsPage() {
         {
           success: true,
           backups: [newBackup, ...currentBackups.backups],
-        }
+        },
       );
     }
   });
@@ -93,14 +93,14 @@ export default function BackupsPage() {
   const convexAuth = useConvexAuth();
 
   const deleteCloudBackup = useMutation(
-    api.backups.deleteBackup
+    api.backups.deleteBackup,
   ).withOptimisticUpdate((localStore, args) => {
     const { id } = args;
     const currentBackups = localStore.getQuery(api.backups.getBackups);
     // If we've loaded the backups query, remove the backup being deleted
     if (currentBackups?.success && currentBackups.backups !== undefined) {
       const filteredBackups = currentBackups.backups.filter(
-        (backup) => backup._id !== id
+        (backup) => backup._id !== id,
       );
       localStore.setQuery(
         api.backups.getBackups,
@@ -108,7 +108,7 @@ export default function BackupsPage() {
         {
           success: true,
           backups: filteredBackups,
-        }
+        },
       );
     }
   });
@@ -141,7 +141,7 @@ export default function BackupsPage() {
         loading: "Creating backup...",
         success: "Backup created",
         error: (error) => error.message || "Failed to create backup",
-      }
+      },
     );
   };
 
@@ -308,7 +308,7 @@ export default function BackupsPage() {
                                         loading: "Deleting backup...",
                                         success: "Backup deleted",
                                         error: "Failed to delete backup",
-                                      }
+                                      },
                                     );
                                   }}
                                 >
@@ -328,7 +328,7 @@ export default function BackupsPage() {
                                 })
                                 .catch((error) => {
                                   toast.error(
-                                    "Failed to copy backup to clipboard"
+                                    "Failed to copy backup to clipboard",
                                   );
                                 });
                             }}

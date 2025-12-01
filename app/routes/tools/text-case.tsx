@@ -113,9 +113,9 @@ export default function TextCase() {
       <div className="grid lg:grid-cols-3 gap-6">
         <div className="lg:col-span-1">
           <Card>
-             <CardHeader>
-                <CardTitle>Case Type</CardTitle>
-             </CardHeader>
+            <CardHeader>
+              <CardTitle>Case Type</CardTitle>
+            </CardHeader>
             <CardContent className="space-y-2">
               {caseTypes.map((type) => (
                 <Button
@@ -127,9 +127,7 @@ export default function TextCase() {
                 >
                   <div className="text-left">
                     <div className="font-medium">{type.label}</div>
-                    <div className="text-xs opacity-70">
-                      {type.description}
-                    </div>
+                    <div className="text-xs opacity-70">{type.description}</div>
                   </div>
                 </Button>
               ))}
@@ -140,10 +138,15 @@ export default function TextCase() {
         <div className="lg:col-span-2 space-y-6">
           <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
-                <CardTitle className="text-base">Input</CardTitle>
-                 <Button variant="ghost" size="sm" onClick={clear} className="h-8 px-2 text-xs">
-                  <RefreshCw className="h-3.5 w-3.5 mr-1" /> Clear
-                </Button>
+              <CardTitle className="text-base">Input</CardTitle>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={clear}
+                className="h-8 px-2 text-xs"
+              >
+                <RefreshCw className="h-3.5 w-3.5 mr-1" /> Clear
+              </Button>
             </CardHeader>
             <CardContent className="p-0">
               <textarea
@@ -156,22 +159,26 @@ export default function TextCase() {
           </Card>
 
           <Card className="flex flex-col">
-             <CardHeader className="flex flex-row items-center justify-between py-4 border-b bg-muted/30">
-                <CardTitle className="text-base">Output</CardTitle>
-                {output && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => copyToClipboard(output)}
-                     className="h-8 px-2 text-xs"
-                  >
-                    <Copy className="mr-2 h-3.5 w-3.5" /> Copy
-                  </Button>
-                )}
+            <CardHeader className="flex flex-row items-center justify-between py-4 border-b bg-muted/30">
+              <CardTitle className="text-base">Output</CardTitle>
+              {output && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => copyToClipboard(output)}
+                  className="h-8 px-2 text-xs"
+                >
+                  <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+                </Button>
+              )}
             </CardHeader>
             <CardContent className="p-4 min-h-[120px] bg-muted/30">
               <div className="font-mono break-words whitespace-pre-wrap text-sm">
-                {output || <span className="text-muted-foreground italic">Converted text will appear here...</span>}
+                {output || (
+                  <span className="text-muted-foreground italic">
+                    Converted text will appear here...
+                  </span>
+                )}
               </div>
             </CardContent>
           </Card>

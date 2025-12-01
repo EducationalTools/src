@@ -16,7 +16,9 @@ export default function Base64Converter() {
       const encoded = btoa(input);
       setOutput(encoded);
     } catch (err) {
-      setError("Failed to encode. Make sure the input contains valid characters.");
+      setError(
+        "Failed to encode. Make sure the input contains valid characters.",
+      );
       setOutput("");
     }
   };
@@ -86,7 +88,9 @@ export default function Base64Converter() {
   return (
     <div className="container mx-auto p-6 max-w-4xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Base64 Converter</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">
+          Base64 Converter
+        </h1>
         <p className="text-muted-foreground text-lg">
           Encode text to Base64 format or decode Base64 strings.
         </p>
@@ -128,7 +132,12 @@ export default function Base64Converter() {
               <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 {mode === "encode" ? "Text to Encode" : "Base64 to Decode"}
               </label>
-              <Button variant="ghost" size="sm" onClick={pasteFromClipboard} className="h-8 px-2 text-xs">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={pasteFromClipboard}
+                className="h-8 px-2 text-xs"
+              >
                 <ClipboardPaste className="w-3.5 h-3.5 mr-1" />
                 Paste
               </Button>
@@ -151,10 +160,7 @@ export default function Base64Converter() {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <Button
-              onClick={handleConvert}
-              className="flex-1 h-11 text-base"
-            >
+            <Button onClick={handleConvert} className="flex-1 h-11 text-base">
               {mode === "encode" ? "Encode to Base64" : "Decode from Base64"}
             </Button>
             <Button
@@ -192,7 +198,7 @@ export default function Base64Converter() {
                   {mode === "encode" ? "Base64 Output" : "Decoded Text"}
                 </label>
                 <div className="flex items-center gap-2">
-                   <span className="text-xs text-muted-foreground">
+                  <span className="text-xs text-muted-foreground">
                     {output.length} chars
                   </span>
                   <Button
@@ -221,9 +227,10 @@ export default function Base64Converter() {
         <CardContent className="p-6">
           <h3 className="font-semibold mb-2">What is Base64?</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Base64 is a binary-to-text encoding scheme that represents binary data in
-            an ASCII string format. It's commonly used for encoding data in emails,
-            URLs, and data URIs to ensure that the data remains intact without modification during transport.
+            Base64 is a binary-to-text encoding scheme that represents binary
+            data in an ASCII string format. It's commonly used for encoding data
+            in emails, URLs, and data URIs to ensure that the data remains
+            intact without modification during transport.
           </p>
         </CardContent>
       </Card>

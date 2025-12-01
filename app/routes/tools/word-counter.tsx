@@ -15,17 +15,20 @@ export default function WordCounter() {
 
     // Word count
     const wordCount = trimmedText
-      ? trimmedText.split(/\s+/).filter(word => word.length > 0).length
+      ? trimmedText.split(/\s+/).filter((word) => word.length > 0).length
       : 0;
 
     // Sentence count
     const sentenceCount = trimmedText
-      ? trimmedText.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).length
+      ? trimmedText
+          .split(/[.!?]+/)
+          .filter((sentence) => sentence.trim().length > 0).length
       : 0;
 
     // Paragraph count
     const paragraphCount = trimmedText
-      ? trimmedText.split(/\n\n+/).filter(para => para.trim().length > 0).length
+      ? trimmedText.split(/\n\n+/).filter((para) => para.trim().length > 0)
+          .length
       : 0;
 
     // Reading time (average 200 words per minute)
@@ -65,31 +68,44 @@ export default function WordCounter() {
 
       <div className="grid gap-6">
         <Card className="flex flex-col shadow-md">
-            <CardHeader className="flex flex-row items-center justify-between py-3 px-4 border-b space-y-0">
-                 <CardTitle className="text-base font-medium">Input Text</CardTitle>
-                 <div className="flex gap-2">
-                    <Button variant="ghost" size="sm" onClick={handlePaste} className="h-8 px-2 text-xs">
-                        <ClipboardPaste className="w-3.5 h-3.5 mr-1" /> Paste
-                    </Button>
-                    <Button variant="ghost" size="sm" onClick={handleClear} className="h-8 px-2 text-xs">
-                        <Trash2 className="w-3.5 h-3.5 mr-1" /> Clear
-                    </Button>
-                </div>
-            </CardHeader>
-            <CardContent className="p-0">
-                <textarea
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="Start typing or paste your text here..."
-                className="w-full min-h-[300px] p-6 border-none bg-transparent text-base focus:outline-none resize-y font-mono"
-                />
-            </CardContent>
+          <CardHeader className="flex flex-row items-center justify-between py-3 px-4 border-b space-y-0">
+            <CardTitle className="text-base font-medium">Input Text</CardTitle>
+            <div className="flex gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handlePaste}
+                className="h-8 px-2 text-xs"
+              >
+                <ClipboardPaste className="w-3.5 h-3.5 mr-1" /> Paste
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleClear}
+                className="h-8 px-2 text-xs"
+              >
+                <Trash2 className="w-3.5 h-3.5 mr-1" /> Clear
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent className="p-0">
+            <textarea
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Start typing or paste your text here..."
+              className="w-full min-h-[300px] p-6 border-none bg-transparent text-base focus:outline-none resize-y font-mono"
+            />
+          </CardContent>
         </Card>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           <StatsCard label="Words" value={stats.wordCount} />
           <StatsCard label="Characters" value={stats.characterCount} />
-          <StatsCard label="Characters (no spaces)" value={stats.characterCountNoSpaces} />
+          <StatsCard
+            label="Characters (no spaces)"
+            value={stats.characterCountNoSpaces}
+          />
           <StatsCard label="Sentences" value={stats.sentenceCount} />
           <StatsCard label="Paragraphs" value={stats.paragraphCount} />
           <StatsCard label="Reading Time" value={`${stats.readingTime} min`} />
@@ -99,17 +115,21 @@ export default function WordCounter() {
   );
 }
 
-function StatsCard({ label, value }: { label: string; value: string | number }) {
-    return (
-        <Card>
-            <CardContent className="p-6 flex flex-col items-center justify-center text-center">
-                <div className="text-sm font-medium text-muted-foreground mb-1 uppercase tracking-wider">
-                    {label}
-                </div>
-                <div className="text-3xl font-bold tracking-tight">
-                    {value}
-                </div>
-            </CardContent>
-        </Card>
-    )
+function StatsCard({
+  label,
+  value,
+}: {
+  label: string;
+  value: string | number;
+}) {
+  return (
+    <Card>
+      <CardContent className="p-6 flex flex-col items-center justify-center text-center">
+        <div className="text-sm font-medium text-muted-foreground mb-1 uppercase tracking-wider">
+          {label}
+        </div>
+        <div className="text-3xl font-bold tracking-tight">{value}</div>
+      </CardContent>
+    </Card>
+  );
 }

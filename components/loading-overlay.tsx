@@ -9,7 +9,7 @@ export default function LoadingOverlay() {
     <div
       className={cn(
         "fixed inset-0 z-10000000 flex items-center justify-center bg-black/50 pointer-events-none opacity-0 transition-opacity duration-200 backdrop-blur-2xl gap-2",
-        loadingOverlayOpen && "opacity-100 pointer-events-auto"
+        loadingOverlayOpen && "opacity-100 pointer-events-auto",
       )}
     >
       <Spinner />

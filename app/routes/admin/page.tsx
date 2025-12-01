@@ -375,7 +375,7 @@ export default function AdminPage() {
                                     </span>
                                     <span className="ml-2">
                                       {new Date(
-                                        session.createdAt
+                                        session.createdAt,
                                       ).toLocaleDateString()}
                                     </span>
                                   </div>
@@ -385,7 +385,7 @@ export default function AdminPage() {
                                     </span>
                                     <span className="ml-2">
                                       {new Date(
-                                        session.expiresAt
+                                        session.expiresAt,
                                       ).toLocaleDateString()}
                                     </span>
                                   </div>

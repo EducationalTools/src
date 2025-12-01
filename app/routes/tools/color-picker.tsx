@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Copy, Plus, X, Trash2 } from "lucide-react";
 
 export default function ColorPicker() {
@@ -126,7 +132,9 @@ export default function ColorPicker() {
 
             {/* Color Input */}
             <div className="space-y-3">
-              <label className="text-sm font-medium leading-none">Pick a Color</label>
+              <label className="text-sm font-medium leading-none">
+                Pick a Color
+              </label>
               <div className="flex gap-2">
                 <input
                   type="color"
@@ -154,7 +162,9 @@ export default function ColorPicker() {
 
             {/* Preset Colors */}
             <div className="space-y-3">
-              <label className="text-sm font-medium leading-none">Preset Colors</label>
+              <label className="text-sm font-medium leading-none">
+                Preset Colors
+              </label>
               <div className="grid grid-cols-10 gap-2">
                 {presetColors.map((presetColor) => (
                   <button
@@ -172,7 +182,7 @@ export default function ColorPicker() {
 
         {/* Color Values Section */}
         <Card>
-           <CardHeader>
+          <CardHeader>
             <CardTitle>Values</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -219,7 +229,7 @@ export default function ColorPicker() {
                   size="icon"
                   className="h-11 w-11 shrink-0"
                 >
-                   <Copy className="w-4 h-4" />
+                  <Copy className="w-4 h-4" />
                 </Button>
               </div>
             </div>
@@ -240,56 +250,72 @@ export default function ColorPicker() {
                   onClick={() =>
                     copyToClipboard(
                       `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`,
-                      "hsl"
+                      "hsl",
                     )
                   }
                   variant={copied === "hsl" ? "default" : "outline"}
                   size="icon"
                   className="h-11 w-11 shrink-0"
                 >
-                   <Copy className="w-4 h-4" />
+                  <Copy className="w-4 h-4" />
                 </Button>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
-                 {/* RGB Components */}
-                <div className="space-y-2">
-                    <label className="text-xs font-medium text-muted-foreground block text-center">RGB Components</label>
-                    <div className="grid grid-cols-3 gap-2">
-                        <div className="bg-muted rounded-lg p-2 text-center border">
-                        <div className="text-[10px] text-muted-foreground mb-1">R</div>
-                        <div className="text-sm font-bold font-mono">{rgb.r}</div>
-                        </div>
-                        <div className="bg-muted rounded-lg p-2 text-center border">
-                        <div className="text-[10px] text-muted-foreground mb-1">G</div>
-                        <div className="text-sm font-bold font-mono">{rgb.g}</div>
-                        </div>
-                        <div className="bg-muted rounded-lg p-2 text-center border">
-                        <div className="text-[10px] text-muted-foreground mb-1">B</div>
-                        <div className="text-sm font-bold font-mono">{rgb.b}</div>
-                        </div>
+              {/* RGB Components */}
+              <div className="space-y-2">
+                <label className="text-xs font-medium text-muted-foreground block text-center">
+                  RGB Components
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="bg-muted rounded-lg p-2 text-center border">
+                    <div className="text-[10px] text-muted-foreground mb-1">
+                      R
                     </div>
+                    <div className="text-sm font-bold font-mono">{rgb.r}</div>
+                  </div>
+                  <div className="bg-muted rounded-lg p-2 text-center border">
+                    <div className="text-[10px] text-muted-foreground mb-1">
+                      G
+                    </div>
+                    <div className="text-sm font-bold font-mono">{rgb.g}</div>
+                  </div>
+                  <div className="bg-muted rounded-lg p-2 text-center border">
+                    <div className="text-[10px] text-muted-foreground mb-1">
+                      B
+                    </div>
+                    <div className="text-sm font-bold font-mono">{rgb.b}</div>
+                  </div>
                 </div>
+              </div>
 
-                 {/* HSL Components */}
-                <div className="space-y-2">
-                    <label className="text-xs font-medium text-muted-foreground block text-center">HSL Components</label>
-                    <div className="grid grid-cols-3 gap-2">
-                        <div className="bg-muted rounded-lg p-2 text-center border">
-                        <div className="text-[10px] text-muted-foreground mb-1">H</div>
-                        <div className="text-sm font-bold font-mono">{hsl.h}°</div>
-                        </div>
-                        <div className="bg-muted rounded-lg p-2 text-center border">
-                        <div className="text-[10px] text-muted-foreground mb-1">S</div>
-                        <div className="text-sm font-bold font-mono">{hsl.s}%</div>
-                        </div>
-                        <div className="bg-muted rounded-lg p-2 text-center border">
-                        <div className="text-[10px] text-muted-foreground mb-1">L</div>
-                        <div className="text-sm font-bold font-mono">{hsl.l}%</div>
-                        </div>
+              {/* HSL Components */}
+              <div className="space-y-2">
+                <label className="text-xs font-medium text-muted-foreground block text-center">
+                  HSL Components
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="bg-muted rounded-lg p-2 text-center border">
+                    <div className="text-[10px] text-muted-foreground mb-1">
+                      H
                     </div>
+                    <div className="text-sm font-bold font-mono">{hsl.h}°</div>
+                  </div>
+                  <div className="bg-muted rounded-lg p-2 text-center border">
+                    <div className="text-[10px] text-muted-foreground mb-1">
+                      S
+                    </div>
+                    <div className="text-sm font-bold font-mono">{hsl.s}%</div>
+                  </div>
+                  <div className="bg-muted rounded-lg p-2 text-center border">
+                    <div className="text-[10px] text-muted-foreground mb-1">
+                      L
+                    </div>
+                    <div className="text-sm font-bold font-mono">{hsl.l}%</div>
+                  </div>
                 </div>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -299,7 +325,9 @@ export default function ColorPicker() {
       {savedColors.length > 0 && (
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-xl font-semibold">Saved Colors</CardTitle>
+            <CardTitle className="text-xl font-semibold">
+              Saved Colors
+            </CardTitle>
             <Button
               variant="ghost"
               size="sm"

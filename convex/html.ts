@@ -3,7 +3,7 @@ export function generateAuthPage(
   name: string,
   redirectUrl: string,
   continueUrl: string,
-  trusted: boolean
+  trusted: boolean,
 ) {
   return `
   <!DOCTYPE html>

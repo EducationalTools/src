@@ -60,7 +60,9 @@ export default function HashGenerator() {
   return (
     <div className="container mx-auto p-6 max-w-4xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Hash Generator</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">
+          Hash Generator
+        </h1>
         <p className="text-muted-foreground text-lg">
           Generate cryptographic hashes using SHA algorithms.
         </p>
@@ -68,7 +70,7 @@ export default function HashGenerator() {
 
       <Card>
         <CardHeader>
-           <CardTitle>Input Text</CardTitle>
+          <CardTitle>Input Text</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <Input
@@ -84,8 +86,14 @@ export default function HashGenerator() {
             className="h-11"
           />
           <div className="flex gap-2">
-            <Button onClick={generateHashes} disabled={loading || !input} className="h-11">
-              <RefreshCw className={`mr-2 h-4 w-4 ${loading ? "animate-spin" : ""}`} />
+            <Button
+              onClick={generateHashes}
+              disabled={loading || !input}
+              className="h-11"
+            >
+              <RefreshCw
+                className={`mr-2 h-4 w-4 ${loading ? "animate-spin" : ""}`}
+              />
               Generate Hashes
             </Button>
             <Button variant="outline" onClick={clear} className="h-11">
@@ -138,10 +146,11 @@ export default function HashGenerator() {
         <CardContent className="p-6">
           <h3 className="font-semibold mb-2">About Hash Functions</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Hash functions are one-way cryptographic functions that convert input data
-            into a fixed-size string of characters. They are commonly used for data
-            integrity verification, password storage, and digital signatures. SHA-256
-            and SHA-512 are widely used in modern applications.
+            Hash functions are one-way cryptographic functions that convert
+            input data into a fixed-size string of characters. They are commonly
+            used for data integrity verification, password storage, and digital
+            signatures. SHA-256 and SHA-512 are widely used in modern
+            applications.
           </p>
         </CardContent>
       </Card>

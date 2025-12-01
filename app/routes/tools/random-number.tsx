@@ -71,7 +71,9 @@ export default function RandomNumber() {
           {/* Range Inputs */}
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <label className="text-sm font-medium leading-none">Minimum</label>
+              <label className="text-sm font-medium leading-none">
+                Minimum
+              </label>
               <Input
                 type="number"
                 value={min}
@@ -81,7 +83,9 @@ export default function RandomNumber() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium leading-none">Maximum</label>
+              <label className="text-sm font-medium leading-none">
+                Maximum
+              </label>
               <Input
                 type="number"
                 value={max}
@@ -93,9 +97,7 @@ export default function RandomNumber() {
 
           {/* Count Input */}
           <div className="space-y-2">
-            <label className="text-sm font-medium leading-none">
-              Quantity
-            </label>
+            <label className="text-sm font-medium leading-none">Quantity</label>
             <Input
               type="number"
               min="1"
@@ -110,7 +112,7 @@ export default function RandomNumber() {
 
           {/* Options */}
           <div className="space-y-3">
-             <label className="flex items-center gap-3 cursor-pointer p-3 rounded-lg border hover:bg-muted/50 transition-colors">
+            <label className="flex items-center gap-3 cursor-pointer p-3 rounded-lg border hover:bg-muted/50 transition-colors">
               <input
                 type="checkbox"
                 checked={allowDuplicates}
@@ -118,8 +120,10 @@ export default function RandomNumber() {
                 className="w-4 h-4 rounded border-input accent-primary cursor-pointer"
               />
               <div className="flex flex-col">
-                  <span className="text-sm font-medium">Allow Duplicates</span>
-                  <span className="text-xs text-muted-foreground">Numbers can be repeated</span>
+                <span className="text-sm font-medium">Allow Duplicates</span>
+                <span className="text-xs text-muted-foreground">
+                  Numbers can be repeated
+                </span>
               </div>
             </label>
           </div>
@@ -138,20 +142,22 @@ export default function RandomNumber() {
           {results.length > 0 && (
             <div className="space-y-4 pt-4 border-t">
               <div className="flex justify-between items-center">
-                <label className="text-sm font-medium leading-none">Results</label>
+                <label className="text-sm font-medium leading-none">
+                  Results
+                </label>
                 <div className="flex items-center gap-2">
-                    <span className="text-xs text-muted-foreground">
-                        {results.length} number{results.length !== 1 ? "s" : ""}
-                    </span>
-                    <Button
-                        onClick={copyToClipboard}
-                        variant={copied ? "default" : "outline"}
-                        size="sm"
-                        className="h-8 px-2 text-xs"
-                    >
-                        <Copy className="w-3.5 h-3.5 mr-1" />
-                        {copied ? "Copied!" : "Copy"}
-                    </Button>
+                  <span className="text-xs text-muted-foreground">
+                    {results.length} number{results.length !== 1 ? "s" : ""}
+                  </span>
+                  <Button
+                    onClick={copyToClipboard}
+                    variant={copied ? "default" : "outline"}
+                    size="sm"
+                    className="h-8 px-2 text-xs"
+                  >
+                    <Copy className="w-3.5 h-3.5 mr-1" />
+                    {copied ? "Copied!" : "Copy"}
+                  </Button>
                 </div>
               </div>
 

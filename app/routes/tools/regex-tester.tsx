@@ -50,7 +50,9 @@ export default function RegexTester() {
 
       while ((match = regex.exec(text)) !== null) {
         parts.push(text.substring(lastIndex, match.index));
-        parts.push(`<mark class="bg-yellow-300 dark:bg-yellow-600 rounded-sm px-0.5">${match[0]}</mark>`);
+        parts.push(
+          `<mark class="bg-yellow-300 dark:bg-yellow-600 rounded-sm px-0.5">${match[0]}</mark>`,
+        );
         lastIndex = regex.lastIndex;
 
         if (!flags.global) break;
@@ -102,27 +104,29 @@ export default function RegexTester() {
 
       <Card>
         <CardHeader>
-             <CardTitle>Pattern</CardTitle>
+          <CardTitle>Pattern</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex gap-4 flex-col sm:flex-row">
-              <div className="flex-1">
-                <Input
-                    placeholder="Enter regex pattern (e.g., /hello/i or hello)"
-                    value={pattern}
-                    onChange={(e) => setPattern(e.target.value)}
-                    className="font-mono h-11"
-                    onKeyDown={(e) => {
-                    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
-                        e.preventDefault();
-                        testRegex();
-                    }
-                    }}
-                />
-              </div>
-              <Button onClick={testRegex} className="h-11 px-8">Test</Button>
+            <div className="flex-1">
+              <Input
+                placeholder="Enter regex pattern (e.g., /hello/i or hello)"
+                value={pattern}
+                onChange={(e) => setPattern(e.target.value)}
+                className="font-mono h-11"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    testRegex();
+                  }
+                }}
+              />
+            </div>
+            <Button onClick={testRegex} className="h-11 px-8">
+              Test
+            </Button>
           </div>
-          
+
           <div className="flex gap-6 flex-wrap">
             <div className="flex items-center space-x-2">
               <Checkbox
@@ -132,7 +136,10 @@ export default function RegexTester() {
                   setFlags({ ...flags, global: checked as boolean })
                 }
               />
-              <label htmlFor="global" className="text-sm font-medium cursor-pointer leading-none">
+              <label
+                htmlFor="global"
+                className="text-sm font-medium cursor-pointer leading-none"
+              >
                 Global (g)
               </label>
             </div>
@@ -144,7 +151,10 @@ export default function RegexTester() {
                   setFlags({ ...flags, ignoreCase: checked as boolean })
                 }
               />
-              <label htmlFor="ignoreCase" className="text-sm font-medium cursor-pointer leading-none">
+              <label
+                htmlFor="ignoreCase"
+                className="text-sm font-medium cursor-pointer leading-none"
+              >
                 Ignore Case (i)
               </label>
             </div>
@@ -156,7 +166,10 @@ export default function RegexTester() {
                   setFlags({ ...flags, multiline: checked as boolean })
                 }
               />
-              <label htmlFor="multiline" className="text-sm font-medium cursor-pointer leading-none">
+              <label
+                htmlFor="multiline"
+                className="text-sm font-medium cursor-pointer leading-none"
+              >
                 Multiline (m)
               </label>
             </div>
@@ -167,17 +180,22 @@ export default function RegexTester() {
       <div className="grid gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
-             <CardTitle className="text-base">Test String</CardTitle>
-             <Button variant="ghost" size="sm" onClick={clear} className="h-8 px-2 text-xs">
-                <RefreshCw className="h-3.5 w-3.5 mr-1" /> Clear
-             </Button>
+            <CardTitle className="text-base">Test String</CardTitle>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={clear}
+              className="h-8 px-2 text-xs"
+            >
+              <RefreshCw className="h-3.5 w-3.5 mr-1" /> Clear
+            </Button>
           </CardHeader>
           <CardContent className="p-0">
-             <textarea
-                className="w-full h-32 p-4 border-none bg-transparent font-mono text-sm resize-y focus:outline-none"
-                value={testString}
-                onChange={(e) => setTestString(e.target.value)}
-                placeholder="Enter text to test against the regex pattern..."
+            <textarea
+              className="w-full h-32 p-4 border-none bg-transparent font-mono text-sm resize-y focus:outline-none"
+              value={testString}
+              onChange={(e) => setTestString(e.target.value)}
+              placeholder="Enter text to test against the regex pattern..."
             />
           </CardContent>
         </Card>
@@ -191,25 +209,29 @@ export default function RegexTester() {
 
         {matches && (
           <Card>
-             <CardHeader className="flex flex-row items-center justify-between py-4 border-b bg-muted/30">
-                 <CardTitle className="text-base flex items-center gap-2">
-                     <CheckCircle2 className="w-4 h-4 text-green-500" />
-                    Matches ({matches.length})
-                 </CardTitle>
-                 <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => copyToClipboard(JSON.stringify(matches, null, 2))}
-                  className="h-8 px-2 text-xs"
-                >
-                  <Copy className="mr-2 h-3.5 w-3.5" /> Copy Results
-                </Button>
+            <CardHeader className="flex flex-row items-center justify-between py-4 border-b bg-muted/30">
+              <CardTitle className="text-base flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                Matches ({matches.length})
+              </CardTitle>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() =>
+                  copyToClipboard(JSON.stringify(matches, null, 2))
+                }
+                className="h-8 px-2 text-xs"
+              >
+                <Copy className="mr-2 h-3.5 w-3.5" /> Copy Results
+              </Button>
             </CardHeader>
             <CardContent className="p-0">
-               <div className="bg-muted/30 p-4 space-y-2 max-h-64 overflow-auto font-mono text-sm">
+              <div className="bg-muted/30 p-4 space-y-2 max-h-64 overflow-auto font-mono text-sm">
                 {matches.map((match, index) => (
                   <div key={index} className="flex gap-4">
-                    <span className="text-muted-foreground w-8 text-right select-none">[{index}]</span>
+                    <span className="text-muted-foreground w-8 text-right select-none">
+                      [{index}]
+                    </span>
                     <span className="break-all">{match}</span>
                   </div>
                 ))}
@@ -221,7 +243,7 @@ export default function RegexTester() {
         {testString && pattern && !error && (
           <Card>
             <CardHeader className="py-4 border-b">
-                 <CardTitle className="text-base">Highlighted Text</CardTitle>
+              <CardTitle className="text-base">Highlighted Text</CardTitle>
             </CardHeader>
             <CardContent className="p-4">
               <div
@@ -233,14 +255,14 @@ export default function RegexTester() {
         )}
       </div>
 
-       <Card className="bg-muted/50 border-none shadow-none">
-          <CardContent className="p-6">
+      <Card className="bg-muted/50 border-none shadow-none">
+        <CardContent className="p-6">
           <h3 className="font-semibold mb-4">Common Regex Patterns</h3>
           <div className="grid md:grid-cols-2 gap-6 text-sm">
             <div>
               <div className="font-medium mb-1.5">Email</div>
               <div className="p-2 rounded bg-background border font-mono text-xs text-muted-foreground break-all">
-                {'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}'}
+                {"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"}
               </div>
             </div>
             <div>
@@ -251,13 +273,13 @@ export default function RegexTester() {
             </div>
             <div>
               <div className="font-medium mb-1.5">Phone (US)</div>
-               <div className="p-2 rounded bg-background border font-mono text-xs text-muted-foreground break-all">
+              <div className="p-2 rounded bg-background border font-mono text-xs text-muted-foreground break-all">
                 \d{3}-\d{3}-\d{4}
               </div>
             </div>
             <div>
               <div className="font-medium mb-1.5">Integers</div>
-               <div className="p-2 rounded bg-background border font-mono text-xs text-muted-foreground break-all">
+              <div className="p-2 rounded bg-background border font-mono text-xs text-muted-foreground break-all">
                 \d+
               </div>
             </div>
