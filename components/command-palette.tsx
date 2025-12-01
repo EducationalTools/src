@@ -8,7 +8,8 @@ import {
   CommandList,
   CommandShortcut,
 } from "@/components/ui/command";
-import { Settings } from "lucide-react";
+import { LogIn, Settings } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
 
 export default function CommandPalette() {
   const commandPaletteOpen = useUiState((state) => state.commandPaletteOpen);
@@ -31,6 +32,25 @@ export default function CommandPalette() {
       },
       kbd: "⌘ ,",
     },
+    ...[
+      { label: "Github", id: "github" },
+      { label: "Google", id: "google" },
+      { label: "Discord", id: "discord" },
+    ].map((item) => ({
+      label: "Continue with " + item.label,
+      icon: LogIn,
+      onSelect: () => {
+        const convexSiteUrl = new URL(import.meta.env.VITE_CONVEX_SITE_URL);
+
+        const redirectUrl = new URL("/auth", convexSiteUrl);
+        redirectUrl.searchParams.set("redirect", window.location.href);
+
+        authClient.signIn.social({
+          provider: item.id,
+          callbackURL: redirectUrl.toString(),
+        });
+      },
+    })),
   ];
 
   return (
