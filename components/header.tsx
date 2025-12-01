@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router";
 import { useSidebar } from "./ui/sidebar";
 import { Button, buttonVariants } from "./ui/button";
-import { Code, Search, Settings, Sidebar } from "lucide-react";
+import { Code, Loader2, Search, Settings, Sidebar } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Breadcrumb,
@@ -19,6 +19,9 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Kbd, KbdGroup } from "./ui/kbd";
+import { authClient } from "@/lib/auth-client";
+import { Skeleton } from "./ui/skeleton";
+import { Spinner } from "./ui/spinner";
 
 export default function Header() {
   const sidebar = useSidebar();
@@ -27,6 +30,8 @@ export default function Header() {
   const experimentalFeatures = useExperimentalFeatures(
     (state) => state.enabled
   );
+
+  const session = authClient.useSession();
 
   return (
     <div className="flex flex-row gap-1 items-center sticky top-0 z-40 from-sidebar to-transparent bg-linear-to-b py-2">
@@ -111,13 +116,28 @@ export default function Header() {
         <div className="flex flex-row gap-1" key="header-right">
           {experimentalFeatures && (
             <>
-              <Button variant="ghost" asChild>
-                <UserButton
-                  disableDefaultLinks={true}
-                  size="sm"
-                  variant="ghost"
-                />
-              </Button>
+              {!session.isPending && (
+                <>
+                  {session.data?.user ? (
+                    <Button variant="ghost" asChild>
+                      <UserButton
+                        disableDefaultLinks={true}
+                        size="sm"
+                        variant="ghost"
+                      />
+                    </Button>
+                  ) : (
+                    <>
+                      <Button variant="ghost" asChild>
+                        <Link to="/auth/sign-in">Sign in</Link>
+                      </Button>
+                      <Button variant="outline" asChild>
+                        <Link to="/auth/sign-up">Sign up</Link>
+                      </Button>
+                    </>
+                  )}
+                </>
+              )}
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
