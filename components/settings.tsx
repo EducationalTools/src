@@ -587,63 +587,65 @@ export default function Settings() {
                 </div>
               </div>
 
-              <Separator />
-
               {/* Delete account */}
               {session.data?.user && (
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-col gap-1">
-                      <p className="text-sm font-medium leading-none">
-                        Delete Account
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        Delete your account and all associated data. This action
-                        cannot be undone.
-                      </p>
-                    </div>
-                    <AlertDialog>
-                      <AlertDialogTrigger asChild>
-                        <Button variant="destructive" size="sm">
-                          <AlertTriangle className="h-4 w-4" />
+                <>
+                  <Separator />
+
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col gap-1">
+                        <p className="text-sm font-medium leading-none">
                           Delete Account
-                        </Button>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle className="flex items-center gap-2">
-                            <AlertTriangle className="h-5 w-5 text-destructive" />
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Delete your account and all associated data. This
+                          action cannot be undone.
+                        </p>
+                      </div>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button variant="destructive" size="sm">
+                            <AlertTriangle className="h-4 w-4" />
                             Delete Account
-                          </AlertDialogTitle>
-                          <AlertDialogDescription className="grid gap-2">
-                            This will permanently delete your account and all
-                            associated data. This action cannot be undone.
-                            <div className="p-2 border rounded-xl flex flex-row gap-2 items-center">
-                              <UserButton
-                                variant="ghost"
-                                className="w-full pointer-events-none [&>svg]:hidden justify-start"
-                              />
-                            </div>
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          <AlertDialogAction
-                            onClick={async () => {
-                              setLoadingOverlayOpen(true);
-                              setLoadingOverlayMessage("Deleting account...");
-                              await authClient.deleteUser();
-                              setLoadingOverlayOpen(false);
-                            }}
-                            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                          >
-                            Delete Account
-                          </AlertDialogAction>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle className="flex items-center gap-2">
+                              <AlertTriangle className="h-5 w-5 text-destructive" />
+                              Delete Account
+                            </AlertDialogTitle>
+                            <AlertDialogDescription className="grid gap-2">
+                              This will permanently delete your account and all
+                              associated data. This action cannot be undone.
+                              <div className="p-2 border rounded-xl flex flex-row gap-2 items-center">
+                                <UserButton
+                                  variant="ghost"
+                                  className="w-full pointer-events-none [&>svg]:hidden justify-start"
+                                />
+                              </div>
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={async () => {
+                                setLoadingOverlayOpen(true);
+                                setLoadingOverlayMessage("Deleting account...");
+                                await authClient.deleteUser();
+                                setLoadingOverlayOpen(false);
+                              }}
+                              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                            >
+                              Delete Account
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
                   </div>
-                </div>
+                </>
               )}
             </CardContent>
           </Card>
