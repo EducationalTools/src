@@ -44,6 +44,7 @@ import { toast } from "sonner";
 import { useCloak } from "@/hooks/use-cloak";
 import { MotionConfig } from "motion/react";
 import { NICE_EASE } from "@/lib/constants";
+import LoadingOverlay from "@/components/loading-overlay";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -211,6 +212,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <Search />
               <Settings />
               <Toaster />
+              <LoadingOverlay />
             </AuthUIProvider>
           </MotionConfig>
         </ConvexBetterAuthProvider>
