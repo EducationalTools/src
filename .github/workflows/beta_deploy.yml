@@ -1,4 +1,4 @@
-name: 'Beta Deployment'
+name: "Beta Deployment"
 
 on:
   push:
@@ -20,19 +20,20 @@ jobs:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_PRIVATE_KEY }}
 
-      - uses: pnpm/action-setup@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          version: 10
+          bun-version: latest
 
       - name: Install dependencies
         run: |
-          pnpm install
+          bun install
 
       - name: Build
         env:
           PUBLIC_CONVEX_URL: ${{ secrets.PUBLIC_CONVEX_URL }}
         run: |
-          pnpm run build
+          bun run build
+          cp build/client/index.html build/client/404.html
 
       - name: Deploy to repo
         uses: peaceiris/actions-gh-pages@v4
@@ -40,6 +41,6 @@ jobs:
           personal_token: ${{ steps.app-token.outputs.token }}
           external_repository: EducationalTools-Beta/EducationalTools-Beta.github.io
           publish_branch: main
-          publish_dir: ./build
-          user_name: 'edutools-bot[bot]'
-          user_email: '1183662+edutools-bot[bot]@users.noreply.github.com'
+          publish_dir: ./build/client
+          user_name: "edutools-bot[bot]"
+          user_email: "1183662+edutools-bot[bot]@users.noreply.github.com"
