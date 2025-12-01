@@ -8,23 +8,25 @@ import {
   CommandList,
   CommandShortcut,
 } from "@/components/ui/command";
-import { MENU_ITEMS } from "@/lib/menu";
-import { useNavigate } from "react-router";
-import { ArrowRight } from "lucide-react";
+import { Settings } from "lucide-react";
 
 export default function CommandPalette() {
   const commandPaletteOpen = useUiState((state) => state.commandPaletteOpen);
   const setCommandPaletteOpen = useUiState(
     (state) => state.setCommandPaletteOpen
   );
-  const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
-  );
-  const navigate = useNavigate();
+  const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
 
-  const menuItems = MENU_ITEMS.filter(
-    (item) => !(item.experimental && !experimentalFeatures)
-  );
+  const items = [
+    {
+      label: "Settings",
+      icon: Settings,
+      onSelect: () => {
+        setSettingsOpen(true);
+      },
+      kbd: "⌘ ,",
+    },
+  ];
 
   return (
     <CommandDialog
@@ -35,48 +37,21 @@ export default function CommandPalette() {
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup>
-          {menuItems
-            .filter((item) => item.href && !item.newTab)
-            .map((item) => (
-              <CommandItem
-                key={item.href}
-                value={item.href}
-                onSelect={() => {
-                  navigate({ pathname: item.href });
-                  setCommandPaletteOpen(false);
-                }}
-              >
-                {item.icon ? <item.icon /> : <ArrowRight />}
-                {item.label}
-                {item.kbd && <CommandShortcut>{item.kbd}</CommandShortcut>}
-              </CommandItem>
-            ))}
-        </CommandGroup>
-        {menuItems
-          .filter((item) => item.children)
-          .map((item) => (
-            <CommandGroup key={item.label} heading={item.label}>
-              {item.children &&
-                item.children
-                  .filter((item) => item.href && !item.newTab)
-                  .map((item) => (
-                    <CommandItem
-                      key={item.href}
-                      value={item.href}
-                      onSelect={() => {
-                        navigate({ pathname: item.href });
-                        setCommandPaletteOpen(false);
-                      }}
-                    >
-                      {item.icon ? <item.icon /> : <ArrowRight />}
-                      {item.label}
-                      {item.kbd && (
-                        <CommandShortcut>{item.kbd}</CommandShortcut>
-                      )}
-                    </CommandItem>
-                  ))}
-            </CommandGroup>
+          {items.map((item) => (
+            <CommandItem
+              key={item.label}
+              value={item.label}
+              onSelect={() => {
+                item.onSelect();
+                setCommandPaletteOpen(false);
+              }}
+            >
+              {item.icon && <item.icon />}
+              {item.label}
+              {item.kbd && <CommandShortcut>{item.kbd}</CommandShortcut>}
+            </CommandItem>
           ))}
+        </CommandGroup>
       </CommandList>
     </CommandDialog>
   );
