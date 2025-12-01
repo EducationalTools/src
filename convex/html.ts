@@ -1,11 +1,11 @@
 export function generateAuthPage(
-	host: string,
-	name: string,
-	redirectUrl: string,
-	continueUrl: string,
-	trusted: boolean
+  host: string,
+  name: string,
+  redirectUrl: string,
+  continueUrl: string,
+  trusted: boolean
 ) {
-	return `
+  return `
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -307,6 +307,30 @@ export function generateAuthPage(
             Consolas, "Courier New", monospace;
         }
 
+        .kbd-hint {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.25rem;
+          margin-left: 0.5rem;
+          font-size: 0.75rem;
+          opacity: 0.7;
+        }
+
+        kbd {
+          display: inline-block;
+          padding: 0.125rem 0.375rem;
+          font-size: 0.6875rem;
+          font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
+            Consolas, "Courier New", monospace;
+          line-height: 1.5;
+          color: var(--muted-foreground);
+          background: var(--muted);
+          border: 1px solid var(--border);
+          border-radius: calc(var(--radius) - 4px);
+          box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+          font-weight: 500;
+        }
+
         @media (max-width: 480px) {
           .card {
             padding: 1.75rem 1.25rem;
@@ -349,41 +373,41 @@ export function generateAuthPage(
           <div class="host-container">
             <div class="host" id="hostName">${host}</div>
             ${
-							trusted
-								? `<div class="trusted-chip">
+              trusted
+                ? `<div class="trusted-chip">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
               Trusted
             </div>`
-								: ''
-						}
+                : ""
+            }
           </div>
         </div>
         ${
-					!trusted
-						? `<div class="warning">
+          !trusted
+            ? `<div class="warning">
           This mirror is not hosted by EduTools. Make sure you trust the person hosting this mirror. Only continue if you initiated this login.
         </div>`
-						: ''
-				}
+            : ""
+        }
         <div class="button-group">
           <button class="btn-secondary" onclick="handleCancel()">
-            Cancel
+            Cancel<span class="kbd-hint"><kbd>Esc</kbd></span>
           </button>
           <button
             class="btn-primary"
             id="continueBtn"
             onclick="handleContinue()"
-            ${!trusted ? 'disabled' : ''}
+            ${!trusted ? "disabled" : ""}
           >
-            ${!trusted ? `Continue (<span id="countdown">3</span>)` : 'Continue'}
+            ${!trusted ? `Continue (<span id="countdown">3</span>)` : 'Continue<span class="kbd-hint"><kbd>↵</kbd></span>'}
           </button>
         </div>
       </div>
 
       <div class="footer-info">
         ${
-					!trusted
-						? `<div class="security-notice">
+          !trusted
+            ? `<div class="security-notice">
           <div class="security-notice-title">Seeing this unexpectedly?</div>
           <div class="security-notice-text">
             If you didn't initiate this login, someone may be attempting to
@@ -391,8 +415,8 @@ export function generateAuthPage(
             account security.
           </div>
         </div>`
-						: ''
-				}
+            : ""
+        }
 
         <div class="redirect-info">
           <div class="redirect-label">Redirect URL</div>
@@ -419,7 +443,7 @@ export function generateAuthPage(
             if (countdown === 0) {
               clearInterval(interval);
               continueBtn.disabled = false;
-              continueBtn.textContent = "Continue";
+              continueBtn.innerHTML = 'Continue<span class="kbd-hint"><kbd>↵</kbd></span>';
               continueBtn.classList.remove("loading");
             }
           }, 1000);
@@ -434,13 +458,23 @@ export function generateAuthPage(
         function handleCancel() {
           history.back();
         }
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" && !continueBtn.disabled) {
+            e.preventDefault();
+            handleContinue();
+          } else if (e.key === "Escape") {
+            e.preventDefault();
+            handleCancel();
+          }
+        });
       </script>
     </body>
   </html>`;
 }
 
 export function generateErrorPage(errorMessage: string) {
-	return `
+  return `
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -614,6 +648,52 @@ export function generateErrorPage(errorMessage: string) {
           line-height: 1.6;
         }
 
+        .error-actions {
+          margin-top: 1.5rem;
+        }
+
+        .btn-back {
+          width: 100%;
+          padding: 0.75rem 1.5rem;
+          border-radius: var(--radius);
+          font-size: 0.9375rem;
+          font-weight: 600;
+          cursor: pointer;
+          border: none;
+          transition: all 0.2s;
+          background: var(--secondary);
+          color: var(--secondary-foreground);
+          border: 1px solid var(--border);
+        }
+
+        .btn-back:hover {
+          background: var(--accent);
+        }
+
+        .kbd-hint {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.25rem;
+          margin-left: 0.5rem;
+          font-size: 0.75rem;
+          opacity: 0.7;
+        }
+
+        kbd {
+          display: inline-block;
+          padding: 0.125rem 0.375rem;
+          font-size: 0.6875rem;
+          font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
+            Consolas, "Courier New", monospace;
+          line-height: 1.5;
+          color: var(--muted-foreground);
+          background: var(--muted);
+          border: 1px solid var(--border);
+          border-radius: calc(var(--radius) - 4px);
+          box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+          font-weight: 500;
+        }
+
         @media (max-width: 480px) {
           .card {
             padding: 1.75rem 1.25rem;
@@ -663,7 +743,26 @@ export function generateErrorPage(errorMessage: string) {
         </div>
 
         <div class="error-message">${errorMessage}</div>
+
+        <div class="error-actions">
+          <button class="btn-back" onclick="handleGoBack()">
+            Go Back<span class="kbd-hint"><kbd>Esc</kbd></span>
+          </button>
+        </div>
       </div>
+
+      <script>
+        function handleGoBack() {
+          history.back();
+        }
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            e.preventDefault();
+            handleGoBack();
+          }
+        });
+      </script>
     </body>
   </html>`;
 }
