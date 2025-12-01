@@ -29,6 +29,10 @@ interface UiState {
   setSettingsOpen: (open: boolean) => void;
   panicModeActivated: boolean;
   setPanicModeActivated: (activated: boolean) => void;
+  loadingOverlayOpen: boolean;
+  setLoadingOverlayOpen: (open: boolean) => void;
+  loadingOverlayMessage: string;
+  setLoadingOverlayMessage: (message: string) => void;
 }
 
 export const useUiState = create<UiState>((set) => ({
@@ -39,6 +43,11 @@ export const useUiState = create<UiState>((set) => ({
   panicModeActivated: false,
   setPanicModeActivated: (activated: boolean) =>
     set({ panicModeActivated: activated }),
+  loadingOverlayOpen: false,
+  setLoadingOverlayOpen: (open: boolean) => set({ loadingOverlayOpen: open }),
+  loadingOverlayMessage: "",
+  setLoadingOverlayMessage: (message: string) =>
+    set({ loadingOverlayMessage: message }),
 }));
 
 interface SettingsState {
