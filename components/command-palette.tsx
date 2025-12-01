@@ -17,7 +17,12 @@ export default function CommandPalette() {
   );
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
 
-  const items = [
+  const items: {
+    label: string;
+    icon?: React.ComponentType;
+    onSelect: () => void;
+    kbd?: string;
+  }[] = [
     {
       label: "Settings",
       icon: Settings,
