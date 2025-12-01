@@ -27,6 +27,8 @@ interface UiState {
   setSearchOpen: (open: boolean) => void;
   settingsOpen: boolean;
   setSettingsOpen: (open: boolean) => void;
+  commandPaletteOpen: boolean;
+  setCommandPaletteOpen: (open: boolean) => void;
   panicModeActivated: boolean;
   setPanicModeActivated: (activated: boolean) => void;
   loadingOverlayOpen: boolean;
@@ -40,6 +42,8 @@ export const useUiState = create<UiState>((set) => ({
   setSearchOpen: (open: boolean) => set({ searchOpen: open }),
   settingsOpen: false,
   setSettingsOpen: (open: boolean) => set({ settingsOpen: open }),
+  commandPaletteOpen: false,
+  setCommandPaletteOpen: (open: boolean) => set({ commandPaletteOpen: open }),
   panicModeActivated: false,
   setPanicModeActivated: (activated: boolean) =>
     set({ panicModeActivated: activated }),
