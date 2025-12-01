@@ -8,6 +8,9 @@ import { useNavigate } from "react-router";
 
 export default function Hotkeys() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
+  const setCommandPaletteOpen = useUiState(
+    (state) => state.setCommandPaletteOpen
+  );
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
   const experimental = useExperimentalFeatures((state) => state.enabled);
   const setExperimentalEnabled = useExperimentalFeatures(
@@ -20,6 +23,9 @@ export default function Hotkeys() {
   );
 
   useHotkeys("mod+k", () => setSearchOpen(true), {
+    preventDefault: true,
+  });
+  useHotkeys("mod+p", () => setCommandPaletteOpen(true), {
     preventDefault: true,
   });
   useHotkeys("mod+comma", () => setSettingsOpen(true), {
