@@ -40,6 +40,7 @@ import {
   RotateCcw,
   AlertTriangle,
   Gauge,
+  Laptop,
 } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { cn } from "@/lib/utils";
@@ -55,6 +56,16 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import {
+  AccountSettingsCards,
+  ProvidersCard,
+  SecuritySettingsCards,
+  SessionsCard,
+  UpdateAvatarCard,
+  UpdateNameCard,
+} from "@daveyplate/better-auth-ui";
+import { authClient } from "@/lib/auth-client";
+import { DialogTrigger } from "@radix-ui/react-dialog";
 
 export default function Settings() {
   const open = useUiState((state) => state.settingsOpen);
@@ -90,6 +101,8 @@ export default function Settings() {
     (state) => state.setDisableAnimations
   );
 
+  const session = authClient.useSession();
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="max-h-[85vh] overflow-y-auto max-w-7xl! w-[90vw]">
@@ -97,6 +110,35 @@ export default function Settings() {
           <DialogTitle>Settings</DialogTitle>
         </DialogHeader>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {session.data?.user && (
+            <>
+              <div className="grid gap-4">
+                <UpdateNameCard />
+                <UpdateAvatarCard />
+              </div>
+              <div className="flex flex-col gap-4 h-full">
+                <ProvidersCard className="grow" />
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="lg"
+                      className="border rounded-xl"
+                    >
+                      <Laptop />
+                      Sessions
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="p-0">
+                    <DialogHeader className="sr-only">
+                      <DialogTitle>Sessions</DialogTitle>
+                    </DialogHeader>
+                    <SessionsCard className="border-0" />
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </>
+          )}
           {/* Appearance Section */}
           <Card className="gap-0 pb-0 overflow-hidden">
             <CardHeader>
