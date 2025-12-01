@@ -45,6 +45,7 @@ import { useCloak } from "@/hooks/use-cloak";
 import { MotionConfig } from "motion/react";
 import { NICE_EASE } from "@/lib/constants";
 import LoadingOverlay from "@/components/loading-overlay";
+import CommandPalette from "@/components/command-palette";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "EduTools" }];
@@ -210,6 +211,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <Scripts />
               <Hotkeys />
               <Search />
+              <CommandPalette />
               <Settings />
               <Toaster />
               <LoadingOverlay />
