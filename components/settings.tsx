@@ -150,15 +150,15 @@ export default function Settings() {
             </>
           )}
           {/* Appearance Section */}
-          <Card className="gap-0 pb-0 overflow-hidden">
+          <Card className="gap-0 pb-0 overflow-hidden relative">
             <CardHeader>
               <div className="flex gap-2">
                 <Palette className="h-4 w-4 text-muted-foreground" />
                 <CardTitle>Theme</CardTitle>
-                <ThemeModeSelector className="ml-auto" />
               </div>
             </CardHeader>
             <CardContent className="flex flex-col gap-4 p-0 h-full">
+              <ThemeModeSelector className="absolute right-4 top-4" />
               <ThemeSelector />
             </CardContent>
           </Card>
