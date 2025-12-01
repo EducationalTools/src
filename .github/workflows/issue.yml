@@ -1,0 +1,27 @@
+name: 'On Issue Opened'
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+jobs:
+  issue_response:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # Needed to comment on issues
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_PRIVATE_KEY }}
+      - run: |
+          python -m venv venv
+          venv/bin/pip install requests googlesearch-python
+      - run: venv/bin/python ci/scripts/issue.py -n ${{ github.event.issue.number }} -t ${{ steps.app-token.outputs.token }}

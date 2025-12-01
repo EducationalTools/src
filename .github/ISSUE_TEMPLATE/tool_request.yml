@@ -1,0 +1,20 @@
+name: Tool request
+description: Request a tool to be added
+title: '[Tool Request] <name here>'
+labels: ['tool']
+type: 'Feature'
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the tool does.
+    validations:
+      required: true
+  - type: input
+    id: tool-link
+    attributes:
+      label: Tool Link
+      description: A link to an implementation of the tool.
+    validations:
+      required: true

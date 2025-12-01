@@ -1,0 +1,45 @@
+name: 'Beta Deployment'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          owner: EducationalTools-Beta
+          repositories: |
+            EducationalTools-Beta.github.io
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_PRIVATE_KEY }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: |
+          pnpm install
+
+      - name: Build
+        env:
+          PUBLIC_CONVEX_URL: ${{ secrets.PUBLIC_CONVEX_URL }}
+        run: |
+          pnpm run build
+
+      - name: Deploy to repo
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ steps.app-token.outputs.token }}
+          external_repository: EducationalTools-Beta/EducationalTools-Beta.github.io
+          publish_branch: main
+          publish_dir: ./build
+          user_name: 'edutools-bot[bot]'
+          user_email: '1183662+edutools-bot[bot]@users.noreply.github.com'
