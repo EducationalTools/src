@@ -57,5 +57,5 @@
 }
 
 .theme-ingo-au.dark * {
-  @apply border-dashed;
+  @apply border-dashed! rounded-none! drop-shadow-none! shadow-none!;
 }
