@@ -18,6 +18,13 @@ export default function CommandPalette() {
   );
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
 
+  const setLoadingOverlayOpen = useUiState(
+    (state) => state.setLoadingOverlayOpen
+  );
+  const setLoadingOverlayMessage = useUiState(
+    (state) => state.setLoadingOverlayMessage
+  );
+
   const session = authClient.useSession();
 
   const items: {
@@ -39,8 +46,11 @@ export default function CommandPalette() {
           {
             label: "Sign out",
             icon: LogOut,
-            onSelect: () => {
-              authClient.signOut();
+            onSelect: async () => {
+              setLoadingOverlayOpen(true);
+              setLoadingOverlayMessage("Signing out...");
+              await authClient.signOut();
+              setLoadingOverlayOpen(false);
             },
           },
         ]
@@ -51,13 +61,16 @@ export default function CommandPalette() {
         ].map((item) => ({
           label: "Continue with " + item.label,
           icon: LogIn,
-          onSelect: () => {
+          onSelect: async () => {
             const convexSiteUrl = new URL(import.meta.env.VITE_CONVEX_SITE_URL);
 
             const redirectUrl = new URL("/auth", convexSiteUrl);
             redirectUrl.searchParams.set("redirect", window.location.href);
 
-            authClient.signIn.social({
+            setLoadingOverlayOpen(true);
+            setLoadingOverlayMessage("Signing in...");
+
+            await authClient.signIn.social({
               provider: item.id,
               callbackURL: redirectUrl.toString(),
             });

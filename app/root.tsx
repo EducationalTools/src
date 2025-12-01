@@ -146,6 +146,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
     children: React.ReactNode;
   }) => <Link to={href} {...props} />;
 
+  const setLoadingOverlayOpen = useUiState(
+    (state) => state.setLoadingOverlayOpen
+  );
+  const setLoadingOverlayMessage = useUiState(
+    (state) => state.setLoadingOverlayMessage
+  );
+
   return (
     <html className="theme-default dark" lang="en">
       <head>
@@ -177,6 +184,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     "redirect",
                     params.callbackURL || ""
                   );
+
+                  setLoadingOverlayOpen(true);
+                  setLoadingOverlayMessage("Signing in...");
 
                   return authClient.signIn.social({
                     ...params,
