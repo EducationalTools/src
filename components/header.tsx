@@ -80,7 +80,11 @@ export default function Header() {
           </motion.div>
         )}
         {experimentalFeatures && (
-          <motion.div layout key="header-sidebar" transition={{ duration: 0.2 }}>
+          <motion.div
+            layout
+            key="header-sidebar"
+            transition={{ duration: 0.2 }}
+          >
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -108,7 +112,11 @@ export default function Header() {
           {experimentalFeatures && (
             <>
               <Button variant="ghost" asChild>
-                <UserButton size="sm" variant="ghost" />
+                <UserButton
+                  disableDefaultLinks={true}
+                  size="sm"
+                  variant="ghost"
+                />
               </Button>
               <Tooltip>
                 <TooltipTrigger asChild>
