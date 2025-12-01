@@ -58,11 +58,14 @@ import {
 } from "@/components/ui/alert-dialog";
 import {
   AccountSettingsCards,
+  DeleteAccountCard,
   ProvidersCard,
   SecuritySettingsCards,
   SessionsCard,
   UpdateAvatarCard,
   UpdateNameCard,
+  UserAvatar,
+  UserButton,
 } from "@daveyplate/better-auth-ui";
 import { authClient } from "@/lib/auth-client";
 import { DialogTrigger } from "@radix-ui/react-dialog";
@@ -576,6 +579,62 @@ export default function Settings() {
                   </AlertDialog>
                 </div>
               </div>
+
+              <Separator />
+
+              {/* Delete account */}
+              {session.data?.user && (
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-col gap-1">
+                      <p className="text-sm font-medium leading-none">
+                        Delete Account
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Delete your account and all associated data. This action
+                        cannot be undone.
+                      </p>
+                    </div>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button variant="destructive" size="sm">
+                          <AlertTriangle className="h-4 w-4" />
+                          Delete Account
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle className="flex items-center gap-2">
+                            <AlertTriangle className="h-5 w-5 text-destructive" />
+                            Delete Account
+                          </AlertDialogTitle>
+                          <AlertDialogDescription className="grid gap-2">
+                            This will permanently delete your account and all
+                            associated data. This action cannot be undone.
+                            <div className="p-2 border rounded-xl flex flex-row gap-2 items-center">
+                              <UserButton
+                                variant="ghost"
+                                className="w-full pointer-events-none [&>svg]:hidden justify-start"
+                              />
+                            </div>
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => {
+                              authClient.deleteUser();
+                            }}
+                            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                          >
+                            Delete Account
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
