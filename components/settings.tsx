@@ -104,6 +104,13 @@ export default function Settings() {
     (state) => state.setDisableAnimations
   );
 
+  const setLoadingOverlayOpen = useUiState(
+    (state) => state.setLoadingOverlayOpen
+  );
+  const setLoadingOverlayMessage = useUiState(
+    (state) => state.setLoadingOverlayMessage
+  );
+
   const session = authClient.useSession();
 
   return (
@@ -622,8 +629,11 @@ export default function Settings() {
                         <AlertDialogFooter>
                           <AlertDialogCancel>Cancel</AlertDialogCancel>
                           <AlertDialogAction
-                            onClick={() => {
-                              authClient.deleteUser();
+                            onClick={async () => {
+                              setLoadingOverlayOpen(true);
+                              setLoadingOverlayMessage("Deleting account...");
+                              await authClient.deleteUser();
+                              setLoadingOverlayOpen(false);
                             }}
                             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                           >
