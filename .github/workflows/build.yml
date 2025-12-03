@@ -23,8 +23,8 @@ jobs:
 
       - name: Build
         env:
-          VITE_CONVEX_URL: ${{ secrets.VITE_CONVEX_URL }}
-          VITE_CONVEX_SITE_URL: ${{ secrets.VITE_CONVEX_SITE_URL }}
+          VITE_CONVEX_URL: ${{ vars.VITE_CONVEX_URL }}
+          VITE_CONVEX_SITE_URL: ${{ vars.VITE_CONVEX_SITE_URL }}
         run: |
           echo "VITE_CONVEX_URL: $VITE_CONVEX_URL"
           bun run build
