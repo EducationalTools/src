@@ -26,6 +26,7 @@ jobs:
           VITE_CONVEX_URL: ${{ env.VITE_CONVEX_URL }}
           VITE_CONVEX_SITE_URL: ${{ env.VITE_CONVEX_SITE_URL }}
         run: |
+          echo "VITE_CONVEX_URL: $VITE_CONVEX_URL"
           bun run build
           cp build/client/index.html build/client/404.html
 
