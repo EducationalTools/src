@@ -27,7 +27,17 @@ export default function Ott() {
         setLoading(false);
       } else {
         toast.success("Logged in");
-        navigate(new URL(redirect || "").pathname);
+        if (redirect && redirect.trim() !== "") {
+          try {
+            const redirectUrl = new URL(redirect);
+            navigate(redirectUrl.pathname);
+          } catch {
+            // If redirect is not a valid URL, treat it as a relative path
+            navigate(redirect);
+          }
+        } else {
+          navigate("/");
+        }
       }
     } catch (error) {
       setMessage("Something went wrong");
