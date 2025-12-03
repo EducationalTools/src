@@ -163,7 +163,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
     ) {
       setExperimentalFeatures(true);
       localStorage.removeItem("preferences");
-      toast.success("Migrated to new EduTools");
+      setTimeout(() => {
+        toast.success("Migrated to new EduTools");
+      }, 500);
     }
   }, []);
 
