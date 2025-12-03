@@ -30,7 +30,8 @@ jobs:
 
       - name: Build
         env:
-          PUBLIC_CONVEX_URL: ${{ secrets.PUBLIC_CONVEX_URL }}
+          VITE_CONVEX_URL: ${{ secrets.VITE_CONVEX_URL }}
+          VITE_CONVEX_SITE_URL: ${{ secrets.VITE_CONVEX_SITE_URL }}
         run: |
           bun run build
           cp build/client/index.html build/client/404.html
