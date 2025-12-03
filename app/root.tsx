@@ -61,7 +61,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const convex = new ConvexReactClient(
-    import.meta.env.VITE_CONVEX_URL as string
+    import.meta.env.VITE_CONVEX_URL as string,
   );
   const navigate = useNavigate();
   const [baseUrl, setBaseUrl] = useState<string>("");
@@ -72,17 +72,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   const theme = useSettingsState((state) => state.theme);
   const disableBlurBehind = useSettingsState(
-    (state) => state.disableBlurBehind
+    (state) => state.disableBlurBehind,
   );
   const disableAllBlur = useSettingsState((state) => state.disableAllBlur);
   const disableAnimations = useSettingsState(
-    (state) => state.disableAnimations
+    (state) => state.disableAnimations,
   );
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
+    (state) => state.enabled,
   );
   const setExperimentalFeatures = useExperimentalFeatures(
-    (state) => state.setEnabled
+    (state) => state.setEnabled,
   );
   const panicModeActivated = useUiState((state) => state.panicModeActivated);
 
@@ -150,10 +150,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }) => <Link to={href} {...props} />;
 
   const setLoadingOverlayOpen = useUiState(
-    (state) => state.setLoadingOverlayOpen
+    (state) => state.setLoadingOverlayOpen,
   );
   const setLoadingOverlayMessage = useUiState(
-    (state) => state.setLoadingOverlayMessage
+    (state) => state.setLoadingOverlayMessage,
   );
 
   useEffect(() => {
@@ -202,13 +202,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   providers: ["github", "google", "discord"],
                   signIn: (params) => {
                     const convexSiteUrl = new URL(
-                      import.meta.env.VITE_CONVEX_SITE_URL
+                      import.meta.env.VITE_CONVEX_SITE_URL,
                     );
 
                     const redirectUrl = new URL("/auth", convexSiteUrl);
                     redirectUrl.searchParams.set(
                       "redirect",
-                      params.callbackURL || ""
+                      params.callbackURL || "",
                     );
 
                     setLoadingOverlayOpen(true);
@@ -233,7 +233,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     <AppSidebar />
                     <div
                       className={cn(
-                        "flex flex-col w-full p-2 pt-0 md:pl-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:pl-2 duration-200"
+                        "flex flex-col w-full p-2 pt-0 md:pl-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:pl-2 duration-200",
                       )}
                     >
                       <Header />
