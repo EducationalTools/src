@@ -4,13 +4,10 @@ A minimal site with a bunch of educational tools (and not games trust me bro)
 
 ## Developing
 
-Once you've created a project and installed dependencies with `pnpm install`, start a development server:
+Once you've created a project and installed dependencies with `bun install`, start a development server:
 
 ```bash
-pnpm dev
-
-# or start the server and open the app in a new browser tab
-pnpm dev --open
+bun run dev
 ```
 
 ## Building
@@ -18,10 +15,8 @@ pnpm dev --open
 To create a production version of your app:
 
 ```bash
-pnpm build
+bun run build
 ```
-
-You can preview the production build with `pnpm preview`.
 
 ## Contributing
 

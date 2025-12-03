@@ -12,22 +12,28 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - uses: pnpm/action-setup@v4
         with:
-          version: 10
+          submodules: recursive
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
 
       - name: Install dependencies
         run: |
-          pnpm install
+          bun install
 
       - name: Build
         env:
-          PUBLIC_CONVEX_URL: ${{ secrets.PUBLIC_CONVEX_URL }}
+          VITE_CONVEX_URL: ${{ vars.VITE_CONVEX_URL }}
+          VITE_CONVEX_SITE_URL: ${{ vars.VITE_CONVEX_SITE_URL }}
+          VITE_PUBLIC_POSTHOG_HOST: ${{ vars.VITE_PUBLIC_POSTHOG_HOST }}
+          VITE_PUBLIC_POSTHOG_KEY: ${{ vars.VITE_PUBLIC_POSTHOG_KEY }}
         run: |
-          pnpm run build
+          bun run build
+          cp build/client/index.html build/client/404.html
 
       - uses: actions/upload-artifact@v4
         with:
           name: Build
-          path: ./build
+          path: ./build/client

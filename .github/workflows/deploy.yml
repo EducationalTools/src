@@ -13,20 +13,26 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - uses: pnpm/action-setup@v4
         with:
-          version: 10
+          submodules: recursive
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
 
       - name: Install dependencies
         run: |
-          pnpm install
+          bun install
 
       - name: Build
         env:
-          PUBLIC_CONVEX_URL: ${{ secrets.PUBLIC_CONVEX_URL }}
+          VITE_CONVEX_URL: ${{ vars.VITE_CONVEX_URL }}
+          VITE_CONVEX_SITE_URL: ${{ vars.VITE_CONVEX_SITE_URL }}
+          VITE_PUBLIC_POSTHOG_HOST: ${{ vars.VITE_PUBLIC_POSTHOG_HOST }}
+          VITE_PUBLIC_POSTHOG_KEY: ${{ vars.VITE_PUBLIC_POSTHOG_KEY }}
         run: |
-          pnpm run build
+          bun run build
+          cp build/client/index.html build/client/404.html
 
       - name: Deploy to repo
         uses: peaceiris/actions-gh-pages@v4
@@ -34,14 +40,14 @@ jobs:
           personal_token: ${{ secrets.GH_PAGES_SECRET }}
           external_repository: EducationalTools/EducationalTools.github.io
           publish_branch: main # default: gh-pages
-          publish_dir: ./build
+          publish_dir: ./build/client
 
       - name: Deploy to vercel repo
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.VERCEL_REPO_SECRET }}
-          external_repository: 'Inglan/EduTools-Vercel'
+          external_repository: "Inglan/EduTools-Vercel"
           publish_branch: main # default: gh-pages
-          publish_dir: ./build
-          user_name: 'Ingo Wolf'
-          user_email: 'me@ingowolf.au'
+          publish_dir: ./build/client
+          user_name: "Ingo Wolf"
+          user_email: "me@ingowolf.au"
