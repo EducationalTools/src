@@ -1,0 +1,56 @@
+.theme-noeco.dark {
+  --background: #1f1e1e;
+  --foreground: #ffffff;
+  --card: #151414;
+  --card-foreground: #ffffff;
+  --popover: #151414;
+  --popover-foreground: #ffffff;
+  --primary: #e71c26;
+  --primary-foreground: #ffffff;
+  --secondary: #151414;
+  --secondary-foreground: #ffffff;
+  --muted: #484848;
+  --muted-foreground: #ffffff;
+  --accent: #484848;
+  --accent-foreground: #ffffff;
+  --destructive: #e71c26;
+  --destructive-foreground: #ffffff;
+  --border: #484848;
+  --input: #484848;
+  --ring: #484848;
+  --chart-1: #91c5ff;
+  --chart-2: #3a81f6;
+  --chart-3: #2563ef;
+  --chart-4: #1a4eda;
+  --chart-5: #1f3fad;
+  --sidebar: #151414;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #e71c26;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #484848;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #484848;
+  --sidebar-ring: #484848;
+  --font-sans: Schibsted Grotesk, ui-sans-serif, sans-serif, system-ui;
+  --font-serif: Schibsted Grotesk, ui-sans-serif, sans-serif, system-ui;
+  --font-mono: Geist Mono, ui-monospace, monospace;
+  --radius: 0.5rem;
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: oklch(0 0 0);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow-md:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+  --shadow-lg:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+  --shadow-xl:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+}

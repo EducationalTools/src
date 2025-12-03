@@ -17,12 +17,12 @@ jobs:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
 
-      - uses: pnpm/action-setup@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          version: 10
+          bun-version: latest
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
 
       - name: Prettify code
         uses: creyD/prettier_action@v4.3

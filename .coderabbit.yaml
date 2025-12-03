@@ -5,7 +5,7 @@ reviews:
   poem: false
   profile: chill
   path_instructions:
-    - path: '**/*.*'
+    - path: "**/*.*"
       instructions: |
         Do not correct spelling errors or grammar mistakes.
   auto_review:

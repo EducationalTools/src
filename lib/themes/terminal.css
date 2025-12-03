@@ -1,0 +1,62 @@
+.theme-terminal.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+  --popover: #0a0a0a;
+  --popover-foreground: #22ff22;
+  --primary: #22ff22;
+  --primary-foreground: #000000;
+  --secondary: #151515;
+  --secondary-foreground: #22ee22;
+  --muted: #050505;
+  --muted-foreground: #11dd11;
+  --accent: #003300;
+  --accent-foreground: #22ff22;
+  --destructive: #ff3333;
+  --destructive-foreground: #000000;
+  --border: #227722;
+  --input: #0a0a0a;
+  --ring: #22ff22;
+  --chart-1: #22ff22;
+  --chart-2: #11ee11;
+  --chart-3: #00cc00;
+  --chart-4: #009900;
+  --chart-5: #006600;
+  --sidebar: #050505;
+  --sidebar-foreground: #22ff22;
+  --sidebar-primary: #22ff22;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #003300;
+  --sidebar-accent-foreground: #22ff22;
+  --sidebar-border: #22ff22;
+  --sidebar-ring: #22ff22;
+  --font-sans: "Fira Code", "Cascadia Code", "Hack", monospace;
+  --font-serif: "Fira Code", "Cascadia Code", "Hack", monospace;
+  --font-mono: "Fira Code", "Cascadia Code", "Hack", monospace;
+  --radius: 0.3rem;
+  --shadow-x: 0px;
+  --shadow-y: 0px;
+  --shadow-blur: 0.4rem;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.25;
+  --shadow-color: #22ff22;
+  --shadow-2xs: 0px 0px 0.4rem 0px hsl(120 100% 56.6667% / 0.13);
+  --shadow-xs: 0px 0px 0.4rem 0px hsl(120 100% 56.6667% / 0.13);
+  --shadow-sm:
+    0px 0px 0.4rem 0px hsl(120 100% 56.6667% / 0.25),
+    0px 1px 2px -1px hsl(120 100% 56.6667% / 0.25);
+  --shadow:
+    0px 0px 0.4rem 0px hsl(120 100% 56.6667% / 0.25),
+    0px 1px 2px -1px hsl(120 100% 56.6667% / 0.25);
+  --shadow-md:
+    0px 0px 0.4rem 0px hsl(120 100% 56.6667% / 0.25),
+    0px 2px 4px -1px hsl(120 100% 56.6667% / 0.25);
+  --shadow-lg:
+    0px 0px 0.4rem 0px hsl(120 100% 56.6667% / 0.25),
+    0px 4px 6px -1px hsl(120 100% 56.6667% / 0.25);
+  --shadow-xl:
+    0px 0px 0.4rem 0px hsl(120 100% 56.6667% / 0.25),
+    0px 8px 10px -1px hsl(120 100% 56.6667% / 0.25);
+  --shadow-2xl: 0px 0px 0.4rem 0px hsl(120 100% 56.6667% / 0.63);
+}

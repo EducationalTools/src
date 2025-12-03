@@ -1,7 +1,0 @@
-# Package Managers
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
-static/_app/tools
-src/convex/_generated
-convex.json
