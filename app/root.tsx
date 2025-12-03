@@ -13,6 +13,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
+import { PostHogProvider } from "posthog-js/react";
 import {
   SidebarInset,
   SidebarProvider,
@@ -60,7 +61,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const convex = new ConvexReactClient(
-    import.meta.env.VITE_CONVEX_URL as string,
+    import.meta.env.VITE_CONVEX_URL as string
   );
   const navigate = useNavigate();
   const [baseUrl, setBaseUrl] = useState<string>("");
@@ -71,14 +72,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   const theme = useSettingsState((state) => state.theme);
   const disableBlurBehind = useSettingsState(
-    (state) => state.disableBlurBehind,
+    (state) => state.disableBlurBehind
   );
   const disableAllBlur = useSettingsState((state) => state.disableAllBlur);
   const disableAnimations = useSettingsState(
-    (state) => state.disableAnimations,
+    (state) => state.disableAnimations
   );
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled,
+    (state) => state.enabled
   );
 
   const panicModeActivated = useUiState((state) => state.panicModeActivated);
@@ -147,10 +148,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }) => <Link to={href} {...props} />;
 
   const setLoadingOverlayOpen = useUiState(
-    (state) => state.setLoadingOverlayOpen,
+    (state) => state.setLoadingOverlayOpen
   );
   const setLoadingOverlayMessage = useUiState(
-    (state) => state.setLoadingOverlayMessage,
+    (state) => state.setLoadingOverlayMessage
   );
 
   return (
@@ -162,72 +163,85 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <ConvexBetterAuthProvider client={convex} authClient={authClient}>
-          <MotionConfig
-            reducedMotion={disableAnimations ? "always" : "user"}
-            transition={{ ease: NICE_EASE }}
-          >
-            <AuthUIProvider
-              authClient={authClient}
-              navigate={navigate}
-              Link={LinkComponent}
-              credentials={false}
-              social={{
-                providers: ["github", "google", "discord"],
-                signIn: (params) => {
-                  const convexSiteUrl = new URL(
-                    import.meta.env.VITE_CONVEX_SITE_URL,
-                  );
-
-                  const redirectUrl = new URL("/auth", convexSiteUrl);
-                  redirectUrl.searchParams.set(
-                    "redirect",
-                    params.callbackURL || "",
-                  );
-
-                  setLoadingOverlayOpen(true);
-                  setLoadingOverlayMessage("Signing in...");
-
-                  return authClient.signIn.social({
-                    ...params,
-                    callbackURL: redirectUrl.toString(),
-                  });
-                },
-              }}
-              deleteUser={true}
-              optimistic={true}
-              avatar={true}
-              changeEmail={false}
-              baseURL={baseUrl}
+        <PostHogProvider
+          apiKey={import.meta.env.VITE_PUBLIC_POSTHOG_KEY}
+          options={{
+            api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
+            defaults: "2025-05-24",
+            capture_exceptions: true,
+            debug: import.meta.env.MODE === "development",
+            person_profiles: "always",
+          }}
+        >
+          <ConvexBetterAuthProvider client={convex} authClient={authClient}>
+            <MotionConfig
+              reducedMotion={disableAnimations ? "always" : "user"}
+              transition={{ ease: NICE_EASE }}
             >
-              {!panicModeActivated && (
-                <SidebarProvider
-                  className={cn(!experimentalFeatures && "md:pl-2")}
-                >
-                  <AppSidebar />
-                  <div
-                    className={cn(
-                      "flex flex-col w-full p-2 pt-0 md:pl-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:pl-2 duration-200",
-                    )}
+              <AuthUIProvider
+                authClient={authClient}
+                navigate={navigate}
+                Link={LinkComponent}
+                credentials={false}
+                social={{
+                  providers: ["github", "google", "discord"],
+                  signIn: (params) => {
+                    const convexSiteUrl = new URL(
+                      import.meta.env.VITE_CONVEX_SITE_URL
+                    );
+
+                    const redirectUrl = new URL("/auth", convexSiteUrl);
+                    redirectUrl.searchParams.set(
+                      "redirect",
+                      params.callbackURL || ""
+                    );
+
+                    setLoadingOverlayOpen(true);
+                    setLoadingOverlayMessage("Signing in...");
+
+                    return authClient.signIn.social({
+                      ...params,
+                      callbackURL: redirectUrl.toString(),
+                    });
+                  },
+                }}
+                deleteUser={true}
+                optimistic={true}
+                avatar={true}
+                changeEmail={false}
+                baseURL={baseUrl}
+              >
+                {!panicModeActivated && (
+                  <SidebarProvider
+                    className={cn(!experimentalFeatures && "md:pl-2")}
                   >
-                    <Header />
-                    <SidebarInset className="w-full rounded-md! overflow-hidden">
-                      <main className="w-full h-full relative">{children}</main>
-                    </SidebarInset>
-                  </div>
-                </SidebarProvider>
-              )}
-              <ScrollRestoration />
-              <Scripts />
-              <Hotkeys />
-              <Search />
-              <CommandPalette />
-              <Settings />
-              <Toaster />
-              <LoadingOverlay />
-            </AuthUIProvider>
-          </MotionConfig>
-        </ConvexBetterAuthProvider>
+                    <AppSidebar />
+                    <div
+                      className={cn(
+                        "flex flex-col w-full p-2 pt-0 md:pl-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:pl-2 duration-200"
+                      )}
+                    >
+                      <Header />
+                      <SidebarInset className="w-full rounded-md! overflow-hidden">
+                        <main className="w-full h-full relative">
+                          {children}
+                        </main>
+                      </SidebarInset>
+                    </div>
+                  </SidebarProvider>
+                )}
+                <ScrollRestoration />
+                <Scripts />
+                <Hotkeys />
+                <Search />
+                <CommandPalette />
+                <Settings />
+                <Toaster />
+                <LoadingOverlay />
+              </AuthUIProvider>
+            </MotionConfig>
+          </ConvexBetterAuthProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
