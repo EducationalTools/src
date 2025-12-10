@@ -1,6 +1,10 @@
-import { createClient, type GenericCtx } from "@convex-dev/better-auth";
+import {
+  AuthFunctions,
+  createClient,
+  type GenericCtx,
+} from "@convex-dev/better-auth";
 import { convex, crossDomain } from "@convex-dev/better-auth/plugins";
-import { components } from "./_generated/api";
+import { components, internal } from "./_generated/api";
 import { DataModel } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 import { betterAuth } from "better-auth";
@@ -10,6 +14,8 @@ import authSchema from "./betterAuth/schema";
 
 const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!; // redirects to the convex deployment, which redirects to the referer. if it works don't touch it
 
+const authFunctions: AuthFunctions = internal.auth;
+
 // The component client has methods needed for integrating Convex with Better Auth,
 // as well as helper methods for general use.
 export const authComponent = createClient<DataModel, typeof authSchema>(
@@ -18,12 +24,20 @@ export const authComponent = createClient<DataModel, typeof authSchema>(
     local: {
       schema: authSchema,
     },
-  },
+    authFunctions,
+    triggers: {
+      user: {
+        onDelete: async (ctx, event) => {
+          console.log("user deleted", event);
+        },
+      },
+    },
+  }
 );
 
 export const createAuth = (
   ctx: GenericCtx<DataModel>,
-  { optionsOnly } = { optionsOnly: false },
+  { optionsOnly } = { optionsOnly: false }
 ) => {
   return betterAuth({
     logger: {
@@ -111,3 +125,5 @@ export const getCurrentUser = query({
     return authComponent.safeGetAuthUser(ctx);
   },
 });
+
+export const { onCreate, onDelete, onUpdate } = authComponent.triggersApi();
