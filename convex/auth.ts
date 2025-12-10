@@ -42,12 +42,12 @@ export const authComponent = createClient<DataModel, typeof authSchema>(
         },
       },
     },
-  }
+  },
 );
 
 export const createAuth = (
   ctx: GenericCtx<DataModel>,
-  { optionsOnly } = { optionsOnly: false }
+  { optionsOnly } = { optionsOnly: false },
 ) => {
   return betterAuth({
     logger: {
