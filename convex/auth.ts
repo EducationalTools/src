@@ -27,8 +27,18 @@ export const authComponent = createClient<DataModel, typeof authSchema>(
     authFunctions,
     triggers: {
       user: {
-        onDelete: async (ctx, event) => {
-          console.log("user deleted", event);
+        onDelete: async (ctx, doc) => {
+          if (!doc?.userId) {
+            return;
+          }
+
+          const backups = await ctx.db
+            .query("backups")
+            .withIndex("by_user", (q) => q.eq("userId", doc.userId as string))
+            .collect();
+          for (const backup of backups) {
+            await ctx.db.delete(backup._id);
+          }
         },
       },
     },
