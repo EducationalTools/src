@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { PiCopy, PiDice, PiArrowClockwise } from "react-icons/pi";
+import { PiCopy, PiArrowClockwise, PiDiceFive } from "react-icons/pi";
 
 export default function RandomNumber() {
   const [min, setMin] = useState(1);
@@ -134,7 +134,7 @@ export default function RandomNumber() {
             className="w-full h-12 text-base font-medium"
             size="lg"
           >
-            <PiDice className="w-5 h-5 mr-2" />
+            <PiDiceFive className="w-5 h-5 mr-2" />
             Generate
           </Button>
 
