@@ -79,7 +79,7 @@
   --accent-foreground: #ffffff;
   --destructive: #f40021;
   --destructive-foreground: #ffffff;
-  --border: #050505;
+  --border: #111111;
   --input: #111111;
   --ring: #222222;
   --chart-1: #daebff;
@@ -93,7 +93,7 @@
   --sidebar-primary-foreground: #000000;
   --sidebar-accent: #111111;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #050505;
+  --sidebar-border: #111111;
   --sidebar-ring: #222222;
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
