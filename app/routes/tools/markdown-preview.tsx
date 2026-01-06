@@ -28,13 +28,13 @@ function parseMarkdown(markdown: string): string {
   // Links
   html = html.replace(
     /\[([^\]]+)\]\(([^)]+)\)/gim,
-    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
   );
 
   // Images
   html = html.replace(
     /!\[([^\]]*)\]\(([^)]+)\)/gim,
-    '<img src="$2" alt="$1" />'
+    '<img src="$2" alt="$1" />',
   );
 
   // Lists
@@ -140,7 +140,7 @@ export default function MarkdownPreview() {
                 onClick={clear}
                 className="h-8 px-2 text-xs"
               >
-                <RefreshCw className="h-3.5 w-3.5 mr-1" />
+                <PiArrowClockwise className="h-3.5 w-3.5 mr-1" />
                 Clear
               </Button>
               <Button
@@ -166,7 +166,7 @@ export default function MarkdownPreview() {
         <Card className="flex flex-col min-h-0 shadow-md">
           <CardHeader className="flex flex-row items-center justify-between py-3 px-4 border-b space-y-0">
             <CardTitle className="text-base font-medium flex items-center gap-2">
-              <Eye className="w-4 h-4" />
+              <PiEye className="w-4 h-4" />
               Preview
             </CardTitle>
             <Button

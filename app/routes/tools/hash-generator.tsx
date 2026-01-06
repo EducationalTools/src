@@ -91,13 +91,13 @@ export default function HashGenerator() {
               disabled={loading || !input}
               className="h-11"
             >
-              <RefreshCw
+              <PiArrowClockwise
                 className={`mr-2 h-4 w-4 ${loading ? "animate-spin" : ""}`}
               />
               Generate Hashes
             </Button>
             <Button variant="outline" onClick={clear} className="h-11">
-              <Trash2 className="mr-2 h-4 w-4" />
+              <PiTrash className="mr-2 h-4 w-4" />
               Clear
             </Button>
           </div>

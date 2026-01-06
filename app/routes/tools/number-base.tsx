@@ -154,7 +154,7 @@ export default function NumberBase() {
             <Card key={base.value} className="overflow-hidden">
               <CardHeader className="flex flex-row items-center justify-between py-4 bg-muted/30 border-b">
                 <CardTitle className="text-base font-medium flex items-center gap-2">
-                  <Binary className="w-4 h-4 text-muted-foreground" />
+                  <PiBinary className="w-4 h-4 text-muted-foreground" />
                   {base.label}
                 </CardTitle>
                 {results[base.value] && results[base.value] !== "Invalid" && (

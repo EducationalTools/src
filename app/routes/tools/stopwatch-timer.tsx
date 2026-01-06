@@ -212,7 +212,7 @@ export default function StopwatchTimer() {
                 variant="outline"
                 className="h-14 text-lg font-medium"
               >
-                <RotateCcw className="w-5 h-5 mr-2" />
+                <PiArrowCounterClockwise className="w-5 h-5 mr-2" />
                 Reset
               </Button>
             </div>
@@ -311,8 +311,8 @@ export default function StopwatchTimer() {
                         setTimerHours(
                           Math.max(
                             0,
-                            Math.min(23, parseInt(e.target.value) || 0)
-                          )
+                            Math.min(23, parseInt(e.target.value) || 0),
+                          ),
                         )
                       }
                       className="h-16 text-center text-2xl font-mono"
@@ -332,8 +332,8 @@ export default function StopwatchTimer() {
                         setTimerMinutes(
                           Math.max(
                             0,
-                            Math.min(59, parseInt(e.target.value) || 0)
-                          )
+                            Math.min(59, parseInt(e.target.value) || 0),
+                          ),
                         )
                       }
                       className="h-16 text-center text-2xl font-mono"
@@ -353,8 +353,8 @@ export default function StopwatchTimer() {
                         setTimerSeconds(
                           Math.max(
                             0,
-                            Math.min(59, parseInt(e.target.value) || 0)
-                          )
+                            Math.min(59, parseInt(e.target.value) || 0),
+                          ),
                         )
                       }
                       className="h-16 text-center text-2xl font-mono"
@@ -421,7 +421,7 @@ export default function StopwatchTimer() {
                 variant="outline"
                 className="h-14 text-lg font-medium"
               >
-                <RotateCcw className="w-5 h-5 mr-2" />
+                <PiArrowCounterClockwise className="w-5 h-5 mr-2" />
                 Reset
               </Button>
             </div>

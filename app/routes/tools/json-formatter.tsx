@@ -7,7 +7,7 @@ import {
   PiWarningCircle,
   PiCheckCircle,
   PiClipboard,
-  PiFileJson,
+  PiFile,
   PiMinus,
   PiAlignLeft,
 } from "react-icons/pi";
@@ -96,7 +96,7 @@ export default function JsonFormatter() {
         <Card className="flex flex-col min-h-0 h-full shadow-md">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 py-3 px-4 border-b">
             <CardTitle className="text-base font-medium flex items-center gap-2">
-              <FileJson className="w-4 h-4" />
+              <PiFile className="w-4 h-4" />
               Input JSON
             </CardTitle>
             <div className="flex gap-2">
@@ -106,7 +106,7 @@ export default function JsonFormatter() {
                 onClick={pasteInput}
                 className="h-8 px-2 text-xs"
               >
-                <ClipboardPaste className="w-3.5 h-3.5 mr-1" />
+                <PiClipboard className="w-3.5 h-3.5 mr-1" />
                 Paste
               </Button>
               <Button
@@ -137,7 +137,7 @@ export default function JsonFormatter() {
               <CardTitle className="text-base font-medium">Output</CardTitle>
               {error && (
                 <span className="text-xs text-destructive flex items-center gap-1 bg-destructive/10 px-2 py-0.5 rounded-full">
-                  <AlertCircle className="h-3 w-3" /> Invalid JSON
+                  <PiWarningCircle className="h-3 w-3" /> Invalid JSON
                 </span>
               )}
               {output && !error && (

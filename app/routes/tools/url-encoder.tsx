@@ -87,7 +87,7 @@ export default function UrlEncoder() {
         <Card className="flex flex-col">
           <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
             <CardTitle className="text-base flex items-center gap-2">
-              <Globe className="w-4 h-4 text-muted-foreground" />
+              <PiGlobe className="w-4 h-4 text-muted-foreground" />
               Encoded URL
             </CardTitle>
             {encoded && (
