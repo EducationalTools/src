@@ -29,19 +29,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  Palette,
-  Shield,
-  Eye,
-  Keyboard,
-  Globe,
-  Info,
-  ArrowRight,
-  Trash2,
-  RotateCcw,
-  AlertTriangle,
-  Gauge,
-  Laptop,
-} from "lucide-react";
+  PiPalette,
+  PiShield,
+  PiEye,
+  PiKeyboard,
+  PiGlobe,
+  PiInfo,
+  PiArrowRight,
+  PiTrash,
+  PiArrowCounterClockwise,
+  PiWarning,
+  PiGauge,
+  PiLaptop,
+} from "react-icons/pi";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -78,37 +78,37 @@ export default function Settings() {
   const cloak = useSettingsState((state) => state.cloak);
   const setCloak = useSettingsState((state) => state.setCloak);
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled,
+    (state) => state.enabled
   );
   const historyCollectionEnabled = usePrivacyState(
-    (state) => state.historyCollectionEnabled,
+    (state) => state.historyCollectionEnabled
   );
   const setHistoryCollectionEnabled = usePrivacyState(
-    (state) => state.setHistoryCollectionEnabled,
+    (state) => state.setHistoryCollectionEnabled
   );
   const history = useGmaeHistory((state) => state.history);
   const disableBlurBehind = useSettingsState(
-    (state) => state.disableBlurBehind,
+    (state) => state.disableBlurBehind
   );
   const setDisableBlurBehind = useSettingsState(
-    (state) => state.setDisableBlurBehind,
+    (state) => state.setDisableBlurBehind
   );
   const disableAllBlur = useSettingsState((state) => state.disableAllBlur);
   const setDisableAllBlur = useSettingsState(
-    (state) => state.setDisableAllBlur,
+    (state) => state.setDisableAllBlur
   );
   const disableAnimations = useSettingsState(
-    (state) => state.disableAnimations,
+    (state) => state.disableAnimations
   );
   const setDisableAnimations = useSettingsState(
-    (state) => state.setDisableAnimations,
+    (state) => state.setDisableAnimations
   );
 
   const setLoadingOverlayOpen = useUiState(
-    (state) => state.setLoadingOverlayOpen,
+    (state) => state.setLoadingOverlayOpen
   );
   const setLoadingOverlayMessage = useUiState(
-    (state) => state.setLoadingOverlayMessage,
+    (state) => state.setLoadingOverlayMessage
   );
 
   const session = authClient.useSession();
@@ -135,7 +135,7 @@ export default function Settings() {
                       size="lg"
                       className="border rounded-xl"
                     >
-                      <Laptop />
+                      <PiLaptop />
                       Sessions
                     </Button>
                   </DialogTrigger>
@@ -153,7 +153,7 @@ export default function Settings() {
           <Card className="gap-0 pb-0 overflow-hidden relative">
             <CardHeader>
               <div className="flex gap-2">
-                <Palette className="h-4 w-4 text-muted-foreground" />
+                <PiPalette className="h-4 w-4 text-muted-foreground" />
                 <CardTitle>Theme</CardTitle>
               </div>
             </CardHeader>
@@ -168,7 +168,7 @@ export default function Settings() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                  <PiArrowRight className="h-4 w-4 text-muted-foreground" />
                   <CardTitle>Panic Key</CardTitle>
                 </div>
                 <Switch
@@ -183,12 +183,12 @@ export default function Settings() {
               <div
                 className={cn(
                   "flex flex-col gap-4",
-                  !panicKey.enabled && "opacity-50",
+                  !panicKey.enabled && "opacity-50"
                 )}
               >
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
-                    <Globe className="h-3.5 w-3.5 text-muted-foreground" />
+                    <PiGlobe className="h-3.5 w-3.5 text-muted-foreground" />
                     <label
                       htmlFor="panic-key-url"
                       className="text-sm font-medium leading-none"
@@ -227,7 +227,7 @@ export default function Settings() {
                     disabled={!panicKey.enabled}
                   />
                   <div className="flex items-start gap-2 text-xs text-muted-foreground">
-                    <Info className="h-3.5 w-3.5 mt-0.5 shrink-0" />
+                    <PiInfo className="h-3.5 w-3.5 mt-0.5 shrink-0" />
                     <p>
                       Use format like "mod+shift+p" or "escape". "mod" is Cmd on
                       Mac, Ctrl on Windows/Linux.
@@ -268,7 +268,7 @@ export default function Settings() {
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-2">
-                  <Eye className="h-4 w-4 text-muted-foreground" />
+                  <PiEye className="h-4 w-4 text-muted-foreground" />
                   <CardTitle>Cloak</CardTitle>
                 </div>
                 <CardDescription>
@@ -297,7 +297,7 @@ export default function Settings() {
                 <div
                   className={cn(
                     "flex flex-col gap-4",
-                    cloak.mode === "off" && "opacity-50",
+                    cloak.mode === "off" && "opacity-50"
                   )}
                 >
                   <Separator />
@@ -348,7 +348,7 @@ export default function Settings() {
           <Card>
             <CardHeader>
               <div className="flex items-center gap-2">
-                <Gauge className="h-4 w-4 text-muted-foreground" />
+                <PiGauge className="h-4 w-4 text-muted-foreground" />
                 <CardTitle>Performance</CardTitle>
               </div>
             </CardHeader>
@@ -372,7 +372,7 @@ export default function Settings() {
               <div
                 className={cn(
                   "flex items-center justify-between",
-                  disableAllBlur && "opacity-50",
+                  disableAllBlur && "opacity-50"
                 )}
               >
                 <div className="flex flex-col gap-1">
@@ -413,7 +413,7 @@ export default function Settings() {
           <Card>
             <CardHeader>
               <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 text-muted-foreground" />
+                <PiShield className="h-4 w-4 text-muted-foreground" />
                 <CardTitle>Privacy</CardTitle>
               </div>
               <CardDescription>
@@ -462,7 +462,7 @@ export default function Settings() {
                         size="sm"
                         disabled={history.length === 0}
                       >
-                        <Trash2 className="h-4 w-4" />
+                        <PiTrash className="h-4 w-4" />
                         Clear
                       </Button>
                     </AlertDialogTrigger>
@@ -504,7 +504,7 @@ export default function Settings() {
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
                       <Button variant="outline" size="sm">
-                        <RotateCcw className="h-4 w-4" />
+                        <PiArrowCounterClockwise className="h-4 w-4" />
                         Reset
                       </Button>
                     </AlertDialogTrigger>
@@ -547,7 +547,7 @@ export default function Settings() {
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
                       <Button variant="destructive" size="sm">
-                        <AlertTriangle className="h-4 w-4" />
+                        <PiWarning className="h-4 w-4" />
                         Clear All
                       </Button>
                     </AlertDialogTrigger>
@@ -606,7 +606,7 @@ export default function Settings() {
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
                           <Button variant="destructive" size="sm">
-                            <AlertTriangle className="h-4 w-4" />
+                            <PiWarning className="h-4 w-4" />
                             Delete Account
                           </Button>
                         </AlertDialogTrigger>

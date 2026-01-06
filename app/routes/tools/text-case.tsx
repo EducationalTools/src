@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Copy, RefreshCw, CaseUpper, CaseLower, Type } from "lucide-react";
+import { PiCopy, PiArrowClockwise, PiTextAa } from "react-icons/pi";
 import { toast } from "sonner";
 
 type CaseType =
@@ -145,7 +145,7 @@ export default function TextCase() {
                 onClick={clear}
                 className="h-8 px-2 text-xs"
               >
-                <RefreshCw className="h-3.5 w-3.5 mr-1" /> Clear
+                <PiArrowClockwise className="h-3.5 w-3.5 mr-1" /> Clear
               </Button>
             </CardHeader>
             <CardContent className="p-0">
@@ -168,7 +168,7 @@ export default function TextCase() {
                   onClick={() => copyToClipboard(output)}
                   className="h-8 px-2 text-xs"
                 >
-                  <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+                  <PiCopy className="mr-2 h-3.5 w-3.5" /> Copy
                 </Button>
               )}
             </CardHeader>

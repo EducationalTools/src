@@ -3,20 +3,20 @@ import type { Route } from "./+types/play";
 import { data } from "react-router";
 import { Button } from "@/components/ui/button";
 import {
-  AppWindow,
-  Bookmark,
-  BookmarkCheck,
-  ChevronDown,
-  ChevronUp,
-  ExternalLink,
-  Fullscreen,
-  Keyboard,
-  Maximize,
-  RefreshCw,
-  Scan,
-  Share,
-  Square,
-} from "lucide-react";
+  PiAppWindow,
+  PiBookmark,
+  PiBookmarkFill,
+  PiCaretDown,
+  PiCaretUp,
+  PiArrowSquareOut,
+  PiArrowsOut,
+  PiKeyboard,
+  PiArrowsOutSimple,
+  PiArrowClockwise,
+  PiScan,
+  PiShare,
+  PiSquare,
+} from "react-icons/pi";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
   Tooltip,
@@ -61,7 +61,7 @@ export function Play({ params }: Route.ComponentProps) {
   const saved = useSavedGmaes((state) => state.saved);
   const toggleSaved = useSavedGmaes((state) => state.toggleSaved);
   const historyCollectionEnabled = usePrivacyState(
-    (state) => state.historyCollectionEnabled,
+    (state) => state.historyCollectionEnabled
   );
   const isSaved = gmae?.id ? saved.includes(gmae.id) : false;
 
@@ -100,7 +100,7 @@ export function Play({ params }: Route.ComponentProps) {
                       toast.success("Focused gmae");
                     }}
                   >
-                    <Keyboard />
+                    <PiKeyboard />
                     <span className="sr-only">Fix keyboard input</span>
                   </Button>
                 </TooltipTrigger>
@@ -115,7 +115,7 @@ export function Play({ params }: Route.ComponentProps) {
                       iframeRef.current?.contentWindow?.location.reload();
                     }}
                   >
-                    <RefreshCw />
+                    <PiArrowClockwise />
                     <span className="sr-only">Reload</span>
                   </Button>
                 </TooltipTrigger>
@@ -130,7 +130,7 @@ export function Play({ params }: Route.ComponentProps) {
                       const win = window.open(
                         "",
                         "",
-                        "width=500px,height=500px",
+                        "width=500px,height=500px"
                       );
 
                       let frame = document.createElement("iframe");
@@ -145,7 +145,7 @@ export function Play({ params }: Route.ComponentProps) {
                       }
                     }}
                   >
-                    <AppWindow />
+                    <PiAppWindow />
                     <span className="sr-only">Open in new window</span>
                   </Button>
                 </TooltipTrigger>
@@ -171,7 +171,7 @@ export function Play({ params }: Route.ComponentProps) {
                       }
                     }}
                   >
-                    <ExternalLink />
+                    <PiArrowSquareOut />
                     <span className="sr-only">Open in new tab</span>
                   </Button>
                 </TooltipTrigger>
@@ -187,7 +187,7 @@ export function Play({ params }: Route.ComponentProps) {
                     }}
                     variant="outline"
                   >
-                    <ChevronDown />
+                    <PiCaretDown />
                     <span className="sr-only">Maximize</span>
                   </Button>
                 </TooltipTrigger>
@@ -202,7 +202,7 @@ export function Play({ params }: Route.ComponentProps) {
                       iframeRef.current?.focus();
                     }}
                   >
-                    <Maximize />
+                    <PiArrowsOutSimple />
                     <span className="sr-only">Fullscreen</span>
                   </Button>
                 </TooltipTrigger>
@@ -218,7 +218,7 @@ export function Play({ params }: Route.ComponentProps) {
                   }
                 }}
               >
-                {isSaved ? <BookmarkCheck /> : <Bookmark />}
+                {isSaved ? <PiBookmarkFill /> : <PiBookmark />}
                 {isSaved ? "Saved" : "Save"}
               </Button>
               <Button
@@ -248,7 +248,7 @@ export function Play({ params }: Route.ComponentProps) {
                   }
                 }}
               >
-                <Share />
+                <PiShare />
                 Share
               </Button>
             </ButtonGroup>
@@ -266,7 +266,7 @@ export function Play({ params }: Route.ComponentProps) {
               setMaximized(false);
             }}
           >
-            <ChevronUp />
+            <PiCaretUp />
           </Button>
         </div>
       )}

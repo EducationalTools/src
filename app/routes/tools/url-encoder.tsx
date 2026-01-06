@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Copy, RefreshCw, Link, Globe } from "lucide-react";
+import { PiCopy, PiArrowClockwise, PiLink, PiGlobe } from "react-icons/pi";
 import { toast } from "sonner";
 
 export default function UrlEncoder() {
@@ -60,7 +60,7 @@ export default function UrlEncoder() {
         <Card className="flex flex-col">
           <CardHeader className="flex flex-row items-center justify-between py-4 border-b">
             <CardTitle className="text-base flex items-center gap-2">
-              <Link className="w-4 h-4 text-muted-foreground" />
+              <PiLink className="w-4 h-4 text-muted-foreground" />
               Decoded URL
             </CardTitle>
             {decoded && (
@@ -70,7 +70,7 @@ export default function UrlEncoder() {
                 onClick={() => copyToClipboard(decoded)}
                 className="h-8 px-2 text-xs"
               >
-                <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+                <PiCopy className="mr-2 h-3.5 w-3.5" /> Copy
               </Button>
             )}
           </CardHeader>
@@ -97,7 +97,7 @@ export default function UrlEncoder() {
                 onClick={() => copyToClipboard(encoded)}
                 className="h-8 px-2 text-xs"
               >
-                <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+                <PiCopy className="mr-2 h-3.5 w-3.5" /> Copy
               </Button>
             )}
           </CardHeader>
@@ -114,7 +114,7 @@ export default function UrlEncoder() {
 
       <div className="flex justify-center">
         <Button variant="outline" onClick={clear}>
-          <RefreshCw className="mr-2 h-4 w-4" /> Clear All
+          <PiArrowClockwise className="mr-2 h-4 w-4" /> Clear All
         </Button>
       </div>
 

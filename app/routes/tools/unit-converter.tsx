@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRightLeft } from "lucide-react";
+import { PiArrowsLeftRight } from "react-icons/pi";
 
 type UnitCategory = "length" | "weight" | "temperature" | "volume";
 
@@ -254,7 +254,7 @@ export default function UnitConverter() {
                 onClick={swapUnits}
                 className="rounded-full h-10 w-10 hover:bg-muted"
               >
-                <ArrowRightLeft className="w-5 h-5" />
+                <PiArrowsLeftRight className="w-5 h-5" />
               </Button>
             </div>
 

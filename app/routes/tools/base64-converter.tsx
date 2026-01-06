@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Copy, ArrowRightLeft, Trash2, ClipboardPaste } from "lucide-react";
+import {
+  PiCopy,
+  PiArrowsLeftRight,
+  PiTrash,
+  PiClipboard,
+} from "react-icons/pi";
 
 export default function Base64Converter() {
   const [mode, setMode] = useState<"encode" | "decode">("encode");
@@ -17,7 +22,7 @@ export default function Base64Converter() {
       setOutput(encoded);
     } catch (err) {
       setError(
-        "Failed to encode. Make sure the input contains valid characters.",
+        "Failed to encode. Make sure the input contains valid characters."
       );
       setOutput("");
     }
@@ -138,7 +143,7 @@ export default function Base64Converter() {
                 onClick={pasteFromClipboard}
                 className="h-8 px-2 text-xs"
               >
-                <ClipboardPaste className="w-3.5 h-3.5 mr-1" />
+                <PiClipboard className="w-3.5 h-3.5 mr-1" />
                 Paste
               </Button>
             </div>
@@ -178,7 +183,7 @@ export default function Base64Converter() {
               className="h-11 shrink-0"
               onClick={handleClear}
             >
-              <Trash2 className="w-4 h-4 mr-2" />
+              <PiTrash className="w-4 h-4 mr-2" />
               Clear
             </Button>
           </div>
@@ -207,7 +212,7 @@ export default function Base64Converter() {
                     onClick={copyToClipboard}
                     className="h-8 px-2 text-xs"
                   >
-                    <Copy className="w-3.5 h-3.5 mr-1" />
+                    <PiCopy className="w-3.5 h-3.5 mr-1" />
                     {copied ? "Copied!" : "Copy"}
                   </Button>
                 </div>

@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Copy,
-  RefreshCw,
-  ArrowRightLeft,
-  Type,
-  Calculator,
-} from "lucide-react";
+  PiCopy,
+  PiArrowClockwise,
+  PiArrowsLeftRight,
+  PiTextT,
+  PiCalculator,
+} from "react-icons/pi";
 import { toast } from "sonner";
 
 const ROMAN_VALUES: Record<string, number> = {
@@ -85,7 +85,7 @@ export default function RomanNumeral() {
   const [number, setNumber] = useState("");
   const [roman, setRoman] = useState("");
   const [direction, setDirection] = useState<"to-roman" | "from-roman">(
-    "to-roman",
+    "to-roman"
   );
 
   const handleNumberChange = (value: string) => {
@@ -139,7 +139,7 @@ export default function RomanNumeral() {
         <Card className="flex flex-col">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Calculator className="w-5 h-5 text-muted-foreground" />
+              <PiCalculator className="w-5 h-5 text-muted-foreground" />
               Arabic Number
             </CardTitle>
           </CardHeader>
@@ -178,7 +178,7 @@ export default function RomanNumeral() {
         <Card className="flex flex-col">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Type className="w-5 h-5 text-muted-foreground" />
+              <PiTextT className="w-5 h-5 text-muted-foreground" />
               Roman Numeral
             </CardTitle>
           </CardHeader>
@@ -226,7 +226,7 @@ export default function RomanNumeral() {
                       <span className="text-muted-foreground">
                         {number || "?"}
                       </span>
-                      <ArrowRightLeft className="w-6 h-6 text-muted-foreground opacity-50" />
+                      <PiArrowsLeftRight className="w-6 h-6 text-muted-foreground opacity-50" />
                       <span className="font-mono text-primary">
                         {roman || "?"}
                       </span>
@@ -236,7 +236,7 @@ export default function RomanNumeral() {
                       <span className="font-mono text-muted-foreground">
                         {roman || "?"}
                       </span>
-                      <ArrowRightLeft className="w-6 h-6 text-muted-foreground opacity-50" />
+                      <PiArrowsLeftRight className="w-6 h-6 text-muted-foreground opacity-50" />
                       <span className="text-primary">{number || "?"}</span>
                     </>
                   )}
@@ -256,7 +256,7 @@ export default function RomanNumeral() {
                   onClick={clear}
                   className="h-10 w-10"
                 >
-                  <RefreshCw className="h-4 w-4" />
+                  <PiArrowClockwise className="h-4 w-4" />
                 </Button>
               </div>
             </div>

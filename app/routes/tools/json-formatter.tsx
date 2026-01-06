@@ -2,15 +2,15 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Copy,
-  Trash2,
-  AlertCircle,
-  CheckCircle2,
-  ClipboardPaste,
-  FileJson,
-  Minimize2,
-  AlignLeft,
-} from "lucide-react";
+  PiCopy,
+  PiTrash,
+  PiWarningCircle,
+  PiCheckCircle,
+  PiClipboard,
+  PiFileJson,
+  PiMinus,
+  PiAlignLeft,
+} from "react-icons/pi";
 import { toast } from "sonner";
 
 export default function JsonFormatter() {
@@ -115,7 +115,7 @@ export default function JsonFormatter() {
                 onClick={clearAll}
                 className="h-8 px-2 text-xs hover:text-destructive"
               >
-                <Trash2 className="w-3.5 h-3.5 mr-1" />
+                <PiTrash className="w-3.5 h-3.5 mr-1" />
                 Clear
               </Button>
             </div>
@@ -142,7 +142,7 @@ export default function JsonFormatter() {
               )}
               {output && !error && (
                 <span className="text-xs text-green-600 flex items-center gap-1 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full">
-                  <CheckCircle2 className="h-3 w-3" /> Valid JSON
+                  <PiCheckCircle className="h-3 w-3" /> Valid JSON
                 </span>
               )}
             </div>
@@ -180,7 +180,7 @@ export default function JsonFormatter() {
                 className="h-8 w-8"
                 title="Minify"
               >
-                <Minimize2 className="h-3.5 w-3.5" />
+                <PiMinus className="h-3.5 w-3.5" />
               </Button>
               <Button
                 variant="outline"
@@ -189,7 +189,7 @@ export default function JsonFormatter() {
                 className="h-8 w-8"
                 title="Format"
               >
-                <AlignLeft className="h-3.5 w-3.5" />
+                <PiAlignLeft className="h-3.5 w-3.5" />
               </Button>
               <Button
                 variant="default"
@@ -198,7 +198,7 @@ export default function JsonFormatter() {
                 disabled={!output}
                 className="h-8 text-xs"
               >
-                <Copy className="h-3.5 w-3.5 mr-1" />
+                <PiCopy className="h-3.5 w-3.5 mr-1" />
                 Copy
               </Button>
             </div>

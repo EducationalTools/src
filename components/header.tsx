@@ -1,7 +1,13 @@
 import { Link, useLocation } from "react-router";
 import { useSidebar } from "./ui/sidebar";
 import { Button, buttonVariants } from "./ui/button";
-import { Code, Loader2, Search, Settings, Sidebar } from "lucide-react";
+import {
+  PiCode,
+  PiSpinner,
+  PiMagnifyingGlass,
+  PiGear,
+  PiSidebarSimple,
+} from "react-icons/pi";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Breadcrumb,
@@ -28,7 +34,7 @@ export default function Header() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled,
+    (state) => state.enabled
   );
 
   const session = authClient.useSession();
@@ -69,7 +75,7 @@ export default function Header() {
                   size="icon"
                   onClick={() => setSearchOpen(true)}
                 >
-                  <Search />
+                  <PiMagnifyingGlass />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -97,7 +103,7 @@ export default function Header() {
                   size="icon"
                   onClick={() => sidebar.toggleSidebar()}
                 >
-                  <Sidebar />
+                  <PiSidebarSimple />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -145,7 +151,7 @@ export default function Header() {
                     size="icon"
                     onClick={() => setSettingsOpen(true)}
                   >
-                    <Settings />
+                    <PiGear />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>

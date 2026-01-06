@@ -8,21 +8,21 @@ import {
   CommandList,
   CommandShortcut,
 } from "@/components/ui/command";
-import { LogIn, LogOut, Settings } from "lucide-react";
+import { PiSignIn, PiSignOut, PiGear } from "react-icons/pi";
 import { authClient } from "@/lib/auth-client";
 
 export default function CommandPalette() {
   const commandPaletteOpen = useUiState((state) => state.commandPaletteOpen);
   const setCommandPaletteOpen = useUiState(
-    (state) => state.setCommandPaletteOpen,
+    (state) => state.setCommandPaletteOpen
   );
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
 
   const setLoadingOverlayOpen = useUiState(
-    (state) => state.setLoadingOverlayOpen,
+    (state) => state.setLoadingOverlayOpen
   );
   const setLoadingOverlayMessage = useUiState(
-    (state) => state.setLoadingOverlayMessage,
+    (state) => state.setLoadingOverlayMessage
   );
 
   const session = authClient.useSession();
@@ -35,7 +35,7 @@ export default function CommandPalette() {
   }[] = [
     {
       label: "Settings",
-      icon: Settings,
+      icon: PiGear,
       onSelect: () => {
         setSettingsOpen(true);
       },
@@ -45,7 +45,7 @@ export default function CommandPalette() {
       ? [
           {
             label: "Sign out",
-            icon: LogOut,
+            icon: PiSignOut,
             onSelect: async () => {
               setLoadingOverlayOpen(true);
               setLoadingOverlayMessage("Signing out...");
@@ -60,7 +60,7 @@ export default function CommandPalette() {
           { label: "Discord", id: "discord" },
         ].map((item) => ({
           label: "Continue with " + item.label,
-          icon: LogIn,
+          icon: PiSignIn,
           onSelect: async () => {
             const convexSiteUrl = new URL(import.meta.env.VITE_CONVEX_SITE_URL);
 

@@ -1,13 +1,13 @@
 import {
-  ChevronDown,
-  Clock,
-  Code,
-  GalleryVerticalEnd,
-  GitBranch,
-  PanelLeft,
-  Search,
-  Settings,
-} from "lucide-react";
+  PiCaretDown,
+  PiClock,
+  PiCode,
+  PiRows,
+  PiGitBranch,
+  PiSidebarSimple,
+  PiMagnifyingGlass,
+  PiGear,
+} from "react-icons/pi";
 import { Link, useLocation } from "react-router";
 import {
   Sidebar,
@@ -58,7 +58,7 @@ export function AppSidebar() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const location = useLocation();
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled,
+    (state) => state.enabled
   );
   const currentUser = useQuery(api.auth.getCurrentUser);
 
@@ -86,7 +86,7 @@ export function AppSidebar() {
   const menuItems = MENU_ITEMS.filter(
     (item) =>
       !(item.experimental && !experimentalFeatures) &&
-      !(item.requiresAdmin && !isAdmin),
+      !(item.requiresAdmin && !isAdmin)
   );
 
   // Hide sidebar completely when experimental features are off
@@ -99,7 +99,7 @@ export function AppSidebar() {
       variant="inset"
       className={clsx(
         "p-0 duration-200 transition-all ease-out",
-        !sidebar.open && !disableAllBlur && "blur-lg opacity-0",
+        !sidebar.open && !disableAllBlur && "blur-lg opacity-0"
       )}
     >
       <SidebarHeader>
@@ -126,7 +126,7 @@ export function AppSidebar() {
               onClick={() => setSearchOpen(true)}
               className="border cursor-text"
             >
-              <Search className="size-4" />
+              <PiMagnifyingGlass className="size-4" />
               Search
               <KbdGroup className="ml-auto">
                 <Kbd className="text-nowrap">⌘</Kbd>
@@ -144,7 +144,7 @@ export function AppSidebar() {
                 {menuItems.map((item) => {
                   const renderMenuItem = (
                     menuItem: typeof item,
-                    isSubItem = false,
+                    isSubItem = false
                   ) => {
                     const content = renderMenuItemContent(menuItem);
                     const MenuButtonWrapper = isSubItem
@@ -185,7 +185,7 @@ export function AppSidebar() {
                         <Collapsible
                           className="group/collapsible"
                           defaultOpen={item.children.some(
-                            (child) => child.href == location.pathname,
+                            (child) => child.href == location.pathname
                           )}
                         >
                           <SidebarMenuItem>
@@ -237,15 +237,15 @@ export function AppSidebar() {
                 target="_blank"
                 className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center"
               >
-                <Code />
+                <PiCode />
                 EducationalTools/src
               </Link>
               <div className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center">
-                <GitBranch />
+                <PiGitBranch />
                 {process.env.BRANCH_NAME}
               </div>
               <div className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center">
-                <Clock />
+                <PiClock />
                 Built on{" "}
                 {new Date(process.env.BUILD_TIME || 0).toLocaleString()}
               </div>

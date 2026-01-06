@@ -1,22 +1,22 @@
 import {
-  Binary,
-  Calculator,
-  CaseSensitive,
-  Clock,
-  Code,
-  Dices,
-  FileJson,
-  FileText,
-  Fingerprint,
-  Hash,
-  Key,
-  Link,
-  Lock,
-  Palette,
-  QrCode,
-  Scale,
-  Type,
-} from "lucide-react";
+  PiBinary,
+  PiCalculator,
+  PiTextAa,
+  PiClock,
+  PiCode,
+  PiDice,
+  PiFileJson,
+  PiFileText,
+  PiFingerprint,
+  PiHash,
+  PiKey,
+  PiLink,
+  PiLock,
+  PiPalette,
+  PiQrCode,
+  PiScale,
+  PiTextT,
+} from "react-icons/pi";
 
 export const TOOLS = [
   {
@@ -27,7 +27,7 @@ export const TOOLS = [
   {
     label: "Unit Converter",
     id: "unit-converter",
-    icon: Scale,
+    icon: PiScale,
   },
   {
     label: "Word Counter",
@@ -37,17 +37,17 @@ export const TOOLS = [
   {
     label: "Password Generator",
     id: "password-generator",
-    icon: Key,
+    icon: PiKey,
   },
   {
     label: "Random Number",
     id: "random-number",
-    icon: Dices,
+    icon: PiDice,
   },
   {
     label: "Stopwatch & Timer",
     id: "stopwatch-timer",
-    icon: Clock,
+    icon: PiClock,
   },
   {
     label: "Base64 Converter",
@@ -57,56 +57,56 @@ export const TOOLS = [
   {
     label: "Color Picker",
     id: "color-picker",
-    icon: Palette,
+    icon: PiPalette,
   },
   {
     label: "QR Code Generator",
     id: "qr-code-generator",
-    icon: QrCode,
+    icon: PiQrCode,
   },
   {
     label: "UUID Generator",
     id: "uuid-generator",
-    icon: Fingerprint,
+    icon: PiFingerprint,
   },
   {
     label: "JSON Formatter",
     id: "json-formatter",
-    icon: FileJson,
+    icon: PiFileJson,
   },
   {
     label: "Roman Numeral Converter",
     id: "roman-numeral",
-    icon: Hash,
+    icon: PiHash,
   },
   {
     label: "Text Case Converter",
     id: "text-case",
-    icon: CaseSensitive,
+    icon: PiTextAa,
   },
   {
     label: "Hash Generator",
     id: "hash-generator",
-    icon: Lock,
+    icon: PiLock,
   },
   {
     label: "URL Encoder/Decoder",
     id: "url-encoder",
-    icon: Link,
+    icon: PiLink,
   },
   {
     label: "Markdown Preview",
     id: "markdown-preview",
-    icon: FileText,
+    icon: PiFileText,
   },
   {
     label: "Regex Tester",
     id: "regex-tester",
-    icon: Code,
+    icon: PiCode,
   },
   {
     label: "Number Base Converter",
     id: "number-base",
-    icon: Hash,
+    icon: PiHash,
   },
 ];

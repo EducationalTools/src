@@ -22,14 +22,14 @@ import {
   useQuery,
 } from "convex/react";
 import {
-  Archive,
-  ArchiveRestore,
-  ArrowRight,
-  Clipboard,
-  Copy,
-  Delete,
-  Trash,
-} from "lucide-react";
+  PiArchive,
+  PiArchiveTray,
+  PiArrowRight,
+  PiClipboard,
+  PiCopy,
+  PiTrash,
+  PiTrashSimple,
+} from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "motion/react";
@@ -63,7 +63,7 @@ export default function BackupsPage() {
 
   const cloudBackups = useQuery(api.backups.getBackups);
   const createCloudBackup = useMutation(
-    api.backups.createBackup,
+    api.backups.createBackup
   ).withOptimisticUpdate((localStore, args) => {
     const { data, name, backupKey } = args;
     const currentBackups = localStore.getQuery(api.backups.getBackups);
@@ -85,7 +85,7 @@ export default function BackupsPage() {
         {
           success: true,
           backups: [newBackup, ...currentBackups.backups],
-        },
+        }
       );
     }
   });
@@ -93,14 +93,14 @@ export default function BackupsPage() {
   const convexAuth = useConvexAuth();
 
   const deleteCloudBackup = useMutation(
-    api.backups.deleteBackup,
+    api.backups.deleteBackup
   ).withOptimisticUpdate((localStore, args) => {
     const { id } = args;
     const currentBackups = localStore.getQuery(api.backups.getBackups);
     // If we've loaded the backups query, remove the backup being deleted
     if (currentBackups?.success && currentBackups.backups !== undefined) {
       const filteredBackups = currentBackups.backups.filter(
-        (backup) => backup._id !== id,
+        (backup) => backup._id !== id
       );
       localStore.setQuery(
         api.backups.getBackups,
@@ -108,7 +108,7 @@ export default function BackupsPage() {
         {
           success: true,
           backups: filteredBackups,
-        },
+        }
       );
     }
   });
@@ -141,7 +141,7 @@ export default function BackupsPage() {
         loading: "Creating backup...",
         success: "Backup created",
         error: (error) => error.message || "Failed to create backup",
-      },
+      }
     );
   };
 
@@ -170,7 +170,7 @@ export default function BackupsPage() {
                     });
                 }}
               >
-                <Clipboard />
+                <PiClipboard />
               </Button>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function BackupsPage() {
                       onClick={handleCreateBackup}
                       disabled={!inputtedBackupName.trim()}
                     >
-                      <ArrowRight />
+                      <PiArrowRight />
                     </Button>
                   </div>
                 </CardContent>
@@ -277,7 +277,7 @@ export default function BackupsPage() {
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <Button variant="destructive" size="icon">
-                                <Trash />
+                                <PiTrash />
                               </Button>
                             </AlertDialogTrigger>
                             <AlertDialogContent>
@@ -308,7 +308,7 @@ export default function BackupsPage() {
                                         loading: "Deleting backup...",
                                         success: "Backup deleted",
                                         error: "Failed to delete backup",
-                                      },
+                                      }
                                     );
                                   }}
                                 >
@@ -328,17 +328,17 @@ export default function BackupsPage() {
                                 })
                                 .catch((error) => {
                                   toast.error(
-                                    "Failed to copy backup to clipboard",
+                                    "Failed to copy backup to clipboard"
                                   );
                                 });
                             }}
                           >
-                            <Copy />
+                            <PiCopy />
                           </Button>
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <Button>
-                                <ArchiveRestore />
+                                <PiArchiveTray />
                                 Restore
                               </Button>
                             </AlertDialogTrigger>
@@ -386,7 +386,7 @@ export default function BackupsPage() {
                       <Empty>
                         <EmptyHeader>
                           <EmptyMedia variant="icon">
-                            <Archive className="size-6" />
+                            <PiArchive className="size-6" />
                           </EmptyMedia>
                           <EmptyTitle>No backups yet</EmptyTitle>
                           <EmptyDescription>

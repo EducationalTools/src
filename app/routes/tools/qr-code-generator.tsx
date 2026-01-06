@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QRCodeSVG } from "qrcode.react";
-import { Download, QrCode } from "lucide-react";
+import { PiDownload, PiQrCode } from "react-icons/pi";
 
 export default function QrCodeGenerator() {
   const [text, setText] = useState("");
@@ -119,12 +119,12 @@ export default function QrCodeGenerator() {
                   />
                 </div>
                 <Button onClick={downloadQrCode} className="w-full max-w-xs">
-                  <Download className="mr-2 h-4 w-4" /> Download PNG
+                  <PiDownload className="mr-2 h-4 w-4" /> Download PNG
                 </Button>
               </div>
             ) : (
               <div className="text-center text-muted-foreground flex flex-col items-center">
-                <QrCode className="w-12 h-12 mb-4 opacity-20" />
+                <PiQrCode className="w-12 h-12 mb-4 opacity-20" />
                 <p>Enter content to generate a QR code</p>
               </div>
             )}

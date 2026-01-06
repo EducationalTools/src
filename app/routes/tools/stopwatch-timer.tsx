@@ -2,7 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Play, Pause, RotateCcw, Flag, Timer, Watch } from "lucide-react";
+import {
+  PiPlay,
+  PiPause,
+  PiArrowCounterClockwise,
+  PiFlag,
+  PiTimer,
+  PiClock,
+} from "react-icons/pi";
 
 type Mode = "stopwatch" | "timer";
 
@@ -142,7 +149,7 @@ export default function StopwatchTimer() {
           size="lg"
           className="rounded-md"
         >
-          <Watch className="w-4 h-4 mr-2" />
+          <PiClock className="w-4 h-4 mr-2" />
           Stopwatch
         </Button>
         <Button
@@ -151,7 +158,7 @@ export default function StopwatchTimer() {
           size="lg"
           className="rounded-md"
         >
-          <Timer className="w-4 h-4 mr-2" />
+          <PiTimer className="w-4 h-4 mr-2" />
           Timer
         </Button>
       </div>
@@ -185,7 +192,7 @@ export default function StopwatchTimer() {
                   size="lg"
                   className="h-14 text-lg font-medium"
                 >
-                  <Play className="w-5 h-5 mr-2 fill-current" />
+                  <PiPlay className="w-5 h-5 mr-2 fill-current" />
                   Start
                 </Button>
               ) : (
@@ -195,7 +202,7 @@ export default function StopwatchTimer() {
                   variant="secondary"
                   className="h-14 text-lg font-medium"
                 >
-                  <Pause className="w-5 h-5 mr-2 fill-current" />
+                  <PiPause className="w-5 h-5 mr-2 fill-current" />
                   Pause
                 </Button>
               )}
@@ -217,7 +224,7 @@ export default function StopwatchTimer() {
                 variant="ghost"
                 className="w-full h-12 border-dashed border-2"
               >
-                <Flag className="w-4 h-4 mr-2" />
+                <PiFlag className="w-4 h-4 mr-2" />
                 Lap
               </Button>
             )}
@@ -304,8 +311,8 @@ export default function StopwatchTimer() {
                         setTimerHours(
                           Math.max(
                             0,
-                            Math.min(23, parseInt(e.target.value) || 0),
-                          ),
+                            Math.min(23, parseInt(e.target.value) || 0)
+                          )
                         )
                       }
                       className="h-16 text-center text-2xl font-mono"
@@ -325,8 +332,8 @@ export default function StopwatchTimer() {
                         setTimerMinutes(
                           Math.max(
                             0,
-                            Math.min(59, parseInt(e.target.value) || 0),
-                          ),
+                            Math.min(59, parseInt(e.target.value) || 0)
+                          )
                         )
                       }
                       className="h-16 text-center text-2xl font-mono"
@@ -346,8 +353,8 @@ export default function StopwatchTimer() {
                         setTimerSeconds(
                           Math.max(
                             0,
-                            Math.min(59, parseInt(e.target.value) || 0),
-                          ),
+                            Math.min(59, parseInt(e.target.value) || 0)
+                          )
                         )
                       }
                       className="h-16 text-center text-2xl font-mono"
@@ -394,7 +401,7 @@ export default function StopwatchTimer() {
                     timerSeconds === 0
                   }
                 >
-                  <Play className="w-5 h-5 mr-2 fill-current" />
+                  <PiPlay className="w-5 h-5 mr-2 fill-current" />
                   Start
                 </Button>
               ) : (
@@ -404,7 +411,7 @@ export default function StopwatchTimer() {
                   variant="secondary"
                   className="h-14 text-lg font-medium"
                 >
-                  <Pause className="w-5 h-5 mr-2 fill-current" />
+                  <PiPause className="w-5 h-5 mr-2 fill-current" />
                   Pause
                 </Button>
               )}

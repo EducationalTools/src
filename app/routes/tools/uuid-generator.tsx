@@ -3,7 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Copy, RefreshCw, Trash2, Fingerprint } from "lucide-react";
+import {
+  PiCopy,
+  PiArrowClockwise,
+  PiTrash,
+  PiFingerprint,
+} from "react-icons/pi";
 import { toast } from "sonner";
 
 export default function UuidGenerator() {
@@ -104,7 +109,7 @@ export default function UuidGenerator() {
               </div>
 
               <Button className="w-full" size="lg" onClick={generateUuid}>
-                <RefreshCw className="mr-2 h-4 w-4" /> Generate
+                <PiArrowClockwise className="mr-2 h-4 w-4" /> Generate
               </Button>
             </CardContent>
           </Card>
@@ -124,7 +129,7 @@ export default function UuidGenerator() {
                       onClick={copyAll}
                       className="h-8 px-2 text-xs"
                     >
-                      <Copy className="mr-2 h-3.5 w-3.5" /> Copy All
+                      <PiCopy className="mr-2 h-3.5 w-3.5" /> Copy All
                     </Button>
                     <Button
                       variant="ghost"
@@ -133,7 +138,7 @@ export default function UuidGenerator() {
                       className="h-8 w-8 p-0"
                       title="Clear"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <PiTrash className="h-4 w-4" />
                     </Button>
                   </>
                 )}
@@ -156,14 +161,14 @@ export default function UuidGenerator() {
                         className="h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity"
                         onClick={() => copyToClipboard(uuid)}
                       >
-                        <Copy className="h-3.5 w-3.5" />
+                        <PiCopy className="h-3.5 w-3.5" />
                       </Button>
                     </div>
                   ))}
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center h-full text-muted-foreground space-y-4">
-                  <Fingerprint className="w-12 h-12 opacity-20" />
+                  <PiFingerprint className="w-12 h-12 opacity-20" />
                   <p>Click Generate to create UUIDs</p>
                 </div>
               )}

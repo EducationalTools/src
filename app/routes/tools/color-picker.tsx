@@ -8,7 +8,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { Copy, Plus, X, Trash2 } from "lucide-react";
+import { PiCopy, PiPlus, PiX, PiTrash } from "react-icons/pi";
 
 export default function ColorPicker() {
   const [color, setColor] = useState("#3b82f6");
@@ -154,7 +154,7 @@ export default function ColorPicker() {
                   variant="outline"
                   className="h-11 px-4"
                 >
-                  <Plus className="w-4 h-4 mr-2" />
+                  <PiPlus className="w-4 h-4 mr-2" />
                   Save
                 </Button>
               </div>
@@ -204,7 +204,7 @@ export default function ColorPicker() {
                   size="icon"
                   className="h-11 w-11 shrink-0"
                 >
-                  <Copy className="w-4 h-4" />
+                  <PiCopy className="w-4 h-4" />
                 </Button>
               </div>
             </div>
@@ -229,7 +229,7 @@ export default function ColorPicker() {
                   size="icon"
                   className="h-11 w-11 shrink-0"
                 >
-                  <Copy className="w-4 h-4" />
+                  <PiCopy className="w-4 h-4" />
                 </Button>
               </div>
             </div>
@@ -250,14 +250,14 @@ export default function ColorPicker() {
                   onClick={() =>
                     copyToClipboard(
                       `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`,
-                      "hsl",
+                      "hsl"
                     )
                   }
                   variant={copied === "hsl" ? "default" : "outline"}
                   size="icon"
                   className="h-11 w-11 shrink-0"
                 >
-                  <Copy className="w-4 h-4" />
+                  <PiCopy className="w-4 h-4" />
                 </Button>
               </div>
             </div>
@@ -354,7 +354,7 @@ export default function ColorPicker() {
                     onClick={() => removeColor(savedColor)}
                     className="absolute -top-2 -right-2 w-6 h-6 bg-destructive text-destructive-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:scale-110 shadow-sm"
                   >
-                    <X className="w-3 h-3" />
+                    <PiX className="w-3 h-3" />
                   </button>
                 </div>
               ))}

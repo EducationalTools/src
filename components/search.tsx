@@ -13,19 +13,19 @@ import { useCommandState } from "cmdk";
 import { MENU_ITEMS } from "@/lib/menu";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Circle, CircleCheck } from "lucide-react";
+import { PiArrowRight, PiCircle, PiCheckCircle } from "react-icons/pi";
 
 export default function Search() {
   const searchOpen = useUiState((state) => state.searchOpen);
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled,
+    (state) => state.enabled
   );
   const navigate = useNavigate();
   const [placeholder, setPlaceholder] = useState("Search...");
 
   const menuItems = MENU_ITEMS.filter(
-    (item) => !(item.experimental && !experimentalFeatures),
+    (item) => !(item.experimental && !experimentalFeatures)
   );
 
   useEffect(() => {
@@ -98,10 +98,10 @@ export default function Search() {
 function ExperimentalFeatures() {
   const search = useCommandState((state) => state.search);
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled,
+    (state) => state.enabled
   );
   const toggleExperimentalFeatures = useExperimentalFeatures(
-    (state) => state.toggle,
+    (state) => state.toggle
   );
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
 
@@ -117,7 +117,7 @@ function ExperimentalFeatures() {
           : "hidden"
       }
     >
-      {experimentalFeatures ? <CircleCheck /> : <Circle />}
+      {experimentalFeatures ? <PiCheckCircle /> : <PiCircle />}
       {experimentalFeatures ? "Disable" : "Enable"} Experimental Features
     </CommandItem>
   );

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Copy, RefreshCw, ShieldCheck } from "lucide-react";
+import { PiCopy, PiArrowClockwise, PiShieldCheck } from "react-icons/pi";
 
 export default function PasswordGenerator() {
   const [password, setPassword] = useState("");
@@ -34,7 +34,7 @@ export default function PasswordGenerator() {
     let result = "";
     for (let i = 0; i < length; i++) {
       result += characters.charAt(
-        Math.floor(Math.random() * characters.length),
+        Math.floor(Math.random() * characters.length)
       );
     }
 
@@ -83,7 +83,7 @@ export default function PasswordGenerator() {
                 />
                 {password && (
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 pointer-events-none">
-                    <ShieldCheck className="w-5 h-5" />
+                    <PiShieldCheck className="w-5 h-5" />
                   </div>
                 )}
               </div>
@@ -189,7 +189,7 @@ export default function PasswordGenerator() {
             className="w-full h-12 text-base font-medium"
             size="lg"
           >
-            <RefreshCw className="w-4 h-4 mr-2" />
+            <PiArrowClockwise className="w-4 h-4 mr-2" />
             Generate Password
           </Button>
         </CardContent>

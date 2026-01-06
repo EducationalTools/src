@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Copy, RefreshCw, FileText, Eye } from "lucide-react";
+import { PiCopy, PiArrowClockwise, PiFileText, PiEye } from "react-icons/pi";
 import { toast } from "sonner";
 
 // Simple markdown parser
@@ -28,13 +28,13 @@ function parseMarkdown(markdown: string): string {
   // Links
   html = html.replace(
     /\[([^\]]+)\]\(([^)]+)\)/gim,
-    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
+    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
   );
 
   // Images
   html = html.replace(
     /!\[([^\]]*)\]\(([^)]+)\)/gim,
-    '<img src="$2" alt="$1" />',
+    '<img src="$2" alt="$1" />'
   );
 
   // Lists
@@ -122,7 +122,7 @@ export default function MarkdownPreview() {
         <Card className="flex flex-col min-h-0 shadow-md">
           <CardHeader className="flex flex-row items-center justify-between py-3 px-4 border-b space-y-0">
             <CardTitle className="text-base font-medium flex items-center gap-2">
-              <FileText className="w-4 h-4" />
+              <PiFileText className="w-4 h-4" />
               Markdown
             </CardTitle>
             <div className="flex gap-2">
@@ -149,7 +149,7 @@ export default function MarkdownPreview() {
                 onClick={() => copyToClipboard(markdown)}
                 className="h-8 px-2 text-xs"
               >
-                <Copy className="mr-2 h-3.5 w-3.5" /> Copy MD
+                <PiCopy className="mr-2 h-3.5 w-3.5" /> Copy MD
               </Button>
             </div>
           </CardHeader>
@@ -175,7 +175,7 @@ export default function MarkdownPreview() {
               onClick={() => copyToClipboard(parseMarkdown(markdown))}
               className="h-8 px-2 text-xs"
             >
-              <Copy className="mr-2 h-3.5 w-3.5" /> Copy HTML
+              <PiCopy className="mr-2 h-3.5 w-3.5" /> Copy HTML
             </Button>
           </CardHeader>
           <CardContent className="flex-1 p-0 relative bg-white dark:bg-zinc-950 overflow-hidden rounded-b-lg">
