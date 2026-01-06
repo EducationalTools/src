@@ -4,8 +4,7 @@ import {
   PiTextAa,
   PiClock,
   PiCode,
-  PiDice,
-  PiFileJson,
+  PiDiceFive,
   PiFileText,
   PiFingerprint,
   PiHash,
@@ -14,25 +13,26 @@ import {
   PiLock,
   PiPalette,
   PiQrCode,
-  PiScale,
+  PiArrowsLeftRight,
   PiTextT,
+  PiCursorText,
 } from "react-icons/pi";
 
 export const TOOLS = [
   {
     label: "Calculator",
     id: "calculator",
-    icon: Calculator,
+    icon: PiCalculator,
   },
   {
     label: "Unit Converter",
     id: "unit-converter",
-    icon: PiScale,
+    icon: PiArrowsLeftRight,
   },
   {
     label: "Word Counter",
     id: "word-counter",
-    icon: Type,
+    icon: PiCursorText,
   },
   {
     label: "Password Generator",
@@ -42,7 +42,7 @@ export const TOOLS = [
   {
     label: "Random Number",
     id: "random-number",
-    icon: PiDice,
+    icon: PiDiceFive,
   },
   {
     label: "Stopwatch & Timer",
@@ -52,7 +52,7 @@ export const TOOLS = [
   {
     label: "Base64 Converter",
     id: "base64-converter",
-    icon: Binary,
+    icon: PiBinary,
   },
   {
     label: "Color Picker",
@@ -72,7 +72,7 @@ export const TOOLS = [
   {
     label: "JSON Formatter",
     id: "json-formatter",
-    icon: PiFileJson,
+    icon: PiCode,
   },
   {
     label: "Roman Numeral Converter",

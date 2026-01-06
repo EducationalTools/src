@@ -56,7 +56,7 @@ export default function Search() {
                   setSearchOpen(false);
                 }}
               >
-                {item.icon ? <item.icon /> : <ArrowRight />}
+                {item.icon ? <item.icon /> : <PiArrowRight />}
                 {item.label}
                 {item.kbd && <CommandShortcut>{item.kbd}</CommandShortcut>}
               </CommandItem>
@@ -78,7 +78,7 @@ export default function Search() {
                         setSearchOpen(false);
                       }}
                     >
-                      {item.icon ? <item.icon /> : <ArrowRight />}
+                      {item.icon ? <item.icon /> : <PiArrowRight />}
                       {item.label}
                       {item.kbd && (
                         <CommandShortcut>{item.kbd}</CommandShortcut>

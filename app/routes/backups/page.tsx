@@ -23,7 +23,6 @@ import {
 } from "convex/react";
 import {
   PiArchive,
-  PiArchiveTray,
   PiArrowRight,
   PiClipboard,
   PiCopy,
@@ -338,7 +337,7 @@ export default function BackupsPage() {
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <Button>
-                                <PiArchiveTray />
+                                <PiArchive />
                                 Restore
                               </Button>
                             </AlertDialogTrigger>

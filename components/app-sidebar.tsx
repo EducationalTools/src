@@ -58,7 +58,7 @@ export function AppSidebar() {
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const location = useLocation();
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
+    (state) => state.enabled,
   );
   const currentUser = useQuery(api.auth.getCurrentUser);
 
@@ -76,7 +76,7 @@ export function AppSidebar() {
         </KbdGroup>
       )}
       {item.children && item.children.length > 0 && (
-        <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+        <PiCaretDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
       )}
     </>
   );
@@ -86,7 +86,7 @@ export function AppSidebar() {
   const menuItems = MENU_ITEMS.filter(
     (item) =>
       !(item.experimental && !experimentalFeatures) &&
-      !(item.requiresAdmin && !isAdmin)
+      !(item.requiresAdmin && !isAdmin),
   );
 
   // Hide sidebar completely when experimental features are off
@@ -99,7 +99,7 @@ export function AppSidebar() {
       variant="inset"
       className={clsx(
         "p-0 duration-200 transition-all ease-out",
-        !sidebar.open && !disableAllBlur && "blur-lg opacity-0"
+        !sidebar.open && !disableAllBlur && "blur-lg opacity-0",
       )}
     >
       <SidebarHeader>
@@ -144,7 +144,7 @@ export function AppSidebar() {
                 {menuItems.map((item) => {
                   const renderMenuItem = (
                     menuItem: typeof item,
-                    isSubItem = false
+                    isSubItem = false,
                   ) => {
                     const content = renderMenuItemContent(menuItem);
                     const MenuButtonWrapper = isSubItem
@@ -185,7 +185,7 @@ export function AppSidebar() {
                         <Collapsible
                           className="group/collapsible"
                           defaultOpen={item.children.some(
-                            (child) => child.href == location.pathname
+                            (child) => child.href == location.pathname,
                           )}
                         >
                           <SidebarMenuItem>

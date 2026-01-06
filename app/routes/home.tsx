@@ -92,7 +92,7 @@ export default function Home() {
         >
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Wrench className="w-5 h-5 text-primary" />
+              <PiWrench className="w-5 h-5 text-primary" />
               Utilities
             </CardTitle>
             <CardDescription>Helpful tools for everyday tasks</CardDescription>
@@ -154,8 +154,8 @@ export default function Home() {
                           onClick={() => toggleSaved(item.id)}
                         >
                           <div className="relative w-4 h-4">
-                            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20 absolute transition-opacity opacity-100 group-hover/btn:opacity-0" />
-                            <X className="w-4 h-4 text-muted-foreground absolute transition-opacity opacity-0 group-hover/btn:opacity-100" />
+                            <PiStar className="w-4 h-4 text-yellow-500 fill-yellow-500/20 absolute transition-opacity opacity-100 group-hover/btn:opacity-0" />
+                            <PiX className="w-4 h-4 text-muted-foreground absolute transition-opacity opacity-0 group-hover/btn:opacity-100" />
                           </div>
                           <span className="sr-only">Remove</span>
                         </Button>

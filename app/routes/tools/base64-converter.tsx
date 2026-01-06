@@ -22,7 +22,7 @@ export default function Base64Converter() {
       setOutput(encoded);
     } catch (err) {
       setError(
-        "Failed to encode. Make sure the input contains valid characters."
+        "Failed to encode. Make sure the input contains valid characters.",
       );
       setOutput("");
     }
@@ -176,7 +176,7 @@ export default function Base64Converter() {
               disabled={!output}
               title="Swap Input/Output"
             >
-              <ArrowRightLeft className="h-4 w-4" />
+              <PiArrowsLeftRight className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"
