@@ -85,7 +85,7 @@ export default function RomanNumeral() {
   const [number, setNumber] = useState("");
   const [roman, setRoman] = useState("");
   const [direction, setDirection] = useState<"to-roman" | "from-roman">(
-    "to-roman"
+    "to-roman",
   );
 
   const handleNumberChange = (value: string) => {

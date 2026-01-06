@@ -250,7 +250,7 @@ export default function ColorPicker() {
                   onClick={() =>
                     copyToClipboard(
                       `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`,
-                      "hsl"
+                      "hsl",
                     )
                   }
                   variant={copied === "hsl" ? "default" : "outline"}
