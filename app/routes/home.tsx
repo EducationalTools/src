@@ -36,7 +36,7 @@ import { cn } from "@/lib/utils";
 
 export default function Home() {
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
+    (state) => state.enabled,
   );
   const history = useGmaeHistory((state) => state.history);
   const removeFromHistory = useGmaeHistory((state) => state.removeFromHistory);
@@ -80,14 +80,14 @@ export default function Home() {
           "grid gap-6",
           experimentalFeatures
             ? "grid-cols-1 lg:grid-cols-3"
-            : "grid-cols-1 lg:grid-cols-2"
+            : "grid-cols-1 lg:grid-cols-2",
         )}
       >
         {/* Tools Section */}
         <Card
           className={cn(
             "h-fit",
-            experimentalFeatures ? "lg:col-span-1" : "lg:col-span-2"
+            experimentalFeatures ? "lg:col-span-1" : "lg:col-span-2",
           )}
         >
           <CardHeader>
@@ -101,7 +101,7 @@ export default function Home() {
             className={cn(
               "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2",
               !experimentalFeatures && "lg:grid-cols-3",
-              experimentalFeatures && "max-h-[600px] overflow-y-auto"
+              experimentalFeatures && "max-h-[600px] overflow-y-auto",
             )}
           >
             {TOOLS.map((tool) => (

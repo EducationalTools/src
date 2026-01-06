@@ -56,7 +56,7 @@ export default function RegexTester() {
       while ((match = regex.exec(text)) !== null) {
         parts.push(text.substring(lastIndex, match.index));
         parts.push(
-          `<mark class="bg-yellow-300 dark:bg-yellow-600 rounded-sm px-0.5">${match[0]}</mark>`
+          `<mark class="bg-yellow-300 dark:bg-yellow-600 rounded-sm px-0.5">${match[0]}</mark>`,
         );
         lastIndex = regex.lastIndex;
 

@@ -14,15 +14,15 @@ import { authClient } from "@/lib/auth-client";
 export default function CommandPalette() {
   const commandPaletteOpen = useUiState((state) => state.commandPaletteOpen);
   const setCommandPaletteOpen = useUiState(
-    (state) => state.setCommandPaletteOpen
+    (state) => state.setCommandPaletteOpen,
   );
   const setSettingsOpen = useUiState((state) => state.setSettingsOpen);
 
   const setLoadingOverlayOpen = useUiState(
-    (state) => state.setLoadingOverlayOpen
+    (state) => state.setLoadingOverlayOpen,
   );
   const setLoadingOverlayMessage = useUiState(
-    (state) => state.setLoadingOverlayMessage
+    (state) => state.setLoadingOverlayMessage,
   );
 
   const session = authClient.useSession();
