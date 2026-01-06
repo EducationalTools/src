@@ -14,18 +14,25 @@ import { MENU_ITEMS } from "@/lib/menu";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { PiArrowRight, PiCircle, PiCheckCircle } from "react-icons/pi";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 export default function Search() {
   const searchOpen = useUiState((state) => state.searchOpen);
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
+    (state) => state.enabled,
   );
   const navigate = useNavigate();
   const [placeholder, setPlaceholder] = useState("Search...");
+  const currentUser = useQuery(api.auth.getCurrentUser);
+
+  const isAdmin = currentUser?.role === "admin";
 
   const menuItems = MENU_ITEMS.filter(
-    (item) => !(item.experimental && !experimentalFeatures)
+    (item) =>
+      !(item.experimental && !experimentalFeatures) &&
+      !(item.requiresAdmin && !isAdmin),
   );
 
   useEffect(() => {
@@ -98,10 +105,10 @@ export default function Search() {
 function ExperimentalFeatures() {
   const search = useCommandState((state) => state.search);
   const experimentalFeatures = useExperimentalFeatures(
-    (state) => state.enabled
+    (state) => state.enabled,
   );
   const toggleExperimentalFeatures = useExperimentalFeatures(
-    (state) => state.toggle
+    (state) => state.toggle,
   );
   const setSearchOpen = useUiState((state) => state.setSearchOpen);
 
