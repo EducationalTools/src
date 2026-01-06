@@ -1,7 +1,7 @@
 "use client";
 
 import { type ColumnDef } from "@tanstack/react-table";
-import { PiArrowsUpDown } from "react-icons/pi";
+import { PiArrowsDownUp } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
 
 export type User = {
@@ -27,7 +27,7 @@ export const createColumns = (): ColumnDef<User>[] => [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Email
-          <PiArrowsUpDown className="ml-2 h-4 w-4" />
+          <PiArrowsDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
     },
@@ -42,7 +42,7 @@ export const createColumns = (): ColumnDef<User>[] => [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Name
-          <PiArrowsUpDown className="ml-2 h-4 w-4" />
+          <PiArrowsDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
     },
@@ -90,7 +90,7 @@ export const createColumns = (): ColumnDef<User>[] => [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Created
-          <PiArrowsUpDown className="ml-2 h-4 w-4" />
+          <PiArrowsDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
     },
