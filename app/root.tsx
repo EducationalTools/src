@@ -40,7 +40,7 @@ import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { Copy } from "lucide-react";
+import { PiCopy } from "react-icons/pi";
 import { toast } from "sonner";
 import { useCloak } from "@/hooks/use-cloak";
 import { MotionConfig } from "motion/react";
@@ -311,7 +311,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
                     });
                 }}
               >
-                <Copy />
+                <PiCopy />
               </Button>
             </ButtonGroup>
             <DialogContent>

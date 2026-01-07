@@ -13,7 +13,9 @@ import { useCommandState } from "cmdk";
 import { MENU_ITEMS } from "@/lib/menu";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Circle, CircleCheck } from "lucide-react";
+import { PiArrowRight, PiCircle, PiCheckCircle } from "react-icons/pi";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 export default function Search() {
   const searchOpen = useUiState((state) => state.searchOpen);
@@ -23,9 +25,14 @@ export default function Search() {
   );
   const navigate = useNavigate();
   const [placeholder, setPlaceholder] = useState("Search...");
+  const currentUser = useQuery(api.auth.getCurrentUser);
+
+  const isAdmin = currentUser?.role === "admin";
 
   const menuItems = MENU_ITEMS.filter(
-    (item) => !(item.experimental && !experimentalFeatures),
+    (item) =>
+      !(item.experimental && !experimentalFeatures) &&
+      !(item.requiresAdmin && !isAdmin),
   );
 
   useEffect(() => {
@@ -56,7 +63,7 @@ export default function Search() {
                   setSearchOpen(false);
                 }}
               >
-                {item.icon ? <item.icon /> : <ArrowRight />}
+                {item.icon ? <item.icon /> : <PiArrowRight />}
                 {item.label}
                 {item.kbd && <CommandShortcut>{item.kbd}</CommandShortcut>}
               </CommandItem>
@@ -78,7 +85,7 @@ export default function Search() {
                         setSearchOpen(false);
                       }}
                     >
-                      {item.icon ? <item.icon /> : <ArrowRight />}
+                      {item.icon ? <item.icon /> : <PiArrowRight />}
                       {item.label}
                       {item.kbd && (
                         <CommandShortcut>{item.kbd}</CommandShortcut>
@@ -117,7 +124,7 @@ function ExperimentalFeatures() {
           : "hidden"
       }
     >
-      {experimentalFeatures ? <CircleCheck /> : <Circle />}
+      {experimentalFeatures ? <PiCheckCircle /> : <PiCircle />}
       {experimentalFeatures ? "Disable" : "Enable"} Experimental Features
     </CommandItem>
   );

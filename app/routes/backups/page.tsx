@@ -22,14 +22,13 @@ import {
   useQuery,
 } from "convex/react";
 import {
-  Archive,
-  ArchiveRestore,
-  ArrowRight,
-  Clipboard,
-  Copy,
-  Delete,
-  Trash,
-} from "lucide-react";
+  PiArchive,
+  PiArrowRight,
+  PiClipboard,
+  PiCopy,
+  PiTrash,
+  PiTrashSimple,
+} from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "motion/react";
@@ -170,7 +169,7 @@ export default function BackupsPage() {
                     });
                 }}
               >
-                <Clipboard />
+                <PiClipboard />
               </Button>
             </div>
           </div>
@@ -247,7 +246,7 @@ export default function BackupsPage() {
                       onClick={handleCreateBackup}
                       disabled={!inputtedBackupName.trim()}
                     >
-                      <ArrowRight />
+                      <PiArrowRight />
                     </Button>
                   </div>
                 </CardContent>
@@ -277,7 +276,7 @@ export default function BackupsPage() {
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <Button variant="destructive" size="icon">
-                                <Trash />
+                                <PiTrash />
                               </Button>
                             </AlertDialogTrigger>
                             <AlertDialogContent>
@@ -333,12 +332,12 @@ export default function BackupsPage() {
                                 });
                             }}
                           >
-                            <Copy />
+                            <PiCopy />
                           </Button>
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <Button>
-                                <ArchiveRestore />
+                                <PiArchive />
                                 Restore
                               </Button>
                             </AlertDialogTrigger>
@@ -386,7 +385,7 @@ export default function BackupsPage() {
                       <Empty>
                         <EmptyHeader>
                           <EmptyMedia variant="icon">
-                            <Archive className="size-6" />
+                            <PiArchive className="size-6" />
                           </EmptyMedia>
                           <EmptyTitle>No backups yet</EmptyTitle>
                           <EmptyDescription>

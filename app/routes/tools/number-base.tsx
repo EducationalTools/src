@@ -2,7 +2,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Copy, RefreshCw, ArrowRightLeft, Binary } from "lucide-react";
+import {
+  PiCopy,
+  PiArrowClockwise,
+  PiArrowsLeftRight,
+  PiBinary,
+} from "react-icons/pi";
 import { toast } from "sonner";
 
 function convertBase(value: string, fromBase: number, toBase: number): string {
@@ -129,7 +134,7 @@ export default function NumberBase() {
                 onClick={clear}
                 className="h-8 px-2 text-xs"
               >
-                <RefreshCw className="mr-2 h-3.5 w-3.5" /> Clear
+                <PiArrowClockwise className="mr-2 h-3.5 w-3.5" /> Clear
               </Button>
             </div>
             <Input
@@ -149,7 +154,7 @@ export default function NumberBase() {
             <Card key={base.value} className="overflow-hidden">
               <CardHeader className="flex flex-row items-center justify-between py-4 bg-muted/30 border-b">
                 <CardTitle className="text-base font-medium flex items-center gap-2">
-                  <Binary className="w-4 h-4 text-muted-foreground" />
+                  <PiBinary className="w-4 h-4 text-muted-foreground" />
                   {base.label}
                 </CardTitle>
                 {results[base.value] && results[base.value] !== "Invalid" && (
@@ -161,7 +166,7 @@ export default function NumberBase() {
                     }
                     className="h-8 px-2 text-xs"
                   >
-                    <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+                    <PiCopy className="mr-2 h-3.5 w-3.5" /> Copy
                   </Button>
                 )}
               </CardHeader>

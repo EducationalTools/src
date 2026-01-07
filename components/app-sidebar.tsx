@@ -1,13 +1,13 @@
 import {
-  ChevronDown,
-  Clock,
-  Code,
-  GalleryVerticalEnd,
-  GitBranch,
-  PanelLeft,
-  Search,
-  Settings,
-} from "lucide-react";
+  PiCaretDown,
+  PiClock,
+  PiCode,
+  PiRows,
+  PiGitBranch,
+  PiSidebarSimple,
+  PiMagnifyingGlass,
+  PiGear,
+} from "react-icons/pi";
 import { Link, useLocation } from "react-router";
 import {
   Sidebar,
@@ -76,7 +76,7 @@ export function AppSidebar() {
         </KbdGroup>
       )}
       {item.children && item.children.length > 0 && (
-        <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+        <PiCaretDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
       )}
     </>
   );
@@ -126,7 +126,7 @@ export function AppSidebar() {
               onClick={() => setSearchOpen(true)}
               className="border cursor-text"
             >
-              <Search className="size-4" />
+              <PiMagnifyingGlass className="size-4" />
               Search
               <KbdGroup className="ml-auto">
                 <Kbd className="text-nowrap">⌘</Kbd>
@@ -237,15 +237,15 @@ export function AppSidebar() {
                 target="_blank"
                 className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center"
               >
-                <Code />
+                <PiCode />
                 EducationalTools/src
               </Link>
               <div className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center">
-                <GitBranch />
+                <PiGitBranch />
                 {process.env.BRANCH_NAME}
               </div>
               <div className="flex flex-row gap-2 [&_svg:not([class*='size-'])]:size-4 items-center">
-                <Clock />
+                <PiClock />
                 Built on{" "}
                 {new Date(process.env.BUILD_TIME || 0).toLocaleString()}
               </div>

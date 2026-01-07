@@ -1,7 +1,7 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown } from "lucide-react";
+import { PiArrowsDownUp } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
 import type { ParsedGmae } from "@/lib/gmaes";
 
@@ -16,7 +16,7 @@ export const columns: ColumnDef<ParsedGmae>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Name
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <PiArrowsDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
     },
@@ -40,7 +40,7 @@ export const columns: ColumnDef<ParsedGmae>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Category
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <PiArrowsDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
     },

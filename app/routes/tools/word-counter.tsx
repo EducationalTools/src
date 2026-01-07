@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ClipboardPaste, Trash2 } from "lucide-react";
+import { PiClipboard, PiTrash } from "react-icons/pi";
 
 export default function WordCounter() {
   const [text, setText] = useState("");
@@ -77,7 +77,7 @@ export default function WordCounter() {
                 onClick={handlePaste}
                 className="h-8 px-2 text-xs"
               >
-                <ClipboardPaste className="w-3.5 h-3.5 mr-1" /> Paste
+                <PiClipboard className="w-3.5 h-3.5 mr-1" /> Paste
               </Button>
               <Button
                 variant="ghost"
@@ -85,7 +85,7 @@ export default function WordCounter() {
                 onClick={handleClear}
                 className="h-8 px-2 text-xs"
               >
-                <Trash2 className="w-3.5 h-3.5 mr-1" /> Clear
+                <PiTrash className="w-3.5 h-3.5 mr-1" /> Clear
               </Button>
             </div>
           </CardHeader>

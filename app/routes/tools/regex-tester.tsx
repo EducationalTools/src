@@ -3,7 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Copy, RefreshCw, AlertTriangle, CheckCircle2 } from "lucide-react";
+import {
+  PiCopy,
+  PiArrowClockwise,
+  PiWarning,
+  PiCheckCircle,
+} from "react-icons/pi";
 import { toast } from "sonner";
 
 export default function RegexTester() {
@@ -187,7 +192,7 @@ export default function RegexTester() {
               onClick={clear}
               className="h-8 px-2 text-xs"
             >
-              <RefreshCw className="h-3.5 w-3.5 mr-1" /> Clear
+              <PiArrowClockwise className="h-3.5 w-3.5 mr-1" /> Clear
             </Button>
           </CardHeader>
           <CardContent className="p-0">
@@ -202,7 +207,7 @@ export default function RegexTester() {
 
         {error && (
           <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4 flex items-center gap-3 text-destructive">
-            <AlertTriangle className="h-5 w-5 shrink-0" />
+            <PiWarning className="h-5 w-5 shrink-0" />
             <div className="font-medium">{error}</div>
           </div>
         )}
@@ -222,7 +227,7 @@ export default function RegexTester() {
                 }
                 className="h-8 px-2 text-xs"
               >
-                <Copy className="mr-2 h-3.5 w-3.5" /> Copy Results
+                <PiCopy className="mr-2 h-3.5 w-3.5" /> Copy Results
               </Button>
             </CardHeader>
             <CardContent className="p-0">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Copy, Dices, RefreshCw } from "lucide-react";
+import { PiCopy, PiArrowClockwise, PiDiceFive } from "react-icons/pi";
 
 export default function RandomNumber() {
   const [min, setMin] = useState(1);
@@ -134,7 +134,7 @@ export default function RandomNumber() {
             className="w-full h-12 text-base font-medium"
             size="lg"
           >
-            <Dices className="w-5 h-5 mr-2" />
+            <PiDiceFive className="w-5 h-5 mr-2" />
             Generate
           </Button>
 
@@ -155,7 +155,7 @@ export default function RandomNumber() {
                     size="sm"
                     className="h-8 px-2 text-xs"
                   >
-                    <Copy className="w-3.5 h-3.5 mr-1" />
+                    <PiCopy className="w-3.5 h-3.5 mr-1" />
                     {copied ? "Copied!" : "Copy"}
                   </Button>
                 </div>

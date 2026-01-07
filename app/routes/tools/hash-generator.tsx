@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Copy, RefreshCw, Trash2, FileLock2 } from "lucide-react";
+import { PiCopy, PiArrowClockwise, PiTrash, PiLock } from "react-icons/pi";
 import { toast } from "sonner";
 
 async function hashText(text: string, algorithm: string): Promise<string> {
@@ -91,13 +91,13 @@ export default function HashGenerator() {
               disabled={loading || !input}
               className="h-11"
             >
-              <RefreshCw
+              <PiArrowClockwise
                 className={`mr-2 h-4 w-4 ${loading ? "animate-spin" : ""}`}
               />
               Generate Hashes
             </Button>
             <Button variant="outline" onClick={clear} className="h-11">
-              <Trash2 className="mr-2 h-4 w-4" />
+              <PiTrash className="mr-2 h-4 w-4" />
               Clear
             </Button>
           </div>
@@ -111,7 +111,7 @@ export default function HashGenerator() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-base font-semibold flex items-center gap-2">
-                    <FileLock2 className="w-4 h-4 text-muted-foreground" />
+                    <PiLock className="w-4 h-4 text-muted-foreground" />
                     {algo.label}
                   </h3>
                   {hashes[algo.value] && (
@@ -121,7 +121,7 @@ export default function HashGenerator() {
                       onClick={() => copyToClipboard(hashes[algo.value])}
                       className="h-8 px-2 text-xs"
                     >
-                      <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+                      <PiCopy className="mr-2 h-3.5 w-3.5" /> Copy
                     </Button>
                   )}
                 </div>

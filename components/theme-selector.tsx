@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { PiCheck, PiCaretUpDown } from "react-icons/pi";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -47,7 +47,7 @@ export function ThemeSelector({ className }: { className?: string }) {
               }}
             >
               {themeOption.label}
-              <Check
+              <PiCheck
                 className={cn(
                   "ml-auto",
                   theme.theme === themeOption.value

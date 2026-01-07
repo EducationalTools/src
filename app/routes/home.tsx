@@ -3,15 +3,15 @@ import type { Route } from "./+types/home";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import {
-  Bookmark,
-  History,
-  Wrench,
-  ArrowRight,
-  Star,
-  Gamepad2,
-  Trash2,
-  X,
-} from "lucide-react";
+  PiBookmark,
+  PiClockClockwise,
+  PiWrench,
+  PiArrowRight,
+  PiStar,
+  PiGameController,
+  PiTrash,
+  PiX,
+} from "react-icons/pi";
 import {
   useGmaeHistory,
   useSavedGmaes,
@@ -92,7 +92,7 @@ export default function Home() {
         >
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Wrench className="w-5 h-5 text-primary" />
+              <PiWrench className="w-5 h-5 text-primary" />
               Utilities
             </CardTitle>
             <CardDescription>Helpful tools for everyday tasks</CardDescription>
@@ -123,7 +123,7 @@ export default function Home() {
                         {tool.label}
                       </span>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                    <PiArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
                   </div>
                 </Link>
               </Button>
@@ -138,7 +138,7 @@ export default function Home() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Bookmark className="w-5 h-5 text-primary" />
+                  <PiBookmark className="w-5 h-5 text-primary" />
                   Saved
                 </CardTitle>
                 <CardDescription>Your bookmarked items</CardDescription>
@@ -154,8 +154,8 @@ export default function Home() {
                           onClick={() => toggleSaved(item.id)}
                         >
                           <div className="relative w-4 h-4">
-                            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500/20 absolute transition-opacity opacity-100 group-hover/btn:opacity-0" />
-                            <X className="w-4 h-4 text-muted-foreground absolute transition-opacity opacity-0 group-hover/btn:opacity-100" />
+                            <PiStar className="w-4 h-4 text-yellow-500 fill-yellow-500/20 absolute transition-opacity opacity-100 group-hover/btn:opacity-0" />
+                            <PiX className="w-4 h-4 text-muted-foreground absolute transition-opacity opacity-0 group-hover/btn:opacity-100" />
                           </div>
                           <span className="sr-only">Remove</span>
                         </Button>
@@ -177,7 +177,7 @@ export default function Home() {
                   <Empty className="min-h-[200px]">
                     <EmptyHeader>
                       <EmptyMedia variant="icon">
-                        <Bookmark />
+                        <PiBookmark />
                       </EmptyMedia>
                       <EmptyTitle>No saved items</EmptyTitle>
                       <EmptyDescription>
@@ -194,7 +194,7 @@ export default function Home() {
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <div className="space-y-1.5">
                   <CardTitle className="flex items-center gap-2">
-                    <History className="w-5 h-5 text-primary" />
+                    <PiClockClockwise className="w-5 h-5 text-primary" />
                     History
                   </CardTitle>
                   <CardDescription>Recently accessed items</CardDescription>
@@ -206,7 +206,7 @@ export default function Home() {
                     className="text-muted-foreground hover:text-destructive h-8 px-2"
                     onClick={clearHistory}
                   >
-                    <Trash2 className="w-4 h-4 mr-2" />
+                    <PiTrash className="w-4 h-4 mr-2" />
                     Clear
                   </Button>
                 )}
@@ -223,7 +223,7 @@ export default function Home() {
                         >
                           <Link to={item.href}>
                             <div className="flex items-center gap-3 w-full">
-                              <History className="w-4 h-4 text-muted-foreground" />
+                              <PiClockClockwise className="w-4 h-4 text-muted-foreground" />
                               <span className="font-medium truncate flex-1 text-left">
                                 {item.label}
                               </span>
@@ -240,7 +240,7 @@ export default function Home() {
                             removeFromHistory(item.id);
                           }}
                         >
-                          <X className="h-4 w-4" />
+                          <PiX className="h-4 w-4" />
                           <span className="sr-only">Remove from history</span>
                         </Button>
                       </div>
@@ -250,7 +250,7 @@ export default function Home() {
                   <Empty className="min-h-[200px]">
                     <EmptyHeader>
                       <EmptyMedia variant="icon">
-                        <History />
+                        <PiClockClockwise />
                       </EmptyMedia>
                       <EmptyTitle>No history</EmptyTitle>
                       <EmptyDescription>

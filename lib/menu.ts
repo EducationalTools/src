@@ -1,20 +1,20 @@
 import {
-  ArchiveRestore,
-  Binary,
-  Calculator,
-  Clock,
-  Dices,
-  FileText,
-  Gamepad2,
-  Home,
-  Key,
-  Palette,
-  Scale,
-  Shield,
-  ShieldUser,
-  Type,
-  Wrench,
-} from "lucide-react";
+  PiArchive,
+  PiBinary,
+  PiCalculator,
+  PiClock,
+  PiDiceFive,
+  PiFileText,
+  PiGameController,
+  PiHouse,
+  PiKey,
+  PiPalette,
+  PiArrowsLeftRight,
+  PiShield,
+  PiShieldCheck,
+  PiTextT,
+  PiWrench,
+} from "react-icons/pi";
 import DiscordIcon from "~icons/fa7-brands/discord";
 import { gmaes } from "./gmaes";
 import { TOOLS } from "./tools";
@@ -34,13 +34,13 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     label: "Home",
     href: "/",
-    icon: Home,
+    icon: PiHouse,
     experimental: false,
     kbd: "⌘ ⇧ H",
   },
   {
     label: "Tools",
-    icon: Wrench,
+    icon: PiWrench,
     experimental: false,
     children: TOOLS.map((tool) => ({
       label: tool.label,
@@ -52,7 +52,7 @@ export const MENU_ITEMS: MenuItem[] = [
 
   {
     label: "Gmaes",
-    icon: Gamepad2,
+    icon: PiGameController,
     experimental: true,
     children: [
       {
@@ -69,13 +69,13 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     label: "Backups",
     href: "/backups",
-    icon: ArchiveRestore,
+    icon: PiArchive,
     experimental: true,
   },
   {
     label: "Admin",
     href: "/admin",
-    icon: Shield,
+    icon: PiShield,
     requiresAdmin: true,
   },
   {
@@ -88,13 +88,13 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     label: "About",
     href: "/about",
-    icon: FileText,
+    icon: PiFileText,
     experimental: true,
   },
   {
     label: "Privacy",
     href: "/privacy",
-    icon: ShieldUser,
+    icon: PiShieldCheck,
     experimental: true,
   },
 ];
