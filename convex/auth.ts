@@ -78,7 +78,7 @@ export const createAuthOptions = (ctx: GenericCtx<DataModel>) => {
             },
           ],
         },
-
+      },
     ],
     socialProviders: {
       github: {
