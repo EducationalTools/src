@@ -1,6 +1,10 @@
-import { createClient, type GenericCtx } from "@convex-dev/better-auth";
+import {
+  createClient,
+  type GenericCtx,
+  type AuthFunctions,
+} from "@convex-dev/better-auth";
 import { convex, crossDomain } from "@convex-dev/better-auth/plugins";
-import { components } from "./_generated/api";
+import { components, internal } from "./_generated/api";
 import { DataModel } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 import { betterAuth, type BetterAuthOptions } from "better-auth/minimal";
@@ -10,6 +14,8 @@ import authSchema from "./betterAuth/schema";
 
 const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!;
 
+const authFunctions: AuthFunctions = internal.auth;
+
 // The component client has methods needed for integrating Convex with Better Auth,
 // as well as helper methods for general use.
 export const authComponent = createClient<DataModel, typeof authSchema>(
@@ -17,6 +23,24 @@ export const authComponent = createClient<DataModel, typeof authSchema>(
   {
     local: {
       schema: authSchema,
+    },
+    authFunctions,
+    triggers: {
+      user: {
+        onDelete: async (ctx, doc) => {
+          if (!doc?.userId) {
+            return;
+          }
+
+          const backups = await ctx.db
+            .query("backups")
+            .withIndex("by_user", (q) => q.eq("userId", doc.userId as string))
+            .collect();
+          for (const backup of backups) {
+            await ctx.db.delete(backup._id);
+          }
+        },
+      },
     },
   },
 );
@@ -81,3 +105,5 @@ export const getCurrentUser = query({
     return authComponent.getAuthUser(ctx);
   },
 });
+
+export const { onCreate, onUpdate, onDelete } = authComponent.triggersApi();
