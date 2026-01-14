@@ -1,34 +1,54 @@
+import type {
+  BetterAuthPlugin,
+  GenericEndpointContext,
+} from "@better-auth/core";
+import {
+  createAuthEndpoint,
+  createAuthMiddleware,
+} from "@better-auth/core/api";
 import * as z from "zod";
-import { defaultKeyHasher, ERROR_CODES } from "better-auth/plugins";
-import { createAuthEndpoint } from "better-auth/api";
 import { sessionMiddleware } from "better-auth/api";
-import { generateRandomString } from "better-auth/crypto";
-import type { BetterAuthPlugin } from "better-auth";
-import type { Session, User } from "better-auth/types";
-import type { GenericEndpointContext } from "better-auth";
 import { setSessionCookie } from "better-auth/cookies";
+import { generateRandomString } from "better-auth/crypto";
+import type { Session, User } from "better-auth";
+import { defaultKeyHasher } from "./utils";
 
-interface OneTimeTokenOptions {
+declare module "@better-auth/core" {
+  // biome-ignore lint/correctness/noUnusedVariables: Auth and Context need to be same as declared in the module
+  interface BetterAuthPluginRegistry<Auth, Context> {
+    "one-time-token": {
+      creator: typeof oneTimeToken;
+    };
+  }
+}
+
+export interface OneTimeTokenOptions {
   /**
    * Expires in minutes
    *
    * @default 3
    */
-  expiresIn?: number;
+  expiresIn?: number | undefined;
   /**
    * Only allow server initiated requests
    */
-  disableClientRequest?: boolean;
+  disableClientRequest?: boolean | undefined;
   /**
    * Generate a custom token
    */
-  generateToken?: (
-    session: {
-      user: User & Record<string, any>;
-      session: Session & Record<string, any>;
-    },
-    ctx: GenericEndpointContext,
-  ) => Promise<string>;
+  generateToken?:
+    | ((
+        session: {
+          user: User & Record<string, any>;
+          session: Session & Record<string, any>;
+        },
+        ctx: GenericEndpointContext,
+      ) => Promise<string>)
+    | undefined;
+  /**
+   * Disable setting the session cookie when the token is verified
+   */
+  disableSetSessionCookie?: boolean;
   /**
    * This option allows you to configure how the token is stored in your database.
    * Note: This will not affect the token that's sent, it will only affect the token stored in your database.
@@ -36,12 +56,25 @@ interface OneTimeTokenOptions {
    * @default "plain"
    */
   storeToken?:
-    | "plain"
-    | "hashed"
-    | { type: "custom-hasher"; hash: (token: string) => Promise<string> };
+    | (
+        | "plain"
+        | "hashed"
+        | { type: "custom-hasher"; hash: (token: string) => Promise<string> }
+      )
+    | undefined;
+  /**
+   * Set the OTT header on new sessions
+   */
+  setOttHeaderOnNewSession?: boolean;
 }
 
-export const oneTimeToken = (options?: OneTimeTokenOptions) => {
+const verifyOneTimeTokenBodySchema = z.object({
+  token: z.string({
+    description: 'The token to verify. Eg: "some-token"',
+  }),
+});
+
+export const oneTimeToken = (options?: OneTimeTokenOptions | undefined) => {
   const opts = {
     storeToken: "plain",
     ...options,
@@ -59,6 +92,26 @@ export const oneTimeToken = (options?: OneTimeTokenOptions) => {
       return await opts.storeToken.hash(token);
     }
 
+    return token;
+  }
+
+  async function generateToken(
+    c: GenericEndpointContext,
+    session: {
+      session: Session;
+      user: User;
+    },
+  ) {
+    const token = opts?.generateToken
+      ? await opts.generateToken(session, c)
+      : generateRandomString(32);
+    const expiresAt = new Date(Date.now() + (opts?.expiresIn ?? 3) * 60 * 1000);
+    const storedToken = await storeToken(c, token);
+    await c.context.internalAdapter.createVerificationValue({
+      value: session.session.token,
+      identifier: `one-time-token:${storedToken}`,
+      expiresAt,
+    });
     return token;
   }
 
@@ -94,93 +147,8 @@ export const oneTimeToken = (options?: OneTimeTokenOptions) => {
             });
           }
           const session = c.context.session;
-          const token = opts?.generateToken
-            ? await opts.generateToken(session, c)
-            : generateRandomString(32);
-          const expiresAt = new Date(
-            Date.now() + (opts?.expiresIn ?? 3) * 60 * 1000,
-          );
-          const storedToken = await storeToken(c, token);
-          await c.context.internalAdapter.createVerificationValue({
-            value: session.session.token,
-            identifier: `one-time-token:${storedToken}`,
-            expiresAt,
-          });
+          const token = await generateToken(c, session);
           return c.json({ token });
-        },
-      ),
-      /**
-       * ### Endpoint
-       *
-       * POST `/one-time-token/login`
-       *
-       * ### API Methods
-       *
-       * **server:**
-       * `auth.api.loginWithOneTimeToken`
-       *
-       * **client:**
-       * `authClient.signIn.ott`
-       *
-       * @see [Read our docs to learn more.](https://better-auth.com/docs/plugins/one-time-token#api-method-one-time-token-verify)
-       */
-      loginWithOTT: createAuthEndpoint(
-        "/sign-in/ott",
-        {
-          method: "POST",
-          body: z.object({
-            token: z.string().describe('The token to verify. Eg: "some-token"'),
-          }),
-        },
-        async (c) => {
-          const { token } = c.body;
-          const storedToken = await storeToken(c, token);
-          const verificationValue =
-            await c.context.internalAdapter.findVerificationValue(
-              `one-time-token:${storedToken}`,
-            );
-          if (!verificationValue) {
-            throw c.error("BAD_REQUEST", {
-              message: "Invalid token",
-            });
-          }
-          await c.context.internalAdapter.deleteVerificationValue(
-            verificationValue.id,
-          );
-          if (verificationValue.expiresAt < new Date()) {
-            throw c.error("BAD_REQUEST", {
-              message: "Token expired",
-            });
-          }
-          const session = await c.context.internalAdapter.findSession(
-            verificationValue.value,
-          );
-          if (!session) {
-            throw c.error("BAD_REQUEST", {
-              message: "Session not found",
-            });
-          }
-          const createdSession = await c.context.internalAdapter.createSession(
-            session.user.id,
-            c,
-            false,
-          );
-          if (!createdSession) {
-            return c.json(null, {
-              status: 400,
-              body: {
-                message: "Could not create session",
-              },
-            });
-          }
-          await setSessionCookie(c, {
-            session: createdSession,
-            user: session.user,
-          });
-          return c.json({
-            token: createdSession.token,
-            user: session.user,
-          });
         },
       ),
       /**
@@ -202,9 +170,7 @@ export const oneTimeToken = (options?: OneTimeTokenOptions) => {
         "/one-time-token/verify",
         {
           method: "POST",
-          body: z.object({
-            token: z.string().describe('The token to verify. Eg: "some-token"'),
-          }),
+          body: verifyOneTimeTokenBodySchema,
         },
         async (c) => {
           const { token } = c.body;
@@ -234,9 +200,51 @@ export const oneTimeToken = (options?: OneTimeTokenOptions) => {
               message: "Session not found",
             });
           }
+          if (!opts?.disableSetSessionCookie) {
+            await setSessionCookie(c, session);
+          }
+
+          if (session.session.expiresAt < new Date()) {
+            throw c.error("BAD_REQUEST", {
+              message: "Session expired",
+            });
+          }
+
           return c.json(session);
         },
       ),
     },
+    hooks: {
+      after: [
+        {
+          matcher: () => true,
+          handler: createAuthMiddleware(async (ctx) => {
+            if (ctx.context.newSession) {
+              if (!opts?.setOttHeaderOnNewSession) {
+                return;
+              }
+              const exposedHeaders =
+                ctx.context.responseHeaders?.get(
+                  "access-control-expose-headers",
+                ) || "";
+              const headersSet = new Set(
+                exposedHeaders
+                  .split(",")
+                  .map((header) => header.trim())
+                  .filter(Boolean),
+              );
+              headersSet.add("set-ott");
+              const token = await generateToken(ctx, ctx.context.newSession);
+              ctx.setHeader("set-ott", token);
+              ctx.setHeader(
+                "Access-Control-Expose-Headers",
+                Array.from(headersSet).join(", "),
+              );
+            }
+          }),
+        },
+      ],
+    },
+    options,
   } satisfies BetterAuthPlugin;
 };
