@@ -18,7 +18,7 @@ export default function Ott() {
   async function handleAuth() {
     setMessage("Logging in");
     try {
-      const result = await authClient.signIn.ott({
+      const result = await authClient.oneTimeToken.verify({
         token: token || "",
       });
 
