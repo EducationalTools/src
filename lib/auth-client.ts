@@ -1,6 +1,6 @@
 import { createAuthClient } from "better-auth/react";
 import { convexClient } from "@convex-dev/better-auth/client/plugins";
-import { oneTimeTokenClient } from "@/lib/auth/ott/client";
+import { oneTimeTokenClient } from "better-auth/client/plugins";
 import { adminClient } from "better-auth/client/plugins";
 
 export const authClient = createAuthClient({
