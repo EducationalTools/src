@@ -30,10 +30,9 @@ export default function Ott() {
         if (redirect && redirect.trim() !== "") {
           try {
             const redirectUrl = new URL(redirect);
-            navigate(redirectUrl.pathname);
+            location.href = redirectUrl.href;
           } catch {
-            // If redirect is not a valid URL, treat it as a relative path
-            navigate(redirect);
+            location.href = "/";
           }
         } else {
           navigate("/");
