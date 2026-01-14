@@ -5,8 +5,9 @@ import { DataModel } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 import { betterAuth, type BetterAuthOptions } from "better-auth/minimal";
 import authConfig from "./auth.config";
+import { admin, oneTimeToken } from "better-auth/plugins";
 
-const siteUrl = process.env.SITE_URL!;
+const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!;
 
 // The component client has methods needed for integrating Convex with Better Auth,
 // as well as helper methods for general use.
@@ -14,21 +15,51 @@ export const authComponent = createClient<DataModel>(components.betterAuth);
 
 export const createAuth = (ctx: GenericCtx<DataModel>) => {
   return betterAuth({
-    trustedOrigins: [siteUrl],
     database: authComponent.adapter(ctx),
-    // Configure simple, non-verified email/password to get started
-    emailAndPassword: {
-      enabled: true,
-      requireEmailVerification: false,
+    baseURL: siteUrl,
+    trustedOrigins: ["*"], // security? fuck that
+    emailAndPassword: { enabled: false },
+    plugins: [convex({ authConfig }), oneTimeToken(), admin()],
+    socialProviders: {
+      github: {
+        clientId: process.env.GITHUB_CLIENT_ID as string,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      },
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID as string,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      },
+      discord: {
+        clientId: process.env.DISCORD_CLIENT_ID as string,
+        clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
+      },
     },
-    plugins: [
-      // The cross domain plugin is required for client side frameworks
-      crossDomain({ siteUrl }),
-      // The Convex plugin is required for Convex compatibility
-      convex({ authConfig }),
-    ],
+    advanced: {
+      defaultCookieAttributes: {
+        sameSite: "none",
+        secure: true,
+        partitioned: true, // New browser standards will mandate this for foreign cookies
+      },
+    },
+    user: {
+      deleteUser: {
+        enabled: true,
+      },
+    },
+    account: {
+      accountLinking: {
+        enabled: true,
+        allowDifferentEmails: true,
+      },
+    },
+    rateLimit: {
+      window: 10,
+      max: 100,
+      enabled: true,
+      storage: "database",
+    },
   });
-}
+};
 
 // Example function for getting the current user
 // Feel free to edit, omit, etc.
