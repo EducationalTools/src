@@ -9,7 +9,7 @@ import { DataModel } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 import { betterAuth, type BetterAuthOptions } from "better-auth/minimal";
 import authConfig from "./auth.config";
-import { admin, oneTimeToken } from "better-auth/plugins";
+import { admin, createAuthMiddleware, oneTimeToken } from "better-auth/plugins";
 import authSchema from "./betterAuth/schema";
 
 const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!;
@@ -51,7 +51,35 @@ export const createAuthOptions = (ctx: GenericCtx<DataModel>) => {
     baseURL: siteUrl,
     trustedOrigins: ["*"], // security? fuck that
     emailAndPassword: { enabled: false },
-    plugins: [convex({ authConfig }), oneTimeToken(), admin()],
+    plugins: [
+      convex({ authConfig }),
+      oneTimeToken(),
+      admin(),
+      // Disable state check, see line 52
+      {
+        id: "disable-state-check",
+        hooks: {
+          before: [
+            {
+              matcher() {
+                return true;
+              },
+              handler: createAuthMiddleware(async (ctx) => {
+                return {
+                  context: {
+                    context: {
+                      oauthConfig: {
+                        skipStateCookieCheck: true,
+                      },
+                    },
+                  },
+                };
+              }),
+            },
+          ],
+        },
+
+    ],
     socialProviders: {
       github: {
         clientId: process.env.GITHUB_CLIENT_ID as string,
