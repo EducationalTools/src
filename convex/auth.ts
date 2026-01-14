@@ -13,8 +13,8 @@ const siteUrl = process.env.PUBLIC_CONVEX_SITE_URL!;
 // as well as helper methods for general use.
 export const authComponent = createClient<DataModel>(components.betterAuth);
 
-export const createAuth = (ctx: GenericCtx<DataModel>) => {
-  return betterAuth({
+export const createAuthOptions = (ctx: GenericCtx<DataModel>) => {
+  return {
     database: authComponent.adapter(ctx),
     baseURL: siteUrl,
     trustedOrigins: ["*"], // security? fuck that
@@ -58,7 +58,11 @@ export const createAuth = (ctx: GenericCtx<DataModel>) => {
       enabled: true,
       storage: "database",
     },
-  });
+  } satisfies BetterAuthOptions;
+};
+
+export const createAuth = (ctx: GenericCtx<DataModel>) => {
+  return betterAuth(createAuthOptions(ctx));
 };
 
 // Example function for getting the current user
